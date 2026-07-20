@@ -1,9 +1,13 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-07-20 (continuation session — "unblocked" phase)
-**Status:** Phase 2 COMPLETE. Registry is current-game-accurate, proven against real
-published mods, Pages deployment staged, all outward publish steps drafted.
-**Everything verified locally; nothing published (no-publish/no-account policy).**
+**Last updated:** 2026-07-20 (publish session — owner authorized go-live)
+**Status:** PUBLISHED. Repo pushed to https://github.com/Booyaka101/palschema-hub,
+Pages live at https://booyaka101.github.io/palschema-hub/ (deploy gated on `npm test`,
+passed on CI), comment posted on PalSchema issue #53
+(https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5022177544).
+**Remaining:** npm publish of the CLI (skipped — no npm login; the issue comment uses
+the git-clone fallback) and the Nexus Mods page (manual, needs owner's Nexus login —
+see PUBLISHING.md step 4).
 
 ## Phase 0 re-verification (2026-07-20)
 - **PalSchema 0.6.1 exists** (released 2026-07-19): fixes only (ranch spawn item
