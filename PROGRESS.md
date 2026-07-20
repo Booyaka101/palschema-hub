@@ -8,8 +8,12 @@ passed on CI), comment posted on PalSchema issue #53
 **npm:** `palschema-validate@0.1.1` published (0.1.0 was broken by a stray `file:..`
 dependency — deprecated on npm; 0.1.1 verified via cold-cache `npx` against real mods).
 The issue #53 comment was edited in place to the `npx` one-liner.
-**Remaining:** only the Nexus Mods page (manual, needs owner's Nexus login —
-see PUBLISHING.md step 4; everything is prepared in `nexus/`).
+**Nexus:** page live at https://www.nexusmods.com/palworld/mods/4063 (published
+2026-07-20 via CDP-driven browser session with the owner's login: category
+Utilities, header + gallery image, registry zip v1.0, Pal Schema soft
+requirement, MIT custom permissions + credits). Owner fixed a version-field
+typo (11.0 → 1.0) by hand mid-session.
+**All four publish steps from PUBLISHING.md are now DONE. Nothing outstanding.**
 
 ## Phase 0 re-verification (2026-07-20)
 - **PalSchema 0.6.1 exists** (released 2026-07-19): fixes only (ranch spawn item
