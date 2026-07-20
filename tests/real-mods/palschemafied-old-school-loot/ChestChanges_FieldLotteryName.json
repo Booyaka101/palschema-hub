@@ -1,0 +1,111 @@
+{
+    "DT_FieldLotteryNameDataTable": {
+        "Grass02": {
+            "ItemSlot4_ProbabilityPercent": 0.0,
+            "ItemSlot15_ProbabilityPercent": 10.0
+        },
+        
+        "Forest02": {
+            "ItemSlot4_ProbabilityPercent": 0.0,
+            "ItemSlot15_ProbabilityPercent": 10.0
+        },
+
+        "Desert02": {
+            "ItemSlot4_ProbabilityPercent": 0.0,
+            "ItemSlot15_ProbabilityPercent": 10.0
+        },
+
+        "Volcano02": {
+            "ItemSlot4_ProbabilityPercent": 0.0,
+            "ItemSlot15_ProbabilityPercent": 10.0
+        },
+
+        "Snow02": {
+            "ItemSlot4_ProbabilityPercent": 0.0,
+            "ItemSlot15_ProbabilityPercent": 10.0
+        },
+
+        "Sakurajima02": {
+            "ItemSlot4_ProbabilityPercent": 0.0,
+            "ItemSlot15_ProbabilityPercent": 5.0
+        },
+
+        "DarkIsland02": {
+            "ItemSlot4_ProbabilityPercent": 0.0,
+            "ItemSlot15_ProbabilityPercent": 3.0
+        },
+
+        "Grass_Supply": {
+            "ItemSlot6_ProbabilityPercent": 10.0
+        },
+        
+        "Forest_Supply": {
+            "ItemSlot6_ProbabilityPercent": 10.0
+        },
+
+        "Desert_Supply": {
+            "ItemSlot6_ProbabilityPercent": 10.0
+        },
+
+        "Volcano_Supply": {
+            "ItemSlot6_ProbabilityPercent": 10.0
+        },
+
+        "Snow_Supply": {
+            "ItemSlot6_ProbabilityPercent": 10.0
+        },
+
+        "Sakurajima_Supply": {
+            "ItemSlot6_ProbabilityPercent": 10.0
+        },
+
+        "DarkIsland_Supply": {
+            "ItemSlot6_ProbabilityPercent": 10.0
+        },
+
+        "Forest_ElectricTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        },
+
+        "Forest_FireTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        },
+
+        "Forest_WaterTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        },
+
+        "Desert_ElectricTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        },
+
+        "Desert_FireTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        },
+
+        "Desert_WaterTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        },
+
+        "Sakurajima_ElectricTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        },
+
+        "Sakurajima_FireTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        },
+
+        "Sakurajima_WaterTreasure": {
+            "ItemSlot3_ProbabilityPercent": 100.0,
+            "ItemSlot4_ProbabilityPercent": 5.0
+        }
+    }
+}

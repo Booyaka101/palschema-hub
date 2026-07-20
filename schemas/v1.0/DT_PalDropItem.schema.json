@@ -1,0 +1,288 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalDropItem.schema.json",
+  "title": "DT_PalDropItem",
+  "description": "Palworld DataTable DT_PalDropItem (row struct: PalDropItemDatabaseRow). Each PalSchema mod patch targeting \"DT_PalDropItem\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_PalDropItem | rowStruct=PalDropItemDatabaseRow | palworldVersion=1.0 | fields=42 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=ItemId6,Rate6,min6,Max6,ItemId7,Rate7,min7,Max7,ItemId8,Rate8,min8,Max8,ItemId9,Rate9,min9,Max9,ItemId10,Rate10,min10,Max10",
+  "type": "object",
+  "properties": {
+    "CharacterID": {
+      "type": "string",
+      "examples": [
+        "Alpaca",
+        "AmaterasuWolf",
+        "Anubis"
+      ],
+      "description": "Example: \"Alpaca\""
+    },
+    "Level": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "ItemId1": {
+      "type": "string",
+      "examples": [
+        "Wool",
+        "FireOrgan",
+        "Bone"
+      ],
+      "description": "Example: \"Wool\""
+    },
+    "Rate1": {
+      "type": "number",
+      "examples": [
+        100,
+        50,
+        0
+      ],
+      "description": "Example: 100"
+    },
+    "min1": {
+      "type": "number",
+      "examples": [
+        2,
+        3,
+        1
+      ],
+      "description": "Example: 2"
+    },
+    "Max1": {
+      "type": "number",
+      "examples": [
+        5,
+        3,
+        1
+      ],
+      "description": "Example: 5"
+    },
+    "ItemId2": {
+      "type": "string",
+      "examples": [
+        "Leather",
+        "PalUpgradeStone3",
+        "None"
+      ],
+      "description": "Example: \"Leather\""
+    },
+    "Rate2": {
+      "type": "number",
+      "examples": [
+        100,
+        0,
+        1
+      ],
+      "description": "Example: 100"
+    },
+    "min2": {
+      "type": "number",
+      "examples": [
+        1,
+        2,
+        0
+      ],
+      "description": "Example: 1"
+    },
+    "Max2": {
+      "type": "number",
+      "examples": [
+        1,
+        3,
+        0
+      ],
+      "description": "Example: 1"
+    },
+    "ItemId3": {
+      "type": "string",
+      "examples": [
+        "None",
+        "TechnologyBook_G2",
+        "Horn"
+      ],
+      "description": "Example: \"None\""
+    },
+    "Rate3": {
+      "type": "number",
+      "examples": [
+        0,
+        5,
+        100
+      ],
+      "description": "Example: 0"
+    },
+    "min3": {
+      "type": "number",
+      "examples": [
+        0,
+        1,
+        10
+      ],
+      "description": "Example: 0"
+    },
+    "Max3": {
+      "type": "number",
+      "examples": [
+        0,
+        1,
+        2
+      ],
+      "description": "Example: 0"
+    },
+    "ItemId4": {
+      "type": "string",
+      "examples": [
+        "None",
+        "Arrow",
+        "RoughBullet"
+      ],
+      "description": "Example: \"None\""
+    },
+    "Rate4": {
+      "type": "number",
+      "examples": [
+        0,
+        100,
+        50
+      ],
+      "description": "Example: 0"
+    },
+    "min4": {
+      "type": "number",
+      "examples": [
+        0,
+        1,
+        2
+      ],
+      "description": "Example: 0"
+    },
+    "Max4": {
+      "type": "number",
+      "examples": [
+        0,
+        2,
+        1
+      ],
+      "description": "Example: 0"
+    },
+    "ItemId5": {
+      "type": "string",
+      "examples": [
+        "None",
+        "ChickenSaute",
+        "GrilledSheepHerbs"
+      ],
+      "description": "Example: \"None\""
+    },
+    "Rate5": {
+      "type": "number",
+      "examples": [
+        0,
+        2,
+        1
+      ],
+      "description": "Example: 0"
+    },
+    "min5": {
+      "type": "number",
+      "examples": [
+        0,
+        1
+      ],
+      "description": "Example: 0"
+    },
+    "Max5": {
+      "type": "number",
+      "examples": [
+        0,
+        1
+      ],
+      "description": "Example: 0"
+    },
+    "ItemId6": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Rate6": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "min6": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Max6": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "ItemId7": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Rate7": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "min7": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Max7": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "ItemId8": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Rate8": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "min8": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Max8": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "ItemId9": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Rate9": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "min9": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Max9": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "ItemId10": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Rate10": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "min10": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Max10": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

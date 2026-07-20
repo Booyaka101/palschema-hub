@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalExpTable.schema.json",
+  "title": "DT_PalExpTable",
+  "description": "Palworld DataTable DT_PalExpTable (row struct: PalExpDatabaseRaw). Each PalSchema mod patch targeting \"DT_PalExpTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_PalExpTable | rowStruct=PalExpDatabaseRaw | palworldVersion=1.0 | fields=9 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=BuildEXP,CraftEXP,PalBuildEXP,PalCraftEXP",
+  "type": "object",
+  "properties": {
+    "DropEXP": {
+      "type": "number",
+      "examples": [
+        7,
+        9,
+        11
+      ],
+      "description": "Example: 7"
+    },
+    "NextEXP": {
+      "type": "number",
+      "examples": [
+        0,
+        8,
+        30
+      ],
+      "description": "Example: 0"
+    },
+    "PalNextEXP": {
+      "type": "number",
+      "examples": [
+        0,
+        25,
+        31
+      ],
+      "description": "Example: 0"
+    },
+    "TotalEXP": {
+      "type": "number",
+      "examples": [
+        0,
+        8,
+        38
+      ],
+      "description": "Example: 0"
+    },
+    "PalTotalEXP": {
+      "type": "number",
+      "examples": [
+        0,
+        25,
+        56
+      ],
+      "description": "Example: 0"
+    },
+    "BuildEXP": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "CraftEXP": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "PalBuildEXP": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "PalCraftEXP": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,333 @@
+{
+    "DT_PalDropItem": {
+        "BOSS_Anubis000": {
+            "ItemId5": "Blueprint_SemiAutoShotgun_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_BlackCentaur000": {
+            "ItemId5": "Blueprint_SFArmorHeat_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_BlackMetalDragon000": {
+            "ItemId5": "Blueprint_StealArmorHeat_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_CatMage000": {
+            "ItemId5": "Blueprint_BowGun_Fire_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_CatVampire000": {
+            "ItemId5": "Blueprint_BowGun_Poison_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_DarkScorpion000": {
+            "ItemId5": "Blueprint_SemiAutoRifle_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_FengyunDeeper000": {
+            "ItemId6": "Blueprint_CopperArmor_5",
+            "Rate6": 3.0,
+            "min6": 1,
+            "Max6": 1
+        },
+
+        "BOSS_FlowerDinosaur_Electric000": {
+            "ItemId5": "Blueprint_StealArmor_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_FlowerDoll000": {
+            "ItemId5": "Blueprint_HandGun_Default_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_GrassMammoth000": {
+            "ItemId5": "Blueprint_IronHelmet_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_GrassRabbitMan000": {
+            "ItemId5": "Blueprint_SubmachineGun_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_HawkBird000": {
+            "ItemId5": "Blueprint_FurArmorCold_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_HerculesBeetle000": {
+            "ItemId5": "Blueprint_CopperArmorHeat_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_IceHorse000": {
+            "ItemId5": "Blueprint_SFHelmet_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_JetDragon000": {
+            "ItemId5": "Blueprint_MultiGuidedMissileLauncher_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_KingAlpaca000": {
+            "ItemId5": "Blueprint_CopperHelmet_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_KingAlpaca_Ice000": {
+            "ItemId5": "Blueprint_StealHelmet_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_KingBahamut000": {
+            "ItemId5": "Blueprint_Launcher_Default_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_LazyDragon_Electric000": {
+            "ItemId5": "Blueprint_OldRevolver_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_LilyQueen_Dark000": {
+            "ItemId5": "Blueprint_StealArmorCold_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_MopKing000": {
+            "ItemId5": "Blueprint_ClothArmorCold_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+      },
+
+      "BOSS_Mutant000": {
+            "ItemId5": "Blueprint_CompoundBow_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_NaughtyCat000": {
+            "ItemId5": "Blueprint_FurArmorHeat_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_PlantSlime000": {
+            "ItemId5": "Blueprint_ClothArmorHeat_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+      },
+
+      "BOSS_PlantSlime_Flower000": {
+            "ItemId5": "Blueprint_ClothArmorHeat_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_QueenBee000": {
+            "ItemId5": "Blueprint_CopperArmorCold_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_SaintCentaur000": {
+            "ItemId5": "Blueprint_SFArmorCold_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_ThunderBird000": {
+            "ItemId5": "Accessory_ThunderResist_2",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_Umihebi000": {
+            "ItemId5": "Blueprint_AssaultRifle_Default5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_VioletFairy000": {
+            "ItemId3": "Blueprint_IronArmorHeat_5",
+            "Rate3": 3.0,
+            "min3": 1,
+            "Max3": 1,
+            "ItemId5": "Blueprint_SingleShotRifle_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_WeaselDragon000": {
+            "ItemId2": "Cloth",
+            "Rate2": 100.0,
+            "min2": 2,
+            "Max2": 3
+        },
+
+        "BOSS_WhiteMoth000": {
+            "ItemId3": "Blueprint_IronArmorCold_5",
+            "Rate3": 3.0,
+            "min3": 1,
+            "Max3": 1,
+            "ItemId5": "Blueprint_DoubleBarrelShotgun_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_Yeti_Grass000": {
+            "ItemId5": "Blueprint_IronArmor_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_WingGolem000": {
+            "ItemId5": "Blueprint_PlasticArmor_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_LazyCatfish000": {
+            "ItemId5": "Blueprint_WeakerBow_5",
+            "Rate5": 3.0,
+            "min5": 1,
+            "Max5": 1
+        },
+
+        "BOSS_MimicDog000": {
+            "ItemId3": "DogCoin",
+            "Rate3": 100.0,
+            "min3": 50,
+            "Max3": 50
+        },
+
+        "BOSS_MimicDog010": {
+            "ItemId3": "DogCoin",
+            "Rate3": 100.0,
+            "min3": 60,
+            "Max3": 60
+        },
+
+        "BOSS_MimicDog020": {
+            "ItemId3": "DogCoin",
+            "Rate3": 100.0,
+            "min3": 70,
+            "Max3": 70
+        },
+
+        "BOSS_MimicDog030": {
+            "ItemId3": "DogCoin",
+            "Rate3": 100.0,
+            "min3": 80,
+            "Max3": 80
+        },
+
+        "BOSS_MimicDog040": {
+            "ItemId3": "DogCoin",
+            "Rate3": 100.0,
+            "min3": 90,
+            "Max3": 90
+        },
+
+        "BOSS_MimicDog050": {
+            "ItemId3": "DogCoin",
+            "Rate3": 100.0,
+            "min3": 100,
+            "Max3": 100
+        },
+
+        "BOSS_DarkScorpion_Ground000": {
+            "ItemId6": "Blueprint_PlasticHelmet_5",
+            "Rate6": 3.0,
+            "min6": 1,
+            "Max6": 1
+        },
+
+        "BOSS_WhiteShieldDragon000": {
+            "ItemId6": "Blueprint_PlasticArmorWeight_5",
+            "Rate6": 3.0,
+            "min6": 1,
+            "Max6": 1
+        },
+
+        "BOSS_WhiteDeer000": {
+            "ItemId6": "Blueprint_SFArmor_5",
+            "Rate6": 3.0,
+            "min6": 1,
+            "Max6": 1
+        },
+
+        "BOSS_GrimGirl000": {
+            "ItemId6": "Blueprint_PlasticArmorCold_5",
+            "Rate6": 3.0,
+            "min6": 1,
+            "Max6": 1
+        },
+
+        "BOSS_AmaterasuWolf_Dark000": {
+            "ItemId6": "Blueprint_PlasticArmorHeat_5",
+            "Rate6": 3.0,
+            "min6": 1,
+            "Max6": 1
+        }
+    }
+}

@@ -1,0 +1,810 @@
+{
+    "DT_ItemRecipeDataTable": {
+        "Palvolve_Craft_A01_EvolutionStone": {
+            "Product_Id": "Palvolve_EvolutionStone",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Pal_crystal_S",
+            "Material1_Count": 20,
+            "Material2_Id": "MeteorDrop",
+            "Material2_Count": 3,
+            "Material3_Id": "PalFluid",
+            "Material3_Count": 5
+        },
+        "Palvolve_Craft_B01_Adapt_Normal": {
+            "Product_Id": "Palvolve_AdaptationStone_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Normal",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_B02_Adapt_Fire": {
+            "Product_Id": "Palvolve_AdaptationStone_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Fire",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_B03_Adapt_Water": {
+            "Product_Id": "Palvolve_AdaptationStone_Water",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Water",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_B04_Adapt_Leaf": {
+            "Product_Id": "Palvolve_AdaptationStone_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Leaf",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_B05_Adapt_Electricity": {
+            "Product_Id": "Palvolve_AdaptationStone_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Electricity",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_B06_Adapt_Ice": {
+            "Product_Id": "Palvolve_AdaptationStone_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Ice",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_B07_Adapt_Earth": {
+            "Product_Id": "Palvolve_AdaptationStone_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Earth",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_B08_Adapt_Dark": {
+            "Product_Id": "Palvolve_AdaptationStone_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Dark",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_B09_Adapt_Dragon": {
+            "Product_Id": "Palvolve_AdaptationStone_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 300,
+            "Material1_Id": "Palvolve_EvolutionStone",
+            "Material1_Count": 1,
+            "Material2_Id": "Palvolve_Essence_Dragon",
+            "Material2_Count": 1
+        },
+        "Palvolve_Craft_C01_Extract_Normal": {
+            "Product_Id": "Palvolve_Essence_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "Wool",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_C02_Extract_Fire": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "FireOrgan",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_C03_Extract_Water": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "PalFluid",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_C04_Extract_Leaf": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "Berries",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_C05_Extract_Electricity": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "ElectricOrgan",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_C06_Extract_Ice": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "IceOrgan",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_C07_Extract_Earth": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "Bone",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_C08_Extract_Dark": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "Venom",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_C09_Extract_Dragon": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 200,
+            "Material1_Id": "Horn",
+            "Material1_Count": 10
+        },
+        "Palvolve_Craft_D001_Decompose_AirBlade": {
+            "Product_Id": "Palvolve_Essence_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_AirBlade",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D002_Decompose_AirCanon": {
+            "Product_Id": "Palvolve_Essence_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_AirCanon",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D003_Decompose_HolyBlast": {
+            "Product_Id": "Palvolve_Essence_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_HolyBlast",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D004_Decompose_HyperBeam": {
+            "Product_Id": "Palvolve_Essence_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_HyperBeam",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D005_Decompose_PowerBall": {
+            "Product_Id": "Palvolve_Essence_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_PowerBall",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D006_Decompose_PowerShot": {
+            "Product_Id": "Palvolve_Essence_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_PowerShot",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D007_Decompose_SelfDestruct": {
+            "Product_Id": "Palvolve_Essence_Normal",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SelfDestruct",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D008_Decompose_Eruption": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_Eruption",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D009_Decompose_FireBall": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_FireBall",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D010_Decompose_FireBlast": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_FireBlast",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D011_Decompose_FireSeed": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_FireSeed",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D012_Decompose_FlameFunnel": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_FlameFunnel",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D013_Decompose_Flamethrower": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_Flamethrower",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D014_Decompose_FlameWall": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_FlameWall",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D015_Decompose_FlareArrow": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_FlareArrow",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D016_Decompose_FlareTornado": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_FlareTornado",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D017_Decompose_Inferno": {
+            "Product_Id": "Palvolve_Essence_Fire",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_Inferno",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D018_Decompose_AcidRain": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_AcidRain",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D019_Decompose_AquaJet": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_AquaJet",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D020_Decompose_BubbleShot": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_BubbleShot",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D021_Decompose_DiversionLaser": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DiversionLaser",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D022_Decompose_HydroPump": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_HydroPump",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D023_Decompose_HydroSlicer": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_HydroSlicer",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D024_Decompose_LineGeyser": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_LineGeyser",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D025_Decompose_RipTide": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_RipTide",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D026_Decompose_SeaGush": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SeaGush",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D027_Decompose_WallSplash": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_WallSplash",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D028_Decompose_WaterBall": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_WaterBall",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D029_Decompose_WaterGun": {
+            "Product_Id": "Palvolve_Essence_Water",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_WaterGun",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D030_Decompose_CrossWind": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_CrossWind",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D031_Decompose_GrassTornado": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_GrassTornado",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D032_Decompose_ReflectiveShuriken": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ReflectiveShuriken",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D033_Decompose_RootAttack": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_RootAttack",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D034_Decompose_RootLance": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_RootLance",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D035_Decompose_SeedMachinegun": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SeedMachinegun",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D036_Decompose_SeedMine": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SeedMine",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D037_Decompose_SolarBeam": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SolarBeam",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D038_Decompose_SpecialCutter": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SpecialCutter",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D039_Decompose_WindBurst": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_WindBurst",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D040_Decompose_WindCutter": {
+            "Product_Id": "Palvolve_Essence_Leaf",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_WindCutter",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D041_Decompose_ElecWave": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ElecWave",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D042_Decompose_LightningStrike": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_LightningStrike",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D043_Decompose_LineThunder": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_LineThunder",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D044_Decompose_LockonLaser": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_LockonLaser",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D045_Decompose_RangeThunder": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_RangeThunder",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D046_Decompose_SpreadPulse": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SpreadPulse",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D047_Decompose_ThreeThunder": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ThreeThunder",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D048_Decompose_ThunderBall": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ThunderBall",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D049_Decompose_Thunderbolt": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_Thunderbolt",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D050_Decompose_ThunderFunnel": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ThunderFunnel",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D051_Decompose_ThunderRain": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ThunderRain",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D052_Decompose_ThunderSpear": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ThunderSpear",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D053_Decompose_ThunderStorm": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ThunderStorm",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D054_Decompose_TriSpark": {
+            "Product_Id": "Palvolve_Essence_Electricity",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_TriSpark",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D055_Decompose_BlizzardLance": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_BlizzardLance",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D056_Decompose_DiamondFall": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DiamondFall",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D057_Decompose_FrostBreath": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_FrostBreath",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D058_Decompose_IceAge": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_IceAge",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D059_Decompose_IceBlade": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_IceBlade",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D060_Decompose_IceMissile": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_IceMissile",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D061_Decompose_IceWall": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_IceWall",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D062_Decompose_IcicleLine": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_IcicleLine",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D063_Decompose_IciclePierce": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_IciclePierce",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D064_Decompose_IcicleThrow": {
+            "Product_Id": "Palvolve_Essence_Ice",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_IcicleThrow",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D065_Decompose_MudShot": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_MudShot",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D066_Decompose_RockBeat": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_RockBeat",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D067_Decompose_RockLance": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_RockLance",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D068_Decompose_SandTornado": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SandTornado",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D069_Decompose_SandTwister": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_SandTwister",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D070_Decompose_StoneShotgun": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_StoneShotgun",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D071_Decompose_ThrowRock": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ThrowRock",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D072_Decompose_Tremor": {
+            "Product_Id": "Palvolve_Essence_Earth",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_Tremor",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D073_Decompose_Apocalypse": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_Apocalypse",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D074_Decompose_BubbleShower": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_BubbleShower",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D075_Decompose_DarkArrow": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DarkArrow",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D076_Decompose_DarkCanon": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DarkCanon",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D077_Decompose_DarkLaser": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DarkLaser",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D078_Decompose_DarkLegion": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DarkLegion",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D079_Decompose_DarkPulse": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DarkPulse",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D080_Decompose_DarkWave": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DarkWave",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D081_Decompose_GhostFlame": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_GhostFlame",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D082_Decompose_GravityShot": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_GravityShot",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D083_Decompose_PoisonShot": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_PoisonShot",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D084_Decompose_Psychokinesis": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_Psychokinesis",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D085_Decompose_ShadowBall": {
+            "Product_Id": "Palvolve_Essence_Dark",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ShadowBall",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D086_Decompose_BeamSlicer": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_BeamSlicer",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D087_Decompose_BlastCanon": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_BlastCanon",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D088_Decompose_ChargeCanon": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_ChargeCanon",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D089_Decompose_Commet": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_Commet",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D090_Decompose_DragonBreath": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DragonBreath",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D091_Decompose_DragonCanon": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DragonCanon",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D092_Decompose_DragonMeteor": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DragonMeteor",
+            "Material1_Count": 1
+        },
+        "Palvolve_Craft_D093_Decompose_DragonWave": {
+            "Product_Id": "Palvolve_Essence_Dragon",
+            "Product_Count": 1,
+            "WorkAmount": 100,
+            "Material1_Id": "SkillCard_DragonWave",
+            "Material1_Count": 1
+        }
+    }
+}

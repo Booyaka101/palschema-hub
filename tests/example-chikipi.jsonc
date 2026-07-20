@@ -1,0 +1,13 @@
+{
+    // Real-world PalSchema mod format (mirrors Okaetsu's ModifyChikipiDrops example).
+    // Comments and trailing commas are allowed in .jsonc files.
+    "DT_PalDropItem": {
+        // ChickenPal = Chikipi; 000 = applies to all levels.
+        "ChickenPal000": {
+            "ItemId3": "Pizza", // add a 3rd drop
+            "Rate3": 100.0,     // 100% chance
+            "min3": 1,
+            "Max3": 1,
+        },
+    },
+}

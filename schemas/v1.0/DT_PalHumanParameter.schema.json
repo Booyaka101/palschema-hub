@@ -1,0 +1,608 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalHumanParameter.schema.json",
+  "title": "DT_PalHumanParameter",
+  "description": "Palworld DataTable DT_PalHumanParameter (row struct: PalCharacterParameterDatabaseRow). Each PalSchema mod patch targeting \"DT_PalHumanParameter\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_PalHumanParameter | rowStruct=PalCharacterParameterDatabaseRow | palworldVersion=1.0 | fields=90 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=OverridePartnerSkillNameTextID,OverridePartnerSkillDescTextID,Weapon,Hp,Friendship_HP,Friendship_ShotAttack,Friendship_Defense,Friendship_CraftSpeed,EnemyMaxHPRate,EnemyInflictDamageRate,EnemyWazaCoolTimeRate,StatusResistUpRate,SwimSpeed,SwimDashSpeed,IsRaidBoss,UseBossHPGauge,IgnoreStun,CombiDuplicatePriority,IgnoreCombi,MeshCapsuleHalfHeight,MeshCapsuleRadius,MeshRelativeLocation,BestWorkSuitability,FirstDefeatRewardItemID | droppedRemovedFields=OverridePartnerSkillTextID,weapon,HP",
+  "type": "object",
+  "properties": {
+    "OverrideNameTextID": {
+      "type": "string",
+      "examples": [
+        "NAME_NPC_TEST",
+        "NAME_HUNTER_2",
+        "NAME_HUNTER"
+      ],
+      "description": "Example: \"NAME_NPC_TEST\""
+    },
+    "NamePrefixID": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "OverridePartnerSkillNameTextID": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "OverridePartnerSkillDescTextID": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "IsPal": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "Tribe": {
+      "type": "string",
+      "examples": [
+        "EPalTribeID::Human"
+      ],
+      "description": "Enum-like value. Examples: EPalTribeID::Human"
+    },
+    "BPClass": {
+      "type": "string",
+      "examples": [
+        "NPC",
+        "NPC_Hunter",
+        "NPC_Hunter_Fat"
+      ],
+      "description": "Example: \"NPC\""
+    },
+    "ZukanIndex": {
+      "type": "number",
+      "examples": [
+        -1
+      ],
+      "description": "Example: -1"
+    },
+    "ZukanIndexSuffix": {
+      "type": "string",
+      "examples": [
+        ""
+      ],
+      "description": "Example: \"\""
+    },
+    "Size": {
+      "type": "string",
+      "examples": [
+        "EPalSizeType::M"
+      ],
+      "description": "Enum-like value. Examples: EPalSizeType::M"
+    },
+    "Rarity": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "ElementType1": {
+      "type": "string",
+      "examples": [
+        "EPalElementType::None"
+      ],
+      "description": "Enum-like value. Examples: EPalElementType::None"
+    },
+    "ElementType2": {
+      "type": "string",
+      "examples": [
+        "EPalElementType::None"
+      ],
+      "description": "Enum-like value. Examples: EPalElementType::None"
+    },
+    "GenusCategory": {
+      "type": "string",
+      "examples": [
+        "EPalGenusCategoryType::Humanoid",
+        "EPalGenusCategoryType::Other"
+      ],
+      "description": "Enum-like value. Examples: EPalGenusCategoryType::Humanoid, EPalGenusCategoryType::Other"
+    },
+    "Organization": {
+      "type": "string",
+      "examples": [
+        "EPalOrganizationType::None",
+        "EPalOrganizationType::TeamBlackHunter",
+        "EPalOrganizationType::Police"
+      ],
+      "description": "Enum-like value. Examples: EPalOrganizationType::None, EPalOrganizationType::TeamBlackHunter, EPalOrganizationType::Police, EPalOrganizationType::City"
+    },
+    "Weapon": {
+      "type": "string",
+      "description": "EnumProperty EPalWeaponType. Values: EPalWeaponType::None, EPalWeaponType::ThrowObject, EPalWeaponType::Handgun, EPalWeaponType::AssaultRifle, EPalWeaponType::Shotgun, EPalWeaponType::SniperRifle, EPalWeaponType::RocketLauncher, EPalWeaponType::MeleeWeapon, EPalWeaponType::Bow, EPalWeaponType::BowGun, EPalWeaponType::FlameThrower, EPalWeaponType::GatlingGun, EPalWeaponType::Liftup, EPalWeaponType::LaserRifle, EPalWeaponType::MissileLauncher, EPalWeaponType::GrenadeLauncher, EPalWeaponType::Katana, EPalWeaponType::MetalDetector, EPalWeaponType::GiantClub, EPalWeaponType::FishingRod, EPalWeaponType::LaserMiningTool, EPalWeaponType::MAX — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalWeaponType::None",
+        "EPalWeaponType::ThrowObject",
+        "EPalWeaponType::Handgun"
+      ]
+    },
+    "WeaponEquip": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "Hp": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MeleeAttack": {
+      "type": "number",
+      "examples": [
+        100,
+        10,
+        20
+      ],
+      "description": "Example: 100"
+    },
+    "ShotAttack": {
+      "type": "number",
+      "examples": [
+        100,
+        50,
+        30
+      ],
+      "description": "Example: 100"
+    },
+    "Defense": {
+      "type": "number",
+      "examples": [
+        50,
+        100,
+        10
+      ],
+      "description": "Example: 50"
+    },
+    "Support": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "CraftSpeed": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "Friendship_HP": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Friendship_ShotAttack": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Friendship_Defense": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Friendship_CraftSpeed": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "EnemyMaxHPRate": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "EnemyReceiveDamageRate": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "EnemyInflictDamageRate": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "EnemyWazaCoolTimeRate": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "CaptureRateCorrect": {
+      "type": "number",
+      "examples": [
+        0.1,
+        0
+      ],
+      "description": "Example: 0.1"
+    },
+    "ExpRatio": {
+      "type": "number",
+      "examples": [
+        1,
+        1.5,
+        0.75
+      ],
+      "description": "Example: 1"
+    },
+    "Price": {
+      "type": "number",
+      "examples": [
+        1000,
+        5000,
+        3000
+      ],
+      "description": "Example: 1000"
+    },
+    "StatusResistUpRate": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "AIResponse": {
+      "type": "string",
+      "examples": [
+        "VillageNPC",
+        "Kill_All"
+      ],
+      "description": "Example: \"VillageNPC\""
+    },
+    "AISightResponse": {
+      "type": "string",
+      "examples": [
+        "Citizen",
+        "Villain",
+        "Police"
+      ],
+      "description": "Example: \"Citizen\""
+    },
+    "SlowWalkSpeed": {
+      "type": "number",
+      "examples": [
+        -1
+      ],
+      "description": "Example: -1"
+    },
+    "WalkSpeed": {
+      "type": "number",
+      "examples": [
+        -1
+      ],
+      "description": "Example: -1"
+    },
+    "RunSpeed": {
+      "type": "number",
+      "examples": [
+        -1
+      ],
+      "description": "Example: -1"
+    },
+    "RideSprintSpeed": {
+      "type": "number",
+      "examples": [
+        -1
+      ],
+      "description": "Example: -1"
+    },
+    "TransportSpeed": {
+      "type": "number",
+      "examples": [
+        -1
+      ],
+      "description": "Example: -1"
+    },
+    "SwimSpeed": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "SwimDashSpeed": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "IsBoss": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "IsTowerBoss": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "IsRaidBoss": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "UseBossHPGauge": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "BattleBGM": {
+      "type": "string",
+      "examples": [
+        "EPalBattleBGMType::Human_Common"
+      ],
+      "description": "Enum-like value. Examples: EPalBattleBGMType::Human_Common"
+    },
+    "IgnoreLeanBack": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "IgnoreBlowAway": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "IgnoreStun": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MaxFullStomach": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "FullStomachDecreaseRate": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "FoodAmount": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "ViewingDistance": {
+      "type": "number",
+      "examples": [
+        25
+      ],
+      "description": "Example: 25"
+    },
+    "ViewingAngle": {
+      "type": "number",
+      "examples": [
+        90
+      ],
+      "description": "Example: 90"
+    },
+    "HearingRate": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "NooseTrap": {
+      "type": "boolean",
+      "examples": [
+        true,
+        false
+      ],
+      "description": "Example: true"
+    },
+    "Nocturnal": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "BiologicalGrade": {
+      "type": "number",
+      "examples": [
+        0,
+        10,
+        9
+      ],
+      "description": "Example: 0"
+    },
+    "Predator": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "Edible": {
+      "type": "boolean",
+      "examples": [
+        true,
+        false
+      ],
+      "description": "Example: true"
+    },
+    "Stamina": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "MaleProbability": {
+      "type": "number",
+      "examples": [
+        -1
+      ],
+      "description": "Example: -1"
+    },
+    "CombiRank": {
+      "type": "number",
+      "examples": [
+        999999
+      ],
+      "description": "Example: 999999"
+    },
+    "CombiDuplicatePriority": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "IgnoreCombi": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MeshCapsuleHalfHeight": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MeshCapsuleRadius": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MeshRelativeLocation": {
+      "type": "object",
+      "description": "StructProperty (FVector) — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "BestWorkSuitability": {
+      "type": "string",
+      "description": "EnumProperty EPalWorkSuitability. Values: EPalWorkSuitability::None, EPalWorkSuitability::EmitFlame, EPalWorkSuitability::Watering, EPalWorkSuitability::Seeding, EPalWorkSuitability::GenerateElectricity, EPalWorkSuitability::Handcraft, EPalWorkSuitability::Collection, EPalWorkSuitability::Deforest, EPalWorkSuitability::Mining, EPalWorkSuitability::OilExtraction, EPalWorkSuitability::ProductMedicine, EPalWorkSuitability::Cool, EPalWorkSuitability::Transport, EPalWorkSuitability::MonsterFarm, EPalWorkSuitability::Anyone, EPalWorkSuitability::MAX — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalWorkSuitability::None",
+        "EPalWorkSuitability::EmitFlame",
+        "EPalWorkSuitability::Watering"
+      ]
+    },
+    "WorkSuitability_EmitFlame": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_Watering": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_Seeding": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_GenerateElectricity": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_Handcraft": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "WorkSuitability_Collection": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_Deforest": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_Mining": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_OilExtraction": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_ProductMedicine": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_Cool": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_Transport": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "WorkSuitability_MonsterFarm": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "PassiveSkill1": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "PassiveSkill2": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "PassiveSkill3": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "PassiveSkill4": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "FirstDefeatRewardItemID": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

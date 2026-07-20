@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_WazaMasterTamago.schema.json",
+  "title": "DT_WazaMasterTamago",
+  "description": "Palworld DataTable DT_WazaMasterTamago (row struct: PalWazaMasterTamagoDataRow). Each PalSchema mod patch targeting \"DT_WazaMasterTamago\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_WazaMasterTamago | rowStruct=PalWazaMasterTamagoDataRow | palworldVersion=1.0 | fields=2 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=PalId | droppedRemovedFields=PalID",
+  "type": "object",
+  "properties": {
+    "PalId": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "WazaID": {
+      "type": "string",
+      "examples": [
+        "EPalWazaID::HydroPump",
+        "EPalWazaID::DarkLaser",
+        "EPalWazaID::BlizzardLance"
+      ],
+      "description": "Enum-like value. Examples: EPalWazaID::HydroPump, EPalWazaID::DarkLaser, EPalWazaID::BlizzardLance, EPalWazaID::HyperBeam"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

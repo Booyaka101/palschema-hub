@@ -1,0 +1,206 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_ItemRecipeDataTable.schema.json",
+  "title": "DT_ItemRecipeDataTable",
+  "description": "Palworld DataTable DT_ItemRecipeDataTable (row struct: PalItemRecipe). Each PalSchema mod patch targeting \"DT_ItemRecipeDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_ItemRecipeDataTable | rowStruct=PalItemRecipe | palworldVersion=1.0 | fields=20 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=CraftExpRate,DenyRecipeChain",
+  "type": "object",
+  "properties": {
+    "Product_Id": {
+      "type": "string",
+      "examples": [
+        "PalSphere",
+        "PalSphere_Mega",
+        "PalSphere_Giga"
+      ],
+      "description": "Example: \"PalSphere\""
+    },
+    "Product_Count": {
+      "type": "number",
+      "examples": [
+        1,
+        3,
+        5
+      ],
+      "description": "Example: 1"
+    },
+    "WorkAmount": {
+      "type": "number",
+      "examples": [
+        300,
+        1500,
+        4500
+      ],
+      "description": "Example: 300"
+    },
+    "WorkableAttribute": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "UnlockItemID": {
+      "type": "string",
+      "examples": [
+        "None",
+        "Blueprint_WeakerBow_2",
+        "Blueprint_WeakerBow_3"
+      ],
+      "description": "Example: \"None\""
+    },
+    "Material1_Id": {
+      "type": "string",
+      "examples": [
+        "Pal_crystal_S",
+        "Wood",
+        "CopperIngot"
+      ],
+      "description": "Example: \"Pal_crystal_S\""
+    },
+    "Material1_Count": {
+      "type": "number",
+      "examples": [
+        1,
+        2,
+        3
+      ],
+      "description": "Example: 1"
+    },
+    "Material2_Id": {
+      "type": "string",
+      "examples": [
+        "Wood",
+        "CopperIngot",
+        "IronIngot"
+      ],
+      "description": "Example: \"Wood\""
+    },
+    "Material2_Count": {
+      "type": "number",
+      "examples": [
+        3,
+        1,
+        2
+      ],
+      "description": "Example: 3"
+    },
+    "Material3_Id": {
+      "type": "string",
+      "examples": [
+        "Stone",
+        "Wood",
+        "CarbonFiber"
+      ],
+      "description": "Example: \"Stone\""
+    },
+    "Material3_Count": {
+      "type": "number",
+      "examples": [
+        3,
+        5,
+        7
+      ],
+      "description": "Example: 3"
+    },
+    "Material4_Id": {
+      "type": "string",
+      "examples": [
+        "None",
+        "Stone",
+        "Cement"
+      ],
+      "description": "Example: \"None\""
+    },
+    "Material4_Count": {
+      "type": "number",
+      "examples": [
+        0,
+        5,
+        7
+      ],
+      "description": "Example: 0"
+    },
+    "Material5_Id": {
+      "type": "string",
+      "examples": [
+        "None",
+        "PalCrystal_Ex",
+        "FireOrgan"
+      ],
+      "description": "Example: \"None\""
+    },
+    "Material5_Count": {
+      "type": "number",
+      "examples": [
+        0,
+        20,
+        2
+      ],
+      "description": "Example: 0"
+    },
+    "EnergyType": {
+      "type": "string",
+      "examples": [
+        "EPalEnergyType::None"
+      ],
+      "description": "Enum-like value. Examples: EPalEnergyType::None"
+    },
+    "EnergyAmount": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "CraftExpRate": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "DenyRecipeChain": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "FName"
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Action": {
+              "type": "string",
+              "enum": [
+                "Clear"
+              ],
+              "description": "\"Clear\" empties the existing array (runs before Items are appended). Only recognized value."
+            },
+            "Items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "FName"
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "ArrayProperty: a plain array REPLACES the game array; {\"Items\": [...]} APPENDS (optional \"Action\": \"Clear\" first empties it) — both are valid PalSchema — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Editor_RowNameHash": {
+      "type": "number",
+      "examples": [
+        781717301,
+        -2097319216,
+        2145351049
+      ],
+      "description": "Example: 781717301"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

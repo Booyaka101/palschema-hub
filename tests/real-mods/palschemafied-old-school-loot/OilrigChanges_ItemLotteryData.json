@@ -1,0 +1,512 @@
+{
+    "DT_ItemLotteryDataTable": {
+        "1103": {
+            "WeightInSlot": 25.0
+        },
+
+        "1105": {
+            "WeightInSlot": 50.0,
+            "MinNum": 11,
+            "MaxNum": 15
+        },
+
+        "1113": {
+            "WeightInSlot": 0.0
+        },
+
+        "1114": {
+            "WeightInSlot": 0.0
+        },
+
+        "1115": {
+            "WeightInSlot": 0.0
+        },
+
+        "1116": {
+            "WeightInSlot": 0.0
+        },
+
+        "1117": {
+            "WeightInSlot": 12.0
+        },
+
+        "1118": {
+            "WeightInSlot": 6.0
+        },
+
+        "1119": {
+            "WeightInSlot": 4.0
+        },
+
+        "1120": {
+            "WeightInSlot": 3.0
+        },
+
+        "1121": {
+            "WeightInSlot": 12.0
+        },
+
+        "1122": {
+            "WeightInSlot": 6.0
+        },
+
+        "1123": {
+            "WeightInSlot": 4.0
+        },
+
+        "1124": {
+            "WeightInSlot": 3.0
+        },
+
+        "1125": {
+            "WeightInSlot": 12.0
+        },
+
+        "1126": {
+            "WeightInSlot": 6.0
+        },
+
+        "1127": {
+            "WeightInSlot": 4.0
+        },
+
+        "1128": {
+            "WeightInSlot": 3.0
+        },
+
+        "1129": {
+            "WeightInSlot": 12.0
+        },
+
+        "1130": {
+            "WeightInSlot": 6.0
+        },
+
+        "1131": {
+            "WeightInSlot": 4.0
+        },
+
+        "1132": {
+            "WeightInSlot": 3.0
+        },
+
+        "1133": {
+            "WeightInSlot": 0.0
+        },
+
+        "1134": {
+            "WeightInSlot": 0.0
+        },
+
+        "1135": {
+            "WeightInSlot": 0.0
+        },
+
+        "1136": {
+            "WeightInSlot": 0.0
+        },
+
+        "1137": {
+            "WeightInSlot": 0.0
+        },
+
+        "1671": {
+            "WeightInSlot": 2.0
+        },
+
+        "1672": {
+            "WeightInSlot": 1.0
+        },
+
+        "1673": {
+            "WeightInSlot": 3.0,
+            "MinNum": 6
+        },
+
+        "1676": {
+            "SlotNo": 6
+        },
+
+        "1677": {
+            "SlotNo": 6
+        },
+
+        "1678": {
+            "WeightInSlot": 12.0,
+            "StaticItemId": "Blueprint_MakeshiftHandgun_2"
+        },
+
+        "1679": {
+            "WeightInSlot": 6.0,
+            "StaticItemId": "Blueprint_MakeshiftHandgun_3"
+        },
+
+        "1680": {
+            "WeightInSlot": 4.0,
+            "StaticItemId": "Blueprint_MakeshiftHandgun_4"
+        },
+
+        "1681": {
+            "WeightInSlot": 3.0,
+            "StaticItemId": "Blueprint_MakeshiftHandgun_5"
+        },
+
+        "1682": {
+            "WeightInSlot": 12.0,
+            "StaticItemId": "Blueprint_MakeshiftSubmachineGun_2"
+        },
+
+        "1683": {
+            "WeightInSlot": 6.0,
+            "StaticItemId": "Blueprint_MakeshiftSubmachineGun_3"
+        },
+
+        "1684": {
+            "WeightInSlot": 4.0,
+            "StaticItemId": "Blueprint_MakeshiftSubmachineGun_4"
+        },
+
+        "1685": {
+            "WeightInSlot": 3.0,
+            "StaticItemId": "Blueprint_MakeshiftSubmachineGun_5"
+        },
+
+        "1686": {
+            "WeightInSlot": 12.0,
+            "StaticItemId": "Blueprint_MakeshiftShotgun_2"
+        },
+
+        "1687": {
+            "WeightInSlot": 6.0,
+            "StaticItemId": "Blueprint_MakeshiftShotgun_3"
+        },
+
+        "1688": {
+            "WeightInSlot": 4.0,
+            "StaticItemId": "Blueprint_MakeshiftShotgun_4"
+        },
+
+        "1689": {
+            "WeightInSlot": 3.0,
+            "StaticItemId": "Blueprint_MakeshiftShotgun_5"
+        },
+
+        "1690": {
+            "WeightInSlot": 12.0,
+            "StaticItemId": "Blueprint_MakeshiftAssaultRifle_2"
+        },
+
+        "1691": {
+            "WeightInSlot": 6.0,
+            "StaticItemId": "Blueprint_MakeshiftAssaultRifle_3"
+        },
+
+        "1692": {
+            "WeightInSlot": 4.0,
+            "StaticItemId": "Blueprint_MakeshiftAssaultRifle_4"
+        },
+
+        "1693": {
+            "WeightInSlot": 3.0,
+            "StaticItemId": "Blueprint_MakeshiftAssaultRifle_5"
+        },
+
+        "2049": {
+            "WeightInSlot": 0
+        },
+
+        "2050": {
+            "WeightInSlot": 0
+        },
+
+        "2051": {
+            "WeightInSlot": 0
+        },
+
+        "2052": {
+            "WeightInSlot": 0
+        },
+
+        "2057": {
+            "WeightInSlot": 0
+        },
+
+        "2286": {
+            "WeightInSlot": 25.0
+        },
+
+        "2287": {
+            "MinNum": 5
+        },
+
+        "2288": {
+            "WeightInSlot": 50
+        },
+
+        "OSL_OilrigLarge01_1": {
+            "FieldName": "Oilrig_Large_01",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit_hp_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge01_2": {
+            "FieldName": "Oilrig_Large_01",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit_attack_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge01_3": {
+            "FieldName": "Oilrig_Large_01",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit__Defense_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "2307": {
+            "WeightInSlot": 0.0
+        },
+
+        "2308": {
+            "WeightInSlot": 0.0
+        },
+
+        "2309": {
+            "WeightInSlot": 0.0
+        },
+
+        "OSL_OilrigLarge02_1": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 1,
+            "WeightInSlot": 12.0,
+            "StaticItemId": "Blueprint_SFBow_2",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "2310": {
+            "WeightInSlot": 6.0
+        },
+
+        "2311": {
+            "WeightInSlot": 4.0
+        },
+
+        "2312": {
+            "WeightInSlot": 3.0
+        },
+
+        "OSL_OilrigLarge02_2": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 1,
+            "WeightInSlot": 12.0,
+            "StaticItemId": "Blueprint_LaserGatlingGun_2",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "2313": {
+            "WeightInSlot": 6.0
+        },
+
+        "2314": {
+            "WeightInSlot": 4.0
+        },
+
+        "2315": {
+            "WeightInSlot": 3.0
+        },
+
+        "OSL_OilrigLarge02_3": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 1,
+            "WeightInSlot": 12.0,
+            "StaticItemId": "Blueprint_EnergyRocketLauncher_2",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "2316": {
+            "WeightInSlot": 6.0
+        },
+
+        "2317": {
+            "WeightInSlot": 4.0
+        },
+
+        "2318": {
+            "WeightInSlot": 3.0
+        },
+
+        "OSL_OilrigLarge02_SFArmorWeight_2": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 1,
+            "WeightInSlot": 12.0,
+            "StaticItemId": "Blueprint_SFArmorWeight_2",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_SFArmorWeight_3": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 1,
+            "WeightInSlot": 6.0,
+            "StaticItemId": "Blueprint_SFArmorWeight_3",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_SFArmorWeight_4": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 1,
+            "WeightInSlot": 4.0,
+            "StaticItemId": "Blueprint_SFArmorWeight_4",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_SFArmorWeight_5": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 1,
+            "WeightInSlot": 3.0,
+            "StaticItemId": "Blueprint_SFArmorWeight_5",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "2319": {
+            "MinNum": 50,
+            "MaxNum": 150
+        },
+
+        "OSL_OilrigLarge02_4": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 4,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "LaserBullet",
+            "MinNum": 100,
+            "MaxNum": 200,
+            "NumUnit": 10,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_5": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 4,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "FlamethrowerBullet",
+            "MinNum": 100,
+            "MaxNum": 200,
+            "NumUnit": 10,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_6": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 4,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "GrenadeBullet",
+            "MinNum": 100,
+            "MaxNum": 200,
+            "NumUnit": 10,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_7": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 4,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "GatlingBullet",
+            "MinNum": 100,
+            "MaxNum": 200,
+            "NumUnit": 10,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_8": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 4,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "RifleBullet",
+            "MinNum": 100,
+            "MaxNum": 200,
+            "NumUnit": 10,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_9": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 4,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "ShotgunBullet",
+            "MinNum": 100,
+            "MaxNum": 200,
+            "NumUnit": 10,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "2334": {
+            "MinNum": 20
+        },
+
+        "OSL_OilrigLarge02_10": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit_hp_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_11": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit_attack_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        },
+
+        "OSL_OilrigLarge02_12": {
+            "FieldName": "Oilrig_Large_02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit__Defense_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade5"
+        }
+    }
+}

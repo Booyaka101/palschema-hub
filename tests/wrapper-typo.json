@@ -1,0 +1,8 @@
+{
+  "DT_TechnologyRecipeUnlock": {
+    "SomeRow": { "UnlockItemRecipes": { "Itemss": ["Foo"] } },
+    "OtherRow": { "UnlockItemRecipes": { "Action": "Clearr" } },
+    "FineRow": { "UnlockItemRecipes": { "Action": "Clear", "Items": ["Bar"] } },
+    "AlsoFineRow": { "UnlockItemRecipes": ["Baz"], "UnlockBuildObjects": {} }
+  }
+}

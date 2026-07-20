@@ -1,0 +1,18 @@
+[size=4][b]PalSchema Hub — Community Schema Registry[/b][/size]
+
+[b]What is this?[/b]
+A free, browsable database of every field you can touch in PalSchema raw-table mods — the answer to "where are all the game variable names?" ([url=https://github.com/Okaetsu/PalSchema/issues/53]PalSchema issue #53[/url]).
+
+[list]
+[*][b]Browse the schemas:[/b] [url=https://booyaka101.github.io/palschema-hub/]booyaka101.github.io/palschema-hub[/url] — 30 gameplay DataTables (DT_PalMonsterParameter, DT_ItemDataTable, DT_ItemRecipeDataTable, DT_BuildObjectDataTable, DT_PalDropItem, DT_WazaDataTable, ...), searchable, with every field name, type, example values and enum value lists.
+[*][b]GitHub repo:[/b] [url=https://github.com/Booyaka101/palschema-hub]github.com/Booyaka101/palschema-hub[/url] (MIT)
+[*][b]Validator CLI:[/b] checks your mod JSON against the registry and reports typed field errors (typo'd or renamed fields, wrong types) [i]before[/i] you launch the game:
+[code]npx palschema-validate --version 1.0 my-mod/DT_PalMonsterParameter.json[/code]
+[/list]
+
+[b]Where does the data come from?[/b]
+Field names are verified against the current game's row structs (July 2026) and cross-checked with real dumped row data. That includes post-1.0 additions (InstallMaxNumInBaseCamp, CraftExpRate, drop item slots 6–10), renames (RedialIndex→SortId, HP→Hp), both array patch forms ([...] replaces, {"Action": "Clear", "Items": [...]} clears/appends) and $Filters wildcard metadata. Proven against real published PalSchema mods.
+
+[b]This page hosts no game content[/b] — the downloadable file is just a pointer README; everything lives at the links above. Requires nothing to "install": it's a reference + a dev tool.
+
+Credits: [url=https://www.nexusmods.com/palworld/mods/2361]PalSchema[/url] by Okaetsu. Data derived via public community dumps (blaynem/paldex) and the PalworldModdingKit SDK headers (localcc).

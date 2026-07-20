@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_TechnologyIconData.schema.json",
+  "title": "DT_TechnologyIconData",
+  "description": "Palworld DataTable DT_TechnologyIconData (row struct: FPalTechnologyIconData). Each PalSchema mod patch targeting \"DT_TechnologyIconData\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names authoritative (from game data via paldex); types inferred. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_TechnologyIconData | rowStruct=FPalTechnologyIconData | palworldVersion=1.0 | rows=2 | fields=1 | source=derived-from-paldex",
+  "type": "object",
+  "properties": {
+    "Texture_2_CF1D1C1E44798A5D0F778DA8BEF5CE64": {
+      "type": "object",
+      "properties": {
+        "AssetPathName": {
+          "type": "string",
+          "examples": [
+            "/Game/Pal/Texture/StatusParameterIcon/T_icon_status_work_speed.T_icon_status_work_speed",
+            "None"
+          ],
+          "description": "Example: \"/Game/Pal/Texture/StatusParameterIcon/T_icon_status_work_speed.T_icon_status_work_speed\""
+        },
+        "SubPathString": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "examples": [
+            ""
+          ],
+          "description": "Example: \"\""
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

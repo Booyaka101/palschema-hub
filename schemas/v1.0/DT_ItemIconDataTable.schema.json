@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_ItemIconDataTable.schema.json",
+  "title": "DT_ItemIconDataTable",
+  "description": "Palworld DataTable DT_ItemIconDataTable (row struct: PalEditorItemIconTableRow). Each PalSchema mod patch targeting \"DT_ItemIconDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_ItemIconDataTable | rowStruct=PalEditorItemIconTableRow | palworldVersion=1.0 | fields=1 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41",
+  "type": "object",
+  "properties": {
+    "Icon": {
+      "type": "object",
+      "properties": {
+        "AssetPathName": {
+          "type": "string",
+          "examples": [
+            "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Stone.T_itemicon_Material_Stone",
+            "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Wood.T_itemicon_Material_Wood",
+            "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Claws.T_itemicon_Material_Claws"
+          ],
+          "description": "Example: \"/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Stone.T_itemicon_Material_Stone\""
+        },
+        "SubPathString": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "examples": [
+            ""
+          ],
+          "description": "Example: \"\""
+        }
+      },
+      "additionalProperties": true
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

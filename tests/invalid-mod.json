@@ -1,0 +1,10 @@
+{
+  "DT_ItemDataTable": {
+    "MyBrokenItem": {
+      "Weight": "very heavy",
+      "Price": 1000,
+      "Rarrity": 4,
+      "MaxStackCount": 99
+    }
+  }
+}

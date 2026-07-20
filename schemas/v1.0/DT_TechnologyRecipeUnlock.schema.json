@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_TechnologyRecipeUnlock.schema.json",
+  "title": "DT_TechnologyRecipeUnlock",
+  "description": "Palworld DataTable DT_TechnologyRecipeUnlock (row struct: PalTechnologyRecipeUnlockDataTableRow). Each PalSchema mod patch targeting \"DT_TechnologyRecipeUnlock\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_TechnologyRecipeUnlock | rowStruct=PalTechnologyRecipeUnlockDataTableRow | palworldVersion=1.0 | fields=12 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=RequireDefeatTowerBoss,RequireResearchId | droppedRemovedFields=RequireBossDefeatNum",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "examples": [
+        "NAME_RECIPE_WORKBENCH",
+        "NAME_RECIPE_AXE1",
+        "NAME_RECIPE_PICKEAXE1"
+      ],
+      "description": "Example: \"NAME_RECIPE_WORKBENCH\""
+    },
+    "Description": {
+      "type": "string",
+      "examples": [
+        "DESC_RECIPE_WORKBENCH",
+        "DESC_RECIPE_AXE1",
+        "DESC_RECIPE_PICKEAXE1"
+      ],
+      "description": "Example: \"DESC_RECIPE_WORKBENCH\""
+    },
+    "IconName": {
+      "type": "string",
+      "examples": [
+        "WorkBench",
+        "Axe_Default",
+        "Pickaxe_Default"
+      ],
+      "description": "Example: \"WorkBench\""
+    },
+    "RequireDefeatTowerBoss": {
+      "type": "string",
+      "description": "EnumProperty EPalBossType. Values: EPalBossType::None, EPalBossType::GrassBoss, EPalBossType::ElectricBoss, EPalBossType::ForestBoss, EPalBossType::SnowBoss, EPalBossType::DesertBoss, EPalBossType::SakurajimaBoss, EPalBossType::VikingBoss, EPalBossType::SorajimaBoss, EPalBossType::KingWhaleBoss, EPalBossType::WorldTreeMiddleBoss1, EPalBossType::WorldTreeMiddleBoss2, EPalBossType::WorldTreeMiddleBoss3, EPalBossType::WorldTreeBoss, EPalBossType::Max — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalBossType::None",
+        "EPalBossType::GrassBoss",
+        "EPalBossType::ElectricBoss"
+      ]
+    },
+    "RequireTechnology": {
+      "type": "string",
+      "examples": [
+        "None",
+        "GrapplingGun_1",
+        "AutoMealPouch_Tier1"
+      ],
+      "description": "Example: \"None\""
+    },
+    "RequireResearchId": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "IsBossTechnology": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "LevelCap": {
+      "type": "number",
+      "examples": [
+        1,
+        2,
+        3
+      ],
+      "description": "Example: 1"
+    },
+    "Tier": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "Cost": {
+      "type": "number",
+      "examples": [
+        1,
+        2,
+        3
+      ],
+      "description": "Example: 1"
+    },
+    "UnlockBuildObjects": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "examples": [
+              "Workbench",
+              "PalBoxV2",
+              "CampFire"
+            ],
+            "description": "Example: \"Workbench\""
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Action": {
+              "type": "string",
+              "enum": [
+                "Clear"
+              ],
+              "description": "\"Clear\" empties the existing array (runs before Items are appended). Only recognized value."
+            },
+            "Items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "examples": [
+                  "Workbench",
+                  "PalBoxV2",
+                  "CampFire"
+                ],
+                "description": "Example: \"Workbench\""
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "ArrayProperty: a plain array REPLACES the game array; {\"Items\": [...]} APPENDS (optional \"Action\": \"Clear\" first empties it) — both are valid PalSchema"
+    },
+    "UnlockItemRecipes": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "examples": [
+              "Axe_Tier_00",
+              "Pickaxe_Tier_00",
+              "Torch"
+            ],
+            "description": "Example: \"Axe_Tier_00\""
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Action": {
+              "type": "string",
+              "enum": [
+                "Clear"
+              ],
+              "description": "\"Clear\" empties the existing array (runs before Items are appended). Only recognized value."
+            },
+            "Items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "examples": [
+                  "Axe_Tier_00",
+                  "Pickaxe_Tier_00",
+                  "Torch"
+                ],
+                "description": "Example: \"Axe_Tier_00\""
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "ArrayProperty: a plain array REPLACES the game array; {\"Items\": [...]} APPENDS (optional \"Action\": \"Clear\" first empties it) — both are valid PalSchema"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

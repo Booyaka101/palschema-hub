@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalSizeParameter.schema.json",
+  "title": "DT_PalSizeParameter",
+  "description": "Palworld DataTable DT_PalSizeParameter (row struct: PalSizeParameterDataRow). Each PalSchema mod patch targeting \"DT_PalSizeParameter\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_PalSizeParameter | rowStruct=PalSizeParameterDataRow | palworldVersion=1.0 | fields=3 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41",
+  "type": "object",
+  "properties": {
+    "Size": {
+      "type": "string",
+      "examples": [
+        "EPalSizeType::None",
+        "EPalSizeType::XS",
+        "EPalSizeType::S"
+      ],
+      "description": "Enum-like value. Examples: EPalSizeType::None, EPalSizeType::XS, EPalSizeType::S, EPalSizeType::M"
+    },
+    "EffectScale": {
+      "type": "number",
+      "examples": [
+        1,
+        0.25,
+        0.5
+      ],
+      "description": "Example: 1"
+    },
+    "JumpEffectOffsetZ": {
+      "type": "number",
+      "examples": [
+        0,
+        55
+      ],
+      "description": "Example: 0"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{
+    "DT_FieldLotteryNameDataTable": {
+        "Oilrig_Large_01": {
+            "ItemSlot4_ProbabilityPercent": 0,
+            "ItemSlot15_ProbabilityPercent": 3.0
+        },
+
+        "Oilrig_Large_02": {
+            "ItemSlot6_ProbabilityPercent": 0,
+            "ItemSlot15_ProbabilityPercent": 100.0
+        }
+    }
+}

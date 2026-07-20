@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_UniqueNPC.schema.json",
+  "title": "DT_UniqueNPC",
+  "description": "Palworld DataTable DT_UniqueNPC (row struct: PalUniqueNPCDatabaseRow). Each PalSchema mod patch targeting \"DT_UniqueNPC\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_UniqueNPC | rowStruct=PalUniqueNPCDatabaseRow | palworldVersion=1.0 | fields=13 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=IsTransientTalkCount",
+  "type": "object",
+  "properties": {
+    "CharacterID": {
+      "type": "string",
+      "examples": [
+        "MobuCitizen",
+        "TestAssassin",
+        "Female_Soldier01"
+      ],
+      "description": "Example: \"MobuCitizen\""
+    },
+    "NameTextID": {
+      "type": "string",
+      "examples": [
+        "NAME_JOHNSON",
+        "NAME_BOBBY",
+        "NAME_UNIQUE002"
+      ],
+      "description": "Example: \"NAME_JOHNSON\""
+    },
+    "OneTalkDTName": {
+      "type": "string",
+      "examples": [
+        "None",
+        "ItemShop",
+        "TestAssassin"
+      ],
+      "description": "Example: \"None\""
+    },
+    "TalkBPClass": {
+      "type": "string",
+      "examples": [
+        "Johnson",
+        "None",
+        "VillageLeader01"
+      ],
+      "description": "Example: \"Johnson\""
+    },
+    "IsTransientTalkCount": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Gender": {
+      "type": "string",
+      "examples": [
+        "EPalGenderType::Male",
+        "EPalGenderType::Female"
+      ],
+      "description": "Enum-like value. Examples: EPalGenderType::Male, EPalGenderType::Female"
+    },
+    "SkinColor": {
+      "type": "string",
+      "examples": [
+        "EPalNPCSkinColor::Light",
+        "EPalNPCSkinColor::Brown"
+      ],
+      "description": "Enum-like value. Examples: EPalNPCSkinColor::Light, EPalNPCSkinColor::Brown"
+    },
+    "Face": {
+      "type": "string",
+      "examples": [
+        "EPalNPCFaceType::Mobu_A",
+        "EPalNPCFaceType::Mobu_B"
+      ],
+      "description": "Enum-like value. Examples: EPalNPCFaceType::Mobu_A, EPalNPCFaceType::Mobu_B"
+    },
+    "HairStyle": {
+      "type": "string",
+      "examples": [
+        "EPalNPCHairStyleType::Mobu_B",
+        "EPalNPCHairStyleType::Mobu_A"
+      ],
+      "description": "Enum-like value. Examples: EPalNPCHairStyleType::Mobu_B, EPalNPCHairStyleType::Mobu_A"
+    },
+    "HairColor": {
+      "type": "string",
+      "examples": [
+        "EPalNPCHairColorType::Gold",
+        "EPalNPCHairColorType::DarkBrown"
+      ],
+      "description": "Enum-like value. Examples: EPalNPCHairColorType::Gold, EPalNPCHairColorType::DarkBrown"
+    },
+    "Clothes": {
+      "type": "string",
+      "examples": [
+        "EPalNPCClothesType::Mobu_A",
+        "EPalNPCClothesType::Mobu_B"
+      ],
+      "description": "Enum-like value. Examples: EPalNPCClothesType::Mobu_A, EPalNPCClothesType::Mobu_B"
+    },
+    "Scale": {
+      "type": "string",
+      "examples": [
+        "EPalNPCScaleType::M",
+        "EPalNPCScaleType::L1"
+      ],
+      "description": "Enum-like value. Examples: EPalNPCScaleType::M, EPalNPCScaleType::L1"
+    },
+    "Level": {
+      "type": "number",
+      "examples": [
+        1,
+        20
+      ],
+      "description": "Example: 1"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

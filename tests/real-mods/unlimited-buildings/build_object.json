@@ -1,0 +1,13 @@
+{
+  "DT_BuildObjectDataTable": {
+    "Expedition": {
+      "InstallMaxNumInBaseCamp": 0
+    },
+    "Altar": {
+      "InstallMaxNumInBaseCamp": 0
+    },
+    "GuildChest": {
+      "InstallMaxNumInBaseCamp": 0
+    }
+  }
+}

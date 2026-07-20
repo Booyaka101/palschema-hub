@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalDropItem.schema.json",
+  "DT_PalDropItem": {
+    "ChickenPal000": {
+      "ItemId3": "Pizza",
+      "Rate3": 100.0,
+      "min3": 1,
+      "Max3": 1
+    }
+  },
+  "DT_PalMonsterParameter": {
+    "Kitsunebi": {
+      "WorkSuitability_EmitFlame": 2
+    }
+  },
+  "DT_ItemDataTable": {
+    "MyCustomSword": {
+      "TypeA": "EPalItemTypeA::Weapon",
+      "Rarity": 4,
+      "Price": 12000,
+      "Weight": 8.5,
+      "MaxStackCount": 1
+    }
+  }
+}

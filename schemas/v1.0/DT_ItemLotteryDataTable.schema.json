@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_ItemLotteryDataTable.schema.json",
+  "title": "DT_ItemLotteryDataTable",
+  "description": "Palworld DataTable DT_ItemLotteryDataTable (row struct: PalItemLotteryData). Each PalSchema mod patch targeting \"DT_ItemLotteryDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_ItemLotteryDataTable | rowStruct=PalItemLotteryData | palworldVersion=1.0 | fields=9 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=BonusExpRate",
+  "type": "object",
+  "properties": {
+    "FieldName": {
+      "type": "string",
+      "examples": [
+        "Grass01",
+        "Grass02",
+        "Forest02"
+      ],
+      "description": "Example: \"Grass01\""
+    },
+    "SlotNo": {
+      "type": "number",
+      "examples": [
+        1,
+        2,
+        3
+      ],
+      "description": "Example: 1"
+    },
+    "WeightInSlot": {
+      "type": "number",
+      "examples": [
+        50,
+        20,
+        10
+      ],
+      "description": "Example: 50"
+    },
+    "StaticItemId": {
+      "type": "string",
+      "examples": [
+        "PalUpgradeStone",
+        "TreasureBoxKey01",
+        "PalSphere_Mega"
+      ],
+      "description": "Example: \"PalUpgradeStone\""
+    },
+    "MinNum": {
+      "type": "number",
+      "examples": [
+        1,
+        300,
+        50
+      ],
+      "description": "Example: 1"
+    },
+    "MaxNum": {
+      "type": "number",
+      "examples": [
+        2,
+        1,
+        500
+      ],
+      "description": "Example: 2"
+    },
+    "NumUnit": {
+      "type": "number",
+      "examples": [
+        1,
+        10,
+        20
+      ],
+      "description": "Example: 1"
+    },
+    "TreasureBoxGrade": {
+      "type": "string",
+      "examples": [
+        "EPalMapObjectTreasureGradeType::Grade1",
+        "EPalMapObjectTreasureGradeType::Grade3",
+        "EPalMapObjectTreasureGradeType::Grade2"
+      ],
+      "description": "Enum-like value. Examples: EPalMapObjectTreasureGradeType::Grade1, EPalMapObjectTreasureGradeType::Grade3, EPalMapObjectTreasureGradeType::Grade2, EPalMapObjectTreasureGradeType::Grade5"
+    },
+    "BonusExpRate": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

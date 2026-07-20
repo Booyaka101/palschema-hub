@@ -1,0 +1,38 @@
+{
+  "name": "palschema-validate",
+  "version": "0.1.0",
+  "description": "Validate Palworld PalSchema mod JSON/JSONC files against the palschema-hub schema registry.",
+  "keywords": [
+    "palworld",
+    "palschema",
+    "ue4ss",
+    "modding",
+    "json-schema",
+    "validate",
+    "ajv"
+  ],
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "palschema-validate": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p .",
+    "prepublishOnly": "tsc -p ."
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "palschema-hub": "file:.."
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.0",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalCaptureBonusExpTable.schema.json",
+  "title": "DT_PalCaptureBonusExpTable",
+  "description": "Palworld DataTable DT_PalCaptureBonusExpTable (row struct: PalCaptureBonusExpRaw). Each PalSchema mod patch targeting \"DT_PalCaptureBonusExpTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_PalCaptureBonusExpTable | rowStruct=PalCaptureBonusExpRaw | palworldVersion=1.0 | fields=1 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41",
+  "type": "object",
+  "properties": {
+    "BonusExp": {
+      "type": "number",
+      "examples": [
+        22,
+        24,
+        27
+      ],
+      "description": "Example: 22"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

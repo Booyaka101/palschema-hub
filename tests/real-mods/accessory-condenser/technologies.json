@@ -1,0 +1,52 @@
+{
+  "DT_TechnologyRecipeUnlock": {
+    "Accessory_Nonkilling": {
+      "UnlockBuildObjects": {
+        "Items": [
+          "WorkBench_SkillCard"
+        ]
+      },
+      "UnlockItemRecipes": {},
+      "Name": "Accessory Workbench",
+      "Description": "Enables combining lower-tier accessories into their higher-tier versions.",
+      "IconName": "WorkBench_SkillCard",
+      "RequireDefeatTowerBoss": "EPalBossType::None",
+      "RequireTechnology": "None",
+      "RequireResearchId": "None",
+      "IsBossTechnology": true,
+      "LevelCap": 18,
+      "Tier": 0,
+      "Cost": 2
+    },
+    "RareAccessoryCondensing": {
+      "UnlockBuildObjects": {},
+      "UnlockItemRecipes": {
+        "Items": [
+          "Accessory_AT_3",
+          "AccessoryParts_AT_2",
+          "Accessory_defense_3",
+          "AccessoryParts_defense_2",
+          "Accessory_HP_3",
+          "AccessoryParts_HP_2",
+          "Accessory_HeatColdResist_3",
+          "Accessory_HeatColdResist_3_Alt",
+          "AccessoryParts_HeatColdResist_2",
+          "Accessory_CoolResist_3",
+          "AccessoryParts_CoolResist_3",
+          "Accessory_HeatResist_3",
+          "AccessoryParts_HeatResist_3"
+        ]
+      },
+      "Name": "Rare Accessory Crafting",
+      "Description": "Enables combining uncommon accessories into their rare counterparts in the Accessory Workbench.",
+      "IconName": "Accessory_AT",
+      "RequireDefeatTowerBoss": "EPalBossType::None",
+      "RequireTechnology": "Accessory_Nonkilling",
+      "RequireResearchId": "None",
+      "IsBossTechnology": false,
+      "LevelCap": 47,
+      "Tier": 0,
+      "Cost": 4
+    }
+  }
+}

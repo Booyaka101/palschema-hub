@@ -1,0 +1,50 @@
+{
+    "DT_ItemLotteryDataTable": {
+        "1029": {
+            "WeightInSlot": 3.05,
+            "MinNum": 1
+        },
+
+        "1037": {
+            "WeightInSlot": 3.1,
+            "MinNum": 6,
+            "MaxNum": 10
+        },
+
+        "1045": {
+            "WeightInSlot": 3.0,
+            "MinNum": 11,
+            "MaxNum": 15
+        },
+
+        "1052": {
+            "WeightInSlot": 3.0,
+            "MinNum": 16,
+            "MaxNum": 20
+        },
+
+        "1059": {
+            "WeightInSlot": 3.0,
+            "MinNum": 16,
+            "MaxNum": 20
+        },
+
+        "1066": {
+            "WeightInSlot": 5.0,
+            "MinNum": 21,
+            "MaxNum": 25
+        },
+
+        "1172": {
+            "WeightInSlot": 3.0,
+            "MinNum": 26,
+            "MaxNum": 30
+        },
+
+        "1911": {
+            "WeightInSlot": 3.0,
+            "MinNum": 31,
+            "MaxNum": 35
+        }
+    }
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PalSchema Hub — Palworld DataTable schema registry</title>
+<style>
+  :root {
+    --bg: #0f1218; --panel: #171b24; --panel2: #1e2430; --border: #2a3242;
+    --text: #e6e9ef; --muted: #8b95a7; --accent: #6db3f2; --accent2: #7ee0a6;
+    --chip: #232b3a; --warn: #f2c14e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 18px 22px; border-bottom: 1px solid var(--border); background: var(--panel);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  header .tag { color: var(--muted); font-size: 12.5px; }
+  header a { color: var(--accent); text-decoration: none; }
+  .layout { display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 61px); }
+  .sidebar { border-right: 1px solid var(--border); background: var(--panel); display: flex; flex-direction: column; }
+  .controls { padding: 14px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--border); }
+  select, input {
+    width: 100%; padding: 9px 11px; background: var(--panel2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none;
+  }
+  input:focus, select:focus { border-color: var(--accent); }
+  .count { color: var(--muted); font-size: 12px; padding: 0 2px; }
+  .list { overflow-y: auto; flex: 1; padding: 6px; }
+  .item { padding: 9px 11px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+  .item:hover { background: var(--panel2); }
+  .item.active { background: #24304a; }
+  .item .name { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item .n { color: var(--muted); font-size: 11px; flex: none; }
+  .main { padding: 22px 26px; overflow-y: auto; }
+  .empty { color: var(--muted); margin-top: 40px; text-align: center; }
+  .sch-head { margin-bottom: 16px; }
+  .sch-head h2 { margin: 0 0 6px; font-family: ui-monospace, Consolas, monospace; font-size: 20px; color: var(--accent); }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+  .chip { background: var(--chip); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; font-size: 12px; color: var(--muted); }
+  .chip b { color: var(--text); font-weight: 600; }
+  .desc { color: var(--muted); font-size: 13px; max-width: 900px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 14px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; position: sticky; top: 0; background: var(--bg); }
+  td.field { font-family: ui-monospace, Consolas, monospace; color: var(--text); white-space: nowrap; }
+  td.type code { background: var(--panel2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 12.5px; color: var(--accent2); }
+  td.desccol { color: var(--muted); }
+  .filterbox { margin: 6px 0 2px; }
+  .note { color: var(--warn); font-size: 12px; margin-top: 4px; }
+  a.raw { color: var(--accent); font-size: 12.5px; text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🧩 PalSchema Hub</h1>
+  <span class="tag">A browsable schema registry for <a href="https://github.com/Okaetsu/PalSchema" target="_blank" rel="noopener">Palworld PalSchema</a> mods · validate with <code>npx palschema-validate</code></span>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="controls">
+      <label class="count" for="version">Palworld version</label>
+      <select id="version"></select>
+      <input id="search" class="filterbox" type="search" placeholder="Filter tables… (e.g. Pal, Item, Waza)" autocomplete="off" />
+      <div class="count" id="listcount"></div>
+    </div>
+    <div class="list" id="list"></div>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="empty" id="empty">Loading registry…</div>
+  </main>
+</div>
+
+<script>
+const state = { index: null, version: null, tables: [], activeTable: null, cache: {} };
+
+async function loadIndex() {
+  const res = await fetch('./index.json', { cache: 'no-cache' });
+  if (!res.ok) throw new Error('index.json HTTP ' + res.status);
+  return res.json();
+}
+
+function typeLabel(t) {
+  if (!t) return 'any';
+  return Array.isArray(t) ? t.join(' | ') : t;
+}
+
+function fieldType(schema) {
+  const branches = schema.oneOf || schema.anyOf;
+  if (!schema.type && Array.isArray(branches)) {
+    // e.g. the PalSchema array forms: [..] or {"Items": [..]} — label both branches.
+    return branches.map(b => fieldType(b)).join(' | ');
+  }
+  let t = typeLabel(schema.type);
+  if ((schema.type === 'array' || (Array.isArray(schema.type) && schema.type.includes('array'))) && schema.items && schema.items.type) {
+    t += '<' + typeLabel(schema.items.type) + '>';
+  }
+  if (schema.type === 'object' && schema.properties && !schema.$comment) {
+    const keys = Object.keys(schema.properties);
+    if (keys.length <= 3) t += '{' + keys.join(', ') + '}';
+  }
+  return t;
+}
+
+function renderList() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const filtered = state.tables.filter(t => t.name.toLowerCase().includes(q));
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  for (const t of filtered) {
+    const div = document.createElement('div');
+    div.className = 'item' + (t.name === state.activeTable ? ' active' : '');
+    div.innerHTML = `<span class="name">${t.name}</span><span class="n">${t.fields || ''}${t.fields ? ' fields' : ''}</span>`;
+    div.onclick = () => selectTable(t.name);
+    list.appendChild(div);
+  }
+  document.getElementById('listcount').textContent =
+    `${filtered.length} of ${state.tables.length} tables`;
+}
+
+async function fetchSchema(table) {
+  const key = state.version + '/' + table;
+  if (state.cache[key]) return state.cache[key];
+  const url = `./schemas/v${state.version}/${table}.schema.json`;
+  const res = await fetch(url, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(url + ' HTTP ' + res.status);
+  const json = await res.json();
+  state.cache[key] = json;
+  return json;
+}
+
+async function selectTable(table) {
+  state.activeTable = table;
+  renderList();
+  const main = document.getElementById('main');
+  main.innerHTML = `<div class="empty">Loading ${table}…</div>`;
+  let schema;
+  try {
+    schema = await fetchSchema(table);
+  } catch (e) {
+    main.innerHTML = `<div class="empty">Failed to load ${table}: ${e.message}</div>`;
+    return;
+  }
+  const meta = (state.index.tables && state.index.tables[state.version] && state.index.tables[state.version][table]) || {};
+  const props = schema.properties || {};
+  const names = Object.keys(props);
+  const rawUrl = `./schemas/v${state.version}/${table}.schema.json`;
+
+  const rows = names.map(name => {
+    const p = props[name] || {};
+    const desc = p.description || (p.examples ? 'Example: ' + JSON.stringify(p.examples[0]) : '');
+    return `<tr>
+      <td class="field">${name}</td>
+      <td class="type"><code>${fieldType(p)}</code></td>
+      <td class="desccol">${desc ? String(desc).replace(/</g,'&lt;') : ''}</td>
+    </tr>`;
+  }).join('');
+
+  main.innerHTML = `
+    <div class="sch-head">
+      <h2>${table}</h2>
+      <div class="meta">
+        <span class="chip">version <b>${state.version}</b></span>
+        <span class="chip">row struct <b>${meta.rowStruct || '—'}</b></span>
+        <span class="chip"><b>${names.length}</b> fields</span>
+        ${meta.rows ? `<span class="chip"><b>${meta.rows}</b> game rows</span>` : ''}
+        <a class="raw" href="${rawUrl}" target="_blank" rel="noopener">raw schema ↗</a>
+      </div>
+      <div class="desc">${(schema.description || '').replace(/</g,'&lt;')}</div>
+    </div>
+    <table>
+      <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+      <tbody>${rows || '<tr><td colspan="3" class="desccol">No properties.</td></tr>'}</tbody>
+    </table>`;
+}
+
+function loadVersion(v) {
+  state.version = v;
+  state.activeTable = null;
+  const tableNames = (state.index.schemas && state.index.schemas[v]) || [];
+  const tmeta = (state.index.tables && state.index.tables[v]) || {};
+  state.tables = tableNames.map(name => ({ name, fields: (tmeta[name] || {}).fields || 0 }));
+  renderList();
+  document.getElementById('main').innerHTML =
+    `<div class="empty">Select a DataTable on the left to view its ${state.tables.length} available schemas.</div>`;
+  if (state.tables.length) selectTable(state.tables[0].name);
+}
+
+async function init() {
+  try {
+    state.index = await loadIndex();
+  } catch (e) {
+    document.getElementById('empty').textContent = 'Could not load index.json: ' + e.message;
+    return;
+  }
+  const sel = document.getElementById('version');
+  sel.innerHTML = state.index.versions.map(v => `<option value="${v}">${v}</option>`).join('');
+  sel.onchange = () => loadVersion(sel.value);
+  document.getElementById('search').oninput = renderList;
+  loadVersion(state.index.versions[state.index.versions.length - 1]);
+}
+init();
+</script>
+</body>
+</html>

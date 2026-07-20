@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalCombiUnique.schema.json",
+  "title": "DT_PalCombiUnique",
+  "description": "Palworld DataTable DT_PalCombiUnique (row struct: PalCombiUniqueDatabaseRow). Each PalSchema mod patch targeting \"DT_PalCombiUnique\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_PalCombiUnique | rowStruct=PalCombiUniqueDatabaseRow | palworldVersion=1.0 | fields=5 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=ParentGenderA,ParentGenderB",
+  "type": "object",
+  "properties": {
+    "ParentTribeA": {
+      "type": "string",
+      "examples": [
+        "EPalTribeID::LazyDragon",
+        "EPalTribeID::Baphomet",
+        "EPalTribeID::Bastet"
+      ],
+      "description": "Enum-like value. Examples: EPalTribeID::LazyDragon, EPalTribeID::Baphomet, EPalTribeID::Bastet, EPalTribeID::BirdDragon"
+    },
+    "ParentGenderA": {
+      "type": "string",
+      "description": "EnumProperty EPalGenderType. Values: EPalGenderType::None, EPalGenderType::Male, EPalGenderType::Female — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalGenderType::None",
+        "EPalGenderType::Male",
+        "EPalGenderType::Female"
+      ]
+    },
+    "ParentTribeB": {
+      "type": "string",
+      "examples": [
+        "EPalTribeID::ElecCat",
+        "EPalTribeID::GhostBeast",
+        "EPalTribeID::Penguin"
+      ],
+      "description": "Enum-like value. Examples: EPalTribeID::ElecCat, EPalTribeID::GhostBeast, EPalTribeID::Penguin, EPalTribeID::IceFox"
+    },
+    "ParentGenderB": {
+      "type": "string",
+      "description": "EnumProperty EPalGenderType. Values: EPalGenderType::None, EPalGenderType::Male, EPalGenderType::Female — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalGenderType::None",
+        "EPalGenderType::Male",
+        "EPalGenderType::Female"
+      ]
+    },
+    "ChildCharacterID": {
+      "type": "string",
+      "examples": [
+        "LazyDragon_Electric",
+        "Baphomet_Dark",
+        "Bastet_Ice"
+      ],
+      "description": "Example: \"LazyDragon_Electric\""
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

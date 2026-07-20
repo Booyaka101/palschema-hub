@@ -1,0 +1,231 @@
+{
+  "versions": [
+    "1.0"
+  ],
+  "schemas": {
+    "1.0": [
+      "DT_BuildObjectDataTable",
+      "DT_BuildObjectIconDataTable",
+      "DT_CapturedCagePal",
+      "DT_CharacterUpgradeMasterDataTable",
+      "DT_FieldLotteryNameDataTable",
+      "DT_ItemDataTable",
+      "DT_ItemIconDataTable",
+      "DT_ItemLotteryDataTable",
+      "DT_ItemRecipeDataTable",
+      "DT_MapObjectAssignData",
+      "DT_MapObjectFarmCrop",
+      "DT_MapObjectItemProductDataTable",
+      "DT_MapObjectMasterDataTable",
+      "DT_PalBPClass",
+      "DT_PalCaptureBonusExpTable",
+      "DT_PalCharacterIconDataTable",
+      "DT_PalCombiUnique",
+      "DT_PalDropItem",
+      "DT_PalExpTable",
+      "DT_PalHumanParameter",
+      "DT_PalMonsterParameter",
+      "DT_PalPlayerParameter",
+      "DT_PalSizeParameter",
+      "DT_PassiveSkill_Main",
+      "DT_StatusEffectFood",
+      "DT_TechnologyIconData",
+      "DT_TechnologyRecipeUnlock",
+      "DT_UniqueNPC",
+      "DT_WazaDataTable",
+      "DT_WazaMasterLevel",
+      "DT_WazaMasterTamago"
+    ]
+  },
+  "tables": {
+    "1.0": {
+      "DT_BuildObjectDataTable": {
+        "rowStruct": "PalBuildObjectData",
+        "fields": 33,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_BuildObjectIconDataTable": {
+        "rowStruct": "PalBuildObjectIconData",
+        "fields": 2,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_CapturedCagePal": {
+        "rowStruct": "PalCapturedCageInfoDatabaseRow",
+        "fields": 6,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_CharacterUpgradeMasterDataTable": {
+        "rowStruct": "PalCharacterUpgradeMasterData",
+        "fields": 5,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_FieldLotteryNameDataTable": {
+        "rowStruct": "FPalFieldLotteryName",
+        "fields": 16,
+        "rows": 0,
+        "source": "sdk-headers-only"
+      },
+      "DT_ItemDataTable": {
+        "rowStruct": "PalStaticItemDataStruct",
+        "fields": 54,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_ItemIconDataTable": {
+        "rowStruct": "PalEditorItemIconTableRow",
+        "fields": 2,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_ItemLotteryDataTable": {
+        "rowStruct": "PalItemLotteryData",
+        "fields": 10,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_ItemRecipeDataTable": {
+        "rowStruct": "PalItemRecipe",
+        "fields": 21,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_MapObjectAssignData": {
+        "rowStruct": "PalMapObjectAssignData",
+        "fields": 23,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_MapObjectFarmCrop": {
+        "rowStruct": "PalMapObjectFarmCropData",
+        "fields": 14,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_MapObjectItemProductDataTable": {
+        "rowStruct": "PalMapObjectItemProductData",
+        "fields": 4,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_MapObjectMasterDataTable": {
+        "rowStruct": "PalMapObjectMasterData",
+        "fields": 18,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalBPClass": {
+        "rowStruct": "PalBPClassDataRow",
+        "fields": 2,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalCaptureBonusExpTable": {
+        "rowStruct": "PalCaptureBonusExpRaw",
+        "fields": 2,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalCharacterIconDataTable": {
+        "rowStruct": "PalCharacterIconDataRow",
+        "fields": 2,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalCombiUnique": {
+        "rowStruct": "PalCombiUniqueDatabaseRow",
+        "fields": 6,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalDropItem": {
+        "rowStruct": "PalDropItemDatabaseRow",
+        "fields": 43,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalExpTable": {
+        "rowStruct": "PalExpDatabaseRaw",
+        "fields": 10,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalHumanParameter": {
+        "rowStruct": "PalCharacterParameterDatabaseRow",
+        "fields": 91,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalMonsterParameter": {
+        "rowStruct": "PalCharacterParameterDatabaseRow",
+        "fields": 91,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalPlayerParameter": {
+        "rowStruct": "PalPlayerParameterDatabaseRow",
+        "fields": 9,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PalSizeParameter": {
+        "rowStruct": "PalSizeParameterDataRow",
+        "fields": 4,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_PassiveSkill_Main": {
+        "rowStruct": "PalPassiveSkillDatabaseRow",
+        "fields": 39,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_StatusEffectFood": {
+        "rowStruct": "PalStatusEffectFoodDataRow",
+        "fields": 8,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_TechnologyIconData": {
+        "rowStruct": "FPalTechnologyIconData",
+        "fields": 1,
+        "rows": 2,
+        "source": "derived-from-paldex"
+      },
+      "DT_TechnologyRecipeUnlock": {
+        "rowStruct": "PalTechnologyRecipeUnlockDataTableRow",
+        "fields": 13,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_UniqueNPC": {
+        "rowStruct": "PalUniqueNPCDatabaseRow",
+        "fields": 14,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_WazaDataTable": {
+        "rowStruct": "PalWazaDatabaseRaw",
+        "fields": 28,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_WazaMasterLevel": {
+        "rowStruct": "PalWazaMasterLevelDataRow",
+        "fields": 4,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      },
+      "DT_WazaMasterTamago": {
+        "rowStruct": "PalWazaMasterTamagoDataRow",
+        "fields": 3,
+        "rows": 0,
+        "source": "paldex-dump+sdk-headers"
+      }
+    }
+  },
+  "generatedAt": "2026-07-20T07:33:47.484Z"
+}

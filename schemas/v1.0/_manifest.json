@@ -1,0 +1,199 @@
+{
+  "palworldVersion": "1.0",
+  "source": "derived-from-paldex + field-verified-against-localcc/PalworldModdingKit@62fad41",
+  "generatedTables": [
+    {
+      "table": "DT_CapturedCagePal",
+      "rowStruct": "PalCapturedCageInfoDatabaseRow",
+      "rows": 51,
+      "fields": 5
+    },
+    {
+      "table": "DT_CharacterUpgradeMasterDataTable",
+      "rowStruct": "PalCharacterUpgradeMasterData",
+      "rows": 10,
+      "fields": 4
+    },
+    {
+      "table": "DT_PalBPClass",
+      "rowStruct": "PalBPClassDataRow",
+      "rows": 344,
+      "fields": 1
+    },
+    {
+      "table": "DT_PalCharacterIconDataTable",
+      "rowStruct": "PalCharacterIconDataRow",
+      "rows": 149,
+      "fields": 1
+    },
+    {
+      "table": "DT_PalCombiUnique",
+      "rowStruct": "PalCombiUniqueDatabaseRow",
+      "rows": 78,
+      "fields": 5
+    },
+    {
+      "table": "DT_PalDropItem",
+      "rowStruct": "PalDropItemDatabaseRow",
+      "rows": 393,
+      "fields": 42
+    },
+    {
+      "table": "DT_PalHumanParameter",
+      "rowStruct": "PalCharacterParameterDatabaseRow",
+      "rows": 72,
+      "fields": 90
+    },
+    {
+      "table": "DT_PalMonsterParameter",
+      "rowStruct": "PalCharacterParameterDatabaseRow",
+      "rows": 315,
+      "fields": 90
+    },
+    {
+      "table": "DT_PalPlayerParameter",
+      "rowStruct": "PalPlayerParameterDatabaseRow",
+      "rows": 100,
+      "fields": 8
+    },
+    {
+      "table": "DT_PalSizeParameter",
+      "rowStruct": "PalSizeParameterDataRow",
+      "rows": 6,
+      "fields": 3
+    },
+    {
+      "table": "DT_UniqueNPC",
+      "rowStruct": "PalUniqueNPCDatabaseRow",
+      "rows": 38,
+      "fields": 13
+    },
+    {
+      "table": "DT_PalCaptureBonusExpTable",
+      "rowStruct": "PalCaptureBonusExpRaw",
+      "rows": 2998,
+      "fields": 1
+    },
+    {
+      "table": "DT_PalExpTable",
+      "rowStruct": "PalExpDatabaseRaw",
+      "rows": 100,
+      "fields": 9
+    },
+    {
+      "table": "DT_ItemDataTable",
+      "rowStruct": "PalStaticItemDataStruct",
+      "rows": 947,
+      "fields": 53
+    },
+    {
+      "table": "DT_ItemIconDataTable",
+      "rowStruct": "PalEditorItemIconTableRow",
+      "rows": 561,
+      "fields": 1
+    },
+    {
+      "table": "DT_ItemLotteryDataTable",
+      "rowStruct": "PalItemLotteryData",
+      "rows": 788,
+      "fields": 9
+    },
+    {
+      "table": "DT_ItemRecipeDataTable",
+      "rowStruct": "PalItemRecipe",
+      "rows": 425,
+      "fields": 20
+    },
+    {
+      "table": "DT_StatusEffectFood",
+      "rowStruct": "PalStatusEffectFoodDataRow",
+      "rows": 31,
+      "fields": 7
+    },
+    {
+      "table": "DT_BuildObjectDataTable",
+      "rowStruct": "PalBuildObjectData",
+      "rows": 265,
+      "fields": 32
+    },
+    {
+      "table": "DT_BuildObjectIconDataTable",
+      "rowStruct": "PalBuildObjectIconData",
+      "rows": 300,
+      "fields": 1
+    },
+    {
+      "table": "DT_MapObjectAssignData",
+      "rowStruct": "PalMapObjectAssignData",
+      "rows": 107,
+      "fields": 22
+    },
+    {
+      "table": "DT_MapObjectFarmCrop",
+      "rowStruct": "PalMapObjectFarmCropData",
+      "rows": 7,
+      "fields": 13
+    },
+    {
+      "table": "DT_MapObjectItemProductDataTable",
+      "rowStruct": "PalMapObjectItemProductData",
+      "rows": 3,
+      "fields": 3
+    },
+    {
+      "table": "DT_MapObjectMasterDataTable",
+      "rowStruct": "PalMapObjectMasterData",
+      "rows": 308,
+      "fields": 17
+    },
+    {
+      "table": "DT_PassiveSkill_Main",
+      "rowStruct": "PalPassiveSkillDatabaseRow",
+      "rows": 390,
+      "fields": 38
+    },
+    {
+      "table": "DT_TechnologyIconData",
+      "rowStruct": "FPalTechnologyIconData",
+      "rows": 2,
+      "fields": 1
+    },
+    {
+      "table": "DT_TechnologyRecipeUnlock",
+      "rowStruct": "PalTechnologyRecipeUnlockDataTableRow",
+      "rows": 300,
+      "fields": 12
+    },
+    {
+      "table": "DT_WazaDataTable",
+      "rowStruct": "PalWazaDatabaseRaw",
+      "rows": 120,
+      "fields": 27
+    },
+    {
+      "table": "DT_WazaMasterLevel",
+      "rowStruct": "PalWazaMasterLevelDataRow",
+      "rows": 1977,
+      "fields": 3
+    },
+    {
+      "table": "DT_WazaMasterTamago",
+      "rowStruct": "PalWazaMasterTamagoDataRow",
+      "rows": 2004,
+      "fields": 2
+    },
+    {
+      "table": "DT_FieldLotteryNameDataTable",
+      "rowStruct": "FPalFieldLotteryName",
+      "rows": 0,
+      "fields": 15,
+      "source": "sdk-headers-only",
+      "note": "Real mod \"Old School Loot\" patches this table with ItemSlotN_ProbabilityPercent fields that match FPalFieldLotteryName exactly."
+    }
+  ],
+  "sdk": {
+    "repo": "localcc/PalworldModdingKit",
+    "commit": "62fad41",
+    "pushedAt": "2026-07-11"
+  }
+}

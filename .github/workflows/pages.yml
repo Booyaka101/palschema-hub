@@ -1,0 +1,53 @@
+name: Deploy schema registry to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Regenerate the catalogs from the committed schemas and fail the deploy
+      # if the acceptance tests (incl. real-mod validation) don't pass.
+      - name: Rebuild index + run acceptance tests
+        run: |
+          node scripts/build-index.mjs
+          cd cli && npm ci && npm run build && cd ..
+          npm test
+
+      - name: Stage site (browser + registry only)
+        run: |
+          mkdir -p _site
+          cp index.html index.json LICENSE README.md _site/
+          cp -r schemas _site/schemas
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

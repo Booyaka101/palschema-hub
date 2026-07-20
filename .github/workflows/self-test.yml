@@ -1,0 +1,31 @@
+# This repo's own CI: build the CLI and prove the acceptance checks hold,
+# validating the test fixtures against the LOCAL schemas (--registry .).
+name: self-test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build CLI
+        working-directory: cli
+        run: npm install && npm run build
+      - name: index.json is valid and lists >=10 tables
+        run: node scripts/check-index.mjs
+      - name: valid-mod.json must PASS (exit 0)
+        run: node cli/dist/index.js --version 1.0 --registry . tests/valid-mod.json
+      - name: invalid-mod.json must FAIL (exit 1)
+        run: |
+          if node cli/dist/index.js --version 1.0 --registry . tests/invalid-mod.json; then
+            echo "ERROR: invalid-mod.json unexpectedly passed"; exit 1
+          else
+            echo "OK: invalid-mod.json failed as expected"
+          fi

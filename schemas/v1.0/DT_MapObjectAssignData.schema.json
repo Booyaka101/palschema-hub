@@ -1,0 +1,220 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_MapObjectAssignData.schema.json",
+  "title": "DT_MapObjectAssignData",
+  "description": "Palworld DataTable DT_MapObjectAssignData (row struct: PalMapObjectAssignData). Each PalSchema mod patch targeting \"DT_MapObjectAssignData\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_MapObjectAssignData | rowStruct=PalMapObjectAssignData | palworldVersion=1.0 | fields=22 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=bBaseCampWorkerWorkable,WorkableTribeIDs,WorkableSizeMin,WorkableSizeMax,AffectFullStomachValue,MultiWorkSuitability1,MultiWorkType1,MultiWorkActionType1,MultiRequiredRank1,MultiWorkSuitability2,MultiWorkType2,MultiWorkActionType2,MultiRequiredRank2",
+  "type": "object",
+  "properties": {
+    "GenusCategory": {
+      "type": "string",
+      "examples": [
+        "EPalGenusCategoryType::None"
+      ],
+      "description": "Enum-like value. Examples: EPalGenusCategoryType::None"
+    },
+    "ElementType": {
+      "type": "string",
+      "examples": [
+        "EPalElementType::None"
+      ],
+      "description": "Enum-like value. Examples: EPalElementType::None"
+    },
+    "WorkSuitability": {
+      "type": "string",
+      "examples": [
+        "EPalWorkSuitability::None",
+        "EPalWorkSuitability::Handcraft",
+        "EPalWorkSuitability::EmitFlame"
+      ],
+      "description": "Enum-like value. Examples: EPalWorkSuitability::None, EPalWorkSuitability::Handcraft, EPalWorkSuitability::EmitFlame, EPalWorkSuitability::Anyone"
+    },
+    "WorkSuitabilityRank": {
+      "type": "number",
+      "examples": [
+        1,
+        2,
+        3
+      ],
+      "description": "Example: 1"
+    },
+    "bPlayerWorkable": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "bBaseCampWorkerWorkable": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "WorkableTribeIDs": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "EnumProperty EPalTribeID. Values: EPalTribeID::None, EPalTribeID::Anubis, EPalTribeID::Baphomet, EPalTribeID::Baphomet_Dark, EPalTribeID::Bastet, EPalTribeID::Bastet_Ice, EPalTribeID::Boar, EPalTribeID::Carbunclo, EPalTribeID::ColorfulBird, EPalTribeID::Deer, EPalTribeID::DrillGame, EPalTribeID::Eagle, EPalTribeID::ElecPanda, EPalTribeID::Ganesha, EPalTribeID::Garm, EPalTribeID::Gorilla, EPalTribeID::Hedgehog, EPalTribeID::Hedgehog_Ice, EPalTribeID::Kirin, EPalTribeID::Kitsunebi, EPalTribeID::LittleBriarRose, EPalTribeID::Mutant, EPalTribeID::Owl, EPalTribeID::Penguin, EPalTribeID::RaijinDaughter, EPalTribeID::SharkKid, EPalTribeID::SheepBall, EPalTribeID::Umihebi, EPalTribeID::Werewolf, EPalTribeID::WindChimes, EPalTribeID::Suzaku, EPalTribeID::Suzaku_Water, EPalTribeID::FireKirin, EPalTribeID::FairyDragon, EPalTribeID::FairyDragon_Water, EPalTribeID::SweetsSheep, EPalTribeID::WhiteTiger, EPalTribeID::Alpaca, EPalTribeID::Serpent, EPalTribeID::Serpent_Ground, EPalTribeID::DarkCrow, EPalTribeID::BlueDragon, EPalTribeID::PinkCat, EPalTribeID::NegativeKoala, EPalTribeID::FengyunDeeper, EPalTribeID::VolcanicMonster, EPalTribeID::VolcanicMonster_Ice, EPalTribeID::GhostBeast, EPalTribeID::RobinHood, EPalTribeID::LazyDragon, EPalTribeID::LazyDragon_Electric, EPalTribeID::AmaterasuWolf, EPalTribeID::LizardMan, EPalTribeID::Blueplatypus, EPalTribeID::BlackFurDragon, EPalTribeID::BeardedDragon, EPalTribeID::BirdDragon, EPalTribeID::BirdDragon_Ice, EPalTribeID::PinkKangaroo, EPalTribeID::ChickenPal, EPalTribeID::FlowerDinosaur, EPalTribeID::FlowerDinosaur_Electric, EPalTribeID::ElecCat, EPalTribeID::IceHorse, EPalTribeID::IceHorse_Dark, EPalTribeID::GrassMammoth, EPalTribeID::CatVampire, EPalTribeID::SakuraSaurus, EPalTribeID::SakuraSaurus_Water, EPalTribeID::Horus, EPalTribeID::KingBahamut, EPalTribeID::BerryGoat, EPalTribeID::IceDeer, EPalTribeID::BlackGriffon, EPalTribeID::WhiteMoth, EPalTribeID::CuteFox, EPalTribeID::FoxMage, EPalTribeID::PinkLizard, EPalTribeID::WaterLizard, EPalTribeID::ElecLion, EPalTribeID::GuardianDog, EPalTribeID::GrassDragon, EPalTribeID::WizardOwl, EPalTribeID::Kelpie, EPalTribeID::NegativeOctopus, EPalTribeID::CowPal, EPalTribeID::Yeti, EPalTribeID::Yeti_Grass, EPalTribeID::VioletFairy, EPalTribeID::HawkBird, EPalTribeID::FlowerRabbit, EPalTribeID::LilyQueen, EPalTribeID::LilyQueen_Dark, EPalTribeID::QueenBee, EPalTribeID::SoldierBee, EPalTribeID::CatBat, EPalTribeID::GrassPanda, EPalTribeID::GrassPanda_Electric, EPalTribeID::FlameBuffalo, EPalTribeID::ThunderDog, EPalTribeID::CuteMole, EPalTribeID::BlackMetalDragon, EPalTribeID::GrassRabbitMan, EPalTribeID::IceFox, EPalTribeID::JetDragon, EPalTribeID::DreamDemon, EPalTribeID::Monkey, EPalTribeID::Manticore, EPalTribeID::Manticore_Dark, EPalTribeID::KingAlpaca, EPalTribeID::PlantSlime, EPalTribeID::DarkMutant, EPalTribeID::MopBaby, EPalTribeID::MopKing, EPalTribeID::CatMage, EPalTribeID::PinkRabbit, EPalTribeID::ThunderBird, EPalTribeID::HerculesBeetle, EPalTribeID::SaintCentaur, EPalTribeID::NightFox, EPalTribeID::CaptainPenguin, EPalTribeID::WeaselDragon, EPalTribeID::SkyDragon, EPalTribeID::HadesBird, EPalTribeID::RedArmorBird, EPalTribeID::Ronin, EPalTribeID::FlyingManta, EPalTribeID::BlackCentaur, EPalTribeID::FlowerDoll, EPalTribeID::NaughtyCat, EPalTribeID::CuteButterfly, EPalTribeID::DarkScorpion, EPalTribeID::ThunderDragonMan, EPalTribeID::WoolFox, EPalTribeID::SifuDog, EPalTribeID::TentacleTurtle, EPalTribeID::BrownRabbit, EPalTribeID::FeatherOstrich, EPalTribeID::WingGolem, EPalTribeID::ScorpionMan, EPalTribeID::LazyCatfish, EPalTribeID::Deer_Ground, EPalTribeID::FireKirin_Dark, EPalTribeID::KingAlpaca_Ice, EPalTribeID::RobinHood_Ground, EPalTribeID::GrassMammoth_Ice, EPalTribeID::Kelpie_Fire, EPalTribeID::SharkKid_Fire, EPalTribeID::LizardMan_Fire, EPalTribeID::LavaGirl, EPalTribeID::FlameBambi, EPalTribeID::Umihebi_Fire, EPalTribeID::WindChimes_Ice, EPalTribeID::NightLady, EPalTribeID::VolcanoDragon, EPalTribeID::DarkAlien, EPalTribeID::LeafPrincess, EPalTribeID::WhiteAlienDragon, EPalTribeID::MushroomDragon, EPalTribeID::SmallArmadillo, EPalTribeID::KendoFrog, EPalTribeID::CandleGhost, EPalTribeID::KingWhale, EPalTribeID::HoodGhost, EPalTribeID::Sekhmet, EPalTribeID::ElecLizard, EPalTribeID::MoonQueen, EPalTribeID::NightLady_Dark, EPalTribeID::RockBeast, EPalTribeID::KingBahamut_Dragon, EPalTribeID::Gorilla_Ground, EPalTribeID::HadesBird_Electric, EPalTribeID::MushroomDragon_Dark, EPalTribeID::DarkScorpion_Ground, EPalTribeID::Ronin_Dark, EPalTribeID::CatMage_Fire, EPalTribeID::FoxMage_Dark, EPalTribeID::SkyDragon_Grass, EPalTribeID::WeaselDragon_Fire, EPalTribeID::OctopusGirl, EPalTribeID::MimicDog, EPalTribeID::IceNarwhal, EPalTribeID::JellyfishFairy, EPalTribeID::GoldenHorse, EPalTribeID::BadCatgirl, EPalTribeID::BlueberryFairy, EPalTribeID::DarkMechaDragon, EPalTribeID::GhostRabbit, EPalTribeID::NightBlueHorse, EPalTribeID::WhiteShieldDragon, EPalTribeID::BlackPuppy, EPalTribeID::WhiteDeer, EPalTribeID::MysteryMask, EPalTribeID::GrimGirl, EPalTribeID::PurpleSpider, EPalTribeID::BlueThunderHorse, EPalTribeID::SnowTigerBeastman, EPalTribeID::Kitsunebi_Ice, EPalTribeID::RaijinDaughter_Water, EPalTribeID::WhiteTiger_Ground, EPalTribeID::FengyunDeeper_Electric, EPalTribeID::BerryGoat_Dark, EPalTribeID::Werewolf_Ice, EPalTribeID::Horus_Water, EPalTribeID::KendoFrog_Dark, EPalTribeID::HerculesBeetle_Ground, EPalTribeID::AmaterasuWolf_Dark, EPalTribeID::ZENITH_01, EPalTribeID::PinkRabbit_Grass, EPalTribeID::SnakeGirl, EPalTribeID::GhostAnglerfish, EPalTribeID::IceWitch, EPalTribeID::ClownRabbit, EPalTribeID::LegendDeer, EPalTribeID::LeafMomonga, EPalTribeID::SmallYeti, EPalTribeID::IceCrocodile, EPalTribeID::CactusDoll, EPalTribeID::MushroomLady, EPalTribeID::StuffedShark, EPalTribeID::FoxExorcist, EPalTribeID::IceSeal, EPalTribeID::CloverFairy, EPalTribeID::ElecPomeranian, EPalTribeID::GhostBlackCat, EPalTribeID::ThiefBird, EPalTribeID::OniGhostGirl, EPalTribeID::KingCrab, EPalTribeID::Plesiosaur, EPalTribeID::TropicalOstrich, EPalTribeID::GrassGolem, EPalTribeID::SnowPeafowl, EPalTribeID::CubeTurtle, EPalTribeID::LongCat, EPalTribeID::JellyfishGhost, EPalTribeID::ThunderFluffyBird, EPalTribeID::MoonChild, EPalTribeID::SamuraiDog, EPalTribeID::PoseidonOrca, EPalTribeID::SwordCutlassfish, EPalTribeID::YakushimaMonster001, EPalTribeID::YakushimaMonster001_Blue, EPalTribeID::YakushimaMonster001_Red, EPalTribeID::YakushimaMonster001_Purple, EPalTribeID::YakushimaMonster001_Pink, EPalTribeID::YakushimaMonster001_Rainbow, EPalTribeID::YakushimaBoss001_Small, EPalTribeID::YakushimaMonster002, EPalTribeID::YakushimaMonster003, EPalTribeID::YakushimaMonster003_Purple, EPalTribeID::YakushimaBoss001, EPalTribeID::YakushimaBoss001_Green, EPalTribeID::YakushimaBoss002, EPalTribeID::YakushimaBoss002_Hand_Left, EPalTribeID::YakushimaBoss002_Hand_Right, EPalTribeID::YakushimaBoss002_Head, EPalTribeID::RedFlowerBird, EPalTribeID::SleeveRabbit, EPalTribeID::DarkFlameFox, EPalTribeID::ClioneTwins, EPalTribeID::IceVeilDragon, EPalTribeID::NegativeOctopus_Neutral, EPalTribeID::Penguin_Electric, EPalTribeID::CaptainPenguin_Black, EPalTribeID::FlyingManta_Thunder, EPalTribeID::BluePlatypus_Fire, EPalTribeID::LazyCatfish_Gold, EPalTribeID::TentacleTurtle_Ground, EPalTribeID::BlueDragon_Ice, EPalTribeID::IceNarwhal_Fire, EPalTribeID::GhostAnglerfish_Fire, EPalTribeID::StuffedShark_Fire, EPalTribeID::YakushimaBoss001_Green_2, EPalTribeID::YakushimaBoss002_2, EPalTribeID::YakushimaBoss002_Hand_Left_2, EPalTribeID::YakushimaBoss002_Hand_Right_2, EPalTribeID::YakushimaBoss002_Head_2, EPalTribeID::MummyPal, EPalTribeID::KingSunfish, EPalTribeID::MonochromeQueen, EPalTribeID::ElecSnail, EPalTribeID::LanternButler, EPalTribeID::SumoDog, EPalTribeID::VenusFlytrap, EPalTribeID::ThunderDog_Ice, EPalTribeID::Monkey_Ice, EPalTribeID::SweetsSheep_Ground, EPalTribeID::Kirin_Ice, EPalTribeID::GhostRabbit_Grass, EPalTribeID::BlackPuppy_Ice, EPalTribeID::OctopusGirl_Neutral, EPalTribeID::NightBlueHorse_Neutral, EPalTribeID::ScorpionMan_Electric, EPalTribeID::ElecSnail_Fire, EPalTribeID::RockBeast_Ice, EPalTribeID::CactusDoll_Dark, EPalTribeID::Strawhatcat, EPalTribeID::CandleWitch, EPalTribeID::FluffyBird, EPalTribeID::FrozenBear, EPalTribeID::DandelionGirl, EPalTribeID::VolcanicTurtle, EPalTribeID::LotusDragon, EPalTribeID::BlueSkyDragon, EPalTribeID::BlueWoolRabbit, EPalTribeID::PandaGirl, EPalTribeID::GrassMinotaur, EPalTribeID::MonochromeMushroom, EPalTribeID::Mothman, EPalTribeID::GhostDragon, EPalTribeID::FlowerPrince, EPalTribeID::MedjedBird, EPalTribeID::Monkey_Fire, EPalTribeID::ElecSnail_Ground, EPalTribeID::KingSunfish_Thunder, EPalTribeID::KabukiMan, EPalTribeID::DomeArmorDragon, EPalTribeID::WorldTreeDragon, EPalTribeID::RockCheetah, EPalTribeID::ArmorWoodlouse, EPalTribeID::MexicanSalamander, EPalTribeID::LeafBird, EPalTribeID::CuteOrca, EPalTribeID::SnakeQueen, EPalTribeID::FlowerDoll_Fire, EPalTribeID::IceSeal_Ground, EPalTribeID::CubeTurtle_Neutral, EPalTribeID::SwordCutlassfish_Fire, EPalTribeID::VolcanoDragon_Ice, EPalTribeID::WhiteMoth_Neutral, EPalTribeID::WingGolem_Fire, EPalTribeID::WhiteDeer_Dark, EPalTribeID::GhostDragon_Fire, EPalTribeID::ThunderBird_Ice, EPalTribeID::GrassMinotaur_Ice, EPalTribeID::GrassGolem_Dark, EPalTribeID::Human",
+            "examples": [
+              "EPalTribeID::None",
+              "EPalTribeID::Anubis",
+              "EPalTribeID::Baphomet"
+            ]
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Action": {
+              "type": "string",
+              "enum": [
+                "Clear"
+              ],
+              "description": "\"Clear\" empties the existing array (runs before Items are appended). Only recognized value."
+            },
+            "Items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "EnumProperty EPalTribeID. Values: EPalTribeID::None, EPalTribeID::Anubis, EPalTribeID::Baphomet, EPalTribeID::Baphomet_Dark, EPalTribeID::Bastet, EPalTribeID::Bastet_Ice, EPalTribeID::Boar, EPalTribeID::Carbunclo, EPalTribeID::ColorfulBird, EPalTribeID::Deer, EPalTribeID::DrillGame, EPalTribeID::Eagle, EPalTribeID::ElecPanda, EPalTribeID::Ganesha, EPalTribeID::Garm, EPalTribeID::Gorilla, EPalTribeID::Hedgehog, EPalTribeID::Hedgehog_Ice, EPalTribeID::Kirin, EPalTribeID::Kitsunebi, EPalTribeID::LittleBriarRose, EPalTribeID::Mutant, EPalTribeID::Owl, EPalTribeID::Penguin, EPalTribeID::RaijinDaughter, EPalTribeID::SharkKid, EPalTribeID::SheepBall, EPalTribeID::Umihebi, EPalTribeID::Werewolf, EPalTribeID::WindChimes, EPalTribeID::Suzaku, EPalTribeID::Suzaku_Water, EPalTribeID::FireKirin, EPalTribeID::FairyDragon, EPalTribeID::FairyDragon_Water, EPalTribeID::SweetsSheep, EPalTribeID::WhiteTiger, EPalTribeID::Alpaca, EPalTribeID::Serpent, EPalTribeID::Serpent_Ground, EPalTribeID::DarkCrow, EPalTribeID::BlueDragon, EPalTribeID::PinkCat, EPalTribeID::NegativeKoala, EPalTribeID::FengyunDeeper, EPalTribeID::VolcanicMonster, EPalTribeID::VolcanicMonster_Ice, EPalTribeID::GhostBeast, EPalTribeID::RobinHood, EPalTribeID::LazyDragon, EPalTribeID::LazyDragon_Electric, EPalTribeID::AmaterasuWolf, EPalTribeID::LizardMan, EPalTribeID::Blueplatypus, EPalTribeID::BlackFurDragon, EPalTribeID::BeardedDragon, EPalTribeID::BirdDragon, EPalTribeID::BirdDragon_Ice, EPalTribeID::PinkKangaroo, EPalTribeID::ChickenPal, EPalTribeID::FlowerDinosaur, EPalTribeID::FlowerDinosaur_Electric, EPalTribeID::ElecCat, EPalTribeID::IceHorse, EPalTribeID::IceHorse_Dark, EPalTribeID::GrassMammoth, EPalTribeID::CatVampire, EPalTribeID::SakuraSaurus, EPalTribeID::SakuraSaurus_Water, EPalTribeID::Horus, EPalTribeID::KingBahamut, EPalTribeID::BerryGoat, EPalTribeID::IceDeer, EPalTribeID::BlackGriffon, EPalTribeID::WhiteMoth, EPalTribeID::CuteFox, EPalTribeID::FoxMage, EPalTribeID::PinkLizard, EPalTribeID::WaterLizard, EPalTribeID::ElecLion, EPalTribeID::GuardianDog, EPalTribeID::GrassDragon, EPalTribeID::WizardOwl, EPalTribeID::Kelpie, EPalTribeID::NegativeOctopus, EPalTribeID::CowPal, EPalTribeID::Yeti, EPalTribeID::Yeti_Grass, EPalTribeID::VioletFairy, EPalTribeID::HawkBird, EPalTribeID::FlowerRabbit, EPalTribeID::LilyQueen, EPalTribeID::LilyQueen_Dark, EPalTribeID::QueenBee, EPalTribeID::SoldierBee, EPalTribeID::CatBat, EPalTribeID::GrassPanda, EPalTribeID::GrassPanda_Electric, EPalTribeID::FlameBuffalo, EPalTribeID::ThunderDog, EPalTribeID::CuteMole, EPalTribeID::BlackMetalDragon, EPalTribeID::GrassRabbitMan, EPalTribeID::IceFox, EPalTribeID::JetDragon, EPalTribeID::DreamDemon, EPalTribeID::Monkey, EPalTribeID::Manticore, EPalTribeID::Manticore_Dark, EPalTribeID::KingAlpaca, EPalTribeID::PlantSlime, EPalTribeID::DarkMutant, EPalTribeID::MopBaby, EPalTribeID::MopKing, EPalTribeID::CatMage, EPalTribeID::PinkRabbit, EPalTribeID::ThunderBird, EPalTribeID::HerculesBeetle, EPalTribeID::SaintCentaur, EPalTribeID::NightFox, EPalTribeID::CaptainPenguin, EPalTribeID::WeaselDragon, EPalTribeID::SkyDragon, EPalTribeID::HadesBird, EPalTribeID::RedArmorBird, EPalTribeID::Ronin, EPalTribeID::FlyingManta, EPalTribeID::BlackCentaur, EPalTribeID::FlowerDoll, EPalTribeID::NaughtyCat, EPalTribeID::CuteButterfly, EPalTribeID::DarkScorpion, EPalTribeID::ThunderDragonMan, EPalTribeID::WoolFox, EPalTribeID::SifuDog, EPalTribeID::TentacleTurtle, EPalTribeID::BrownRabbit, EPalTribeID::FeatherOstrich, EPalTribeID::WingGolem, EPalTribeID::ScorpionMan, EPalTribeID::LazyCatfish, EPalTribeID::Deer_Ground, EPalTribeID::FireKirin_Dark, EPalTribeID::KingAlpaca_Ice, EPalTribeID::RobinHood_Ground, EPalTribeID::GrassMammoth_Ice, EPalTribeID::Kelpie_Fire, EPalTribeID::SharkKid_Fire, EPalTribeID::LizardMan_Fire, EPalTribeID::LavaGirl, EPalTribeID::FlameBambi, EPalTribeID::Umihebi_Fire, EPalTribeID::WindChimes_Ice, EPalTribeID::NightLady, EPalTribeID::VolcanoDragon, EPalTribeID::DarkAlien, EPalTribeID::LeafPrincess, EPalTribeID::WhiteAlienDragon, EPalTribeID::MushroomDragon, EPalTribeID::SmallArmadillo, EPalTribeID::KendoFrog, EPalTribeID::CandleGhost, EPalTribeID::KingWhale, EPalTribeID::HoodGhost, EPalTribeID::Sekhmet, EPalTribeID::ElecLizard, EPalTribeID::MoonQueen, EPalTribeID::NightLady_Dark, EPalTribeID::RockBeast, EPalTribeID::KingBahamut_Dragon, EPalTribeID::Gorilla_Ground, EPalTribeID::HadesBird_Electric, EPalTribeID::MushroomDragon_Dark, EPalTribeID::DarkScorpion_Ground, EPalTribeID::Ronin_Dark, EPalTribeID::CatMage_Fire, EPalTribeID::FoxMage_Dark, EPalTribeID::SkyDragon_Grass, EPalTribeID::WeaselDragon_Fire, EPalTribeID::OctopusGirl, EPalTribeID::MimicDog, EPalTribeID::IceNarwhal, EPalTribeID::JellyfishFairy, EPalTribeID::GoldenHorse, EPalTribeID::BadCatgirl, EPalTribeID::BlueberryFairy, EPalTribeID::DarkMechaDragon, EPalTribeID::GhostRabbit, EPalTribeID::NightBlueHorse, EPalTribeID::WhiteShieldDragon, EPalTribeID::BlackPuppy, EPalTribeID::WhiteDeer, EPalTribeID::MysteryMask, EPalTribeID::GrimGirl, EPalTribeID::PurpleSpider, EPalTribeID::BlueThunderHorse, EPalTribeID::SnowTigerBeastman, EPalTribeID::Kitsunebi_Ice, EPalTribeID::RaijinDaughter_Water, EPalTribeID::WhiteTiger_Ground, EPalTribeID::FengyunDeeper_Electric, EPalTribeID::BerryGoat_Dark, EPalTribeID::Werewolf_Ice, EPalTribeID::Horus_Water, EPalTribeID::KendoFrog_Dark, EPalTribeID::HerculesBeetle_Ground, EPalTribeID::AmaterasuWolf_Dark, EPalTribeID::ZENITH_01, EPalTribeID::PinkRabbit_Grass, EPalTribeID::SnakeGirl, EPalTribeID::GhostAnglerfish, EPalTribeID::IceWitch, EPalTribeID::ClownRabbit, EPalTribeID::LegendDeer, EPalTribeID::LeafMomonga, EPalTribeID::SmallYeti, EPalTribeID::IceCrocodile, EPalTribeID::CactusDoll, EPalTribeID::MushroomLady, EPalTribeID::StuffedShark, EPalTribeID::FoxExorcist, EPalTribeID::IceSeal, EPalTribeID::CloverFairy, EPalTribeID::ElecPomeranian, EPalTribeID::GhostBlackCat, EPalTribeID::ThiefBird, EPalTribeID::OniGhostGirl, EPalTribeID::KingCrab, EPalTribeID::Plesiosaur, EPalTribeID::TropicalOstrich, EPalTribeID::GrassGolem, EPalTribeID::SnowPeafowl, EPalTribeID::CubeTurtle, EPalTribeID::LongCat, EPalTribeID::JellyfishGhost, EPalTribeID::ThunderFluffyBird, EPalTribeID::MoonChild, EPalTribeID::SamuraiDog, EPalTribeID::PoseidonOrca, EPalTribeID::SwordCutlassfish, EPalTribeID::YakushimaMonster001, EPalTribeID::YakushimaMonster001_Blue, EPalTribeID::YakushimaMonster001_Red, EPalTribeID::YakushimaMonster001_Purple, EPalTribeID::YakushimaMonster001_Pink, EPalTribeID::YakushimaMonster001_Rainbow, EPalTribeID::YakushimaBoss001_Small, EPalTribeID::YakushimaMonster002, EPalTribeID::YakushimaMonster003, EPalTribeID::YakushimaMonster003_Purple, EPalTribeID::YakushimaBoss001, EPalTribeID::YakushimaBoss001_Green, EPalTribeID::YakushimaBoss002, EPalTribeID::YakushimaBoss002_Hand_Left, EPalTribeID::YakushimaBoss002_Hand_Right, EPalTribeID::YakushimaBoss002_Head, EPalTribeID::RedFlowerBird, EPalTribeID::SleeveRabbit, EPalTribeID::DarkFlameFox, EPalTribeID::ClioneTwins, EPalTribeID::IceVeilDragon, EPalTribeID::NegativeOctopus_Neutral, EPalTribeID::Penguin_Electric, EPalTribeID::CaptainPenguin_Black, EPalTribeID::FlyingManta_Thunder, EPalTribeID::BluePlatypus_Fire, EPalTribeID::LazyCatfish_Gold, EPalTribeID::TentacleTurtle_Ground, EPalTribeID::BlueDragon_Ice, EPalTribeID::IceNarwhal_Fire, EPalTribeID::GhostAnglerfish_Fire, EPalTribeID::StuffedShark_Fire, EPalTribeID::YakushimaBoss001_Green_2, EPalTribeID::YakushimaBoss002_2, EPalTribeID::YakushimaBoss002_Hand_Left_2, EPalTribeID::YakushimaBoss002_Hand_Right_2, EPalTribeID::YakushimaBoss002_Head_2, EPalTribeID::MummyPal, EPalTribeID::KingSunfish, EPalTribeID::MonochromeQueen, EPalTribeID::ElecSnail, EPalTribeID::LanternButler, EPalTribeID::SumoDog, EPalTribeID::VenusFlytrap, EPalTribeID::ThunderDog_Ice, EPalTribeID::Monkey_Ice, EPalTribeID::SweetsSheep_Ground, EPalTribeID::Kirin_Ice, EPalTribeID::GhostRabbit_Grass, EPalTribeID::BlackPuppy_Ice, EPalTribeID::OctopusGirl_Neutral, EPalTribeID::NightBlueHorse_Neutral, EPalTribeID::ScorpionMan_Electric, EPalTribeID::ElecSnail_Fire, EPalTribeID::RockBeast_Ice, EPalTribeID::CactusDoll_Dark, EPalTribeID::Strawhatcat, EPalTribeID::CandleWitch, EPalTribeID::FluffyBird, EPalTribeID::FrozenBear, EPalTribeID::DandelionGirl, EPalTribeID::VolcanicTurtle, EPalTribeID::LotusDragon, EPalTribeID::BlueSkyDragon, EPalTribeID::BlueWoolRabbit, EPalTribeID::PandaGirl, EPalTribeID::GrassMinotaur, EPalTribeID::MonochromeMushroom, EPalTribeID::Mothman, EPalTribeID::GhostDragon, EPalTribeID::FlowerPrince, EPalTribeID::MedjedBird, EPalTribeID::Monkey_Fire, EPalTribeID::ElecSnail_Ground, EPalTribeID::KingSunfish_Thunder, EPalTribeID::KabukiMan, EPalTribeID::DomeArmorDragon, EPalTribeID::WorldTreeDragon, EPalTribeID::RockCheetah, EPalTribeID::ArmorWoodlouse, EPalTribeID::MexicanSalamander, EPalTribeID::LeafBird, EPalTribeID::CuteOrca, EPalTribeID::SnakeQueen, EPalTribeID::FlowerDoll_Fire, EPalTribeID::IceSeal_Ground, EPalTribeID::CubeTurtle_Neutral, EPalTribeID::SwordCutlassfish_Fire, EPalTribeID::VolcanoDragon_Ice, EPalTribeID::WhiteMoth_Neutral, EPalTribeID::WingGolem_Fire, EPalTribeID::WhiteDeer_Dark, EPalTribeID::GhostDragon_Fire, EPalTribeID::ThunderBird_Ice, EPalTribeID::GrassMinotaur_Ice, EPalTribeID::GrassGolem_Dark, EPalTribeID::Human",
+                "examples": [
+                  "EPalTribeID::None",
+                  "EPalTribeID::Anubis",
+                  "EPalTribeID::Baphomet"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "ArrayProperty: a plain array REPLACES the game array; {\"Items\": [...]} APPENDS (optional \"Action\": \"Clear\" first empties it) — both are valid PalSchema — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "WorkableSizeMin": {
+      "type": "string",
+      "description": "EnumProperty EPalSizeType. Values: EPalSizeType::None, EPalSizeType::XS, EPalSizeType::S, EPalSizeType::M, EPalSizeType::L, EPalSizeType::XL — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalSizeType::None",
+        "EPalSizeType::XS",
+        "EPalSizeType::S"
+      ]
+    },
+    "WorkableSizeMax": {
+      "type": "string",
+      "description": "EnumProperty EPalSizeType. Values: EPalSizeType::None, EPalSizeType::XS, EPalSizeType::S, EPalSizeType::M, EPalSizeType::L, EPalSizeType::XL — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalSizeType::None",
+        "EPalSizeType::XS",
+        "EPalSizeType::S"
+      ]
+    },
+    "WorkType": {
+      "type": "string",
+      "examples": [
+        "EPalWorkType::None",
+        "EPalWorkType::CommonTemp",
+        "EPalWorkType::Smelting"
+      ],
+      "description": "Enum-like value. Examples: EPalWorkType::None, EPalWorkType::CommonTemp, EPalWorkType::Smelting, EPalWorkType::Defense"
+    },
+    "WorkActionType": {
+      "type": "string",
+      "examples": [
+        "EPalActionType::None",
+        "EPalActionType::CommonWork",
+        "EPalActionType::GenerateEnergyFire"
+      ],
+      "description": "Enum-like value. Examples: EPalActionType::None, EPalActionType::CommonWork, EPalActionType::GenerateEnergyFire, EPalActionType::Feeding"
+    },
+    "WorkerMaxNum": {
+      "type": "number",
+      "examples": [
+        0,
+        1,
+        2
+      ],
+      "description": "Example: 0"
+    },
+    "AffectSanityValue": {
+      "type": "number",
+      "examples": [
+        -0.08,
+        -0.11,
+        -0.2
+      ],
+      "description": "Example: -0.08"
+    },
+    "AffectFullStomachValue": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MultiWorkSuitability1": {
+      "type": "string",
+      "description": "EnumProperty EPalWorkSuitability. Values: EPalWorkSuitability::None, EPalWorkSuitability::EmitFlame, EPalWorkSuitability::Watering, EPalWorkSuitability::Seeding, EPalWorkSuitability::GenerateElectricity, EPalWorkSuitability::Handcraft, EPalWorkSuitability::Collection, EPalWorkSuitability::Deforest, EPalWorkSuitability::Mining, EPalWorkSuitability::OilExtraction, EPalWorkSuitability::ProductMedicine, EPalWorkSuitability::Cool, EPalWorkSuitability::Transport, EPalWorkSuitability::MonsterFarm, EPalWorkSuitability::Anyone, EPalWorkSuitability::MAX — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalWorkSuitability::None",
+        "EPalWorkSuitability::EmitFlame",
+        "EPalWorkSuitability::Watering"
+      ]
+    },
+    "MultiWorkType1": {
+      "type": "string",
+      "description": "EnumProperty EPalWorkType. Values: EPalWorkType::None, EPalWorkType::CommonTemp, EPalWorkType::ReviveCharacter, EPalWorkType::Architecture, EPalWorkType::RepairBuildObject, EPalWorkType::FarmHarvest, EPalWorkType::HarvestLevelObject, EPalWorkType::TransportFoodItemInBaseCamp, EPalWorkType::Seeding, EPalWorkType::Watering, EPalWorkType::Cooking, EPalWorkType::TransportDisposableItemInBaseCamp, EPalWorkType::ConvertItem, EPalWorkType::ProductItem, EPalWorkType::Smelting, EPalWorkType::ProductMedicine, EPalWorkType::TransportItemInBaseCamp, EPalWorkType::CollectResourcePickable, EPalWorkType::ProductResource_Deforest, EPalWorkType::ProductResource_Mining, EPalWorkType::ProductResource_Deforest_OnFacility, EPalWorkType::ProductResource_Mining_OnFacility, EPalWorkType::GenerateEnergy, EPalWorkType::Ignition, EPalWorkType::Defense, EPalWorkType::BreedFarm, EPalWorkType::MonsterFarm, EPalWorkType::ExtinguishBurn, EPalWorkType::Cool, EPalWorkType::Watering_Farm, EPalWorkType::DedicatedWork01, EPalWorkType::DedicatedWork02, EPalWorkType::DedicatedWork03, EPalWorkType::DedicatedWork04, EPalWorkType::DedicatedWork05, EPalWorkType::DedicatedWork06, EPalWorkType::DedicatedWork07, EPalWorkType::DedicatedWork08, EPalWorkType::DedicatedWork09, EPalWorkType::DedicatedWork10, EPalWorkType::LabResearch, EPalWorkType::FishPond, EPalWorkType::AncientBreedFarm, EPalWorkType::Attack, EPalWorkType::CollectItemToStorage, EPalWorkType::TransportItem, EPalWorkType::CollectResource, EPalWorkType::GrowupPromotion — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalWorkType::None",
+        "EPalWorkType::CommonTemp",
+        "EPalWorkType::ReviveCharacter"
+      ]
+    },
+    "MultiWorkActionType1": {
+      "type": "string",
+      "description": "EnumProperty EPalActionType. Values: EPalActionType::None, EPalActionType::Sleep, EPalActionType::WakeUp, EPalActionType::Death, EPalActionType::Revive, EPalActionType::Menace, EPalActionType::Eat, EPalActionType::Stan, EPalActionType::KnockBack, EPalActionType::BlowAway, EPalActionType::GeneralAttack, EPalActionType::MeleeSkill, EPalActionType::ShootSkill, EPalActionType::JumpAction, EPalActionType::RollingAction, EPalActionType::FullRideAction, EPalActionType::Turn90R, EPalActionType::Turn90L, EPalActionType::Turn180R, EPalActionType::Turn180L, EPalActionType::TurnToTarget, EPalActionType::DiscoverySomething, EPalActionType::ForwardWalk, EPalActionType::BackwardWalk, EPalActionType::Provocation, EPalActionType::CommonWork, EPalActionType::Architecture, EPalActionType::Deforest, EPalActionType::Mining, EPalActionType::Feeding, EPalActionType::GrowupPromotion, EPalActionType::Watering, EPalActionType::WateringOneshot, EPalActionType::Harvest, EPalActionType::GenerateEnergy, EPalActionType::GenerateEnergyFire, EPalActionType::GenerateEnergyElectric, EPalActionType::Cooking, EPalActionType::Happy, EPalActionType::IdleInSpa, EPalActionType::Ignition, EPalActionType::TransportItem, EPalActionType::Cool, EPalActionType::SpawnItem, EPalActionType::Resuscitation, EPalActionType::Liftup, EPalActionType::BeLiftup, EPalActionType::Throw, EPalActionType::BeThrown, EPalActionType::HumanFeeding, EPalActionType::HumanFeeding_DoMotion, EPalActionType::GetupUtubuse_orRight, EPalActionType::GetupAomuke_orRight, EPalActionType::ReturnToBaseCamp, EPalActionType::WaitLoadingAction, EPalActionType::HumanPetting, EPalActionType::PalPetting, EPalActionType::Talk, EPalActionType::Listen_A, EPalActionType::Listen_B, EPalActionType::ChairSit, EPalActionType::ChairSitMeal, EPalActionType::ChairSitDrink, EPalActionType::ChairSitMeat, EPalActionType::GroundSit, EPalActionType::SpawnOtomoPal, EPalActionType::PartnerSkill, EPalActionType::CommandPal, EPalActionType::ReturnOtomoPal, EPalActionType::Step_Forward, EPalActionType::Step_Back, EPalActionType::Step_Left, EPalActionType::Step_Right, EPalActionType::ElectricShock, EPalActionType::UnlockCagePalLock, EPalActionType::CutPalMeat, EPalActionType::Grappling, EPalActionType::PalRandomRest, EPalActionType::PalRandomRest_BaseCamp, EPalActionType::LargeDown, EPalActionType::DefenseGunner, EPalActionType::DefenseWait, EPalActionType::OpenOilrigGoalBox, EPalActionType::Mimicry, EPalActionType::MimicryEncount, EPalActionType::PlayerSitChair, EPalActionType::PlayerSitGround, EPalActionType::DigOut, EPalActionType::RunOnSpot, EPalActionType::RunOnSpot_Hard, EPalActionType::AirDash_Forward, EPalActionType::AirDash_Back, EPalActionType::AirDash_Right, EPalActionType::AirDash_Left, EPalActionType::Fishing, EPalActionType::FishingCaught_Jump, EPalActionType::FishingCaught, EPalActionType::FishingSuccess, EPalActionType::FishingSalvage, EPalActionType::FishPond, EPalActionType::PlayerLogout, EPalActionType::PlayerReviveByPartner, EPalActionType::DigOut_TreasureMapPoint, EPalActionType::BackStep, EPalActionType::SideStep_Left, EPalActionType::SideStep_Right, EPalActionType::GetOff_HorseRide, EPalActionType::GetOff_BiggerHorseRide, EPalActionType::GetOff_HumanRide, EPalActionType::GetOff_SitRide, EPalActionType::Teleport, EPalActionType::RoundStep_Left, EPalActionType::RoundStep_Right, EPalActionType::CancelJump, EPalActionType::FieldItemPickup, EPalActionType::TransformToCoopWeapon — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalActionType::None",
+        "EPalActionType::Sleep",
+        "EPalActionType::WakeUp"
+      ]
+    },
+    "MultiRequiredRank1": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MultiWorkSuitability2": {
+      "type": "string",
+      "description": "EnumProperty EPalWorkSuitability. Values: EPalWorkSuitability::None, EPalWorkSuitability::EmitFlame, EPalWorkSuitability::Watering, EPalWorkSuitability::Seeding, EPalWorkSuitability::GenerateElectricity, EPalWorkSuitability::Handcraft, EPalWorkSuitability::Collection, EPalWorkSuitability::Deforest, EPalWorkSuitability::Mining, EPalWorkSuitability::OilExtraction, EPalWorkSuitability::ProductMedicine, EPalWorkSuitability::Cool, EPalWorkSuitability::Transport, EPalWorkSuitability::MonsterFarm, EPalWorkSuitability::Anyone, EPalWorkSuitability::MAX — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalWorkSuitability::None",
+        "EPalWorkSuitability::EmitFlame",
+        "EPalWorkSuitability::Watering"
+      ]
+    },
+    "MultiWorkType2": {
+      "type": "string",
+      "description": "EnumProperty EPalWorkType. Values: EPalWorkType::None, EPalWorkType::CommonTemp, EPalWorkType::ReviveCharacter, EPalWorkType::Architecture, EPalWorkType::RepairBuildObject, EPalWorkType::FarmHarvest, EPalWorkType::HarvestLevelObject, EPalWorkType::TransportFoodItemInBaseCamp, EPalWorkType::Seeding, EPalWorkType::Watering, EPalWorkType::Cooking, EPalWorkType::TransportDisposableItemInBaseCamp, EPalWorkType::ConvertItem, EPalWorkType::ProductItem, EPalWorkType::Smelting, EPalWorkType::ProductMedicine, EPalWorkType::TransportItemInBaseCamp, EPalWorkType::CollectResourcePickable, EPalWorkType::ProductResource_Deforest, EPalWorkType::ProductResource_Mining, EPalWorkType::ProductResource_Deforest_OnFacility, EPalWorkType::ProductResource_Mining_OnFacility, EPalWorkType::GenerateEnergy, EPalWorkType::Ignition, EPalWorkType::Defense, EPalWorkType::BreedFarm, EPalWorkType::MonsterFarm, EPalWorkType::ExtinguishBurn, EPalWorkType::Cool, EPalWorkType::Watering_Farm, EPalWorkType::DedicatedWork01, EPalWorkType::DedicatedWork02, EPalWorkType::DedicatedWork03, EPalWorkType::DedicatedWork04, EPalWorkType::DedicatedWork05, EPalWorkType::DedicatedWork06, EPalWorkType::DedicatedWork07, EPalWorkType::DedicatedWork08, EPalWorkType::DedicatedWork09, EPalWorkType::DedicatedWork10, EPalWorkType::LabResearch, EPalWorkType::FishPond, EPalWorkType::AncientBreedFarm, EPalWorkType::Attack, EPalWorkType::CollectItemToStorage, EPalWorkType::TransportItem, EPalWorkType::CollectResource, EPalWorkType::GrowupPromotion — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalWorkType::None",
+        "EPalWorkType::CommonTemp",
+        "EPalWorkType::ReviveCharacter"
+      ]
+    },
+    "MultiWorkActionType2": {
+      "type": "string",
+      "description": "EnumProperty EPalActionType. Values: EPalActionType::None, EPalActionType::Sleep, EPalActionType::WakeUp, EPalActionType::Death, EPalActionType::Revive, EPalActionType::Menace, EPalActionType::Eat, EPalActionType::Stan, EPalActionType::KnockBack, EPalActionType::BlowAway, EPalActionType::GeneralAttack, EPalActionType::MeleeSkill, EPalActionType::ShootSkill, EPalActionType::JumpAction, EPalActionType::RollingAction, EPalActionType::FullRideAction, EPalActionType::Turn90R, EPalActionType::Turn90L, EPalActionType::Turn180R, EPalActionType::Turn180L, EPalActionType::TurnToTarget, EPalActionType::DiscoverySomething, EPalActionType::ForwardWalk, EPalActionType::BackwardWalk, EPalActionType::Provocation, EPalActionType::CommonWork, EPalActionType::Architecture, EPalActionType::Deforest, EPalActionType::Mining, EPalActionType::Feeding, EPalActionType::GrowupPromotion, EPalActionType::Watering, EPalActionType::WateringOneshot, EPalActionType::Harvest, EPalActionType::GenerateEnergy, EPalActionType::GenerateEnergyFire, EPalActionType::GenerateEnergyElectric, EPalActionType::Cooking, EPalActionType::Happy, EPalActionType::IdleInSpa, EPalActionType::Ignition, EPalActionType::TransportItem, EPalActionType::Cool, EPalActionType::SpawnItem, EPalActionType::Resuscitation, EPalActionType::Liftup, EPalActionType::BeLiftup, EPalActionType::Throw, EPalActionType::BeThrown, EPalActionType::HumanFeeding, EPalActionType::HumanFeeding_DoMotion, EPalActionType::GetupUtubuse_orRight, EPalActionType::GetupAomuke_orRight, EPalActionType::ReturnToBaseCamp, EPalActionType::WaitLoadingAction, EPalActionType::HumanPetting, EPalActionType::PalPetting, EPalActionType::Talk, EPalActionType::Listen_A, EPalActionType::Listen_B, EPalActionType::ChairSit, EPalActionType::ChairSitMeal, EPalActionType::ChairSitDrink, EPalActionType::ChairSitMeat, EPalActionType::GroundSit, EPalActionType::SpawnOtomoPal, EPalActionType::PartnerSkill, EPalActionType::CommandPal, EPalActionType::ReturnOtomoPal, EPalActionType::Step_Forward, EPalActionType::Step_Back, EPalActionType::Step_Left, EPalActionType::Step_Right, EPalActionType::ElectricShock, EPalActionType::UnlockCagePalLock, EPalActionType::CutPalMeat, EPalActionType::Grappling, EPalActionType::PalRandomRest, EPalActionType::PalRandomRest_BaseCamp, EPalActionType::LargeDown, EPalActionType::DefenseGunner, EPalActionType::DefenseWait, EPalActionType::OpenOilrigGoalBox, EPalActionType::Mimicry, EPalActionType::MimicryEncount, EPalActionType::PlayerSitChair, EPalActionType::PlayerSitGround, EPalActionType::DigOut, EPalActionType::RunOnSpot, EPalActionType::RunOnSpot_Hard, EPalActionType::AirDash_Forward, EPalActionType::AirDash_Back, EPalActionType::AirDash_Right, EPalActionType::AirDash_Left, EPalActionType::Fishing, EPalActionType::FishingCaught_Jump, EPalActionType::FishingCaught, EPalActionType::FishingSuccess, EPalActionType::FishingSalvage, EPalActionType::FishPond, EPalActionType::PlayerLogout, EPalActionType::PlayerReviveByPartner, EPalActionType::DigOut_TreasureMapPoint, EPalActionType::BackStep, EPalActionType::SideStep_Left, EPalActionType::SideStep_Right, EPalActionType::GetOff_HorseRide, EPalActionType::GetOff_BiggerHorseRide, EPalActionType::GetOff_HumanRide, EPalActionType::GetOff_SitRide, EPalActionType::Teleport, EPalActionType::RoundStep_Left, EPalActionType::RoundStep_Right, EPalActionType::CancelJump, EPalActionType::FieldItemPickup, EPalActionType::TransformToCoopWeapon — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalActionType::None",
+        "EPalActionType::Sleep",
+        "EPalActionType::WakeUp"
+      ]
+    },
+    "MultiRequiredRank2": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+# palschema-ci.yml — drop this into YOUR PalSchema mod repo as
+#   .github/workflows/palschema-ci.yml
+# It validates every PalSchema mod .json/.jsonc in mods/ against the
+# palschema-hub schema registry on each push and pull request.
+#
+# Adjust:
+#   --version   to your target Palworld version (must exist in the registry)
+#   mods/       to wherever your PalSchema .json/.jsonc files live
+name: PalSchema Validate
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Fails the job (exit 1) if any mod file has a schema error.
+      - run: npx palschema-validate --version 1.0 mods/

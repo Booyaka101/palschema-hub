@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_StatusEffectFood.schema.json",
+  "title": "DT_StatusEffectFood",
+  "description": "Palworld DataTable DT_StatusEffectFood (row struct: PalStatusEffectFoodDataRow). Each PalSchema mod patch targeting \"DT_StatusEffectFood\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_StatusEffectFood | rowStruct=PalStatusEffectFoodDataRow | palworldVersion=1.0 | fields=7 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=EffectTime,Interaval1,Interaval2 | droppedRemovedFields=effectTime",
+  "type": "object",
+  "properties": {
+    "EffectTime": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "EffectType1": {
+      "type": "string",
+      "examples": [
+        "EPalFoodStatusEffectType::None",
+        "EPalFoodStatusEffectType::WorkSpeed",
+        "EPalFoodStatusEffectType::Attack"
+      ],
+      "description": "Enum-like value. Examples: EPalFoodStatusEffectType::None, EPalFoodStatusEffectType::WorkSpeed, EPalFoodStatusEffectType::Attack, EPalFoodStatusEffectType::HungerResist"
+    },
+    "EffectValue1": {
+      "type": "number",
+      "examples": [
+        0,
+        30,
+        10
+      ],
+      "description": "Example: 0"
+    },
+    "Interaval1": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "EffectType2": {
+      "type": "string",
+      "examples": [
+        "EPalFoodStatusEffectType::None",
+        "EPalFoodStatusEffectType::Attack",
+        "EPalFoodStatusEffectType::Defense"
+      ],
+      "description": "Enum-like value. Examples: EPalFoodStatusEffectType::None, EPalFoodStatusEffectType::Attack, EPalFoodStatusEffectType::Defense, EPalFoodStatusEffectType::HungerResist"
+    },
+    "EffectValue2": {
+      "type": "number",
+      "examples": [
+        0,
+        10,
+        25
+      ],
+      "description": "Example: 0"
+    },
+    "Interaval2": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

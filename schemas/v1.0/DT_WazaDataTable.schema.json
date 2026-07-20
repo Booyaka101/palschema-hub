@@ -1,0 +1,339 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_WazaDataTable.schema.json",
+  "title": "DT_WazaDataTable",
+  "description": "Palworld DataTable DT_WazaDataTable (row struct: PalWazaDatabaseRaw). Each PalSchema mod patch targeting \"DT_WazaDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_WazaDataTable | rowStruct=PalWazaDatabaseRaw | palworldVersion=1.0 | fields=27 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=DisplayPower,IgnoreRaycast,MaxHeightDiff,WazaCustomExecuteConditions,bIsExplosionDamage,Strength,BulletEmiiterOverlapClass",
+  "type": "object",
+  "properties": {
+    "WazaType": {
+      "type": "string",
+      "examples": [
+        "EPalWazaID::TidalWave",
+        "EPalWazaID::WaterWave",
+        "EPalWazaID::AquaJet"
+      ],
+      "description": "Enum-like value. Examples: EPalWazaID::TidalWave, EPalWazaID::WaterWave, EPalWazaID::AquaJet, EPalWazaID::WaterGun"
+    },
+    "Element": {
+      "type": "string",
+      "examples": [
+        "EPalElementType::Water",
+        "EPalElementType::Normal",
+        "EPalElementType::Leaf"
+      ],
+      "description": "Enum-like value. Examples: EPalElementType::Water, EPalElementType::Normal, EPalElementType::Leaf, EPalElementType::Ice"
+    },
+    "IgnoreRandomInherit": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "Category": {
+      "type": "string",
+      "examples": [
+        "EPalWazaCategory::Shot",
+        "EPalWazaCategory::Melee"
+      ],
+      "description": "Enum-like value. Examples: EPalWazaCategory::Shot, EPalWazaCategory::Melee"
+    },
+    "Power": {
+      "type": "number",
+      "examples": [
+        1,
+        30,
+        40
+      ],
+      "description": "Example: 1"
+    },
+    "DisplayPower": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "IsLeanBack": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "CameraShake": {
+      "type": "string",
+      "examples": [
+        "EPalPlayerDamageCameraShakeCategory::Waza_M",
+        "EPalPlayerDamageCameraShakeCategory::Waza_S",
+        "EPalPlayerDamageCameraShakeCategory::Waza_L"
+      ],
+      "description": "Enum-like value. Examples: EPalPlayerDamageCameraShakeCategory::Waza_M, EPalPlayerDamageCameraShakeCategory::Waza_S, EPalPlayerDamageCameraShakeCategory::Waza_L"
+    },
+    "IgnoreRaycast": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MinRange": {
+      "type": "number",
+      "examples": [
+        100,
+        700,
+        500
+      ],
+      "description": "Example: 100"
+    },
+    "MaxRange": {
+      "type": "number",
+      "examples": [
+        1000,
+        1500,
+        5000
+      ],
+      "description": "Example: 1000"
+    },
+    "MaxHeightDiff": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "CoolTime": {
+      "type": "number",
+      "examples": [
+        15,
+        5,
+        2
+      ],
+      "description": "Example: 15"
+    },
+    "ForceRagdollSize": {
+      "type": "string",
+      "examples": [
+        "EPalSizeType::None",
+        "EPalSizeType::S",
+        "EPalSizeType::XS"
+      ],
+      "description": "Enum-like value. Examples: EPalSizeType::None, EPalSizeType::S, EPalSizeType::XS, EPalSizeType::XL"
+    },
+    "EffectType1": {
+      "type": "string",
+      "examples": [
+        "EPalAdditionalEffectType::Wetness",
+        "EPalAdditionalEffectType::None",
+        "EPalAdditionalEffectType::Stun"
+      ],
+      "description": "Enum-like value. Examples: EPalAdditionalEffectType::Wetness, EPalAdditionalEffectType::None, EPalAdditionalEffectType::Stun, EPalAdditionalEffectType::Burn"
+    },
+    "EffectValue1": {
+      "type": "number",
+      "examples": [
+        80,
+        0,
+        35
+      ],
+      "description": "Example: 80"
+    },
+    "EffectValueEx1": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "EffectType2": {
+      "type": "string",
+      "examples": [
+        "EPalAdditionalEffectType::None",
+        "EPalAdditionalEffectType::Stun"
+      ],
+      "description": "Enum-like value. Examples: EPalAdditionalEffectType::None, EPalAdditionalEffectType::Stun"
+    },
+    "EffectValue2": {
+      "type": "number",
+      "examples": [
+        0,
+        20
+      ],
+      "description": "Example: 0"
+    },
+    "EffectValueEx2": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "SpecialAttackRateInfos": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Type": {
+                "type": "string",
+                "examples": [
+                  "EPalSpecialAttackRateType::vsWood",
+                  "EPalSpecialAttackRateType::vsStone"
+                ],
+                "description": "Enum-like value. Examples: EPalSpecialAttackRateType::vsWood, EPalSpecialAttackRateType::vsStone"
+              },
+              "Rate": {
+                "type": "number",
+                "examples": [
+                  1.5,
+                  1.1,
+                  3
+                ],
+                "description": "Example: 1.5"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Action": {
+              "type": "string",
+              "enum": [
+                "Clear"
+              ],
+              "description": "\"Clear\" empties the existing array (runs before Items are appended). Only recognized value."
+            },
+            "Items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "Type": {
+                    "type": "string",
+                    "examples": [
+                      "EPalSpecialAttackRateType::vsWood",
+                      "EPalSpecialAttackRateType::vsStone"
+                    ],
+                    "description": "Enum-like value. Examples: EPalSpecialAttackRateType::vsWood, EPalSpecialAttackRateType::vsStone"
+                  },
+                  "Rate": {
+                    "type": "number",
+                    "examples": [
+                      1.5,
+                      1.1,
+                      3
+                    ],
+                    "description": "Example: 1.5"
+                  }
+                },
+                "additionalProperties": true
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "ArrayProperty: a plain array REPLACES the game array; {\"Items\": [...]} APPENDS (optional \"Action\": \"Clear\" first empties it) — both are valid PalSchema"
+    },
+    "bIsWeaponDamage": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "WazaCustomExecuteConditions": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "description": "StructProperty (FPalWazaCustomExecuteCondition)",
+            "properties": {
+              "Type": {
+                "type": "string",
+                "description": "EnumProperty EPalWazaExecuteConditionType. Values: EPalWazaExecuteConditionType::None, EPalWazaExecuteConditionType::HPBelow, EPalWazaExecuteConditionType::GroundHeightDiff",
+                "examples": [
+                  "EPalWazaExecuteConditionType::None",
+                  "EPalWazaExecuteConditionType::HPBelow",
+                  "EPalWazaExecuteConditionType::GroundHeightDiff"
+                ]
+              },
+              "Value": {
+                "type": "number",
+                "description": "FloatProperty"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        {
+          "type": "object",
+          "properties": {
+            "Action": {
+              "type": "string",
+              "enum": [
+                "Clear"
+              ],
+              "description": "\"Clear\" empties the existing array (runs before Items are appended). Only recognized value."
+            },
+            "Items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "description": "StructProperty (FPalWazaCustomExecuteCondition)",
+                "properties": {
+                  "Type": {
+                    "type": "string",
+                    "description": "EnumProperty EPalWazaExecuteConditionType. Values: EPalWazaExecuteConditionType::None, EPalWazaExecuteConditionType::HPBelow, EPalWazaExecuteConditionType::GroundHeightDiff",
+                    "examples": [
+                      "EPalWazaExecuteConditionType::None",
+                      "EPalWazaExecuteConditionType::HPBelow",
+                      "EPalWazaExecuteConditionType::GroundHeightDiff"
+                    ]
+                  },
+                  "Value": {
+                    "type": "number",
+                    "description": "FloatProperty"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "ArrayProperty: a plain array REPLACES the game array; {\"Items\": [...]} APPENDS (optional \"Action\": \"Clear\" first empties it) — both are valid PalSchema — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "bIsExplosionDamage": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "DisabledData": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "Strength": {
+      "type": "string",
+      "description": "EnumProperty EPalWazaStrength. Values: EPalWazaStrength::None, EPalWazaStrength::Weak, EPalWazaStrength::Medium, EPalWazaStrength::Strong — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalWazaStrength::None",
+        "EPalWazaStrength::Weak",
+        "EPalWazaStrength::Medium"
+      ]
+    },
+    "BulletEmiiterOverlapClass": {
+      "type": [
+        "object",
+        "string"
+      ],
+      "description": "Asset/class reference (TSubclassOf<UPalWazaBulletEmiiterOverlapBase>) — string asset path or exported object form — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

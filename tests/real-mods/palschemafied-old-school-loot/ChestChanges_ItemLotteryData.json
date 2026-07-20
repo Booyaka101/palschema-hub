@@ -1,0 +1,321 @@
+{
+    "DT_ItemLotteryDataTable": {
+        "OSL_Grass02_1": {
+            "FieldName": "Grass02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_Seeding",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "OSL_Grass02_2": {
+            "FieldName": "Grass02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_Collection",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "OSL_Forest02_1": {
+            "FieldName": "Forest02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_Deforest",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "OSL_Forest02_2": {
+            "FieldName": "Forest02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_ProductMedicine",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "2136": {
+            "MinNum": 11
+        },
+
+        "2137": {
+            "SlotNo": 4
+        },
+
+        "2138": {
+            "SlotNo": 4
+        },
+
+        "2139": {
+            "SlotNo": 4
+        },
+
+        "2149": {
+            "MinNum": 11
+        },
+
+        "2150": {
+            "SlotNo": 4
+        },
+
+        "2151": {
+            "SlotNo": 4
+        },
+
+        "2152": {
+            "SlotNo": 4
+        },
+
+        "2162": {
+            "MinNum": 11
+        },
+
+        "2163": {
+            "SlotNo": 4
+        },
+
+        "2164": {
+            "SlotNo": 4
+        },
+
+        "2165": {
+            "SlotNo": 4
+        },
+
+        "2166": {
+            "SlotNo": 4
+        },
+
+        "OSL_Desert02_1": {
+            "FieldName": "Desert02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_GenerateElectricity",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "OSL_Desert02_2": {
+            "FieldName": "Desert02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_Transport",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "2180": {
+            "MinNum": 16,
+            "MaxNum": 20
+        },
+
+        "2181": {
+            "SlotNo": 4
+        },
+
+        "2182": {
+            "SlotNo": 4
+        },
+
+        "2183": {
+            "SlotNo": 4
+        },
+
+        "2195": {
+            "MinNum": 16,
+            "MaxNum": 20
+        },
+
+        "2196": {
+            "SlotNo": 4
+        },
+
+        "2197": {
+            "SlotNo": 4
+        },
+
+        "2198": {
+            "SlotNo": 4
+        },
+
+        "2209": {
+            "MinNum": 16,
+            "MaxNum": 20
+        },
+
+        "2210": {
+            "SlotNo": 4
+        },
+
+        "2211": {
+            "SlotNo": 4
+        },
+
+        "2212": {
+            "SlotNo": 4
+        },
+
+        "2213": {
+            "SlotNo": 4
+        },
+
+        "OSL_Volcano02_1": {
+            "FieldName": "Volcano02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_EmitFlame",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "OSL_Volcano02_2": {
+            "FieldName": "Volcano02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_Mining",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "OSL_Snow02_1": {
+            "FieldName": "Snow02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_Cool",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "OSL_Snow02_2": {
+            "FieldName": "Snow02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_Watering",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "OSL_Sakurajima02_1": {
+            "FieldName": "Sakurajima02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "WorkSuitability_AddTicket_Transport",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade1"
+        },
+
+        "2227": {
+            "MinNum": 26,
+            "MaxNum": 30
+        },
+
+        "2228": {
+            "SlotNo": 4
+        },
+
+        "2229": {
+            "SlotNo": 4
+        },
+
+        "2230": {
+            "SlotNo": 4
+        },
+
+        "2242": {
+            "MinNum": 26,
+            "MaxNum": 30
+        },
+
+        "2243": {
+            "SlotNo": 4
+        },
+
+        "2244": {
+            "SlotNo": 4
+        },
+
+        "2245": {
+            "SlotNo": 4
+        },
+
+        "2256": {
+            "SlotNo": 2,
+            "WeightInSlot": 30.0,
+            "MinNum": 26,
+            "MaxNum": 30
+        },
+
+        "2257": {
+            "SlotNo": 4
+        },
+
+        "2258": {
+            "SlotNo": 4
+        },
+
+        "2259": {
+            "SlotNo": 4
+        },
+
+        "2260": {
+            "SlotNo": 4
+        },
+
+        "OSL_DarkIsland02_1": {
+            "FieldName": "DarkIsland02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit_hp_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade3"
+        },
+
+        "OSL_DarkIsland02_2": {
+            "FieldName": "DarkIsland02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit_attack_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade3"
+        },
+
+        "OSL_DarkIsland02_3": {
+            "FieldName": "DarkIsland02",
+            "SlotNo": 15,
+            "WeightInSlot": 1.0,
+            "StaticItemId": "Fruit__defense_01",
+            "MinNum": 1,
+            "MaxNum": 1,
+            "NumUnit": 1,
+            "TreasureBoxGrade": "EPalMapObjectTreasureGradeType::Grade3"
+        }
+    }
+}

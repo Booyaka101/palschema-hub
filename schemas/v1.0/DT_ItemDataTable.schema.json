@@ -1,0 +1,446 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_ItemDataTable.schema.json",
+  "title": "DT_ItemDataTable",
+  "description": "Palworld DataTable DT_ItemDataTable (row struct: PalStaticItemDataStruct). Each PalSchema mod patch targeting \"DT_ItemDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_ItemDataTable | rowStruct=PalStaticItemDataStruct | palworldVersion=1.0 | fields=53 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=SortId,bNotAvailableInPVP,bLegalInGame,PassiveSkillName2,PassiveSkillName3,PassiveSkillName4 | droppedRemovedFields=SortID",
+  "type": "object",
+  "properties": {
+    "OverrideName": {
+      "type": "string",
+      "examples": [
+        "None",
+        "ITEM_NAME_NPC_WEAPON",
+        "ITEM_NAME_PV_ITEMS"
+      ],
+      "description": "Example: \"None\""
+    },
+    "OverrideDescription": {
+      "type": "string",
+      "examples": [
+        "None",
+        "ITEM_DESC_DebugHandgun",
+        "ITEM_DESC_GrapplingGun_1"
+      ],
+      "description": "Example: \"None\""
+    },
+    "IconName": {
+      "type": "string",
+      "examples": [
+        "Money",
+        "AnimalSkin",
+        "AnimalSkin2"
+      ],
+      "description": "Example: \"Money\""
+    },
+    "TypeA": {
+      "type": "string",
+      "examples": [
+        "EPalItemTypeA::Material",
+        "EPalItemTypeA::Ammo",
+        "EPalItemTypeA::Weapon"
+      ],
+      "description": "Enum-like value. Examples: EPalItemTypeA::Material, EPalItemTypeA::Ammo, EPalItemTypeA::Weapon, EPalItemTypeA::Food"
+    },
+    "TypeB": {
+      "type": "string",
+      "examples": [
+        "EPalItemTypeB::Money",
+        "EPalItemTypeB::MaterialMonster",
+        "EPalItemTypeB::ConsumeBullet"
+      ],
+      "description": "Enum-like value. Examples: EPalItemTypeB::Money, EPalItemTypeB::MaterialMonster, EPalItemTypeB::ConsumeBullet, EPalItemTypeB::WeaponAssaultRifle"
+    },
+    "Rank": {
+      "type": "number",
+      "examples": [
+        1,
+        3,
+        2
+      ],
+      "description": "Example: 1"
+    },
+    "Rarity": {
+      "type": "number",
+      "examples": [
+        0,
+        1,
+        2
+      ],
+      "description": "Example: 0"
+    },
+    "MaxStackCount": {
+      "type": "number",
+      "examples": [
+        99999999,
+        9999,
+        1
+      ],
+      "description": "Example: 99999999"
+    },
+    "Weight": {
+      "type": "number",
+      "examples": [
+        0,
+        1,
+        3
+      ],
+      "description": "Example: 0"
+    },
+    "Price": {
+      "type": "number",
+      "examples": [
+        1,
+        140,
+        10
+      ],
+      "description": "Example: 1"
+    },
+    "SortId": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "bInTreasureBox": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "bNotConsumed": {
+      "type": "boolean",
+      "examples": [
+        true,
+        false
+      ],
+      "description": "Example: true"
+    },
+    "bNotAvailableInPVP": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "bEnableHandcraft": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "bLegalInGame": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "TechnologyTreeLock": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "ItemStaticClass": {
+      "type": "string",
+      "examples": [
+        "None",
+        "CommonWeapon",
+        "CommonConsume"
+      ],
+      "description": "Example: \"None\""
+    },
+    "ItemDynamicClass": {
+      "type": "string",
+      "examples": [
+        "None",
+        "CommonWeapon",
+        "CommonArmor"
+      ],
+      "description": "Example: \"None\""
+    },
+    "ItemActorClass": {
+      "type": "string",
+      "examples": [
+        "None",
+        "NormalRifle",
+        "Axe_Tier_00"
+      ],
+      "description": "Example: \"None\""
+    },
+    "ItemStaticMeshName": {
+      "type": "string",
+      "examples": [
+        "None",
+        "CopperOre",
+        "PalSphere"
+      ],
+      "description": "Example: \"None\""
+    },
+    "VisualBlueprintClassName": {
+      "type": "string",
+      "examples": [
+        "BP_Item_CoinGold",
+        "None",
+        "BP_Item_Arrow"
+      ],
+      "description": "Example: \"BP_Item_CoinGold\""
+    },
+    "VisualBlueprintClassSoft": {
+      "type": "object",
+      "properties": {
+        "AssetPathName": {
+          "type": "string",
+          "examples": [
+            "/Game/Pal/Blueprint/Item/VisualModel/BP_Item_CoinGold.BP_Item_CoinGold_C",
+            "None",
+            "/Game/Pal/Blueprint/Item/VisualModel/BP_Item_Arrow.BP_Item_Arrow_C"
+          ],
+          "description": "Example: \"/Game/Pal/Blueprint/Item/VisualModel/BP_Item_CoinGold.BP_Item_CoinGold_C\""
+        },
+        "SubPathString": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "examples": [
+            ""
+          ],
+          "description": "Example: \"\""
+        }
+      },
+      "additionalProperties": true
+    },
+    "DropItemType": {
+      "type": "string",
+      "examples": [
+        "EPalDropItemType::None",
+        "EPalDropItemType::UNKO"
+      ],
+      "description": "Enum-like value. Examples: EPalDropItemType::None, EPalDropItemType::UNKO"
+    },
+    "Editor_RowNameHash": {
+      "type": "number",
+      "examples": [
+        -177975809,
+        176638415,
+        45975976
+      ],
+      "description": "Example: -177975809"
+    },
+    "RestoreSatiety": {
+      "type": "number",
+      "examples": [
+        0,
+        15,
+        20
+      ],
+      "description": "Example: 0"
+    },
+    "RestoreConcentration": {
+      "type": "number",
+      "examples": [
+        0,
+        100
+      ],
+      "description": "Example: 0"
+    },
+    "RestoreSanity": {
+      "type": "number",
+      "examples": [
+        0,
+        1,
+        3
+      ],
+      "description": "Example: 0"
+    },
+    "RestoreHealth": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "GrantEffect1Id": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "GrantEffect1Time": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "GrantEffect2Id": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "GrantEffect2Time": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "GrantEffect3Id": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "GrantEffect3Time": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "Durability": {
+      "type": "number",
+      "examples": [
+        0,
+        3000,
+        150
+      ],
+      "description": "Example: 0"
+    },
+    "ElementType": {
+      "type": "string",
+      "examples": [
+        "EPalElementType::None"
+      ],
+      "description": "Enum-like value. Examples: EPalElementType::None"
+    },
+    "bSleepWeapon": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "MagazineSize": {
+      "type": "number",
+      "examples": [
+        0,
+        20,
+        1
+      ],
+      "description": "Example: 0"
+    },
+    "SneakAttackRate": {
+      "type": "number",
+      "examples": [
+        1,
+        100,
+        0
+      ],
+      "description": "Example: 1"
+    },
+    "PhysicalAttackValue": {
+      "type": "number",
+      "examples": [
+        0,
+        320,
+        20
+      ],
+      "description": "Example: 0"
+    },
+    "HPValue": {
+      "type": "number",
+      "examples": [
+        0,
+        10,
+        70
+      ],
+      "description": "Example: 0"
+    },
+    "PhysicalDefenseValue": {
+      "type": "number",
+      "examples": [
+        0,
+        5,
+        15
+      ],
+      "description": "Example: 0"
+    },
+    "ShieldValue": {
+      "type": "number",
+      "examples": [
+        0,
+        100,
+        260
+      ],
+      "description": "Example: 0"
+    },
+    "MagicAttackValue": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "MagicDefenseValue": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "PassiveSkillName": {
+      "type": "string",
+      "examples": [
+        "None",
+        "TemperatureResist_Cold1",
+        "HP_ACC_up1"
+      ],
+      "description": "Example: \"None\""
+    },
+    "PassiveSkillName2": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "PassiveSkillName3": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "PassiveSkillName4": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "WazaID": {
+      "type": "string",
+      "examples": [
+        "EPalWazaID::None",
+        "EPalWazaID::PowerShot",
+        "EPalWazaID::PowerBall"
+      ],
+      "description": "Enum-like value. Examples: EPalWazaID::None, EPalWazaID::PowerShot, EPalWazaID::PowerBall, EPalWazaID::HyperBeam"
+    },
+    "CorruptionFactor": {
+      "type": "number",
+      "examples": [
+        0,
+        0.16666667,
+        0.33333334
+      ],
+      "description": "Example: 0"
+    },
+    "FloatValue1": {
+      "type": "number",
+      "examples": [
+        0,
+        1000,
+        1
+      ],
+      "description": "Example: 0"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

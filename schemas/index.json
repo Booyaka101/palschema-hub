@@ -1,0 +1,42 @@
+{
+  "description": "palschema-hub schema registry index. Paths are relative to the repo/Pages root.",
+  "versions": [
+    "1.0"
+  ],
+  "tables": {
+    "1.0": {
+      "DT_BuildObjectDataTable": "schemas/v1.0/DT_BuildObjectDataTable.schema.json",
+      "DT_BuildObjectIconDataTable": "schemas/v1.0/DT_BuildObjectIconDataTable.schema.json",
+      "DT_CapturedCagePal": "schemas/v1.0/DT_CapturedCagePal.schema.json",
+      "DT_CharacterUpgradeMasterDataTable": "schemas/v1.0/DT_CharacterUpgradeMasterDataTable.schema.json",
+      "DT_FieldLotteryNameDataTable": "schemas/v1.0/DT_FieldLotteryNameDataTable.schema.json",
+      "DT_ItemDataTable": "schemas/v1.0/DT_ItemDataTable.schema.json",
+      "DT_ItemIconDataTable": "schemas/v1.0/DT_ItemIconDataTable.schema.json",
+      "DT_ItemLotteryDataTable": "schemas/v1.0/DT_ItemLotteryDataTable.schema.json",
+      "DT_ItemRecipeDataTable": "schemas/v1.0/DT_ItemRecipeDataTable.schema.json",
+      "DT_MapObjectAssignData": "schemas/v1.0/DT_MapObjectAssignData.schema.json",
+      "DT_MapObjectFarmCrop": "schemas/v1.0/DT_MapObjectFarmCrop.schema.json",
+      "DT_MapObjectItemProductDataTable": "schemas/v1.0/DT_MapObjectItemProductDataTable.schema.json",
+      "DT_MapObjectMasterDataTable": "schemas/v1.0/DT_MapObjectMasterDataTable.schema.json",
+      "DT_PalBPClass": "schemas/v1.0/DT_PalBPClass.schema.json",
+      "DT_PalCaptureBonusExpTable": "schemas/v1.0/DT_PalCaptureBonusExpTable.schema.json",
+      "DT_PalCharacterIconDataTable": "schemas/v1.0/DT_PalCharacterIconDataTable.schema.json",
+      "DT_PalCombiUnique": "schemas/v1.0/DT_PalCombiUnique.schema.json",
+      "DT_PalDropItem": "schemas/v1.0/DT_PalDropItem.schema.json",
+      "DT_PalExpTable": "schemas/v1.0/DT_PalExpTable.schema.json",
+      "DT_PalHumanParameter": "schemas/v1.0/DT_PalHumanParameter.schema.json",
+      "DT_PalMonsterParameter": "schemas/v1.0/DT_PalMonsterParameter.schema.json",
+      "DT_PalPlayerParameter": "schemas/v1.0/DT_PalPlayerParameter.schema.json",
+      "DT_PalSizeParameter": "schemas/v1.0/DT_PalSizeParameter.schema.json",
+      "DT_PassiveSkill_Main": "schemas/v1.0/DT_PassiveSkill_Main.schema.json",
+      "DT_StatusEffectFood": "schemas/v1.0/DT_StatusEffectFood.schema.json",
+      "DT_TechnologyIconData": "schemas/v1.0/DT_TechnologyIconData.schema.json",
+      "DT_TechnologyRecipeUnlock": "schemas/v1.0/DT_TechnologyRecipeUnlock.schema.json",
+      "DT_UniqueNPC": "schemas/v1.0/DT_UniqueNPC.schema.json",
+      "DT_WazaDataTable": "schemas/v1.0/DT_WazaDataTable.schema.json",
+      "DT_WazaMasterLevel": "schemas/v1.0/DT_WazaMasterLevel.schema.json",
+      "DT_WazaMasterTamago": "schemas/v1.0/DT_WazaMasterTamago.schema.json"
+    }
+  },
+  "generatedAt": "2026-07-20T07:33:47.484Z"
+}

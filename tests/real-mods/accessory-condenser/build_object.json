@@ -1,0 +1,40 @@
+{
+  "DT_MapObjectMasterDataTable": {
+    "WorkBench_SkillCard": {
+      "OverrideNameMsgID": "Accessory Workbench",
+      "bInDevelop": false
+    }
+  },
+  "DT_BuildObjectDataTable": {
+    "WorkBench_SkillCard": {
+      "MapObjectId": "WorkBench_SkillCard",
+      "TypeA": "EPalBuildObjectTypeA::Product",
+      "RedialIndex": 35,
+      "TypeB": "EPalBuildObjectTypeB::Prod_Craft",
+      "TypeUIDisplay": "EPalBuildObjectTypeForUIDisplay::Product_Repair",
+      "Rank": 1,
+      "BuildCapacity": 0,
+      "RequiredBuildWorkAmount": 3000.0,
+      "AssetValue": 1,
+      "RequiredEnergyType": "EPalEnergyType::None",
+      "ConsumeEnergySpeed": 0.0,
+      "Material1_Id": "Pal_crystal_S",
+      "Material1_Count": 30,
+      "Material2_Id": "Wood",
+      "Material2_Count": 30,
+      "Material3_Id": "Cloth",
+      "Material3_Count": 10,
+      "Material4_Id": "None",
+      "Material4_Count": 0,
+      "OverrideDescMsgID": "Enables combining lower-tier accessories into their higher-tier versions.",
+      "bInstallAtReticle": false,
+      "InstallNeighborThreshold": 0.0,
+      "bIsInstallOnlyOnBase": false,
+      "bIsInstallOnlyInDoor": false,
+      "bIsInstallOnlyHubAround": false,
+      "InstallMaxNumInBaseCamp": 0,
+      "bInstallableNoObstacleFromCamera": false,
+      "BuildExpRate": 2.137
+    }
+  }
+}

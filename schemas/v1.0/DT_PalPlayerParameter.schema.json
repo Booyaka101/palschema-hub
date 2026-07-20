@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalPlayerParameter.schema.json",
+  "title": "DT_PalPlayerParameter",
+  "description": "Palworld DataTable DT_PalPlayerParameter (row struct: PalPlayerParameterDatabaseRow). Each PalSchema mod patch targeting \"DT_PalPlayerParameter\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_PalPlayerParameter | rowStruct=PalPlayerParameterDatabaseRow | palworldVersion=1.0 | fields=8 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=Hp | droppedRemovedFields=HP",
+  "type": "object",
+  "properties": {
+    "Stamina": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "Hp": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MeleeAttack": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "ShotAttack": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "Defense": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "Support": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "CraftSpeed": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "Satiety": {
+      "type": "number",
+      "examples": [
+        100
+      ],
+      "description": "Example: 100"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

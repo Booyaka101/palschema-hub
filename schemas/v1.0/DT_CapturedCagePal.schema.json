@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_CapturedCagePal.schema.json",
+  "title": "DT_CapturedCagePal",
+  "description": "Palworld DataTable DT_CapturedCagePal (row struct: PalCapturedCageInfoDatabaseRow). Each PalSchema mod patch targeting \"DT_CapturedCagePal\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_CapturedCagePal | rowStruct=PalCapturedCageInfoDatabaseRow | palworldVersion=1.0 | fields=5 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=PalId | droppedRemovedFields=PalID",
+  "type": "object",
+  "properties": {
+    "FieldName": {
+      "type": "string",
+      "examples": [
+        "Grass",
+        "Grass2",
+        "Forest1"
+      ],
+      "description": "Example: \"Grass\""
+    },
+    "PalId": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Weight": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "MinLevel": {
+      "type": "number",
+      "examples": [
+        1,
+        10,
+        15
+      ],
+      "description": "Example: 1"
+    },
+    "MaxLevel": {
+      "type": "number",
+      "examples": [
+        10,
+        20,
+        25
+      ],
+      "description": "Example: 10"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

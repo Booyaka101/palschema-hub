@@ -1,0 +1,7 @@
+node_modules/
+*.log
+.DS_Store
+.claude/
+# CLI build output is committed so the repo runs after clone without a build step.
+# (npm publish rebuilds it via prepublishOnly.)
+.cache/

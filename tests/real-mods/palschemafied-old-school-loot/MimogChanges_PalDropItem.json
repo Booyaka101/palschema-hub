@@ -1,0 +1,40 @@
+{
+    "DT_PalDropItem": {
+        "MimicDog000": {
+			"ItemId2": "DogCoin",
+			"Rate2": 100.0,
+			"min2": 21,
+			"Max2": 25
+		},
+		"MimicDog010": {
+			"ItemId2": "DogCoin",
+			"Rate2": 100.0,
+			"min2": 26,
+			"Max2": 30
+		},
+		"MimicDog020": {
+			"ItemId2": "DogCoin",
+			"Rate2": 100.0,
+			"min2": 31,
+			"Max2": 35
+		},
+		"MimicDog030": {
+			"ItemId2": "DogCoin",
+			"Rate2": 100.0,
+			"min2": 36,
+			"Max2": 40
+		},
+		"MimicDog040": {
+			"ItemId2": "DogCoin",
+			"Rate2": 100.0,
+			"min2": 41,
+			"Max2": 45
+		},
+		"MimicDog050": {
+			"ItemId2": "DogCoin",
+			"Rate2": 100.0,
+			"min2": 46,
+			"Max2": 50
+		}
+    }
+}

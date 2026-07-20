@@ -1,0 +1,300 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PassiveSkill_Main.schema.json",
+  "title": "DT_PassiveSkill_Main",
+  "description": "Palworld DataTable DT_PassiveSkill_Main (row struct: PalPassiveSkillDatabaseRow). Each PalSchema mod patch targeting \"DT_PassiveSkill_Main\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_PassiveSkill_Main | rowStruct=PalPassiveSkillDatabaseRow | palworldVersion=1.0 | fields=38 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=LotteryWeight,TargetElementType,EffectType4,EffectValue4,TargetType4,InvokeInBaseCamp,AddInvokeTriggerType_1,AddInvokeTriggerType_2,AddWorldTreePal,AddMutationPal,IsStackablePartnerSkillBySameTribe,Category,SortKeyJP",
+  "type": "object",
+  "properties": {
+    "Rank": {
+      "type": "number",
+      "examples": [
+        1,
+        2,
+        3
+      ],
+      "description": "Example: 1"
+    },
+    "LotteryWeight": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "OverrideDescMsgID": {
+      "type": "string",
+      "examples": [
+        "None",
+        "PASSIVE_Legend_DESC",
+        "PASSIVE_TrainerATK_UP_1"
+      ],
+      "description": "Example: \"None\""
+    },
+    "TargetElementType": {
+      "type": "string",
+      "description": "EnumProperty EPalElementType. Values: EPalElementType::None, EPalElementType::Normal, EPalElementType::Fire, EPalElementType::Water, EPalElementType::Leaf, EPalElementType::Electricity, EPalElementType::Ice, EPalElementType::Earth, EPalElementType::Dark, EPalElementType::Dragon, EPalElementType::MAX — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalElementType::None",
+        "EPalElementType::Normal",
+        "EPalElementType::Fire"
+      ]
+    },
+    "EffectType1": {
+      "type": "string",
+      "examples": [
+        "EPalPassiveSkillEffectType::MaxHP",
+        "EPalPassiveSkillEffectType::MeleeAttack",
+        "EPalPassiveSkillEffectType::ShotAttack"
+      ],
+      "description": "Enum-like value. Examples: EPalPassiveSkillEffectType::MaxHP, EPalPassiveSkillEffectType::MeleeAttack, EPalPassiveSkillEffectType::ShotAttack, EPalPassiveSkillEffectType::Defense"
+    },
+    "EffectValue1": {
+      "type": "number",
+      "examples": [
+        5,
+        20,
+        -20
+      ],
+      "description": "Example: 5"
+    },
+    "TargetType1": {
+      "type": "string",
+      "examples": [
+        "EPalPassiveSkillEffectTargetType::ToSelf",
+        "EPalPassiveSkillEffectTargetType::ToTrainer",
+        "EPalPassiveSkillEffectTargetType::ToSelfAndTrainer"
+      ],
+      "description": "Enum-like value. Examples: EPalPassiveSkillEffectTargetType::ToSelf, EPalPassiveSkillEffectTargetType::ToTrainer, EPalPassiveSkillEffectTargetType::ToSelfAndTrainer"
+    },
+    "EffectType2": {
+      "type": "string",
+      "examples": [
+        "EPalPassiveSkillEffectType::no",
+        "EPalPassiveSkillEffectType::MeleeAttack",
+        "EPalPassiveSkillEffectType::ShotAttack"
+      ],
+      "description": "Enum-like value. Examples: EPalPassiveSkillEffectType::no, EPalPassiveSkillEffectType::MeleeAttack, EPalPassiveSkillEffectType::ShotAttack, EPalPassiveSkillEffectType::CraftSpeed"
+    },
+    "EffectValue2": {
+      "type": "number",
+      "examples": [
+        0,
+        -10,
+        10
+      ],
+      "description": "Example: 0"
+    },
+    "TargetType2": {
+      "type": "string",
+      "examples": [
+        "EPalPassiveSkillEffectTargetType::ToSelf",
+        "EPalPassiveSkillEffectTargetType::None"
+      ],
+      "description": "Enum-like value. Examples: EPalPassiveSkillEffectTargetType::ToSelf, EPalPassiveSkillEffectTargetType::None"
+    },
+    "EffectType3": {
+      "type": "string",
+      "examples": [
+        "EPalPassiveSkillEffectType::no",
+        "EPalPassiveSkillEffectType::ShotAttack",
+        "EPalPassiveSkillEffectType::MoveSpeed"
+      ],
+      "description": "Enum-like value. Examples: EPalPassiveSkillEffectType::no, EPalPassiveSkillEffectType::ShotAttack, EPalPassiveSkillEffectType::MoveSpeed"
+    },
+    "EffectValue3": {
+      "type": "number",
+      "examples": [
+        0,
+        -10,
+        10
+      ],
+      "description": "Example: 0"
+    },
+    "TargetType3": {
+      "type": "string",
+      "examples": [
+        "EPalPassiveSkillEffectTargetType::ToSelf",
+        "EPalPassiveSkillEffectTargetType::None"
+      ],
+      "description": "Enum-like value. Examples: EPalPassiveSkillEffectTargetType::ToSelf, EPalPassiveSkillEffectTargetType::None"
+    },
+    "EffectType4": {
+      "type": "string",
+      "description": "EnumProperty EPalPassiveSkillEffectType. Values: EPalPassiveSkillEffectType::no, EPalPassiveSkillEffectType::MaxHP, EPalPassiveSkillEffectType::MeleeAttack, EPalPassiveSkillEffectType::ShotAttack, EPalPassiveSkillEffectType::Defense, EPalPassiveSkillEffectType::Support, EPalPassiveSkillEffectType::CraftSpeed, EPalPassiveSkillEffectType::MoveSpeed, EPalPassiveSkillEffectType::Homing, EPalPassiveSkillEffectType::Explosive, EPalPassiveSkillEffectType::BulletSpeed, EPalPassiveSkillEffectType::BulletAccuracy, EPalPassiveSkillEffectType::Recoil, EPalPassiveSkillEffectType::ElementFire, EPalPassiveSkillEffectType::ElementWater, EPalPassiveSkillEffectType::ElementLeaf, EPalPassiveSkillEffectType::ElementElectricity, EPalPassiveSkillEffectType::ElementIce, EPalPassiveSkillEffectType::ElementEarth, EPalPassiveSkillEffectType::ElementDark, EPalPassiveSkillEffectType::ElementDragon, EPalPassiveSkillEffectType::ElementResist_Normal, EPalPassiveSkillEffectType::ElementResist_Fire, EPalPassiveSkillEffectType::ElementResist_Water, EPalPassiveSkillEffectType::ElementResist_Leaf, EPalPassiveSkillEffectType::ElementResist_Electricity, EPalPassiveSkillEffectType::ElementResist_Ice, EPalPassiveSkillEffectType::ElementResist_Earth, EPalPassiveSkillEffectType::ElementResist_Dark, EPalPassiveSkillEffectType::ElementResist_Dragon, EPalPassiveSkillEffectType::ElementBoost_Normal, EPalPassiveSkillEffectType::ElementBoost_Fire, EPalPassiveSkillEffectType::ElementBoost_Water, EPalPassiveSkillEffectType::ElementBoost_Leaf, EPalPassiveSkillEffectType::ElementBoost_Electricity, EPalPassiveSkillEffectType::ElementBoost_Ice, EPalPassiveSkillEffectType::ElementBoost_Earth, EPalPassiveSkillEffectType::ElementBoost_Dark, EPalPassiveSkillEffectType::ElementBoost_Dragon, EPalPassiveSkillEffectType::ElementAddItemDrop_Normal, EPalPassiveSkillEffectType::ElementAddItemDrop_Fire, EPalPassiveSkillEffectType::ElementAddItemDrop_Water, EPalPassiveSkillEffectType::ElementAddItemDrop_Leaf, EPalPassiveSkillEffectType::ElementAddItemDrop_Electricity, EPalPassiveSkillEffectType::ElementAddItemDrop_Ice, EPalPassiveSkillEffectType::ElementAddItemDrop_Earth, EPalPassiveSkillEffectType::ElementAddItemDrop_Dark, EPalPassiveSkillEffectType::ElementAddItemDrop_Dragon, EPalPassiveSkillEffectType::MoveSpeed_Ground, EPalPassiveSkillEffectType::MoveSpeed_Wood, EPalPassiveSkillEffectType::MoveSpeed_Grass, EPalPassiveSkillEffectType::MoveSpeed_Stone, EPalPassiveSkillEffectType::MoveSpeed_Water, EPalPassiveSkillEffectType::MoveSpeed_Snow, EPalPassiveSkillEffectType::MoveSpeed_Lava, EPalPassiveSkillEffectType::CollectItem, EPalPassiveSkillEffectType::Mute, EPalPassiveSkillEffectType::Logging, EPalPassiveSkillEffectType::Mining, EPalPassiveSkillEffectType::GainItemDrop, EPalPassiveSkillEffectType::CollectItemDrop, EPalPassiveSkillEffectType::LifeSteal, EPalPassiveSkillEffectType::TemperatureResist_Heat, EPalPassiveSkillEffectType::TemperatureResist_Cold, EPalPassiveSkillEffectType::TemperatureInvalid_Heat, EPalPassiveSkillEffectType::TemperatureInvalid_Cold, EPalPassiveSkillEffectType::MaxInventoryWeight, EPalPassiveSkillEffectType::FullStomatch_Decrease, EPalPassiveSkillEffectType::Sanity_Decrease, EPalPassiveSkillEffectType::BodyPartsWeakDamage, EPalPassiveSkillEffectType::NonKilling, EPalPassiveSkillEffectType::ItemWeightReduction, EPalPassiveSkillEffectType::PalExp_Increase, EPalPassiveSkillEffectType::PalSP_Increase, EPalPassiveSkillEffectType::ShopBuyPrice_Money_Increase, EPalPassiveSkillEffectType::ShopSellPrice_Money_Increase, EPalPassiveSkillEffectType::BreedSpeed, EPalPassiveSkillEffectType::BreedSpeed_InBaseCamp, EPalPassiveSkillEffectType::Nocturnal, EPalPassiveSkillEffectType::NightOwl, EPalPassiveSkillEffectType::JumpPower_Increase, EPalPassiveSkillEffectType::JumpCount_Increase, EPalPassiveSkillEffectType::RideJumpCount_Increase, EPalPassiveSkillEffectType::PalEggHatchingSpeed, EPalPassiveSkillEffectType::FarmCropGrowupSpeed, EPalPassiveSkillEffectType::SyncroPassiveWhenCapture, EPalPassiveSkillEffectType::ActiveSkillCoolTime_Decrease, EPalPassiveSkillEffectType::Regene_HP, EPalPassiveSkillEffectType::CurveType, EPalPassiveSkillEffectType::CaptureLevel, EPalPassiveSkillEffectType::ProductExtraItemProbability, EPalPassiveSkillEffectType::ProductItemConsumeMaterialNumRate, EPalPassiveSkillEffectType::PalEggHatchingSpeedRequiredWarm, EPalPassiveSkillEffectType::PalEggHatchingSpeedRequiredCool, EPalPassiveSkillEffectType::FarmCropHarvestNumRate, EPalPassiveSkillEffectType::EnergyStorageRate, EPalPassiveSkillEffectType::ConsumeEnergyRate, EPalPassiveSkillEffectType::AttackRateBaseCampWorker, EPalPassiveSkillEffectType::DefenseRateBaseCampWorker, EPalPassiveSkillEffectType::OilExtractionSpeedRate, EPalPassiveSkillEffectType::ItemCorruptionSpeedRate, EPalPassiveSkillEffectType::ExpeditionTimeCostRate, EPalPassiveSkillEffectType::ExpeditionRewardRate, EPalPassiveSkillEffectType::LabResearchSpeed, EPalPassiveSkillEffectType::AirDash, EPalPassiveSkillEffectType::MeatCutAddItemDrop, EPalPassiveSkillEffectType::ForYakushimaAttackRate, EPalPassiveSkillEffectType::ForYakushimaDefenceRate, EPalPassiveSkillEffectType::SwimSpeed, EPalPassiveSkillEffectType::DamageUpIfEquipped_YakushimaMeleeWeapon, EPalPassiveSkillEffectType::DamageUpIfEquipped_YakushimaRangedWeapon, EPalPassiveSkillEffectType::DamageUpIfEquipped_YakushimaMagicWeapon, EPalPassiveSkillEffectType::DamageUpIfEquipped_YakushimaSummonWeapon, EPalPassiveSkillEffectType::Fishing_ItemAddDrop, EPalPassiveSkillEffectType::Fishing_EnemyAddDrop, EPalPassiveSkillEffectType::Fishing_StartProgressAdd, EPalPassiveSkillEffectType::Fishing_SuccessAmountUp, EPalPassiveSkillEffectType::Fishing_FailedAmountDown, EPalPassiveSkillEffectType::Fishing_SearchProbabilityRateInNight, EPalPassiveSkillEffectType::FishingSalvage_ItemDrop, EPalPassiveSkillEffectType::ReloadSpeedUp, EPalPassiveSkillEffectType::ElementBoostWeakness_Fire, EPalPassiveSkillEffectType::ElementBoostWeakness_Water, EPalPassiveSkillEffectType::ElementBoostWeakness_Leaf, EPalPassiveSkillEffectType::ElementBoostWeakness_Electricity, EPalPassiveSkillEffectType::ElementBoostWeakness_Ice, EPalPassiveSkillEffectType::ElementBoostWeakness_Earth, EPalPassiveSkillEffectType::ElementBoostWeakness_Dark, EPalPassiveSkillEffectType::ElementBoostWeakness_Dragon, EPalPassiveSkillEffectType::ResistAdditionalEffect_Stun, EPalPassiveSkillEffectType::ResistAdditionalEffect_Poison, EPalPassiveSkillEffectType::ResistAdditionalEffect_Burn, EPalPassiveSkillEffectType::ResistAdditionalEffect_Wetness, EPalPassiveSkillEffectType::ResistAdditionalEffect_Freeze, EPalPassiveSkillEffectType::ResistAdditionalEffect_Electrical, EPalPassiveSkillEffectType::ResistAdditionalEffect_Muddy, EPalPassiveSkillEffectType::ResistAdditionalEffect_IvyCling, EPalPassiveSkillEffectType::ResistAdditionalEffect_Darkness, EPalPassiveSkillEffectType::EquipmentDurabilityRate, EPalPassiveSkillEffectType::KnockbackInvalid, EPalPassiveSkillEffectType::LeanBackInvalid_ForPassiveSkill, EPalPassiveSkillEffectType::KnockbackInvalid_ForPassiveSkill, EPalPassiveSkillEffectType::DamageUpToNonBattleEnemy, EPalPassiveSkillEffectType::AdditionalEffect_Stun, EPalPassiveSkillEffectType::AdditionalEffect_Poison, EPalPassiveSkillEffectType::AdditionalEffect_Burn, EPalPassiveSkillEffectType::AdditionalEffect_Wetness, EPalPassiveSkillEffectType::AdditionalEffect_Freeze, EPalPassiveSkillEffectType::AdditionalEffect_Electrical, EPalPassiveSkillEffectType::AdditionalEffect_Muddy, EPalPassiveSkillEffectType::AdditionalEffect_IvyCling, EPalPassiveSkillEffectType::AdditionalEffect_Darkness, EPalPassiveSkillEffectType::Regene_HP_Rate, EPalPassiveSkillEffectType::Regene_Stomatch_Hungriest, EPalPassiveSkillEffectType::LavaDamageInvalid, EPalPassiveSkillEffectType::FallDamageRate, EPalPassiveSkillEffectType::ClimbMoveSpeedRate, EPalPassiveSkillEffectType::AutoHPRegeneRate, EPalPassiveSkillEffectType::SlipDamageRate_Poison, EPalPassiveSkillEffectType::SlipDamageRate_Burn, EPalPassiveSkillEffectType::DamageRateIfDefender_Poison, EPalPassiveSkillEffectType::DamageRateIfDefender_Burn, EPalPassiveSkillEffectType::DamageRateIfDefender_Wetness, EPalPassiveSkillEffectType::DamageRateIfDefender_Freeze, EPalPassiveSkillEffectType::DamageRateIfDefender_Electrical, EPalPassiveSkillEffectType::DamageRateIfDefender_Muddy, EPalPassiveSkillEffectType::DamageRateIfDefender_IvyCling, EPalPassiveSkillEffectType::DamageRateIfDefender_Darkness, EPalPassiveSkillEffectType::AttackRateIfAttacker_Poison, EPalPassiveSkillEffectType::AttackRateIfAttacker_Burn, EPalPassiveSkillEffectType::AttackRateIfAttacker_Wetness, EPalPassiveSkillEffectType::AttackRateIfAttacker_Freeze, EPalPassiveSkillEffectType::AttackRateIfAttacker_Electrical, EPalPassiveSkillEffectType::AttackRateIfAttacker_Muddy, EPalPassiveSkillEffectType::AttackRateIfAttacker_IvyCling, EPalPassiveSkillEffectType::AttackRateIfAttacker_Darkness, EPalPassiveSkillEffectType::BuildingDamageReduction, EPalPassiveSkillEffectType::Fishing_GoodTalentPalProbability, EPalPassiveSkillEffectType::AttackRateHPThreshold, EPalPassiveSkillEffectType::DefenseRateHPThreshold, EPalPassiveSkillEffectType::DamageRateByEquippedWeapon, EPalPassiveSkillEffectType::SelfDeathAddItemDrop, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_EmitFlame, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_Watering, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_Seeding, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_GenerateElectricity, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_Handcraft, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_Collection, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_Deforest, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_Mining, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_OilExtraction, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_ProductMedicine, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_Cool, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_Transport, EPalPassiveSkillEffectType::WorkSuitabilityAddRank_MonsterFarm, EPalPassiveSkillEffectType::PlayerShield_RecoverStartTimeRate, EPalPassiveSkillEffectType::LowGravity, EPalPassiveSkillEffectType::PlayerLowHealthBlast, EPalPassiveSkillEffectType::PlayerElementStepAttack_Fire, EPalPassiveSkillEffectType::PlayerElementStepAttack_Water, EPalPassiveSkillEffectType::PlayerElementStepAttack_Leaf, EPalPassiveSkillEffectType::Relic_HungerReduction, EPalPassiveSkillEffectType::Relic_JumpPower, EPalPassiveSkillEffectType::Relic_SwimSpeed, EPalPassiveSkillEffectType::Relic_SwimStaminaRate, EPalPassiveSkillEffectType::Relic_GliderSpeed, EPalPassiveSkillEffectType::Relic_GliderStaminaRate, EPalPassiveSkillEffectType::Relic_ClimbSpeed, EPalPassiveSkillEffectType::Relic_ClimbStaminaRate, EPalPassiveSkillEffectType::PlayerInflictEffect_AttackBurning_ApplyExplosion, EPalPassiveSkillEffectType::PlayerInflictEffect_AttackIvyCling_ApplyExplosion, EPalPassiveSkillEffectType::PlayerInflictEffect_AttackBurning_ApplyFireVortex, EPalPassiveSkillEffectType::PlayerInflictEffect_AttackElectrified_ApplySpark, EPalPassiveSkillEffectType::PlayerInflictEffect_AttackPoisoned_ApplyAttackDown, EPalPassiveSkillEffectType::PlayerInflictEffect_AttackMuddy_ApplyAttackDown, EPalPassiveSkillEffectType::PlayerInflictEffect_MeleeHitBarrier, EPalPassiveSkillEffectType::PlayerInflictEffect_WeakPointHit_DamageUp, EPalPassiveSkillEffectType::PlayerInflictEffect_AttackWet_ApplyFreeze, EPalPassiveSkillEffectType::Player_ArrowExplosion, EPalPassiveSkillEffectType::BulletHit_StackBuff, EPalPassiveSkillEffectType::DefeatEnemy_StackBuff, EPalPassiveSkillEffectType::LifeDrainPower_AttackUp, EPalPassiveSkillEffectType::ExplosionResist, EPalPassiveSkillEffectType::SphereRecovery, EPalPassiveSkillEffectType::PlayerSP_DecreaseRate, EPalPassiveSkillEffectType::PartnerSkillCoolTime_Decrease, EPalPassiveSkillEffectType::AttackSpeedUp, EPalPassiveSkillEffectType::DamageUp_LastBullet, EPalPassiveSkillEffectType::Defuser_ExplosiveSpore, EPalPassiveSkillEffectType::CollectItemDrop_NaturalObject, EPalPassiveSkillEffectType::AvoidDurationUp_PartnerSkill, EPalPassiveSkillEffectType::AvoidDurationUp_EquipSkill, EPalPassiveSkillEffectType::WorldTreeDecayImmunity, EPalPassiveSkillEffectType::InvalidToxicGas, EPalPassiveSkillEffectType::DefeatEnemy_ActiveSkillCoolTime_Decrease, EPalPassiveSkillEffectType::DefeatEnemy_RecoverHP, EPalPassiveSkillEffectType::CaptureLevel_SneakBonus, EPalPassiveSkillEffectType::CaptureLevelUpIfTarget_Poison, EPalPassiveSkillEffectType::CaptureLevelUpIfTarget_Burn, EPalPassiveSkillEffectType::CaptureLevelUpIfTarget_Wetness, EPalPassiveSkillEffectType::CaptureLevelUpIfTarget_Freeze, EPalPassiveSkillEffectType::CaptureLevelUpIfTarget_Electrical, EPalPassiveSkillEffectType::CaptureLevelUpIfTarget_Muddy, EPalPassiveSkillEffectType::CaptureLevelUpIfTarget_IvyCling, EPalPassiveSkillEffectType::CaptureLevelUpIfTarget_Darkness, EPalPassiveSkillEffectType::EggAlphaConversion, EPalPassiveSkillEffectType::EggObtainExtraEgg, EPalPassiveSkillEffectType::EnemySightDetectionRate, EPalPassiveSkillEffectType::DamageUpPartnerSkillAttack, EPalPassiveSkillEffectType::ShieldDamageCutRate, EPalPassiveSkillEffectType::RecoverHPOnHPThreshold, EPalPassiveSkillEffectType::FriendshipPoint_Increase — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalPassiveSkillEffectType::no",
+        "EPalPassiveSkillEffectType::MaxHP",
+        "EPalPassiveSkillEffectType::MeleeAttack"
+      ]
+    },
+    "EffectValue4": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "TargetType4": {
+      "type": "string",
+      "description": "EnumProperty EPalPassiveSkillEffectTargetType. Values: EPalPassiveSkillEffectTargetType::None, EPalPassiveSkillEffectTargetType::ToSelf, EPalPassiveSkillEffectTargetType::ToTrainer, EPalPassiveSkillEffectTargetType::ToSelfAndTrainer, EPalPassiveSkillEffectTargetType::ToBaseCampPal, EPalPassiveSkillEffectTargetType::ToBuildObject, EPalPassiveSkillEffectTargetType::ToOtomo, EPalPassiveSkillEffectTargetType::ToTrainerAndOtomo, EPalPassiveSkillEffectTargetType::ToActiveOtomo — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalPassiveSkillEffectTargetType::None",
+        "EPalPassiveSkillEffectTargetType::ToSelf",
+        "EPalPassiveSkillEffectTargetType::ToTrainer"
+      ]
+    },
+    "InvokeActiveOtomo": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "InvokeWorker": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "InvokeRiding": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "InvokeReserve": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "InvokeInOtomo": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "InvokeAlways": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "InvokeInBaseCamp": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "AddInvokeTriggerType_1": {
+      "type": "string",
+      "description": "EnumProperty EPalPassiveAddTriggerType. Values: EPalPassiveAddTriggerType::None, EPalPassiveAddTriggerType::DayTime, EPalPassiveAddTriggerType::Night, EPalPassiveAddTriggerType::NonBattle, EPalPassiveAddTriggerType::AllOtomoTribeDifferent, EPalPassiveAddTriggerType::Sprint — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalPassiveAddTriggerType::None",
+        "EPalPassiveAddTriggerType::DayTime",
+        "EPalPassiveAddTriggerType::Night"
+      ]
+    },
+    "AddInvokeTriggerType_2": {
+      "type": "string",
+      "description": "EnumProperty EPalPassiveAddTriggerType. Values: EPalPassiveAddTriggerType::None, EPalPassiveAddTriggerType::DayTime, EPalPassiveAddTriggerType::Night, EPalPassiveAddTriggerType::NonBattle, EPalPassiveAddTriggerType::AllOtomoTribeDifferent, EPalPassiveAddTriggerType::Sprint — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalPassiveAddTriggerType::None",
+        "EPalPassiveAddTriggerType::DayTime",
+        "EPalPassiveAddTriggerType::Night"
+      ]
+    },
+    "AddPal": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "AddRarePal": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "AddWorldTreePal": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "AddMutationPal": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "AddShotWeapon": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "AddMeleeWeapon": {
+      "type": "boolean",
+      "examples": [
+        true,
+        false
+      ],
+      "description": "Example: true"
+    },
+    "AddArmor": {
+      "type": "boolean",
+      "examples": [
+        true,
+        false
+      ],
+      "description": "Example: true"
+    },
+    "AddAccessory": {
+      "type": "boolean",
+      "examples": [
+        true,
+        false
+      ],
+      "description": "Example: true"
+    },
+    "IsStackablePartnerSkillBySameTribe": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "OverrideNameTextID": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "OverrideSummaryTextId": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "Category": {
+      "type": "string",
+      "description": "EnumProperty EPalPassiveCategory. Values: EPalPassiveCategory::SortDisplayable, EPalPassiveCategory::SortNotDisplayable — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalPassiveCategory::SortDisplayable",
+        "EPalPassiveCategory::SortNotDisplayable"
+      ]
+    },
+    "SortKeyJP": {
+      "type": "string",
+      "description": "FString — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

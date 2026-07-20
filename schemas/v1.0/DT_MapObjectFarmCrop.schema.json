@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_MapObjectFarmCrop.schema.json",
+  "title": "DT_MapObjectFarmCrop",
+  "description": "Palworld DataTable DT_MapObjectFarmCrop (row struct: PalMapObjectFarmCropData). Each PalSchema mod patch targeting \"DT_MapObjectFarmCrop\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_MapObjectFarmCrop | rowStruct=PalMapObjectFarmCropData | palworldVersion=1.0 | fields=13 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41",
+  "type": "object",
+  "properties": {
+    "CropBlueprintClassName": {
+      "type": "string",
+      "examples": [
+        "BP_PalMapObjectFarmCrop_Wheat",
+        "BP_PalMapObjectFarmCrop_Tomato",
+        "BP_PalMapObjectFarmCrop_Potato"
+      ],
+      "description": "Example: \"BP_PalMapObjectFarmCrop_Wheat\""
+    },
+    "CropClassPath": {
+      "type": "object",
+      "properties": {
+        "AssetPathName": {
+          "type": "string",
+          "examples": [
+            "/Game/Pal/Blueprint/MapObject/FarmCrop/BP_PalMapObjectFarmCrop_Wheat.BP_PalMapObjectFarmCrop_Wheat_C",
+            "/Game/Pal/Blueprint/MapObject/FarmCrop/BP_PalMapObjectFarmCrop_Tomato.BP_PalMapObjectFarmCrop_Tomato_C",
+            "/Game/Pal/Blueprint/MapObject/FarmCrop/BP_PalMapObjectFarmCrop_Potato.BP_PalMapObjectFarmCrop_Potato_C"
+          ],
+          "description": "Example: \"/Game/Pal/Blueprint/MapObject/FarmCrop/BP_PalMapObjectFarmCrop_Wheat.BP_PalMapObjectFarmCrop_Wheat_C\""
+        },
+        "SubPathString": {
+          "type": "string",
+          "examples": [
+            ""
+          ],
+          "description": "Example: \"\""
+        }
+      },
+      "additionalProperties": true
+    },
+    "CropItemId": {
+      "type": "string",
+      "examples": [
+        "Wheat",
+        "Tomato",
+        "Potato"
+      ],
+      "description": "Example: \"Wheat\""
+    },
+    "GrowupTime": {
+      "type": "number",
+      "examples": [
+        270,
+        360,
+        180
+      ],
+      "description": "Example: 270"
+    },
+    "CropItemNum": {
+      "type": "number",
+      "examples": [
+        10
+      ],
+      "description": "Example: 10"
+    },
+    "SeedingWorkAmount": {
+      "type": "number",
+      "examples": [
+        7500,
+        22500,
+        3000
+      ],
+      "description": "Example: 7500"
+    },
+    "WateringWorkAmount": {
+      "type": "number",
+      "examples": [
+        7500,
+        22500,
+        3000
+      ],
+      "description": "Example: 7500"
+    },
+    "HarvestWorkAmount": {
+      "type": "number",
+      "examples": [
+        7500,
+        22500,
+        1500
+      ],
+      "description": "Example: 7500"
+    },
+    "MaterialItem1_Id": {
+      "type": "string",
+      "examples": [
+        "Wheat",
+        "Tomato",
+        "Potato"
+      ],
+      "description": "Example: \"Wheat\""
+    },
+    "MaterialItem1_Num": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "MaterialItem2_Id": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "MaterialItem2_Num": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "Editor_RowNameHash": {
+      "type": "number",
+      "examples": [
+        -895499482,
+        1940418144,
+        -1954615783
+      ],
+      "description": "Example: -895499482"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

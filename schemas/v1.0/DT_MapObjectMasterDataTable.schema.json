@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_MapObjectMasterDataTable.schema.json",
+  "title": "DT_MapObjectMasterDataTable",
+  "description": "Palworld DataTable DT_MapObjectMasterDataTable (row struct: PalMapObjectMasterData). Each PalSchema mod patch targeting \"DT_MapObjectMasterDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_MapObjectMasterDataTable | rowStruct=PalMapObjectMasterData | palworldVersion=1.0 | fields=17 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=bCollectionObject,Hp,Hp_PVP,Defense_PVP | droppedRemovedFields=HP",
+  "type": "object",
+  "properties": {
+    "OverrideNameMsgID": {
+      "type": "string",
+      "examples": [
+        "None",
+        "MAPOBJECT_NAME_DamagableRock0005"
+      ],
+      "description": "Example: \"None\""
+    },
+    "BlueprintClassName": {
+      "type": "string",
+      "examples": [
+        "--",
+        "BP_MapObject_DroppedCharacter",
+        "BP_BuildObject_BlastFurnace"
+      ],
+      "description": "Example: \"--\""
+    },
+    "BlueprintClassSoft": {
+      "type": "object",
+      "properties": {
+        "AssetPathName": {
+          "type": "string",
+          "examples": [
+            "None",
+            "/Game/Pal/Blueprint/MapObject/Object/PickupCharacter/BP_MapObject_DroppedCharacter.BP_MapObject_DroppedCharacter_C",
+            "/Game/Pal/Blueprint/MapObject/BuildObject/BP_BuildObject_BlastFurnace.BP_BuildObject_BlastFurnace_C"
+          ],
+          "description": "Example: \"None\""
+        },
+        "SubPathString": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "examples": [
+            ""
+          ],
+          "description": "Example: \"\""
+        }
+      },
+      "additionalProperties": true
+    },
+    "MaterialType": {
+      "type": "string",
+      "examples": [
+        "EPalMapObjectMaterialType::None",
+        "EPalMapObjectMaterialType::Stone",
+        "EPalMapObjectMaterialType::Wood"
+      ],
+      "description": "Enum-like value. Examples: EPalMapObjectMaterialType::None, EPalMapObjectMaterialType::Stone, EPalMapObjectMaterialType::Wood"
+    },
+    "MaterialSubType": {
+      "type": "string",
+      "examples": [
+        "EPalMapObjectMaterialSubType::None",
+        "EPalMapObjectMaterialSubType::Stone",
+        "EPalMapObjectMaterialSubType::Copper"
+      ],
+      "description": "Enum-like value. Examples: EPalMapObjectMaterialSubType::None, EPalMapObjectMaterialSubType::Stone, EPalMapObjectMaterialSubType::Copper, EPalMapObjectMaterialSubType::Wood"
+    },
+    "bCollectionObject": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Hp": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Defense": {
+      "type": "number",
+      "examples": [
+        3,
+        2,
+        4
+      ],
+      "description": "Example: 3"
+    },
+    "Hp_PVP": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "Defense_PVP": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "bBelongToBaseCamp": {
+      "type": "boolean",
+      "examples": [
+        true,
+        false
+      ],
+      "description": "Example: true"
+    },
+    "DistributeExpAroundPlayer": {
+      "type": "number",
+      "examples": [
+        0,
+        5,
+        10
+      ],
+      "description": "Example: 0"
+    },
+    "DeteriorationDamage": {
+      "type": "number",
+      "examples": [
+        0,
+        0.08,
+        0.04
+      ],
+      "description": "Example: 0"
+    },
+    "ExtinguishBurnWorkAmount": {
+      "type": "number",
+      "examples": [
+        0,
+        1000,
+        2000
+      ],
+      "description": "Example: 0"
+    },
+    "bShowHPGauge": {
+      "type": "boolean",
+      "examples": [
+        true,
+        false
+      ],
+      "description": "Example: true"
+    },
+    "bInDevelop": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "Editor_RowNameHash": {
+      "type": "number",
+      "examples": [
+        622205053,
+        -1783870869,
+        1115223127
+      ],
+      "description": "Example: 622205053"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

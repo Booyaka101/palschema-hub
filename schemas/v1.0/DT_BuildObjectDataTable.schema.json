@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_BuildObjectDataTable.schema.json",
+  "title": "DT_BuildObjectDataTable",
+  "description": "Palworld DataTable DT_BuildObjectDataTable (row struct: PalBuildObjectData). Each PalSchema mod patch targeting \"DT_BuildObjectDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_BuildObjectDataTable | rowStruct=PalBuildObjectData | palworldVersion=1.0 | fields=32 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=SortId,TypeUIDisplay,BlueprintItemID,InstallMaxNumInBaseCamp,BuildExpRate,bIsProhibitedInRaidBossArea,MaxBuildCountInRaidBossArea,bIsPaintable | droppedRemovedFields=RedialIndex",
+  "type": "object",
+  "properties": {
+    "MapObjectId": {
+      "type": "string",
+      "examples": [
+        "FarmBlockV2_Grade01",
+        "FarmBlockV2_Grade02",
+        "FarmBlockV2_Grade03"
+      ],
+      "description": "Example: \"FarmBlockV2_Grade01\""
+    },
+    "TypeA": {
+      "type": "string",
+      "examples": [
+        "EPalBuildObjectTypeA::Food",
+        "EPalBuildObjectTypeA::Foundation",
+        "EPalBuildObjectTypeA::Defense"
+      ],
+      "description": "Enum-like value. Examples: EPalBuildObjectTypeA::Food, EPalBuildObjectTypeA::Foundation, EPalBuildObjectTypeA::Defense, EPalBuildObjectTypeA::Infrastructure"
+    },
+    "SortId": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "TypeB": {
+      "type": "string",
+      "examples": [
+        "EPalBuildObjectTypeB::Food_Basic",
+        "EPalBuildObjectTypeB::Found_House",
+        "EPalBuildObjectTypeB::Found_Basic"
+      ],
+      "description": "Enum-like value. Examples: EPalBuildObjectTypeB::Food_Basic, EPalBuildObjectTypeB::Found_House, EPalBuildObjectTypeB::Found_Basic, EPalBuildObjectTypeB::Infra_Defense"
+    },
+    "TypeUIDisplay": {
+      "type": "string",
+      "description": "EnumProperty EPalBuildObjectTypeForUIDisplay. Values: EPalBuildObjectTypeForUIDisplay::Invalid, EPalBuildObjectTypeForUIDisplay::Product_Repair, EPalBuildObjectTypeForUIDisplay::Weapon, EPalBuildObjectTypeForUIDisplay::Refine, EPalBuildObjectTypeForUIDisplay::Medicine, EPalBuildObjectTypeForUIDisplay::Deforest_Mining, EPalBuildObjectTypeForUIDisplay::FishingPond, EPalBuildObjectTypeForUIDisplay::PalCaptureItem, EPalBuildObjectTypeForUIDisplay::PalManagement, EPalBuildObjectTypeForUIDisplay::PalTraining, EPalBuildObjectTypeForUIDisplay::PalWork, EPalBuildObjectTypeForUIDisplay::PalBreeding, EPalBuildObjectTypeForUIDisplay::PalOther, EPalBuildObjectTypeForUIDisplay::Chest, EPalBuildObjectTypeForUIDisplay::StorageFurniture, EPalBuildObjectTypeForUIDisplay::Cooking, EPalBuildObjectTypeForUIDisplay::FeedBox, EPalBuildObjectTypeForUIDisplay::Farm, EPalBuildObjectTypeForUIDisplay::Bed, EPalBuildObjectTypeForUIDisplay::GenerateElectricity, EPalBuildObjectTypeForUIDisplay::Electricity, EPalBuildObjectTypeForUIDisplay::Spa, EPalBuildObjectTypeForUIDisplay::Health, EPalBuildObjectTypeForUIDisplay::Freestanding, EPalBuildObjectTypeForUIDisplay::WallHanging, EPalBuildObjectTypeForUIDisplay::Ceiling, EPalBuildObjectTypeForUIDisplay::Wood, EPalBuildObjectTypeForUIDisplay::Stone, EPalBuildObjectTypeForUIDisplay::Metal, EPalBuildObjectTypeForUIDisplay::Glass, EPalBuildObjectTypeForUIDisplay::JapaneseStyle, EPalBuildObjectTypeForUIDisplay::Clean, EPalBuildObjectTypeForUIDisplay::Trap, EPalBuildObjectTypeForUIDisplay::Interception, EPalBuildObjectTypeForUIDisplay::Barieer, EPalBuildObjectTypeForUIDisplay::EfficiencEnhancement, EPalBuildObjectTypeForUIDisplay::SignBoard, EPalBuildObjectTypeForUIDisplay::FleaMarket, EPalBuildObjectTypeForUIDisplay::Statue, EPalBuildObjectTypeForUIDisplay::Raid, EPalBuildObjectTypeForUIDisplay::Desk, EPalBuildObjectTypeForUIDisplay::Chair, EPalBuildObjectTypeForUIDisplay::Carpet, EPalBuildObjectTypeForUIDisplay::WallDecoration, EPalBuildObjectTypeForUIDisplay::Houseplants, EPalBuildObjectTypeForUIDisplay::Flag, EPalBuildObjectTypeForUIDisplay::Milling_Crusher, EPalBuildObjectTypeForUIDisplay::Ornament, EPalBuildObjectTypeForUIDisplay::Other, EPalBuildObjectTypeForUIDisplay::Ancient — current-game field (absent from Jan-2024 dump), verified from SDK headers",
+      "examples": [
+        "EPalBuildObjectTypeForUIDisplay::Invalid",
+        "EPalBuildObjectTypeForUIDisplay::Product_Repair",
+        "EPalBuildObjectTypeForUIDisplay::Weapon"
+      ]
+    },
+    "Rank": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "BuildCapacity": {
+      "type": "number",
+      "examples": [
+        0
+      ],
+      "description": "Example: 0"
+    },
+    "RequiredBuildWorkAmount": {
+      "type": "number",
+      "examples": [
+        3000,
+        8000,
+        20000
+      ],
+      "description": "Example: 3000"
+    },
+    "AssetValue": {
+      "type": "number",
+      "examples": [
+        1
+      ],
+      "description": "Example: 1"
+    },
+    "RequiredEnergyType": {
+      "type": "string",
+      "examples": [
+        "EPalEnergyType::None",
+        "EPalEnergyType::Electric"
+      ],
+      "description": "Enum-like value. Examples: EPalEnergyType::None, EPalEnergyType::Electric"
+    },
+    "ConsumeEnergySpeed": {
+      "type": "number",
+      "examples": [
+        0,
+        100,
+        1000
+      ],
+      "description": "Example: 0"
+    },
+    "Material1_Id": {
+      "type": "string",
+      "examples": [
+        "Potato",
+        "Wood",
+        "WheatSeeds"
+      ],
+      "description": "Example: \"Potato\""
+    },
+    "Material1_Count": {
+      "type": "number",
+      "examples": [
+        1,
+        30,
+        100
+      ],
+      "description": "Example: 1"
+    },
+    "Material2_Id": {
+      "type": "string",
+      "examples": [
+        "Wood",
+        "stone",
+        "None"
+      ],
+      "description": "Example: \"Wood\""
+    },
+    "Material2_Count": {
+      "type": "number",
+      "examples": [
+        10,
+        30,
+        100
+      ],
+      "description": "Example: 10"
+    },
+    "Material3_Id": {
+      "type": "string",
+      "examples": [
+        "Stone",
+        "None",
+        "stone"
+      ],
+      "description": "Example: \"Stone\""
+    },
+    "Material3_Count": {
+      "type": "number",
+      "examples": [
+        5,
+        0,
+        35
+      ],
+      "description": "Example: 5"
+    },
+    "Material4_Id": {
+      "type": "string",
+      "examples": [
+        "None",
+        "PalFluid",
+        "MachineParts"
+      ],
+      "description": "Example: \"None\""
+    },
+    "Material4_Count": {
+      "type": "number",
+      "examples": [
+        0,
+        5,
+        10
+      ],
+      "description": "Example: 0"
+    },
+    "BlueprintItemID": {
+      "type": "string",
+      "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "OverrideDescMsgID": {
+      "type": "string",
+      "examples": [
+        "None"
+      ],
+      "description": "Example: \"None\""
+    },
+    "bInstallAtReticle": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "InstallNeighborThreshold": {
+      "type": "number",
+      "examples": [
+        140,
+        0
+      ],
+      "description": "Example: 140"
+    },
+    "bIsInstallOnlyOnBase": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "bIsInstallOnlyInDoor": {
+      "type": "boolean",
+      "examples": [
+        false
+      ],
+      "description": "Example: false"
+    },
+    "bIsInstallOnlyHubAround": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "InstallMaxNumInBaseCamp": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "bInstallableNoObstacleFromCamera": {
+      "type": "boolean",
+      "examples": [
+        false,
+        true
+      ],
+      "description": "Example: false"
+    },
+    "BuildExpRate": {
+      "type": "number",
+      "description": "FloatProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "bIsProhibitedInRaidBossArea": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "MaxBuildCountInRaidBossArea": {
+      "type": "integer",
+      "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "bIsPaintable": {
+      "type": "boolean",
+      "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

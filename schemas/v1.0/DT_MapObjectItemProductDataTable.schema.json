@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_MapObjectItemProductDataTable.schema.json",
+  "title": "DT_MapObjectItemProductDataTable",
+  "description": "Palworld DataTable DT_MapObjectItemProductDataTable (row struct: PalMapObjectItemProductData). Each PalSchema mod patch targeting \"DT_MapObjectItemProductDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_MapObjectItemProductDataTable | rowStruct=PalMapObjectItemProductData | palworldVersion=1.0 | fields=3 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41",
+  "type": "object",
+  "properties": {
+    "Product_Id": {
+      "type": "string",
+      "examples": [
+        "WaterBucket",
+        "Stone",
+        "Wood"
+      ],
+      "description": "Example: \"WaterBucket\""
+    },
+    "RequiredWorkAmount": {
+      "type": "number",
+      "examples": [
+        1000,
+        800
+      ],
+      "description": "Example: 1000"
+    },
+    "AutoWorkAmountBySec": {
+      "type": "number",
+      "examples": [
+        5,
+        0
+      ],
+      "description": "Example: 5"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}

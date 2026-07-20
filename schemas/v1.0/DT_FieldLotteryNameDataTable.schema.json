@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_FieldLotteryNameDataTable.schema.json",
+  "title": "DT_FieldLotteryNameDataTable",
+  "description": "Palworld DataTable DT_FieldLotteryNameDataTable (row struct: FPalFieldLotteryName). Each PalSchema mod patch targeting \"DT_FieldLotteryNameDataTable\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names + types derived from the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11) — this table postdates the paldex dump, so it has no observed-value examples. Fields are optional (partial patches).",
+  "$comment": "palschema-hub | table=DT_FieldLotteryNameDataTable | rowStruct=FPalFieldLotteryName | palworldVersion=1.0 | fields=15 | source=sdk-headers-only | sdk=localcc/PalworldModdingKit@62fad41",
+  "type": "object",
+  "properties": {
+    "ItemSlot1_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot2_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot3_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot4_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot5_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot6_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot7_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot8_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot9_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot10_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot11_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot12_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot13_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot14_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "ItemSlot15_ProbabilityPercent": {
+      "type": "number",
+      "description": "FloatProperty"
+    },
+    "$Filters": {
+      "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."
+    }
+  },
+  "additionalProperties": false
+}
