@@ -161,6 +161,7 @@ scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tabl
 - **CLI on npm:** [`palschema-validate`](https://www.npmjs.com/package/palschema-validate) — `npx palschema-validate --version 1.0 <files>`
 - **Announcement:** [PalSchema issue #53](https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5022177544)
 - **Nexus Mods page:** [PalSchema Hub - Community Schema Registry](https://www.nexusmods.com/palworld/mods/4063) (Utilities)
+- **Launch post:** [x.com/KillKenny101](https://x.com/KillKenny101/status/2079193124719759775)
 
 ## License
 
