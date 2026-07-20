@@ -1,0 +1,38 @@
+To:      support@nexusmods.com
+Subject: Mod removal appeal - Palworld mod 4063 "PalSchema Hub - Community Schema Registry" (placeholder file, now fixed)
+
+Hi,
+
+My mod "PalSchema Hub - Community Schema Registry"
+(https://www.nexusmods.com/palworld/mods/4063) was removed on 20 Jul 2026 by
+wxMichael under the file submission guidelines rule against placeholder /
+non-functioning files.
+
+That call was fair - the original upload was a small README that only pointed
+to external links. I've fixed the root cause rather than just the symptom.
+
+The replacement archive (ready to upload, ~61 KB) is the actual product and is
+fully functional offline:
+
+  - all 31 JSON Schema files documenting Palworld's PalSchema raw-table
+    DataTables (every field name, type, example values, enum value lists),
+  - the machine-readable schema index,
+  - the searchable schema browser page,
+  - the MIT-licensed validator CLI, with instructions for fully offline
+    validation of a mod's JSON against the bundled schemas,
+  - an offline README.
+
+No game assets are included; all content is original and MIT-licensed. The
+page description has also been rewritten to describe the download itself
+rather than pointing at external links.
+
+Could the page be reinstated so I can replace the file with the corrected
+archive? If you'd prefer I create a fresh page with the compliant file
+instead, I'm happy to do that - I didn't want to re-upload after a removal
+without asking first.
+
+Thanks for your time, and for the quick, clear moderation note.
+
+Booyaka101
+Mod page:  https://www.nexusmods.com/palworld/mods/4063
+Project:   https://github.com/Booyaka101/palschema-hub
