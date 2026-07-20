@@ -5,9 +5,11 @@
 Pages live at https://booyaka101.github.io/palschema-hub/ (deploy gated on `npm test`,
 passed on CI), comment posted on PalSchema issue #53
 (https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5022177544).
-**Remaining:** npm publish of the CLI (skipped — no npm login; the issue comment uses
-the git-clone fallback) and the Nexus Mods page (manual, needs owner's Nexus login —
-see PUBLISHING.md step 4).
+**npm:** `palschema-validate@0.1.1` published (0.1.0 was broken by a stray `file:..`
+dependency — deprecated on npm; 0.1.1 verified via cold-cache `npx` against real mods).
+The issue #53 comment was edited in place to the `npx` one-liner.
+**Remaining:** only the Nexus Mods page (manual, needs owner's Nexus login —
+see PUBLISHING.md step 4; everything is prepared in `nexus/`).
 
 ## Phase 0 re-verification (2026-07-20)
 - **PalSchema 0.6.1 exists** (released 2026-07-19): fixes only (ranch spawn item

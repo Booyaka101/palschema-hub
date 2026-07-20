@@ -155,18 +155,11 @@ scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tabl
 
 ---
 
-## 🚀 Best first distribution step
+## 🚀 Live deployments
 
-**Publish this repo to GitHub and enable GitHub Pages** (Settings → Pages → deploy from
-`main`, root). That instantly gives the community two things it has been asking for:
-
-1. a live, searchable schema browser at `https://<owner>.github.io/palschema-hub/`, and
-2. raw schema URLs that VS Code and the `palschema-validate` CLI can consume.
-
-Then post the Pages link in **[PalSchema issue #53](https://github.com/Okaetsu/PalSchema/issues/53)**
-— that thread is the exact audience asking "where are all the game variable names?".
-(Publishing `palschema-validate` to npm so `npx palschema-validate` resolves is the natural
-follow-up.)
+- **Schema browser:** https://booyaka101.github.io/palschema-hub/ (GitHub Pages, deploy gated on the acceptance tests)
+- **CLI on npm:** [`palschema-validate`](https://www.npmjs.com/package/palschema-validate) — `npx palschema-validate --version 1.0 <files>`
+- **Announcement:** [PalSchema issue #53](https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5022177544)
 
 ## License
 

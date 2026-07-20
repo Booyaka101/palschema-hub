@@ -7,8 +7,7 @@ It's a browsable, searchable index of the raw-table surface — 31 gameplay Data
 There's also a validator CLI that checks a mod's JSON/JSONC against the registry and reports typed field errors (unknown/renamed fields, wrong types) before you launch the game:
 
 ```
-git clone https://github.com/Booyaka101/palschema-hub
-node palschema-hub/cli/dist/index.js --version 1.0 --registry palschema-hub my-mod/DT_PalMonsterParameter.json
+npx palschema-validate --version 1.0 my-mod/DT_PalMonsterParameter.json
 ```
 
 It's validated against real published PalSchema mods (Palvolve, Unlimited Buildings, Old School Loot validate clean; it even caught a genuinely stale `RedialIndex` field in one popular mod — the same thing PalSchema logs as `Property not found in Row` at load time). Hope this helps until an official database exists!
