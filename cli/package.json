@@ -1,6 +1,6 @@
 {
   "name": "palschema-validate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Validate Palworld PalSchema mod JSON/JSONC files against the palschema-hub schema registry.",
   "keywords": [
     "palworld",
@@ -25,8 +25,7 @@
     "prepublishOnly": "tsc -p ."
   },
   "dependencies": {
-    "ajv": "^8.17.1",
-    "palschema-hub": "file:.."
+    "ajv": "^8.17.1"
   },
   "devDependencies": {
     "@types/node": "^22.7.0",
