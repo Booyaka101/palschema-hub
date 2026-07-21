@@ -15,7 +15,16 @@ README, verified from clean extract), emailing support@nexusmods.com, and —
 with their go-ahead ("create a new page") — republishing on 2026-07-21 as
 **https://www.nexusmods.com/palworld/mods/4084** (Utilities, v1.0, header +
 gallery image, Pal Schema soft requirement, MIT custom permissions + credits).
-**All four publish steps from PUBLISHING.md are DONE. Nothing outstanding.**
+**Quarantine follow-up (2026-07-21):** the v1.0 zip on mods/4084 was
+auto-quarantined — NOT malware (VirusTotal 0/64) but a malformed archive:
+PowerShell Compress-Archive writes backslash entry paths, which Nexus's
+previewer can't parse. Fixed by repackaging with bsdtar (forward slashes,
+proper dir entries; nexus/palschema-hub-registry.zip is now that build) and
+uploading as v1.0.1 via the file Update flow; quarantined v1.0 kept under
+Old files per Nexus guidance. Support follow-up drafted in
+nexus/QUARANTINE_REPLY_EMAIL.txt (owner sends). Lesson: never ship
+Compress-Archive zips — use bsdtar/7z.
+**All four publish steps from PUBLISHING.md are DONE.**
 
 ## Phase 0 re-verification (2026-07-20)
 - **PalSchema 0.6.1 exists** (released 2026-07-19): fixes only (ranch spawn item

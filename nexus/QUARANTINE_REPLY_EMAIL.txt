@@ -1,0 +1,33 @@
+To:      support@nexusmods.com  (reply in the existing thread if possible)
+Subject: Re: Mod removal appeal - now republished as mods/4084; quarantined file replaced with fixed archive
+
+Hi again,
+
+Thanks for the green light yesterday. I republished the project as a new page
+with the full functional archive:
+
+  https://www.nexusmods.com/palworld/mods/4084
+
+The first upload (v1.0) was automatically quarantined, and I found the actual
+cause: the zip was built with PowerShell's Compress-Archive, which writes
+backslash path separators inside the archive (a known spec violation) - so
+your file previewer couldn't parse it. It was not a malware hit: the
+VirusTotal report linked from the file page shows 0/64 detections
+(sha256 5d256c9f87410df0a3614107850bcbb8f1d3b7f7b894910334c5dbdec52358d4).
+
+I've uploaded a fixed v1.0.1 via the file Update flow - identical content,
+repackaged with a spec-compliant zip tool (bsdtar; forward-slash paths,
+proper directory entries). The quarantined v1.0 is preserved under Old files
+per your guidelines rather than deleted.
+
+Could you review and clear the quarantined v1.0 (or let me know if I should
+handle it differently)? The archive contains only original MIT-licensed
+content: 31 JSON Schema files documenting PalSchema raw-table DataTables, a
+JSON index, an HTML browser page, and a small Node.js validator CLI. No
+game assets, no executables.
+
+Thanks for your time!
+
+Booyaka101
+Mod page:  https://www.nexusmods.com/palworld/mods/4084
+Project:   https://github.com/Booyaka101/palschema-hub
