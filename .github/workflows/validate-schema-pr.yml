@@ -1,0 +1,20 @@
+# Validates every DT_*.schema.json under schemas/ on PRs targeting main.
+# Schema submissions arrive as automated PRs from `palsc collect --submit`
+# (https://github.com/Booyaka101/palschema-hub companion CLI, pal-schema-collect);
+# this gate keeps malformed schemas out of the registry.
+name: validate-schema-pr
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate DT_*.schema.json files
+        run: node scripts/validate-schemas.js
