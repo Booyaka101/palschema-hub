@@ -32,11 +32,13 @@
       "DT_StatusEffectFood": "schemas/v1.0/DT_StatusEffectFood.schema.json",
       "DT_TechnologyIconData": "schemas/v1.0/DT_TechnologyIconData.schema.json",
       "DT_TechnologyRecipeUnlock": "schemas/v1.0/DT_TechnologyRecipeUnlock.schema.json",
+      "DT_TestAlpha": "schemas/v1.0/DT_TestAlpha.schema.json",
+      "DT_TestBeta": "schemas/v1.0/DT_TestBeta.schema.json",
       "DT_UniqueNPC": "schemas/v1.0/DT_UniqueNPC.schema.json",
       "DT_WazaDataTable": "schemas/v1.0/DT_WazaDataTable.schema.json",
       "DT_WazaMasterLevel": "schemas/v1.0/DT_WazaMasterLevel.schema.json",
       "DT_WazaMasterTamago": "schemas/v1.0/DT_WazaMasterTamago.schema.json"
     }
   },
-  "generatedAt": "2026-07-20T07:33:47.484Z"
+  "generatedAt": "2026-07-23T16:46:33.096Z"
 }
