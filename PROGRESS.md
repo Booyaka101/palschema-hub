@@ -1,6 +1,25 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-07-20 (publish session — owner authorized go-live)
+**Last updated:** 2026-07-24 (item asset reference session)
+
+## Session 2026-07-24 — per-item VALUE reference (items.html / items.json)
+Prompted by Person7557 in issue #53 (couldn't find "ActorClass"; cloned AncientHelmet
+row showed bare hair): the missing field is **`ItemActorClass`** in DT_ItemDataTable —
+the game itself ships variants by reusing another item's actor (LightzHelmet →
+"IronHelmet"). Shipped a per-item value reference:
+- `scripts/build-items.mjs` → `items.json` (947 rows from the public paldex dump,
+  Editor_RowNameHash stripped) + `items.html` (searchable; asset fields + full
+  copy/paste row JSON), linked from index.html. **Gotcha:** pages.yml stages a
+  whitelist — new root files must be added to its `cp` line or they 404 on Pages.
+- Live + verified in a real browser: https://booyaka101.github.io/palschema-hub/items.html
+- Replied to Person7557: https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5063959860
+- Caveat recorded: paldex dump is an earlier game build (no AncientHelmet row);
+  a fresh FModel export would refresh it — rerun build-items with a new SRC.
+- Note: the owner-machine folder D:\Repos\ideas\palschema-hub is the STALE
+  pre-publish workspace (not a git repo, old v1.5.2 layout); clone fresh from
+  GitHub to work on the live hub (this session used D:\tmp\palschema-hub).
+
+## Publish status (2026-07-20 session)
 **Status:** PUBLISHED. Repo pushed to https://github.com/Booyaka101/palschema-hub,
 Pages live at https://booyaka101.github.io/palschema-hub/ (deploy gated on `npm test`,
 passed on CI), comment posted on PalSchema issue #53
