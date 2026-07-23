@@ -35,7 +35,7 @@ jobs:
       - name: Stage site (browser + registry only)
         run: |
           mkdir -p _site
-          cp index.html index.json LICENSE README.md _site/
+          cp index.html index.json items.html items.json LICENSE README.md _site/
           cp -r schemas _site/schemas
 
       - uses: actions/upload-pages-artifact@v3
