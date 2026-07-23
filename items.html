@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PalSchema Hub — Item asset reference (DT_ItemDataTable values)</title>
+<style>
+  :root {
+    --bg: #0f1218; --panel: #171b24; --panel2: #1e2430; --border: #2a3242;
+    --text: #e6e9ef; --muted: #8b95a7; --accent: #6db3f2; --accent2: #7ee0a6;
+    --chip: #232b3a; --warn: #f2c14e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 18px 22px; border-bottom: 1px solid var(--border); background: var(--panel);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  header .tag { color: var(--muted); font-size: 12.5px; }
+  header a { color: var(--accent); text-decoration: none; }
+  .layout { display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 61px); }
+  .sidebar { border-right: 1px solid var(--border); background: var(--panel); display: flex; flex-direction: column; }
+  .controls { padding: 14px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--border); }
+  select, input {
+    width: 100%; padding: 9px 11px; background: var(--panel2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none;
+  }
+  input:focus, select:focus { border-color: var(--accent); }
+  .count { color: var(--muted); font-size: 12px; padding: 0 2px; }
+  .list { overflow-y: auto; flex: 1; padding: 6px; }
+  .item { padding: 9px 11px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+  .item:hover { background: var(--panel2); }
+  .item.active { background: #24304a; }
+  .item .name { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item .n { color: var(--muted); font-size: 11px; flex: none; }
+  .main { padding: 22px 26px; overflow-y: auto; }
+  .empty { color: var(--muted); margin-top: 40px; text-align: center; }
+  .sch-head { margin-bottom: 16px; }
+  .sch-head h2 { margin: 0 0 6px; font-family: ui-monospace, Consolas, monospace; font-size: 20px; color: var(--accent); }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+  .chip { background: var(--chip); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; font-size: 12px; color: var(--muted); }
+  .chip b { color: var(--text); font-weight: 600; }
+  .desc { color: var(--muted); font-size: 13px; max-width: 900px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 14px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+  td.field { font-family: ui-monospace, Consolas, monospace; color: var(--text); white-space: nowrap; }
+  td.val code { background: var(--panel2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 12.5px; color: var(--accent2); }
+  .note { color: var(--warn); font-size: 12px; margin: 6px 0 0; max-width: 900px; }
+  pre { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+    overflow-x: auto; font-size: 12.5px; line-height: 1.45; margin-top: 10px; }
+  .rowjson-head { display: flex; align-items: center; gap: 12px; margin-top: 22px; }
+  .rowjson-head h3 { margin: 0; font-size: 14px; }
+  button.copy { background: var(--panel2); color: var(--accent); border: 1px solid var(--border);
+    border-radius: 8px; padding: 5px 12px; font-size: 12.5px; cursor: pointer; }
+  button.copy:hover { border-color: var(--accent); }
+  a.raw { color: var(--accent); font-size: 12.5px; text-decoration: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🧩 PalSchema Hub — Item asset reference</h1>
+  <span class="tag">Per-item values from <code>DT_ItemDataTable</code> (ItemActorClass &amp; friends) for reusing in-game assets · <a href="./index.html">← schema registry</a> · <a href="./items.json">items.json ↗</a></span>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="controls">
+      <select id="typeb"><option value="">All categories</option></select>
+      <input id="search" type="search" placeholder="Filter items… (name or ItemActorClass)" autocomplete="off" />
+      <div class="count" id="listcount"></div>
+    </div>
+    <div class="list" id="list"></div>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="empty" id="empty">Loading items…</div>
+  </main>
+</div>
+
+<script>
+const ASSET_FIELDS = ['ItemActorClass', 'ItemStaticClass', 'ItemDynamicClass', 'ItemStaticMeshName', 'VisualBlueprintClassName', 'IconName'];
+const state = { data: null, names: [], active: null };
+
+const esc = s => String(s).replace(/</g, '&lt;');
+const short = t => String(t || '').replace(/^EPalItemType[AB]::/, '');
+
+function currentFilter() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const tb = document.getElementById('typeb').value;
+  return state.names.filter(n => {
+    const r = state.data.items[n];
+    if (tb && r.TypeB !== tb) return false;
+    if (!q) return true;
+    return n.toLowerCase().includes(q) || String(r.ItemActorClass || '').toLowerCase().includes(q);
+  });
+}
+
+function renderList() {
+  const filtered = currentFilter();
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  for (const n of filtered.slice(0, 400)) {
+    const r = state.data.items[n];
+    const div = document.createElement('div');
+    div.className = 'item' + (n === state.active ? ' active' : '');
+    div.innerHTML = `<span class="name">${esc(n)}</span><span class="n">${esc(short(r.TypeB))}</span>`;
+    div.onclick = () => select(n);
+    list.appendChild(div);
+  }
+  document.getElementById('listcount').textContent =
+    `${filtered.length} of ${state.names.length} items` + (filtered.length > 400 ? ' (showing first 400)' : '');
+}
+
+function select(name) {
+  state.active = name;
+  renderList();
+  const r = state.data.items[name];
+  const assetRows = ASSET_FIELDS
+    .filter(f => f in r)
+    .map(f => `<tr><td class="field">${f}</td><td class="val"><code>${esc(JSON.stringify(r[f]))}</code></td></tr>`)
+    .join('');
+  const rowJson = JSON.stringify({ [name]: r }, null, 2);
+  document.getElementById('main').innerHTML = `
+    <div class="sch-head">
+      <h2>${esc(name)}</h2>
+      <div class="meta">
+        <span class="chip">TypeA <b>${esc(short(r.TypeA))}</b></span>
+        <span class="chip">TypeB <b>${esc(short(r.TypeB))}</b></span>
+        <span class="chip">Rank <b>${esc(r.Rank)}</b></span>
+        <span class="chip">Rarity <b>${esc(r.Rarity)}</b></span>
+        <span class="chip">Price <b>${esc(r.Price)}</b></span>
+      </div>
+      <div class="desc">Asset-reuse fields — to make a variant of this item, copy these values into your new row.
+        For equipment visuals the key one is <b>ItemActorClass</b>: a clone without it loses the model
+        (the game itself ships variants this way, e.g. LightzHelmet → ItemActorClass "IronHelmet").</div>
+    </div>
+    <table>
+      <thead><tr><th>Asset field</th><th>Value</th></tr></thead>
+      <tbody>${assetRows}</tbody>
+    </table>
+    <div class="rowjson-head">
+      <h3>Full row (copy/paste base for your mod)</h3>
+      <button class="copy" onclick="copyRow()">Copy JSON</button>
+    </div>
+    <pre id="rowjson">${esc(rowJson)}</pre>`;
+}
+
+function copyRow() {
+  navigator.clipboard.writeText(document.getElementById('rowjson').textContent);
+}
+
+async function init() {
+  let data;
+  try {
+    const res = await fetch('./items.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('items.json HTTP ' + res.status);
+    data = await res.json();
+  } catch (e) {
+    document.getElementById('empty').textContent = 'Could not load items.json: ' + e.message;
+    return;
+  }
+  state.data = data;
+  state.names = Object.keys(data.items).sort();
+  const typebs = [...new Set(state.names.map(n => data.items[n].TypeB).filter(Boolean))].sort();
+  const sel = document.getElementById('typeb');
+  sel.innerHTML = '<option value="">All categories</option>' +
+    typebs.map(t => `<option value="${esc(t)}">${esc(short(t))}</option>`).join('');
+  sel.onchange = renderList;
+  document.getElementById('search').oninput = renderList;
+  document.getElementById('main').innerHTML = `
+    <div class="empty">Select an item to see its asset fields and full row JSON.<br><br>
+    <span class="note">${esc(data.note)} · generated ${esc(data.generatedAt.slice(0, 10))} · ${data.count} items</span></div>`;
+  renderList();
+}
+init();
+</script>
+</body>
+</html>

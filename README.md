@@ -112,6 +112,18 @@ node cli/dist/index.js --version 1.0 --registry . tests/invalid-mod.json  # exit
 
 ---
 
+## Item asset reference (values, not just schemas)
+
+[`items.html`](https://booyaka101.github.io/palschema-hub/items.html) is a searchable per-item
+**value** reference for `DT_ItemDataTable` (947 items): row name → `ItemActorClass` /
+`ItemStaticClass` / `ItemDynamicClass` / visual fields, plus the full row JSON to copy as a
+base for variants. Motivated by [PalSchema #53](https://github.com/Okaetsu/PalSchema/issues/53):
+cloning an equipment row without its `ItemActorClass` silently loses the model in-game (the
+game ships variants by pointing at another item's actor, e.g. LightzHelmet → `"IronHelmet"`).
+Machine-readable: [`items.json`](https://booyaka101.github.io/palschema-hub/items.json);
+regenerate with `node scripts/build-items.mjs` (source: public paldex dump — newest items may
+lag until a fresh dump lands).
+
 ## Run it locally
 
 ```bash
@@ -142,11 +154,12 @@ schemas/v1.0/*.schema.json   31 per-table JSON Schemas (+ _manifest.json)
 schemas/index.json             table-name -> schema-path listing (for Pages consumers)
 index.json                     { versions, schemas:{ver:[tables]}, tables:{...} } catalog
 index.html                     schema browser (vanilla HTML/CSS/JS, no build step)
+items.html + items.json        per-item value reference for DT_ItemDataTable (asset reuse)
 cli/                           palschema-validate (TypeScript -> dist/*.js), ajv strict
 tests/                         valid-mod.json, invalid-mod.json, example .jsonc, wrapper-typo
 tests/real-mods/               4 real published PalSchema mods (see SOURCES.md)
 tests/real-mods-broken/        deliberately-broken real mods (typed-error tests)
-scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, build-index, check-index, serve
+scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, build-index, build-items, check-index, serve
 .github/workflows/
   pages.yml                    deploys browser + schemas to GitHub Pages (tests gate it)
   palschema-ci.yml.example     CI template for MOD repos
@@ -158,6 +171,7 @@ scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tabl
 ## 🚀 Live deployments
 
 - **Schema browser:** https://booyaka101.github.io/palschema-hub/ (GitHub Pages, deploy gated on the acceptance tests)
+- **Item asset reference:** https://booyaka101.github.io/palschema-hub/items.html (DT_ItemDataTable values)
 - **CLI on npm:** [`palschema-validate`](https://www.npmjs.com/package/palschema-validate) — `npx palschema-validate --version 1.0 <files>`
 - **Announcement:** [PalSchema issue #53](https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5022177544)
 - **Nexus Mods page:** [PalSchema Hub - Community Schema Registry](https://www.nexusmods.com/palworld/mods/4084) (Utilities)
