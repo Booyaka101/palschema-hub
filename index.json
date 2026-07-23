@@ -31,6 +31,8 @@
       "DT_StatusEffectFood",
       "DT_TechnologyIconData",
       "DT_TechnologyRecipeUnlock",
+      "DT_TestAlpha",
+      "DT_TestBeta",
       "DT_UniqueNPC",
       "DT_WazaDataTable",
       "DT_WazaMasterLevel",
@@ -224,8 +226,20 @@
         "fields": 3,
         "rows": 0,
         "source": "paldex-dump+sdk-headers"
+      },
+      "DT_TestAlpha": {
+        "rowStruct": "",
+        "fields": 2,
+        "rows": 0,
+        "source": ""
+      },
+      "DT_TestBeta": {
+        "rowStruct": "",
+        "fields": 2,
+        "rows": 0,
+        "source": ""
       }
     }
   },
-  "generatedAt": "2026-07-20T07:33:47.484Z"
+  "generatedAt": "2026-07-23T16:46:33.096Z"
 }
