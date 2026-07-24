@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-07-23T21:54:55.634Z",
+ "generatedAt": "2026-07-24T13:56:23.465Z",
  "table": "DT_ItemDataTable",
  "source": "https://raw.githubusercontent.com/blaynem/paldex/main/data-provider/palworld-assets/DataTable/Item/DT_ItemDataTable.json",
  "note": "Per-item row VALUES (ItemActorClass etc.) for asset reuse in PalSchema mods. Derived from the public paldex dump of an earlier game build; newest items may be missing. Field names/types: see schemas/ and index.html.",
