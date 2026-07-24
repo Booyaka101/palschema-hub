@@ -27,6 +27,13 @@ jobs:
         with:
           node-version: 22
 
+      # Snapshot the committed file BEFORE regenerating. Reading two plain
+      # files avoids `git show` through execSync, whose 1 MB default maxBuffer
+      # is smaller than items.json (~1.08 MB) — that threw ENOBUFS and made the
+      # change-check always report "changed", opening a noise PR every run.
+      - name: Snapshot committed items.json (pre-refresh)
+        run: '[ -f items.json ] && cp items.json "$RUNNER_TEMP/items.old.json" || echo "no committed items.json yet"'
+
       - name: Regenerate items.json from the paldex dump
         run: node scripts/build-items.mjs
 
@@ -34,15 +41,18 @@ jobs:
         id: diff
         run: |
           node -e '
-            const fs = require("fs"), cp = require("child_process");
+            const fs = require("fs");
             const strip = (o) => { const { generatedAt, ...rest } = o; return rest; };
+            const oldPath = process.env.RUNNER_TEMP + "/items.old.json";
             let changed = true;
             try {
-              const old = JSON.parse(cp.execSync("git show HEAD:items.json").toString());
-              const neu = JSON.parse(fs.readFileSync("items.json", "utf8"));
-              changed = JSON.stringify(strip(old)) !== JSON.stringify(strip(neu));
+              if (fs.existsSync(oldPath)) {
+                const old = JSON.parse(fs.readFileSync(oldPath, "utf8"));
+                const neu = JSON.parse(fs.readFileSync("items.json", "utf8"));
+                changed = JSON.stringify(strip(old)) !== JSON.stringify(strip(neu));
+              } // else: no prior committed file → treat as changed
             } catch (e) {
-              changed = true; // no committed items.json yet, or unreadable → treat as changed
+              changed = true; // unreadable → treat as changed
             }
             fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
             console.log("meaningful change:", changed);
