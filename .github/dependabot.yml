@@ -4,7 +4,9 @@ version: 2
 # remembered.
 updates:
   - package-ecosystem: npm
-    directory: /
+    # The publishable package is the nested validator CLI; the repo root is a
+    # private schema registry with no dependencies and no lockfile.
+    directory: /cli
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
