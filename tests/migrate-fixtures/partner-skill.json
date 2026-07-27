@@ -1,0 +1,8 @@
+{
+  "DT_PalMonsterParameter": {
+    "ChickenPal000": {
+      "OverridePartnerSkillTextID": "PARTNERSKILL_ChickenPal",
+      "Hp": 75
+    }
+  }
+}

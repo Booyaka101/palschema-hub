@@ -75,17 +75,36 @@ export function collectFiles(target: string): string[] {
   return out;
 }
 
-function schemaLocation(table: string, opts: Options): { url?: string; path?: string } {
+/** Resolve a registry-relative file (schema, versions.json, diff) the same way for
+ *  all three registry forms: base URL, local repo-root path, or the default GitHub raw URL. */
+function registryLocation(relPath: string, opts: Pick<Options, 'registry' | 'owner'>): { url?: string; path?: string } {
   const reg = opts.registry;
   if (reg && /^https?:\/\//i.test(reg)) {
-    return { url: `${reg.replace(/\/+$/, '')}/schemas/v${opts.version}/${table}.schema.json` };
+    return { url: `${reg.replace(/\/+$/, '')}/${relPath}` };
   }
   if (reg) {
-    return { path: join(reg, 'schemas', `v${opts.version}`, `${table}.schema.json`) };
+    return { path: join(reg, ...relPath.split('/')) };
   }
   return {
-    url: `https://raw.githubusercontent.com/${opts.owner}/palschema-hub/main/schemas/v${opts.version}/${table}.schema.json`,
+    url: `https://raw.githubusercontent.com/${opts.owner}/palschema-hub/main/${relPath}`,
   };
+}
+
+function schemaLocation(table: string, opts: Options): { url?: string; path?: string } {
+  return registryLocation(`schemas/v${opts.version}/${table}.schema.json`, opts);
+}
+
+/** Fetch/read a registry-relative JSON file. Throws with a clear message on failure. */
+export async function loadRegistryJson(relPath: string, opts: Pick<Options, 'registry' | 'owner'>): Promise<any> {
+  const loc = registryLocation(relPath, opts);
+  try {
+    if (loc.path) return JSON.parse(readFileSync(loc.path, 'utf8'));
+    const res = await fetch(loc.url!);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (e: any) {
+    throw new Error(`cannot load ${relPath} from registry (${loc.path ?? loc.url}): ${e.message}`);
+  }
 }
 
 const validatorCache = new Map<string, ValidateFunction | null>();
@@ -241,4 +260,130 @@ export async function validateFile(file: string, opts: Options): Promise<Finding
     }
   }
   return findings;
+}
+
+/* ---------------- --migrate: version-diff breaking-change scan ---------------- */
+
+export interface VersionsInfo {
+  repo: string;
+  order: string[];
+  versions: Record<string, { sdkCommit: string; sdkDate: string }>;
+  aliases: Record<string, { of: string; note: string }>;
+}
+
+interface RenameNote {
+  from: string;
+  to: string;
+  type: string;
+  confidence: 'high' | 'medium';
+  altCandidates?: string[];
+}
+
+export interface VersionDiff {
+  from: { requested: string; palworldVersion: string; sdkCommit: string; sdkDate: string };
+  to: { requested: string; palworldVersion: string; sdkCommit: string; sdkDate: string };
+  summary: string;
+  structs: Record<
+    string,
+    {
+      added: Array<{ field: string; type: string }>;
+      removed: Array<{ field: string; type: string }>;
+      retyped: Array<{ field: string; from: string; to: string }>;
+      renames: RenameNote[];
+      tables: string[];
+    }
+  >;
+  tableToStruct: Record<string, string>;
+}
+
+/** Resolve a version label (or alias like "0.7.3") against versions.json. */
+export function resolveVersionLabel(
+  info: VersionsInfo,
+  label: string
+): { version: string; aliasNote: string | null } | null {
+  if (info.versions[label]) return { version: label, aliasNote: null };
+  const alias = info.aliases[label];
+  if (alias) return { version: alias.of, aliasNote: alias.note };
+  return null;
+}
+
+/** Reverse a diff for downgrade scans (added<->removed, retyped/renames flipped). */
+export function invertDiff(d: VersionDiff): VersionDiff {
+  const structs: VersionDiff['structs'] = {};
+  for (const [name, s] of Object.entries(d.structs)) {
+    structs[name] = {
+      added: s.removed,
+      removed: s.added,
+      retyped: s.retyped.map((r) => ({ field: r.field, from: r.to, to: r.from })),
+      renames: s.renames.map((r) => ({ ...r, from: r.to, to: r.from, altCandidates: undefined })),
+      tables: s.tables,
+    };
+  }
+  return { ...d, from: d.to, to: d.from, structs };
+}
+
+export interface MigrateHit {
+  file: string;
+  table: string;
+  row: string;
+  field: string;
+  kind: 'removed' | 'retyped';
+  /** removed: the field's C++ type in the old version; retyped: "old -> new". */
+  detail: string;
+  rename?: RenameNote;
+}
+
+interface StructIndex {
+  removed: Map<string, { type: string; rename?: RenameNote }>;
+  retyped: Map<string, { from: string; to: string }>;
+}
+
+export function buildDiffIndex(diff: VersionDiff): Map<string, StructIndex> {
+  const index = new Map<string, StructIndex>();
+  for (const [name, s] of Object.entries(diff.structs)) {
+    const removed = new Map<string, { type: string; rename?: RenameNote }>();
+    for (const r of s.removed) {
+      removed.set(r.field, { type: r.type, rename: s.renames.find((rn) => rn.from === r.field) });
+    }
+    const retyped = new Map(s.retyped.map((r) => [r.field, { from: r.from, to: r.to }]));
+    index.set(name, { removed, retyped });
+  }
+  return index;
+}
+
+/** Scan one mod file's DT_* rows for fields the diff marks removed/retyped. */
+export function migrateScanFile(
+  file: string,
+  diff: VersionDiff,
+  index: Map<string, StructIndex>,
+  unknownTables: Set<string>
+): MigrateHit[] {
+  const data = parseJsonc(readFileSync(file, 'utf8'), file);
+  const hits: MigrateHit[] = [];
+  for (const { table, content } of detectTargets(data, file)) {
+    const structName = diff.tableToStruct[table];
+    if (!structName) {
+      unknownTables.add(table);
+      continue;
+    }
+    const structIndex = index.get(structName);
+    if (!structIndex) continue; // struct unchanged between the two versions
+    if (content === null || typeof content !== 'object' || Array.isArray(content)) continue;
+    for (const [rowName, row] of Object.entries<any>(content)) {
+      if (row === null || typeof row !== 'object' || Array.isArray(row)) continue;
+      for (const field of Object.keys(row)) {
+        if (field === '$Filters') continue;
+        const removed = structIndex.removed.get(field);
+        if (removed) {
+          hits.push({ file, table, row: rowName, field, kind: 'removed', detail: removed.type, rename: removed.rename });
+          continue;
+        }
+        const retyped = structIndex.retyped.get(field);
+        if (retyped) {
+          hits.push({ file, table, row: rowName, field, kind: 'retyped', detail: `${retyped.from} -> ${retyped.to}` });
+        }
+      }
+    }
+  }
+  return hits;
 }

@@ -1,6 +1,50 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-07-24 (item asset reference session)
+**Last updated:** 2026-07-27 (version-diff engine session)
+
+## Session 2026-07-27 — version-diff engine (v0.2.0)
+Shipped the "what changed between game versions" lane (answers the follow-up question
+of the same issue-#53 audience):
+- `versions.json`: 12 Palworld versions pinned to the SDK commits that regenerated
+  `Source/Pal/Public` (verified against the path-filtered commit list); 0.7.3 + 1.0.1
+  recorded as ALIASES (no header change) — CLI/UI say "no row-struct changes".
+- `scripts/lib/sdk-parse.mjs`: UPROPERTY parser/enum extractor/headerFor/fragForType
+  extracted from augment-from-sdk.mjs as `createSdkParser(hdrDir)`; **proved
+  byte-identical** augment output (old vs new script on same input, diff -r clean).
+- `scripts/snapshot-structs.mjs` (+`npm run snapshot:all`): downloads each version's
+  SDK tarball (unauthenticated codeload; .cache/sdk-<ver>/), parses every
+  FTableRowBase struct + all manifest rowStructs → `structs/<ver>.json` (97→135
+  structs across 12 versions, field order = struct order, inheritance included).
+  Gotcha: GNU tar on Windows parses `D:\...` as a remote host — extract with cwd +
+  relative paths. Extraction success is detected by the tarball root dir, not the
+  target dir's existence (interrupted runs).
+- `scripts/build-diff.mjs` (+`npm run diff:all`): diffs/<a>..<b>.json+.md for all 66
+  ascending pairs + 2 alias pairs. added/removed/retyped per struct, DT_* rollup via
+  tableToStruct, conservative labelled rename heuristic (high = same type + name equal
+  after lowercase/strip[_ ]; medium = same type + one-substring insertion/deletion,
+  primary candidate = first in new-struct field order). VERIFIED: 0.7.2→1.0 reproduces
+  the real delta (OverridePartnerSkillTextID removed; NameTextID/DescTextID/
+  EnemyWazaCoolTimeRate/BestWorkSuitability added; medium rename note → NameTextID,
+  alt DescTextID; affects DT_PalMonsterParameter + DT_PalHumanParameter) and the
+  negative control (DT_PalDropItem unchanged). Also true: 0.7.0→0.7.2 changed NO row
+  structs (those SDK commits touched other classes).
+- `diff.html`: two version pickers (aliases inline as "0.7.3 (= 0.7.2)"), red/green/
+  amber lists, confidence chips, alias banner, auto-swap note for newer→older picks,
+  deep-linkable ?from=&to=. Rendered + verified in headless Chrome (alias banner,
+  reversed pair, nav link from index.html). pages.yml stages diff.html + versions.json
+  + diffs/ + structs/ (whitelist gotcha).
+- CLI 0.2.0: `--migrate <from>..<to>` (mutually exclusive with --version), same
+  --registry resolution (new shared registryLocation/loadRegistryJson in core.ts),
+  alias resolution, downgrade scans invert the diff, unknown-table warnings, exact
+  brief-format hit lines + `N file(s) scanned · M breaking field(s) in K file(s)`.
+  Packed tarball verified from a clean scratch install (relative path!), both modes.
+  Added repository/author/homepage/bugs + cli/README.md (npm page was README-less).
+- Tests 13→18 (worked-example reproduction, DropItem negative control, migrate
+  hit/clean/alias). self-test.yml gained 2 migrate steps. CHANGELOG.md added; root +
+  cli bumped to 0.2.0.
+- NOT DONE (owner ships from phone): push to GitHub (triggers Pages deploy with the
+  new whitelist), `cd cli && npm publish` for palschema-validate@0.2.0. Everything is
+  committed locally on main.
 
 ## Session 2026-07-24 — per-item VALUE reference (items.html / items.json)
 Prompted by Person7557 in issue #53 (couldn't find "ActorClass"; cloned AncientHelmet

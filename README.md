@@ -105,7 +105,8 @@ node cli/dist/index.js --version 1.0 --registry . tests/invalid-mod.json  # exit
 
 | flag | meaning |
 |---|---|
-| `--version <v>` | Palworld version to validate against (required, e.g. `1.0`) |
+| `--version <v>` | Palworld version to validate against (e.g. `1.0`) — validate mode |
+| `--migrate <a>..<b>` | scan mods for fields removed/retyped between two game versions (e.g. `0.7.2..1.0`) — exactly one of `--version` / `--migrate` |
 | `--registry <r>` | schema source: a base URL, **or** a local repo-root path (`.`). Default: `https://raw.githubusercontent.com/<owner>/palschema-hub/main` |
 | `--owner <o>` | GitHub owner for the default registry URL (default `Booyaka101`, or `$PALSCHEMA_OWNER`) |
 | `-h, --help` | usage |
@@ -123,6 +124,66 @@ game ships variants by pointing at another item's actor, e.g. LightzHelmet → `
 Machine-readable: [`items.json`](https://booyaka101.github.io/palschema-hub/items.json);
 regenerate with `node scripts/build-items.mjs` (source: public paldex dump — newest items may
 lag until a fresh dump lands).
+
+## What changed between game versions
+
+Every Palworld patch can add, remove, or rename DataTable row-struct fields — and a
+PalSchema mod that sets a field the game no longer has silently does nothing (or errors
+at load). [`diff.html`](https://booyaka101.github.io/palschema-hub/diff.html) shows the
+field-level delta between any two game versions, and the CLI scans your mod for it:
+
+```bash
+npx palschema-validate --migrate 0.7.2..1.0 ./mods/
+```
+
+Real output (a mod setting the pre-1.0 partner-skill text field):
+
+```
+palschema-validate · migrate 0.7.2 → 1.0 · 1 file(s)
+
+  ✗ tests/migrate-fixtures/partner-skill.json
+      tests/migrate-fixtures/partner-skill.json > DT_PalMonsterParameter > ChickenPal000 > OverridePartnerSkillTextID: removed in 1.0 (was FName) — possible rename to OverridePartnerSkillNameTextID (medium confidence)
+
+1 file(s) scanned · 1 breaking field(s) in 1 file(s)
+```
+
+That is a real, verified 1.0 change to `PalCharacterParameterDatabaseRow` (used by both
+`DT_PalMonsterParameter` and `DT_PalHumanParameter`): `OverridePartnerSkillTextID` was
+removed; `OverridePartnerSkillNameTextID`, `OverridePartnerSkillDescTextID`,
+`EnemyWazaCoolTimeRate` (float) and `BestWorkSuitability` (EPalWorkSuitability) were added.
+Rename suggestions are **heuristic and labelled**: *high* confidence means an identical C++
+type and the same name up to case/underscores (`HP`→`Hp`); *medium* means the same type and
+one name derivable from the other by one inserted/deleted substring (the partner-skill case
+above); anything else is reported plainly as removed + added with no rename claim.
+
+Each version is pinned to the [localcc/PalworldModdingKit](https://github.com/localcc/PalworldModdingKit)
+commit that regenerated `Source/Pal/Public` for that game build (`versions.json`); the parsed
+field snapshots are committed under `structs/` and the pairwise deltas under `diffs/`:
+
+| Palworld | SDK commit | date |
+|---|---|---|
+| 0.3.1 | `5e2ce8f` | 2024-06-28 |
+| 0.3.7 | `42e4865` | 2024-09-18 |
+| 0.3.8 | `8532ae7` | 2024-09-27 |
+| 0.3.9 | `2592597` | 2024-10-01 |
+| 0.4.11 | `41acdeb` | 2025-01-09 |
+| 0.5.0 | `4a2e161` | 2025-03-21 |
+| 0.6.0 | `cac6969` | 2025-06-25 |
+| 0.6.4 | `10354a8` | 2025-07-31 |
+| 0.7.0 | `b08d51a` | 2025-12-17 |
+| 0.7.1 | `e66b515` | 2026-01-26 |
+| 0.7.2 | `4dcdc78` | 2026-02-16 |
+| 1.0 | `98ee60d` | 2026-07-11 |
+
+> **Alias caveat:** Palworld **0.7.3** and **1.0.1** shipped **no** row-struct (header)
+> changes, so they alias `0.7.2` and `1.0` respectively — the CLI and diff page say so
+> explicitly (`--migrate 0.7.2..0.7.3` → "no row-struct changes") instead of pretending a
+> diff exists. Note also that 0.7.0→0.7.2 changed no row structs (those SDK updates touched
+> other classes).
+
+Regenerate from scratch with `npm run snapshot:all` (downloads the 12 pinned SDK tarballs
+into `.cache/`) and `npm run diff:all`. Only **derived field names/types** ship here —
+never game assets.
 
 ## Run it locally
 
@@ -155,11 +216,16 @@ schemas/index.json             table-name -> schema-path listing (for Pages cons
 index.json                     { versions, schemas:{ver:[tables]}, tables:{...} } catalog
 index.html                     schema browser (vanilla HTML/CSS/JS, no build step)
 items.html + items.json        per-item value reference for DT_ItemDataTable (asset reuse)
+diff.html                      version-diff viewer (what changed between game versions)
+versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3/1.0.1 aliases)
+structs/<ver>.json             12 committed row-struct snapshots (field -> C++ type, ordered)
+diffs/<a>..<b>.json + .md      pairwise struct deltas (added/removed/retyped + rename notes)
 cli/                           palschema-validate (TypeScript -> dist/*.js), ajv strict
 tests/                         valid-mod.json, invalid-mod.json, example .jsonc, wrapper-typo
 tests/real-mods/               4 real published PalSchema mods (see SOURCES.md)
 tests/real-mods-broken/        deliberately-broken real mods (typed-error tests)
-scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, build-index, build-items, check-index, serve
+tests/migrate-fixtures/        --migrate scan fixtures (partner-skill rename case)
+scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, snapshot-structs, build-diff, build-index, build-items, check-index, serve (+ lib/sdk-parse.mjs)
 .github/workflows/
   pages.yml                    deploys browser + schemas to GitHub Pages (tests gate it)
   palschema-ci.yml.example     CI template for MOD repos
@@ -172,6 +238,7 @@ scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tabl
 
 - **Schema browser:** https://booyaka101.github.io/palschema-hub/ (GitHub Pages, deploy gated on the acceptance tests)
 - **Item asset reference:** https://booyaka101.github.io/palschema-hub/items.html (DT_ItemDataTable values)
+- **Version diff:** https://booyaka101.github.io/palschema-hub/diff.html (row-struct changes between game versions)
 - **CLI on npm:** [`palschema-validate`](https://www.npmjs.com/package/palschema-validate) — `npx palschema-validate --version 1.0 <files>`
 - **Announcement:** [PalSchema issue #53](https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5022177544)
 - **Nexus Mods page:** [PalSchema Hub - Community Schema Registry](https://www.nexusmods.com/palworld/mods/4084) (Utilities)

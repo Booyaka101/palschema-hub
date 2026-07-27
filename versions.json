@@ -1,0 +1,23 @@
+{
+  "$comment": "palschema-hub version pins: each Palworld version -> the localcc/PalworldModdingKit commit that regenerated Source/Pal/Public for it. Verified via https://api.github.com/repos/localcc/PalworldModdingKit/commits?path=Source%2FPal%2FPublic",
+  "repo": "localcc/PalworldModdingKit",
+  "order": ["0.3.1", "0.3.7", "0.3.8", "0.3.9", "0.4.11", "0.5.0", "0.6.0", "0.6.4", "0.7.0", "0.7.1", "0.7.2", "1.0"],
+  "versions": {
+    "0.3.1": { "sdkCommit": "5e2ce8f", "sdkDate": "2024-06-28" },
+    "0.3.7": { "sdkCommit": "42e4865", "sdkDate": "2024-09-18" },
+    "0.3.8": { "sdkCommit": "8532ae7", "sdkDate": "2024-09-27" },
+    "0.3.9": { "sdkCommit": "2592597", "sdkDate": "2024-10-01" },
+    "0.4.11": { "sdkCommit": "41acdeb", "sdkDate": "2025-01-09" },
+    "0.5.0": { "sdkCommit": "4a2e161", "sdkDate": "2025-03-21" },
+    "0.6.0": { "sdkCommit": "cac6969", "sdkDate": "2025-06-25" },
+    "0.6.4": { "sdkCommit": "10354a8", "sdkDate": "2025-07-31" },
+    "0.7.0": { "sdkCommit": "b08d51a", "sdkDate": "2025-12-17" },
+    "0.7.1": { "sdkCommit": "e66b515", "sdkDate": "2026-01-26" },
+    "0.7.2": { "sdkCommit": "4dcdc78", "sdkDate": "2026-02-16" },
+    "1.0": { "sdkCommit": "98ee60d", "sdkDate": "2026-07-11" }
+  },
+  "aliases": {
+    "0.7.3": { "of": "0.7.2", "note": "Palworld 0.7.3 shipped no Source/Pal/Public header change — its row structs are identical to 0.7.2." },
+    "1.0.1": { "of": "1.0", "note": "Palworld 1.0.1 (hotfix) shipped no Source/Pal/Public header change — its row structs are identical to 1.0." }
+  }
+}

@@ -61,5 +61,21 @@ run('array wrapper: bad Action value -> precise error',
 run('SDK-only table: nonexistent lottery slot -> typed error',
   validate('tests/real-mods-broken/fieldlottery-broken.json'), 1, 'unknown field "ItemSlot16_ProbabilityPercent"');
 
+// Version-diff engine (structs/ snapshots + diffs/ + CLI --migrate).
+const migrate = (pair, target) => ['cli/dist/index.js', '--migrate', pair, '--registry', '.', ...(target ? [target] : [])];
+
+run('build-diff 0.7.2 1.0 reproduces the verified partner-skill delta',
+  ['scripts/build-diff.mjs', '0.7.2', '1.0'], 0, 'OverridePartnerSkillTextID');
+run('0.7.2..1.0 diff JSON reports DT_PalDropItem unchanged',
+  ['-e', `const d=require('./diffs/0.7.2..1.0.json');` +
+    `if(!d.unchangedTables.includes('DT_PalDropItem')||('DT_PalDropItem' in d.affectedTables))process.exit(1);` +
+    `console.log('DT_PalDropItem unchanged');`], 0, 'DT_PalDropItem unchanged');
+run('--migrate 0.7.2..1.0 flags the removed OverridePartnerSkillTextID (exit 1)',
+  migrate('0.7.2..1.0', 'tests/migrate-fixtures/partner-skill.json'), 1, 'OverridePartnerSkillTextID');
+run('--migrate 0.7.2..1.0: Old School Loot (drop/lottery tables) is unaffected',
+  migrate('0.7.2..1.0', 'tests/real-mods/palschemafied-old-school-loot'), 0);
+run('--migrate 0.7.2..0.7.3 (alias pair) -> "no row-struct changes"',
+  migrate('0.7.2..0.7.3'), 0, 'no row-struct changes');
+
 console.log(`\n${failures ? failures + ' test(s) FAILED' : 'All tests passed ✓'}`);
 process.exit(failures ? 1 : 0);

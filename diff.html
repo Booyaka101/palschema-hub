@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PalSchema Hub — what changed between Palworld versions</title>
+<style>
+  :root {
+    --bg: #0f1218; --panel: #171b24; --panel2: #1e2430; --border: #2a3242;
+    --text: #e6e9ef; --muted: #8b95a7; --accent: #6db3f2; --accent2: #7ee0a6;
+    --chip: #232b3a; --warn: #f2c14e; --bad: #f28b8b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 18px 22px; border-bottom: 1px solid var(--border); background: var(--panel);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  header .tag { color: var(--muted); font-size: 12.5px; }
+  header a { color: var(--accent); text-decoration: none; }
+  .main { max-width: 1060px; margin: 0 auto; padding: 22px 26px 60px; }
+  .controls { display: flex; gap: 12px; align-items: end; flex-wrap: wrap; margin-bottom: 18px; }
+  .controls .field { display: flex; flex-direction: column; gap: 6px; }
+  .controls label { color: var(--muted); font-size: 12px; }
+  select {
+    padding: 9px 11px; background: var(--panel2); color: var(--text); min-width: 150px;
+    border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none;
+  }
+  select:focus { border-color: var(--accent); }
+  .arrow { color: var(--muted); font-size: 18px; padding: 0 2px 8px; }
+  .banner { border: 1px solid var(--border); border-left: 4px solid var(--warn); background: var(--panel);
+    border-radius: 8px; padding: 12px 16px; margin: 14px 0; color: var(--text); }
+  .banner.same { border-left-color: var(--accent2); }
+  .summary { color: var(--muted); margin: 10px 0 4px; }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+  .chip { background: var(--chip); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; font-size: 12px; color: var(--muted); }
+  .chip b { color: var(--text); font-weight: 600; }
+  .table-section { border: 1px solid var(--border); background: var(--panel); border-radius: 10px;
+    padding: 16px 18px; margin: 14px 0; }
+  .table-section h2 { margin: 0 0 2px; font-family: ui-monospace, Consolas, monospace; font-size: 17px; color: var(--accent); }
+  .table-section .struct { color: var(--muted); font-size: 12.5px; margin-bottom: 8px; }
+  ul.changes { margin: 8px 0 0; padding-left: 0; list-style: none; }
+  ul.changes li { padding: 4px 0; font-family: ui-monospace, Consolas, monospace; font-size: 13px; }
+  .added { color: var(--accent2); }
+  .removed { color: var(--bad); }
+  .retyped { color: var(--warn); }
+  .rename { color: var(--text); }
+  .conf { font: 11px/1 -apple-system, "Segoe UI", sans-serif; border-radius: 999px; padding: 2px 8px; margin-left: 6px;
+    border: 1px solid var(--border); background: var(--chip); color: var(--warn); vertical-align: 1px; }
+  .conf.high { color: var(--accent2); }
+  .type { color: var(--muted); }
+  .empty { color: var(--muted); margin-top: 40px; text-align: center; }
+  .other { color: var(--muted); font-size: 12.5px; margin-top: 18px; }
+  .other code { background: var(--panel2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; font-size: 12px; }
+  .note { color: var(--muted); font-size: 12.5px; margin: 6px 0; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>🧩 PalSchema Hub — version diff</h1>
+  <span class="tag">What changed in Palworld's DataTable row structs between game versions ·
+    <a href="./index.html">schema registry</a> · <a href="./items.html">item reference</a> ·
+    derived from <a href="https://github.com/localcc/PalworldModdingKit" target="_blank" rel="noopener">localcc/PalworldModdingKit</a> headers</span>
+</header>
+
+<div class="main">
+  <div class="controls">
+    <div class="field"><label for="from">From Palworld version</label><select id="from"></select></div>
+    <div class="arrow">→</div>
+    <div class="field"><label for="to">To Palworld version</label><select id="to"></select></div>
+  </div>
+  <div id="out"><div class="empty">Loading versions…</div></div>
+</div>
+
+<script>
+let VERSIONS = null;
+const esc = (s) => String(s).replace(/</g, '&lt;');
+
+async function loadJson(url) {
+  const res = await fetch(url, { cache: 'no-cache' });
+  if (!res.ok) throw new Error(url + ' HTTP ' + res.status);
+  return res.json();
+}
+
+// Resolve a selected label (possibly an alias like 0.7.3) to its pinned version.
+function resolve(label) {
+  if (VERSIONS.versions[label]) return { version: label, alias: null };
+  const a = VERSIONS.aliases[label];
+  return { version: a.of, alias: a };
+}
+
+function confChip(c) { return `<span class="conf ${c}">${c} confidence</span>`; }
+
+function changeList(s) {
+  const li = [];
+  for (const r of s.removed) li.push(`<li class="removed">− removed <b>${esc(r.field)}</b> <span class="type">(${esc(r.type)})</span></li>`);
+  for (const a of s.added) li.push(`<li class="added">+ added <b>${esc(a.field)}</b> <span class="type">(${esc(a.type)})</span></li>`);
+  for (const r of s.retyped) li.push(`<li class="retyped">~ retyped <b>${esc(r.field)}</b>: <span class="type">${esc(r.from)} → ${esc(r.to)}</span></li>`);
+  for (const r of s.renames) {
+    li.push(`<li class="rename">🔀 possible rename: <b>${esc(r.from)}</b> → <b>${esc(r.to)}</b>${confChip(r.confidence)}` +
+      (r.altCandidates ? ` <span class="type">(alternate: ${r.altCandidates.map(esc).join(', ')})</span>` : '') + `</li>`);
+  }
+  return `<ul class="changes">${li.join('')}</ul>`;
+}
+
+async function render() {
+  const fromLabel = document.getElementById('from').value;
+  const toLabel = document.getElementById('to').value;
+  const out = document.getElementById('out');
+  const from = resolve(fromLabel), to = resolve(toLabel);
+  const fromPin = VERSIONS.versions[from.version], toPin = VERSIONS.versions[to.version];
+
+  const aliasNotes = [];
+  if (from.alias) aliasNotes.push(from.alias.note);
+  if (to.alias) aliasNotes.push(to.alias.note);
+
+  // Same SDK commit (same version picked twice, or an alias pair): nothing to diff.
+  if (fromPin.sdkCommit === toPin.sdkCommit) {
+    out.innerHTML =
+      `<div class="banner same"><b>No row-struct changes.</b> Palworld ${esc(fromLabel)} and ${esc(toLabel)} ` +
+      `share the same SDK headers (commit <b>${esc(toPin.sdkCommit)}</b>) — every DataTable row struct is identical, ` +
+      `so PalSchema mods need no field migration between them.` +
+      (aliasNotes.length ? `<br>${aliasNotes.map(esc).join('<br>')}` : '') + `</div>`;
+    return;
+  }
+
+  // Diffs are committed for ascending canonical pairs — swap if picked backwards.
+  const oi = VERSIONS.order.indexOf(from.version), ti = VERSIONS.order.indexOf(to.version);
+  const swapped = oi > ti;
+  const [f, t] = swapped ? [to.version, from.version] : [from.version, to.version];
+
+  out.innerHTML = `<div class="empty">Loading diff ${esc(f)} → ${esc(t)}…</div>`;
+  let d;
+  try {
+    d = await loadJson(`./diffs/${f}..${t}.json`);
+  } catch (e) {
+    out.innerHTML = `<div class="empty">Could not load the ${esc(f)} → ${esc(t)} diff: ${esc(e.message)}</div>`;
+    return;
+  }
+
+  const parts = [];
+  if (aliasNotes.length) {
+    parts.push(`<div class="banner">${aliasNotes.map(esc).join('<br>')}</div>`);
+  }
+  if (swapped) {
+    parts.push(`<div class="note">You picked ${esc(fromLabel)} → ${esc(toLabel)} (newer → older); showing the changes going ${esc(f)} → ${esc(t)}.</div>`);
+  }
+  parts.push(`<div class="meta">
+    <span class="chip">SDK <b>${esc(d.from.sdkCommit)}</b> (${esc(d.from.sdkDate)}) → <b>${esc(d.to.sdkCommit)}</b> (${esc(d.to.sdkDate)})</span>
+    <a class="chip" href="./diffs/${f}..${t}.md" target="_blank" rel="noopener">markdown ↗</a>
+    <a class="chip" href="./diffs/${f}..${t}.json" target="_blank" rel="noopener">raw JSON ↗</a>
+  </div>`);
+  parts.push(`<div class="summary">${esc(d.summary)}</div>`);
+
+  const structNames = Object.keys(d.structs || {});
+  if (!structNames.length) {
+    parts.push(`<div class="banner same"><b>No row-struct changes</b> between Palworld ${esc(f)} and ${esc(t)}.</div>`);
+  } else {
+    // Per-table sections for tables the registry knows…
+    const tables = Object.keys(d.affectedTables).sort();
+    for (const table of tables) {
+      const structName = d.affectedTables[table];
+      parts.push(`<div class="table-section">
+        <h2>${esc(table)}</h2>
+        <div class="struct">row struct ${esc(structName)}</div>
+        ${changeList(d.structs[structName])}
+      </div>`);
+    }
+    // …then changed structs with no known DT_* table mapping.
+    const unmapped = structNames.filter((s) => !(d.structs[s].tables || []).length).sort();
+    for (const structName of unmapped) {
+      parts.push(`<div class="table-section">
+        <h2>${esc(structName)}</h2>
+        <div class="struct">row struct (no table in this registry uses it — table name unknown)</div>
+        ${changeList(d.structs[structName])}
+      </div>`);
+    }
+    if (d.structsAdded && d.structsAdded.length) {
+      parts.push(`<div class="other">New row structs in ${esc(t)}: ${d.structsAdded.map((s) => `<code>${esc(s)}</code>`).join(' ')}</div>`);
+    }
+    if (d.structsRemoved && d.structsRemoved.length) {
+      parts.push(`<div class="other">Row structs removed in ${esc(t)}: ${d.structsRemoved.map((s) => `<code>${esc(s)}</code>`).join(' ')}</div>`);
+    }
+    if (d.unchangedTables && d.unchangedTables.length) {
+      parts.push(`<div class="other">Unchanged registry tables: ${d.unchangedTables.map((s) => `<code>${esc(s)}</code>`).join(' ')}</div>`);
+    }
+  }
+  out.innerHTML = parts.join('');
+}
+
+async function init() {
+  try {
+    VERSIONS = await loadJson('./versions.json');
+  } catch (e) {
+    document.getElementById('out').innerHTML = `<div class="empty">Could not load versions.json: ${esc(e.message)}</div>`;
+    return;
+  }
+  const labels = [...VERSIONS.order];
+  for (const [alias, a] of Object.entries(VERSIONS.aliases)) {
+    const i = labels.indexOf(a.of);
+    labels.splice(i + 1, 0, alias); // aliases sit next to the version they equal
+  }
+  const opts = labels.map((l) =>
+    `<option value="${l}">${l}${VERSIONS.aliases[l] ? ` (= ${VERSIONS.aliases[l].of})` : ''}</option>`).join('');
+  const selFrom = document.getElementById('from'), selTo = document.getElementById('to');
+  selFrom.innerHTML = opts;
+  selTo.innerHTML = opts;
+  // Deep-linkable: ?from=0.7.2&to=1.0
+  const params = new URLSearchParams(location.search);
+  selFrom.value = labels.includes(params.get('from')) ? params.get('from') : '0.7.2';
+  selTo.value = labels.includes(params.get('to')) ? params.get('to') : '1.0';
+  const rerender = () => {
+    history.replaceState(null, '', `?from=${encodeURIComponent(selFrom.value)}&to=${encodeURIComponent(selTo.value)}`);
+    render();
+  };
+  selFrom.onchange = rerender;
+  selTo.onchange = rerender;
+  render();
+}
+init();
+</script>
+</body>
+</html>

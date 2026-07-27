@@ -1,0 +1,1254 @@
+{
+  "palworldVersion": "0.7.0",
+  "sdkCommit": "b08d51a",
+  "sdkDate": "2025-12-17",
+  "structs": {
+    "PalArenaNPCData": {
+      "NameTextID": "FName",
+      "RankPoint": "int32"
+    },
+    "PalArenaNPCPresetRow": {
+      "ArenaRank": "EPalArenaRank",
+      "NPCID": "FPalDataTableRowName_PalHumanData",
+      "UniqueNPCID": "FPalDataTableRowName_NPCUniqueData",
+      "Level": "int32",
+      "TalentLevel": "int32",
+      "Rank": "int32",
+      "StatusRank": "TArray<FPalCharacterStatusRank>",
+      "OtomoList": "TArray<FPalArenaNPCOtomo>"
+    },
+    "PalArenaSoloClearRewardRow": {
+      "Rank": "EPalArenaRank",
+      "FirstClearReward": "TArray<FPalArenaSoloClearItemInfo>",
+      "RepeatClearReward": "TArray<FPalArenaSoloClearItemInfo>"
+    },
+    "PalArenaUnusableItemRow": {
+      "ItemId": "FName"
+    },
+    "PalBPClassDataRow": {
+      "BPClass": "TSoftClassPtr<APalCharacter>"
+    },
+    "PalBaseCampLevelMasterData": {
+      "Level": "int32",
+      "WorkerMaxNum": "int32",
+      "BaseCampMaxNumInGuild": "int32"
+    },
+    "PalBaseCampTaskDataSet_TableRow": {
+      "Level": "int32",
+      "workerNum": "int32",
+      "WorkerNum_IncompleteMsgID": "FName",
+      "WorkerNum_CompleteMsgID": "FName",
+      "BuildObject1": "FName",
+      "BuildObjectNum1": "int32",
+      "BuildObject1_IncompleteMsgID": "FName",
+      "BuildObject1_CompleteMsgID": "FName",
+      "BuildObject2": "FName",
+      "BuildObjectNum2": "int32",
+      "BuildObject2_IncompleteMsgID": "FName",
+      "BuildObject2_CompleteMsgID": "FName",
+      "BuildObject3": "FName",
+      "BuildObjectNum3": "int32",
+      "BuildObject3_IncompleteMsgID": "FName",
+      "BuildObject3_CompleteMsgID": "FName"
+    },
+    "PalBaseCampWorkerEventMasterData": {
+      "Debug_DisplayName": "FName",
+      "Priority": "EPalBaseCampWorkerEventPriority",
+      "TriggerSanity": "int32",
+      "bAllowInterruptRecoverHungry": "bool",
+      "bAllowInterruptSleep": "bool",
+      "bAssignableWork": "bool",
+      "bAssignableFixedWork": "bool",
+      "TriggerSkipCount": "int32",
+      "logPriority": "EPalLogPriority",
+      "LogTone": "EPalLogContentToneType",
+      "Invalid": "bool"
+    },
+    "PalBaseCampWorkerSickMasterData": {
+      "SickType": "EPalBaseCampWorkerSickType",
+      "EffectiveItemRank": "int32",
+      "Facial": "EPalFacialEyeType",
+      "WorkSpeed": "int32",
+      "MoveSpeed": "int32",
+      "SatietyDecrease": "int32",
+      "RecoveryProbabilityPercentageInPalBox": "int32"
+    },
+    "PalBuildObjectData": {
+      "MapObjectId": "FName",
+      "TypeA": "EPalBuildObjectTypeA",
+      "SortId": "int32",
+      "TypeB": "EPalBuildObjectTypeB",
+      "TypeUIDisplay": "EPalBuildObjectTypeForUIDisplay",
+      "Rank": "int32",
+      "BuildCapacity": "int32",
+      "RequiredBuildWorkAmount": "float",
+      "AssetValue": "int32",
+      "RequiredEnergyType": "EPalEnergyType",
+      "ConsumeEnergySpeed": "float",
+      "Material1_Id": "FName",
+      "Material1_Count": "int32",
+      "Material2_Id": "FName",
+      "Material2_Count": "int32",
+      "Material3_Id": "FName",
+      "Material3_Count": "int32",
+      "Material4_Id": "FName",
+      "Material4_Count": "int32",
+      "BlueprintItemID": "FName",
+      "OverrideDescMsgID": "FName",
+      "bInstallAtReticle": "bool",
+      "InstallNeighborThreshold": "float",
+      "bIsInstallOnlyOnBase": "bool",
+      "bIsInstallOnlyInDoor": "bool",
+      "bIsInstallOnlyHubAround": "bool",
+      "InstallMaxNumInBaseCamp": "int32",
+      "bInstallableNoObstacleFromCamera": "bool",
+      "BuildExpRate": "float",
+      "bIsProhibitedInRaidBossArea": "bool",
+      "MaxBuildCountInRaidBossArea": "int32",
+      "bIsPaintable": "bool"
+    },
+    "PalBuildObjectIconData": {
+      "SoftIcon": "TSoftObjectPtr<UTexture2D>"
+    },
+    "PalCaptureBonusExpRaw": {
+      "BonusExp": "int64"
+    },
+    "PalCapturedCageInfoDatabaseRow": {
+      "FieldName": "FName",
+      "PalId": "FName",
+      "Weight": "float",
+      "MinLevel": "int32",
+      "MaxLevel": "int32"
+    },
+    "PalCharacterCreationColorPresetDataRow": {
+      "Colors": "TArray<FLinearColor>"
+    },
+    "PalCharacterCreationEyeMaterialDataRow": {
+      "EyeMaterialInstance": "TSoftObjectPtr<UMaterialInstance>",
+      "IconTexture": "TSoftObjectPtr<UTexture2D>",
+      "ShiftUIDisplayEyeColor": "FLinearColor"
+    },
+    "PalCharacterCreationMakeInfoPresetDataRow": {
+      "PresetMakeInfo": "FPalPlayerDataCharacterMakeInfo"
+    },
+    "PalCharacterCreationMeshPresetDataRow": {
+      "SkeletalMesh": "TSoftObjectPtr<USkeletalMesh>",
+      "SkeletalMesh_MaleHead": "TSoftObjectPtr<USkeletalMesh>",
+      "IconTexture": "TSoftObjectPtr<UTexture2D>",
+      "ABPAsset": "TSoftClassPtr<UAnimInstance>",
+      "ShiftUIDisplayEyeColor": "FLinearColor",
+      "ShiftUIDisplayBodyColor": "FLinearColor",
+      "ShiftUIDisplayBrowColor": "FLinearColor",
+      "ShiftUIDisplayHairColor": "FLinearColor"
+    },
+    "PalCharacterCreationPresetDataRow": {
+      "MakeInfo": "FPalPlayerDataCharacterMakeInfo",
+      "IconTexture": "TSoftObjectPtr<UTexture2D>"
+    },
+    "PalCharacterIconDataRow": {
+      "Icon": "TSoftObjectPtr<UTexture2D>"
+    },
+    "PalCharacterParameterDatabaseRow": {
+      "OverrideNameTextID": "FName",
+      "NamePrefixID": "FName",
+      "OverridePartnerSkillTextID": "FName",
+      "IsPal": "bool",
+      "Tribe": "EPalTribeID",
+      "BPClass": "FName",
+      "ZukanIndex": "int32",
+      "ZukanIndexSuffix": "FString",
+      "Size": "EPalSizeType",
+      "Rarity": "int32",
+      "ElementType1": "EPalElementType",
+      "ElementType2": "EPalElementType",
+      "GenusCategory": "EPalGenusCategoryType",
+      "Organization": "EPalOrganizationType",
+      "Weapon": "EPalWeaponType",
+      "WeaponEquip": "bool",
+      "Hp": "int32",
+      "MeleeAttack": "int32",
+      "ShotAttack": "int32",
+      "Defense": "int32",
+      "Support": "int32",
+      "CraftSpeed": "int32",
+      "Friendship_HP": "float",
+      "Friendship_ShotAttack": "float",
+      "Friendship_Defense": "float",
+      "Friendship_CraftSpeed": "float",
+      "EnemyMaxHPRate": "float",
+      "EnemyReceiveDamageRate": "float",
+      "EnemyInflictDamageRate": "float",
+      "CaptureRateCorrect": "float",
+      "ExpRatio": "float",
+      "Price": "float",
+      "StatusResistUpRate": "float",
+      "AIResponse": "FName",
+      "AISightResponse": "FName",
+      "SlowWalkSpeed": "int32",
+      "WalkSpeed": "int32",
+      "RunSpeed": "int32",
+      "RideSprintSpeed": "int32",
+      "TransportSpeed": "int32",
+      "SwimSpeed": "int32",
+      "SwimDashSpeed": "int32",
+      "IsBoss": "bool",
+      "IsTowerBoss": "bool",
+      "IsRaidBoss": "bool",
+      "UseBossHPGauge": "bool",
+      "BattleBGM": "EPalBattleBGMType",
+      "IgnoreLeanBack": "bool",
+      "IgnoreBlowAway": "bool",
+      "IgnoreStun": "bool",
+      "MaxFullStomach": "int32",
+      "FullStomachDecreaseRate": "float",
+      "FoodAmount": "int32",
+      "ViewingDistance": "int32",
+      "ViewingAngle": "int32",
+      "HearingRate": "float",
+      "NooseTrap": "bool",
+      "Nocturnal": "bool",
+      "BiologicalGrade": "int32",
+      "Predator": "bool",
+      "Edible": "bool",
+      "Stamina": "int32",
+      "MaleProbability": "int32",
+      "CombiRank": "int32",
+      "CombiDuplicatePriority": "int32",
+      "IgnoreCombi": "bool",
+      "MeshCapsuleHalfHeight": "float",
+      "MeshCapsuleRadius": "float",
+      "MeshRelativeLocation": "FVector",
+      "WorkSuitability_EmitFlame": "int32",
+      "WorkSuitability_Watering": "int32",
+      "WorkSuitability_Seeding": "int32",
+      "WorkSuitability_GenerateElectricity": "int32",
+      "WorkSuitability_Handcraft": "int32",
+      "WorkSuitability_Collection": "int32",
+      "WorkSuitability_Deforest": "int32",
+      "WorkSuitability_Mining": "int32",
+      "WorkSuitability_OilExtraction": "int32",
+      "WorkSuitability_ProductMedicine": "int32",
+      "WorkSuitability_Cool": "int32",
+      "WorkSuitability_Transport": "int32",
+      "WorkSuitability_MonsterFarm": "int32",
+      "PassiveSkill1": "FName",
+      "PassiveSkill2": "FName",
+      "PassiveSkill3": "FName",
+      "PassiveSkill4": "FName",
+      "FirstDefeatRewardItemID": "FName"
+    },
+    "PalCharacterUpgradeMasterData": {
+      "Rank": "int32",
+      "RequiredStaticItemId": "FName",
+      "RequiredItemNum": "int32",
+      "ResetRequiredMoney": "int32"
+    },
+    "PalCircumRequestData_DataAsset": {
+      "RequestCategory": "EPalItemRequireCategory",
+      "RequestItem": "FName",
+      "RequestNum": "int32",
+      "RewardItemString": "FString",
+      "ExpBonusLevel": "int32"
+    },
+    "PalCombiUniqueDatabaseRow": {
+      "ParentTribeA": "EPalTribeID",
+      "ParentGenderA": "EPalGenderType",
+      "ParentTribeB": "EPalTribeID",
+      "ParentGenderB": "EPalGenderType",
+      "ChildCharacterID": "FName"
+    },
+    "PalCrimeMasterData": {
+      "CrimeNameTextId": "FName",
+      "BaseReward": "int32"
+    },
+    "PalCurveBallTableRow": {
+      "CurveID": "EPalCurveBall",
+      "InitVelocity": "FVector2D",
+      "CurveVelocity": "FVector2D",
+      "CurveInterval": "float",
+      "ForwardVelocity": "float",
+      "GravityScale": "float",
+      "GravityInterval": "float"
+    },
+    "PalDisplayRequestData_DataAsset": {
+      "RequestCategory": "EPalPalDisplayCategory",
+      "RequestPalID": "FName",
+      "RewardItems": "FString",
+      "ExpBonusLevel": "int32"
+    },
+    "PalDropItemDatabaseRow": {
+      "CharacterID": "FName",
+      "Level": "int32",
+      "ItemId1": "FName",
+      "Rate1": "float",
+      "min1": "int32",
+      "Max1": "int32",
+      "ItemId2": "FName",
+      "Rate2": "float",
+      "min2": "int32",
+      "Max2": "int32",
+      "ItemId3": "FName",
+      "Rate3": "float",
+      "min3": "int32",
+      "Max3": "int32",
+      "ItemId4": "FName",
+      "Rate4": "float",
+      "min4": "int32",
+      "Max4": "int32",
+      "ItemId5": "FName",
+      "Rate5": "float",
+      "min5": "int32",
+      "Max5": "int32",
+      "ItemId6": "FName",
+      "Rate6": "float",
+      "min6": "int32",
+      "Max6": "int32",
+      "ItemId7": "FName",
+      "Rate7": "float",
+      "min7": "int32",
+      "Max7": "int32",
+      "ItemId8": "FName",
+      "Rate8": "float",
+      "min8": "int32",
+      "Max8": "int32",
+      "ItemId9": "FName",
+      "Rate9": "float",
+      "min9": "int32",
+      "Max9": "int32",
+      "ItemId10": "FName",
+      "Rate10": "float",
+      "min10": "int32",
+      "Max10": "int32"
+    },
+    "PalEditorItemActorClassTableRow": {
+      "ClassName": "FName",
+      "actorClass": "TSoftClassPtr<AActor>"
+    },
+    "PalEditorItemDynamicClassTableRow": {
+      "ClassName": "FName",
+      "DynamicClass": "TSubclassOf<UPalDynamicItemDataBase>"
+    },
+    "PalEditorItemIconTableRow": {
+      "Icon": "TSoftObjectPtr<UTexture2D>"
+    },
+    "PalEditorItemStaticClassTableRow": {
+      "ClassName": "FName",
+      "StaticClass": "TSubclassOf<UPalStaticItemDataBase>"
+    },
+    "PalEditorItemStaticMeshTableRow": {
+      "StaticMeshName": "FName",
+      "StaticMeshPath": "TSoftObjectPtr<UStaticMesh>"
+    },
+    "PalEditorSkinStaticClassTableRow": {
+      "ClassName": "FName",
+      "StaticClass": "TSubclassOf<UPalSkinDataBase>"
+    },
+    "PalEggSpawnerBlueprintData": {
+      "BlueprintClassName": "FName",
+      "BlueprintClassSoft": "TSoftClassPtr<APalMapObjectSpawnerPalEgg>"
+    },
+    "PalExpDatabaseRaw": {
+      "DropEXP": "int64",
+      "NextEXP": "int64",
+      "PalNextEXP": "int64",
+      "TotalEXP": "int64",
+      "PalTotalEXP": "int64",
+      "BuildEXP": "int64",
+      "CraftEXP": "int64",
+      "PalBuildEXP": "int64",
+      "PalCraftEXP": "int64"
+    },
+    "PalFieldLotteryName": {
+      "ItemSlot1_ProbabilityPercent": "float",
+      "ItemSlot2_ProbabilityPercent": "float",
+      "ItemSlot3_ProbabilityPercent": "float",
+      "ItemSlot4_ProbabilityPercent": "float",
+      "ItemSlot5_ProbabilityPercent": "float",
+      "ItemSlot6_ProbabilityPercent": "float",
+      "ItemSlot7_ProbabilityPercent": "float",
+      "ItemSlot8_ProbabilityPercent": "float",
+      "ItemSlot9_ProbabilityPercent": "float",
+      "ItemSlot10_ProbabilityPercent": "float",
+      "ItemSlot11_ProbabilityPercent": "float",
+      "ItemSlot12_ProbabilityPercent": "float",
+      "ItemSlot13_ProbabilityPercent": "float",
+      "ItemSlot14_ProbabilityPercent": "float",
+      "ItemSlot15_ProbabilityPercent": "float"
+    },
+    "PalFishPondLotteryData": {
+      "LotteryName": "FName",
+      "Weight": "float",
+      "CharacterID": "FName",
+      "CharacterLevelMin": "int32",
+      "CharacterLevelMax": "int32",
+      "GainItemLotteryName": "FName"
+    },
+    "PalFishPondLotteryNameData": {
+      "TextId": "FName"
+    },
+    "PalFishShadowDataRow": {
+      "FishShadowSize": "EPalFishShadowSizeType",
+      "PalId": "FName",
+      "BlueprintClassName": "FName",
+      "FishShadowBlueprintClassSoft": "TSoftClassPtr<APalFishShadow>",
+      "MoveSpeedPerSec": "float",
+      "SearchRadius": "float",
+      "SearchProbability": "float",
+      "KingPassiveRate": "float",
+      "RarePassiveRate": "float",
+      "BehaviorType": "EPalFishBattleBehaviorType"
+    },
+    "PalFishingBaitDataRow": {
+      "HitBarSizeRate": "float",
+      "MissFightAmountRate": "float",
+      "SuccessFightAmountRate": "float",
+      "SearchProbabilityRate": "float",
+      "StartProgressAmountPercent": "float",
+      "EnemyAddDropPercent": "float",
+      "ItemLotteryAddDropPercent": "float"
+    },
+    "PalFishingSpotLotteryDataRow": {
+      "LotteryName": "FName",
+      "Weight": "float",
+      "FishShadowId": "FName",
+      "GainItemLotteryName": "FName",
+      "OnlyTime": "EPalOneDayTimeType",
+      "MinLevel": "int32",
+      "MaxLevel": "int32",
+      "Difficulty": "int32",
+      "DecreaseDurability": "float",
+      "FishingSpotDifficulty": "EPalFishingSpotDifficultyType"
+    },
+    "PalFishingSpotLotteryNameDataRow": {
+      "RespawnTime": "float"
+    },
+    "PalFishingSpotPalSpawnerData": {
+      "PalName": "FPalDataTableRowName_PalMonsterData",
+      "LevelMin": "int32",
+      "LevelMax": "int32",
+      "OverrideBuoyancy": "float",
+      "OverrideInWaterRate": "float"
+    },
+    "PalFoliageMasterData": {
+      "ClassRefId": "FName"
+    },
+    "PalFoliageTypeReference": {
+      "FoliageType": "TSoftObjectPtr<UFoliageType>",
+      "FoliageMapObjectId": "FPalDataTableRowName_MapObjectData",
+      "Hp": "int32",
+      "DropItemId": "FPalDataTableRowName_ItemData",
+      "DropItemNum": "int32",
+      "DestroyFXType": "EPalMapObjectDestroyFXType"
+    },
+    "PalFriendshipRankDataRow": {
+      "FriendshipRank": "int32",
+      "RequiredPoint": "int32"
+    },
+    "PalGainStatusPointsItemDataRow": {
+      "MaxHP": "int32",
+      "MaxSP": "int32",
+      "Power": "int32",
+      "WorkSpeed": "int32",
+      "MaxInventoryWeight": "int32"
+    },
+    "PalGainWorkSuitabilityRankItemDataRow": {
+      "WorkSuitability": "EPalWorkSuitability"
+    },
+    "PalGameProgressPresetDataTableRow": {
+      "Level": "int32",
+      "HPLevel": "int32",
+      "SPLevel": "int32",
+      "AttackLevel": "int32",
+      "WorkLevel": "int32",
+      "WeightLevel": "int32",
+      "CaptureLevel": "int32",
+      "OtomoPals": "TArray<FPalDebugOtomoPalInfo>",
+      "CapturedPals": "TArray<FPalDebugOtomoPalInfo>",
+      "LoadoutItems": "TArray<FPalDebugItemCreateInfo>",
+      "Items": "TArray<FPalDebugItemCreateInfo>",
+      "ExecuteCommands": "TArray<FString>"
+    },
+    "PalGamepadButtonImageDatabaseRow": {
+      "XboxButtonImage": "TSoftObjectPtr<UTexture2D>",
+      "Key": "FKey"
+    },
+    "PalGliderMeshDataRow": {
+      "SkeletalMesh": "TSoftObjectPtr<USkeletalMesh>",
+      "Materials": "TArray<TSoftObjectPtr<UMaterialInterface>>"
+    },
+    "PalIncidentParameterDataTableRow": {
+      "Option": "FName"
+    },
+    "PalInvaderDatabaseRow": {
+      "GroupName": "FName",
+      "BiomeID": "EPalBiomeType",
+      "InvadeGradeMin": "int32",
+      "InvadeGradeMax": "int32",
+      "Weight": "float",
+      "CharactorID_A": "FName",
+      "Otomo_A": "FName",
+      "LevelMin_A": "int32",
+      "LevelMax_A": "int32",
+      "Number_A": "int32",
+      "CharactorID_B": "FName",
+      "Otomo_B": "FName",
+      "LevelMin_B": "int32",
+      "LevelMax_B": "int32",
+      "Number_B": "int32",
+      "CharactorID_C": "FName",
+      "Otomo_C": "FName",
+      "LevelMin_C": "int32",
+      "LevelMax_C": "int32",
+      "Number_C": "int32",
+      "CharactorID_D": "FName",
+      "Otomo_D": "FName",
+      "LevelMin_D": "int32",
+      "LevelMax_D": "int32",
+      "Number_D": "int32"
+    },
+    "PalItemLotteryData": {
+      "FieldName": "FName",
+      "SlotNo": "int32",
+      "WeightInSlot": "float",
+      "StaticItemId": "FName",
+      "MinNum": "int32",
+      "MaxNum": "int32",
+      "NumUnit": "int32",
+      "TreasureBoxGrade": "EPalMapObjectTreasureGradeType"
+    },
+    "PalItemRecipe": {
+      "Product_Id": "FName",
+      "Product_Count": "int32",
+      "WorkAmount": "float",
+      "WorkableAttribute": "int32",
+      "UnlockItemID": "FName",
+      "Material1_Id": "FName",
+      "Material1_Count": "int32",
+      "Material2_Id": "FName",
+      "Material2_Count": "int32",
+      "Material3_Id": "FName",
+      "Material3_Count": "int32",
+      "Material4_Id": "FName",
+      "Material4_Count": "int32",
+      "Material5_Id": "FName",
+      "Material5_Count": "int32",
+      "EnergyType": "EPalEnergyType",
+      "EnergyAmount": "int32",
+      "CraftExpRate": "float",
+      "DenyRecipeChain": "TArray<FName>",
+      "Editor_RowNameHash": "int32"
+    },
+    "PalItemShopCreateDataRow": {
+      "productDataArray": "TArray<FPalItemShopCreateDataStruct>"
+    },
+    "PalItemShopCreateIntermediateDataRow": {
+      "GroupName": "FName",
+      "StaticItemId": "FName",
+      "ProductType": "EPalItemShopProductType",
+      "OverridePrice": "int32",
+      "ProductNum": "int32",
+      "Stock": "int32"
+    },
+    "PalItemShopLotteryDataRow": {
+      "lotteryDataArray": "TArray<FPalItemShopLotteryDataStruct>"
+    },
+    "PalItemShopLotteryIntermediateDataRow": {
+      "GroupName": "FName",
+      "ShopGroupName": "FName",
+      "Weight": "int32"
+    },
+    "PalItemShopSettingDataRow": {
+      "CurrencyItemID": "FName"
+    },
+    "PalLocalizedTextData": {
+      "TextData": "FText"
+    },
+    "PalLocationUIData_TableRow": {
+      "locationUIDataMap": "TMap<EPalLocationType, FPalLocationUIData>",
+      "mapObjectIconMap": "TMap<FName, TSoftObjectPtr<UTexture2D>>"
+    },
+    "PalMapObjectAssignData": {
+      "GenusCategory": "EPalGenusCategoryType",
+      "ElementType": "EPalElementType",
+      "WorkSuitability": "EPalWorkSuitability",
+      "WorkSuitabilityRank": "int32",
+      "bPlayerWorkable": "bool",
+      "bBaseCampWorkerWorkable": "bool",
+      "WorkableTribeIDs": "TArray<EPalTribeID>",
+      "WorkableSizeMin": "EPalSizeType",
+      "WorkableSizeMax": "EPalSizeType",
+      "WorkType": "EPalWorkType",
+      "WorkActionType": "EPalActionType",
+      "WorkerMaxNum": "int32",
+      "AffectSanityValue": "float",
+      "AffectFullStomachValue": "float"
+    },
+    "PalMapObjectFarmCropData": {
+      "CropBlueprintClassName": "FName",
+      "CropClassPath": "TSoftClassPtr<APalMapObjectFarmCrop>",
+      "CropItemId": "FName",
+      "GrowupTime": "float",
+      "CropItemNum": "int32",
+      "SeedingWorkAmount": "float",
+      "WateringWorkAmount": "float",
+      "HarvestWorkAmount": "float",
+      "MaterialItem1_Id": "FName",
+      "MaterialItem1_Num": "int32",
+      "MaterialItem2_Id": "FName",
+      "MaterialItem2_Num": "int32",
+      "Editor_RowNameHash": "int32"
+    },
+    "PalMapObjectFarmSkillFruitsLotteryRow": {
+      "LotteryItemType": "EPalFarmSkillFruitsLotteryItemType",
+      "OtherItemId": "FName",
+      "Weight": "int32"
+    },
+    "PalMapObjectFoliageInstallData": {
+      "FoliageTypeName": "FName",
+      "Location": "FVector",
+      "Rotator": "FRotator",
+      "Scale3D": "FVector"
+    },
+    "PalMapObjectItemProductData": {
+      "Product_Id": "FName",
+      "RequiredWorkAmount": "float",
+      "AutoWorkAmountBySec": "float"
+    },
+    "PalMapObjectLotteryData": {
+      "FieldName": "FName",
+      "Weight": "float",
+      "MapObjectId": "FName"
+    },
+    "PalMapObjectMasterData": {
+      "OverrideNameMsgID": "FName",
+      "BlueprintClassName": "FName",
+      "BlueprintClassSoft": "TSoftClassPtr<APalMapObject>",
+      "MaterialType": "EPalMapObjectMaterialType",
+      "MaterialSubType": "EPalMapObjectMaterialSubType",
+      "bCollectionObject": "bool",
+      "Hp": "int32",
+      "Defense": "int32",
+      "Hp_PVP": "int32",
+      "Defense_PVP": "int32",
+      "bBelongToBaseCamp": "bool",
+      "DistributeExpAroundPlayer": "int32",
+      "DeteriorationDamage": "float",
+      "ExtinguishBurnWorkAmount": "float",
+      "bShowHPGauge": "bool",
+      "bInDevelop": "bool",
+      "Editor_RowNameHash": "int32"
+    },
+    "PalMapObjectSpawnerBlueprintData": {
+      "BlueprintClassName": "FName",
+      "BlueprintClassSoft": "TSoftClassPtr<APalMapObjectSpawnerBase>"
+    },
+    "PalNPCAppearDatabaseRow": {
+      "DummyValue": "int32"
+    },
+    "PalNPCInteractConditionConstValueDataTableRow": {
+      "ValText": "FName"
+    },
+    "PalNPCInteractionDataTableRow": {
+      "UniqueNPCID": "FName",
+      "CharacterID": "FName",
+      "InteractionType": "EPalInteractiveObjectIndicatorType",
+      "Conditions": "FName",
+      "IncidentId": "FName",
+      "IncidentArgs1": "FName",
+      "IncidentArgs2": "FName"
+    },
+    "PalNPCMultiTalkRow": {
+      "MultiTalkHandleClass": "TSubclassOf<UPalNPCMultiTalkHandle>"
+    },
+    "PalNPCOneTalkRow": {
+      "OneTalkData": "UDataTable*"
+    },
+    "PalNPCOtomoWazaDataRow": {
+      "PalName": "FPalDataTableRowName_PalMonsterData",
+      "Waza1": "EPalWazaID",
+      "Waza2": "EPalWazaID",
+      "Waza3": "EPalWazaID"
+    },
+    "PalNPCTalkDataTableRow": {
+      "TalkData": "TArray<FPalNPCTalkData>"
+    },
+    "PalNPCTalkFlowDataTable": {
+      "SoftTalkFlowAsset": "TSoftObjectPtr<UPalNPCTalkFlowAssetBase>"
+    },
+    "PalOperatingTablePassiveSkillData": {
+      "PassiveSkill": "FName",
+      "Price": "int32",
+      "RequireItemId": "FName"
+    },
+    "PalOptionGraphicsPresetRow": {
+      "GraphicsLevel": "EPalOptionGraphicsLevel",
+      "AntiAliasingType": "TEnumAsByte<EAntiAliasingMethod>",
+      "CommonQuality": "int32",
+      "ViewDistanceQuality": "int32",
+      "MapObjectDrawDistanceType": "EPalOptionMapObjectDrawDistanceType",
+      "FoliageQuality": "int32",
+      "ShadowQuality": "int32",
+      "TextureQuality": "int32",
+      "bEnableMotionBlur": "bool",
+      "ScreenPercentage": "int32"
+    },
+    "PalOptionWorldModePresetRow": {
+      "WorldMode": "EPalOptionWorldMode",
+      "bEnablePlayerToPlayerDamage": "bool",
+      "bCanPickupOtherGuildDeathPenaltyDrop": "bool",
+      "bEnableNonLoginPenalty": "bool",
+      "bIsStartLocationSelectByMap": "bool",
+      "bExistPlayerAfterLogout": "bool",
+      "bEnableDefenseOtherGuildPlayer": "bool"
+    },
+    "PalOptionWorldPresetRow": {
+      "Diffculty": "EPalOptionWorldDifficulty",
+      "RandomizerType": "EPalRandomizerType",
+      "DayTimeSpeedRate": "float",
+      "NightTimeSpeedRate": "float",
+      "ExpRate": "float",
+      "PalCaptureRate": "float",
+      "PalSpawnNumRate": "float",
+      "PalDamageRateAttack": "float",
+      "PalDamageRateDefense": "float",
+      "PlayerDamageRateAttack": "float",
+      "PlayerDamageRateDefense": "float",
+      "PlayerStomachDecreaceRate": "float",
+      "PlayerStaminaDecreaceRate": "float",
+      "PlayerAutoHPRegeneRate": "float",
+      "PlayerAutoHpRegeneRateInSleep": "float",
+      "PalStomachDecreaceRate": "float",
+      "PalStaminaDecreaceRate": "float",
+      "PalAutoHPRegeneRate": "float",
+      "PalAutoHpRegeneRateInSleep": "float",
+      "BuildObjectHpRate": "float",
+      "BuildObjectDamageRate": "float",
+      "BuildObjectDeteriorationDamageRate": "float",
+      "CollectionDropRate": "float",
+      "CollectionObjectHpRate": "float",
+      "CollectionObjectRespawnSpeedRate": "float",
+      "EnemyDropItemRate": "float",
+      "DeathPenalty": "EPalOptionWorldDeathPenalty",
+      "bActiveUNKO": "bool",
+      "DropItemMaxNum_UNKO": "int32",
+      "bEnableInvaderEnemy": "bool",
+      "DropItemMaxNum": "int32",
+      "bAutoResetGuildNoOnlinePlayers": "bool",
+      "AutoResetGuildTimeNoOnlinePlayers": "float",
+      "GuildPlayerMaxNum": "int32",
+      "PalEggDefaultHatchingTime": "float",
+      "BaseCampWorkerMaxNum": "int32",
+      "SupplyDropSpan": "int32",
+      "bHardcore": "bool",
+      "bPalLost": "bool",
+      "bAllowGlobalPalboxExport": "bool",
+      "bAllowGlobalPalboxImport": "bool"
+    },
+    "PalPalShopCreateDataRow": {
+      "MaxLostPalNum": "int32",
+      "CharacterNum": "int32",
+      "CharacterIDArray": "TArray<FPalDataTableRowName_PalMonsterData>",
+      "MinCharacterLevel": "int32",
+      "MaxCharacterLevel": "int32"
+    },
+    "PalPartnerSkillDatabaseRow": {
+      "DevName": "FName",
+      "EffectTime": "float",
+      "CoolDownTime": "float",
+      "ExecCost": "float",
+      "IdleCost": "float",
+      "CanThrowPal": "bool",
+      "CanChangeWeapon": "bool",
+      "IsToggleKey": "bool",
+      "TriggerType": "EPalPartnerSkillTriggerType"
+    },
+    "PalPartnerSkillParameterDataRow": {
+      "RestrictionItems": "TArray<FPalDataTableRowName_ItemData>",
+      "ActiveSkill": "FPalPassivePartnerSkillActiveSkillParameters",
+      "PassiveSkills": "TArray<FPalPassivePartnerSkillIdAndParameters>"
+    },
+    "PalPassiveSkillDatabaseRow": {
+      "Rank": "int32",
+      "LotteryWeight": "int32",
+      "OverrideDescMsgID": "FName",
+      "TargetElementType": "EPalElementType",
+      "EffectType1": "EPalPassiveSkillEffectType",
+      "EffectValue1": "float",
+      "TargetType1": "EPalPassiveSkillEffectTargetType",
+      "EffectType2": "EPalPassiveSkillEffectType",
+      "EffectValue2": "float",
+      "TargetType2": "EPalPassiveSkillEffectTargetType",
+      "EffectType3": "EPalPassiveSkillEffectType",
+      "EffectValue3": "float",
+      "TargetType3": "EPalPassiveSkillEffectTargetType",
+      "InvokeActiveOtomo": "bool",
+      "InvokeWorker": "bool",
+      "InvokeRiding": "bool",
+      "InvokeReserve": "bool",
+      "InvokeInOtomo": "bool",
+      "InvokeAlways": "bool",
+      "InvokeInBaseCamp": "bool",
+      "AddInvokeTriggerType_1": "EPalPassiveAddTriggerType",
+      "AddInvokeTriggerType_2": "EPalPassiveAddTriggerType",
+      "AddPal": "bool",
+      "AddRarePal": "bool",
+      "AddShotWeapon": "bool",
+      "AddMeleeWeapon": "bool",
+      "AddArmor": "bool",
+      "AddAccessory": "bool",
+      "IsStackablePartnerSkillBySameTribe": "bool",
+      "OverrideNameTextID": "FName",
+      "OverrideSummaryTextId": "FName",
+      "Category": "EPalPassiveCategory"
+    },
+    "PalPassiveSkillEffectConditionDataRow": {
+      "bIsHighestOnly": "bool",
+      "bIsFixedValue": "bool"
+    },
+    "PalPickingGameSettingData": {
+      "DifficultyLevel": "int32",
+      "UnlockableRangeSize": "float",
+      "LimitKeyPressureCurve": "UCurveFloat*",
+      "KeyTurningCurveOutsideUnlockableRange": "UCurveFloat*"
+    },
+    "PalPickingItemSetting": {
+      "PickableGradeTypeArray": "TArray<EPalMapObjectTreasureGradeType>"
+    },
+    "PalPlayerDamageCameraShakeData": {
+      "Category": "EPalPlayerDamageCameraShakeCategory",
+      "Scale_Min": "float",
+      "Scale_Default": "float",
+      "Scale_Max": "float",
+      "HPRate_Min": "int32",
+      "HPRate_Default": "int32",
+      "HPRate_Max": "int32"
+    },
+    "PalPlayerEquipmentMeshDataRow": {
+      "SkeletalMeshMap": "TMap<FName, TSoftObjectPtr<USkeletalMesh>>",
+      "ABPAssetMap": "TMap<FName, TSoftClassPtr<UAnimInstance>>",
+      "IsHairAttachAccessory": "bool",
+      "HairAttachSocketNameMap": "TMap<FName, FName>",
+      "bUseCustomDepthPass": "bool",
+      "bIsFullBodyEquipment": "bool",
+      "OverrideBodyType": "FName",
+      "BodyShape": "EPalPlayerBodyShape"
+    },
+    "PalPlayerParameterDatabaseRow": {
+      "Stamina": "int32",
+      "Hp": "int32",
+      "MeleeAttack": "int32",
+      "ShotAttack": "int32",
+      "Defense": "int32",
+      "Support": "int32",
+      "CraftSpeed": "int32",
+      "Satiety": "int32"
+    },
+    "PalPlayerStatusRankMasterData": {
+      "Rank": "int32",
+      "RequiredRelicNum": "int32",
+      "ResetRequiredMoney": "int32"
+    },
+    "PalQuestDataSetRow": {
+      "QuestType": "EPalQuestType",
+      "QuestData": "TSoftClassPtr<UPalQuestData>",
+      "bReorderable": "bool"
+    },
+    "PalQuestFixedObjectiveLocationSettingData": {
+      "Position": "FVector",
+      "Range": "float"
+    },
+    "PalRaidBossDataRow": {
+      "InfoList": "TArray<FPalRaidBossSpawnInfo>",
+      "SummonMeteor_Num": "TArray<FPalRaidBossSummonMeteorInfo>",
+      "SummonGeneratorClass": "TSubclassOf<APalRaidBossSummonGeneratorBase>",
+      "EggPalIDAndWeight": "TMap<FPalDataTableRowName_PalMonsterData, float>",
+      "SuccessItemList": "TArray<FPalRaidBossSuccessItemInfo>",
+      "SuccessAnyOneItemList": "TArray<FPalRaidBossSuccessAnyOneItemInfo>",
+      "AchievementId": "FString",
+      "OverrideRaidBossBattleActorClass": "TSubclassOf<AActor>"
+    },
+    "PalRandomIncidentSettings": {
+      "MonsterSpawnData": "UDataTable*",
+      "NPCSpawnData": "UDataTable*",
+      "ExcludeOtherPal": "bool",
+      "action": "TSubclassOf<UPalRandomIncidentActionBase>",
+      "ObjectPlacement": "TSubclassOf<APalRandomIncidentObjectPlacement>"
+    },
+    "PalRandomIncidentSpawnLocationData": {
+      "Location": "FVector2D"
+    },
+    "PalRandomIncidentSpawnMonsterData": {
+      "CharacterID": "FPalDataTableRowName_PalMonsterData",
+      "Level": "int32",
+      "Group": "int32",
+      "IsSquad": "bool",
+      "SpawnLocation": "FVector2D",
+      "SpawnRadius": "float",
+      "RotZ_Degree": "float",
+      "ControllerClass": "TSubclassOf<APalAIController>",
+      "DefaultActionClass": "TSubclassOf<UPalActionBase>"
+    },
+    "PalRandomIncidentSpawnMonsterOutbreakData": {
+      "CharacterID": "FPalDataTableRowName_PalMonsterData",
+      "Num": "int32",
+      "LevelMin": "int32",
+      "LevelMax": "int32",
+      "Group": "int32",
+      "IsSquad": "bool",
+      "LocationTable": "UDataTable*",
+      "ControllerClass": "TSubclassOf<APalAIController>",
+      "DefaultActionClass": "TSubclassOf<UPalActionBase>"
+    },
+    "PalRandomIncidentSpawnNPCData": {
+      "CharacterID": "FPalDataTableRowName_PalHumanData",
+      "UniqueNPCID": "FPalDataTableRowName_NPCUniqueData",
+      "OtomoName": "FPalDataTableRowName_PalMonsterData",
+      "Level": "int32",
+      "Group": "int32",
+      "IsSquad": "bool",
+      "SpawnLocation": "FVector2D",
+      "SpawnRadius": "float",
+      "RotZ_Degree": "float",
+      "WalkPathName": "FName",
+      "WalkRadius": "float",
+      "ControllerClass": "TSubclassOf<APalAIController>",
+      "DefaultAIActionClass": "TSubclassOf<UPalAIActionBase>"
+    },
+    "PalRandomizerDatabaseRow": {
+      "PalId": "FName",
+      "BaseLv": "int32",
+      "NumMin": "int32",
+      "NumMax": "int32"
+    },
+    "PalRecordCountRewardData_DataAsset": {
+      "RequireCount": "int32",
+      "AchivementCategory": "EPalAchivementCategory",
+      "RewardItemString": "FString",
+      "ExpBonusLevel": "int32"
+    },
+    "PalRecruitAppealRow": {
+      "PassiveSkill": "FName",
+      "TextId": "FName"
+    },
+    "PalRecruitDataRow": {
+      "BaseCampLevelMin": "int32",
+      "BaseCampLevelMax": "int32",
+      "PalRecruitMonsterInfo": "UDataTable*"
+    },
+    "PalRecruitMonsterInfoRow": {
+      "PalName": "FPalDataTableRowName_PalMonsterData",
+      "Weight": "float",
+      "LevelMin": "int32",
+      "LevelMax": "int32"
+    },
+    "PalRespawnPointData": {
+      "SpawnPointID": "FName",
+      "ResourcesAbundant": "int32",
+      "PalAbundant": "int32",
+      "ForPvP": "bool"
+    },
+    "PalSizeParameterDataRow": {
+      "Size": "EPalSizeType",
+      "EffectScale": "float",
+      "JumpEffectOffsetZ": "float"
+    },
+    "PalSkinAssetMap": {
+      "SkeletalMesh": "TMap<FName, TSoftObjectPtr<USkeletalMesh>>",
+      "Materials": "TArray<TSoftObjectPtr<UMaterialInterface>>",
+      "StaticMesh": "TSoftObjectPtr<UStaticMesh>",
+      "AnimBP": "TMap<FName, TSoftClassPtr<UAnimInstance>>",
+      "BaseCharacterClass": "TSoftClassPtr<APalCharacter>",
+      "BossCharacterClass": "TSoftClassPtr<APalCharacter>",
+      "HairAttachSocketNameMap": "TMap<FName, FName>"
+    },
+    "PalSkinInfo": {
+      "SkinName": "FName",
+      "SkinType": "EPalSkinType",
+      "SkinStaticClass": "FName",
+      "bIsHairAccessory": "bool",
+      "TargetActorClassName": "FName",
+      "TargetPalName": "FName",
+      "bAutoGetItem": "bool",
+      "PlatformItemID_Steam": "int32"
+    },
+    "PalSoundIDDataTableRow": {
+      "Description": "FName"
+    },
+    "PalSoundSource": {
+      "Radius_Meter": "int32",
+      "bIsMuteable": "bool"
+    },
+    "PalSpawnerPlacementDatabaseRow": {
+      "InstanceName": "FString",
+      "SpawnerName": "FName",
+      "SpawnerType": "EPalSpawnedCharacterType",
+      "PlacementType": "EPalSpawnerPlacementType",
+      "Location": "FVector",
+      "RadiusType": "EPalSpawnRadiusType",
+      "StaticRadius": "float",
+      "WorldName": "FName",
+      "LayerNames": "TArray<FName>",
+      "SpawnerClass": "TSoftClassPtr<APalNPCSpawnerBase>",
+      "RespawnCoolTime": "float"
+    },
+    "PalStaticItemDataStruct": {
+      "OverrideName": "FName",
+      "OverrideDescription": "FName",
+      "IconName": "FName",
+      "TypeA": "EPalItemTypeA",
+      "TypeB": "EPalItemTypeB",
+      "Rank": "int32",
+      "Rarity": "int32",
+      "MaxStackCount": "int32",
+      "Weight": "float",
+      "Price": "int32",
+      "SortId": "int32",
+      "bInTreasureBox": "bool",
+      "bNotConsumed": "bool",
+      "bNotAvailableInPVP": "bool",
+      "bEnableHandcraft": "bool",
+      "bLegalInGame": "bool",
+      "TechnologyTreeLock": "int32",
+      "ItemStaticClass": "FName",
+      "ItemDynamicClass": "FName",
+      "ItemActorClass": "FName",
+      "ItemStaticMeshName": "FName",
+      "VisualBlueprintClassName": "FName",
+      "VisualBlueprintClassSoft": "TSoftClassPtr<AActor>",
+      "DropItemType": "EPalDropItemType",
+      "Editor_RowNameHash": "int32",
+      "RestoreSatiety": "int32",
+      "RestoreConcentration": "int32",
+      "RestoreSanity": "int32",
+      "RestoreHealth": "int32",
+      "GrantEffect1Id": "int32",
+      "GrantEffect1Time": "float",
+      "GrantEffect2Id": "int32",
+      "GrantEffect2Time": "float",
+      "GrantEffect3Id": "int32",
+      "GrantEffect3Time": "float",
+      "Durability": "int32",
+      "ElementType": "EPalElementType",
+      "bSleepWeapon": "bool",
+      "MagazineSize": "int32",
+      "SneakAttackRate": "float",
+      "PhysicalAttackValue": "int32",
+      "HPValue": "int32",
+      "PhysicalDefenseValue": "int32",
+      "ShieldValue": "int32",
+      "MagicAttackValue": "int32",
+      "MagicDefenseValue": "int32",
+      "PassiveSkillName": "FName",
+      "PassiveSkillName2": "FName",
+      "PassiveSkillName3": "FName",
+      "PassiveSkillName4": "FName",
+      "WazaID": "EPalWazaID",
+      "CorruptionFactor": "float",
+      "FloatValue1": "float"
+    },
+    "PalStatusEffectFoodDataRow": {
+      "EffectTime": "int32",
+      "EffectType1": "EPalFoodStatusEffectType",
+      "EffectValue1": "int32",
+      "Interaval1": "int32",
+      "EffectType2": "EPalFoodStatusEffectType",
+      "EffectValue2": "int32",
+      "Interaval2": "int32"
+    },
+    "PalTalentUpItemDataRow": {
+      "TalentType": "EPalTalentType",
+      "addValue": "int32"
+    },
+    "PalTalkTreeDataTableRow": {
+      "NPCID": "FName",
+      "TalkName": "FName",
+      "TextId": "FName"
+    },
+    "PalTechnologyDataTableRowBase": {
+      "Name": "FName",
+      "Description": "FName",
+      "IconName": "FName",
+      "RequireDefeatTowerBoss": "EPalBossType",
+      "RequireTechnology": "FName",
+      "RequireResearchId": "FName",
+      "IsBossTechnology": "bool",
+      "LevelCap": "int32",
+      "Tier": "int32",
+      "Cost": "int32"
+    },
+    "PalTechnologyRecipeUnlockDataTableRow": {
+      "Name": "FName",
+      "Description": "FName",
+      "IconName": "FName",
+      "RequireDefeatTowerBoss": "EPalBossType",
+      "RequireTechnology": "FName",
+      "RequireResearchId": "FName",
+      "IsBossTechnology": "bool",
+      "LevelCap": "int32",
+      "Tier": "int32",
+      "Cost": "int32",
+      "UnlockBuildObjects": "TArray<FName>",
+      "UnlockItemRecipes": "TArray<FName>"
+    },
+    "PalUIBossSpawnerLoactionData": {
+      "SpawnerID": "FName",
+      "CharacterID": "FName",
+      "Location": "FVector",
+      "Level": "int32"
+    },
+    "PalUICaptureCameraOffsetData": {
+      "LocationOffset": "FVector",
+      "Rotator": "FRotator",
+      "PointLightOffset_1": "FVector",
+      "PointLightIntensity_1": "float",
+      "PointLightSize_1": "float",
+      "PointLightOffset_2": "FVector",
+      "PointLightIntensity_2": "float",
+      "PointLightSize_2": "float",
+      "RectLightOffset": "FVector",
+      "RectLightRotator": "FRotator",
+      "RectLightIntensity": "float",
+      "RectLightSize": "float"
+    },
+    "PalUIPaldexDistributionData": {
+      "dayTimeLocations": "FPalUIPaldexDistributionLocationStruct",
+      "nightTimeLocations": "FPalUIPaldexDistributionLocationStruct"
+    },
+    "PalUniqueNPCDatabaseRow": {
+      "CharacterID": "FName",
+      "NameTextID": "FName",
+      "OneTalkDTName": "FName",
+      "TalkBPClass": "FName",
+      "IsTransientTalkCount": "bool",
+      "Gender": "EPalGenderType",
+      "SkinColor": "EPalNPCSkinColor",
+      "Face": "EPalNPCFaceType",
+      "HairStyle": "EPalNPCHairStyleType",
+      "HairColor": "EPalNPCHairColorType",
+      "Clothes": "EPalNPCClothesType",
+      "Scale": "EPalNPCScaleType",
+      "Level": "int32"
+    },
+    "PalWazaDatabaseRaw": {
+      "WazaType": "EPalWazaID",
+      "Element": "EPalElementType",
+      "IgnoreRandomInherit": "bool",
+      "Category": "EPalWazaCategory",
+      "Power": "int32",
+      "IsLeanBack": "bool",
+      "CameraShake": "EPalPlayerDamageCameraShakeCategory",
+      "IgnoreRaycast": "bool",
+      "MinRange": "int32",
+      "MaxRange": "int32",
+      "CoolTime": "float",
+      "ForceRagdollSize": "EPalSizeType",
+      "EffectType1": "EPalAdditionalEffectType",
+      "EffectValue1": "int32",
+      "EffectValueEx1": "float",
+      "EffectType2": "EPalAdditionalEffectType",
+      "EffectValue2": "int32",
+      "EffectValueEx2": "float",
+      "SpecialAttackRateInfos": "TArray<FPalSpecialAttackRateInfo>",
+      "bIsWeaponDamage": "bool",
+      "WazaCustomExecuteConditions": "TArray<FPalWazaCustomExecuteCondition>",
+      "DisabledData": "bool",
+      "BulletEmiiterOverlapClass": "TSubclassOf<UPalWazaBulletEmiiterOverlapBase>"
+    },
+    "PalWazaMasterLevelDataRow": {
+      "PalId": "FName",
+      "WazaID": "EPalWazaID",
+      "Level": "int32"
+    },
+    "PalWazaMasterTamagoDataRow": {
+      "PalId": "FName",
+      "WazaID": "EPalWazaID"
+    },
+    "PalWeaponSubParameterData": {
+      "dps": "float",
+      "Range": "float",
+      "stability": "float",
+      "accuracy": "float"
+    },
+    "PalWildSpawnerDatabaseRow": {
+      "SpawnerName": "FName",
+      "SpawnerType": "EPalSpawnedCharacterType",
+      "Weight": "float",
+      "OnlyTime": "EPalOneDayTimeType",
+      "OnlyWeather": "EPalWeatherConditionType",
+      "Pal_1": "FName",
+      "NPC_1": "FName",
+      "LvMin_1": "int32",
+      "LvMax_1": "int32",
+      "NumMin_1": "int32",
+      "NumMax_1": "int32",
+      "Pal_2": "FName",
+      "NPC_2": "FName",
+      "LvMin_2": "int32",
+      "LvMax_2": "int32",
+      "NumMin_2": "int32",
+      "NumMax_2": "int32",
+      "Pal_3": "FName",
+      "NPC_3": "FName",
+      "LvMin_3": "int32",
+      "LvMax_3": "int32",
+      "NumMin_3": "int32",
+      "NumMax_3": "int32",
+      "bIsAllowRandomizer": "bool"
+    },
+    "PalWorldMapAreaBonusExpTagleReferenceData": {
+      "ReferenceTableNum": "int32"
+    },
+    "PalWorldMapAreaDataRow": {
+      "MsgID": "FName"
+    },
+    "PalWorldMapUIDataTableRow": {
+      "minMapTextureBlockSize": "FVector2D",
+      "mapBlockNum": "FVector2D",
+      "landScapeRealPositionMin": "FVector",
+      "landScapeRealPositionMax": "FVector",
+      "textureDataMap": "TMap<FName, FPalWorldMapUIRegionData>",
+      "DefaultMaskTexture": "TSoftObjectPtr<UTexture2D>"
+    },
+    "TutorialDataStruct": {
+      "MsgID": "FName",
+      "Type": "EPalTutorialTriggerType",
+      "MultiTrigger": "bool",
+      "ConditionType": "EPalTutorialTriggerConditionType",
+      "ConditionObjectIds": "TArray<FName>",
+      "ConditionCategoryName": "FName",
+      "ConditionValue": "float"
+    }
+  },
+  "tableToStruct": {
+    "DT_CapturedCagePal": "PalCapturedCageInfoDatabaseRow",
+    "DT_CharacterUpgradeMasterDataTable": "PalCharacterUpgradeMasterData",
+    "DT_PalBPClass": "PalBPClassDataRow",
+    "DT_PalCharacterIconDataTable": "PalCharacterIconDataRow",
+    "DT_PalCombiUnique": "PalCombiUniqueDatabaseRow",
+    "DT_PalDropItem": "PalDropItemDatabaseRow",
+    "DT_PalHumanParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalMonsterParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalPlayerParameter": "PalPlayerParameterDatabaseRow",
+    "DT_PalSizeParameter": "PalSizeParameterDataRow",
+    "DT_UniqueNPC": "PalUniqueNPCDatabaseRow",
+    "DT_PalCaptureBonusExpTable": "PalCaptureBonusExpRaw",
+    "DT_PalExpTable": "PalExpDatabaseRaw",
+    "DT_ItemDataTable": "PalStaticItemDataStruct",
+    "DT_ItemIconDataTable": "PalEditorItemIconTableRow",
+    "DT_ItemLotteryDataTable": "PalItemLotteryData",
+    "DT_ItemRecipeDataTable": "PalItemRecipe",
+    "DT_StatusEffectFood": "PalStatusEffectFoodDataRow",
+    "DT_BuildObjectDataTable": "PalBuildObjectData",
+    "DT_BuildObjectIconDataTable": "PalBuildObjectIconData",
+    "DT_MapObjectAssignData": "PalMapObjectAssignData",
+    "DT_MapObjectFarmCrop": "PalMapObjectFarmCropData",
+    "DT_MapObjectItemProductDataTable": "PalMapObjectItemProductData",
+    "DT_MapObjectMasterDataTable": "PalMapObjectMasterData",
+    "DT_PassiveSkill_Main": "PalPassiveSkillDatabaseRow",
+    "DT_TechnologyRecipeUnlock": "PalTechnologyRecipeUnlockDataTableRow",
+    "DT_WazaDataTable": "PalWazaDatabaseRaw",
+    "DT_WazaMasterLevel": "PalWazaMasterLevelDataRow",
+    "DT_WazaMasterTamago": "PalWazaMasterTamagoDataRow",
+    "DT_FieldLotteryNameDataTable": "PalFieldLotteryName"
+  }
+}

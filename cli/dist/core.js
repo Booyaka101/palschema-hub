@@ -6,9 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.stripJsonc = stripJsonc;
 exports.parseJsonc = parseJsonc;
 exports.collectFiles = collectFiles;
+exports.loadRegistryJson = loadRegistryJson;
 exports.getValidator = getValidator;
 exports.detectTargets = detectTargets;
 exports.validateFile = validateFile;
+exports.resolveVersionLabel = resolveVersionLabel;
+exports.invertDiff = invertDiff;
+exports.buildDiffIndex = buildDiffIndex;
+exports.migrateScanFile = migrateScanFile;
 const node_fs_1 = require("node:fs");
 const node_path_1 = require("node:path");
 const ajv_1 = __importDefault(require("ajv"));
@@ -84,17 +89,37 @@ function collectFiles(target) {
     }
     return out;
 }
-function schemaLocation(table, opts) {
+/** Resolve a registry-relative file (schema, versions.json, diff) the same way for
+ *  all three registry forms: base URL, local repo-root path, or the default GitHub raw URL. */
+function registryLocation(relPath, opts) {
     const reg = opts.registry;
     if (reg && /^https?:\/\//i.test(reg)) {
-        return { url: `${reg.replace(/\/+$/, '')}/schemas/v${opts.version}/${table}.schema.json` };
+        return { url: `${reg.replace(/\/+$/, '')}/${relPath}` };
     }
     if (reg) {
-        return { path: (0, node_path_1.join)(reg, 'schemas', `v${opts.version}`, `${table}.schema.json`) };
+        return { path: (0, node_path_1.join)(reg, ...relPath.split('/')) };
     }
     return {
-        url: `https://raw.githubusercontent.com/${opts.owner}/palschema-hub/main/schemas/v${opts.version}/${table}.schema.json`,
+        url: `https://raw.githubusercontent.com/${opts.owner}/palschema-hub/main/${relPath}`,
     };
+}
+function schemaLocation(table, opts) {
+    return registryLocation(`schemas/v${opts.version}/${table}.schema.json`, opts);
+}
+/** Fetch/read a registry-relative JSON file. Throws with a clear message on failure. */
+async function loadRegistryJson(relPath, opts) {
+    const loc = registryLocation(relPath, opts);
+    try {
+        if (loc.path)
+            return JSON.parse((0, node_fs_1.readFileSync)(loc.path, 'utf8'));
+        const res = await fetch(loc.url);
+        if (!res.ok)
+            throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+    }
+    catch (e) {
+        throw new Error(`cannot load ${relPath} from registry (${loc.path ?? loc.url}): ${e.message}`);
+    }
 }
 const validatorCache = new Map();
 /** Load + compile a table's schema. Returns null (with a warning) if unavailable. */
@@ -233,4 +258,74 @@ async function validateFile(file, opts) {
         }
     }
     return findings;
+}
+/** Resolve a version label (or alias like "0.7.3") against versions.json. */
+function resolveVersionLabel(info, label) {
+    if (info.versions[label])
+        return { version: label, aliasNote: null };
+    const alias = info.aliases[label];
+    if (alias)
+        return { version: alias.of, aliasNote: alias.note };
+    return null;
+}
+/** Reverse a diff for downgrade scans (added<->removed, retyped/renames flipped). */
+function invertDiff(d) {
+    const structs = {};
+    for (const [name, s] of Object.entries(d.structs)) {
+        structs[name] = {
+            added: s.removed,
+            removed: s.added,
+            retyped: s.retyped.map((r) => ({ field: r.field, from: r.to, to: r.from })),
+            renames: s.renames.map((r) => ({ ...r, from: r.to, to: r.from, altCandidates: undefined })),
+            tables: s.tables,
+        };
+    }
+    return { ...d, from: d.to, to: d.from, structs };
+}
+function buildDiffIndex(diff) {
+    const index = new Map();
+    for (const [name, s] of Object.entries(diff.structs)) {
+        const removed = new Map();
+        for (const r of s.removed) {
+            removed.set(r.field, { type: r.type, rename: s.renames.find((rn) => rn.from === r.field) });
+        }
+        const retyped = new Map(s.retyped.map((r) => [r.field, { from: r.from, to: r.to }]));
+        index.set(name, { removed, retyped });
+    }
+    return index;
+}
+/** Scan one mod file's DT_* rows for fields the diff marks removed/retyped. */
+function migrateScanFile(file, diff, index, unknownTables) {
+    const data = parseJsonc((0, node_fs_1.readFileSync)(file, 'utf8'), file);
+    const hits = [];
+    for (const { table, content } of detectTargets(data, file)) {
+        const structName = diff.tableToStruct[table];
+        if (!structName) {
+            unknownTables.add(table);
+            continue;
+        }
+        const structIndex = index.get(structName);
+        if (!structIndex)
+            continue; // struct unchanged between the two versions
+        if (content === null || typeof content !== 'object' || Array.isArray(content))
+            continue;
+        for (const [rowName, row] of Object.entries(content)) {
+            if (row === null || typeof row !== 'object' || Array.isArray(row))
+                continue;
+            for (const field of Object.keys(row)) {
+                if (field === '$Filters')
+                    continue;
+                const removed = structIndex.removed.get(field);
+                if (removed) {
+                    hits.push({ file, table, row: rowName, field, kind: 'removed', detail: removed.type, rename: removed.rename });
+                    continue;
+                }
+                const retyped = structIndex.retyped.get(field);
+                if (retyped) {
+                    hits.push({ file, table, row: rowName, field, kind: 'retyped', detail: `${retyped.from} -> ${retyped.to}` });
+                }
+            }
+        }
+    }
+    return hits;
 }

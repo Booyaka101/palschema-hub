@@ -1,0 +1,517 @@
+{
+  "from": {
+    "requested": "0.6.4",
+    "palworldVersion": "0.6.4",
+    "sdkCommit": "10354a8",
+    "sdkDate": "2025-07-31"
+  },
+  "to": {
+    "requested": "1.0",
+    "palworldVersion": "1.0",
+    "sdkCommit": "98ee60d",
+    "sdkDate": "2026-07-11"
+  },
+  "summary": "18 row struct(s) changed (54 field(s) added, 3 removed, 1 retyped); 9 struct(s) new, 4 gone; 10 known DT_* table(s) affected",
+  "structs": {
+    "PalBuildObjectData": {
+      "added": [
+        {
+          "field": "SortId",
+          "type": "int32"
+        },
+        {
+          "field": "TypeUIDisplay",
+          "type": "EPalBuildObjectTypeForUIDisplay"
+        },
+        {
+          "field": "bIsProhibitedInRaidBossArea",
+          "type": "bool"
+        },
+        {
+          "field": "MaxBuildCountInRaidBossArea",
+          "type": "int32"
+        },
+        {
+          "field": "bIsPaintable",
+          "type": "bool"
+        }
+      ],
+      "removed": [
+        {
+          "field": "RedialIndex",
+          "type": "int32"
+        }
+      ],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_BuildObjectDataTable"
+      ]
+    },
+    "PalCharacterParameterDatabaseRow": {
+      "added": [
+        {
+          "field": "OverridePartnerSkillNameTextID",
+          "type": "FName"
+        },
+        {
+          "field": "OverridePartnerSkillDescTextID",
+          "type": "FName"
+        },
+        {
+          "field": "EnemyWazaCoolTimeRate",
+          "type": "float"
+        },
+        {
+          "field": "BestWorkSuitability",
+          "type": "EPalWorkSuitability"
+        }
+      ],
+      "removed": [
+        {
+          "field": "OverridePartnerSkillTextID",
+          "type": "FName"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "OverridePartnerSkillTextID",
+          "to": "OverridePartnerSkillNameTextID",
+          "type": "FName",
+          "confidence": "medium",
+          "altCandidates": [
+            "OverridePartnerSkillDescTextID"
+          ]
+        }
+      ],
+      "tables": [
+        "DT_PalHumanParameter",
+        "DT_PalMonsterParameter"
+      ]
+    },
+    "PalFishShadowDataRow": {
+      "added": [
+        {
+          "field": "BossPassiveRate",
+          "type": "float"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalGameProgressPresetDataTableRow": {
+      "added": [
+        {
+          "field": "ExecuteCommands",
+          "type": "TArray<FString>"
+        }
+      ],
+      "removed": [],
+      "retyped": [
+        {
+          "field": "CapturedPals",
+          "from": "TArray<FPalDebugOtomoPalInfo>",
+          "to": "TArray<FPalGameProgressPresetCapturedPalInfo>"
+        }
+      ],
+      "renames": [],
+      "tables": []
+    },
+    "PalItemLotteryData": {
+      "added": [
+        {
+          "field": "BonusExpRate",
+          "type": "float"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_ItemLotteryDataTable"
+      ]
+    },
+    "PalItemRecipe": {
+      "added": [
+        {
+          "field": "DenyRecipeChain",
+          "type": "TArray<FName>"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_ItemRecipeDataTable"
+      ]
+    },
+    "PalLocationUIData_TableRow": {
+      "added": [
+        {
+          "field": "levelObjectIconMap",
+          "type": "TMap<EPalRelicType, TSoftObjectPtr<UTexture2D>>"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalMapObjectAssignData": {
+      "added": [
+        {
+          "field": "MultiWorkSuitability1",
+          "type": "EPalWorkSuitability"
+        },
+        {
+          "field": "MultiWorkType1",
+          "type": "EPalWorkType"
+        },
+        {
+          "field": "MultiWorkActionType1",
+          "type": "EPalActionType"
+        },
+        {
+          "field": "MultiRequiredRank1",
+          "type": "int32"
+        },
+        {
+          "field": "MultiWorkSuitability2",
+          "type": "EPalWorkSuitability"
+        },
+        {
+          "field": "MultiWorkType2",
+          "type": "EPalWorkType"
+        },
+        {
+          "field": "MultiWorkActionType2",
+          "type": "EPalActionType"
+        },
+        {
+          "field": "MultiRequiredRank2",
+          "type": "int32"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_MapObjectAssignData"
+      ]
+    },
+    "PalMapObjectMasterData": {
+      "added": [
+        {
+          "field": "Hp_PVP",
+          "type": "int32"
+        },
+        {
+          "field": "Defense_PVP",
+          "type": "int32"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_MapObjectMasterDataTable"
+      ]
+    },
+    "PalOptionWorldPresetRow": {
+      "added": [
+        {
+          "field": "PhysicsActiveDropItemMaxNum",
+          "type": "int32"
+        },
+        {
+          "field": "AutoTransferMasterCheckIntervalSeconds",
+          "type": "float"
+        },
+        {
+          "field": "AutoTransferMasterThresholdDays",
+          "type": "int32"
+        },
+        {
+          "field": "GuildRejoinCooldownMinutes",
+          "type": "int32"
+        },
+        {
+          "field": "MaxGuildsPerFrame",
+          "type": "int32"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalPassiveSkillDatabaseRow": {
+      "added": [
+        {
+          "field": "EffectType4",
+          "type": "EPalPassiveSkillEffectType"
+        },
+        {
+          "field": "EffectValue4",
+          "type": "float"
+        },
+        {
+          "field": "TargetType4",
+          "type": "EPalPassiveSkillEffectTargetType"
+        },
+        {
+          "field": "AddInvokeTriggerType_1",
+          "type": "EPalPassiveAddTriggerType"
+        },
+        {
+          "field": "AddInvokeTriggerType_2",
+          "type": "EPalPassiveAddTriggerType"
+        },
+        {
+          "field": "AddWorldTreePal",
+          "type": "bool"
+        },
+        {
+          "field": "AddMutationPal",
+          "type": "bool"
+        },
+        {
+          "field": "IsStackablePartnerSkillBySameTribe",
+          "type": "bool"
+        },
+        {
+          "field": "SortKeyJP",
+          "type": "FString"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_PassiveSkill_Main"
+      ]
+    },
+    "PalPlayerEquipmentMeshDataRow": {
+      "added": [
+        {
+          "field": "bIsFullBodyEquipment",
+          "type": "bool"
+        },
+        {
+          "field": "OverrideBodyType",
+          "type": "FName"
+        },
+        {
+          "field": "BodyShape",
+          "type": "EPalPlayerBodyShape"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalPlayerStatusRankMasterData": {
+      "added": [
+        {
+          "field": "RelicType",
+          "type": "EPalRelicType"
+        },
+        {
+          "field": "EffectRate",
+          "type": "float"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalQuestDataSetRow": {
+      "added": [
+        {
+          "field": "bReorderable",
+          "type": "bool"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalStaticItemDataStruct": {
+      "added": [
+        {
+          "field": "SortId",
+          "type": "int32"
+        },
+        {
+          "field": "bNotAvailableInPVP",
+          "type": "bool"
+        }
+      ],
+      "removed": [
+        {
+          "field": "SortID",
+          "type": "int32"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "SortID",
+          "to": "SortId",
+          "type": "int32",
+          "confidence": "high"
+        }
+      ],
+      "tables": [
+        "DT_ItemDataTable"
+      ]
+    },
+    "PalWazaDatabaseRaw": {
+      "added": [
+        {
+          "field": "DisplayPower",
+          "type": "int32"
+        },
+        {
+          "field": "MaxHeightDiff",
+          "type": "int32"
+        },
+        {
+          "field": "bIsExplosionDamage",
+          "type": "bool"
+        },
+        {
+          "field": "Strength",
+          "type": "EPalWazaStrength"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_WazaDataTable"
+      ]
+    },
+    "PalWildSpawnerDatabaseRow": {
+      "added": [
+        {
+          "field": "bHasWorldTreeAura",
+          "type": "bool"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalWorldMapUIDataTableRow": {
+      "added": [
+        {
+          "field": "MaskTextureSize",
+          "type": "FVector2D"
+        },
+        {
+          "field": "AlternativeTrackingLocationId",
+          "type": "TMap<FName, FName>"
+        },
+        {
+          "field": "WorldMapPriority",
+          "type": "int32"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    }
+  },
+  "structsAdded": [
+    "PalAwakeningItemElementDataRow",
+    "PalDeathDropPalData",
+    "PalEggLotteryData",
+    "PalEggSpawnerDatabaseRow",
+    "PalInvaderCancelCostRow",
+    "PalInvaderDatabaseBaseRow",
+    "PalInvaderRewardRow",
+    "PalPartnerSkillParameterDataRow",
+    "PalPassiveSkillEffectConditionDataRow"
+  ],
+  "structsRemoved": [
+    "PalInvaderDatabaseRow",
+    "PalNPCMultiTalkRow",
+    "PalNPCOneTalkRow",
+    "PalTalkTreeDataTableRow"
+  ],
+  "affectedTables": {
+    "DT_BuildObjectDataTable": "PalBuildObjectData",
+    "DT_PalHumanParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalMonsterParameter": "PalCharacterParameterDatabaseRow",
+    "DT_ItemLotteryDataTable": "PalItemLotteryData",
+    "DT_ItemRecipeDataTable": "PalItemRecipe",
+    "DT_MapObjectAssignData": "PalMapObjectAssignData",
+    "DT_MapObjectMasterDataTable": "PalMapObjectMasterData",
+    "DT_PassiveSkill_Main": "PalPassiveSkillDatabaseRow",
+    "DT_ItemDataTable": "PalStaticItemDataStruct",
+    "DT_WazaDataTable": "PalWazaDatabaseRaw"
+  },
+  "unchangedTables": [
+    "DT_BuildObjectIconDataTable",
+    "DT_CapturedCagePal",
+    "DT_CharacterUpgradeMasterDataTable",
+    "DT_FieldLotteryNameDataTable",
+    "DT_ItemIconDataTable",
+    "DT_MapObjectFarmCrop",
+    "DT_MapObjectItemProductDataTable",
+    "DT_PalBPClass",
+    "DT_PalCaptureBonusExpTable",
+    "DT_PalCharacterIconDataTable",
+    "DT_PalCombiUnique",
+    "DT_PalDropItem",
+    "DT_PalExpTable",
+    "DT_PalPlayerParameter",
+    "DT_PalSizeParameter",
+    "DT_StatusEffectFood",
+    "DT_TechnologyRecipeUnlock",
+    "DT_UniqueNPC",
+    "DT_WazaMasterLevel",
+    "DT_WazaMasterTamago"
+  ],
+  "tableToStruct": {
+    "DT_CapturedCagePal": "PalCapturedCageInfoDatabaseRow",
+    "DT_CharacterUpgradeMasterDataTable": "PalCharacterUpgradeMasterData",
+    "DT_PalBPClass": "PalBPClassDataRow",
+    "DT_PalCharacterIconDataTable": "PalCharacterIconDataRow",
+    "DT_PalCombiUnique": "PalCombiUniqueDatabaseRow",
+    "DT_PalDropItem": "PalDropItemDatabaseRow",
+    "DT_PalHumanParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalMonsterParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalPlayerParameter": "PalPlayerParameterDatabaseRow",
+    "DT_PalSizeParameter": "PalSizeParameterDataRow",
+    "DT_UniqueNPC": "PalUniqueNPCDatabaseRow",
+    "DT_PalCaptureBonusExpTable": "PalCaptureBonusExpRaw",
+    "DT_PalExpTable": "PalExpDatabaseRaw",
+    "DT_ItemDataTable": "PalStaticItemDataStruct",
+    "DT_ItemIconDataTable": "PalEditorItemIconTableRow",
+    "DT_ItemLotteryDataTable": "PalItemLotteryData",
+    "DT_ItemRecipeDataTable": "PalItemRecipe",
+    "DT_StatusEffectFood": "PalStatusEffectFoodDataRow",
+    "DT_BuildObjectDataTable": "PalBuildObjectData",
+    "DT_BuildObjectIconDataTable": "PalBuildObjectIconData",
+    "DT_MapObjectAssignData": "PalMapObjectAssignData",
+    "DT_MapObjectFarmCrop": "PalMapObjectFarmCropData",
+    "DT_MapObjectItemProductDataTable": "PalMapObjectItemProductData",
+    "DT_MapObjectMasterDataTable": "PalMapObjectMasterData",
+    "DT_PassiveSkill_Main": "PalPassiveSkillDatabaseRow",
+    "DT_TechnologyRecipeUnlock": "PalTechnologyRecipeUnlockDataTableRow",
+    "DT_WazaDataTable": "PalWazaDatabaseRaw",
+    "DT_WazaMasterLevel": "PalWazaMasterLevelDataRow",
+    "DT_WazaMasterTamago": "PalWazaMasterTamagoDataRow",
+    "DT_FieldLotteryNameDataTable": "PalFieldLotteryName"
+  }
+}

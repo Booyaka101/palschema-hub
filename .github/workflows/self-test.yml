@@ -29,3 +29,12 @@ jobs:
           else
             echo "OK: invalid-mod.json failed as expected"
           fi
+      - name: migrate scan flags the removed partner-skill field (exit 1)
+        run: |
+          if node cli/dist/index.js --migrate 0.7.2..1.0 --registry . tests/migrate-fixtures/partner-skill.json; then
+            echo "ERROR: migrate scan unexpectedly passed"; exit 1
+          else
+            echo "OK: breaking field flagged as expected"
+          fi
+      - name: alias pair 0.7.2..0.7.3 reports no row-struct changes (exit 0)
+        run: node cli/dist/index.js --migrate 0.7.2..0.7.3 --registry . | grep "no row-struct changes"

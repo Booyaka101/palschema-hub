@@ -1,0 +1,119 @@
+{
+  "from": {
+    "requested": "0.4.11",
+    "palworldVersion": "0.4.11",
+    "sdkCommit": "41acdeb",
+    "sdkDate": "2025-01-09"
+  },
+  "to": {
+    "requested": "0.5.0",
+    "palworldVersion": "0.5.0",
+    "sdkCommit": "4a2e161",
+    "sdkDate": "2025-03-21"
+  },
+  "summary": "2 row struct(s) changed (3 field(s) added, 0 removed, 0 retyped); 2 struct(s) new, 0 gone; 2 known DT_* table(s) affected",
+  "structs": {
+    "PalCharacterParameterDatabaseRow": {
+      "added": [
+        {
+          "field": "CombiDuplicatePriority",
+          "type": "int32"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_PalHumanParameter",
+        "DT_PalMonsterParameter"
+      ]
+    },
+    "PalOptionWorldPresetRow": {
+      "added": [
+        {
+          "field": "bAllowGlobalPalboxExport",
+          "type": "bool"
+        },
+        {
+          "field": "bAllowGlobalPalboxImport",
+          "type": "bool"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    }
+  },
+  "structsAdded": [
+    "PalGliderMeshDataRow",
+    "PalNPCAppearDatabaseRow"
+  ],
+  "structsRemoved": [],
+  "affectedTables": {
+    "DT_PalHumanParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalMonsterParameter": "PalCharacterParameterDatabaseRow"
+  },
+  "unchangedTables": [
+    "DT_BuildObjectDataTable",
+    "DT_BuildObjectIconDataTable",
+    "DT_CapturedCagePal",
+    "DT_CharacterUpgradeMasterDataTable",
+    "DT_FieldLotteryNameDataTable",
+    "DT_ItemDataTable",
+    "DT_ItemIconDataTable",
+    "DT_ItemLotteryDataTable",
+    "DT_ItemRecipeDataTable",
+    "DT_MapObjectAssignData",
+    "DT_MapObjectFarmCrop",
+    "DT_MapObjectItemProductDataTable",
+    "DT_MapObjectMasterDataTable",
+    "DT_PalBPClass",
+    "DT_PalCaptureBonusExpTable",
+    "DT_PalCharacterIconDataTable",
+    "DT_PalCombiUnique",
+    "DT_PalDropItem",
+    "DT_PalExpTable",
+    "DT_PalPlayerParameter",
+    "DT_PalSizeParameter",
+    "DT_PassiveSkill_Main",
+    "DT_StatusEffectFood",
+    "DT_TechnologyRecipeUnlock",
+    "DT_UniqueNPC",
+    "DT_WazaDataTable",
+    "DT_WazaMasterLevel",
+    "DT_WazaMasterTamago"
+  ],
+  "tableToStruct": {
+    "DT_CapturedCagePal": "PalCapturedCageInfoDatabaseRow",
+    "DT_CharacterUpgradeMasterDataTable": "PalCharacterUpgradeMasterData",
+    "DT_PalBPClass": "PalBPClassDataRow",
+    "DT_PalCharacterIconDataTable": "PalCharacterIconDataRow",
+    "DT_PalCombiUnique": "PalCombiUniqueDatabaseRow",
+    "DT_PalDropItem": "PalDropItemDatabaseRow",
+    "DT_PalHumanParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalMonsterParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalPlayerParameter": "PalPlayerParameterDatabaseRow",
+    "DT_PalSizeParameter": "PalSizeParameterDataRow",
+    "DT_UniqueNPC": "PalUniqueNPCDatabaseRow",
+    "DT_PalCaptureBonusExpTable": "PalCaptureBonusExpRaw",
+    "DT_PalExpTable": "PalExpDatabaseRaw",
+    "DT_ItemDataTable": "PalStaticItemDataStruct",
+    "DT_ItemIconDataTable": "PalEditorItemIconTableRow",
+    "DT_ItemLotteryDataTable": "PalItemLotteryData",
+    "DT_ItemRecipeDataTable": "PalItemRecipe",
+    "DT_StatusEffectFood": "PalStatusEffectFoodDataRow",
+    "DT_BuildObjectDataTable": "PalBuildObjectData",
+    "DT_BuildObjectIconDataTable": "PalBuildObjectIconData",
+    "DT_MapObjectAssignData": "PalMapObjectAssignData",
+    "DT_MapObjectFarmCrop": "PalMapObjectFarmCropData",
+    "DT_MapObjectItemProductDataTable": "PalMapObjectItemProductData",
+    "DT_MapObjectMasterDataTable": "PalMapObjectMasterData",
+    "DT_PassiveSkill_Main": "PalPassiveSkillDatabaseRow",
+    "DT_TechnologyRecipeUnlock": "PalTechnologyRecipeUnlockDataTableRow",
+    "DT_WazaDataTable": "PalWazaDatabaseRaw",
+    "DT_WazaMasterLevel": "PalWazaMasterLevelDataRow",
+    "DT_WazaMasterTamago": "PalWazaMasterTamagoDataRow",
+    "DT_FieldLotteryNameDataTable": "PalFieldLotteryName"
+  }
+}

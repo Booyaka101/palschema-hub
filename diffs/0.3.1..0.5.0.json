@@ -1,0 +1,675 @@
+{
+  "from": {
+    "requested": "0.3.1",
+    "palworldVersion": "0.3.1",
+    "sdkCommit": "5e2ce8f",
+    "sdkDate": "2024-06-28"
+  },
+  "to": {
+    "requested": "0.5.0",
+    "palworldVersion": "0.5.0",
+    "sdkCommit": "4a2e161",
+    "sdkDate": "2025-03-21"
+  },
+  "summary": "23 row struct(s) changed (54 field(s) added, 13 removed, 6 retyped); 14 struct(s) new, 0 gone; 14 known DT_* table(s) affected",
+  "structs": {
+    "PalBuildObjectData": {
+      "added": [
+        {
+          "field": "BuildExpRate",
+          "type": "float"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_BuildObjectDataTable"
+      ]
+    },
+    "PalCaptureBonusExpRaw": {
+      "added": [],
+      "removed": [],
+      "retyped": [
+        {
+          "field": "BonusExp",
+          "from": "int32",
+          "to": "int64"
+        }
+      ],
+      "renames": [],
+      "tables": [
+        "DT_PalCaptureBonusExpTable"
+      ]
+    },
+    "PalCharacterParameterDatabaseRow": {
+      "added": [
+        {
+          "field": "OverrideNameTextID",
+          "type": "FName"
+        },
+        {
+          "field": "Hp",
+          "type": "int32"
+        },
+        {
+          "field": "IgnoreStun",
+          "type": "bool"
+        },
+        {
+          "field": "CombiDuplicatePriority",
+          "type": "int32"
+        },
+        {
+          "field": "IgnoreCombi",
+          "type": "bool"
+        },
+        {
+          "field": "FirstDefeatRewardItemID",
+          "type": "FName"
+        }
+      ],
+      "removed": [
+        {
+          "field": "OverrideNameTextId",
+          "type": "FName"
+        },
+        {
+          "field": "HP",
+          "type": "int32"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "OverrideNameTextId",
+          "to": "OverrideNameTextID",
+          "type": "FName",
+          "confidence": "high"
+        },
+        {
+          "from": "HP",
+          "to": "Hp",
+          "type": "int32",
+          "confidence": "high"
+        }
+      ],
+      "tables": [
+        "DT_PalHumanParameter",
+        "DT_PalMonsterParameter"
+      ]
+    },
+    "PalExpDatabaseRaw": {
+      "added": [
+        {
+          "field": "BuildEXP",
+          "type": "int64"
+        },
+        {
+          "field": "CraftEXP",
+          "type": "int64"
+        },
+        {
+          "field": "PalBuildEXP",
+          "type": "int64"
+        },
+        {
+          "field": "PalCraftEXP",
+          "type": "int64"
+        }
+      ],
+      "removed": [],
+      "retyped": [
+        {
+          "field": "DropEXP",
+          "from": "int32",
+          "to": "int64"
+        },
+        {
+          "field": "NextEXP",
+          "from": "int32",
+          "to": "int64"
+        },
+        {
+          "field": "PalNextEXP",
+          "from": "int32",
+          "to": "int64"
+        },
+        {
+          "field": "TotalEXP",
+          "from": "int32",
+          "to": "int64"
+        },
+        {
+          "field": "PalTotalEXP",
+          "from": "int32",
+          "to": "int64"
+        }
+      ],
+      "renames": [],
+      "tables": [
+        "DT_PalExpTable"
+      ]
+    },
+    "PalFieldLotteryName": {
+      "added": [
+        {
+          "field": "ItemSlot6_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot7_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot8_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot9_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot10_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot11_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot12_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot13_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot14_ProbabilityPercent",
+          "type": "float"
+        },
+        {
+          "field": "ItemSlot15_ProbabilityPercent",
+          "type": "float"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_FieldLotteryNameDataTable"
+      ]
+    },
+    "PalFoliageTypeReference": {
+      "added": [
+        {
+          "field": "Hp",
+          "type": "int32"
+        }
+      ],
+      "removed": [
+        {
+          "field": "HP",
+          "type": "int32"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "HP",
+          "to": "Hp",
+          "type": "int32",
+          "confidence": "high"
+        }
+      ],
+      "tables": []
+    },
+    "PalInvaderDatabaseRow": {
+      "added": [
+        {
+          "field": "Otomo_A",
+          "type": "FName"
+        },
+        {
+          "field": "Otomo_B",
+          "type": "FName"
+        },
+        {
+          "field": "Otomo_C",
+          "type": "FName"
+        },
+        {
+          "field": "Otomo_D",
+          "type": "FName"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalItemRecipe": {
+      "added": [
+        {
+          "field": "CraftExpRate",
+          "type": "float"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_ItemRecipeDataTable"
+      ]
+    },
+    "PalItemShopCreateIntermediateDataRow": {
+      "added": [
+        {
+          "field": "ProductNum",
+          "type": "int32"
+        }
+      ],
+      "removed": [
+        {
+          "field": "BuyRate",
+          "type": "float"
+        },
+        {
+          "field": "SellRate",
+          "type": "float"
+        }
+      ],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalMapObjectAssignData": {
+      "added": [
+        {
+          "field": "bBaseCampWorkerWorkable",
+          "type": "bool"
+        },
+        {
+          "field": "WorkableTribeIDs",
+          "type": "TArray<EPalTribeID>"
+        },
+        {
+          "field": "WorkableSizeMin",
+          "type": "EPalSizeType"
+        },
+        {
+          "field": "WorkableSizeMax",
+          "type": "EPalSizeType"
+        },
+        {
+          "field": "AffectFullStomachValue",
+          "type": "float"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_MapObjectAssignData"
+      ]
+    },
+    "PalMapObjectMasterData": {
+      "added": [
+        {
+          "field": "Hp",
+          "type": "int32"
+        }
+      ],
+      "removed": [
+        {
+          "field": "HP",
+          "type": "int32"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "HP",
+          "to": "Hp",
+          "type": "int32",
+          "confidence": "high"
+        }
+      ],
+      "tables": [
+        "DT_MapObjectMasterDataTable"
+      ]
+    },
+    "PalOptionGraphicsPresetRow": {
+      "added": [
+        {
+          "field": "MapObjectDrawDistanceType",
+          "type": "EPalOptionMapObjectDrawDistanceType"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalOptionWorldModePresetRow": {
+      "added": [],
+      "removed": [
+        {
+          "field": "bEnableFastTravel",
+          "type": "bool"
+        }
+      ],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalOptionWorldPresetRow": {
+      "added": [
+        {
+          "field": "BuildObjectHpRate",
+          "type": "float"
+        },
+        {
+          "field": "SupplyDropSpan",
+          "type": "int32"
+        },
+        {
+          "field": "bHardcore",
+          "type": "bool"
+        },
+        {
+          "field": "bPalLost",
+          "type": "bool"
+        },
+        {
+          "field": "bAllowGlobalPalboxExport",
+          "type": "bool"
+        },
+        {
+          "field": "bAllowGlobalPalboxImport",
+          "type": "bool"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalPassiveSkillDatabaseRow": {
+      "added": [
+        {
+          "field": "OverrideNameTextID",
+          "type": "FName"
+        },
+        {
+          "field": "Category",
+          "type": "EPalPassiveCategory"
+        }
+      ],
+      "removed": [
+        {
+          "field": "OverrideNameTextId",
+          "type": "FName"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "OverrideNameTextId",
+          "to": "OverrideNameTextID",
+          "type": "FName",
+          "confidence": "high"
+        }
+      ],
+      "tables": [
+        "DT_PassiveSkill_Main"
+      ]
+    },
+    "PalPlayerParameterDatabaseRow": {
+      "added": [
+        {
+          "field": "Hp",
+          "type": "int32"
+        }
+      ],
+      "removed": [
+        {
+          "field": "HP",
+          "type": "int32"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "HP",
+          "to": "Hp",
+          "type": "int32",
+          "confidence": "high"
+        }
+      ],
+      "tables": [
+        "DT_PalPlayerParameter"
+      ]
+    },
+    "PalRaidBossDataRow": {
+      "added": [
+        {
+          "field": "SummonMeteor_Num",
+          "type": "TArray<FPalRaidBossSummonMeteorInfo>"
+        },
+        {
+          "field": "SummonGeneratorClass",
+          "type": "TSubclassOf<APalRaidBossSummonGeneratorBase>"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalStaticItemDataStruct": {
+      "added": [
+        {
+          "field": "bLegalInGame",
+          "type": "bool"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_ItemDataTable"
+      ]
+    },
+    "PalTalkTreeDataTableRow": {
+      "added": [
+        {
+          "field": "TextId",
+          "type": "FName"
+        }
+      ],
+      "removed": [
+        {
+          "field": "textID",
+          "type": "FName"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "textID",
+          "to": "TextId",
+          "type": "FName",
+          "confidence": "high"
+        }
+      ],
+      "tables": []
+    },
+    "PalTechnologyDataTableRowBase": {
+      "added": [
+        {
+          "field": "RequireDefeatTowerBoss",
+          "type": "EPalBossType"
+        },
+        {
+          "field": "RequireResearchId",
+          "type": "FName"
+        }
+      ],
+      "removed": [
+        {
+          "field": "RequireBossDefeatNum",
+          "type": "int32"
+        }
+      ],
+      "retyped": [],
+      "renames": [],
+      "tables": []
+    },
+    "PalTechnologyRecipeUnlockDataTableRow": {
+      "added": [
+        {
+          "field": "RequireDefeatTowerBoss",
+          "type": "EPalBossType"
+        },
+        {
+          "field": "RequireResearchId",
+          "type": "FName"
+        }
+      ],
+      "removed": [
+        {
+          "field": "RequireBossDefeatNum",
+          "type": "int32"
+        }
+      ],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_TechnologyRecipeUnlock"
+      ]
+    },
+    "PalWazaDatabaseRaw": {
+      "added": [
+        {
+          "field": "WazaCustomExecuteConditions",
+          "type": "TArray<FPalWazaCustomExecuteCondition>"
+        }
+      ],
+      "removed": [],
+      "retyped": [],
+      "renames": [],
+      "tables": [
+        "DT_WazaDataTable"
+      ]
+    },
+    "TutorialDataStruct": {
+      "added": [
+        {
+          "field": "MsgID",
+          "type": "FName"
+        }
+      ],
+      "removed": [
+        {
+          "field": "MsgId",
+          "type": "FName"
+        }
+      ],
+      "retyped": [],
+      "renames": [
+        {
+          "from": "MsgId",
+          "to": "MsgID",
+          "type": "FName",
+          "confidence": "high"
+        }
+      ],
+      "tables": []
+    }
+  },
+  "structsAdded": [
+    "PalCircumRequestData_DataAsset",
+    "PalCurveBallTableRow",
+    "PalDisplayRequestData_DataAsset",
+    "PalGainWorkSuitabilityRankItemDataRow",
+    "PalGamepadButtonImageDatabaseRow",
+    "PalGliderMeshDataRow",
+    "PalMapObjectFarmSkillFruitsLotteryRow",
+    "PalNPCAppearDatabaseRow",
+    "PalRecordCountRewardData_DataAsset",
+    "PalRecruitDataRow",
+    "PalRecruitMonsterInfoRow",
+    "PalUIBossSpawnerLoactionData",
+    "PalWorldMapAreaBonusExpTagleReferenceData",
+    "PalWorldMapAreaDataRow"
+  ],
+  "structsRemoved": [],
+  "affectedTables": {
+    "DT_BuildObjectDataTable": "PalBuildObjectData",
+    "DT_PalCaptureBonusExpTable": "PalCaptureBonusExpRaw",
+    "DT_PalHumanParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalMonsterParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalExpTable": "PalExpDatabaseRaw",
+    "DT_FieldLotteryNameDataTable": "PalFieldLotteryName",
+    "DT_ItemRecipeDataTable": "PalItemRecipe",
+    "DT_MapObjectAssignData": "PalMapObjectAssignData",
+    "DT_MapObjectMasterDataTable": "PalMapObjectMasterData",
+    "DT_PassiveSkill_Main": "PalPassiveSkillDatabaseRow",
+    "DT_PalPlayerParameter": "PalPlayerParameterDatabaseRow",
+    "DT_ItemDataTable": "PalStaticItemDataStruct",
+    "DT_TechnologyRecipeUnlock": "PalTechnologyRecipeUnlockDataTableRow",
+    "DT_WazaDataTable": "PalWazaDatabaseRaw"
+  },
+  "unchangedTables": [
+    "DT_BuildObjectIconDataTable",
+    "DT_CapturedCagePal",
+    "DT_CharacterUpgradeMasterDataTable",
+    "DT_ItemIconDataTable",
+    "DT_ItemLotteryDataTable",
+    "DT_MapObjectFarmCrop",
+    "DT_MapObjectItemProductDataTable",
+    "DT_PalBPClass",
+    "DT_PalCharacterIconDataTable",
+    "DT_PalCombiUnique",
+    "DT_PalDropItem",
+    "DT_PalSizeParameter",
+    "DT_StatusEffectFood",
+    "DT_UniqueNPC",
+    "DT_WazaMasterLevel",
+    "DT_WazaMasterTamago"
+  ],
+  "tableToStruct": {
+    "DT_CapturedCagePal": "PalCapturedCageInfoDatabaseRow",
+    "DT_CharacterUpgradeMasterDataTable": "PalCharacterUpgradeMasterData",
+    "DT_PalBPClass": "PalBPClassDataRow",
+    "DT_PalCharacterIconDataTable": "PalCharacterIconDataRow",
+    "DT_PalCombiUnique": "PalCombiUniqueDatabaseRow",
+    "DT_PalDropItem": "PalDropItemDatabaseRow",
+    "DT_PalHumanParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalMonsterParameter": "PalCharacterParameterDatabaseRow",
+    "DT_PalPlayerParameter": "PalPlayerParameterDatabaseRow",
+    "DT_PalSizeParameter": "PalSizeParameterDataRow",
+    "DT_UniqueNPC": "PalUniqueNPCDatabaseRow",
+    "DT_PalCaptureBonusExpTable": "PalCaptureBonusExpRaw",
+    "DT_PalExpTable": "PalExpDatabaseRaw",
+    "DT_ItemDataTable": "PalStaticItemDataStruct",
+    "DT_ItemIconDataTable": "PalEditorItemIconTableRow",
+    "DT_ItemLotteryDataTable": "PalItemLotteryData",
+    "DT_ItemRecipeDataTable": "PalItemRecipe",
+    "DT_StatusEffectFood": "PalStatusEffectFoodDataRow",
+    "DT_BuildObjectDataTable": "PalBuildObjectData",
+    "DT_BuildObjectIconDataTable": "PalBuildObjectIconData",
+    "DT_MapObjectAssignData": "PalMapObjectAssignData",
+    "DT_MapObjectFarmCrop": "PalMapObjectFarmCropData",
+    "DT_MapObjectItemProductDataTable": "PalMapObjectItemProductData",
+    "DT_MapObjectMasterDataTable": "PalMapObjectMasterData",
+    "DT_PassiveSkill_Main": "PalPassiveSkillDatabaseRow",
+    "DT_TechnologyRecipeUnlock": "PalTechnologyRecipeUnlockDataTableRow",
+    "DT_WazaDataTable": "PalWazaDatabaseRaw",
+    "DT_WazaMasterLevel": "PalWazaMasterLevelDataRow",
+    "DT_WazaMasterTamago": "PalWazaMasterTamagoDataRow",
+    "DT_FieldLotteryNameDataTable": "PalFieldLotteryName"
+  }
+}
