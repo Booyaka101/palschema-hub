@@ -1,0 +1,26 @@
+name: Guards
+
+# Our own tools, run against this repo. If they are worth shipping they are worth
+# depending on ourselves — a guard that never runs on our code is untested.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: pnpm v11 CI guard
+        uses: Booyaka101/pnpm11-ci-guard@v1
+        with:
+          mode: warn
+
