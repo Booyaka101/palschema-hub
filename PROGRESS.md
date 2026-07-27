@@ -62,6 +62,36 @@ of the same issue-#53 audience):
 - Watch for: an Okaetsu reply. #53 was left open pending "a better method", so an
   upstream ack or docs link is the highest-value distribution outcome available here.
 
+## Session 2026-07-27 (cont.) — v0.2.1 + Nexus v1.1 published
+- **v0.2.1 (npm, `latest`):** ajv is now loaded LAZILY. Only validation needs it, so
+  `--migrate` runs with **zero dependencies** — which is what makes the offline Nexus
+  archive (ships `cli/dist` with no node_modules) able to do a full breaking-change
+  scan with no `npm install`. Missing ajv during validation now prints one clear
+  sentence instead of MODULE_NOT_FOUND. Tests 18 → **20**.
+- **Nexus mods/4084 updated to v1.1** (description + version + new file), all verified
+  live. The archive went 45 → **192 files** (66KB → 453KB): it had been TWO releases
+  stale (predated items.html/items.json). Built with bsdtar; `unzip -l` shows zero
+  backslash entries, and **Nexus's own file previewer parses it** (listing diff.html,
+  diffs/, structs/, items.html, schemas/) — that previewer failure was the exact v1.0
+  quarantine symptom, so this is the direct all-clear. Old 1.0.1 kept under Old files.
+- **CDP/Nexus gotchas proven this session** (see LESSONS.md):
+  - Nexus's description editor is **SCEditor** (global `sceditor`). The visible surface
+    is a same-origin `about:blank` iframe; the BBCode lives in a HIDDEN textarea.
+    `setReactValue` on that textarea **silently reverts on save** — you must go through
+    `sceditor.instance(ta).val(bbcode)`. SCEditor canonicalises list items to
+    `[*]item[/*]`, so gate on equality modulo `[/*]`, not byte equality.
+  - `clickSelector` on an element below the fold clicks whatever is at those viewport
+    coords (it navigated to the site home) — scrollIntoView + assert `activeElement`.
+  - Navigating away from a dirty form fires a beforeunload that **wedges the whole tab**
+    (Page.enable, Runtime.evaluate all time out) and `handleJavaScriptDialog` answers
+    "No dialog is showing" because Page wasn't enabled when it opened. Recovery that
+    works: close the target via `/json/close/<id>` and reopen. So: set + verify + save
+    in ONE script run, and never navigate while the form is dirty.
+  - File upload DOES work headlessly: `DOM.setFileInputFiles` with the input's objectId.
+    `input.files` still reads empty afterwards (React takes it into component state) —
+    confirm by the UI showing the filename, not by reading `.files`.
+- Re-verified after all of it: `npm test` 20/20, Pages 200s, npm `latest` = 0.2.1.
+
 ## Session 2026-07-24 — per-item VALUE reference (items.html / items.json)
 Prompted by Person7557 in issue #53 (couldn't find "ActorClass"; cloned AncientHelmet
 row showed bare hair): the missing field is **`ItemActorClass`** in DT_ItemDataTable —
