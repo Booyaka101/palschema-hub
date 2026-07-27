@@ -1,0 +1,26 @@
+version: 2
+
+# Staying current is a standing requirement, so it is automated rather than
+# remembered. Grouped so each ecosystem lands as a single reviewable PR.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: 'chore(deps)'
+    groups:
+      all-dependencies:
+        patterns: ['*']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: 'chore(ci)'
+    groups:
+      all-actions:
+        patterns: ['*']
