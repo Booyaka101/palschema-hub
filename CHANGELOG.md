@@ -1,5 +1,16 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.2.1 — 2026-07-27
+
+- **`--migrate` now runs with zero dependencies installed.** `ajv` is loaded lazily and is
+  only needed for schema validation; a migration scan reads `versions.json` + the diff JSON
+  and nothing else. The offline archive (which ships `cli/dist` without `node_modules`) can
+  therefore run a full breaking-change scan with no `npm install` at all.
+- If `ajv` is genuinely missing when you *do* validate, the CLI now explains that in one
+  sentence (and points out `--migrate` needs no deps) instead of throwing `MODULE_NOT_FOUND`.
+- Tests: 20 assertions (2 new — migrate from a directory with no `node_modules` above it,
+  and the graceful missing-`ajv` message).
+
 ## 0.2.0 — 2026-07-27
 
 **Version-diff engine: see (and scan for) what each Palworld patch changed.**

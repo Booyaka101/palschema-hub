@@ -1,7 +1,4 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.stripJsonc = stripJsonc;
 exports.parseJsonc = parseJsonc;
@@ -16,13 +13,34 @@ exports.buildDiffIndex = buildDiffIndex;
 exports.migrateScanFile = migrateScanFile;
 const node_fs_1 = require("node:fs");
 const node_path_1 = require("node:path");
-const ajv_1 = __importDefault(require("ajv"));
-const ajv = new ajv_1.default({
-    strict: true,
-    allErrors: true,
-    allowUnionTypes: true, // derived schemas use union types (e.g. ["string","object"])
-    strictTypes: false, // silence advisory type warnings; keep genuine strict-schema checks
-});
+/**
+ * ajv is loaded lazily: only schema validation needs it. `--migrate` reads
+ * versions.json + a diff JSON and nothing else, so the offline archive can run a
+ * migration scan with no `npm install` at all. Missing dep => a clear instruction,
+ * not a MODULE_NOT_FOUND stack trace.
+ */
+let ajvInstance;
+function getAjv() {
+    if (ajvInstance)
+        return ajvInstance;
+    let AjvCtor;
+    try {
+        AjvCtor = require('ajv');
+    }
+    catch {
+        throw new Error("the 'ajv' package is required for schema validation but is not installed — " +
+            'run `npm install` in this CLI\'s folder (or use `npx palschema-validate`). ' +
+            'Note: `--migrate` needs no dependencies and works without it.');
+    }
+    const Ajv = AjvCtor.default ?? AjvCtor; // ajv 8 ships both CJS and .default
+    ajvInstance = new Ajv({
+        strict: true,
+        allErrors: true,
+        allowUnionTypes: true, // derived schemas use union types (e.g. ["string","object"])
+        strictTypes: false, // silence advisory type warnings; keep genuine strict-schema checks
+    });
+    return ajvInstance;
+}
 /** Strip // and block comments and trailing commas from JSONC, respecting strings. */
 function stripJsonc(text) {
     let out = '';
@@ -146,6 +164,7 @@ async function getValidator(table, opts) {
         return null;
     }
     // ajv keys schemas by $id — avoid "already exists" if two files share a $id.
+    const ajv = getAjv();
     let validate = schema.$id ? ajv.getSchema(schema.$id) : undefined;
     if (!validate)
         validate = ajv.compile(schema);

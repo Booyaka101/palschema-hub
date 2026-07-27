@@ -4,6 +4,8 @@
  * Asserts: index.json valid w/ >=10 tables; valid-mod passes (0); invalid-mod fails (1).
  */
 import { spawnSync } from 'node:child_process';
+import { cpSync, mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -76,6 +78,22 @@ run('--migrate 0.7.2..1.0: Old School Loot (drop/lottery tables) is unaffected',
   migrate('0.7.2..1.0', 'tests/real-mods/palschemafied-old-school-loot'), 0);
 run('--migrate 0.7.2..0.7.3 (alias pair) -> "no row-struct changes"',
   migrate('0.7.2..0.7.3'), 0, 'no row-struct changes');
+
+// The offline archive ships cli/dist WITHOUT node_modules, and --migrate needs no
+// dependencies (only schema validation uses ajv). Copy dist somewhere with no
+// node_modules above it and prove the scan still runs.
+const isolated = mkdtempSync(join(tmpdir(), 'psv-noajv-'));
+try {
+  cpSync(join(ROOT, 'cli', 'dist'), join(isolated, 'dist'), { recursive: true });
+  run('--migrate runs with ZERO dependencies installed (offline-archive path)',
+    [join(isolated, 'dist', 'index.js'), '--migrate', '0.7.2..1.0', '--registry', ROOT,
+      'tests/migrate-fixtures/partner-skill.json'], 1, 'OverridePartnerSkillTextID');
+  run('validation without ajv explains itself instead of crashing',
+    [join(isolated, 'dist', 'index.js'), '--version', '1.0', '--registry', ROOT,
+      'tests/valid-mod.json'], 1, "'ajv' package is required");
+} finally {
+  rmSync(isolated, { recursive: true, force: true });
+}
 
 console.log(`\n${failures ? failures + ' test(s) FAILED' : 'All tests passed ✓'}`);
 process.exit(failures ? 1 : 0);

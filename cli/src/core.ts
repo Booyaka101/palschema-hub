@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, basename, extname } from 'node:path';
-import Ajv, { type ErrorObject, type ValidateFunction } from 'ajv';
+import type { ErrorObject, ValidateFunction } from 'ajv';
 
 export interface Options {
   version: string;
@@ -9,12 +9,34 @@ export interface Options {
   owner: string;
 }
 
-const ajv = new Ajv({
-  strict: true,
-  allErrors: true,
-  allowUnionTypes: true, // derived schemas use union types (e.g. ["string","object"])
-  strictTypes: false, // silence advisory type warnings; keep genuine strict-schema checks
-});
+/**
+ * ajv is loaded lazily: only schema validation needs it. `--migrate` reads
+ * versions.json + a diff JSON and nothing else, so the offline archive can run a
+ * migration scan with no `npm install` at all. Missing dep => a clear instruction,
+ * not a MODULE_NOT_FOUND stack trace.
+ */
+let ajvInstance: any;
+function getAjv(): any {
+  if (ajvInstance) return ajvInstance;
+  let AjvCtor: any;
+  try {
+    AjvCtor = require('ajv');
+  } catch {
+    throw new Error(
+      "the 'ajv' package is required for schema validation but is not installed — " +
+        'run `npm install` in this CLI\'s folder (or use `npx palschema-validate`). ' +
+        'Note: `--migrate` needs no dependencies and works without it.'
+    );
+  }
+  const Ajv = AjvCtor.default ?? AjvCtor; // ajv 8 ships both CJS and .default
+  ajvInstance = new Ajv({
+    strict: true,
+    allErrors: true,
+    allowUnionTypes: true, // derived schemas use union types (e.g. ["string","object"])
+    strictTypes: false, // silence advisory type warnings; keep genuine strict-schema checks
+  });
+  return ajvInstance;
+}
 
 /** Strip // and block comments and trailing commas from JSONC, respecting strings. */
 export function stripJsonc(text: string): string {
@@ -129,6 +151,7 @@ export async function getValidator(table: string, opts: Options): Promise<Valida
     return null;
   }
   // ajv keys schemas by $id — avoid "already exists" if two files share a $id.
+  const ajv = getAjv();
   let validate = schema.$id ? ajv.getSchema(schema.$id) : undefined;
   if (!validate) validate = ajv.compile(schema);
   validatorCache.set(key, validate as ValidateFunction);

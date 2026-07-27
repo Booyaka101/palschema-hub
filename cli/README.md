@@ -26,7 +26,9 @@ version, prints one line:
 mod.json > DT_PalMonsterParameter > ChickenPal000 > OverridePartnerSkillTextID: removed in 1.0 (was FName) — possible rename to OverridePartnerSkillNameTextID (medium confidence)
 ```
 
-Exit code 1 if any breaking field is found, 0 otherwise. Version pins come from the
+Exit code 1 if any breaking field is found, 0 otherwise. A migration scan needs **no
+dependencies** — `ajv` is only loaded for schema validation, so `--migrate` runs straight
+from `dist/` with nothing installed. Version pins come from the
 registry's `versions.json` — each Palworld version maps to the
 [localcc/PalworldModdingKit](https://github.com/localcc/PalworldModdingKit) commit that
 regenerated its SDK headers. Versions that shipped no header change (0.7.3, 1.0.1) are

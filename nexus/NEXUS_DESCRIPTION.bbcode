@@ -5,14 +5,23 @@ A free, browsable database of every field you can touch in PalSchema raw-table m
 
 [list]
 [*][b]Browse the schemas:[/b] [url=https://booyaka101.github.io/palschema-hub/]booyaka101.github.io/palschema-hub[/url] — 31 gameplay DataTables (DT_PalMonsterParameter, DT_ItemDataTable, DT_ItemRecipeDataTable, DT_BuildObjectDataTable, DT_PalDropItem, DT_WazaDataTable, ...), searchable, with every field name, type, example values and enum value lists.
+[*][b]Item value reference:[/b] [url=https://booyaka101.github.io/palschema-hub/items.html]items.html[/url] — all 947 items with their ItemActorClass / ItemStaticClass / ItemDynamicClass and full row JSON to copy. (Cloning an armour row without ItemActorClass is why a custom helmet shows bare hair in-game.)
+[*][b]NEW — Version diff:[/b] [url=https://booyaka101.github.io/palschema-hub/diff.html]diff.html[/url] — what changed in the game's row structs between any two Palworld versions.
 [*][b]GitHub repo:[/b] [url=https://github.com/Booyaka101/palschema-hub]github.com/Booyaka101/palschema-hub[/url] (MIT)
 [*][b]Validator CLI:[/b] checks your mod JSON against the registry and reports typed field errors (typo'd or renamed fields, wrong types) [i]before[/i] you launch the game:
 [code]npx palschema-validate --version 1.0 my-mod/DT_PalMonsterParameter.json[/code]
 [/list]
 
-[b]Where does the data come from?[/b]
-Field names are verified against the current game's row structs (July 2026) and cross-checked with real dumped row data. That includes post-1.0 additions (InstallMaxNumInBaseCamp, CraftExpRate, drop item slots 6–10), renames (RedialIndex→SortId, HP→Hp), both array patch forms ([...] replaces, {"Action": "Clear", "Items": [...]} clears/appends) and $Filters wildcard metadata. Proven against real published PalSchema mods.
+[b]Did a game patch break your mod?[/b]
+A Palworld update can add, remove or rename DataTable fields — and a mod setting a field the game no longer has just silently does nothing. This scans your mod against the real field-level delta between two versions:
+[code]npx palschema-validate --migrate 0.7.2..1.0 my-mod/[/code]
+It prints one line per affected field and exits 1 if anything broke, so it works in CI:
+[code]my-mod.json > DT_PalMonsterParameter > ChickenPal000 > OverridePartnerSkillTextID: removed in 1.0 (was FName) — possible rename to OverridePartnerSkillNameTextID (medium confidence)[/code]
+For the patch most people are on: across the 30 covered registry tables, Palworld 1.0 removed exactly [b]one[/b] field — OverridePartnerSkillTextID on PalCharacterParameterDatabaseRow (hitting both DT_PalMonsterParameter and DT_PalHumanParameter), replaced by the split pair OverridePartnerSkillNameTextID + OverridePartnerSkillDescTextID. It also added 23 fields you can now use, including EnemyWazaCoolTimeRate and BestWorkSuitability. Rename suggestions are a labelled heuristic, never a silent guess. 0.7.3 and 1.0.1 changed no row structs at all, and the tool says so rather than inventing a diff.
 
-[b]What the download contains:[/b] a complete offline copy of the registry — all 31 JSON Schemas, the machine-readable index, the searchable browser page, and the validator CLI (MIT). Look up any field in a text editor with no tools at all, or validate your mod fully offline. The links above always carry the latest version. No game assets are included.
+[b]Where does the data come from?[/b]
+Field names are verified against the current game's row structs (July 2026) and cross-checked with real dumped row data. That includes post-1.0 additions (InstallMaxNumInBaseCamp, CraftExpRate, drop item slots 6–10), renames (RedialIndex→SortId, HP→Hp), both array patch forms ([...] replaces, {"Action": "Clear", "Items": [...]} clears/appends) and $Filters wildcard metadata. Proven against real published PalSchema mods. Each of the 12 pinned game versions maps to the SDK commit that regenerated its headers, and the parsed snapshots ship with the download so every diff is reproducible rather than something you have to take on trust.
+
+[b]What the download contains:[/b] a complete offline copy of the registry — all 31 JSON Schemas, the machine-readable index, the searchable browser page, the item value reference, the version-diff viewer with all 12 version snapshots and every pairwise diff, and the validator CLI (MIT). Look up any field in a text editor with no tools at all, or validate and migration-scan your mod fully offline. The links above always carry the latest version. No game assets are included.
 
 Credits: [url=https://www.nexusmods.com/palworld/mods/2361]PalSchema[/url] by Okaetsu. Data derived via public community dumps (blaynem/paldex) and the PalworldModdingKit SDK headers (localcc).
