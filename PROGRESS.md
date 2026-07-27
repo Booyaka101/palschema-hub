@@ -42,9 +42,25 @@ of the same issue-#53 audience):
 - Tests 13→18 (worked-example reproduction, DropItem negative control, migrate
   hit/clean/alias). self-test.yml gained 2 migrate steps. CHANGELOG.md added; root +
   cli bumped to 0.2.0.
-- NOT DONE (owner ships from phone): push to GitHub (triggers Pages deploy with the
-  new whitelist), `cd cli && npm publish` for palschema-validate@0.2.0. Everything is
-  committed locally on main.
+- **SHIPPED (same session, owner authorized):**
+  - Pushed `3e52d7c` to main → **self-test CI passed** (incl. the 2 new migrate steps)
+    and **Pages deployed**. All new paths verified 200 live: diff.html, versions.json,
+    diffs/0.7.2..1.0.json, diffs/0.7.2..0.7.3.json, structs/1.0.json (the pages.yml
+    whitelist gotcha was covered). diff.html re-rendered live in headless Chrome.
+  - **npm: `palschema-validate@0.2.0` published** as `latest` (2026-07-27T08:50Z).
+    Verified by cold `npx` in a clean temp dir with NO --registry — package from npm,
+    versions.json + diff from the live GitHub raw registry, correct hit + exit 1.
+    Gotcha: the first `npx pkg@0.2.0` failed `ETARGET` for ~1 min (local npm CLI had a
+    stale cached packument while registry.npmjs.org already served 0.2.0) — retry with
+    `--prefer-online`; it is NOT a publish failure.
+  - **Announced** on PalSchema issue #53:
+    https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5089309606
+    (framed as complementing the Schema Generator #107, which gives current-version
+    truth but no cross-version delta; led with the finding that 1.0 removed exactly ONE
+    field across the 30 covered registry tables and added 23). Draft file was deleted
+    after posting — GitHub is the record; only staged-but-unposted text needs a file.
+- Watch for: an Okaetsu reply. #53 was left open pending "a better method", so an
+  upstream ack or docs link is the highest-value distribution outcome available here.
 
 ## Session 2026-07-24 — per-item VALUE reference (items.html / items.json)
 Prompted by Person7557 in issue #53 (couldn't find "ActorClass"; cloned AncientHelmet
