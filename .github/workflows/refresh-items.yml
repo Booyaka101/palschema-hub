@@ -54,10 +54,9 @@ jobs:
         run: |
           set -euo pipefail
           title="paldex dump updated — regenerate items.json"
+          body=$(printf 'The upstream `blaynem/paldex` DT_ItemDataTable dump changed (now at `%s`; items.json records a different sourceCommit).\n\nRun `node scripts/build-items.mjs`, review the diff (row count, `_provenance`), update `DEFAULT_PROVENANCE` in the script if the dump'\''s game era changed, and commit.' "${{ steps.paldex.outputs.sha }}")
           if [ -z "$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[].number')" ]; then
-            gh issue create --title "$title" --body "The upstream \`blaynem/paldex\` DT_ItemDataTable dump changed (now at \`${{ steps.paldex.outputs.sha }}\`; items.json records a different sourceCommit).
-
-Run \`node scripts/build-items.mjs\`, review the diff (row count, \`_provenance\`), update \`DEFAULT_PROVENANCE\` in the script if the dump's game era changed, and commit."
+            gh issue create --title "$title" --body "$body"
           fi
 
       - name: Registry currency vs live game + SDK
@@ -84,13 +83,7 @@ Run \`node scripts/build-items.mjs\`, review the diff (row count, \`_provenance\
         run: |
           set -euo pipefail
           title="registry stale: ${{ steps.currency.outputs.line }}"
+          body=$(printf '`npm run versions:check` reports:\n\n```\n%s\n```\n\nIf the GAME moved: add the new version to `versions.json` (as an alias if `Source/Pal/Public` did not regenerate — check the PalworldModdingKit commit list), run `npm run snapshot:all && npm run diff:all`, and update `sdkHead`.\nIf the SDK regenerated: snapshot the new commit and ship the real diff.' "${{ steps.currency.outputs.line }}")
           if [ -z "$(gh issue list --state open --search "\"registry stale\" in:title" --json number --jq '.[].number')" ]; then
-            gh issue create --title "$title" --body "\`npm run versions:check\` reports:
-
-\`\`\`
-${{ steps.currency.outputs.line }}
-\`\`\`
-
-If the GAME moved: add the new version to \`versions.json\` (as an alias if \`Source/Pal/Public\` did not regenerate — check the PalworldModdingKit commit list), run \`npm run snapshot:all && npm run diff:all\`, and update \`sdkHead\`.
-If the SDK regenerated: snapshot the new commit and ship the real diff."
+            gh issue create --title "$title" --body "$body"
           fi
