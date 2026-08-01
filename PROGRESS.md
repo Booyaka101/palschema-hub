@@ -47,6 +47,24 @@ Items_Table header reads "Items /2466" (checked 2026-08-01) vs our 947 rows.
   (alias banner) and ?from=1.0.1&to=1.0.2.
 - Tests 20 → **27**, all green. Root + CLI bumped to **0.3.0**; CHANGELOG entries for
   0.2.2 (retroactive) and 0.3.0.
+- **SHIPPED (same session):** pushed `4273141` + workflow fix `30fa528` (gotcha: a
+  multiline `gh issue create --body "..."` string whose continuation lines start at
+  column 1 TERMINATES a YAML `run: |` block scalar — GitHub creates a failed run named
+  after the workflow file path with zero jobs; build bodies with printf instead).
+  All 4 workflows green incl. a live workflow_dispatch of the rewritten cron
+  (recorded==current paldex sha c19739b, no issue opened). **npm
+  palschema-validate@0.3.0 = latest**, verified by cold `npx -y --prefer-online` in a
+  clean dir against the LIVE registry (alias line + "no row-struct changes between
+  1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK 62fad41)" + scan summary, exit 0; and
+  a 0.7.2..1.0 regression scan). Pages live-verified: items.html / diff.html /
+  versions.json / structs/1.0.2.json / diffs/1.0..1.0.2.json / diffs/1.0.1..1.0.2.json
+  all 200; live headless-Chrome render shows the alias banner at ?from=1.0&to=1.0.2
+  and the amber Data-age banner (947 vs 2466, "roughly 62%") on items.html.
+  **Announced** on PalSchema #53 (answers Person7557 directly):
+  https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5149637406
+- Watch for: Okaetsu/Person7557 replies on #53; the weekly cron opening an issue the
+  day the game/SDK/paldex dump moves (that is the designed signal to cut the next
+  release — 1.0.3 would be ~30 minutes of work: alias-or-snapshot, regen, bump).
 
 ## Session 2026-07-27 — version-diff engine (v0.2.0)
 Shipped the "what changed between game versions" lane (answers the follow-up question
