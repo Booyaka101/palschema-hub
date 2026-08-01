@@ -62,6 +62,24 @@ Items_Table header reads "Items /2466" (checked 2026-08-01) vs our 947 rows.
   and the amber Data-age banner (947 vs 2466, "roughly 62%") on items.html.
   **Announced** on PalSchema #53 (answers Person7557 directly):
   https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5149637406
+- **Distribution (same session, owner-approved):**
+  - **Nexus mods/4084 -> v1.2**, live and verified on the public page. New 205-file
+    bsdtar archive (0 backslash entries; offline `--migrate 1.0.1..1.0.2` runs from a
+    clean extract with no node_modules). Uploaded via the dropzone's hidden input with
+    `DOM.setFileInputFiles` (the row "Update" button ignores both `el.click()` and a
+    real mouse click; the dropzone path just works), upload type "Update existing file"
+    + "Archive existing file" so 1.1/1.0.1/1.0 stay under Old files. Description
+    rewritten to LEAD with the 1.0.2 finding and to carry the data-age section.
+    CDP gotchas proven this time: (a) the All/Main/Optional/Update **filter chips**
+    are also `button` elements reading "Update" — walking UP from a button matches the
+    chip's section container, so locate the row by its file-name cell and search DOWN;
+    (b) `sceditor.instance(ta).val()` updates the editor only — the backing textarea
+    stays stale until `inst.updateOriginal()`, so verify via `inst.val()`, not the
+    textarea; (c) SCEditor canonicalises `[/*]` onto its own line AND inserts a newline
+    after `[/code]`, so the submit gate must strip ALL whitespace, not just collapse it.
+  - **X post** (KillKenny101), 378 chars, verified intact on its permalink (the
+    timeline preview truncates at 280 behind "Show more"):
+    https://x.com/KillKenny101/status/2083420915140800667
 - Watch for: Okaetsu/Person7557 replies on #53; the weekly cron opening an issue the
   day the game/SDK/paldex dump moves (that is the designed signal to cut the next
   release — 1.0.3 would be ~30 minutes of work: alias-or-snapshot, regen, bump).

@@ -8,8 +8,16 @@ DT_WazaDataTable, ...) with every raw-table field name, type, example values
 and enum value lists — verified against the current game's row structs
 (July 2026 SDK headers) and cross-checked with real dumped row data.
 
-Plus, new in this version: a per-item VALUE reference and a VERSION DIFF
-showing what changed in the game's row structs between Palworld versions.
+Plus a per-item VALUE reference and a VERSION DIFF showing what changed in
+the game's row structs between Palworld versions.
+
+NEW IN THIS VERSION (registry v0.3.0, 2026-08-01)
+  * Palworld 1.0.2 covered. The whole 1.0.2 patch line (v1.0.2,
+    v1.0.2.100993 "Mod Support Improvement", v1.0.2.101103) changed NO
+    DataTable row structs, so if your mod worked on 1.0 it needs no field
+    migration. Verified, not assumed: the decompiled SDK has not been
+    regenerated since 1.0 (head 62fad41, 2026-07-11).
+  * items.json / items.html now state their data age up front (see below).
 
 WHAT'S IN THIS ARCHIVE
 ----------------------
@@ -48,9 +56,28 @@ Scan your own mod for fields a patch broke:
 It prints one line per affected field (with a labelled possible-rename note)
 and exits 1 if anything broke, so it drops straight into CI.
 
-Note: Palworld 0.7.3 and 1.0.1 shipped no row-struct changes, so they are
-recorded as aliases of 0.7.2 and 1.0 — those pairs report "no row-struct
-changes" rather than inventing a diff.
+Note: Palworld 0.7.3, 1.0.1 and the 1.0.2 line shipped no row-struct changes,
+so they are recorded as aliases of 0.7.2 / 1.0 / 1.0 — those pairs report
+"no row-struct changes" rather than inventing a diff. For example:
+
+    npx palschema-validate --migrate 1.0.1..1.0.2 my-mod/
+    -> no row-struct changes between 1.0.1 and 1.0.2
+       (both alias Palworld 1.0, SDK 62fad41)   [exit 0]
+
+HOW CURRENT IS EACH PART? (read this before trusting a value)
+-------------------------------------------------------------
+Field NAMES and TYPES — the schemas, the version diffs, the --migrate scan —
+are verified against the CURRENT game's row structs (PalworldModdingKit SDK
+headers @62fad41). That part is 1.0.2-current.
+
+Row VALUES in items.json / items.html are NOT. They come from the only public
+DataTable dump that exists, frozen at Jan 2024 (Palworld 0.1.x): 947 item rows
+versus the 2466 in today's DT_ItemDataTable (paldb.cc, checked 2026-08-01), so
+items added after Jan 2024 — AncientHelmet among them — are simply absent.
+If you search items.html and an item is not there, that means the data is old,
+NOT that the item does not exist. The page says so on every row. The moment a
+current row-value dump is published the table re-points to it with one command
+(scripts/build-items.mjs --src <dump>).
 
 BROWSE WITH THE UI
 ------------------
