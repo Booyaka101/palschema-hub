@@ -121,9 +121,26 @@ node cli/dist/index.js --version 1.0 --registry . tests/invalid-mod.json  # exit
 base for variants. Motivated by [PalSchema #53](https://github.com/Okaetsu/PalSchema/issues/53):
 cloning an equipment row without its `ItemActorClass` silently loses the model in-game (the
 game ships variants by pointing at another item's actor, e.g. LightzHelmet → `"IronHelmet"`).
-Machine-readable: [`items.json`](https://booyaka101.github.io/palschema-hub/items.json);
-regenerate with `node scripts/build-items.mjs` (source: public paldex dump — newest items may
-lag until a fresh dump lands).
+Machine-readable: [`items.json`](https://booyaka101.github.io/palschema-hub/items.json).
+
+> **⚠️ Data age (`items.json._provenance`, also a banner on the page):** field **NAMES** are
+> SDK-verified against the current game (`PalworldModdingKit@62fad41`), but row **VALUES**
+> come from the public paldex dump, frozen at **0.1.x (Jan 2024)**. Rows added since are
+> **absent** (e.g. `AncientHelmet`): this table has **947** rows while the current game's
+> `DT_ItemDataTable` has **2466** (paldb.cc/en/Items_Table, checked 2026-08-01) — roughly
+> 60% of today's rows are missing. If you search an item and it isn't here, that means the
+> data is old, **not** that the item doesn't exist. No public 1.0-era row-value dump exists
+> anywhere on GitHub as of 2026-08-01 (paldb.cc renders one but exports no JSON/CSV), so
+> honest labelling is the fix. The day a current dump lands, re-point and regenerate with
+> **one command**:
+>
+> ```bash
+> node scripts/build-items.mjs --src <url-or-path-to-DT_ItemDataTable.json>
+> ```
+>
+> (then update `DEFAULT_PROVENANCE` in that script and commit). The weekly
+> `refresh-items.yml` cron watches the upstream dump's file SHA and opens an issue the
+> moment it changes.
 
 ## What changed between game versions
 
@@ -175,11 +192,21 @@ field snapshots are committed under `structs/` and the pairwise deltas under `di
 | 0.7.2 | `4dcdc78` | 2026-02-16 |
 | 1.0 | `98ee60d` | 2026-07-11 |
 
-> **Alias caveat:** Palworld **0.7.3** and **1.0.1** shipped **no** row-struct (header)
-> changes, so they alias `0.7.2` and `1.0` respectively — the CLI and diff page say so
-> explicitly (`--migrate 0.7.2..0.7.3` → "no row-struct changes") instead of pretending a
-> diff exists. Note also that 0.7.0→0.7.2 changed no row structs (those SDK updates touched
-> other classes).
+> **Alias caveat:** Palworld **0.7.3**, **1.0.1** and the **1.0.2** patch line (v1.0.2 ·
+> v1.0.2.100993 "Mod Support Improvement" · v1.0.2.101103) shipped **no** row-struct
+> (header) changes, so they alias `0.7.2` / `1.0` / `1.0` respectively — the CLI and diff
+> page say so explicitly (`--migrate 1.0.1..1.0.2` → "no row-struct changes … both alias
+> Palworld 1.0, SDK 62fad41") instead of pretending a diff exists. The 1.0.2 claim is not
+> assumed: the SDK repo's head (`62fad41`, 2026-07-11) predates the whole 1.0.2 patch line
+> and has not been regenerated since (recorded in `versions.json` `aliases["1.0.2"].aliasReason`).
+> Note also that 0.7.0→0.7.2 changed no row structs (those SDK updates touched other classes).
+
+**Staleness detection:** `npm run versions:check` compares `versions.json` against the live
+world — the Steam news API's patch titles (newest game version) and the PalworldModdingKit
+commit list (SDK head). Exit 0 in sync (`registry current: game 1.0.2, SDK 62fad41`),
+exit 1 stale with one line naming exactly what moved (`game 1.0.3 released, registry newest
+is 1.0.2`), exit 2 on network failure — never conflated. It runs as an informational CI step
+and in the weekly cron, which opens an issue when something actually moved.
 
 Regenerate from scratch with `npm run snapshot:all` (downloads the 12 pinned SDK tarballs
 into `.cache/`) and `npm run diff:all`. Only **derived field names/types** ship here —
@@ -217,19 +244,21 @@ index.json                     { versions, schemas:{ver:[tables]}, tables:{...} 
 index.html                     schema browser (vanilla HTML/CSS/JS, no build step)
 items.html + items.json        per-item value reference for DT_ItemDataTable (asset reuse)
 diff.html                      version-diff viewer (what changed between game versions)
-versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3/1.0.1 aliases)
-structs/<ver>.json             12 committed row-struct snapshots (field -> C++ type, ordered)
+versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3/1.0.1/1.0.2 aliases + sdkHead)
+structs/<ver>.json             12 committed row-struct snapshots (field -> C++ type, ordered) + alias copies
 diffs/<a>..<b>.json + .md      pairwise struct deltas (added/removed/retyped + rename notes)
 cli/                           palschema-validate (TypeScript -> dist/*.js), ajv strict
 tests/                         valid-mod.json, invalid-mod.json, example .jsonc, wrapper-typo
 tests/real-mods/               4 real published PalSchema mods (see SOURCES.md)
 tests/real-mods-broken/        deliberately-broken real mods (typed-error tests)
 tests/migrate-fixtures/        --migrate scan fixtures (partner-skill rename case)
-scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, snapshot-structs, build-diff, build-index, build-items, check-index, serve (+ lib/sdk-parse.mjs)
+tests/currency-fixtures/       saved Steam-news/commit-list responses for check-currency tests
+scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, snapshot-structs, build-diff, build-index, build-items, check-currency, check-index, serve (+ lib/sdk-parse.mjs)
 .github/workflows/
   pages.yml                    deploys browser + schemas to GitHub Pages (tests gate it)
   palschema-ci.yml.example     CI template for MOD repos
-  self-test.yml                this repo's own CI (build + acceptance checks)
+  self-test.yml                this repo's own CI (build + acceptance checks + currency info step)
+  refresh-items.yml            weekly cron: upstream-dump SHA watch + registry currency check
 ```
 
 ---

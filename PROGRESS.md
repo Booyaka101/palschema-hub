@@ -1,6 +1,52 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-07-27 (version-diff engine session)
+**Last updated:** 2026-08-01 (v0.3.0 currency + honesty session)
+
+## Session 2026-08-01 — v0.3.0: 1.0.2 currency, staleness detection, provenance honesty
+Phase-0 verified live (all four): Steam news (appid 1623730) lists the 1.0.2 patch line
+(v1.0.2 @1785294504 · "Mod Support Improvement" @1785380721 · v1.0.2.101103 @1785413794,
+unix dates from the raw `date` field) with NOTHING newer; PalworldModdingKit head is still
+62fad413 (2026-07-11, merge of "Update 1.0" PR line — zero commits since), so 1.0.2 = alias
+of 1.0 (not assumed); issue #53 open with Person7557 (2026-07-23) unanswered; paldb.cc
+Items_Table header reads "Items /2466" (checked 2026-08-01) vs our 947 rows.
+- **versions.json:** `1.0.2` alias of 1.0 with `aliasReason` naming SDK head 62fad41;
+  new top-level `sdkHead` {commit, date} that check-currency compares against.
+- **snapshot-structs.mjs `all`** now also writes `structs/<alias>.json` (copy of the
+  pinned version's, marked aliasOf) — structs/1.0.2.json exists and never 404s.
+  **build-diff.mjs `all`** now emits sibling-alias pairs → diffs/1.0.1..1.0.2.json(+md)
+  as first-class empty deltas, alongside diffs/1.0..1.0.2. Ran snapshot:all + diff:all;
+  regenerated output was byte-identical to committed data (determinism + no SDK drift
+  re-confirmed). pages.yml needed NO change (cp -r structs/diffs covers new files).
+- **CLI 0.3.0:** alias fast path prints
+  "no row-struct changes between 1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK 62fad41)"
+  (head sha used only when the shared canonical is the newest version) and, when target
+  paths are given, still enumerates them and prints the `N file(s) scanned` summary.
+- **scripts/check-currency.mjs** (+`npm run versions:check`): Steam patch titles
+  (regex ^v\d, ≥5-digit build components dropped, sorted by raw unix date locally) vs
+  newest registry label; SDK head vs versions.json sdkHead — on head mismatch it
+  path-filters Source/Pal/Public to distinguish "regenerated" (structs stale) from
+  "head moved, no header change". Exit 0 in sync / 1 stale (one line naming what moved) /
+  2 network — never conflated. Fixture flags --steam-json/--commits-json/
+  --public-commits-json (fixtures in tests/currency-fixtures/). Live run 2026-08-01:
+  `registry current: game 1.0.2, SDK 62fad41`, exit 0.
+- **refresh-items.yml rewritten:** was re-deriving identical Jan-2024 paldex data weekly
+  (exactly what hid the staleness). Now: upstream dump file SHA (GitHub commits API,
+  path-filtered) vs `items.json._provenance.sourceCommit` + `versions:check`; opens a
+  deduped issue only when something moved. self-test.yml gained the 1.0.1..1.0.2 migrate
+  step + an informational (continue-on-error) versions:check step.
+- **items.json `_provenance`** (build-items.mjs): valuesCurrent:false, gameEra 0.1.x
+  (Jan 2024), fieldNamesVerifiedAgainst PalworldModdingKit@62fad41, rowCount 947,
+  upstreamRowCountToday 2466 (paldb.cc, checked 2026-08-01), knownMissingRows
+  [AncientHelmet], sourceCommit (paldex dump file's commit — c19739b — for the cron SHA
+  check). `--src` override documented in README for the day a real 1.0-era dump appears
+  (2026-08-01 sweep: none exists publicly; paldb.cc has no JSON/CSV export).
+  **items.html** renders a persistent amber banner (NAMES current-verified, VALUES
+  0.1.x-era, ~62% of today's rows missing, "a search miss means old data, not a
+  nonexistent item") + per-row-card footnote. diff.html picker-order fix (1.0 → 1.0.1 →
+  1.0.2). Both pages verified in headless Chrome incl. deep link ?from=1.0&to=1.0.2
+  (alias banner) and ?from=1.0.1&to=1.0.2.
+- Tests 20 → **27**, all green. Root + CLI bumped to **0.3.0**; CHANGELOG entries for
+  0.2.2 (retroactive) and 0.3.0.
 
 ## Session 2026-07-27 — version-diff engine (v0.2.0)
 Shipped the "what changed between game versions" lane (answers the follow-up question

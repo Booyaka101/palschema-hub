@@ -289,9 +289,12 @@ export async function validateFile(file: string, opts: Options): Promise<Finding
 
 export interface VersionsInfo {
   repo: string;
+  /** Branch head of the SDK repo at last verification (may be newer than any
+   *  version's header-regenerating sdkCommit — e.g. config-only commits). */
+  sdkHead?: { commit: string; date: string };
   order: string[];
   versions: Record<string, { sdkCommit: string; sdkDate: string }>;
-  aliases: Record<string, { of: string; note: string }>;
+  aliases: Record<string, { of: string; note: string; aliasReason?: string }>;
 }
 
 interface RenameNote {

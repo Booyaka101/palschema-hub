@@ -47,6 +47,11 @@
   td.field { font-family: ui-monospace, Consolas, monospace; color: var(--text); white-space: nowrap; }
   td.val code { background: var(--panel2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 12.5px; color: var(--accent2); }
   .note { color: var(--warn); font-size: 12px; margin: 6px 0 0; max-width: 900px; }
+  .provenance { border: 1px solid var(--warn); border-left: 5px solid var(--warn); background: #2a2410;
+    color: #f5deab; border-radius: 8px; padding: 10px 16px; margin: 0; font-size: 12.5px; line-height: 1.55; }
+  .provenance b { color: var(--warn); }
+  .provenance a { color: var(--accent); }
+  .row-provenance { color: var(--warn); font-size: 11.5px; margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 8px; max-width: 900px; }
   pre { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
     overflow-x: auto; font-size: 12.5px; line-height: 1.45; margin-top: 10px; }
   .rowjson-head { display: flex; align-items: center; gap: 12px; margin-top: 22px; }
@@ -62,6 +67,8 @@
   <h1>🧩 PalSchema Hub — Item asset reference</h1>
   <span class="tag">Per-item values from <code>DT_ItemDataTable</code> (ItemActorClass &amp; friends) for reusing in-game assets · <a href="./index.html">← schema registry</a> · <a href="./items.json">items.json ↗</a></span>
 </header>
+
+<div class="provenance" id="provenance" hidden></div>
 
 <div class="layout">
   <aside class="sidebar">
@@ -81,6 +88,28 @@
 <script>
 const ASSET_FIELDS = ['ItemActorClass', 'ItemStaticClass', 'ItemDynamicClass', 'ItemStaticMeshName', 'VisualBlueprintClassName', 'IconName'];
 const state = { data: null, names: [], active: null };
+
+// Provenance honesty: field NAMES are current-game-verified, row VALUES are not.
+// Rendered persistently (banner) and per row card (footnote) so a search miss is
+// never mistaken for "this item does not exist".
+function provenanceSummary(p) {
+  if (!p) return null;
+  const missing = p.upstreamRowCountToday && p.rowCount
+    ? ` The current game's table has <b>${p.upstreamRowCountToday}</b> rows (${esc(p.upstreamRowCountSource || 'upstream')}) vs <b>${p.rowCount}</b> here — roughly ${Math.round((1 - p.rowCount / p.upstreamRowCountToday) * 100)}% of today's rows are missing.`
+    : '';
+  return `⚠️ <b>Data-age notice:</b> field <b>NAMES</b> are SDK-verified against the current game ` +
+    `(${esc(p.fieldNamesVerifiedAgainst || 'SDK headers')}), but row <b>VALUES</b> are ` +
+    `<b>${esc(p.gameEra || 'an earlier build')}</b>-era and rows added after Jan 2024 are absent ` +
+    `(e.g. ${(p.knownMissingRows || []).map(esc).join(', ') || 'newer items'}).${missing} ` +
+    `If an item isn't listed here, that means the data is old — <b>not</b> that the item doesn't exist.`;
+}
+
+function rowFootnote(p) {
+  if (!p) return '';
+  return `<div class="row-provenance">⚠️ Row values are ${esc(p.gameEra || 'earlier-build')}-era ` +
+    `(${esc(p.source || 'upstream dump')}); field names verified against ${esc(p.fieldNamesVerifiedAgainst || 'the SDK')}. ` +
+    `Cross-check values in-game before shipping a mod based on them.</div>`;
+}
 
 const esc = s => String(s).replace(/</g, '&lt;');
 const short = t => String(t || '').replace(/^EPalItemType[AB]::/, '');
@@ -143,7 +172,8 @@ function select(name) {
       <h3>Full row (copy/paste base for your mod)</h3>
       <button class="copy" onclick="copyRow()">Copy JSON</button>
     </div>
-    <pre id="rowjson">${esc(rowJson)}</pre>`;
+    <pre id="rowjson">${esc(rowJson)}</pre>
+    ${rowFootnote(state.data._provenance)}`;
 }
 
 function copyRow() {
@@ -162,6 +192,12 @@ async function init() {
   }
   state.data = data;
   state.names = Object.keys(data.items).sort();
+  const provHtml = provenanceSummary(data._provenance);
+  if (provHtml) {
+    const banner = document.getElementById('provenance');
+    banner.innerHTML = provHtml;
+    banner.hidden = false;
+  }
   const typebs = [...new Set(state.names.map(n => data.items[n].TypeB).filter(Boolean))].sort();
   const sel = document.getElementById('typeb');
   sel.innerHTML = '<option value="">All categories</option>' +

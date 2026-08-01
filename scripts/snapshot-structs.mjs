@@ -147,6 +147,19 @@ for (const v of versions) {
     console.error(`  ✗ ${v}: ${e.message}`);
   }
 }
+// Aliases get a struct file too (a copy of their pinned version's, marked aliasOf)
+// so structs/<alias>.json never 404s on the Pages site.
+if (arg === 'all') {
+  for (const [alias, a] of Object.entries(versionsInfo.aliases)) {
+    const srcPath = join(OUT_DIR, `${a.of}.json`);
+    if (!existsSync(srcPath)) continue; // pinned snapshot failed above — already reported
+    const snap = JSON.parse(readFileSync(srcPath, 'utf8'));
+    const out = { palworldVersion: alias, aliasOf: a.of, aliasNote: a.note, ...snap };
+    out.palworldVersion = alias;
+    writeFileSync(join(OUT_DIR, `${alias}.json`), JSON.stringify(out, null, 2) + '\n');
+    console.log(`  ✓ structs/${alias}.json — alias of ${a.of} (identical structs)`);
+  }
+}
 if (failed) {
   console.error(`\n${failed} snapshot(s) failed.`);
   process.exit(1);

@@ -1,5 +1,51 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.3.0 — 2026-08-01
+
+**Currency + honesty release: Palworld 1.0.2, staleness detection, item-data provenance.**
+
+- **Palworld 1.0.2 in the registry.** The 1.0.2 patch line (v1.0.2 · v1.0.2.100993
+  "Mod Support Improvement" · v1.0.2.101103, per the Steam news API for appid 1623730)
+  shipped **no** `Source/Pal/Public` header change — the PalworldModdingKit head is still
+  `62fad41` (2026-07-11), verified live 2026-08-01 — so `1.0.2` is recorded as an **alias
+  of 1.0** (with a machine-readable `aliasReason` naming that sha), exactly like 1.0.1.
+  `--migrate 1.0.1..1.0.2` now alias-resolves and prints
+  `no row-struct changes between 1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK 62fad41)`
+  (exit 0) instead of an unknown-version error; when target files are given, the alias
+  fast path now also prints the `N file(s) scanned · 0 breaking field(s)` summary.
+  Empty-delta diffs ship for `1.0..1.0.2` **and** `1.0.1..1.0.2` (sibling-alias pairs are
+  now first-class), alias struct snapshots ship as `structs/<alias>.json` (so
+  `structs/1.0.2.json` never 404s), both diff.html pickers list 1.0.2, and the alias
+  banner renders for `?from=1.0&to=1.0.2`.
+- **Staleness detection** (`npm run versions:check`, `scripts/check-currency.mjs`):
+  compares versions.json against the live Steam news patch titles (sorted by the raw unix
+  `date` field — the feed interleaves sources out of order) and the SDK commit list.
+  Exit 0 in sync (`registry current: game 1.0.2, SDK 62fad41`); exit 1 stale, one line
+  naming exactly what moved (`game 1.0.3 released, registry newest is 1.0.2` /
+  `SDK regenerated at <sha>, registry pins <sha>`); exit 2 network failure — never
+  conflated. Runs as an informational self-test step and in the weekly cron.
+- **The weekly cron no longer hides staleness.** `refresh-items.yml` used to re-derive
+  the identical Jan-2024 paldex data every week (guaranteed no-op — the dump is frozen).
+  It now does a SHA check of the upstream dump file (vs the new
+  `items.json._provenance.sourceCommit`) plus `versions:check`, and only opens an issue
+  when something actually moved.
+- **Provenance honesty on the 947-row item reference.** `items.json` gains a top-level
+  `_provenance` object (`valuesCurrent: false`, `gameEra: "0.1.x (Jan 2024)"`,
+  `rowCount: 947`, `upstreamRowCountToday: 2466` per paldb.cc/en/Items_Table checked
+  2026-08-01, `knownMissingRows: ["AncientHelmet"]`, …). items.html renders it as a
+  persistent amber banner (~60% of today's rows are missing; a search miss means old
+  data, **not** a nonexistent item) plus a per-row footnote. `build-items.mjs` gains a
+  `--src` override so the day a public 1.0-era row-value dump appears the table is
+  re-pointed with one command (none exists as of 2026-08-01 — verified sweep).
+- Tests 20 → **27** (1.0.2 alias present/resolving, both 1.0.2 diffs empty, `_provenance`
+  shape, check-currency in-sync exit 0 / stale exit 1). diff.html picker ordering fix:
+  sibling aliases list after each other (1.0 → 1.0.1 → 1.0.2), not canonical-adjacent.
+
+## 0.2.2 — 2026-07-28
+
+- CLI rebuilt with TypeScript 7.0.2 (nodenext resolution + explicit `types: [node]`) and
+  `@types/node` 26. No API change.
+
 ## 0.2.1 — 2026-07-27
 
 - **`--migrate` now runs with zero dependencies installed.** `ajv` is loaded lazily and is

@@ -116,13 +116,36 @@ async function runMigrate(parsed: Parsed): Promise<never> {
     if (note) console.log(`note: ${note}`);
   }
 
-  // Same SDK commit (identical version, or an alias pair like 0.7.2..0.7.3):
-  // the row structs are identical, so no mod field can break.
+  // Same SDK commit (identical version, or an alias pair like 0.7.2..0.7.3 or
+  // 1.0.1..1.0.2): the row structs are identical, so no mod field can break.
   if (info.versions[from!.version].sdkCommit === info.versions[to!.version].sdkCommit) {
+    const canonical = from!.version;
+    // For the newest version's aliases, name the SDK branch head (e.g. 62fad41) —
+    // it proves the whole patch line shipped no header regeneration.
+    const sdkName =
+      canonical === info.order[info.order.length - 1] && info.sdkHead
+        ? info.sdkHead.commit
+        : info.versions[canonical].sdkCommit;
     console.log(
-      `no row-struct changes — Palworld ${fromLabel} and ${toLabel} share SDK commit ` +
-        `${info.versions[to!.version].sdkCommit}; PalSchema mods need no field migration.`
+      from!.aliasNote && to!.aliasNote && from!.version === to!.version
+        ? `no row-struct changes between ${fromLabel} and ${toLabel} (both alias Palworld ${canonical}, SDK ${sdkName}); PalSchema mods need no field migration.`
+        : `no row-struct changes — Palworld ${fromLabel} and ${toLabel} share SDK commit ` +
+            `${info.versions[to!.version].sdkCommit}; PalSchema mods need no field migration.`
     );
+    // With target paths given, still enumerate them so the caller sees their
+    // files were considered (trivially zero hits — the structs are identical).
+    if (parsed.paths.length) {
+      const files: string[] = [];
+      for (const p of parsed.paths) {
+        try {
+          files.push(...collectFiles(p));
+        } catch (e: any) {
+          console.error(`Cannot read "${p}": ${e.message}`);
+          process.exit(1);
+        }
+      }
+      console.log(`\n${files.length} file(s) scanned · 0 breaking field(s) in 0 file(s)`);
+    }
     process.exit(0);
   }
 

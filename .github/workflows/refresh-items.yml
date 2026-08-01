@@ -1,11 +1,15 @@
-# Keeps items.json (per-item VALUES for DT_ItemDataTable, shown by items.html)
-# in sync with the upstream paldex DataTable dump.
+# Weekly currency watch (Mondays 06:00 UTC).
 #
-# build-items.mjs fetches the public dump and rewrites items.json. pages.yml
-# only copies the COMMITTED items.json, so without this the file goes stale
-# until someone runs the script by hand. This runs it on a schedule and opens
-# a PR only when the item DATA actually changed (the generatedAt timestamp
-# alone never triggers one).
+# This used to re-run build-items.mjs every week — but the upstream paldex dump
+# is frozen at Jan-2024, so that re-derived identical data forever and HID the
+# real staleness (the game moving on). Now it does two cheap checks and only
+# opens an issue when something actually moved:
+#
+#   1. items.json source: compare the paldex dump file's latest commit sha
+#      against the sha recorded in items.json._provenance.sourceCommit.
+#      Changed => the upstream dump finally updated => regenerate items.json.
+#   2. registry currency: scripts/check-currency.mjs against the live Steam
+#      news API + PalworldModdingKit commits (exit 1 = stale, 2 = network).
 name: refresh-items
 
 on:
@@ -14,11 +18,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  issues: write
 
 jobs:
-  refresh:
+  currency-watch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -27,53 +31,66 @@ jobs:
         with:
           node-version: 22
 
-      # Snapshot the committed file BEFORE regenerating. Reading two plain
-      # files avoids `git show` through execSync, whose 1 MB default maxBuffer
-      # is smaller than items.json (~1.08 MB) — that threw ENOBUFS and made the
-      # change-check always report "changed", opening a noise PR every run.
-      - name: Snapshot committed items.json (pre-refresh)
-        run: '[ -f items.json ] && cp items.json "$RUNNER_TEMP/items.old.json" || echo "no committed items.json yet"'
-
-      - name: Regenerate items.json from the paldex dump
-        run: node scripts/build-items.mjs
-
-      - name: Detect a meaningful change (ignore generatedAt)
-        id: diff
+      - name: Upstream paldex dump SHA vs items.json._provenance.sourceCommit
+        id: paldex
         run: |
-          node -e '
-            const fs = require("fs");
-            const strip = (o) => { const { generatedAt, ...rest } = o; return rest; };
-            const oldPath = process.env.RUNNER_TEMP + "/items.old.json";
-            let changed = true;
-            try {
-              if (fs.existsSync(oldPath)) {
-                const old = JSON.parse(fs.readFileSync(oldPath, "utf8"));
-                const neu = JSON.parse(fs.readFileSync("items.json", "utf8"));
-                changed = JSON.stringify(strip(old)) !== JSON.stringify(strip(neu));
-              } // else: no prior committed file → treat as changed
-            } catch (e) {
-              changed = true; // unreadable → treat as changed
-            }
-            fs.appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
-            console.log("meaningful change:", changed);
-          '
+          set -euo pipefail
+          recorded=$(node -e 'process.stdout.write(String(JSON.parse(require("fs").readFileSync("items.json","utf8"))._provenance.sourceCommit || ""))')
+          current=$(curl -sf -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/blaynem/paldex/commits?path=data-provider%2Fpalworld-assets%2FDataTable%2FItem%2FDT_ItemDataTable.json&per_page=1" \
+            | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>process.stdout.write(JSON.parse(d)[0]?.sha||""))')
+          echo "recorded=$recorded current=$current"
+          if [ -n "$current" ] && [ "$current" != "$recorded" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "sha=$current" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
 
-      - name: Open a PR with the refreshed catalog
-        if: steps.diff.outputs.changed == 'true'
+      - name: Open an issue if the upstream dump updated
+        if: steps.paldex.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          branch="items-refresh-$(date -u +%Y%m%d%H%M%S)"
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$branch"
-          git add items.json
-          git commit -m "chore: refresh items.json from paldex dump"
-          git push origin "$branch"
-          count=$(node -e 'process.stdout.write(String(JSON.parse(require("fs").readFileSync("items.json","utf8")).count))')
-          gh pr create \
-            --base main \
-            --head "$branch" \
-            --title "chore: refresh items.json ($count items) from paldex" \
-            --body $'Automated weekly refresh of `items.json` (per-item values for `DT_ItemDataTable`, shown by items.html).\n\nRegenerated by `scripts/build-items.mjs` from the upstream paldex DataTable dump. Opened only because the item data changed (the `generatedAt` timestamp alone does not trigger a PR). Review the diff and merge to redeploy the catalog via Pages.'
+          title="paldex dump updated — regenerate items.json"
+          if [ -z "$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[].number')" ]; then
+            gh issue create --title "$title" --body "The upstream \`blaynem/paldex\` DT_ItemDataTable dump changed (now at \`${{ steps.paldex.outputs.sha }}\`; items.json records a different sourceCommit).
+
+Run \`node scripts/build-items.mjs\`, review the diff (row count, \`_provenance\`), update \`DEFAULT_PROVENANCE\` in the script if the dump's game era changed, and commit."
+          fi
+
+      - name: Registry currency vs live game + SDK
+        id: currency
+        run: |
+          set +e
+          out=$(npm run --silent versions:check 2>&1)
+          code=$?
+          set -e
+          echo "$out"
+          echo "exit=$code" >> "$GITHUB_OUTPUT"
+          {
+            echo "line<<EOF"
+            echo "$out" | tail -1
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+          # exit 2 (network) is not staleness — never open an issue for it.
+          if [ "$code" != 0 ] && [ "$code" != 1 ]; then echo "transient failure (exit $code), ignoring"; fi
+
+      - name: Open an issue if the registry is stale
+        if: steps.currency.outputs.exit == '1'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          title="registry stale: ${{ steps.currency.outputs.line }}"
+          if [ -z "$(gh issue list --state open --search "\"registry stale\" in:title" --json number --jq '.[].number')" ]; then
+            gh issue create --title "$title" --body "\`npm run versions:check\` reports:
+
+\`\`\`
+${{ steps.currency.outputs.line }}
+\`\`\`
+
+If the GAME moved: add the new version to \`versions.json\` (as an alias if \`Source/Pal/Public\` did not regenerate — check the PalworldModdingKit commit list), run \`npm run snapshot:all && npm run diff:all\`, and update \`sdkHead\`.
+If the SDK regenerated: snapshot the new commit and ship the real diff."
+          fi

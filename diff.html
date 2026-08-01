@@ -198,8 +198,11 @@ async function init() {
   }
   const labels = [...VERSIONS.order];
   for (const [alias, a] of Object.entries(VERSIONS.aliases)) {
-    const i = labels.indexOf(a.of);
-    labels.splice(i + 1, 0, alias); // aliases sit next to the version they equal
+    // Aliases sit after the version they equal AND any earlier-listed sibling
+    // aliases of it (1.0 → 1.0.1 → 1.0.2), not immediately after the canonical.
+    let i = labels.indexOf(a.of);
+    while (i + 1 < labels.length && VERSIONS.aliases[labels[i + 1]]?.of === a.of) i++;
+    labels.splice(i + 1, 0, alias);
   }
   const opts = labels.map((l) =>
     `<option value="${l}">${l}${VERSIONS.aliases[l] ? ` (= ${VERSIONS.aliases[l].of})` : ''}</option>`).join('');

@@ -1,0 +1,11 @@
+{
+  "$comment": "Hypothetical future feed: a v1.0.3 patch line has shipped that versions.json does not know. check-currency must exit 1 naming it.",
+  "appnews": {
+    "appid": 1623730,
+    "newsitems": [
+      { "gid": "s1", "title": "v1.0.2.101103:Bug fixes", "date": 1785413794, "feedlabel": "Community Announcements" },
+      { "gid": "s2", "title": "v1.0.3: Bug fixes", "date": 1786000000, "feedlabel": "Community Announcements" },
+      { "gid": "s3", "title": "Some outlet article about Palworld", "date": 1786100000, "feedlabel": "PC Gamer" }
+    ]
+  }
+}

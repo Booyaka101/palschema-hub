@@ -1,8 +1,21 @@
 {
- "generatedAt": "2026-07-23T21:54:55.634Z",
+ "generatedAt": "2026-08-01T03:35:43.828Z",
  "table": "DT_ItemDataTable",
  "source": "https://raw.githubusercontent.com/blaynem/paldex/main/data-provider/palworld-assets/DataTable/Item/DT_ItemDataTable.json",
- "note": "Per-item row VALUES (ItemActorClass etc.) for asset reuse in PalSchema mods. Derived from the public paldex dump of an earlier game build; newest items may be missing. Field names/types: see schemas/ and index.html.",
+ "note": "Per-item row VALUES (ItemActorClass etc.) for asset reuse in PalSchema mods. Field NAMES are SDK-verified against the current game; row VALUES are 0.1.x-era (Jan 2024) and rows added after Jan 2024 are absent — see _provenance. Field names/types: schemas/ and index.html.",
+ "_provenance": {
+  "source": "github.com/blaynem/paldex",
+  "gameEra": "0.1.x (Jan 2024)",
+  "fieldNamesVerifiedAgainst": "localcc/PalworldModdingKit@62fad41",
+  "valuesCurrent": false,
+  "upstreamRowCountToday": 2466,
+  "upstreamRowCountSource": "paldb.cc/en/Items_Table, checked 2026-08-01",
+  "knownMissingRows": [
+   "AncientHelmet"
+  ],
+  "rowCount": 947,
+  "sourceCommit": "c19739b911e4a5118ffbc032af4bc18b5a902097"
+ },
  "count": 947,
  "items": {
   "Money": {

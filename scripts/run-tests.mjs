@@ -79,6 +79,37 @@ run('--migrate 0.7.2..1.0: Old School Loot (drop/lottery tables) is unaffected',
 run('--migrate 0.7.2..0.7.3 (alias pair) -> "no row-struct changes"',
   migrate('0.7.2..0.7.3'), 0, 'no row-struct changes');
 
+// v0.3.0: Palworld 1.0.2 currency, provenance honesty, staleness detection.
+run('versions.json: 1.0.2 alias of 1.0, aliasReason names SDK head 62fad41',
+  ['-e', `const v=require('./versions.json');const a=v.aliases['1.0.2'];` +
+    `if(!a||a.of!=='1.0'||!/62fad41/.test(a.aliasReason||''))process.exit(1);` +
+    `console.log('1.0.2 alias OK');`], 0, '1.0.2 alias OK');
+run('--migrate 1.0.1..1.0.2 alias-resolves, scans, exits 0',
+  migrate('1.0.1..1.0.2', 'tests/valid-mod.json'), 0, 'both alias Palworld 1.0, SDK 62fad41');
+run('1.0.1..1.0.2 diff is an empty delta',
+  ['-e', `const d=require('./diffs/1.0.1..1.0.2.json');` +
+    `if(Object.keys(d.structs).length||d.structsAdded.length||d.structsRemoved.length` +
+    `||!d.summary.includes('no row-struct changes'))process.exit(1);console.log('1.0.1..1.0.2 empty');`],
+  0, '1.0.1..1.0.2 empty');
+run('1.0..1.0.2 diff is an empty delta',
+  ['-e', `const d=require('./diffs/1.0..1.0.2.json');` +
+    `if(Object.keys(d.structs).length||d.structsAdded.length||d.structsRemoved.length` +
+    `||!d.summary.includes('no row-struct changes'))process.exit(1);console.log('1.0..1.0.2 empty');`],
+  0, '1.0..1.0.2 empty');
+run('items.json carries _provenance with valuesCurrent:false and the row-count gap',
+  ['-e', `const p=require('./items.json')._provenance;` +
+    `if(!p||p.valuesCurrent!==false||p.rowCount!==947||!(p.upstreamRowCountToday>p.rowCount)` +
+    `||!p.knownMissingRows.includes('AncientHelmet'))process.exit(1);console.log('provenance OK');`],
+  0, 'provenance OK');
+run('check-currency: in-sync fixture -> exit 0 "registry current"',
+  ['scripts/check-currency.mjs', '--steam-json', 'tests/currency-fixtures/steam-insync.json',
+    '--commits-json', 'tests/currency-fixtures/commits-insync.json'],
+  0, 'registry current: game 1.0.2, SDK 62fad41');
+run('check-currency: stale fixture -> exit 1 naming the new game version',
+  ['scripts/check-currency.mjs', '--steam-json', 'tests/currency-fixtures/steam-stale.json',
+    '--commits-json', 'tests/currency-fixtures/commits-insync.json'],
+  1, 'game 1.0.3 released, registry newest is 1.0.2');
+
 // The offline archive ships cli/dist WITHOUT node_modules, and --migrate needs no
 // dependencies (only schema validation uses ajv). Copy dist somewhere with no
 // node_modules above it and prove the scan still runs.

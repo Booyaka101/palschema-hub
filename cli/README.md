@@ -31,9 +31,10 @@ dependencies** — `ajv` is only loaded for schema validation, so `--migrate` ru
 from `dist/` with nothing installed. Version pins come from the
 registry's `versions.json` — each Palworld version maps to the
 [localcc/PalworldModdingKit](https://github.com/localcc/PalworldModdingKit) commit that
-regenerated its SDK headers. Versions that shipped no header change (0.7.3, 1.0.1) are
-aliases: `--migrate 0.7.2..0.7.3` reports "no row-struct changes" instead of pretending a
-diff exists. Rename notes are heuristic and always labelled (high/medium confidence).
+regenerated its SDK headers. Versions that shipped no header change (0.7.3, 1.0.1, and
+the whole 1.0.2 patch line) are aliases: `--migrate 1.0.1..1.0.2` reports
+"no row-struct changes between 1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK 62fad41)"
+and exits 0 instead of pretending a diff exists. Rename notes are heuristic and always labelled (high/medium confidence).
 
 ## Options
 

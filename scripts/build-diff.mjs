@@ -244,6 +244,15 @@ try {
     for (const alias of Object.keys(versionsInfo.aliases)) {
       writeDiff(versionsInfo.aliases[alias].of, alias, false);
     }
+    // Sibling aliases of the same version (1.0.1..1.0.2) diff to the same empty delta.
+    const aliasNames = Object.keys(versionsInfo.aliases);
+    for (let i = 0; i < aliasNames.length; i++) {
+      for (let j = i + 1; j < aliasNames.length; j++) {
+        if (versionsInfo.aliases[aliasNames[i]].of === versionsInfo.aliases[aliasNames[j]].of) {
+          writeDiff(aliasNames[i], aliasNames[j], false);
+        }
+      }
+    }
   } else if (a && b) {
     writeDiff(a, b);
   } else {

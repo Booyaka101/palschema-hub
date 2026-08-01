@@ -1,0 +1,13 @@
+{
+  "$comment": "Saved shape of the Steam news API for appid 1623730 (2026-08-01). Items are deliberately OUT of date order — the checker must sort by the raw unix `date` field itself.",
+  "appnews": {
+    "appid": 1623730,
+    "newsitems": [
+      { "gid": "f1", "title": "v1.0.2: Bug fixes", "date": 1785294504, "feedlabel": "Community Announcements" },
+      { "gid": "f2", "title": "Palworld 1.0 review: A solid creature collector", "date": 1785546059, "feedlabel": "PC Gamer" },
+      { "gid": "f3", "title": "v1.0.2.101103:Bug fixes", "date": 1785413794, "feedlabel": "Community Announcements" },
+      { "gid": "f4", "title": "Mod Support Improvement", "date": 1785380721, "feedlabel": "Community Announcements" },
+      { "gid": "f5", "title": "v1.0.1: Bug fixes", "date": 1784700000, "feedlabel": "Community Announcements" }
+    ]
+  }
+}
