@@ -68,10 +68,47 @@ behind origin/main at session start — fast-forwarded before touching anything.
 - **VERIFIED end-to-end:** `node scripts/build-items.mjs` → 2,445 rows (2,435 live paldb);
   `check-items` exit 0; acceptance one-liner prints `2445 PlasticHelmet 1320 false`;
   `npm test` 29/29 PASS.
-- **NOT done / next:** commit is local only (owner pushes from phone per rules). After
-  push: verify Pages deploy renders the new items.html/items.json live; consider a Nexus
-  archive refresh (v1.3) + a #53 comment announcing current-game item values; the 28
-  missing TEST codes are permanently absent from paldb — acceptable, documented.
+- **DISTRIBUTION — all shipped this session (owner authorized mid-session):**
+  - **Pushed `7b6df35`** → self-test + Guards + Pages all green; live-verified 200s on
+    items.json / items.html / index.html / diff.html / versions.json, live items.json
+    count 2445, PlasticHelmet SortId 1320 / no SortID, headless render shows the green
+    current-game banner and "2445 of 2445 items".
+  - **PalSchema #53 comment:** https://github.com/Okaetsu/PalSchema/issues/53#issuecomment-5176872323
+  - **X (@KillKenny101):** https://x.com/KillKenny101/status/2084567570125091100
+  - **npm: deliberately NOT published** — cli/ untouched, 0.3.0 is still `latest`.
+  - **Nexus mods/4084 → v1.3** (file + mod version + description), `5fbf100`.
+- **NEXUS GOTCHAS (new UI, supersede the 08-01 notes):**
+  - The edit URL moved to **`/games/palworld/mods/<id>/edit/files`** — the old
+    `/palworld/mods/<id>/edit/files` silently redirects to the public mod page, which
+    reads exactly like "not logged in".
+  - The **dropzone hidden `input[type=file]`** still works via `DOM.setFileInputFiles`
+    (pick the one whose `accept` contains `zip` — there are two). Selecting the existing
+    file in the headlessui combobox **auto-fills display name AND auto-increments the
+    version** (1.2 → 1.3). The combobox does NOT open on click — needs focus + ArrowDown,
+    then ArrowDown-to-highlight + Enter (`.click()` on `[role=option]` does nothing).
+  - Upload type / archive are `[role=radio]` / `[role=checkbox]` SPANs, not real inputs
+    (the only real `input[type=radio]`s on the page are a "Very bad/Very good" feedback
+    widget — do not mistake them for the form).
+  - Per-file commit is **"Save file"**; the mod-level header **"Save"** is separate and
+    stays disabled until something on THAT form changes.
+  - **The description is still SCEditor** (hidden textarea inside `.bbcode-editor`,
+    `sceditor.instance(ta)`), and `setReactValue` on it **silently reverts on save** —
+    it read back perfectly, Save went disabled, and a reload showed the OLD text.
+    Working path: `inst.val(bb)` → `inst.updateOriginal()` → native-setter + input/change
+    events → verify with `inst.val()` → Save. Verified persisted across a reload.
+  - **Always re-read the LIVE description before editing it** — the repo copy had drifted
+    1,144 chars behind the page, so pushing the local file would have deleted live-only
+    sections. Fixed by patching the live text in place; `nexus/NEXUS_DESCRIPTION.bbcode`
+    is now the live copy.
+  - Navigating away from a dirty form still wedges the tab (beforeunload) — close via
+    `/json/close/<id>` and reopen; that also discards unsaved edits, which is the cheap
+    way to revert.
+- **Watch / left open:** after the v1.3 update the public files tab lists **1.3 (Main)
+  and only 1.0.1 + 1.0 under Old files** — 1.1 and 1.2 are no longer publicly listed
+  (the new UI appears to move "Archive existing file" uploads into a separate File
+  archive rather than Old files). Un-archive from the mod's file manager if those older
+  builds should stay downloadable. Also: the 28 missing TEST codes are permanently absent
+  from paldb — acceptable, documented.
 
 ## Session 2026-08-01 — v0.3.0: 1.0.2 currency, staleness detection, provenance honesty
 Phase-0 verified live (all four): Steam news (appid 1623730) lists the 1.0.2 patch line
