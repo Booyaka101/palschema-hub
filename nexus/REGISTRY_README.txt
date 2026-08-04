@@ -11,13 +11,23 @@ and enum value lists — verified against the current game's row structs
 Plus a per-item VALUE reference and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry v0.3.0, 2026-08-01)
-  * Palworld 1.0.2 covered. The whole 1.0.2 patch line (v1.0.2,
-    v1.0.2.100993 "Mod Support Improvement", v1.0.2.101103) changed NO
-    DataTable row structs, so if your mod worked on 1.0 it needs no field
-    migration. Verified, not assumed: the decompiled SDK has not been
-    regenerated since 1.0 (head 62fad41, 2026-07-11).
-  * items.json / items.html now state their data age up front (see below).
+NEW IN THIS VERSION (registry v0.4.0, 2026-08-04)
+  * ITEM VALUES ARE NOW CURRENT-GAME. items.json went from 947 rows of
+    Jan-2024 data to 2,445 rows of Palworld 1.0.2 data, scraped from
+    paldb.cc. Items added since 1.0 are finally present (Hexolite Helmet,
+    internal Code SFHelmet, SortId 1325, among them), and the dead field
+    SortID - which the current game renamed to SortId - is gone.
+  * Rarity variants are separate rows, as the game stores them:
+    PlasticHelmet, PlasticHelmet_2 .. _5, each with its own SortId,
+    Rarity, Defense, Health and Durability.
+  * A gate (npm run check:items) validates every row against the
+    DT_ItemDataTable schema and fails the build if the data goes stale
+    again - no more silently shipping year-old values.
+  * Palworld 1.0.2 covered (from v0.3.0). The whole 1.0.2 patch line
+    (v1.0.2, v1.0.2.100993 "Mod Support Improvement", v1.0.2.101103)
+    changed NO DataTable row structs, so if your mod worked on 1.0 it
+    needs no field migration. Verified, not assumed: the decompiled SDK
+    has not been regenerated since 1.0 (head 62fad41, 2026-07-11).
 
 WHAT'S IN THIS ARCHIVE
 ----------------------
@@ -26,8 +36,9 @@ WHAT'S IN THIS ARCHIVE
   index.json                   registry catalog
   index.html                   the searchable schema browser (see below)
   items.html / items.json      per-item value reference for DT_ItemDataTable
-                               (947 items: ItemActorClass / ItemStaticClass /
-                               ItemDynamicClass + full row JSON to copy)
+                               (2,445 current-game items: ItemActorClass /
+                               ItemStaticClass / ItemDynamicClass + full row
+                               JSON to copy)
   diff.html                    version-diff viewer (what changed between
                                Palworld versions)
   versions.json                Palworld version -> pinned SDK commit
@@ -70,14 +81,15 @@ Field NAMES and TYPES — the schemas, the version diffs, the --migrate scan —
 are verified against the CURRENT game's row structs (PalworldModdingKit SDK
 headers @62fad41). That part is 1.0.2-current.
 
-Row VALUES in items.json / items.html are NOT. They come from the only public
-DataTable dump that exists, frozen at Jan 2024 (Palworld 0.1.x): 947 item rows
-versus the 2466 in today's DT_ItemDataTable (paldb.cc, checked 2026-08-01), so
-items added after Jan 2024 — AncientHelmet among them — are simply absent.
-If you search items.html and an item is not there, that means the data is old,
-NOT that the item does not exist. The page says so on every row. The moment a
-current row-value dump is published the table re-points to it with one command
-(scripts/build-items.mjs --src <dump>).
+Row VALUES in items.json / items.html are current too, as of v0.4.0. They are
+scraped from paldb.cc, which tracks the live build (its footer pins to v1.0.2,
+2026-07-29): 2,445 rows, one per rarity variant. Fields paldb.cc does not
+render (VisualBlueprintClassSoft, DropItemType, GrantEffect*, TechnologyTreeLock
+and friends) are filled from the old Jan-2024 paldex dump where that row existed
+back then; paldb wins every conflict, and items.json's fieldSources object
+records, per row, exactly which fields are live and which are legacy fill.
+Ten rows exist only in the old dump and are labelled as such on the page.
+About 20 internal TEST/Blueprint rows have no paldb page and are absent.
 
 BROWSE WITH THE UI
 ------------------
