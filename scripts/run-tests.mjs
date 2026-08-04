@@ -96,10 +96,12 @@ run('1.0..1.0.2 diff is an empty delta',
     `if(Object.keys(d.structs).length||d.structsAdded.length||d.structsRemoved.length` +
     `||!d.summary.includes('no row-struct changes'))process.exit(1);console.log('1.0..1.0.2 empty');`],
   0, '1.0..1.0.2 empty');
-run('items.json carries _provenance with valuesCurrent:false and the row-count gap',
+// (0.4.0: items.json regenerated from paldb.cc — valuesCurrent flipped to true,
+// so this assertion now checks the CURRENT truth instead of the old staleness.)
+run('items.json carries _provenance: current-game values, >= 2400 rows',
   ['-e', `const p=require('./items.json')._provenance;` +
-    `if(!p||p.valuesCurrent!==false||p.rowCount!==947||!(p.upstreamRowCountToday>p.rowCount)` +
-    `||!p.knownMissingRows.includes('AncientHelmet'))process.exit(1);console.log('provenance OK');`],
+    `if(!p||p.valuesCurrent!==true||p.gameVersion!=='1.0.2'||!(p.rowCount>=2400))process.exit(1);` +
+    `console.log('provenance OK');`],
   0, 'provenance OK');
 run('check-currency: in-sync fixture -> exit 0 "registry current"',
   ['scripts/check-currency.mjs', '--steam-json', 'tests/currency-fixtures/steam-insync.json',
@@ -109,6 +111,12 @@ run('check-currency: stale fixture -> exit 1 naming the new game version',
   ['scripts/check-currency.mjs', '--steam-json', 'tests/currency-fixtures/steam-stale.json',
     '--commits-json', 'tests/currency-fixtures/commits-insync.json'],
   1, 'game 1.0.3 released, registry newest is 1.0.2');
+
+// v0.4.0: the items.json gate (paldb.cc-sourced data must stay schema-valid & fresh).
+run('check-items gate: shipped items.json passes (schema-valid, fresh, no SortID)',
+  ['scripts/check-items.mjs'], 0, 'no SortID');
+run('check-items gate: stale Jan-2024-shaped fixture fails, naming SortID',
+  ['scripts/check-items.mjs', 'tests/items-stale-fixture.json'], 1, 'SortID');
 
 // The offline archive ships cli/dist WITHOUT node_modules, and --migrate needs no
 // dependencies (only schema validation uses ajv). Copy dist somewhere with no

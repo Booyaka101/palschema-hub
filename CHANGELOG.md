@@ -1,5 +1,50 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.4.0 — 2026-08-04
+
+**items.json goes current: 947 → 2,445 rows, sourced from paldb.cc (Palworld 1.0.2), with a
+schema gate that keeps it honest.**
+
+(The brief for this release targeted "v0.3.0", but 0.3.0 had already shipped with the
+currency/provenance work below — so the item-data regeneration ships as 0.4.0.)
+
+- **Source change.** `items.json` was built from the blaynem/paldex FModel dump (Jan-2024,
+  Palworld 0.1.x era): 947 rows vs the live game's 2,466, and it shipped the dead field
+  `SortID` — which the current game renamed to `SortId`, so **every row failed our own
+  `DT_ItemDataTable` schema** (`additionalProperties: false`; the schema's `$comment` records
+  `sdkAdded=SortId` / `droppedRemovedFields=SortID`). `scripts/build-items.mjs` is rewritten
+  to scrape **paldb.cc** (robots.txt `Allow: /`; footer pins the data to v1.0.2, 2026-07-29):
+  index → per-item detail pages (concurrency 4, 150 ms spacing, 2 retries, on-disk cache
+  under `.cache/paldb/` so re-runs are free), one row per rarity-variant block
+  (`PlasticHelmet` … `PlasticHelmet_5` each with its own `SortId`/`Rarity`). New
+  `scripts/lib/paldb-parse.mjs` does the HTML → rows parsing (pure regex/string, exported
+  label map; bare enum tokens expand to the long `EPalItemTypeA::…` form the file has always
+  used). Entities from OTHER DataTables that paldb renders on item pages (mineable rocks,
+  pal stats) are filtered out against the item index.
+- **Merge rule.** Fields paldb.cc doesn't render (`VisualBlueprintClassSoft`, `DropItemType`,
+  `Restore*` beyond food stats, `GrantEffect*`, `TechnologyTreeLock`, …) are filled from the
+  old paldex file where the row existed in Jan-2024; **paldb wins every conflict**; the
+  per-row split ships as a top-level `fieldSources` object; 10 rows exist only in the old
+  file and are kept (marked `fieldSources[row].paldb = []`). Verified label mappings:
+  `Gold Coin`→`Price`, `Health`→`HPValue`, `Defense`→`PhysicalDefenseValue`,
+  `Attack`→`PhysicalAttackValue`, `Shield`→`ShieldValue`, `Nutrition`→`RestoreSatiety`,
+  `SAN`→`RestoreSanity` (each checked against known paldex values before adoption).
+- **SortID is gone** from every row, and 1.0-only items are in — e.g. `SFHelmet` (Hexolite
+  Helmet, `SortId` 1325) plus variants, absent from the old 947-row file.
+- **The gate: `scripts/check-items.mjs`** (`npm run check:items`, also in `npm test`).
+  Validates every row with ajv strict against the v1.0 schema and asserts: ≥ 2,400 rows, no
+  `SortID` anywhere, `/^SFHelmet/` present (freshness proof), ≥ 200 rows with a real
+  `ItemActorClass`, `fieldSources` covers every row. Exit 1 with rowName + instancePath +
+  message (first 20) on any failure — a stale regeneration can no longer ship silently.
+- items.html: provenance banner flips from the amber data-age warning to a green
+  current-game banner (paldb.cc / Palworld 1.0.2); rows now show Durability / Defense /
+  Health / Shield / Attack chips where present, and the per-row footnote names exactly which
+  fields were paldex-filled. README's item section rewritten around the new source + gate.
+- Tests 27 → **29** (gate passes on the shipped file; a stale two-row fixture carrying
+  `SortID` makes the gate exit 1 naming `SortID`). The old "provenance says 947 rows and
+  values-not-current" assertion now asserts the opposite — current values, ≥ 2,400 rows —
+  because the staleness it guarded against is fixed.
+
 ## 0.3.0 — 2026-08-01
 
 **Currency + honesty release: Palworld 1.0.2, staleness detection, item-data provenance.**

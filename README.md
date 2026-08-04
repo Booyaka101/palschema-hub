@@ -116,31 +116,34 @@ node cli/dist/index.js --version 1.0 --registry . tests/invalid-mod.json  # exit
 ## Item asset reference (values, not just schemas)
 
 [`items.html`](https://booyaka101.github.io/palschema-hub/items.html) is a searchable per-item
-**value** reference for `DT_ItemDataTable` (947 items): row name → `ItemActorClass` /
-`ItemStaticClass` / `ItemDynamicClass` / visual fields, plus the full row JSON to copy as a
-base for variants. Motivated by [PalSchema #53](https://github.com/Okaetsu/PalSchema/issues/53):
-cloning an equipment row without its `ItemActorClass` silently loses the model in-game (the
-game ships variants by pointing at another item's actor, e.g. LightzHelmet → `"IronHelmet"`).
+**value** reference for `DT_ItemDataTable` — **2,445 rows, current-game (Palworld 1.0.2,
+2026-07-29)**: row name → `ItemActorClass` / `ItemStaticClass` / `ItemDynamicClass` / visual
+fields, plus stats (`SortId`, `Rarity`, `Durability`, Defense/Health) and the full row JSON to
+copy as a base for variants. Motivated by
+[PalSchema #53](https://github.com/Okaetsu/PalSchema/issues/53): cloning an equipment row
+without its `ItemActorClass` silently loses the model in-game (the game ships variants by
+pointing at another item's actor, e.g. LightzHelmet → `"IronHelmet"`).
 Machine-readable: [`items.json`](https://booyaka101.github.io/palschema-hub/items.json).
 
-> **⚠️ Data age (`items.json._provenance`, also a banner on the page):** field **NAMES** are
-> SDK-verified against the current game (`PalworldModdingKit@62fad41`), but row **VALUES**
-> come from the public paldex dump, frozen at **0.1.x (Jan 2024)**. Rows added since are
-> **absent** (e.g. `AncientHelmet`): this table has **947** rows while the current game's
-> `DT_ItemDataTable` has **2466** (paldb.cc/en/Items_Table, checked 2026-08-01) — roughly
-> 60% of today's rows are missing. If you search an item and it isn't here, that means the
-> data is old, **not** that the item doesn't exist. No public 1.0-era row-value dump exists
-> anywhere on GitHub as of 2026-08-01 (paldb.cc renders one but exports no JSON/CSV), so
-> honest labelling is the fix. The day a current dump lands, re-point and regenerate with
-> **one command**:
->
-> ```bash
-> node scripts/build-items.mjs --src <url-or-path-to-DT_ItemDataTable.json>
-> ```
->
-> (then update `DEFAULT_PROVENANCE` in that script and commit). The weekly
-> `refresh-items.yml` cron watches the upstream dump's file SHA and opens an issue the
-> moment it changes.
+**Where the data comes from (the 0.4.0 source change).** Until 0.4.0 the values came from the
+public paldex FModel dump — frozen at Jan-2024 (947 rows, and the dead field `SortID`, which
+the current game renamed to `SortId`, so the file failed our own schema). Now
+`scripts/build-items.mjs` scrapes **[paldb.cc](https://paldb.cc/en/Items_Table)** (robots.txt
+`Allow: /`; the site tracks the live game — 2,466 listed rows for 1.0.2), one cached page per
+item, one row per rarity variant. **Merge rule:** fields paldb.cc doesn't render
+(`VisualBlueprintClassSoft`, `DropItemType`, `GrantEffect*`, `TechnologyTreeLock`, …) are
+filled from the old paldex file where the row existed in Jan-2024; **paldb wins every
+conflict**; the per-row split is recorded in the top-level `fieldSources` object; rows only in
+the old file are kept (marked by `fieldSources[row].paldb = []`). A few TEST/untranslated
+rows have no paldb page and are absent (~20 of 2,466 — reported by the build).
+
+The data is **gated**: `npm run check:items` validates every row against
+`schemas/v1.0/DT_ItemDataTable.schema.json` (ajv strict, `additionalProperties: false`) and
+asserts freshness — ≥ 2,400 rows, **no `SortID` anywhere**, the 1.0-only `SFHelmet` row
+(Hexolite Helmet) present, ≥ 200 real `ItemActorClass` values, `fieldSources` complete. It
+runs in `npm test`, so a stale regeneration cannot ship silently. Regenerate any time with
+`npm run items` (re-runs are free — pages cache under `.cache/paldb/`); parsed fields that
+are **not** in the schema are printed at the end, which is how new game fields get noticed.
 
 ## What changed between game versions
 

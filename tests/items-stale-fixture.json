@@ -1,0 +1,44 @@
+{
+ "generatedAt": "2024-01-31T00:00:00.000Z",
+ "table": "DT_ItemDataTable",
+ "source": "test fixture — shape of the stale Jan-2024 paldex-derived items.json",
+ "note": "Two real 0.1.x-era rows carrying the dead SortID field (renamed SortId in the current game). check-items.mjs must exit 1 on this file, naming SortID.",
+ "count": 2,
+ "items": {
+  "IronHelmet": {
+   "OverrideName": "None",
+   "IconName": "IronHelmet",
+   "TypeA": "EPalItemTypeA::Armor",
+   "TypeB": "EPalItemTypeB::ArmorHead",
+   "Rank": 3,
+   "Rarity": 0,
+   "MaxStackCount": 1,
+   "Weight": 12,
+   "Price": 5240,
+   "SortID": 1130,
+   "ItemStaticClass": "CommonArmor",
+   "ItemDynamicClass": "CommonArmor",
+   "ItemActorClass": "IronHelmet",
+   "Durability": 1500,
+   "HPValue": 250,
+   "PhysicalDefenseValue": 100
+  },
+  "Money": {
+   "OverrideName": "None",
+   "IconName": "Money",
+   "TypeA": "EPalItemTypeA::Material",
+   "TypeB": "EPalItemTypeB::Money",
+   "Rank": 1,
+   "Rarity": 0,
+   "MaxStackCount": 99999999,
+   "Weight": 0,
+   "Price": 1,
+   "SortID": 9999,
+   "ItemActorClass": "None"
+  }
+ },
+ "fieldSources": {
+  "IronHelmet": { "paldb": [], "paldex": ["IconName", "TypeA", "TypeB"] },
+  "Money": { "paldb": [], "paldex": ["IconName", "TypeA", "TypeB"] }
+ }
+}

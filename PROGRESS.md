@@ -1,6 +1,77 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-01 (v0.3.0 currency + honesty session)
+**Last updated:** 2026-08-04 (v0.4.0 items.json regeneration session)
+
+## Session 2026-08-04 — v0.4.0: items.json 947 → 2,445 rows from paldb.cc + check-items gate
+Brief targeted "v0.3.0" but 0.3.0 had already shipped (npm/GitHub/Nexus) from the 08-01
+session — this ships as **0.4.0**. NOTE: D:\Repos\ideas\palschema-hub is now a REAL git
+clone of the live repo (the 07-24 "stale workspace" note is obsolete); it was 4 commits
+behind origin/main at session start — fast-forwarded before touching anything.
+- **Phase-0 verified live (all):** paldb.cc robots.txt `Allow: /`; /en/Items_Table header
+  "Items /2466" citing DT_ItemDataTable.uasset; Plasteel_Helmet renders 5 variant blocks
+  (Code PlasticHelmet.._5, SortId 1320-1324); Animal_Skin + Assault_Rifle field labels;
+  paldb footer pins data to **v1.0.2 2026/7/29** (independently: mp1st build 1.100.933,
+  July 29 2026 — mp1st 403s WebFetch, needs browser UA via curl).
+- **scripts/lib/paldb-parse.mjs (NEW):** pure regex/string html→rows. Rows are
+  `<div class="d-flex justify-content-between p-2 align-items-center border-bottom">`
+  label/value pairs; variant blocks split at `<h5 class="card-title…"> Stats </h5>`
+  headings. Tag-stripping MUST be quote-aware — tooltip attrs contain literal `<br/>`
+  (naive /<[^>]+>/ leaks attribute text into values). LABEL_MAP (exported, each mapping
+  verified against known paldex values): Gold Coin→Price, Health→HPValue,
+  Defense→PhysicalDefenseValue, Attack→PhysicalAttackValue, Shield→ShieldValue (100=100),
+  Nutrition→RestoreSatiety (15=15), SAN→RestoreSanity (1=1). NOT mapped: "Corruption"
+  (derived "600 Seconds", not the raw CorruptionFactor), "Waza" (display name, not
+  EPalWazaID), pal/rock stats. Rarity: word in Stats card (Common=0…Legendary=4), numeric
+  in Others card for variants ≥1 — numeric wins. Bare enums expand (TypeA "Armor" →
+  "EPalItemTypeA::Armor" — preserves the items.json contract).
+- **URL derivation (all classes live-tested):** detail URL =
+  `encodeURIComponent(name.replace(/ /g,'_'))` + manual %28/%29 for parens. Apostrophe
+  must stay RAW (%27 404s!); colon/brackets/☆/é must be ENCODED (raw 404s); parens must
+  be ENCODED (encodeURIComponent leaves them raw → 34 pages 404'd on first run). Index
+  links are `href="#"` + data-hover; the internal Code sits in the sibling `<div>`.
+  ~30 "en text" entries (untranslated TEST/Blueprint items) + 2 `<characterName id=|X|/>`
+  template names have no page — code-URL fallback (/en/<Code>) recovers some
+  (Glider_Legendary), rest reported skipped (28 of 2,466 codes absent, all test items).
+- **TRAP FOUND: item pages render OTHER DataTables' entities as variant-shaped blocks**
+  (/en/Coal carries mineable rock "DamagableRock0004" with Hp/Defense pal-object stats
+  under its own Stats heading — it entered items.json on the first run). Fix: only Codes
+  the item index lists are DT_ItemDataTable rows (foreignCodes filter, reported).
+- **build-items.mjs (REWRITE):** index → dedupe by display name (1,847 pages for 2,466
+  codes; one page serves all same-named codes — /en/Gunpowder carries Gunpowder+Gunpowder2)
+  → fetch concurrency 4 / 150ms spacing / 2 retries / .cache/paldb/ (full run ~8 min cold,
+  free warm) → schema-filter (drops print at end = new-field radar; currently only
+  display-only labels) → merge: paldex fills only paldb-invisible fields, paldb wins
+  conflicts, per-row split in top-level `fieldSources` (same key order as items —
+  regeneration is byte-idempotent modulo generatedAt, VERIFIED run4==run5). 10 legacy
+  paldex-only rows kept (fieldSources.paldb=[]). `_provenance` kept (valuesCurrent:true,
+  gameVersion 1.0.2, sourceCommit still the paldex sha so refresh-items.yml needs NO edit).
+- **check-items.mjs (NEW, npm run check:items):** ajv (from cli/node_modules via
+  createRequire, same strict config as CLI) validates every row; asserts count≥2400, no
+  SortID anywhere, /^SFHelmet/ present (Hexolite Helmet, 1.0-only, SortId 1325 — parsed
+  value matches the brief exactly), ≥200 real ItemActorClass, fieldSources complete.
+  Optional file arg for fixtures. Run against the OLD items.json it fails with 947×
+  "must NOT have additional properties (SortID)" — proving the brief's staleness claim.
+- **Tests 27 → 29** (gate passes on shipped file; tests/items-stale-fixture.json exits 1
+  naming SortID). The 0.3.0 assertion "provenance says 947 rows / valuesCurrent:false"
+  necessarily FLIPPED to assert the new truth (valuesCurrent:true, ≥2400) — the only
+  existing assertion changed, because it asserted the staleness this release fixes.
+- **items.html:** green "ok" banner (valuesCurrent:true path; amber path kept for future
+  honest staleness), Durability/Defense/Health/Shield/Attack chips where present, per-row
+  footnote names the paldex-filled fields (or flags legacy-only rows). VERIFIED in
+  headless Chrome (banner+count) AND by executing select() in Node with a DOM stub.
+  GOTCHA: a node server from the 08-01 session (PID from Aug 1) was still squatting :8080
+  serving the OLD clone's items.json — Windows let the new serve bind "successfully"
+  anyway (LESSONS #50 pattern). Kill by PID via Get-NetTCPConnection before trusting a
+  localhost render.
+- README item section + CHANGELOG 0.4.0 (dated 2026-08-04) rewritten; package.json 0.4.0
+  + `items`/`check:items` scripts. cli/ NOT touched (still 0.3.0 — no CLI change).
+- **VERIFIED end-to-end:** `node scripts/build-items.mjs` → 2,445 rows (2,435 live paldb);
+  `check-items` exit 0; acceptance one-liner prints `2445 PlasticHelmet 1320 false`;
+  `npm test` 29/29 PASS.
+- **NOT done / next:** commit is local only (owner pushes from phone per rules). After
+  push: verify Pages deploy renders the new items.html/items.json live; consider a Nexus
+  archive refresh (v1.3) + a #53 comment announcing current-game item values; the 28
+  missing TEST codes are permanently absent from paldb — acceptable, documented.
 
 ## Session 2026-08-01 — v0.3.0: 1.0.2 currency, staleness detection, provenance honesty
 Phase-0 verified live (all four): Steam news (appid 1623730) lists the 1.0.2 patch line
