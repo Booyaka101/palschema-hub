@@ -43,6 +43,8 @@ jobs:
       # Version cooldown: npm worms are typically identified within hours, so
       # refuse to be among the first to install a brand-new version.
       - name: Dependency cooldown
+        # report-only until 2026-08-12; then this line goes and it becomes a gate
+        continue-on-error: true
         run: npx --yes npm-script-lens@latest audit --path ./cli --cooldown
 
       # Shell/Dockerfile/Terraform/PHP — the file types GitHub gated behind paid
