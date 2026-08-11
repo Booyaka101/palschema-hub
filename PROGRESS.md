@@ -42,13 +42,34 @@ first. Baseline recorded before any change: **29 tests** (brief guessed 26; 29 i
 - cli 0.3.0 → **0.4.0** (+package-lock sync), CHANGELOG entry dated 2026-08-11 crediting
   Okaetsu/PalSchema#134, README + cli/README rewritten (--strict, exit-code table, sample
   WARN line). Root package stays 0.4.0 (registry/site unchanged).
-- **NOT done (owner ships from phone):** `git push` (triggers Pages, but no registry file
-  changed — only docs/CLI), and `cd cli && npm publish` (makes palschema-validate@0.4.0
-  `latest`; after publish, verify with cold `npx -y --prefer-online palschema-validate@0.4.0
-  --version 1.0 <file>` per the 0.2.0 ETARGET lesson — retry ~1 min if stale packument).
-  Optional distribution: comment on PalSchema #134 that palschema-validate 0.4.0 ships these
-  exact semantics today (file+row+case-insensitive suggestion, pseudo-keys silent, --strict
-  for CI) — it directly answers gettygoop's proposal and is the highest-value announce.
+- **DISTRIBUTION — all shipped this session (owner authorized mid-session: "handle everything"):**
+  - **Pushed `01e0008`** → all three workflows green on that sha: **self-test success**,
+    Guards success, Pages deploy success. (No registry file changed — docs + CLI only.)
+  - **npm: `palschema-validate@0.4.0` published and `latest`** (`npm view` confirms
+    `dist-tags.latest = 0.4.0`). No ETARGET this time — the 0.2.0 stale-packument race did
+    not reproduce; `npx -y --prefer-online` resolved 0.4.0 on the first try.
+  - **Cold-install VERIFIED from a stranger's path:** fresh `D:\tmp\psv-cold`, mod file
+    authored there, `npx -y --prefer-online palschema-validate@0.4.0 --version 1.0 mymod.json`
+    with **no `--registry`** → schemas fetched from the LIVE GitHub raw registry, printed the
+    two WARN lines + `1 file validated, 0 errors, 2 unknown-key warnings`, exit 0; `--strict`
+    exit 1; the `$Filters` + Clear/Items pseudo-key file `0 unknown-key warnings`, exit 0.
+    (Ran from a NON-package dir — never from `cli/`, whose own package.json is
+    `palschema-validate@0.4.0` and would trigger the npx cwd-collision of LESSONS 2026-08-05.)
+  - **PalSchema #134 comment posted** (2,680 chars, verified intact via the API):
+    https://github.com/Okaetsu/PalSchema/issues/134#issuecomment-5248755385 — answers
+    gettygoop's four acceptance checks, argues their "don't use additionalProperties:false as
+    the only fix" bullet deserves stronger wording (it was OUR bug), and contributes the
+    measured number they don't have: **warn-first fires exactly once across 13 files of 4
+    published mods** (only the genuinely-stale RedialIndex), i.e. a warn-first rollout will be
+    quiet rather than drowning existing mods. Offered to align wording with their PR.
+- **Watch for:** a gettygoop/Okaetsu reply on #134 (and their promised PR — if it lands with
+  different suggestion ordering or message wording, match it so the validator and the loader
+  say the same thing to authors). PR #128 (the SortID copy path) is the narrower sibling.
+- **NOT done, deliberately:** Nexus mods/4084 still ships the 0.3.0 CLI inside its offline
+  archive. No registry data changed this release, so the archive's schemas/structs/diffs are
+  all still current — only `cli/dist` inside it is one version behind. Out of this brief's
+  stated RELEASE scope; roll it into the next release that changes registry data (the Nexus
+  UI/SCEditor gotchas from the 08-04 session still apply).
 
 ## Session 2026-08-04 — v0.4.0: items.json 947 → 2,445 rows from paldb.cc + check-items gate
 Brief targeted "v0.3.0" but 0.3.0 had already shipped (npm/GitHub/Nexus) from the 08-01
