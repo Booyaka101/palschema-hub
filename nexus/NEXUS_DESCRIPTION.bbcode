@@ -3,7 +3,14 @@
 [b]On Palworld 1.0.2? Your mods are fine.[/b]
 The whole 1.0.2 patch line (v1.0.2, v1.0.2.100993 "Mod Support Improvement", v1.0.2.101103) changed [b]no[/b] DataTable row structs — every field that existed in 1.0 still exists, unchanged. That is verified, not assumed: the decompiled SDK has not been regenerated since 1.0 (head 62fad41, 11 Jul 2026). Check any mod yourself in one line:
 [code]npx palschema-validate --migrate 1.0.1..1.0.2 my-mod/
--> no row-struct changes between 1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK 62fad41)[/code][b]What is this?[/b]
+-> no row-struct changes between 1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK 62fad41)[/code]
+[b]New in 1.4 — unknown fields warn instead of failing your build.[/b]
+If your mod sets a field this registry does not know about, the validator now prints a warning with a did-you-mean suggestion and still exits 0:
+[code]WARN mods/pals.json:Lamball unknown field "rarity" — did you mean "Rarity"?
+1 file validated, 0 errors, 1 unknown-key warning[/code]
+These schemas are derived from a snapshot of the game's SDK headers, so every field Palworld adds [i]after[/i] that snapshot used to be a hard rejection of perfectly correct mod JSON. Now a stale schema degrades to a warning you can ignore, never a blocked build — while wrong types and malformed rows still fail. Add [b]--strict[/b] to turn those warnings back into errors for CI. PalSchema's own pseudo-keys ($Filters, and the {"Action": "Clear", "Items": [...]} wrapper accepted on array fields) never warn. These are the semantics PalSchema itself is adopting (its issue #134).
+
+[b]What is this?[/b]
 A free, browsable database of every field you can touch in PalSchema raw-table mods — the answer to "where are all the game variable names?" ([url=https://github.com/Okaetsu/PalSchema/issues/53]PalSchema issue #53[/url]).
 
 [list]
@@ -12,11 +19,15 @@ A free, browsable database of every field you can touch in PalSchema raw-table m
 [*][b]Version diff:[/b] [url=https://booyaka101.github.io/palschema-hub/diff.html]diff.html[/url] — what changed in the game's row structs between any two Palworld versions, now including 1.0.2.[/*]
 [*][b]GitHub repo:[/b] [url=https://github.com/Booyaka101/palschema-hub]github.com/Booyaka101/palschema-hub[/url] (MIT)[/*]
 [*][b]Validator CLI:[/b] checks your mod JSON against the registry and reports typed field errors (typo'd or renamed fields, wrong types) [i]before[/i] you launch the game:
-[code]npx palschema-validate --version 1.0 my-mod/DT_PalMonsterParameter.json[/code][/*]
-[/list][b]Did a game patch break your mod?[/b]
+[code]npx palschema-validate --version 1.0 my-mod/DT_PalMonsterParameter.json[/code]
+[/*]
+[/list]
+[b]Did a game patch break your mod?[/b]
 A Palworld update can add, remove or rename DataTable fields — and a mod setting a field the game no longer has just silently does nothing. This scans your mod against the real field-level delta between two versions:
-[code]npx palschema-validate --migrate 0.7.2..1.0 my-mod/[/code]It prints one line per affected field and exits 1 if anything broke, so it works in CI:
-[code]my-mod.json > DT_PalMonsterParameter > ChickenPal000 > OverridePartnerSkillTextID: removed in 1.0 (was FName) — possible rename to OverridePartnerSkillNameTextID (medium confidence)[/code]For the big one: across the 30 covered registry tables, Palworld 1.0 removed exactly [b]one[/b] field — OverridePartnerSkillTextID on PalCharacterParameterDatabaseRow (hitting both DT_PalMonsterParameter and DT_PalHumanParameter), replaced by the split pair OverridePartnerSkillNameTextID + OverridePartnerSkillDescTextID. It also added 23 fields you can now use, including EnemyWazaCoolTimeRate and BestWorkSuitability. Rename suggestions are a labelled heuristic, never a silent guess. 0.7.3, 1.0.1 and the 1.0.2 line changed no row structs at all, and the tool says so rather than inventing a diff.
+[code]npx palschema-validate --migrate 0.7.2..1.0 my-mod/[/code]
+It prints one line per affected field and exits 1 if anything broke, so it works in CI:
+[code]my-mod.json > DT_PalMonsterParameter > ChickenPal000 > OverridePartnerSkillTextID: removed in 1.0 (was FName) — possible rename to OverridePartnerSkillNameTextID (medium confidence)[/code]
+For the big one: across the 30 covered registry tables, Palworld 1.0 removed exactly [b]one[/b] field — OverridePartnerSkillTextID on PalCharacterParameterDatabaseRow (hitting both DT_PalMonsterParameter and DT_PalHumanParameter), replaced by the split pair OverridePartnerSkillNameTextID + OverridePartnerSkillDescTextID. It also added 23 fields you can now use, including EnemyWazaCoolTimeRate and BestWorkSuitability. Rename suggestions are a labelled heuristic, never a silent guess. 0.7.3, 1.0.1 and the 1.0.2 line changed no row structs at all, and the tool says so rather than inventing a diff.
 
 [b]How current is each part? (please read before trusting a value)[/b]
 Field [b]names and types[/b] — the schemas, the version diffs, the --migrate scan — are verified against the [b]current[/b] game's row structs (PalworldModdingKit SDK headers @62fad41). That part is 1.0.2-current, and it includes post-1.0 additions (InstallMaxNumInBaseCamp, CraftExpRate, drop item slots 6–10), renames (RedialIndex→SortId, HP→Hp), both array patch forms ([...] replaces, {"Action": "Clear", "Items": [...]} clears/appends) and $Filters wildcard metadata. Proven against real published PalSchema mods.

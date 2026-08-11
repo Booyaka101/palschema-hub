@@ -11,7 +11,33 @@ and enum value lists — verified against the current game's row structs
 Plus a per-item VALUE reference and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry v0.4.0, 2026-08-04)
+NEW IN THIS VERSION (validator 0.4.0, 2026-08-11)
+  * UNKNOWN FIELDS NOW WARN INSTEAD OF FAILING YOUR BUILD. If your mod
+    sets a field this registry's row struct does not know about, the
+    validator prints a warning with a did-you-mean suggestion and still
+    exits 0:
+
+        WARN mods/pals.json:Lamball unknown field "rarity"
+             - did you mean "Rarity"?
+        1 file validated, 0 errors, 1 unknown-key warning
+
+    Why it matters: these schemas are derived from a snapshot of the
+    game's SDK headers. Every field Palworld adds AFTER that snapshot
+    used to be a hard rejection of perfectly correct mod JSON. Now a
+    stale schema degrades to a warning you can ignore, never a blocked
+    build. Genuine mistakes - wrong types, malformed rows - still fail.
+  * NEW --strict FLAG for CI, which turns those warnings back into
+    errors (exit 1) when you want the stricter gate:
+
+        npx palschema-validate --version 1.0 --strict my-mod/
+
+  * PalSchema's own pseudo-keys never warn: the $Filters row key and the
+    {"Action": "Clear", "Items": [...]} wrapper accepted on array fields.
+  * These are the semantics PalSchema itself is adopting - see issue #134
+    on its GitHub. Registry DATA is unchanged in this release: the
+    schemas, structs, diffs and item values below are all still current.
+
+PREVIOUSLY (registry v0.4.0, 2026-08-04)
   * ITEM VALUES ARE NOW CURRENT-GAME. items.json went from 947 rows of
     Jan-2024 data to 2,445 rows of Palworld 1.0.2 data, scraped from
     paldb.cc. Items added since 1.0 are finally present (Hexolite Helmet,
@@ -110,9 +136,16 @@ Fully offline against this archive (one-time npm install for the CLI's deps):
     npm install
     node dist/index.js --version 1.0 --registry .. ..\my-mod\DT_PalMonsterParameter.json
 
-It reports typed errors — unknown/renamed fields, wrong value types — before
-you ever launch the game (the same mistakes PalSchema logs as "Property not
-found in Row" at load time).
+It reports typed errors — wrong value types, malformed rows — before you ever
+launch the game, and warns (without failing) on fields this registry does not
+recognise, with a did-you-mean suggestion. That is the same class of mistake
+PalSchema logs as "Property not found in Row" at load time, caught earlier.
+Add --strict to make those warnings fail the run instead, for CI.
+
+Exit codes:
+    0   all files pass (unknown-key warnings alone never fail a run)
+    1   type/shape error, breaking --migrate field, or bad usage —
+        or any unknown-key warning when --strict is given
 
 LINKS
 -----

@@ -65,11 +65,38 @@ first. Baseline recorded before any change: **29 tests** (brief guessed 26; 29 i
 - **Watch for:** a gettygoop/Okaetsu reply on #134 (and their promised PR — if it lands with
   different suggestion ordering or message wording, match it so the validator and the loader
   say the same thing to authors). PR #128 (the SortID copy path) is the narrower sibling.
-- **NOT done, deliberately:** Nexus mods/4084 still ships the 0.3.0 CLI inside its offline
-  archive. No registry data changed this release, so the archive's schemas/structs/diffs are
-  all still current — only `cli/dist` inside it is one version behind. Out of this brief's
-  stated RELEASE scope; roll it into the next release that changes registry data (the Nexus
-  UI/SCEditor gotchas from the 08-04 session still apply).
+- **Nexus mods/4084 → v1.4 SHIPPED** (owner asked for it after the npm/GitHub work):
+  - **New archive** built with bsdtar (never Compress-Archive — backslash entries quarantine):
+    207 entries, **file list byte-for-byte identical to the v1.3 archive** (diffed; `cli/package.json`
+    was missing on the first staging pass and is required for the offline `npm install` path),
+    zero backslash entries, `unzip -t` clean, 566 KB. `nexus/REGISTRY_README.txt` rewritten to
+    LEAD with the unknown-key change + exit-code table.
+  - **VERIFIED from a clean extract** (not just packed): `--migrate 1.0.1..1.0.2` and
+    `0.7.2..1.0` both run with **zero deps installed**; validation without ajv prints the clear
+    one-sentence instruction; after the documented `cd cli && npm install`, the unknown-key
+    warnings + `--strict` exit 1 both work **offline against the archive's own schemas**.
+  - **Nexus previewer parses the zip** (lists schemas/structs/diffs/cli/items.json/index.html/
+    README.txt) — the definitive all-clear against the v1.0 malformed-archive quarantine.
+  - File **1.4** live (566 KB, 11 Aug 12:23PM), mod version synced to **1.4**, 1.3 archived,
+    description updated (new "New in 1.4" section leading on warn-don't-reject) and **verified
+    persisted on the PUBLIC page** — the SCEditor silent-revert trap did not fire because the
+    `inst.val()` → `inst.updateOriginal()` → native-setter path was used, gated on
+    whitespace-stripped equality. `nexus/NEXUS_DESCRIPTION.bbcode` re-synced to the live copy.
+  - **NOT done — the file changelog.** `POST next.nexusmods.com/api/flamework/mods/changelogs/add`
+    returned **403** when "Save file" committed, so the mod's Changelogs tab is still EMPTY. The
+    file itself, its version, the archive flag and the description all saved fine — only the
+    changelog entry was rejected. No retry path exists: `/edit/changelog(s)` both 404, the row's
+    per-file **Update** button remains undrivable (08-01 finding, re-confirmed), and the
+    "Add changelog" textarea only appears inside the upload form. The changelog text is
+    preserved verbatim in this session's transcript and the same content is already public in
+    the description, so nothing is lost to users. Worth one manual attempt from the browser, or
+    re-try on the next file upload to see whether the 403 is per-account or transient.
+  - **NEW LESSON recorded** (LESSONS.md 2026-08-11): `DOM.setFileInputFiles` on Windows needs
+    FORWARD-SLASH paths — a backslash path silently produces a **0-byte** File (no CDP error),
+    which surfaced as a Nexus **HTTP 500** plus the misleading client error "Cannot read
+    properties of undefined (reading 'data')". Cost ~4 failed upload attempts before
+    `Network.getResponseBody` showed `size_bytes:0` in the POST body. Always gate on
+    `input.files[0].size > 0`.
 
 ## Session 2026-08-04 — v0.4.0: items.json 947 → 2,445 rows from paldb.cc + check-items gate
 Brief targeted "v0.3.0" but 0.3.0 had already shipped (npm/GitHub/Nexus) from the 08-01
