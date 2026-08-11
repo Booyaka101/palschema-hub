@@ -39,13 +39,20 @@ run('tests/valid-mod.json passes',   validate('tests/valid-mod.json'), 0);
 run('tests/invalid-mod.json fails',  validate('tests/invalid-mod.json'), 1);
 run('tests/example-chikipi.jsonc passes', validate('tests/example-chikipi.jsonc'), 0);
 
-// Real public mods (see tests/real-mods/SOURCES.md for provenance).
-run('real mod: Palvolve passes clean', validate('tests/real-mods/palvolve'), 0);
-run('real mod: Unlimited Buildings passes clean', validate('tests/real-mods/unlimited-buildings'), 0);
+// Real public mods (see tests/real-mods/SOURCES.md for provenance). Known-good mods
+// must stay warning-free — an unknown-key false positive here is the staleness
+// failure mode this release exists to remove.
+run('real mod: Palvolve passes clean, zero unknown-key warnings',
+  validate('tests/real-mods/palvolve'), 0, '0 unknown-key warnings');
+run('real mod: Unlimited Buildings passes clean', validate('tests/real-mods/unlimited-buildings'), 0, '0 unknown-key warnings');
 run('real mod: Old School Loot passes clean (8 files, no unresolved tables)',
-  validate('tests/real-mods/palschemafied-old-school-loot'), 0);
-run('real mod: Accessory Condenser flags stale RedialIndex (true positive)',
-  validate('tests/real-mods/accessory-condenser'), 1, 'unknown field "RedialIndex"');
+  validate('tests/real-mods/palschemafied-old-school-loot'), 0, '0 unknown-key warnings');
+// (0.4.0, PalSchema#134 semantics: a stale-but-real field is a WARNING now — the
+// run no longer fails, but it still names RedialIndex. --strict restores the gate.)
+run('real mod: Accessory Condenser reports stale RedialIndex as a warning, exit 0',
+  validate('tests/real-mods/accessory-condenser'), 0, 'unknown field "RedialIndex"');
+run('real mod: Accessory Condenser fails under --strict (CI mode)',
+  [...validate('tests/real-mods/accessory-condenser'), '--strict'], 1, 'unknown field "RedialIndex"');
 run('broken real mod: typo\'d field name -> typed error',
   validate('tests/real-mods-broken/unlimited-buildings-broken.json'), 1, 'unknown field "InstallMaxNumInBaseCampp"');
 run('broken real mod: wrong type -> typed error',
@@ -59,9 +66,24 @@ run('array wrapper: bad Action value -> precise error',
 
 // SDK-only table (DT_FieldLotteryNameDataTable derived from headers, no paldex source):
 // the real Old School Loot rows validate for real (asserted clean above); a slot the
-// struct doesn't have (only 1..15) is flagged.
-run('SDK-only table: nonexistent lottery slot -> typed error',
-  validate('tests/real-mods-broken/fieldlottery-broken.json'), 1, 'unknown field "ItemSlot16_ProbabilityPercent"');
+// struct doesn't have (only 1..15) is warned, and --strict promotes it to exit 1.
+run('SDK-only table: nonexistent lottery slot -> flagged, exit 1 under --strict',
+  [...validate('tests/real-mods-broken/fieldlottery-broken.json'), '--strict'], 1, 'unknown field "ItemSlot16_ProbabilityPercent"');
+
+// 0.4.0 unknown-key warnings (Okaetsu/PalSchema#134 semantics): warn + suggest,
+// never reject; pseudo-keys stay silent; --strict is the CI gate.
+run('unknown key: case-only typo warns with did-you-mean, exit 0',
+  validate('tests/fixtures/unknown-keys.json'), 0,
+  'WARN tests/fixtures/unknown-keys.json:Lamball unknown field "rarity" — did you mean "Rarity"?');
+run('unknown key: invented field warns with NO suggestion',
+  validate('tests/fixtures/unknown-keys.json'), 0,
+  'unknown field "DefinitelyNotARealPalField"\n');
+run('unknown key: summary counts warnings, run still succeeds',
+  validate('tests/fixtures/unknown-keys.json'), 0, '1 file validated, 0 errors, 2 unknown-key warnings');
+run('pseudo-keys: $Filters + {"Action":"Clear","Items":[...]} wrapper stay silent',
+  validate('tests/fixtures/pseudo-keys.json'), 0, '1 file validated, 0 errors, 0 unknown-key warnings');
+run('--strict promotes unknown-key warnings to errors, exit 1',
+  [...validate('tests/fixtures/unknown-keys.json'), '--strict'], 1, '1 file validated, 2 errors (strict), 0 warnings');
 
 // Version-diff engine (structs/ snapshots + diffs/ + CLI --migrate).
 const migrate = (pair, target) => ['cli/dist/index.js', '--migrate', pair, '--registry', '.', ...(target ? [target] : [])];

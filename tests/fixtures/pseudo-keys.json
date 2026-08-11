@@ -1,0 +1,8 @@
+{
+  "DT_TechnologyRecipeUnlock": {
+    "SomeRow": {
+      "$Filters": { "PalGenusCategory": "Humanoid" },
+      "UnlockItemRecipes": { "Action": "Clear", "Items": ["Axe_Tier_00"] }
+    }
+  }
+}

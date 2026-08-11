@@ -13,6 +13,19 @@ npx palschema-validate --version 1.0 ./mods/
 Flags typos, unknown fields, and wrong types per table/row, with PalSchema's exact loader
 semantics (array `{"Action":"Clear","Items":[…]}` wrappers, `$Filters` row keys, JSONC).
 
+**Unknown keys warn, they don't reject** (since 0.4.0 — the semantics PalSchema itself
+is adopting, [Okaetsu/PalSchema#134](https://github.com/Okaetsu/PalSchema/issues/134)):
+a field the registry's row struct doesn't declare gets a warning with a did-you-mean
+suggestion, so a legitimately-new game field never breaks your build. Genuine
+type/shape errors still fail the run.
+
+```
+WARN mods/pals.json:Lamball unknown field "rarity" — did you mean "Rarity"?
+1 file validated, 0 errors, 1 unknown-key warning
+```
+
+In CI, add `--strict` to promote unknown-key warnings to errors (exit 1).
+
 ## Migrate (breaking-change scan)
 
 ```bash
@@ -44,6 +57,14 @@ and exits 0 instead of pretending a diff exists. Rename notes are heuristic and 
 | `--migrate <a>..<b>` | scan for fields removed/retyped between versions `<a>` and `<b>` |
 | `--registry <r>` | schema/diff source: base URL or local repo-root path (default: the GitHub registry) |
 | `--owner <o>` | GitHub owner for the default registry URL (default `Booyaka101`) |
+| `--strict` | CI mode: promote unknown-key warnings to errors (exit 1) |
+
+## Exit codes
+
+| code | meaning |
+|---|---|
+| 0 | all files pass — unknown-key warnings alone never fail a run |
+| 1 | validation error / breaking `--migrate` field / bad usage — or any unknown-key warning under `--strict` |
 
 Browse the registry: https://booyaka101.github.io/palschema-hub/ · version diffs:
 https://booyaka101.github.io/palschema-hub/diff.html

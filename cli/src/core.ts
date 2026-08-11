@@ -130,11 +130,12 @@ export async function loadRegistryJson(relPath: string, opts: Pick<Options, 'reg
 }
 
 const validatorCache = new Map<string, ValidateFunction | null>();
+const schemaCache = new Map<string, any | null>();
 
-/** Load + compile a table's schema. Returns null (with a warning) if unavailable. */
-export async function getValidator(table: string, opts: Options): Promise<ValidateFunction | null> {
+/** Load a table's RAW schema JSON. Returns null (with a warning) if unavailable. */
+export async function getTableSchema(table: string, opts: Options): Promise<any | null> {
   const key = `${opts.version}:${table}`;
-  if (validatorCache.has(key)) return validatorCache.get(key)!;
+  if (schemaCache.has(key)) return schemaCache.get(key)!;
   const loc = schemaLocation(table, opts);
   let schema: any;
   try {
@@ -147,13 +148,48 @@ export async function getValidator(table: string, opts: Options): Promise<Valida
     }
   } catch (e: any) {
     console.warn(`  ! No schema for table "${table}" (v${opts.version}): ${e.message}`);
+    schemaCache.set(key, null);
+    return null;
+  }
+  schemaCache.set(key, schema);
+  return schema;
+}
+
+/**
+ * Deep-clone a schema with every `"additionalProperties": false` removed, so ajv
+ * reports only genuine type/shape errors. Unknown keys are handled by the
+ * post-validation `unknownKeys` pass instead, as warnings with did-you-mean
+ * suggestions — the semantics PalSchema itself is adopting (Okaetsu/PalSchema#134):
+ * a legitimately-new game field must degrade to a warning, never a rejection.
+ */
+function stripAdditionalProps(node: any): any {
+  if (Array.isArray(node)) return node.map(stripAdditionalProps);
+  if (node && typeof node === 'object') {
+    const out: any = {};
+    for (const [k, v] of Object.entries(node)) {
+      if (k === 'additionalProperties' && v === false) continue;
+      out[k] = stripAdditionalProps(v);
+    }
+    return out;
+  }
+  return node;
+}
+
+/** Load + compile a table's schema (additionalProperties-stripped — see above).
+ *  Returns null (with a warning) if unavailable. */
+export async function getValidator(table: string, opts: Options): Promise<ValidateFunction | null> {
+  const key = `${opts.version}:${table}`;
+  if (validatorCache.has(key)) return validatorCache.get(key)!;
+  const schema = await getTableSchema(table, opts);
+  if (!schema) {
     validatorCache.set(key, null);
     return null;
   }
+  const stripped = stripAdditionalProps(schema);
   // ajv keys schemas by $id — avoid "already exists" if two files share a $id.
   const ajv = getAjv();
-  let validate = schema.$id ? ajv.getSchema(schema.$id) : undefined;
-  if (!validate) validate = ajv.compile(schema);
+  let validate = stripped.$id ? ajv.getSchema(stripped.$id) : undefined;
+  if (!validate) validate = ajv.compile(stripped);
   validatorCache.set(key, validate as ValidateFunction);
   return validate as ValidateFunction;
 }
@@ -180,6 +216,142 @@ function friendly(table: string, row: string, err: ErrorObject): Finding {
     message = `must be ${(err.params as any).type}`;
   }
   return { file: '', table, row, path, message };
+}
+
+/* ---------------- unknown-key warnings (PalSchema#134 semantics) ---------------- */
+
+/**
+ * Pseudo-keys PalSchema's loaders consume that are NOT row-struct members.
+ * Single extension point: add here when PalSchema grows a new loader form.
+ */
+export const PSEUDO_KEYS = {
+  /** Row-level metadata key (PalRawTableLoader skips it; used with wildcard row keys). */
+  row: ['$Filters'],
+  /** The {"Action": "Clear", "Items": [...]} wrapper accepted on any array field. */
+  arrayWrapper: ['Action', 'Items'],
+};
+
+/** Levenshtein distance with a cap: returns cap+1 as soon as the distance exceeds it. */
+export function levenshtein(a: string, b: string, cap = 2): number {
+  if (a === b) return 0;
+  if (Math.abs(a.length - b.length) > cap) return cap + 1;
+  let prev = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const cur = [i];
+    let rowMin = i;
+    for (let j = 1; j <= b.length; j++) {
+      const v = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      cur.push(v);
+      if (v < rowMin) rowMin = v;
+    }
+    if (rowMin > cap) return cap + 1;
+    prev = cur;
+  }
+  return prev[b.length];
+}
+
+/**
+ * At most one suggestion per unknown key. In order: exact case-insensitive match
+ * (always suggest); else Levenshtein <= 2, closest wins, ties alphabetical; else none.
+ */
+export function suggestKey(key: string, declared: Iterable<string>): string | undefined {
+  const sorted = [...declared].sort();
+  const lower = key.toLowerCase();
+  for (const d of sorted) if (d.toLowerCase() === lower) return d;
+  let best: string | undefined;
+  let bestDist = 3;
+  for (const d of sorted) {
+    const dist = levenshtein(key, d, 2);
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = d;
+    }
+  }
+  return best;
+}
+
+export interface UnknownKeyWarning {
+  row: string;
+  key: string;
+  /** '' for a direct row field; otherwise the parent path, e.g. "UnlockItemRecipes". */
+  path: string;
+  suggestion?: string;
+}
+
+/** Object-shaped branches of a schema node (itself, plus oneOf/anyOf alternatives). */
+function objectBranches(node: any): any[] {
+  const out: any[] = [];
+  for (const b of [node, ...(node?.oneOf ?? []), ...(node?.anyOf ?? [])]) {
+    if (b && typeof b === 'object' && b.properties) out.push(b);
+  }
+  return out;
+}
+
+function walkUnknown(
+  value: any,
+  node: any,
+  path: string,
+  rowName: string,
+  isRow: boolean,
+  out: UnknownKeyWarning[]
+): void {
+  if (!value || typeof value !== 'object' || !node || typeof node !== 'object') return;
+  if (Array.isArray(value)) {
+    const arrayBranch = [node, ...(node.oneOf ?? []), ...(node.anyOf ?? [])].find(
+      (b) => b && typeof b === 'object' && b.items
+    );
+    if (arrayBranch) {
+      value.forEach((el, i) =>
+        walkUnknown(el, arrayBranch.items, `${path}[${i}]`, rowName, false, out)
+      );
+    }
+    return;
+  }
+  const branches = objectBranches(node);
+  // Only enforce keys where the ORIGINAL schema said additionalProperties: false —
+  // deliberately-open structs (additionalProperties true/absent) accept anything.
+  const closed = branches.filter((b) => b.additionalProperties === false);
+  const declared = new Set<string>();
+  for (const b of branches) for (const k of Object.keys(b.properties)) declared.add(k);
+  if (closed.length) {
+    const allowed = new Set(declared);
+    if (isRow) for (const k of PSEUDO_KEYS.row) allowed.add(k);
+    // The Clear/Items wrapper is legal wherever the field also accepts a plain array.
+    const acceptsArray = [node, ...(node.oneOf ?? []), ...(node.anyOf ?? [])].some(
+      (b) =>
+        b &&
+        typeof b === 'object' &&
+        (b.type === 'array' || (Array.isArray(b.type) && b.type.includes('array')) || b.items)
+    );
+    if (acceptsArray) for (const k of PSEUDO_KEYS.arrayWrapper) allowed.add(k);
+    for (const k of Object.keys(value)) {
+      if (!allowed.has(k)) out.push({ row: rowName, key: k, path, suggestion: suggestKey(k, declared) });
+    }
+  }
+  // Recurse into declared members (a nested object with its own properties is walked).
+  for (const [k, v] of Object.entries(value)) {
+    for (const b of branches) {
+      if (b.properties[k]) {
+        walkUnknown(v, b.properties[k], path ? `${path}/${k}` : k, rowName, false, out);
+        break;
+      }
+    }
+  }
+}
+
+/**
+ * Post-validation pass: compare each row's own keys against the schema's declared
+ * properties plus the PSEUDO_KEYS allowlist. Returns warnings, never errors —
+ * unknown keys must not fail a run (PalSchema#134); --strict promotes them.
+ */
+export function unknownKeys(rows: Record<string, any>, schema: any): UnknownKeyWarning[] {
+  const out: UnknownKeyWarning[] = [];
+  if (!rows || typeof rows !== 'object' || Array.isArray(rows)) return out;
+  for (const [rowName, row] of Object.entries(rows)) {
+    if (row === null || typeof row !== 'object' || Array.isArray(row)) continue;
+    walkUnknown(row, schema, '', rowName, true, out);
+  }
+  return out;
 }
 
 /**
@@ -243,12 +415,23 @@ export function detectTargets(
   return [];
 }
 
-/** Validate one mod file. Returns findings ([] = clean). */
-export async function validateFile(file: string, opts: Options): Promise<Finding[]> {
+export interface FileWarning extends UnknownKeyWarning {
+  file: string;
+  table: string;
+}
+
+export interface FileResult {
+  findings: Finding[];
+  warnings: FileWarning[];
+}
+
+/** Validate one mod file. Returns AJV findings (errors) + unknown-key warnings. */
+export async function validateFile(file: string, opts: Options): Promise<FileResult> {
   const text = readFileSync(file, 'utf8');
   const data = parseJsonc(text, file);
   const targets = detectTargets(data, file);
   const findings: Finding[] = [];
+  const warnings: FileWarning[] = [];
 
   if (!targets.length) {
     findings.push({
@@ -259,7 +442,7 @@ export async function validateFile(file: string, opts: Options): Promise<Finding
       message:
         'could not determine target DataTable — expected top-level "DT_*" keys, a "$schema" field, or a DT_*-prefixed filename',
     });
-    return findings;
+    return { findings, warnings };
   }
 
   for (const { table, content } of targets) {
@@ -281,8 +464,10 @@ export async function validateFile(file: string, opts: Options): Promise<Finding
         }
       }
     }
+    const schema = await getTableSchema(table, opts); // cached — same fetch as getValidator
+    if (schema) warnings.push(...unknownKeys(content, schema).map((w) => ({ ...w, file, table })));
   }
-  return findings;
+  return { findings, warnings };
 }
 
 /* ---------------- --migrate: version-diff breaking-change scan ---------------- */

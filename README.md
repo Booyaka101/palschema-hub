@@ -67,10 +67,10 @@ generator, its output can **supersede** these files with zero code changes: drop
 `npm test` validates four real PalSchema mods from Nexus (provenance:
 [`tests/real-mods/SOURCES.md`](tests/real-mods/SOURCES.md)): **Palvolve**,
 **Unlimited Buildings**, and **Old School Loot** validate clean (10/10 files);
-**Accessory Condenser** is flagged for one genuinely stale field (`RedialIndex`,
+**Accessory Condenser** gets a warning for one genuinely stale field (`RedialIndex`,
 removed from the game) — the same thing PalSchema logs as
 `Property 'RedialIndex' not found in Row ...` at load time, caught here before
-you ever launch the game.
+you ever launch the game (and promoted to a failing error with `--strict`).
 
 ---
 
@@ -88,8 +88,23 @@ Validates PalSchema mod files. A mod file targets one or more DataTables by name
 
 The CLI detects the target table(s) from **top-level `DT_*` keys** (the real PalSchema
 format), or falls back to a `$schema` field / `DT_*`-prefixed filename. It fetches each
-table's schema from the registry, validates every row with **ajv (strict mode)**, prints
-field-level errors (path + message), and exits **1** on any error, **0** if all pass.
+table's schema from the registry, validates every row with **ajv**, and prints
+field-level errors (path + message). Since CLI 0.4.0, a key the registry's row struct
+doesn't declare is a **warning with a did-you-mean suggestion, not a rejection** —
+the semantics PalSchema itself is adopting
+([Okaetsu/PalSchema#134](https://github.com/Okaetsu/PalSchema/issues/134)) — so a
+legitimately-new game field can never turn into a build-breaking false positive.
+PalSchema's pseudo-keys (`$Filters`, the `{"Action":"Clear","Items":[…]}` array
+wrapper) never warn:
+
+```
+WARN mods/pals.json:Lamball unknown field "rarity" — did you mean "Rarity"?
+1 file validated, 0 errors, 1 unknown-key warning
+```
+
+**Exit codes:** 0 = all files pass (warnings alone never fail a run) · 1 = any
+type/shape error, breaking `--migrate` field, or bad usage — or any unknown-key
+warning when `--strict` (the CI mode) is given.
 
 ```bash
 # Once published to npm + the registry is on GitHub, from any mod repo:
@@ -109,6 +124,7 @@ node cli/dist/index.js --version 1.0 --registry . tests/invalid-mod.json  # exit
 | `--migrate <a>..<b>` | scan mods for fields removed/retyped between two game versions (e.g. `0.7.2..1.0`) — exactly one of `--version` / `--migrate` |
 | `--registry <r>` | schema source: a base URL, **or** a local repo-root path (`.`). Default: `https://raw.githubusercontent.com/<owner>/palschema-hub/main` |
 | `--owner <o>` | GitHub owner for the default registry URL (default `Booyaka101`, or `$PALSCHEMA_OWNER`) |
+| `--strict` | CI mode: promote unknown-key warnings to errors (exit 1) |
 | `-h, --help` | usage |
 
 ---

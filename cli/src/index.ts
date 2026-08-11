@@ -7,6 +7,8 @@ import {
   migrateScanFile,
   resolveVersionLabel,
   validateFile,
+  type FileResult,
+  type FileWarning,
   type Finding,
   type MigrateHit,
   type Options,
@@ -32,18 +34,27 @@ Options:
   --registry <r>   Schema/diff source: a base URL, or a local repo-root path
                    (default: https://raw.githubusercontent.com/<owner>/palschema-hub/main)
   --owner <o>      GitHub owner for the default registry URL          (default: Booyaka101)
+  --strict         CI mode: promote unknown-key warnings to errors (exit 1)
   -h, --help       Show this help
+
+Unknown keys (validate mode): a field the registry's row struct doesn't declare is
+reported as a WARNING with a did-you-mean suggestion, not a rejection — matching the
+semantics PalSchema itself is adopting (Okaetsu/PalSchema#134). PalSchema pseudo-keys
+($Filters, the {"Action": "Clear", "Items": [...]} array wrapper) never warn.
 
 Examples:
   npx palschema-validate --version 1.0 ./mods/
   npx palschema-validate --migrate 0.7.2..1.0 ./mods/
   npx palschema-validate --migrate 0.7.2..1.0 --registry . tests/migrate-fixtures/partner-skill.json
 
-Exit code: 0 if all files pass, 1 if any validation error / breaking field (or bad usage).`;
+Exit codes: 0 = all files pass (unknown-key warnings alone never fail a run);
+            1 = validation error / breaking field / bad usage, or any unknown-key
+                warning when --strict is given.`;
 
 interface Parsed {
   opts: Options;
   paths: string[];
+  strict: boolean;
   migrate?: { from: string; to: string };
 }
 
@@ -52,6 +63,7 @@ function parseArgs(argv: string[]): Parsed | null {
   let migrate = '';
   let registry: string | undefined;
   let owner = process.env.PALSCHEMA_OWNER || 'Booyaka101';
+  let strict = false;
   const paths: string[] = [];
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -60,6 +72,7 @@ function parseArgs(argv: string[]): Parsed | null {
     else if (a === '--migrate') migrate = argv[++i] ?? '';
     else if (a === '--registry') registry = argv[++i];
     else if (a === '--owner') owner = argv[++i] ?? owner;
+    else if (a === '--strict') strict = true;
     else if (a.startsWith('--version=')) version = a.slice('--version='.length);
     else if (a.startsWith('--migrate=')) migrate = a.slice('--migrate='.length);
     else if (a.startsWith('--registry=')) registry = a.slice('--registry='.length);
@@ -83,13 +96,13 @@ function parseArgs(argv: string[]): Parsed | null {
       console.error(`Error: --migrate expects <from>..<to> (e.g. 0.7.2..1.0), got "${migrate}".\n`);
       return null;
     }
-    return { opts: { version: m[2], registry, owner }, paths, migrate: { from: m[1], to: m[2] } };
+    return { opts: { version: m[2], registry, owner }, paths, strict, migrate: { from: m[1], to: m[2] } };
   }
   if (!paths.length) {
     console.error('Error: provide at least one file or directory to validate.\n');
     return null;
   }
-  return { opts: { version, registry, owner }, paths };
+  return { opts: { version, registry, owner }, paths, strict };
 }
 
 async function runMigrate(parsed: Parsed): Promise<never> {
@@ -243,36 +256,45 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`palschema-validate · Palworld v${opts.version} · ${files.length} file(s)\n`);
+  // Unknown-key warnings (PalSchema#134 semantics): direct row fields print as
+  //   WARN <file>:<rowKey> unknown field "<key>" — did you mean "<suggestion>"?
+  // nested keys keep the CLI's established "unknown key" wording plus their path.
+  const warnLine = (w: FileWarning): string => {
+    const what = w.path ? `unknown key "${w.key}" (in ${w.path})` : `unknown field "${w.key}"`;
+    return `WARN ${w.file}:${w.row} ${what}${w.suggestion ? ` — did you mean "${w.suggestion}"?` : ''}`;
+  };
 
   const allFindings: Finding[] = [];
-  let passed = 0;
+  const allWarnings: FileWarning[] = [];
   for (const file of files) {
-    let findings: Finding[];
+    let result: FileResult;
     try {
-      findings = await validateFile(file, opts);
+      result = await validateFile(file, opts);
     } catch (e: any) {
-      findings = [{ file, table: '(parse)', row: '', path: '/', message: e.message }];
+      result = { findings: [{ file, table: '(parse)', row: '', path: '/', message: e.message }], warnings: [] };
     }
-    if (findings.length === 0) {
-      console.log(`  ✓ ${file}`);
-      passed++;
-    } else {
+    if (result.findings.length) {
       console.log(`  ✗ ${file}`);
-      for (const f of findings) {
+      for (const f of result.findings) {
         const where = [f.table, f.row].filter(Boolean).join(' > ');
         console.log(`      ${where}${f.path && f.path !== '/' ? ' ' + f.path : ''}: ${f.message}`);
       }
-      allFindings.push(...findings);
+      allFindings.push(...result.findings);
     }
+    for (const w of result.warnings) console.log(warnLine(w));
+    allWarnings.push(...result.warnings);
   }
 
-  const failedFiles = new Set(allFindings.map((f) => f.file)).size;
+  // Never claim unqualified success while warnings exist; --strict promotes them.
+  const errorCount = allFindings.length + (parsed.strict ? allWarnings.length : 0);
+  const warnCount = parsed.strict ? 0 : allWarnings.length;
+  const s = (n: number) => (n === 1 ? '' : 's');
   console.log(
-    `\n${passed}/${files.length} file(s) passed` +
-      (allFindings.length ? ` · ${allFindings.length} error(s) in ${failedFiles} file(s)` : '')
+    `${files.length} file${s(files.length)} validated, ` +
+      `${errorCount} error${s(errorCount)}${parsed.strict && allWarnings.length ? ' (strict)' : ''}, ` +
+      (parsed.strict ? `${warnCount} warning${s(warnCount)}` : `${warnCount} unknown-key warning${s(warnCount)}`)
   );
-  process.exit(allFindings.length ? 1 : 0);
+  process.exit(errorCount ? 1 : 0);
 }
 
 main().catch((e) => {

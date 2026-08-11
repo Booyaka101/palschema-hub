@@ -1,6 +1,54 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-04 (v0.4.0 items.json regeneration session)
+**Last updated:** 2026-08-11 (CLI 0.4.0 unknown-key-warnings session)
+
+## Session 2026-08-11 — palschema-validate 0.4.0: unknown keys warn, don't reject (#134 semantics)
+Workspace was 1 commit behind origin (Dependabot @types/node bump in cli/) — fast-forwarded
+first. Baseline recorded before any change: **29 tests** (brief guessed 26; 29 is the truth).
+- **Phase-0 verified live (all):** PalSchema #134 open (gettygoop 2026-08-05, warn-don't-reject
+  + did-you-mean + pseudo-keys stay accepted); #133 open (WorkableAttribute min-1 vs vanilla 0
+  — does NOT apply to us, our schema has no min, and the CHANGELOG says so explicitly); our
+  live DT_ItemRecipeDataTable schema (additionalProperties:false at root + DenyRecipeChain);
+  PalSchema's bundled assets/schemas (5 files); cli/package.json 0.3.0/ajv ^8.17.1. All free/local.
+- **cli/src/core.ts:** `getTableSchema` (raw-schema cache) split out of `getValidator`, which
+  now compiles an in-memory clone with every `additionalProperties: false` deleted — the
+  published schemas/v1.0 files are BYTE-UNCHANGED (registry contract; acceptance (e) verified
+  via git diff). New exports: `PSEUDO_KEYS` (single extension point: row `$Filters` +
+  arrayWrapper Action/Items), `levenshtein` (capped), `suggestKey` (case-insensitive exact
+  always wins; else distance ≤ 2, closest, ties alphabetical; at most one), `unknownKeys(rows,
+  schema)` post-validation walker. Key subtlety found by corpus grep: 10 schema nodes are
+  DELIBERATELY open (`additionalProperties: true` soft-object-path structs like
+  VisualBlueprintClassSoft) — the walker only enforces keys where the ORIGINAL schema said
+  `false`, so its accepted set is exactly AJV's old accepted set, softened to warnings; zero
+  false-positive risk on mods that used to pass. Wrapper keys are only allowed on nodes that
+  actually accept an array form. `validateFile` returns `{findings, warnings}`.
+- **cli/src/index.ts:** `--strict` flag; validate-mode output is now WARN lines
+  (`WARN <file>:<row> unknown field "<k>" — did you mean "<s>"?`; nested keys keep the CLI's
+  established `unknown key "<k>" (in <path>)` wording, which preserves the wrapper-typo test)
+  + the honest summary `N file(s) validated, E error(s)[ (strict)], W unknown-key warning(s)`.
+  The old banner + per-file ✓ lines are GONE in validate mode (worked example demands exact
+  stdout); ✗ error blocks unchanged; --migrate wholly untouched.
+- **Tests 29 → 35** (all green). New fixtures tests/fixtures/{unknown-keys,pseudo-keys}.json.
+  Two tests that asserted the old rejection semantics were PORTED to the new truth (same
+  precedent as the 0.4.0 items flip): Accessory Condenser RedialIndex → warning/exit 0 +
+  a NEW --strict exit-1 case; fieldlottery ItemSlot16 → asserted under --strict. Known-good
+  mods (Palvolve/Unlimited Buildings/Old School Loot) now assert `0 unknown-key warnings`.
+- **VERIFIED end-to-end:** worked example byte-exact (2 WARN lines + `1 file validated,
+  0 errors, 2 unknown-key warnings`, exit 0; --strict → `2 errors (strict)`, exit 1);
+  pseudo-key fixture silent; real-mod corpus zero warnings; tarball npm-packed + installed in
+  a clean D:\tmp scratch dir (relative path!) and run against BOTH a local registry and the
+  LIVE GitHub raw registry — remote schemas strip client-side, works. self-test.yml needs no
+  edit (invalid-mod still exits 1 via its type error; migrate steps untouched).
+- cli 0.3.0 → **0.4.0** (+package-lock sync), CHANGELOG entry dated 2026-08-11 crediting
+  Okaetsu/PalSchema#134, README + cli/README rewritten (--strict, exit-code table, sample
+  WARN line). Root package stays 0.4.0 (registry/site unchanged).
+- **NOT done (owner ships from phone):** `git push` (triggers Pages, but no registry file
+  changed — only docs/CLI), and `cd cli && npm publish` (makes palschema-validate@0.4.0
+  `latest`; after publish, verify with cold `npx -y --prefer-online palschema-validate@0.4.0
+  --version 1.0 <file>` per the 0.2.0 ETARGET lesson — retry ~1 min if stale packument).
+  Optional distribution: comment on PalSchema #134 that palschema-validate 0.4.0 ships these
+  exact semantics today (file+row+case-insensitive suggestion, pseudo-keys silent, --strict
+  for CI) — it directly answers gettygoop's proposal and is the highest-value announce.
 
 ## Session 2026-08-04 — v0.4.0: items.json 947 → 2,445 rows from paldb.cc + check-items gate
 Brief targeted "v0.3.0" but 0.3.0 had already shipped (npm/GitHub/Nexus) from the 08-01

@@ -1,5 +1,47 @@
 # Changelog — palschema-hub / palschema-validate
 
+## palschema-validate (CLI) 0.4.0 — 2026-08-11
+
+**Unknown keys warn instead of rejecting — with did-you-mean suggestions and a
+`--strict` CI gate.** Semantics sourced from
+[Okaetsu/PalSchema#134](https://github.com/Okaetsu/PalSchema/issues/134) (gettygoop,
+2026-08-05): the framework itself is moving to "validate authored keys against
+reflected properties plus documented pseudo-keys, warn with file + row ID and a
+case-insensitive suggestion, prefer warnings over rejection". Our published schemas
+set `additionalProperties: false`, so until now any field our SDK snapshot didn't
+know about — including a legitimately-NEW game field — was a build-breaking AJV
+rejection: the exact staleness failure mode this project exists to avoid.
+
+- **Schemas are `additionalProperties`-stripped before AJV compiles them** (in-memory
+  clone; the published `schemas/v1.0/*.schema.json` files are byte-unchanged — they
+  remain the registry contract other tools consume). AJV now reports only genuine
+  type/shape errors.
+- **New post-validation `unknownKeys` pass:** each row's own keys are compared
+  against the schema's declared properties plus the exported `PSEUDO_KEYS` allowlist
+  (`$Filters` row key; the `{"Action":"Clear","Items":[…]}` wrapper legal on any
+  array field). Nested objects with their own declared properties are walked
+  recursively; deliberately-open structs (`additionalProperties: true`) stay silent.
+- **One suggestion per unknown key**, in order: exact case-insensitive match (always
+  suggested); else Levenshtein distance ≤ 2 against declared properties, closest
+  wins, ties alphabetical; else none.
+  `WARN mods/pals.json:Lamball unknown field "rarity" — did you mean "Rarity"?`
+- **Exit codes:** warnings alone exit 0; real schema errors still exit 1; new
+  `--strict` flag (CI mode) promotes unknown-key warnings to errors and exits 1.
+  The summary never claims unqualified success while warnings exist:
+  `1 file validated, 0 errors, 2 unknown-key warnings` (validate mode also drops the
+  old banner/per-file ✓ lines in favour of this summary).
+- **Ported two acceptance tests that asserted the old rejection semantics** to the
+  new truth: Accessory Condenser's stale `RedialIndex` now warns (exit 0, still
+  named; `--strict` restores the failing gate), and the nonexistent
+  `ItemSlot16_ProbabilityPercent` lottery slot is asserted under `--strict`.
+  Known-good real mods (Palvolve, Unlimited Buildings, Old School Loot) are now also
+  asserted **zero-warning** — an unknown-key false positive on a clean mod fails the
+  suite. Tests 29 → **35**. `--migrate` behaviour is unchanged.
+- Note: [Okaetsu/PalSchema#133](https://github.com/Okaetsu/PalSchema/issues/133)
+  (recipe schema rejecting the vanilla `WorkableAttribute = 0`) does **not** apply to
+  this registry — our `WorkableAttribute` has never carried a minimum/default, and
+  this release adds no constraints to any schema.
+
 ## 0.4.0 — 2026-08-04
 
 **items.json goes current: 947 → 2,445 rows, sourced from paldb.cc (Palworld 1.0.2), with a
