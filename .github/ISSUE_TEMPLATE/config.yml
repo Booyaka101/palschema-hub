@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: PalSchema
+    url: https://github.com/Okaetsu/PalSchema
+    about: The mod loader these schemas describe. Patch behaviour questions belong there.
+  - name: Submit schemas with palsc
+    url: https://github.com/Booyaka101/pal-schema-collect
+    about: The companion CLI that opens registry pull requests from Schema Generator output.
+  - name: Security issue
+    url: https://github.com/Booyaka101/palschema-hub/security/advisories/new
+    about: Please report vulnerabilities privately, not as a public issue.

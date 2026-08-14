@@ -1,0 +1,44 @@
+name: Bug report
+description: Something didn't work the way it should
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you ran, and what came back.
+      placeholder: |
+        $ npx palschema-validate --version 1.0 ./mods/
+        Error: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: palschema-validate version
+      description: Output of `npx palschema-validate --version`
+    validations:
+      required: true
+
+  - type: input
+    id: runtime
+    attributes:
+      label: Node version and OS
+      description: Output of `node --version`, plus your OS.
+      placeholder: v22.18.0 on Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: table
+    attributes:
+      label: Which table and which schema version
+      description: The `DT_*` table, and the `--version` you passed. Wrong-field reports need both to be actionable.
