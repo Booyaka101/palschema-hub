@@ -67,9 +67,15 @@ async function ensureSdk(version, sdkCommit) {
     if (!existsSync(tarball)) {
       const url = `https://api.github.com/repos/${versionsInfo.repo}/tarball/${sdkCommit}`;
       console.log(`  downloading ${url} ...`);
+      // Unauthenticated api.github.com is 60/hr per IP and this loop spends 12 of
+      // them; GITHUB_TOKEN (when present, e.g. the auto-bump job) raises it to 5000.
+      const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
       let res;
       try {
-        res = await fetch(url, { redirect: 'follow' });
+        res = await fetch(url, {
+          redirect: 'follow',
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
+        });
       } catch (e) {
         throw new Error(`network failure fetching SDK tarball for ${version}: ${e.message}`);
       }

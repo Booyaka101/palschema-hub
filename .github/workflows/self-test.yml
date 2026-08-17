@@ -50,6 +50,11 @@ jobs:
         run: node cli/dist/index.js --migrate 0.7.2..0.7.3 --registry . | grep "no row-struct changes"
       - name: alias pair 1.0.1..1.0.2 resolves and reports no row-struct changes (exit 0)
         run: node cli/dist/index.js --migrate 1.0.1..1.0.2 --registry . | grep "no row-struct changes"
+      # The auto-bump rewrites versions.json with its own serializer and refuses to
+      # run if the file has drifted from that style. Catch the drift at PR time,
+      # not on the morning a patch ships.
+      - name: versions.json round-trips through the auto-bump serializer
+        run: node scripts/bump-version.mjs --check-format
       # Informational only — tells us when Palworld or the SDK moves past the
       # registry (exit 1 = stale, exit 2 = network); never fails the build.
       - name: registry currency vs live game + SDK (informational)

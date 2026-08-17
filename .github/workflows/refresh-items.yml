@@ -1,4 +1,4 @@
-# Weekly currency watch (Mondays 06:00 UTC).
+# Daily currency watch (06:00 UTC).
 #
 # This used to re-run build-items.mjs every week — but the upstream paldex dump
 # is frozen at Jan-2024, so that re-derived identical data forever and HID the
@@ -10,11 +10,15 @@
 #      Changed => the upstream dump finally updated => regenerate items.json.
 #   2. registry currency: scripts/check-currency.mjs against the live Steam
 #      news API + PalworldModdingKit commits (exit 1 = stale, 2 = network).
+#
+# The version-alias job then ACTS on the one case that is fully derivable (a game
+# patch that shipped no SDK header change) and opens the PR itself. Daily rather
+# than weekly because a patch used to sit undetected for up to six days.
 name: refresh-items
 
 on:
   schedule:
-    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+    - cron: '0 6 * * *' # daily 06:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -83,7 +87,82 @@ jobs:
         run: |
           set -euo pipefail
           title="registry stale: ${{ steps.currency.outputs.line }}"
-          body=$(printf '`npm run versions:check` reports:\n\n```\n%s\n```\n\nIf the GAME moved: add the new version to `versions.json` (as an alias if `Source/Pal/Public` did not regenerate — check the PalworldModdingKit commit list), run `npm run snapshot:all && npm run diff:all`, and update `sdkHead`.\nIf the SDK regenerated: snapshot the new commit and ship the real diff.' "${{ steps.currency.outputs.line }}")
+          body=$(printf '`npm run versions:check` reports:\n\n```\n%s\n```\n\nIf only the GAME moved and `Source/Pal/Public` did not regenerate, the version-alias job in this same workflow opens the PR by itself (`npm run versions:bump`), so there is nothing to do here but review it.\n\nIf the SDK regenerated, the row structs really changed: pin the new commit in `versions.json` (order + versions), then `npm run snapshot:all && npm run diff:all && npm run seed && npm run check`, and read the diff before shipping.' "${{ steps.currency.outputs.line }}")
           if [ -z "$(gh issue list --state open --search "\"registry stale\" in:title" --json number --jq '.[].number')" ]; then
             gh issue create --title "$title" --body "$body"
           fi
+
+  # The mechanical half of "a new Palworld patch shipped": when the game moved but
+  # the SDK headers did NOT, the new label is an alias and every artifact under it
+  # is derivable. bump-version.mjs verifies that against both live sources and
+  # refuses (exit 3) the moment real header changes are involved — that case still
+  # gets a human. Everything here lands as a PR, never a push to main.
+  version-alias:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Alias bump (exit 0 wrote it, 3 needs a human, 4 nothing to do)
+        id: bump
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          node scripts/bump-version.mjs
+          code=$?
+          set -e
+          echo "exit=$code" >> "$GITHUB_OUTPUT"
+          case "$code" in
+            0) echo "alias written — opening a PR" ;;
+            3) echo "SDK regenerated: not an alias, the currency-watch issue covers it" ;;
+            4) echo "nothing to do" ;;
+            *) echo "no action taken (exit $code)" ;;
+          esac
+
+      # Gate the PR on the same suite CI would run. PRs opened with GITHUB_TOKEN
+      # do not trigger other workflows, so if this suite does not run here it does
+      # not run at all until a human pushes to the branch.
+      - name: Acceptance tests
+        if: steps.bump.outputs.exit == '0'
+        run: |
+          npm run cli:build
+          npm test
+
+      - name: Open the PR
+        if: steps.bump.outputs.exit == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.bump.outputs.version }}
+          ALIAS_OF: ${{ steps.bump.outputs.alias_of }}
+        run: |
+          set -euo pipefail
+          branch="auto/palworld-$VERSION-alias"
+          if [ -n "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            echo "a PR for $branch is already open"; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add versions.json structs diffs
+          git commit -F - <<COMMIT
+          data: Palworld $VERSION aliases $ALIAS_OF (no SDK header change)
+
+          Opened by refresh-items/version-alias. scripts/bump-version.mjs verified
+          against the Steam news API (appid 1623730) and the PalworldModdingKit
+          commit list that Source/Pal/Public did not regenerate for this patch, so
+          the row structs are identical to $ALIAS_OF. Regenerated struct snapshots
+          and pairwise diffs; the acceptance suite ran green before this commit.
+          COMMIT
+          git push -u origin "$branch"
+          issue=$(gh issue list --state open --search '"registry stale" in:title' --json number --jq '.[0].number // empty')
+          closes=""
+          if [ -n "$issue" ]; then closes=$(printf 'Closes #%s\n\n' "$issue"); fi
+          body=$(printf '%sPalworld **%s** shipped and `Source/Pal/Public` did not regenerate, so it is an alias of **%s**. The shas this was checked against are in `versions.json`, `aliases["%s"].aliasReason`.\n\nGenerated: the `versions.json` entry, `structs/%s.json`, and the `..%s` diffs. The acceptance suite ran green in the job that opened this PR. Note that self-test does NOT auto-run on PRs opened with `GITHUB_TOKEN`, so push a commit or close/reopen if you want its checks on record.\n\nStill human work, if it matters for this patch: the README alias caveat, `cli/README.md`, and CHANGELOG all name the alias list in prose.' \
+            "$closes" "$VERSION" "$ALIAS_OF" "$VERSION" "$VERSION" "$VERSION")
+          gh pr create --title "data: Palworld $VERSION aliases $ALIAS_OF (no SDK header change)" --body "$body"

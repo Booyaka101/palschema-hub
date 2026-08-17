@@ -4,14 +4,20 @@
  * Asserts: index.json valid w/ >=10 tables; valid-mod passes (0); invalid-mod fails (1).
  */
 import { spawnSync } from 'node:child_process';
-import { cpSync, mkdtempSync, rmSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { registryNewest } from './lib/version-sources.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const node = process.execPath;
 let failures = 0;
+
+function assert(label, ok, why = '') {
+  console.log(`${ok ? 'PASS' : 'FAIL'}  ${label}${why ? `  (${why})` : ''}`);
+  if (!ok) failures++;
+}
 
 function run(label, args, expectCode, expectOutput) {
   const r = spawnSync(node, args, { cwd: ROOT, encoding: 'utf8' });
@@ -125,14 +131,87 @@ run('items.json carries _provenance: current-game values, >= 2400 rows',
     `if(!p||p.valuesCurrent!==true||p.gameVersion!=='1.0.2'||!(p.rowCount>=2400))process.exit(1);` +
     `console.log('provenance OK');`],
   0, 'provenance OK');
-run('check-currency: in-sync fixture -> exit 0 "registry current"',
-  ['scripts/check-currency.mjs', '--steam-json', 'tests/currency-fixtures/steam-insync.json',
-    '--commits-json', 'tests/currency-fixtures/commits-insync.json'],
-  0, 'registry current: game 1.0.2, SDK 62fad41');
-run('check-currency: stale fixture -> exit 1 naming the new game version',
-  ['scripts/check-currency.mjs', '--steam-json', 'tests/currency-fixtures/steam-stale.json',
-    '--commits-json', 'tests/currency-fixtures/commits-insync.json'],
-  1, 'game 1.0.3 released, registry newest is 1.0.2');
+// Currency + auto-bump. The fixtures are ANCHORED to versions.json rather than
+// naming a game version: hardcoded ones rotted on every alias bump (the day
+// 1.0.3 shipped, the "1.0.3 is hypothetical" fixture became a lie).
+const versionsInfo = JSON.parse(readFileSync(join(ROOT, 'versions.json'), 'utf8'));
+const newestLabel = registryNewest(versionsInfo);
+const nextLabel = (() => {
+  const p = newestLabel.split('.').map(Number);
+  p[p.length - 1] += 1;
+  return p.join('.');
+})();
+const pinnedNewest = versionsInfo.order[versionsInfo.order.length - 1];
+const pinnedSha = versionsInfo.versions[pinnedNewest].sdkCommit;
+const headSha = versionsInfo.sdkHead.commit;
+
+const fx = mkdtempSync(join(tmpdir(), 'psv-currency-'));
+try {
+  const steamTpl = JSON.parse(readFileSync(join(ROOT, 'tests/currency-fixtures/steam-insync.json'), 'utf8'));
+  const commitsTpl = JSON.parse(readFileSync(join(ROOT, 'tests/currency-fixtures/commits-insync.json'), 'utf8'));
+  const write = (name, obj) => {
+    const p = join(fx, name);
+    writeFileSync(p, JSON.stringify(obj, null, 2));
+    return p;
+  };
+  // Real API shapes (the committed fixtures), with the version-dependent bits
+  // rewritten to whatever the registry claims right now.
+  const feedWith = (v) => ({
+    ...steamTpl,
+    appnews: {
+      ...steamTpl.appnews,
+      newsitems: [
+        ...steamTpl.appnews.newsitems,
+        { gid: 'gen', title: `v${v}: Balance Adjustments & Bug Fixes`, date: 1790000000, feedlabel: 'Community Announcements' },
+      ],
+    },
+  });
+  const commitsWith = (sha) => [{ ...commitsTpl[0], sha }];
+  const steamInsync = write('steam-insync.json', feedWith(newestLabel));
+  const steamStale = write('steam-stale.json', feedWith(nextLabel));
+  const commitsHead = write('commits-head.json', commitsWith(headSha));
+  const publicInsync = write('public-insync.json', commitsWith(pinnedSha));
+  const publicRegen = write('public-regen.json', commitsWith('deadbee'));
+
+  run('check-currency: in-sync fixture -> exit 0 "registry current"',
+    ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead],
+    0, `registry current: game ${newestLabel}, SDK ${headSha}`);
+  run('check-currency: stale fixture -> exit 1 naming the new game version',
+    ['scripts/check-currency.mjs', '--steam-json', steamStale, '--commits-json', commitsHead],
+    1, `game ${nextLabel} released, registry newest is ${newestLabel}`);
+
+  // bump-version: the alias path is mechanical, the regenerate path must refuse.
+  run('bump-version: versions.json round-trips through the serializer byte-for-byte',
+    ['scripts/bump-version.mjs', '--check-format'], 0, 'round-trips byte-identically');
+  run('bump-version: nothing moved -> exit 4, no write',
+    ['scripts/bump-version.mjs', '--dry-run', '--steam-json', steamInsync,
+      '--commits-json', commitsHead, '--public-commits-json', publicInsync],
+    4, 'nothing to do');
+  const before = readFileSync(join(ROOT, 'versions.json'), 'utf8');
+  run(`bump-version: new patch + unchanged headers -> alias of ${pinnedNewest}`,
+    ['scripts/bump-version.mjs', '--dry-run', '--today', '2026-01-01', '--steam-json', steamStale,
+      '--commits-json', commitsHead, '--public-commits-json', publicInsync],
+    0, `Palworld ${nextLabel} is an alias of ${pinnedNewest}`);
+  assert('bump-version: --dry-run leaves versions.json untouched',
+    readFileSync(join(ROOT, 'versions.json'), 'utf8') === before);
+  run('bump-version: Source/Pal/Public regenerated -> refuses (exit 3), never guesses an alias',
+    ['scripts/bump-version.mjs', '--dry-run', '--steam-json', steamStale,
+      '--commits-json', commitsHead, '--public-commits-json', publicRegen],
+    3, 'is NOT an alias');
+} finally {
+  rmSync(fx, { recursive: true, force: true });
+}
+
+// Every alias must carry its generated artifacts — this is what an automated
+// bump produces, and what diff.html/the CLI 404 on if a step is skipped.
+run('every alias has a struct snapshot and a diff against its pinned version',
+  ['-e', `const {existsSync}=require('fs');const v=require('./versions.json');` +
+    `const missing=[];for(const [a,{of}] of Object.entries(v.aliases)){` +
+    `if(!existsSync('structs/'+a+'.json'))missing.push('structs/'+a+'.json');` +
+    `if(!existsSync('diffs/'+of+'..'+a+'.json'))missing.push('diffs/'+of+'..'+a+'.json');}` +
+    `if(missing.length){console.error('missing: '+missing.join(', '));process.exit(1);}` +
+    `console.log('all '+Object.keys(v.aliases).length+' aliases have artifacts');`],
+  0, 'aliases have artifacts');
 
 // v0.4.0: the items.json gate (paldb.cc-sourced data must stay schema-valid & fresh).
 run('check-items gate: shipped items.json passes (schema-valid, fresh, no SortID)',
