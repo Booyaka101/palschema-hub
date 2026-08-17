@@ -7,7 +7,7 @@
  * asserts the freshness invariants that would have caught the Jan-2024
  * staleness the day the game moved:
  *
- *   - count >= 2400 (paldb.cc lists 2466 rows for Palworld 1.0.2)
+ *   - count >= 2400 (paldb.cc listed 2466 rows for Palworld 1.0.3)
  *   - NO row carries `SortID` — the current game renamed it to `SortId`
  *   - at least one /^SFHelmet/ row — Hexolite Helmet's internal Code, a
  *     1.0-only item absent from the old 947-row file (freshness proof;
@@ -72,9 +72,9 @@ for (const [rowName, row] of rows) {
 }
 if (schemaFailures > 20) failures.push(`schema: … ${schemaFailures - 20} more failure(s) suppressed`);
 
-// 2. row count — 2466 in the live game; anything under 2400 means stale/truncated
+// 2. row count — 2466 in the live game at 1.0.3; under 2400 means stale/truncated
 const count = rows.length;
-if (count < 2400) failures.push(`count: only ${count} rows (need >= 2400 — paldb.cc lists 2466 for Palworld 1.0.2)`);
+if (count < 2400) failures.push(`count: only ${count} rows (need >= 2400 — paldb.cc listed 2466 at Palworld 1.0.3)`);
 if (data.count !== count) failures.push(`count: declared count ${data.count} != actual ${count}`);
 
 // 3. the dead field — SortID was renamed SortId; its presence means Jan-2024 data

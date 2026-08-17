@@ -126,9 +126,13 @@ run('1.0..1.0.2 diff is an empty delta',
   0, '1.0..1.0.2 empty');
 // (0.4.0: items.json regenerated from paldb.cc — valuesCurrent flipped to true,
 // so this assertion now checks the CURRENT truth instead of the old staleness.)
-run('items.json carries _provenance: current-game values, >= 2400 rows',
+// Shape, not a specific version: which game build the values track is a
+// freshness question, and check-currency owns that (it exits 1 and the cron
+// opens an issue). Asserting a literal here just turned data lag into red CI.
+run('items.json carries _provenance: current-game values, dated version, >= 2400 rows',
   ['-e', `const p=require('./items.json')._provenance;` +
-    `if(!p||p.valuesCurrent!==true||p.gameVersion!=='1.0.2'||!(p.rowCount>=2400))process.exit(1);` +
+    `if(!p||p.valuesCurrent!==true||!/^\\d+(\\.\\d+)+$/.test(p.gameVersion||'')` +
+    `||!/^\\d{4}-\\d{2}-\\d{2}$/.test(p.gameVersionDate||'')||!(p.rowCount>=2400))process.exit(1);` +
     `console.log('provenance OK');`],
   0, 'provenance OK');
 // Currency + auto-bump. The fixtures are ANCHORED to versions.json rather than
@@ -173,12 +177,40 @@ try {
   const publicInsync = write('public-insync.json', commitsWith(pinnedSha));
   const publicRegen = write('public-regen.json', commitsWith('deadbee'));
 
+  // Upstream PalSchema releases + the item-value provenance, both anchored the
+  // same way. bumpLast turns "0.6.3" into "0.6.4" without naming either.
+  const bumpLast = (v) => {
+    const p = v.split('.').map(Number);
+    p[p.length - 1] += 1;
+    return p.join('.');
+  };
+  const psClaimed = versionsInfo.upstream.palSchema.version;
+  const releasesCurrent = write('releases-current.json', [{ tag_name: psClaimed }, { tag_name: '0.6.0' }]);
+  const releasesNew = write('releases-new.json', [{ tag_name: bumpLast(psClaimed) }, { tag_name: psClaimed }]);
+  const itemsBehind = write('items-behind.json', {
+    _provenance: { gameVersion: versionsInfo.order[0], valuesCurrent: true },
+  });
+  const currency = (extra = []) => [
+    'scripts/check-currency.mjs',
+    '--steam-json', steamInsync, '--commits-json', commitsHead, '--releases-json', releasesCurrent,
+    ...extra,
+  ];
+
   run('check-currency: in-sync fixture -> exit 0 "registry current"',
-    ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead],
-    0, `registry current: game ${newestLabel}, SDK ${headSha}`);
+    currency(),
+    0, `registry current: game ${newestLabel}, SDK ${headSha}, PalSchema ${psClaimed}`);
   run('check-currency: stale fixture -> exit 1 naming the new game version',
-    ['scripts/check-currency.mjs', '--steam-json', steamStale, '--commits-json', commitsHead],
+    ['scripts/check-currency.mjs', '--steam-json', steamStale, '--commits-json', commitsHead,
+      '--releases-json', releasesCurrent],
     1, `game ${nextLabel} released, registry newest is ${newestLabel}`);
+  // A balance patch: structs and shas are untouched, only the VALUES moved.
+  run('check-currency: item values behind the game -> exit 1 (the 1.0.3 case)',
+    currency(['--items-json', itemsBehind]),
+    1, `items.json values are Palworld ${versionsInfo.order[0]}, registry newest is ${newestLabel}`);
+  run('check-currency: newer PalSchema release -> exit 1 naming it',
+    ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
+      '--releases-json', releasesNew],
+    1, `PalSchema ${bumpLast(psClaimed)} released, this registry claims ${psClaimed}`);
 
   // bump-version: the alias path is mechanical, the regenerate path must refuse.
   run('bump-version: versions.json round-trips through the serializer byte-for-byte',

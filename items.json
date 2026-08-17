@@ -1,12 +1,12 @@
 {
- "generatedAt": "2026-08-04T08:22:44.866Z",
+ "generatedAt": "2026-08-17T12:10:17.762Z",
  "table": "DT_ItemDataTable",
- "source": "paldb.cc (Palworld 1.0.2) + blaynem/paldex Jan-2024 dump for paldb-invisible fields",
- "note": "Per-item row VALUES (ItemActorClass etc.) for asset reuse in PalSchema mods. Scraped from paldb.cc per-item pages (current game, Palworld 1.0.2, 2026-07-29); fields paldb.cc does not render are filled from the Jan-2024 paldex dump where the row existed then — paldb wins every conflict; see fieldSources for the per-row split. Rows are internal Codes (e.g. SFHelmet = Hexolite Helmet). Field names/types: schemas/ and index.html.",
+ "source": "paldb.cc (Palworld 1.0.3) + blaynem/paldex Jan-2024 dump for paldb-invisible fields",
+ "note": "Per-item row VALUES (ItemActorClass etc.) for asset reuse in PalSchema mods. Scraped from paldb.cc per-item pages (current game, Palworld 1.0.3, 2026-08-12); fields paldb.cc does not render are filled from the Jan-2024 paldex dump where the row existed then — paldb wins every conflict; see fieldSources for the per-row split. Rows are internal Codes (e.g. SFHelmet = Hexolite Helmet). Field names/types: schemas/ and index.html.",
  "_provenance": {
   "source": "paldb.cc/en/Items_Table + per-item detail pages",
-  "gameVersion": "1.0.2",
-  "gameVersionDate": "2026-07-29",
+  "gameVersion": "1.0.3",
+  "gameVersionDate": "2026-08-12",
   "valuesCurrent": true,
   "mergeSource": "github.com/blaynem/paldex (Jan-2024) — fill-only, never overrides paldb",
   "rowCount": 2445,
@@ -29732,6 +29732,7 @@
    "bInTreasureBox": false,
    "bNotConsumed": false,
    "bEnableHandcraft": false,
+   "bLegalInGame": true,
    "TechnologyTreeLock": 0,
    "ItemStaticClass": "CommonConsume",
    "ItemDynamicClass": "None",
@@ -64475,7 +64476,7 @@
    "IconName": "WaterBuildKit",
    "TypeA": "EPalItemTypeA::Essential",
    "TypeB": "EPalItemTypeB::Essential_UnlockPlayerFuture",
-   "Rank": 4,
+   "Rank": 2,
    "Rarity": 3,
    "MaxStackCount": 9999,
    "Price": 200,
@@ -65689,7 +65690,7 @@
    "Rank": 1,
    "Rarity": 2,
    "MaxStackCount": 9999,
-   "Weight": 1,
+   "Weight": 0.1,
    "Price": 5000,
    "SortId": 5069,
    "bLegalInGame": true,
@@ -102696,7 +102697,8 @@
     "TypeA",
     "TypeB",
     "VisualBlueprintClassName",
-    "WazaID"
+    "WazaID",
+    "bLegalInGame"
    ],
    "paldex": [
     "CorruptionFactor",

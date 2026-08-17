@@ -12,9 +12,16 @@
  *      compared against versions.json's `sdkHead.commit`; when the head moved we
  *      additionally check whether Source/Pal/Public itself was regenerated
  *      (that's what would make the row structs — and this registry — stale).
+ *   3. PALSCHEMA: the newest Okaetsu/PalSchema release vs the version this repo
+ *      claims compatibility with (versions.json `upstream.palSchema`).
+ *
+ * Plus one purely local check that the first two structurally cannot catch: a
+ * BALANCE patch changes row VALUES while every struct and sha stays put, so
+ * items.json._provenance.gameVersion is compared against the newest game label
+ * too. Palworld 1.0.3 was exactly that case (Holy Water weight 1 -> 0.1).
  *
  * Exit codes (never conflated):
- *   0  in sync   — prints "registry current: game <v>, SDK <sha>"
+ *   0  in sync   — prints "registry current: game <v>, SDK <sha>, PalSchema <v>"
  *   1  stale     — one diagnostic line naming exactly what moved
  *   2  network   — a source could not be fetched/parsed
  *
@@ -22,6 +29,8 @@
  *   --steam-json <file>            saved Steam news API response
  *   --commits-json <file>          saved GitHub commit-list response (head)
  *   --public-commits-json <file>   saved commit list filtered to Source/Pal/Public
+ *   --releases-json <file>         saved Okaetsu/PalSchema releases response
+ *   --items-json <file>            items.json to read _provenance from
  */
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -30,6 +39,7 @@ import {
   STEAM_URL,
   commitsUrl,
   publicCommitsUrl,
+  releasesUrl,
   SourceError,
   loadJson as loadSource,
   cmpVersions,
@@ -42,6 +52,7 @@ const versionsInfo = JSON.parse(readFileSync(join(ROOT, 'versions.json'), 'utf8'
 
 const COMMITS_URL = commitsUrl(versionsInfo.repo);
 const PUBLIC_COMMITS_URL = publicCommitsUrl(versionsInfo.repo);
+const RELEASES_URL = releasesUrl(versionsInfo.upstream?.palSchema?.repo ?? 'Okaetsu/PalSchema');
 
 const args = process.argv.slice(2);
 const flag = (name) => {
@@ -52,6 +63,8 @@ const fixtures = {
   steam: flag('--steam-json'),
   commits: flag('--commits-json'),
   publicCommits: flag('--public-commits-json'),
+  releases: flag('--releases-json'),
+  items: flag('--items-json'),
 };
 
 async function loadJson(url, fixturePath, what) {
@@ -101,9 +114,49 @@ if (!headSha.startsWith(recordedHead)) {
   }
 }
 
+// ---- ITEM VALUES: a balance patch moves data, not structs -------------------
+// Nothing above can see this: 1.0.3 changed item values with an unchanged SDK and
+// an unchanged struct set, so every sha check reported "current" while items.json
+// still shipped 1.0.2 numbers.
+const itemsPath = fixtures.items ?? join(ROOT, 'items.json');
+let itemsProvenance;
+try {
+  itemsProvenance = JSON.parse(readFileSync(itemsPath, 'utf8'))._provenance;
+} catch (e) {
+  console.error(`network failure: cannot read ${itemsPath}: ${e.message}`);
+  process.exit(2);
+}
+const itemsVersion = itemsProvenance?.gameVersion;
+if (itemsVersion && cmpVersions(itemsVersion, newest) < 0) {
+  problems.push(`items.json values are Palworld ${itemsVersion}, registry newest is ${newest}`);
+}
+
+// ---- PALSCHEMA: the framework these schemas are written for ------------------
+const claimed = versionsInfo.upstream?.palSchema?.version;
+let palSchemaNewest = claimed;
+if (claimed) {
+  const releases = await loadJson(RELEASES_URL, fixtures.releases, 'Okaetsu/PalSchema releases');
+  // Releases are returned newest-first, but tags are compared by version anyway.
+  const tags = (Array.isArray(releases) ? releases : [])
+    .map((r) => String(r?.tag_name ?? '').replace(/^v/i, ''))
+    .filter((t) => /^\d+(\.\d+)*$/.test(t));
+  if (!tags.length) {
+    console.error('network failure: PalSchema release list is empty/unparseable');
+    process.exit(2);
+  }
+  palSchemaNewest = tags.reduce((a, b) => (cmpVersions(a, b) >= 0 ? a : b));
+  if (cmpVersions(palSchemaNewest, claimed) > 0) {
+    problems.push(`PalSchema ${palSchemaNewest} released, this registry claims ${claimed}`);
+  }
+}
+
 if (problems.length) {
   console.log(problems.join('; '));
   process.exit(1);
 }
-console.log(`registry current: game ${newest}, SDK ${recordedHead}`);
+console.log(
+  `registry current: game ${newest}, SDK ${recordedHead}` +
+    (claimed ? `, PalSchema ${claimed}` : '') +
+    (itemsVersion ? `, item values ${itemsVersion}` : ''),
+);
 process.exit(0);

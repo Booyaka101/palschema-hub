@@ -13,12 +13,18 @@ open since Aug 2025). `palschema-hub` fills that gap:
 - **`/cli/`** — `palschema-validate`, a CLI (ajv) that validates mod JSON/JSONC in CI or locally.
 - **`/.github/workflows/palschema-ci.yml.example`** — drop-in CI for mod repos.
 
-**Compatible with PalSchema 0.6.1 + the [experimental-palworld UE4SS](https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld)
-build it requires (UE4SS commit `c838a8a`, release updated July 19 2026).** PalSchema
-0.6.1's release notes contain no DataTable field-name, path, or validation changes vs
-0.6.0 (fixes only: ranch spawn item actions + item-handler signatures), so these
-schemas apply to both. Validated against real published PalSchema mods — see
-[`tests/real-mods/SOURCES.md`](tests/real-mods/SOURCES.md).
+**Compatible with PalSchema 0.6.3 + the [experimental-palworld UE4SS](https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld)
+build it requires (UE4SS commit `c838a8a`, release updated July 19 2026).** Checked
+against the full 0.6.0 → 0.6.3 diff, not just the release notes: nothing in 0.6.1,
+0.6.2 or 0.6.3 renames a DataTable field, moves a path, or changes how rows are
+validated. The only schema-file change in that range is PalSchema's own
+`items.schema.json` relaxing `WorkableAttribute` from `minimum: 1` to `minimum: 0`
+([#139](https://github.com/Okaetsu/PalSchema/pull/139)), which this registry never
+constrained; everything else is the custom-item loader, signatures and docs. 0.6.2/0.6.3
+also add unknown-property warnings to the item loader
+([#138](https://github.com/Okaetsu/PalSchema/pull/138)) — the same warn-don't-reject
+semantics `palschema-validate` adopted in 0.4.0. Validated against real published
+PalSchema mods — see [`tests/real-mods/SOURCES.md`](tests/real-mods/SOURCES.md).
 
 ---
 
@@ -132,8 +138,8 @@ node cli/dist/index.js --version 1.0 --registry . tests/invalid-mod.json  # exit
 ## Item asset reference (values, not just schemas)
 
 [`items.html`](https://booyaka101.github.io/palschema-hub/items.html) is a searchable per-item
-**value** reference for `DT_ItemDataTable` — **2,445 rows, current-game (Palworld 1.0.2,
-2026-07-29)**: row name → `ItemActorClass` / `ItemStaticClass` / `ItemDynamicClass` / visual
+**value** reference for `DT_ItemDataTable` — **2,445 rows, current-game (Palworld 1.0.3,
+2026-08-12)**: row name → `ItemActorClass` / `ItemStaticClass` / `ItemDynamicClass` / visual
 fields, plus stats (`SortId`, `Rarity`, `Durability`, Defense/Health) and the full row JSON to
 copy as a base for variants. Motivated by
 [PalSchema #53](https://github.com/Okaetsu/PalSchema/issues/53): cloning an equipment row
@@ -145,8 +151,10 @@ Machine-readable: [`items.json`](https://booyaka101.github.io/palschema-hub/item
 public paldex FModel dump — frozen at Jan-2024 (947 rows, and the dead field `SortID`, which
 the current game renamed to `SortId`, so the file failed our own schema). Now
 `scripts/build-items.mjs` scrapes **[paldb.cc](https://paldb.cc/en/Items_Table)** (robots.txt
-`Allow: /`; the site tracks the live game — 2,466 listed rows for 1.0.2), one cached page per
-item, one row per rarity variant. **Merge rule:** fields paldb.cc doesn't render
+`Allow: /`; the site tracks the live game — 2,466 listed rows at 1.0.3), one cached page per
+item, one row per rarity variant. The scrape reads paldb's own version footer and refuses to
+write if it disagrees with the build the script claims to be capturing, and the page cache is
+keyed by game version so a balance patch can't be rebuilt from the previous build's HTML. **Merge rule:** fields paldb.cc doesn't render
 (`VisualBlueprintClassSoft`, `DropItemType`, `GrantEffect*`, `TechnologyTreeLock`, …) are
 filled from the old paldex file where the row existed in Jan-2024; **paldb wins every
 conflict**; the per-row split is recorded in the top-level `fieldSources` object; rows only in
@@ -222,12 +230,19 @@ field snapshots are committed under `structs/` and the pairwise deltas under `di
 > `aliases[...].aliasReason`. Note also that 0.7.0→0.7.2 changed no row structs (those SDK
 > updates touched other classes).
 
-**Staleness detection:** `npm run versions:check` compares `versions.json` against the live
-world — the Steam news API's patch titles (newest game version) and the PalworldModdingKit
-commit list (SDK head). Exit 0 in sync (`registry current: game 1.0.3, SDK 62fad41`),
-exit 1 stale with one line naming exactly what moved (`game 1.0.4 released, registry newest
-is 1.0.3`), exit 2 on network failure — never conflated. It runs as an informational CI step
-and in the daily cron, which opens an issue when something actually moved.
+**Staleness detection:** `npm run versions:check` compares this repo against the live world on
+four axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
+commit list (SDK head, and whether `Source/Pal/Public` regenerated), the newest
+[PalSchema](https://github.com/Okaetsu/PalSchema) release vs the version this README claims
+compatibility with (`versions.json` `upstream.palSchema`), and `items.json`'s own
+`_provenance.gameVersion` vs the newest game label. That last one exists because a **balance**
+patch moves row VALUES while every struct and sha stays put: 1.0.3 changed World Tree Holy
+Water's weight from 1 to 0.1 with an unchanged SDK, so every sha-based check would have said
+"current" while the shipped values were a patch behind. Exit 0 in sync (`registry current:
+game 1.0.3, SDK 62fad41, PalSchema 0.6.3, item values 1.0.3`), exit 1 stale with one line
+naming exactly what moved, exit 2 on network failure — never conflated. It runs as an
+informational CI step and in the daily cron, which opens an issue when something actually
+moved.
 
 **Auto-bump:** `npm run versions:bump` (`scripts/bump-version.mjs`) handles the one case that
 is fully derivable: the game shipped a patch and `Source/Pal/Public` did **not** regenerate,

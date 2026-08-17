@@ -91,14 +91,14 @@
 const ASSET_FIELDS = ['ItemActorClass', 'ItemStaticClass', 'ItemDynamicClass', 'ItemStaticMeshName', 'VisualBlueprintClassName', 'IconName'];
 const state = { data: null, names: [], active: null };
 
-// Provenance banner. Since 0.4.0 the values are CURRENT (scraped from paldb.cc,
-// Palworld 1.0.2) — the banner is informational. The amber warning path is kept
+// Provenance banner. Since 0.4.0 the values are CURRENT (scraped from paldb.cc
+// for whichever build it states) — the banner is informational. The amber path is kept
 // for any future regeneration that is honest about being stale again.
 function provenanceSummary(p) {
   if (!p) return null;
   if (p.valuesCurrent === true) {
     return `✅ <b>Current-game data:</b> row values scraped from ` +
-      `<a href="https://paldb.cc/en/Items_Table">paldb.cc</a> for <b>Palworld ${esc(p.gameVersion || '1.0.2')}</b> ` +
+      `<a href="https://paldb.cc/en/Items_Table">paldb.cc</a> for <b>Palworld ${esc(p.gameVersion || '?')}</b> ` +
       `(${esc(p.gameVersionDate || '')}) — <b>${esc(p.paldbRowCount ?? p.rowCount)}</b> live rows. ` +
       `Fields paldb.cc doesn't render (VisualBlueprintClassSoft, Restore*, GrantEffect*, …) are filled from the ` +
       `Jan-2024 paldex dump where the row existed then; paldb wins every conflict (per-row split in ` +
@@ -123,7 +123,7 @@ function rowFootnote(p, name) {
       : fs?.paldex?.length
         ? `Fields <b>${fs.paldex.map(esc).join(', ')}</b> are filled from the Jan-2024 paldex dump (paldb.cc doesn't render them); everything else is live paldb.cc data.`
         : `All fields are live paldb.cc data.`;
-    return `<div class="row-provenance">Values from paldb.cc, Palworld ${esc(p.gameVersion || '1.0.2')}. ${fromPaldex}</div>`;
+    return `<div class="row-provenance">Values from paldb.cc, Palworld ${esc(p.gameVersion || '?')}. ${fromPaldex}</div>`;
   }
   return `<div class="row-provenance">⚠️ Row values are ${esc(p.gameEra || 'earlier-build')}-era ` +
     `(${esc(p.source || 'upstream dump')}); field names verified against ${esc(p.fieldNamesVerifiedAgainst || 'the SDK')}. ` +

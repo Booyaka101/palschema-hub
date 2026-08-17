@@ -6,7 +6,8 @@
  * actual row values (ItemActorClass, ItemStaticClass, …) so modders can look
  * up what to copy when reusing in-game assets (see items.html).
  *
- * SOURCE (since 0.4.0): paldb.cc — current-game (Palworld 1.0.2) raw rows,
+ * SOURCE (since 0.4.0): paldb.cc — current-game raw rows (the build paldb states
+ * in its footer, asserted against GAME_VERSION below),
  * scraped from /en/Items_Table + the per-item detail pages (robots.txt is
  * `Allow: /`). Fields paldb.cc does not render (VisualBlueprintClassSoft,
  * Restore*, GrantEffect*, DropItemType, …) are FILLED from the previous
@@ -18,28 +19,33 @@
  * DROPPED and the dropped names printed once at the end — that log is how new
  * game fields get discovered. `node scripts/check-items.mjs` is the gate.
  *
- * Detail pages are cached under .cache/paldb/ so re-runs are free.
+ * Detail pages are cached under .cache/paldb/<game-version>/ so re-runs are free;
+ * --refresh re-fetches every page even when cached.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
-import { parseIndex, parseItemPage, detailUrlFor } from './lib/paldb-parse.mjs';
+import { parseIndex, parseItemPage, detailUrlFor, parseFooterVersion } from './lib/paldb-parse.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const CACHE_DIR = join(ROOT, '.cache', 'paldb');
 const INDEX_URL = 'https://paldb.cc/en/Items_Table';
 const USER_AGENT = 'palschema-hub build-items (github.com/Booyaka101/palschema-hub)';
-const GAME_VERSION = '1.0.2'; // paldb.cc footer: "v1.0.2 2026/7/29" (matches Steam news)
+const GAME_VERSION = '1.0.3'; // paldb.cc footer: "v1.0.3 2026/8/12" (matches Steam news)
+// Cached pages are keyed by game version. A balance patch changes VALUES while
+// every URL stays the same, so a flat cache would silently rebuild the previous
+// version's numbers from disk; --refresh bypasses it entirely.
+const CACHE_DIR = join(ROOT, '.cache', 'paldb', GAME_VERSION);
 const CONCURRENCY = 4;
 const SPACING_MS = 150; // min gap between network request starts
 const RETRIES = 2;
 const MAX_404_RATIO = 0.02;
 
 const args = process.argv.slice(2);
+const REFRESH = args.includes('--refresh');
 const LIMIT = args.includes('--limit') ? Number(args[args.indexOf('--limit') + 1]) : Infinity;
 if (args.includes('--limit') && !Number.isFinite(LIMIT)) {
-  console.error('Usage: node scripts/build-items.mjs [--limit <n-pages>]  (--limit is for smoke tests only)');
+  console.error('Usage: node scripts/build-items.mjs [--refresh] [--limit <n-pages>]  (--limit is for smoke tests only)');
   process.exit(1);
 }
 
@@ -53,7 +59,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 /** Fetch with cache, spacing, and retry/backoff. Returns { html } | { notFound } */
 async function fetchPage(url) {
   const file = cachePath(url);
-  if (existsSync(file)) return { html: readFileSync(file, 'utf8') };
+  if (!REFRESH && existsSync(file)) return { html: readFileSync(file, 'utf8') };
   for (let attempt = 0; ; attempt++) {
     const wait = Math.max(0, lastRequestStart + SPACING_MS - Date.now());
     if (wait) await sleep(wait);
@@ -116,6 +122,24 @@ if (index.items.length < 2000) {
   process.exit(1);
 }
 console.log(`index: ${index.items.length} codes (header declares ${index.declaredCount})`);
+
+// paldb states the build it extracted from in its footer. Trust that over the
+// constant above: if paldb has moved on (or hasn't caught up yet) this scrape
+// would silently mislabel which Palworld version the values belong to.
+const footer = parseFooterVersion(indexRes.html);
+if (!footer) {
+  console.error('FATAL: could not read the paldb.cc version footer. Nothing written.');
+  process.exit(1);
+}
+if (footer.version !== GAME_VERSION) {
+  console.error(
+    `FATAL: paldb.cc is serving Palworld ${footer.version} (${footer.date}) but GAME_VERSION says ` +
+      `${GAME_VERSION}. Update the constant (and re-scrape with --refresh) rather than mislabelling ` +
+      'the values. Nothing written.'
+  );
+  process.exit(1);
+}
+console.log(`paldb.cc footer: Palworld ${footer.version} (${footer.date})`);
 
 // One detail page serves every item sharing a display name (variants AND
 // distinct same-named items — verified: /en/Gunpowder carries both Codes).
@@ -283,14 +307,14 @@ const out = {
   source: `paldb.cc (Palworld ${GAME_VERSION}) + blaynem/paldex Jan-2024 dump for paldb-invisible fields`,
   note:
     `Per-item row VALUES (ItemActorClass etc.) for asset reuse in PalSchema mods. ` +
-    `Scraped from paldb.cc per-item pages (current game, Palworld ${GAME_VERSION}, 2026-07-29); ` +
+    `Scraped from paldb.cc per-item pages (current game, Palworld ${GAME_VERSION}, ${footer.date}); ` +
     `fields paldb.cc does not render are filled from the Jan-2024 paldex dump where the row existed then — ` +
     `paldb wins every conflict; see fieldSources for the per-row split. ` +
     `Rows are internal Codes (e.g. SFHelmet = Hexolite Helmet). Field names/types: schemas/ and index.html.`,
   _provenance: {
     source: 'paldb.cc/en/Items_Table + per-item detail pages',
     gameVersion: GAME_VERSION,
-    gameVersionDate: '2026-07-29',
+    gameVersionDate: footer.date,
     valuesCurrent: true,
     mergeSource: 'github.com/blaynem/paldex (Jan-2024) — fill-only, never overrides paldb',
     rowCount: Object.keys(items).length,

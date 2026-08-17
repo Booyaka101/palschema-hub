@@ -14,6 +14,9 @@ export const STEAM_URL =
 export const commitsUrl = (repo) => `https://api.github.com/repos/${repo}/commits?per_page=1`;
 export const publicCommitsUrl = (repo) =>
   `https://api.github.com/repos/${repo}/commits?path=Source%2FPal%2FPublic&per_page=1`;
+/** Release list, not /releases/latest: PalSchema has shipped same-day pairs
+ *  (0.6.2 and 0.6.3 both on 2026-08-15), so the newest TAG is the truth. */
+export const releasesUrl = (repo) => `https://api.github.com/repos/${repo}/releases?per_page=10`;
 
 /** A source could not be fetched or parsed — callers map this to their own exit code. */
 export class SourceError extends Error {}
