@@ -91,6 +91,18 @@ run('pseudo-keys: $Filters + {"Action":"Clear","Items":[...]} wrapper stay silen
 run('--strict promotes unknown-key warnings to errors, exit 1',
   [...validate('tests/fixtures/unknown-keys.json'), '--strict'], 1, '1 file validated, 2 errors (strict), 0 warnings');
 
+// 0.7.0: int32 columns are `integer`, not `number`. The Jan-2024 dump is JSON,
+// which has no integer type, so 158 fields accepted 1.5 until the augmenter
+// started aligning integer-ness with the headers.
+run('int32 fields reject fractional values (was accepted before 0.7.0)',
+  validate('tests/fixtures/fractional-ints.json'), 1, 'Alpaca /Level: must be integer');
+run('int32 fields: every offending field is named, not just the first',
+  validate('tests/fixtures/fractional-ints.json'), 1, 'Alpaca /min1: must be integer');
+run('DT_PalDropItem.Level is typed integer in the published schema',
+  ['-e', `const s=require('./schemas/v1.0/DT_PalDropItem.schema.json');` +
+    `if(s.properties.Level.type!=='integer')process.exit(1);console.log('Level integer');`],
+  0, 'Level integer');
+
 // Version-diff engine (structs/ snapshots + diffs/ + CLI --migrate).
 const migrate = (pair, target) => ['cli/dist/index.js', '--migrate', pair, '--registry', '.', ...(target ? [target] : [])];
 

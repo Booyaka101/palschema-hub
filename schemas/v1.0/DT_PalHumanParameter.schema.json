@@ -54,7 +54,7 @@
       "description": "Example: \"NPC\""
     },
     "ZukanIndex": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         -1
       ],
@@ -75,7 +75,7 @@
       "description": "Enum-like value. Examples: EPalSizeType::M"
     },
     "Rarity": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1
       ],
@@ -134,7 +134,7 @@
       "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
     },
     "MeleeAttack": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100,
         10,
@@ -143,7 +143,7 @@
       "description": "Example: 100"
     },
     "ShotAttack": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100,
         50,
@@ -152,7 +152,7 @@
       "description": "Example: 100"
     },
     "Defense": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         50,
         100,
@@ -161,14 +161,14 @@
       "description": "Example: 50"
     },
     "Support": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
       "description": "Example: 100"
     },
     "CraftSpeed": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
@@ -257,35 +257,35 @@
       "description": "Example: \"Citizen\""
     },
     "SlowWalkSpeed": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         -1
       ],
       "description": "Example: -1"
     },
     "WalkSpeed": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         -1
       ],
       "description": "Example: -1"
     },
     "RunSpeed": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         -1
       ],
       "description": "Example: -1"
     },
     "RideSprintSpeed": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         -1
       ],
       "description": "Example: -1"
     },
     "TransportSpeed": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         -1
       ],
@@ -347,7 +347,7 @@
       "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
     },
     "MaxFullStomach": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
@@ -361,21 +361,21 @@
       "description": "Example: 1"
     },
     "FoodAmount": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1
       ],
       "description": "Example: 1"
     },
     "ViewingDistance": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         25
       ],
       "description": "Example: 25"
     },
     "ViewingAngle": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         90
       ],
@@ -404,7 +404,7 @@
       "description": "Example: false"
     },
     "BiologicalGrade": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         10,
@@ -428,21 +428,21 @@
       "description": "Example: true"
     },
     "Stamina": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
       "description": "Example: 100"
     },
     "MaleProbability": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         -1
       ],
       "description": "Example: -1"
     },
     "CombiRank": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         999999
       ],
@@ -478,91 +478,91 @@
       ]
     },
     "WorkSuitability_EmitFlame": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_Watering": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_Seeding": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_GenerateElectricity": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_Handcraft": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1
       ],
       "description": "Example: 1"
     },
     "WorkSuitability_Collection": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_Deforest": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_Mining": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_OilExtraction": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_ProductMedicine": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_Cool": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_Transport": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "WorkSuitability_MonsterFarm": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],

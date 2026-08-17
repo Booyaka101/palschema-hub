@@ -1,0 +1,9 @@
+{
+  "$comment": "Fields the SDK declares int32 must reject fractional values. Until 0.7.0 these were typed 'number' (the Jan-2024 JSON dump has no integer type), so a drop count of 2.5 validated clean and only failed in-game.",
+  "DT_PalDropItem": {
+    "Alpaca": {
+      "Level": 1.5,
+      "min1": 2.5
+    }
+  }
+}

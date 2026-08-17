@@ -20,7 +20,7 @@
       "description": "Enum-like value. Examples: EPalFoodStatusEffectType::None, EPalFoodStatusEffectType::WorkSpeed, EPalFoodStatusEffectType::Attack, EPalFoodStatusEffectType::HungerResist"
     },
     "EffectValue1": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         30,
@@ -42,7 +42,7 @@
       "description": "Enum-like value. Examples: EPalFoodStatusEffectType::None, EPalFoodStatusEffectType::Attack, EPalFoodStatusEffectType::Defense, EPalFoodStatusEffectType::HungerResist"
     },
     "EffectValue2": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         10,

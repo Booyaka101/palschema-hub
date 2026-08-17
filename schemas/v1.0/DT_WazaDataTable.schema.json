@@ -41,7 +41,7 @@
       "description": "Enum-like value. Examples: EPalWazaCategory::Shot, EPalWazaCategory::Melee"
     },
     "Power": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         30,
@@ -74,7 +74,7 @@
       "description": "BoolProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
     },
     "MinRange": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100,
         700,
@@ -83,7 +83,7 @@
       "description": "Example: 100"
     },
     "MaxRange": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1000,
         1500,
@@ -123,7 +123,7 @@
       "description": "Enum-like value. Examples: EPalAdditionalEffectType::Wetness, EPalAdditionalEffectType::None, EPalAdditionalEffectType::Stun, EPalAdditionalEffectType::Burn"
     },
     "EffectValue1": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         80,
         0,
@@ -147,7 +147,7 @@
       "description": "Enum-like value. Examples: EPalAdditionalEffectType::None, EPalAdditionalEffectType::Stun"
     },
     "EffectValue2": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         20

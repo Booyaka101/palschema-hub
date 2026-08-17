@@ -20,7 +20,7 @@
       "description": "Enum-like value. Examples: EPalWazaID::StoneShotgun, EPalWazaID::PowerBall, EPalWazaID::SandTornado, EPalWazaID::Unique_Anubis_LowRoundKick"
     },
     "Level": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         7,

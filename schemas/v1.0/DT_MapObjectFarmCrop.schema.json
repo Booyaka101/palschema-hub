@@ -56,7 +56,7 @@
       "description": "Example: 270"
     },
     "CropItemNum": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         10
       ],
@@ -99,7 +99,7 @@
       "description": "Example: \"Wheat\""
     },
     "MaterialItem1_Num": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1
       ],
@@ -113,14 +113,14 @@
       "description": "Example: \"None\""
     },
     "MaterialItem2_Num": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "Editor_RowNameHash": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         -895499482,
         1940418144,

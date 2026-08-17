@@ -7,7 +7,7 @@
   "type": "object",
   "properties": {
     "BonusExp": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         22,
         24,

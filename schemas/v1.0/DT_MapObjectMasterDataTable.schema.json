@@ -75,7 +75,7 @@
       "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
     },
     "Defense": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         3,
         2,
@@ -100,7 +100,7 @@
       "description": "Example: true"
     },
     "DistributeExpAroundPlayer": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         5,
@@ -143,7 +143,7 @@
       "description": "Example: false"
     },
     "Editor_RowNameHash": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         622205053,
         -1783870869,

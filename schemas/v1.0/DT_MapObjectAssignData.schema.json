@@ -30,7 +30,7 @@
       "description": "Enum-like value. Examples: EPalWorkSuitability::None, EPalWorkSuitability::Handcraft, EPalWorkSuitability::EmitFlame, EPalWorkSuitability::Anyone"
     },
     "WorkSuitabilityRank": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         2,
@@ -129,7 +129,7 @@
       "description": "Enum-like value. Examples: EPalActionType::None, EPalActionType::CommonWork, EPalActionType::GenerateEnergyFire, EPalActionType::Feeding"
     },
     "WorkerMaxNum": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         1,

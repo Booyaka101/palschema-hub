@@ -7,7 +7,7 @@
   "type": "object",
   "properties": {
     "Rank": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         2,

@@ -16,7 +16,7 @@
       "description": "Example: \"Alpaca\""
     },
     "Level": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
@@ -41,7 +41,7 @@
       "description": "Example: 100"
     },
     "min1": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         2,
         3,
@@ -50,7 +50,7 @@
       "description": "Example: 2"
     },
     "Max1": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         5,
         3,
@@ -77,7 +77,7 @@
       "description": "Example: 100"
     },
     "min2": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         2,
@@ -86,7 +86,7 @@
       "description": "Example: 1"
     },
     "Max2": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         3,
@@ -113,7 +113,7 @@
       "description": "Example: 0"
     },
     "min3": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         1,
@@ -122,7 +122,7 @@
       "description": "Example: 0"
     },
     "Max3": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         1,
@@ -149,7 +149,7 @@
       "description": "Example: 0"
     },
     "min4": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         1,
@@ -158,7 +158,7 @@
       "description": "Example: 0"
     },
     "Max4": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         2,
@@ -185,7 +185,7 @@
       "description": "Example: 0"
     },
     "min5": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         1
@@ -193,7 +193,7 @@
       "description": "Example: 0"
     },
     "Max5": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         1

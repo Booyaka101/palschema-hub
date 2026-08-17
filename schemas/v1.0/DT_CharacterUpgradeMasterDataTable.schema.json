@@ -7,7 +7,7 @@
   "type": "object",
   "properties": {
     "Rank": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         2,
@@ -25,7 +25,7 @@
       "description": "Example: \"PalUpgradeStone\""
     },
     "RequiredItemNum": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         2,
@@ -34,7 +34,7 @@
       "description": "Example: 1"
     },
     "ResetRequiredMoney": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1000,
         3000,
