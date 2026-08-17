@@ -1,6 +1,42 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-17 (0.5.0 auto-bump session)
+**Last updated:** 2026-08-17 (0.6.0 currency-sweep session)
+
+## Session 2026-08-17b — v0.6.0: the axes the sha checks can't see
+Follow-up to 0.5.0 in the same session, from one question: "was there nothing we needed to
+actually update as well?" There was. 1.0.3 is a BALANCE patch, so row values moved while
+every struct and sha stayed put, which is exactly the shape our staleness detection was
+blind to.
+- **Correction worth recording:** the first read of this was wrong. I probed `parseIndex`
+  by reading `idx.codes` (it returns `{declaredCount, items}`) and passed a row CODE to
+  `detailUrlFor` (it takes the DISPLAY name), concluded paldb.cc had changed layout, and
+  filed it as a scraper rewrite. Re-probed correctly: 2,466 items parse fine, detail URLs
+  resolve. The refresh was a re-scrape, not a rewrite. Verify a parser against its own
+  signature before declaring upstream broken.
+- **items.json → Palworld 1.0.3** (paldb.cc footer `v1.0.3 2026/8/12`). Exactly 3 rows
+  changed and all three are in the patch notes: WorldTreeHolyWater Weight 1 → 0.1,
+  WaterBuildKit Rank 4 → 2, SkillCard_Psychokinesis gains bLegalInGame. Cross-checking the
+  diff against the notes is what proves the scrape captured the new build.
+- **The cache was the real trap.** `.cache/paldb/` was flat and never expired, and every
+  URL is stable across a balance patch, so a re-run would have rebuilt 1.0.2 values from
+  disk and stamped them 1.0.3. Cache is now keyed by game version, `--refresh` bypasses it,
+  and `build-items.mjs` reads paldb's version footer and REFUSES to write when it disagrees
+  with GAME_VERSION (also kills the hardcoded gameVersionDate).
+- **check-currency gained two axes:** items provenance lag (local, no network) and the
+  newest PalSchema release vs `versions.json` `upstream.palSchema` (new key). In sync:
+  `registry current: game 1.0.3, SDK 62fad41, PalSchema 0.6.3, item values 1.0.3`.
+- **PalSchema 0.6.1 → 0.6.3 compat verified from the DIFF, not the notes** (`gh api compare
+  0.6.1...0.6.3`): only items.schema.json (WorkableAttribute minimum 1 → 0, which we never
+  constrained), the custom-item loader, signatures and docs. No field renames, no path
+  moves, no validation changes. 0.6.2/0.6.3's unknown-property warnings (#138) are the
+  semantics our CLI shipped in 0.4.0.
+- **Open finding, not acted on:** 158 fields typed `number` in our schemas are `int32` in
+  the SDK (e.g. DT_PalDropItem.Level, DT_PalHumanParameter.MeleeAttack). augment-from-sdk
+  deliberately keeps observed-data types for fields that existed in the Jan-2024 dump and
+  only maps C++ types for NEW fields, and JSON has no int/float distinction, so they all
+  landed as `number`. Tightening to `integer` would match PalSchema's own generator, but it
+  changes the published contract for 158 fields and needs its own PR + real-mod corpus run.
+- Tests 41 → **43**, all green. Root package 0.5.0 → **0.6.0**.
 
 ## Session 2026-08-17 — v0.5.0: the registry bumps itself (issue #12, Palworld 1.0.3)
 Trigger: the cron's own issue #12 ("game 1.0.3 released, registry newest is 1.0.2"). The

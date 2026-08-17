@@ -1,5 +1,39 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.6.0 — 2026-08-17
+
+**Item values catch up to 1.0.3, PalSchema compatibility to 0.6.3, and the watcher
+learns to see both.** 0.5.0 aliased 1.0.3 correctly and still left the registry a
+patch behind, because a balance patch moves row VALUES while every struct and sha
+stays put. Nothing was watching that axis.
+
+- **items.json is Palworld 1.0.3** (2,445 rows; paldb.cc footer `v1.0.3 2026/8/12`).
+  Three rows actually moved, and they match the patch notes: `WorldTreeHolyWater`
+  `Weight` 1 → 0.1, `WaterBuildKit` `Rank` 4 → 2, `SkillCard_Psychokinesis` gains
+  `bLegalInGame`.
+- **The scrape can no longer mislabel itself.** `build-items.mjs` reads paldb's own
+  version footer and refuses to write when it disagrees with the version the script
+  claims to capture, and the page cache is keyed by game version. The old flat cache
+  was the real trap: every URL is stable across a balance patch, so a re-run would
+  have rebuilt 1.0.2 numbers from disk and relabelled them 1.0.3. `--refresh` forces a
+  re-fetch regardless.
+- **`check-currency` gained two axes.** `items.json._provenance.gameVersion` vs the
+  newest game label (the 1.0.3 case, and purely local), and the newest PalSchema
+  release vs the version this registry claims compatibility with, recorded in
+  `versions.json` `upstream.palSchema`. In sync now prints
+  `registry current: game 1.0.3, SDK 62fad41, PalSchema 0.6.3, item values 1.0.3`.
+- **PalSchema compatibility is 0.6.3**, checked against the whole 0.6.0 → 0.6.3 diff
+  rather than the release notes: no DataTable field is renamed, no path moves, and no
+  row validation changes. The one schema-file change is PalSchema's own
+  `items.schema.json` relaxing `WorkableAttribute` to `minimum: 0`
+  ([#139](https://github.com/Okaetsu/PalSchema/pull/139)), a constraint this registry
+  never had. 0.6.2/0.6.3 also add unknown-property warnings to the item loader
+  ([#138](https://github.com/Okaetsu/PalSchema/pull/138)), the semantics
+  `palschema-validate` shipped in 0.4.0.
+- **The items provenance test no longer names a version.** It asserts shape (current
+  values, a dated version, ≥ 2400 rows) and leaves freshness to check-currency, which
+  reports it as an issue instead of a red build. Tests 41 → **43**.
+
 ## 0.5.0 — 2026-08-17
 
 **Palworld 1.0.3 lands as an alias, and the registry now bumps itself.** The weekly

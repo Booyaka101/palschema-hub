@@ -172,6 +172,17 @@ export function parseIndex(html) {
   return { declaredCount: header ? Number(header[1]) : null, items };
 }
 
+/** The site footer states the game build paldb's data was extracted from:
+ *  `<li> <a href="version">v1.0.3</a> 2026/8/12</li>`. Reading it is what lets a
+ *  scrape assert which Palworld version it actually captured instead of trusting
+ *  a constant in the script. */
+export function parseFooterVersion(html) {
+  const m = html.match(/<a href="version">v([\d.]+)<\/a>\s*(\d{4})\/(\d{1,2})\/(\d{1,2})/);
+  if (!m) return null;
+  const [, version, y, mo, d] = m;
+  return { version, date: `${y}-${String(mo).padStart(2, '0')}-${String(d).padStart(2, '0')}` };
+}
+
 /** Detail page URL for a display name — spaces become underscores, the rest is
  *  percent-encoded. paldb wants ' raw but : [ ] ( ) ☆ é ENCODED (live-verified:
  *  Foxparks'_Harness 200 / %27 404; Life_Lotus_(S) 404 / %28S%29 200). Parens must
