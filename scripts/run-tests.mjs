@@ -246,6 +246,12 @@ try {
   rmSync(fx, { recursive: true, force: true });
 }
 
+// The offline archive bundles the registry AND cli/{package.json,README.md}, so a
+// CLI version bump alone makes it stale. Running this only in CI meant finding
+// that out from a red PR instead of from `npm test`.
+run('nexus offline archive matches the repo', ['scripts/build-nexus-zip.mjs', '--check'],
+  0, 'archive is current');
+
 // Every alias must carry its generated artifacts — this is what an automated
 // bump produces, and what diff.html/the CLI 404 on if a step is skipped.
 run('every alias has a struct snapshot and a diff against its pinned version',
