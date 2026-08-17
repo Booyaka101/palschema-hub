@@ -1,6 +1,6 @@
 {
   "name": "palschema-validate",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Validate Palworld PalSchema mod JSON/JSONC files against the palschema-hub schema registry, and scan them for fields removed/renamed between game versions (--migrate).",
   "keywords": [
     "palworld",
@@ -35,7 +35,8 @@
     "prepublishOnly": "tsc -p ."
   },
   "dependencies": {
-    "ajv": "^8.17.1"
+    "ajv": "^8.17.1",
+    "palschema-hub": "file:.."
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
