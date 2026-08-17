@@ -54,6 +54,33 @@ const { parseStructFields, headerFor, fragForType } = createSdkParser(HDR_DIR);
 /** True if a derived fragment is (or unions with) an array type. */
 const isArrayish = (frag) => frag.type === 'array' || (Array.isArray(frag.type) && frag.type.includes('array'));
 
+/** Suffix marking a field the dump never had. Written once, preserved on re-runs. */
+const SDK_ADDED_MARKER = 'current-game field (absent from Jan-2024 dump), verified from SDK headers';
+
+const retyped = [];
+const retypeConflicts = [];
+
+/**
+ * Observed types beat the bare C++ map everywhere EXCEPT integer-ness: the
+ * Jan-2024 dump is JSON, which has no integer type, so every numeric field came
+ * back as "number" and int32 columns ended up accepting 1.5. The header knows
+ * which are ints. Only retype when every observed example is a whole number —
+ * a fractional example against an int32 field is a real conflict, not a fix.
+ */
+function alignIntegerness(frag, cppType, where) {
+  if (!frag || frag.type !== 'number') return frag;
+  const want = fragForType(cppType);
+  if (want.type !== 'integer') return frag;
+  const examples = Array.isArray(frag.examples) ? frag.examples : [];
+  const fractional = examples.filter((e) => typeof e === 'number' && !Number.isInteger(e));
+  if (fractional.length) {
+    retypeConflicts.push(`${where} (${cppType}) has non-integer example(s) ${fractional.join(', ')} — left as number`);
+    return frag;
+  }
+  retyped.push(where);
+  return { ...frag, type: 'integer' };
+}
+
 const manifest = JSON.parse(readFileSync(join(SCHEMA_DIR, '_manifest.json'), 'utf8'));
 const report = [];
 
@@ -61,6 +88,13 @@ for (const entry of manifest.generatedTables) {
   const { table, rowStruct } = entry;
   const schemaPath = join(SCHEMA_DIR, `${table}.schema.json`);
   const schema = JSON.parse(readFileSync(schemaPath, 'utf8'));
+  // Tables with no paldex rows at all are emitted whole by derive-sdk-tables.mjs
+  // (types already mapped from C++). `seed` runs that AFTER this script, which is
+  // the only reason re-augmenting them was harmless; skipping is the honest form.
+  if (/source=sdk-headers-only/.test(schema.$comment ?? '')) {
+    report.push({ table, rowStruct, status: 'SDK-only table — owned by derive-sdk-tables.mjs' });
+    continue;
+  }
   const hp = headerFor(rowStruct);
   if (!hp) {
     report.push({ table, rowStruct, status: 'NO SDK HEADER — left untouched' });
@@ -83,14 +117,26 @@ for (const entry of manifest.generatedTables) {
     if (existing) {
       if (/^TArray</.test(f.type) || isArrayish(existing)) {
         // Upgrade to wrapper-tolerant form, preserving observed item schema/examples.
-        const items = existing.items ?? (/^TArray<\s*(.+)\s*>$/.test(f.type) ? fragForType(f.type.match(/^TArray<\s*(.+)\s*>$/)[1], 1) : {});
-        newProps[f.name] = arrayFrag(items, existing.description?.startsWith('Example') ? existing.description : undefined);
+        const inner = f.type.match(/^TArray<\s*(.+)\s*>$/);
+        // Already-wrapped fields keep their observed item schema (with examples) at
+        // oneOf[0].items, not .items — reading only the latter silently discarded
+        // every observed example the moment this script ran twice.
+        let items = existing.items ?? existing.oneOf?.[0]?.items ?? (inner ? fragForType(inner[1], 1) : {});
+        if (inner) items = alignIntegerness(items, inner[1], `${table}.${f.name}[]`);
+        // arrayFrag PREPENDS whatever it is given and appends its own boilerplate,
+        // so only the observed "Example: …" wording may be passed through. The
+        // SDK-added marker is a suffix and is re-appended below — feeding the whole
+        // description back in would nest one copy inside the next on every run.
+        const frag = arrayFrag(items, /^Example/.test(existing.description ?? '') ? existing.description : undefined);
+        if (existing.description?.endsWith(SDK_ADDED_MARKER)) frag.description += ` — ${SDK_ADDED_MARKER}`;
+        newProps[f.name] = frag;
       } else {
-        newProps[f.name] = existing; // observed data (with examples) beats a bare type map
+        // Observed data (with examples) beats a bare type map, except int-ness.
+        newProps[f.name] = alignIntegerness(existing, f.type, `${table}.${f.name}`);
       }
     } else {
       const frag = fragForType(f.type);
-      frag.description = `${frag.description ?? f.type} — current-game field (absent from Jan-2024 dump), verified from SDK headers`;
+      frag.description = `${frag.description ?? f.type} — ${SDK_ADDED_MARKER}`;
       newProps[f.name] = frag;
       added.push(f.name);
     }
@@ -108,13 +154,26 @@ for (const entry of manifest.generatedTables) {
   };
 
   schema.properties = newProps;
-  schema.description = schema.description.replace(/ Field names authoritative.*$/, '') +
+  // Re-runnable: strip any provenance sentence this script appended before (an
+  // earlier wording included) instead of appending a second copy.
+  schema.description = schema.description
+    .replace(/ Field names (authoritative|verified against).*$/, '')
+    .trimEnd() +
     ` Field names verified against the current game's row struct (${SDK_TAG}, pushed 2026-07-11); ` +
     `types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. ` +
     `Fields are optional (partial patches).`;
+  // sdkAdded/droppedRemovedFields record what the FIRST augmentation against this
+  // SDK changed. A later re-run adds and removes nothing, so carry the recorded
+  // values forward rather than erasing the provenance.
+  const priorTag = (key) => {
+    const m = String(schema.$comment ?? '').match(new RegExp(`\\| ${key}=([^|]+)`));
+    return m ? m[1].trim() : '';
+  };
+  const addedTag = added.length ? added.join(',') : priorTag('sdkAdded');
+  const removedTag = removed.length ? removed.join(',') : priorTag('droppedRemovedFields');
   schema.$comment = `palschema-hub | table=${table} | rowStruct=${rowStruct} | palworldVersion=${VER} | fields=${sdkFields.length} | source=paldex-dump+sdk-headers | sdk=${SDK_TAG}` +
-    (added.length ? ` | sdkAdded=${added.join(',')}` : '') +
-    (removed.length ? ` | droppedRemovedFields=${removed.join(',')}` : '');
+    (addedTag ? ` | sdkAdded=${addedTag}` : '') +
+    (removedTag ? ` | droppedRemovedFields=${removedTag}` : '');
   writeFileSync(schemaPath, JSON.stringify(schema, null, 2) + '\n');
   entry.fields = sdkFields.length;
   report.push({ table, rowStruct, status: 'ok', fields: sdkFields.length, added: added.length, removed: removed.length, addedNames: added, removedNames: removed });
@@ -135,3 +194,5 @@ for (const r of report) {
 }
 const ok = report.filter((r) => r.status === 'ok');
 console.log(`\nAugmented ${ok.length}/${report.length} schemas (SDK ${SDK_TAG}); +${ok.reduce((a, r) => a + r.added, 0)} fields added, -${ok.reduce((a, r) => a + r.removed, 0)} removed.`);
+console.log(`Integer-ness aligned with the headers on ${retyped.length} field(s) (number -> integer).`);
+for (const c of retypeConflicts) console.log(`  ! ${c}`);

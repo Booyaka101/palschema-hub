@@ -1,6 +1,29 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-17 (0.6.0 currency-sweep session)
+**Last updated:** 2026-08-17 (0.7.0 int-typing session)
+
+## Session 2026-08-17c — v0.7.0: int32 columns stop accepting 1.5
+The finding parked at the end of 0.6.0, now shipped. 158 fields the SDK declares `int32`
+were typed `number` because the Jan-2024 dump is JSON and JSON has no integer type; the
+augmenter kept observed types for dump-era fields, so `DT_PalDropItem.Level` accepted 1.5
+and only failed in-game.
+- **alignIntegerness() in augment-from-sdk.mjs**: retype `number` → `integer` when
+  `fragForType(cppType)` says integer, but ONLY if every observed example is whole. A
+  fractional example against an int32 column is a conflict to report, not a fix to apply.
+  Zero conflicts across 31 tables, and all 2,445 items.json rows still validate under the
+  tightened schemas — the live data agrees with the headers.
+- **The re-run was the real test.** Running the augmenter twice surfaced three latent
+  bugs, all of which would have quietly corrupted a future regeneration: (1) the
+  provenance sentence appended a second copy (its strip regex still matched the OLD
+  wording "Field names authoritative"); (2) `sdkAdded`/`droppedRemovedFields` were erased
+  whenever a later run added nothing; (3) array fields lost observed item examples,
+  because after the first pass items live at `oneOf[0].items`, not `.items`. Also: it was
+  rewriting `DT_FieldLotteryNameDataTable`, which derive-sdk-tables.mjs owns — harmless
+  only because `seed` happens to run sdk-tables last. Now skipped by `source=` tag.
+  Second run is byte-identical; that check is worth repeating on any generator here.
+- Diff is exactly 158 `"type": "number"` → `"type": "integer"` lines across 21 files,
+  nothing else. Tests 43 → **46** (fractional fixture rejected, both offending fields
+  named, published schema asserted). Root 0.6.0 → **0.7.0**.
 
 ## Session 2026-08-17b — v0.6.0: the axes the sha checks can't see
 Follow-up to 0.5.0 in the same session, from one question: "was there nothing we needed to

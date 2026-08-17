@@ -7,7 +7,7 @@
   "type": "object",
   "properties": {
     "Stamina": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
@@ -18,42 +18,42 @@
       "description": "IntProperty — current-game field (absent from Jan-2024 dump), verified from SDK headers"
     },
     "MeleeAttack": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
       "description": "Example: 100"
     },
     "ShotAttack": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
       "description": "Example: 100"
     },
     "Defense": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
       "description": "Example: 100"
     },
     "Support": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
       "description": "Example: 100"
     },
     "CraftSpeed": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],
       "description": "Example: 100"
     },
     "Satiety": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         100
       ],

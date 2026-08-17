@@ -103,7 +103,7 @@
       "description": "Enum-like value. Examples: EPalNPCScaleType::M, EPalNPCScaleType::L1"
     },
     "Level": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         20

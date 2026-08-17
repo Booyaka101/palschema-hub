@@ -50,7 +50,9 @@ The schemas are built from **two real game-data sources**, cross-checked:
 Typing conventions match PalSchema's own generator and loader (verified in its
 `JsonSchemaGenerator.cpp` / `PropertyHelper.cpp` / `PalRawTableLoader.cpp`):
 
-- ints → `integer`, floats → `number`, `FName`/`FString`/`FText` → `string`.
+- ints → `integer`, floats → `number`, `FName`/`FString`/`FText` → `string`. Integer-ness
+  comes from the SDK header, not from the dump: JSON has no integer type, so 158 `int32`
+  columns were typed `number` (and accepted `1.5`) until 0.7.0 aligned them.
 - **Arrays accept both PalSchema forms**: a plain `[...]` (replaces the game array) or
   `{"Action": "Clear", "Items": [...]}` (optionally clear, then append).
 - Enum fields are `string` and list the current game's enum values in their

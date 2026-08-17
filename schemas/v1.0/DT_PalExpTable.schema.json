@@ -7,7 +7,7 @@
   "type": "object",
   "properties": {
     "DropEXP": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         7,
         9,
@@ -16,7 +16,7 @@
       "description": "Example: 7"
     },
     "NextEXP": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         8,
@@ -25,7 +25,7 @@
       "description": "Example: 0"
     },
     "PalNextEXP": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         25,
@@ -34,7 +34,7 @@
       "description": "Example: 0"
     },
     "TotalEXP": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         8,
@@ -43,7 +43,7 @@
       "description": "Example: 0"
     },
     "PalTotalEXP": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         25,

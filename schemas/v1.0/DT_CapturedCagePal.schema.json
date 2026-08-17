@@ -27,7 +27,7 @@
       "description": "Example: 1"
     },
     "MinLevel": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         10,
@@ -36,7 +36,7 @@
       "description": "Example: 1"
     },
     "MaxLevel": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         10,
         20,

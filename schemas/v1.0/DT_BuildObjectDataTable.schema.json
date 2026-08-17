@@ -47,14 +47,14 @@
       ]
     },
     "Rank": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1
       ],
       "description": "Example: 1"
     },
     "BuildCapacity": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
@@ -70,7 +70,7 @@
       "description": "Example: 3000"
     },
     "AssetValue": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1
       ],
@@ -103,7 +103,7 @@
       "description": "Example: \"Potato\""
     },
     "Material1_Count": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         30,
@@ -121,7 +121,7 @@
       "description": "Example: \"Wood\""
     },
     "Material2_Count": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         10,
         30,
@@ -139,7 +139,7 @@
       "description": "Example: \"Stone\""
     },
     "Material3_Count": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         5,
         0,
@@ -157,7 +157,7 @@
       "description": "Example: \"None\""
     },
     "Material4_Count": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0,
         5,

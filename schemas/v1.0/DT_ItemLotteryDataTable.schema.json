@@ -16,7 +16,7 @@
       "description": "Example: \"Grass01\""
     },
     "SlotNo": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         2,
@@ -43,7 +43,7 @@
       "description": "Example: \"PalUpgradeStone\""
     },
     "MinNum": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         300,
@@ -52,7 +52,7 @@
       "description": "Example: 1"
     },
     "MaxNum": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         2,
         1,
@@ -61,7 +61,7 @@
       "description": "Example: 2"
     },
     "NumUnit": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         10,

@@ -64,7 +64,7 @@
       "description": "Example: false"
     },
     "LevelCap": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         2,
@@ -73,14 +73,14 @@
       "description": "Example: 1"
     },
     "Tier": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         0
       ],
       "description": "Example: 0"
     },
     "Cost": {
-      "type": "number",
+      "type": "integer",
       "examples": [
         1,
         2,

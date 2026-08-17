@@ -1,5 +1,28 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.7.0 — 2026-08-17
+
+**158 int32 columns are typed `integer` instead of `number`.** The Jan-2024 paldex
+dump is JSON, which has no integer type, so every numeric field it observed became
+`number` — `DT_PalDropItem.Level`, `DT_PalHumanParameter.MeleeAttack` and 156 others
+accepted `1.5` and only failed in-game. The SDK headers always knew which columns are
+`int32`; the augmenter now uses that.
+
+- **`augment-from-sdk.mjs` aligns integer-ness with the headers** for fields that came
+  from observed data, and refuses to retype a field whose own observed examples are
+  fractional (that would be a real conflict, not a fix). Zero conflicts across all 31
+  tables, and all 2,445 rows of `items.json` still validate, so the live game data
+  agrees with the headers.
+- **Three re-run bugs fixed in the same script**, all found by running it twice:
+  the provenance sentence appended a second copy instead of replacing the first;
+  `sdkAdded`/`droppedRemovedFields` were erased when a later run added nothing; and
+  array fields lost their observed item examples, because after the first pass those
+  live at `oneOf[0].items` rather than `.items`. It also no longer touches
+  `DT_FieldLotteryNameDataTable`, which `derive-sdk-tables.mjs` owns. A second run is
+  now byte-identical to the first.
+- Tests 43 → **46**, including a fixture proving `"Level": 1.5` is rejected with
+  `must be integer` and that every offending field is named, not just the first.
+
 ## 0.6.0 — 2026-08-17
 
 **Item values catch up to 1.0.3, PalSchema compatibility to 0.6.3, and the watcher
