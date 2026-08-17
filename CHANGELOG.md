@@ -1,5 +1,18 @@
 # Changelog — palschema-hub / palschema-validate
 
+## palschema-validate (CLI) 0.4.1 — 2026-08-17
+
+**Docs release. No code changes.** The CLI reads schemas and version pins from the
+registry at runtime, so Palworld 1.0.3 and the `integer` retyping already reached every
+installed copy, including 0.4.0. What was stale was the README on the npm page.
+
+- README records that 1.0.3 is an alias (so `--migrate 1.0.2..1.0.3` reports no
+  row-struct changes rather than inventing a diff), that int32 columns now report
+  `must be integer`, and that PalSchema itself adopted warn-don't-reject unknown keys
+  in 0.6.2 ([#138](https://github.com/Okaetsu/PalSchema/pull/138)) — the semantics this
+  CLI shipped in 0.4.0.
+- `dist/` output is byte-identical to 0.4.0.
+
 ## 0.7.1 — 2026-08-17
 
 **The Nexus offline archive is rebuilt from the repo instead of by hand.** It was a

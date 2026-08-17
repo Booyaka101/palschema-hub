@@ -14,10 +14,17 @@ Flags typos, unknown fields, and wrong types per table/row, with PalSchema's exa
 semantics (array `{"Action":"Clear","Items":[…]}` wrappers, `$Filters` row keys, JSONC).
 
 **Unknown keys warn, they don't reject** (since 0.4.0 — the semantics PalSchema itself
-is adopting, [Okaetsu/PalSchema#134](https://github.com/Okaetsu/PalSchema/issues/134)):
-a field the registry's row struct doesn't declare gets a warning with a did-you-mean
-suggestion, so a legitimately-new game field never breaks your build. Genuine
-type/shape errors still fail the run.
+adopted in 0.6.2, [Okaetsu/PalSchema#134](https://github.com/Okaetsu/PalSchema/issues/134)
+/ [#138](https://github.com/Okaetsu/PalSchema/pull/138)): a field the registry's row
+struct doesn't declare gets a warning with a did-you-mean suggestion, so a
+legitimately-new game field never breaks your build. Genuine type/shape errors still
+fail the run.
+
+**Integer columns are enforced** since registry 0.7.0. 158 fields the game declares
+`int32` (`DT_PalDropItem.Level`, `DT_PalHumanParameter.MeleeAttack`, …) used to accept
+`1.5` and fail only in-game; they now report `must be integer`. The CLI reads schemas
+from the registry at runtime, so this applies to every installed version, including
+older ones.
 
 ```
 WARN mods/pals.json:Lamball unknown field "rarity" — did you mean "Rarity"?
