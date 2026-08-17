@@ -22,7 +22,7 @@
     "nexus:zip": "node scripts/build-nexus-zip.mjs",
     "nexus:check": "node scripts/build-nexus-zip.mjs --check",
     "serve": "node scripts/serve.mjs",
-    "cli:build": "npm --prefix cli install && npm --prefix cli run build",
+    "cli:build": "npm --prefix cli install --no-save && npm --prefix cli run build",
     "test": "node scripts/run-tests.mjs"
   },
   "license": "MIT"

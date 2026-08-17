@@ -1,6 +1,24 @@
 # Changelog — palschema-hub / palschema-validate
 
-## palschema-validate (CLI) 0.4.1 — 2026-08-17
+## palschema-validate (CLI) 0.4.2 — 2026-08-17
+
+**Fixes a broken 0.4.1: `npm install palschema-validate` did not install ajv's own
+dependencies, so validation failed with "the 'ajv' package is required".** 0.4.1 shipped
+a `"palschema-hub": "file:.."` dependency, which resolves for nobody outside this repo
+and corrupts the dependency tree of any fresh install. `--migrate` was unaffected (it
+needs no dependencies); schema validation was broken. **0.4.1 is deprecated on npm.**
+
+- **Root cause, and it was a repeat.** The same line was removed once in cli 0.1.1
+  ("drop file:.. dependency that broke fresh npm installs"). It came back because
+  `npm run cli:build` ran `npm --prefix cli install`, and npm records the parent
+  package as a local dependency of the prefixed one. The script now passes
+  `--no-save`, so building the CLI cannot rewrite its manifest.
+- **Guarded.** `npm test` now fails if `cli/package.json` declares any `file:`/`link:`
+  dependency. The 0.1.1 fix had no test, which is exactly why it regressed unnoticed.
+- Found by smoke-testing the published tarball after release rather than trusting a
+  green build, which is the only reason it did not sit broken on npm.
+
+## palschema-validate (CLI) 0.4.1 — 2026-08-17 (deprecated, use 0.4.2)
 
 **Docs release. No code changes.** The CLI reads schemas and version pins from the
 registry at runtime, so Palworld 1.0.3 and the `integer` retyping already reached every

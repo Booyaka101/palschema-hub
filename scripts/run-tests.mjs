@@ -246,6 +246,18 @@ try {
   rmSync(fx, { recursive: true, force: true });
 }
 
+// A local path dependency publishes fine and then breaks every fresh install of
+// the package. This exact line ("palschema-hub": "file:..") was removed once in
+// cli 0.1.1 and came back through an `npm install` inside cli/, shipping in
+// 0.4.1. Nothing caught it until a post-publish smoke test, so: assert it.
+run('cli/package.json declares no local path dependencies (file:/link:)',
+  ['-e', `const p=require('./cli/package.json');` +
+    `const bad=Object.entries({...p.dependencies,...p.peerDependencies})` +
+    `.filter(([,v])=>/^(file:|link:)/.test(String(v)));` +
+    `if(bad.length){console.error('local dep(s): '+bad.map(([k,v])=>k+'='+v).join(', '));process.exit(1);}` +
+    `console.log('cli deps publishable');`],
+  0, 'cli deps publishable');
+
 // The offline archive bundles the registry AND cli/{package.json,README.md}, so a
 // CLI version bump alone makes it stale. Running this only in CI meant finding
 // that out from a red PR instead of from `npm test`.
