@@ -55,6 +55,10 @@ jobs:
       # not on the morning a patch ships.
       - name: versions.json round-trips through the auto-bump serializer
         run: node scripts/bump-version.mjs --check-format
+      # The Nexus archive is a committed binary that used to be assembled by hand,
+      # which is why its README sat a game version behind the data it shipped.
+      - name: Nexus offline archive matches the repo
+        run: node scripts/build-nexus-zip.mjs --check
       # Informational only — tells us when Palworld or the SDK moves past the
       # registry (exit 1 = stale, exit 2 = network); never fails the build.
       - name: registry currency vs live game + SDK (informational)

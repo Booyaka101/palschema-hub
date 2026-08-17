@@ -11,8 +11,24 @@ and enum value lists — verified against the current game's row structs
 Plus a per-item VALUE reference and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (validator 0.4.0, 2026-08-11)
-  * UNKNOWN FIELDS NOW WARN INSTEAD OF FAILING YOUR BUILD. If your mod
+NEW IN THIS VERSION (registry 0.7.0, 2026-08-17)
+  * PALWORLD 1.0.3 COVERED. The patch changed no DataTable row structs, so
+    a mod that worked on 1.0 needs no field migration. Verified rather than
+    assumed: the decompiled SDK's row-struct headers have not been
+    regenerated since 1.0 (Source/Pal/Public @98ee60d, 2026-07-11).
+  * ITEM VALUES ARE 1.0.3. 1.0.3 was a balance patch, so row values moved
+    while the structs stood still. items.json was re-scraped: World Tree
+    Holy Water weighs 0.1 instead of 1, the Aquatic Construction Kit is
+    rank 2 instead of 4.
+  * INT COLUMNS ARE NOW TYPED integer, NOT number. 158 fields the game
+    declares int32 (DT_PalDropItem.Level, DT_PalHumanParameter.MeleeAttack
+    and others) used to accept 1.5 and fail only in-game. They now fail
+    validation with "must be integer", which is where you want to find out.
+  * Compatible with PalSchema 0.6.3 (checked against the whole 0.6.0-0.6.3
+    diff: no field renamed, no path moved, no row validation changed).
+
+PREVIOUSLY (validator 0.4.0, 2026-08-11)
+  * UNKNOWN FIELDS WARN INSTEAD OF FAILING YOUR BUILD. If your mod
     sets a field this registry's row struct does not know about, the
     validator prints a warning with a did-you-mean suggestion and still
     exits 0:
@@ -39,7 +55,7 @@ NEW IN THIS VERSION (validator 0.4.0, 2026-08-11)
 
 PREVIOUSLY (registry v0.4.0, 2026-08-04)
   * ITEM VALUES ARE NOW CURRENT-GAME. items.json went from 947 rows of
-    Jan-2024 data to 2,445 rows of Palworld 1.0.2 data, scraped from
+    Jan-2024 data to 2,445 rows of current-game data, scraped from
     paldb.cc. Items added since 1.0 are finally present (Hexolite Helmet,
     internal Code SFHelmet, SortId 1325, among them), and the dead field
     SortID - which the current game renamed to SortId - is gone.
@@ -93,8 +109,8 @@ Scan your own mod for fields a patch broke:
 It prints one line per affected field (with a labelled possible-rename note)
 and exits 1 if anything broke, so it drops straight into CI.
 
-Note: Palworld 0.7.3, 1.0.1 and the 1.0.2 line shipped no row-struct changes,
-so they are recorded as aliases of 0.7.2 / 1.0 / 1.0 — those pairs report
+Note: Palworld 0.7.3, 1.0.1, the 1.0.2 line and 1.0.3 shipped no row-struct
+changes, so they are recorded as aliases of 0.7.2 / 1.0 / 1.0 / 1.0 — those pairs report
 "no row-struct changes" rather than inventing a diff. For example:
 
     npx palschema-validate --migrate 1.0.1..1.0.2 my-mod/
@@ -105,11 +121,11 @@ HOW CURRENT IS EACH PART? (read this before trusting a value)
 -------------------------------------------------------------
 Field NAMES and TYPES — the schemas, the version diffs, the --migrate scan —
 are verified against the CURRENT game's row structs (PalworldModdingKit SDK
-headers @62fad41). That part is 1.0.2-current.
+headers @62fad41). That part is 1.0.3-current.
 
-Row VALUES in items.json / items.html are current too, as of v0.4.0. They are
-scraped from paldb.cc, which tracks the live build (its footer pins to v1.0.2,
-2026-07-29): 2,445 rows, one per rarity variant. Fields paldb.cc does not
+Row VALUES in items.json / items.html are current too, re-scraped for 1.0.3.
+They come from paldb.cc, which tracks the live build (its footer pins to
+v1.0.3, 2026/8/12): 2,445 rows, one per rarity variant. Fields paldb.cc does not
 render (VisualBlueprintClassSoft, DropItemType, GrantEffect*, TechnologyTreeLock
 and friends) are filled from the old Jan-2024 paldex dump where that row existed
 back then; paldb wins every conflict, and items.json's fieldSources object

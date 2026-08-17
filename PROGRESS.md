@@ -1,6 +1,22 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-17 (0.7.0 int-typing session)
+**Last updated:** 2026-08-17 (0.7.1 nexus-archive session)
+
+## Session 2026-08-17d — v0.7.1: the archive stops being hand-built
+Last stale surface from the 0.6.0 sweep. `nexus/palschema-hub-registry.zip` was a
+committed 207-entry binary with NO build script, so the copy modders download still
+described 1.0.2 item values and PalSchema 0.6.1 while the repo had moved twice.
+- **scripts/build-nexus-zip.mjs** assembles it from the repo (registry + items + structs
+  + diffs + cli/dist + REGISTRY_README.txt as README.txt), same single-root layout the
+  published v1.4 archive used so existing download paths don't move. Written with a
+  minimal deflate zip writer (no dependency) and a FIXED dos timestamp, which is what
+  makes `--check` possible: two builds of identical content are byte-identical, so CI
+  can assert the committed zip matches the repo. Wired into self-test.yml.
+- Content delta vs the published archive: +structs/1.0.3.json, +3 pairs of ..1.0.3
+  diffs, nothing missing (the 7 dropped entries are bare directory records).
+- Archive text + NEXUS_DESCRIPTION.bbcode refreshed to 1.0.3 / integer typing / 0.6.3.
+- **Still manual and still the owner's:** the Nexus upload itself and pasting the
+  bbcode. PUBLISHING.md documents it; nothing here touches the live mod page.
 
 ## Session 2026-08-17c — v0.7.0: int32 columns stop accepting 1.5
 The finding parked at the end of 0.6.0, now shipped. 158 fields the SDK declares `int32`
