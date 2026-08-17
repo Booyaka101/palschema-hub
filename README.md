@@ -300,7 +300,8 @@ tests/real-mods/               4 real published PalSchema mods (see SOURCES.md)
 tests/real-mods-broken/        deliberately-broken real mods (typed-error tests)
 tests/migrate-fixtures/        --migrate scan fixtures (partner-skill rename case)
 tests/currency-fixtures/       saved Steam-news/commit-list API shapes (the tests re-anchor them to versions.json)
-scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, snapshot-structs, build-diff, build-index, build-items, check-currency, bump-version, check-index, serve (+ lib/sdk-parse.mjs, lib/version-sources.mjs)
+scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, snapshot-structs, build-diff, build-index, build-items, check-currency, bump-version, check-index, build-nexus-zip, serve (+ lib/sdk-parse.mjs, lib/version-sources.mjs, lib/paldb-parse.mjs)
+nexus/                         offline archive published on Nexus Mods (zip rebuilt by npm run nexus:zip; nexus:check gates it in CI)
 .github/workflows/
   pages.yml                    deploys browser + schemas to GitHub Pages (tests gate it)
   palschema-ci.yml.example     CI template for MOD repos

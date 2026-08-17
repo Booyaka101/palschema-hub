@@ -1,5 +1,26 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.7.1 — 2026-08-17
+
+**The Nexus offline archive is rebuilt from the repo instead of by hand.** It was a
+committed 207-entry zip with no build script, so it drifted: the copy on the mod page
+still described Palworld 1.0.2 item values and PalSchema 0.6.1.
+
+- **`scripts/build-nexus-zip.mjs`** (`npm run nexus:zip`) assembles the archive from
+  the current registry, item data, structs, diffs and `cli/dist`, in the same layout
+  the published v1.4 archive used so nothing moves for anyone who already downloaded
+  it. Entries are written with a fixed timestamp, so two builds of the same content
+  are byte-identical and `--check` (`npm run nexus:check`) can tell whether the
+  committed zip matches the repo. That check is now a self-test step.
+- **Archive text refreshed:** 1.0.3 coverage and the alias reasoning, 1.0.3 item
+  values with the two changes a modder would actually notice, the `integer` retyping,
+  and PalSchema 0.6.3.
+- Content delta vs the published archive: `structs/1.0.3.json` and the three
+  `..1.0.3` diffs added, nothing removed.
+
+**Still manual:** uploading the zip and pasting `NEXUS_DESCRIPTION.bbcode` on the mod
+page. `PUBLISHING.md` covers it.
+
 ## 0.7.0 — 2026-08-17
 
 **158 int32 columns are typed `integer` instead of `number`.** The Jan-2024 paldex
