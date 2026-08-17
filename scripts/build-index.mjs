@@ -47,8 +47,26 @@ for (const v of versions) {
   }
 }
 
-const index = { versions, schemas, tables, generatedAt: new Date().toISOString() };
-writeFileSync(join(ROOT, 'index.json'), JSON.stringify(index, null, 2) + '\n');
+/**
+ * Keep the previous timestamp when nothing else changed. A fresh stamp on every
+ * run makes this file dirty on any rebuild — CI regenerates it before testing,
+ * which was enough to fail the offline-archive byte check for a no-op rebuild.
+ */
+function stamp(path, next) {
+  try {
+    const prev = JSON.parse(readFileSync(path, 'utf8'));
+    const same = JSON.stringify({ ...prev, generatedAt: null }) === JSON.stringify({ ...next, generatedAt: null });
+    if (same && prev.generatedAt) return prev.generatedAt;
+  } catch {
+    /* no previous file — fall through to a new stamp */
+  }
+  return new Date().toISOString();
+}
+
+const indexPath = join(ROOT, 'index.json');
+const index = { versions, schemas, tables, generatedAt: null };
+index.generatedAt = stamp(indexPath, index);
+writeFileSync(indexPath, JSON.stringify(index, null, 2) + '\n');
 console.log(`index.json written: versions=[${versions.join(', ')}], tables=${versions.map((v) => `${v}:${schemas[v].length}`).join(' ')}`);
 
 // schemas/index.json — flat table-name -> schema-path listing (per version), for
@@ -59,7 +77,9 @@ const schemasIndex = {
   tables: Object.fromEntries(
     versions.map((v) => [v, Object.fromEntries(schemas[v].map((t) => [t, `schemas/v${v}/${t}.schema.json`]))])
   ),
-  generatedAt: index.generatedAt,
+  generatedAt: null,
 };
-writeFileSync(join(SCHEMAS, 'index.json'), JSON.stringify(schemasIndex, null, 2) + '\n');
+const schemasIndexPath = join(SCHEMAS, 'index.json');
+schemasIndex.generatedAt = stamp(schemasIndexPath, schemasIndex);
+writeFileSync(schemasIndexPath, JSON.stringify(schemasIndex, null, 2) + '\n');
 console.log(`schemas/index.json written: ${versions.map((v) => `${v}:${schemas[v].length} tables`).join(' ')}`);
