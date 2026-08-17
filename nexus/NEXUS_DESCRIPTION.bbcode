@@ -2,9 +2,15 @@
 
 [b]On Palworld 1.0.3? Your mods are fine.[/b]
 The whole 1.0.2 patch line (v1.0.2, v1.0.2.100993 "Mod Support Improvement", v1.0.2.101103) and 1.0.3 ("Balance Adjustments & Bug Fixes") changed [b]no[/b] DataTable row structs — every field that existed in 1.0 still exists, unchanged. That is verified, not assumed: the decompiled SDK has not been regenerated since 1.0 (head 62fad41, 11 Jul 2026). Check any mod yourself in one line:
-[code]npx palschema-validate --migrate 1.0.1..1.0.2 my-mod/
--> no row-struct changes between 1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK 62fad41)[/code]
-[b]New in 1.4 — unknown fields warn instead of failing your build.[/b]
+[code]npx palschema-validate --migrate 1.0.2..1.0.3 my-mod/
+-> no row-struct changes between 1.0.2 and 1.0.3 (both alias Palworld 1.0, SDK 62fad41)[/code]
+[b]New in 1.5 — 1.0.3 item values, and int columns are enforced.[/b]
+1.0.3 was a balance patch: it changed no row structs, but it did change row [i]values[/i]. The item reference was re-scraped, so World Tree Holy Water now weighs 0.1 instead of 1 and the Aquatic Construction Kit is rank 2 instead of 4. If you copy item rows as a base for your own, you were copying two stale numbers.
+Separately, 158 fields the game declares as whole numbers (DT_PalDropItem.Level, DT_PalHumanParameter.MeleeAttack and others) used to accept a fractional value like 1.5 and only misbehave in-game. They now fail validation where you can see them:
+[code]DT_PalDropItem > Alpaca /Level: must be integer[/code]
+Also verified compatible with PalSchema 0.6.3, checked against its full 0.6.0-to-0.6.3 diff rather than the release notes: no field renamed, no path moved, no row validation changed.
+
+[b]Previously, in 1.4 — unknown fields warn instead of failing your build.[/b]
 If your mod sets a field this registry does not know about, the validator now prints a warning with a did-you-mean suggestion and still exits 0:
 [code]WARN mods/pals.json:Lamball unknown field "rarity" — did you mean "Rarity"?
 1 file validated, 0 errors, 1 unknown-key warning[/code]

@@ -1,6 +1,42 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-17 (0.7.1 nexus-archive session)
+**Last updated:** 2026-08-17 (Nexus 1.5 shipped)
+
+## Session 2026-08-17e — Nexus mods/4084 → v1.5 SHIPPED
+Owner asked for the Nexus update after the npm release. All of it landed except the file
+changelog, same as 1.4.
+- **File 1.5 live** (551KB, 207 entries, uploaded 17 Aug 9:43PM), mod version synced to
+  **1.5**, **1.4 archived**, and the **v1.0 file archived** on request — that was the
+  first upload, the malformed archive that drew the untrusted-file warning (2 downloads).
+  1.0.1 deliberately left as "Old": 53 real downloads and it was never quarantined.
+  Public page now lists 1.5 + 1.0.1, virus scan "Safe to use".
+- **Description updated and verified on the PUBLIC page** (lead is 1.0.3, new "New in 1.5"
+  section on item values + integer enforcement + PalSchema 0.6.3, 1.4's section demoted to
+  "Previously, in 1.4"). `nexus/NEXUS_DESCRIPTION.bbcode` is the source and matches.
+- **NEXUS HAS A NEW EDIT UI** (the 08-11 notes are obsolete): `/games/<game>/mods/<id>/edit/
+  {general,files}`, React + headlessui. What changed for automation:
+  - The upload form is a hidden `input[type=file]`; `DOM.setFileInputFiles` with a
+    FORWARD-SLASH path still works and the form shows `palschema-hub-registry.zip (551KB)`,
+    which is the size gate (`input.files[0]` reads back null here — the app copies the File
+    and clears the input, so assert on the rendered chip instead).
+  - "Update existing file" + a combobox (`button[aria-label="Show options"]`) to pick which
+    file, plus an **Archive existing file** checkbox that does the 1.4 archiving in one step.
+    Old files are archived individually from the row kebab ("More actions" → Archive).
+  - Custom checkboxes are `<label>`-wrapped spans with no `role`/`aria-checked`: a real
+    mouse click on the label toggles them, `el.click()` on the inner span does NOT, and
+    there is no readable state — **verify with a screenshot**, not the DOM. A stray click
+    on a tagged wrapper navigated the tab to the homepage once; re-resolve, don't reuse.
+  - **The description is still SCEditor** under a WYSIWYG toolbar, in an about:blank iframe.
+    Setting the backing textarea (even via the native setter + input/change) SAVES NOTHING:
+    the instance owns the value. The 08-11 recipe still holds and is the only thing that
+    works: `ta._sceditor.val(bb)` → `inst.updateOriginal()` → native setter → input/change.
+    Confirmed by `POST next.nexusmods.com/api/flamework/mods/save` → 200 and a reload.
+  - "Import description" exists but returns "This feature is not implemented (yet)".
+- **STILL NOT DONE — the file changelog.** Filled the upload form's changelog textarea
+  (`#file-changelog-text`, read-back matched) and saved; the file, version, archive flags
+  and description all persisted, but the Changelogs tab is still empty. Same outcome as
+  1.4's 403, so it is not transient and not worth another attempt from this path. The same
+  content is public in the description.
 
 ## Session 2026-08-17d — v0.7.1: the archive stops being hand-built
 Last stale surface from the 0.6.0 sweep. `nexus/palschema-hub-registry.zip` was a
