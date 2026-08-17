@@ -48,11 +48,19 @@ function walk(dir) {
   return out;
 }
 
+// Every file here is text, and a Windows checkout can hold CRLF where a Linux one
+// holds LF (.gitattributes declares LF). Normalising means the archive built on a
+// dev machine and the one CI verifies are the same bytes — without it, --check
+// fails on Linux for a build that looked fine locally.
+const TEXT_RE = /\.(json|md|txt|html|js|mjs|bbcode)$|LICENSE$/;
+
 const entries = [];
 const add = (repoPath, archivePath = repoPath) => {
   const abs = join(ROOT, repoPath.split('/').join(sep));
   if (!existsSync(abs)) throw new Error(`missing: ${repoPath}`);
-  entries.push({ name: posix.join(PREFIX, archivePath), data: readFileSync(abs) });
+  let data = readFileSync(abs);
+  if (TEXT_RE.test(repoPath)) data = Buffer.from(data.toString('utf8').replace(/\r\n/g, '\n'), 'utf8');
+  entries.push({ name: posix.join(PREFIX, archivePath), data });
 };
 
 add('nexus/REGISTRY_README.txt', 'README.txt');
