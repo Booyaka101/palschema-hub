@@ -211,21 +211,32 @@ field snapshots are committed under `structs/` and the pairwise deltas under `di
 | 0.7.2 | `4dcdc78` | 2026-02-16 |
 | 1.0 | `98ee60d` | 2026-07-11 |
 
-> **Alias caveat:** Palworld **0.7.3**, **1.0.1** and the **1.0.2** patch line (v1.0.2 ·
-> v1.0.2.100993 "Mod Support Improvement" · v1.0.2.101103) shipped **no** row-struct
-> (header) changes, so they alias `0.7.2` / `1.0` / `1.0` respectively — the CLI and diff
-> page say so explicitly (`--migrate 1.0.1..1.0.2` → "no row-struct changes … both alias
-> Palworld 1.0, SDK 62fad41") instead of pretending a diff exists. The 1.0.2 claim is not
-> assumed: the SDK repo's head (`62fad41`, 2026-07-11) predates the whole 1.0.2 patch line
-> and has not been regenerated since (recorded in `versions.json` `aliases["1.0.2"].aliasReason`).
-> Note also that 0.7.0→0.7.2 changed no row structs (those SDK updates touched other classes).
+> **Alias caveat:** Palworld **0.7.3**, **1.0.1**, the **1.0.2** patch line (v1.0.2 ·
+> v1.0.2.100993 "Mod Support Improvement" · v1.0.2.101103) and **1.0.3** ("Balance
+> Adjustments & Bug Fixes") shipped **no** row-struct (header) changes, so they alias
+> `0.7.2` / `1.0` / `1.0` / `1.0` respectively — the CLI and diff page say so explicitly
+> (`--migrate 1.0.1..1.0.2` → "no row-struct changes … both alias Palworld 1.0, SDK
+> 62fad41") instead of pretending a diff exists. Those claims are not assumed: the SDK's
+> `Source/Pal/Public` was last regenerated at `98ee60d` (2026-07-11), the commit 1.0 pins,
+> and each alias records the shas it was checked against in `versions.json`
+> `aliases[...].aliasReason`. Note also that 0.7.0→0.7.2 changed no row structs (those SDK
+> updates touched other classes).
 
 **Staleness detection:** `npm run versions:check` compares `versions.json` against the live
 world — the Steam news API's patch titles (newest game version) and the PalworldModdingKit
-commit list (SDK head). Exit 0 in sync (`registry current: game 1.0.2, SDK 62fad41`),
-exit 1 stale with one line naming exactly what moved (`game 1.0.3 released, registry newest
-is 1.0.2`), exit 2 on network failure — never conflated. It runs as an informational CI step
-and in the weekly cron, which opens an issue when something actually moved.
+commit list (SDK head). Exit 0 in sync (`registry current: game 1.0.3, SDK 62fad41`),
+exit 1 stale with one line naming exactly what moved (`game 1.0.4 released, registry newest
+is 1.0.3`), exit 2 on network failure — never conflated. It runs as an informational CI step
+and in the daily cron, which opens an issue when something actually moved.
+
+**Auto-bump:** `npm run versions:bump` (`scripts/bump-version.mjs`) handles the one case that
+is fully derivable: the game shipped a patch and `Source/Pal/Public` did **not** regenerate,
+so the new label is an alias. It re-verifies that against both live sources, writes the
+`versions.json` alias entry (evidence in `aliasReason`), and re-runs `snapshot:all` +
+`diff:all`. Exit 0 wrote it, 3 refuses because the SDK regenerated and the row structs really
+changed (that needs a new pin and a human reading the delta), 4 nothing to do, 2 network.
+The daily cron runs it, gates it on the acceptance suite and opens a PR; merging stays manual.
+`--dry-run`, `--no-build` and `--check-format` are there for local use.
 
 Regenerate from scratch with `npm run snapshot:all` (downloads the 12 pinned SDK tarballs
 into `.cache/`) and `npm run diff:all`. Only **derived field names/types** ship here —
@@ -263,7 +274,7 @@ index.json                     { versions, schemas:{ver:[tables]}, tables:{...} 
 index.html                     schema browser (vanilla HTML/CSS/JS, no build step)
 items.html + items.json        per-item value reference for DT_ItemDataTable (asset reuse)
 diff.html                      version-diff viewer (what changed between game versions)
-versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3/1.0.1/1.0.2 aliases + sdkHead)
+versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3/1.0.1/1.0.2/1.0.3 aliases + sdkHead)
 structs/<ver>.json             12 committed row-struct snapshots (field -> C++ type, ordered) + alias copies
 diffs/<a>..<b>.json + .md      pairwise struct deltas (added/removed/retyped + rename notes)
 cli/                           palschema-validate (TypeScript -> dist/*.js), ajv strict
@@ -271,13 +282,13 @@ tests/                         valid-mod.json, invalid-mod.json, example .jsonc,
 tests/real-mods/               4 real published PalSchema mods (see SOURCES.md)
 tests/real-mods-broken/        deliberately-broken real mods (typed-error tests)
 tests/migrate-fixtures/        --migrate scan fixtures (partner-skill rename case)
-tests/currency-fixtures/       saved Steam-news/commit-list responses for check-currency tests
-scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, snapshot-structs, build-diff, build-index, build-items, check-currency, check-index, serve (+ lib/sdk-parse.mjs)
+tests/currency-fixtures/       saved Steam-news/commit-list API shapes (the tests re-anchor them to versions.json)
+scripts/                       derive-schemas, augment-from-sdk, derive-sdk-tables, snapshot-structs, build-diff, build-index, build-items, check-currency, bump-version, check-index, serve (+ lib/sdk-parse.mjs, lib/version-sources.mjs)
 .github/workflows/
   pages.yml                    deploys browser + schemas to GitHub Pages (tests gate it)
   palschema-ci.yml.example     CI template for MOD repos
   self-test.yml                this repo's own CI (build + acceptance checks + currency info step)
-  refresh-items.yml            weekly cron: upstream-dump SHA watch + registry currency check
+  refresh-items.yml            daily cron: upstream-dump SHA watch, registry currency check, auto-alias PR
 ```
 
 ---

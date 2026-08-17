@@ -28,6 +28,11 @@
       "of": "1.0",
       "note": "Palworld 1.0.2 (v1.0.2 · v1.0.2.100993 \"Mod Support Improvement\" · v1.0.2.101103) shipped no Source/Pal/Public header change — its row structs are identical to 1.0.",
       "aliasReason": "localcc/PalworldModdingKit head is still 62fad41 (2026-07-11) — the SDK has not been regenerated since Palworld 1.0 (header pin 98ee60d), so the whole 1.0.2 patch line aliases 1.0. Verified 2026-08-01 against the Steam news API (appid 1623730) and the SDK commit list."
+    },
+    "1.0.3": {
+      "of": "1.0",
+      "note": "Palworld 1.0.3 (v1.0.3: Balance Adjustments & Bug Fixes) shipped no Source/Pal/Public header change. Its row structs are identical to 1.0.",
+      "aliasReason": "Source/Pal/Public was last regenerated at 98ee60d (2026-07-11), which is the commit Palworld 1.0 pins, and the SDK head is 62fad41 (2026-07-11), so 1.0.3 aliases 1.0. Verified 2026-08-17 against the Steam news API (appid 1623730) and the SDK commit list."
     }
   }
 }

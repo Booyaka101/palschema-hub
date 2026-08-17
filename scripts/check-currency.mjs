@@ -26,13 +26,22 @@
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  STEAM_URL,
+  commitsUrl,
+  publicCommitsUrl,
+  SourceError,
+  loadJson as loadSource,
+  cmpVersions,
+  newestGameVersion,
+  registryNewest,
+} from './lib/version-sources.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const versionsInfo = JSON.parse(readFileSync(join(ROOT, 'versions.json'), 'utf8'));
 
-const STEAM_URL = 'https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1623730&count=20&format=json';
-const COMMITS_URL = `https://api.github.com/repos/${versionsInfo.repo}/commits?per_page=1`;
-const PUBLIC_COMMITS_URL = `https://api.github.com/repos/${versionsInfo.repo}/commits?path=Source%2FPal%2FPublic&per_page=1`;
+const COMMITS_URL = commitsUrl(versionsInfo.repo);
+const PUBLIC_COMMITS_URL = publicCommitsUrl(versionsInfo.repo);
 
 const args = process.argv.slice(2);
 const flag = (name) => {
@@ -47,56 +56,25 @@ const fixtures = {
 
 async function loadJson(url, fixturePath, what) {
   try {
-    if (fixturePath) return JSON.parse(readFileSync(fixturePath, 'utf8'));
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'palschema-hub check-currency', Accept: 'application/json' },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
+    return await loadSource(url, fixturePath, what);
   } catch (e) {
-    console.error(`network failure: cannot load ${what} (${fixturePath ?? url}): ${e.message}`);
+    if (!(e instanceof SourceError)) throw e;
+    console.error(`network failure: ${e.message}`);
     process.exit(2);
   }
 }
 
-/** "v1.0.2.101103:Bug fixes" -> "1.0.2" (drop >=5-digit build-number components). */
-function versionFromTitle(title) {
-  const m = String(title).match(/^v(\d+(?:\.\d+){1,3})\b/i);
-  if (!m) return null;
-  const parts = m[1].split('.');
-  while (parts.length > 1 && parts[parts.length - 1].length >= 5) parts.pop();
-  return parts.join('.');
-}
-
-const cmpVersions = (a, b) => {
-  const pa = a.split('.').map(Number);
-  const pb = b.split('.').map(Number);
-  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
-    const d = (pa[i] ?? 0) - (pb[i] ?? 0);
-    if (d) return d;
-  }
-  return 0;
-};
-
 // ---- GAME: newest patch version in the Steam news window --------------------
 const steam = await loadJson(STEAM_URL, fixtures.steam, 'Steam news for appid 1623730');
-const newsItems = steam?.appnews?.newsitems;
-if (!Array.isArray(newsItems)) {
-  console.error('network failure: Steam news response has no appnews.newsitems');
+let gameNewest;
+try {
+  gameNewest = newestGameVersion(steam);
+} catch (e) {
+  console.error(`network failure: ${e.message}`);
   process.exit(2);
 }
-// Sort by the raw unix `date` field ourselves — the feed interleaves sources.
-const patches = newsItems
-  .map((n) => ({ version: versionFromTitle(n.title), date: Number(n.date) || 0 }))
-  .filter((p) => p.version)
-  .sort((a, b) => b.date - a.date);
-let gameNewest = null;
-for (const p of patches) {
-  if (!gameNewest || cmpVersions(p.version, gameNewest) > 0) gameNewest = p.version;
-}
 
-const registryLabels = [...versionsInfo.order, ...Object.keys(versionsInfo.aliases)];
-const registryNewest = registryLabels.reduce((a, b) => (cmpVersions(a, b) >= 0 ? a : b));
+const newest = registryNewest(versionsInfo);
 
 // ---- SDK: branch head vs the recorded head ----------------------------------
 const headCommits = await loadJson(COMMITS_URL, fixtures.commits, 'PalworldModdingKit commit list');
@@ -108,8 +86,8 @@ if (!headSha) {
 const recordedHead = versionsInfo.sdkHead?.commit ?? versionsInfo.versions[versionsInfo.order[versionsInfo.order.length - 1]].sdkCommit;
 
 const problems = [];
-if (gameNewest && cmpVersions(gameNewest, registryNewest) > 0) {
-  problems.push(`game ${gameNewest} released, registry newest is ${registryNewest}`);
+if (gameNewest && cmpVersions(gameNewest, newest) > 0) {
+  problems.push(`game ${gameNewest} released, registry newest is ${newest}`);
 }
 if (!headSha.startsWith(recordedHead)) {
   // Head moved — did Source/Pal/Public (the row structs) actually regenerate?
@@ -127,5 +105,5 @@ if (problems.length) {
   console.log(problems.join('; '));
   process.exit(1);
 }
-console.log(`registry current: game ${registryNewest}, SDK ${recordedHead}`);
+console.log(`registry current: game ${newest}, SDK ${recordedHead}`);
 process.exit(0);

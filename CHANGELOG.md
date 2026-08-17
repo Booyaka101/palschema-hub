@@ -1,5 +1,38 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.5.0 — 2026-08-17
+
+**Palworld 1.0.3 lands as an alias, and the registry now bumps itself.** The weekly
+watch could only report staleness; a human then did the same mechanical edit every
+time. `scripts/bump-version.mjs` (`npm run versions:bump`) does that edit.
+
+- **Palworld 1.0.3** ("Balance Adjustments & Bug Fixes", Steam news 2026-08-12) is an
+  **alias of 1.0**: `Source/Pal/Public` was last regenerated at `98ee60d` (2026-07-11),
+  the commit 1.0 pins, and the SDK head is still `62fad41`. Ships
+  `structs/1.0.3.json` plus the `1.0..1.0.3`, `1.0.1..1.0.3` and `1.0.2..1.0.3` empty
+  deltas. Regenerating every other snapshot and diff produced byte-identical files.
+- **`scripts/bump-version.mjs`:** re-verifies both live sources, writes the alias entry
+  with its evidence in `aliasReason`, then re-runs `snapshot:all` + `diff:all`. Exit 0
+  wrote it / 3 refuses because the SDK regenerated (real header changes need a new pin
+  and a human) / 4 nothing to do / 2 network. `--dry-run`, `--no-build`, `--today`,
+  `--check-format` and the same fixture flags as check-currency. It rewrites
+  `versions.json` with a serializer that reproduces the file's hand-readable style
+  byte-for-byte, and refuses to write if that round-trip ever stops matching, so an
+  alias addition stays a 5-line diff instead of reflowing the file.
+- **`refresh-items.yml` runs daily** (a patch could previously sit undetected for six
+  days) and gained a `version-alias` job: run the bump, run the acceptance suite, open
+  a PR that closes the stale-registry issue. Merging stays manual, and the workflow
+  never pushes to main.
+- **`scripts/lib/version-sources.mjs`:** the Steam-news and SDK-commit parsing that
+  check-currency owned, now shared with the bump so the two cannot disagree about what
+  "newest" means. GitHub API calls send `GITHUB_TOKEN` when present (unauthenticated
+  api.github.com is 60/hr per IP, which shared CI egress burns through).
+- **Currency tests no longer name a game version.** They rebuild the saved API shapes
+  around whatever `versions.json` claims right now, so an alias bump can't rot them
+  (the day 1.0.3 shipped, the "1.0.3 is hypothetical" fixture became a lie). Plus new
+  tests for the alias path, the refusal path, and one asserting every alias has its
+  struct snapshot and diff. Tests 35 → **41**.
+
 ## palschema-validate (CLI) 0.4.0 — 2026-08-11
 
 **Unknown keys warn instead of rejecting — with did-you-mean suggestions and a

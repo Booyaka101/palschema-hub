@@ -1,6 +1,40 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-11 (CLI 0.4.0 unknown-key-warnings session)
+**Last updated:** 2026-08-17 (0.5.0 auto-bump session)
+
+## Session 2026-08-17 — v0.5.0: the registry bumps itself (issue #12, Palworld 1.0.3)
+Trigger: the cron's own issue #12 ("game 1.0.3 released, registry newest is 1.0.2"). The
+question was whether the follow-up work has to be manual at all. Half of it doesn't.
+- **Phase-0 verified live:** Steam news (appid 1623730) lists `v1.0.3: Balance Adjustments
+  & Bug Fixes` (2026-08-12) and nothing newer; `Source/Pal/Public` last regenerated at
+  `98ee60d` (2026-07-11), the commit 1.0 pins; SDK head still `62fad41`. So 1.0.3 is an
+  alias of 1.0, not a new pin.
+- **scripts/bump-version.mjs** (`npm run versions:bump`): the alias path end to end, and a
+  hard refusal (exit 3) on the regenerate path. Exit codes 0 wrote / 1 usage / 2 network /
+  3 needs-a-human / 4 nothing-to-do. Writes `version=`/`alias_of=` to `$GITHUB_OUTPUT` when
+  running under Actions. The interesting part is the **versions.json serializer**:
+  `JSON.stringify(x, null, 2)` would reflow all 12 pinned records and bury a 5-line alias
+  addition in 40 lines of churn, so it re-emits the file's own style (records inline under
+  200 chars, longer ones expanded) and **asserts a byte-identical round-trip of the
+  committed file before it is allowed to write** — `--check-format` exposes that as a CI
+  gate (self-test.yml). It also preserves the file's EOLs (this clone has CRLF on disk
+  despite `.gitattributes eol=lf`).
+- **scripts/lib/version-sources.mjs:** Steam/SDK parsing extracted from check-currency so
+  the reporter and the actor can't disagree on "newest". check-currency's output and exit
+  codes are unchanged (fixture tests prove it). GitHub calls now send `GITHUB_TOKEN` when
+  present — the 60/hr unauthenticated limit was hit during this very session.
+- **refresh-items.yml → daily**, plus a `version-alias` job: bump, `npm run cli:build &&
+  npm test`, then open a PR (branch `auto/palworld-<v>-alias`) that closes the stale issue.
+  Gotcha recorded: PRs opened with `GITHUB_TOKEN` do NOT trigger self-test, which is why
+  the suite runs inside the job and the PR body says so.
+- **Currency fixtures are now generated from versions.json** at test time (the committed
+  files stay as API-shape templates; `steam-stale.json` deleted). Hardcoded versions in
+  those two assertions rotted on every bump — 1.0.3 was still labelled "hypothetical".
+  Tests 35 → **41**, all green.
+- **1.0.3 shipped as data:** versions.json alias + `structs/1.0.3.json` + three empty-delta
+  diffs. Re-running snapshot:all/diff:all left every pre-existing file byte-identical.
+- Root package 0.4.0 → **0.5.0** (CLI untouched at 0.4.0: it reads the registry from GitHub
+  raw at runtime, so 1.0.3 works with the already-published npm build, no republish).
 
 ## Session 2026-08-11 — palschema-validate 0.4.0: unknown keys warn, don't reject (#134 semantics)
 Workspace was 1 commit behind origin (Dependabot @types/node bump in cli/) — fast-forwarded
