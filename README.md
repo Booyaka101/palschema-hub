@@ -204,6 +204,25 @@ runs in `npm test`, so a stale regeneration cannot ship silently. Regenerate any
 `npm run items` (re-runs are free — pages cache under `.cache/paldb/`); parsed fields that
 are **not** in the schema are printed at the end, which is how new game fields get noticed.
 
+## Building reference (two tables, one row name)
+
+[`buildings.html`](https://booyaka101.github.io/palschema-hub/buildings.html) is the same
+idea for buildings — **460 rows, current-game (Palworld 1.0.3)** — and untangles the part
+people trip on (issue #21): a building spans **two DataTables sharing one row name**.
+The Egg Incubator is `HatchingPalEgg` in `DT_MapObjectMasterDataTable` (world-object
+side: `Hp`, `Defense`, `DeteriorationDamage`, …) **and** in `DT_BuildObjectDataTable`
+(build side: `TypeA`/`TypeB`, `Rank`, `SortId`, `BuildExpRate`, …), while the unlocking
+`DT_TechnologyRecipeUnlock` row prefixes it (`Special_HatchingPalEgg`, with
+`UnlockBuildObjects: ["HatchingPalEgg"]`). Each building page shows both rows, the
+materials mapped back to item Codes, and copy/paste JSON for a raw-table mod.
+
+`scripts/build-buildings.mjs` scrapes paldb.cc's ten construction category pages (which
+render the raw field names), routes every field to the table whose schema declares it
+(the two schemas share no field name), and refuses to write when paldb's version footer
+disagrees with the build it claims to capture. Fields paldb doesn't render
+(`BlueprintClassName`, `RequiredBuildWorkAmount`, the raw `Material1..4` columns) are
+absent, not zero. Gate: `npm run check:buildings`, run by `npm test`.
+
 ## What changed between game versions
 
 Every Palworld patch can add, remove, or rename DataTable row-struct fields — and a

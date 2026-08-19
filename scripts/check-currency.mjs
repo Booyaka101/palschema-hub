@@ -65,6 +65,7 @@ const fixtures = {
   publicCommits: flag('--public-commits-json'),
   releases: flag('--releases-json'),
   items: flag('--items-json'),
+  buildings: flag('--buildings-json'),
 };
 
 async function loadJson(url, fixturePath, what) {
@@ -131,6 +132,19 @@ if (itemsVersion && cmpVersions(itemsVersion, newest) < 0) {
   problems.push(`items.json values are Palworld ${itemsVersion}, registry newest is ${newest}`);
 }
 
+// buildings.json has the same balance-patch blindness as items.json.
+const buildingsPath = fixtures.buildings ?? join(ROOT, 'buildings.json');
+let buildingsVersion;
+try {
+  buildingsVersion = JSON.parse(readFileSync(buildingsPath, 'utf8'))._provenance?.gameVersion;
+} catch (e) {
+  console.error(`network failure: cannot read ${buildingsPath}: ${e.message}`);
+  process.exit(2);
+}
+if (buildingsVersion && cmpVersions(buildingsVersion, newest) < 0) {
+  problems.push(`buildings.json values are Palworld ${buildingsVersion}, registry newest is ${newest}`);
+}
+
 // ---- PALSCHEMA: the framework these schemas are written for ------------------
 const claimed = versionsInfo.upstream?.palSchema?.version;
 let palSchemaNewest = claimed;
@@ -157,6 +171,7 @@ if (problems.length) {
 console.log(
   `registry current: game ${newest}, SDK ${recordedHead}` +
     (claimed ? `, PalSchema ${claimed}` : '') +
-    (itemsVersion ? `, item values ${itemsVersion}` : ''),
+    (itemsVersion ? `, item values ${itemsVersion}` : '') +
+    (buildingsVersion ? `, building values ${buildingsVersion}` : ''),
 );
 process.exit(0);

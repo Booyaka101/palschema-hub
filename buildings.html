@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PalSchema Hub — Building reference (DT_MapObjectMasterDataTable + DT_BuildObjectDataTable values)</title>
+<style>
+  :root {
+    --bg: #0f1218; --panel: #171b24; --panel2: #1e2430; --border: #2a3242;
+    --text: #e6e9ef; --muted: #8b95a7; --accent: #6db3f2; --accent2: #7ee0a6;
+    --chip: #232b3a; --warn: #f2c14e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 18px 22px; border-bottom: 1px solid var(--border); background: var(--panel);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  header .tag { color: var(--muted); font-size: 12.5px; }
+  header a { color: var(--accent); text-decoration: none; }
+  .layout { display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 61px); }
+  .sidebar { border-right: 1px solid var(--border); background: var(--panel); display: flex; flex-direction: column; }
+  .controls { padding: 14px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--border); }
+  select, input {
+    width: 100%; padding: 9px 11px; background: var(--panel2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none;
+  }
+  input:focus, select:focus { border-color: var(--accent); }
+  .count { color: var(--muted); font-size: 12px; padding: 0 2px; }
+  .list { overflow-y: auto; flex: 1; padding: 6px; }
+  .item { padding: 9px 11px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+  .item:hover { background: var(--panel2); }
+  .item.active { background: #24304a; }
+  .item .name { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item .n { color: var(--muted); font-size: 11px; flex: none; }
+  .main { padding: 22px 26px; overflow-y: auto; }
+  .empty { color: var(--muted); margin-top: 40px; text-align: center; }
+  .sch-head { margin-bottom: 16px; }
+  .sch-head h2 { margin: 0 0 6px; font-family: ui-monospace, Consolas, monospace; font-size: 20px; color: var(--accent); }
+  .sch-head .disp { color: var(--muted); font-size: 13px; }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+  .chip { background: var(--chip); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; font-size: 12px; color: var(--muted); }
+  .chip b { color: var(--text); font-weight: 600; }
+  .desc { color: var(--muted); font-size: 13px; max-width: 900px; }
+  h3.tbl { margin: 22px 0 0; font-size: 14px; font-family: ui-monospace, Consolas, monospace; color: var(--accent2); }
+  table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+  td.field { font-family: ui-monospace, Consolas, monospace; color: var(--text); white-space: nowrap; }
+  td.val code { background: var(--panel2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 12.5px; color: var(--accent2); }
+  .provenance { border: 1px solid var(--accent2); border-left: 5px solid var(--accent2); background: #14231a;
+    color: #cfe9d8; border-radius: 8px; padding: 10px 16px; margin: 0; font-size: 12.5px; line-height: 1.55; }
+  .provenance b { color: var(--accent2); }
+  .provenance a { color: var(--accent); }
+  .row-provenance { color: var(--warn); font-size: 11.5px; margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 8px; max-width: 900px; }
+  pre { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+    overflow-x: auto; font-size: 12.5px; line-height: 1.45; margin-top: 10px; }
+  .rowjson-head { display: flex; align-items: center; gap: 12px; margin-top: 22px; }
+  .rowjson-head h3 { margin: 0; font-size: 14px; }
+  button.copy { background: var(--panel2); color: var(--accent); border: 1px solid var(--border);
+    border-radius: 8px; padding: 5px 12px; font-size: 12.5px; cursor: pointer; }
+  button.copy:hover { border-color: var(--accent); }
+  .note { color: var(--warn); font-size: 12px; margin: 6px 0 0; max-width: 900px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏗️ PalSchema Hub — Building reference</h1>
+  <span class="tag">Per-building values from <code>DT_MapObjectMasterDataTable</code> + <code>DT_BuildObjectDataTable</code> (one row name spans both) · <a href="./index.html">← schema registry</a> · <a href="./items.html">items</a> · <a href="./buildings.json">buildings.json ↗</a></span>
+</header>
+
+<div class="provenance" id="provenance" hidden></div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="controls">
+      <select id="category"><option value="">All categories</option></select>
+      <input id="search" type="search" placeholder="Filter buildings… (name or row code)" autocomplete="off" />
+      <div class="count" id="listcount"></div>
+    </div>
+    <div class="list" id="list"></div>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="empty" id="empty">Loading buildings…</div>
+  </main>
+</div>
+
+<script>
+const state = { data: null, codes: [], active: null };
+const esc = s => String(s).replace(/</g, '&lt;');
+const short = t => String(t || '').replace(/^EPalBuildObjectType[AB]::/, '');
+
+function currentFilter() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const cat = document.getElementById('category').value;
+  return state.codes.filter(c => {
+    const b = state.data.buildings[c];
+    if (cat && !b.categories.includes(cat)) return false;
+    if (!q) return true;
+    return c.toLowerCase().includes(q) || b.name.toLowerCase().includes(q);
+  });
+}
+
+function renderList() {
+  const filtered = currentFilter();
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  for (const c of filtered.slice(0, 500)) {
+    const b = state.data.buildings[c];
+    const div = document.createElement('div');
+    div.className = 'item' + (c === state.active ? ' active' : '');
+    div.innerHTML = `<span class="name">${esc(b.name)}</span><span class="n">${esc(b.group || b.categories[0])}</span>`;
+    div.onclick = () => select(c);
+    list.appendChild(div);
+  }
+  document.getElementById('listcount').textContent =
+    `${filtered.length} of ${state.codes.length} buildings` + (filtered.length > 500 ? ' (showing first 500)' : '');
+}
+
+function fieldRows(fields) {
+  return Object.entries(fields)
+    .map(([f, v]) => `<tr><td class="field">${esc(f)}</td><td class="val"><code>${esc(JSON.stringify(v))}</code></td></tr>`)
+    .join('');
+}
+
+function select(code) {
+  state.active = code;
+  renderList();
+  const b = state.data.buildings[code];
+  const mom = b.tables.DT_MapObjectMasterDataTable || {};
+  const bo = b.tables.DT_BuildObjectDataTable || {};
+  const materials = (b.materials || [])
+    .map(m => `<tr><td class="field">${esc(m.code ?? '(code unmapped)')}</td><td class="val"><code>${esc(m.item)} × ${esc(m.count)}</code></td></tr>`)
+    .join('');
+  const rowJson = JSON.stringify({
+    'DT_MapObjectMasterDataTable': { [code]: mom },
+    'DT_BuildObjectDataTable': { [code]: bo },
+  }, null, 2);
+  document.getElementById('main').innerHTML = `
+    <div class="sch-head">
+      <h2>${esc(code)}</h2>
+      <div class="disp">${esc(b.name)}${b.group ? ' · ' + esc(b.group) : ''} · ${b.categories.map(esc).join(', ')}</div>
+      <div class="meta">
+        ${'TypeA' in bo ? `<span class="chip">TypeA <b>${esc(short(bo.TypeA))}</b></span>` : ''}
+        ${'TypeB' in bo ? `<span class="chip">TypeB <b>${esc(short(bo.TypeB))}</b></span>` : ''}
+        ${'Rank' in bo ? `<span class="chip">Rank <b>${esc(bo.Rank)}</b></span>` : ''}
+        ${'Hp' in mom ? `<span class="chip">Hp <b>${esc(mom.Hp)}</b></span>` : ''}
+        ${'Defense' in mom ? `<span class="chip">Defense <b>${esc(mom.Defense)}</b></span>` : ''}
+        ${'DeteriorationDamage' in mom ? `<span class="chip">Deterioration <b>${esc(mom.DeteriorationDamage)}</b></span>` : ''}
+      </div>
+      ${b.description ? `<div class="desc">${esc(b.description)}</div>` : ''}
+      <div class="desc" style="margin-top:6px">Both tables use the row name <b>${esc(code)}</b>; the unlocking
+        <code>DT_TechnologyRecipeUnlock</code> row conventionally prefixes it (e.g. <code>Special_${esc(code)}</code>)
+        with <code>UnlockBuildObjects: ["${esc(code)}"]</code>.</div>
+    </div>
+    <h3 class="tbl">DT_MapObjectMasterDataTable — world-object side</h3>
+    <table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>${fieldRows(mom) || '<tr><td colspan="2">(no rendered fields)</td></tr>'}</tbody></table>
+    <h3 class="tbl">DT_BuildObjectDataTable — build side</h3>
+    <table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody>${fieldRows(bo) || '<tr><td colspan="2">(no rendered fields)</td></tr>'}</tbody></table>
+    ${materials ? `<h3 class="tbl">Materials (Material1..4_Id / _Count)</h3>
+    <table><thead><tr><th>Item code</th><th>Display name × count</th></tr></thead><tbody>${materials}</tbody></table>` : ''}
+    <div class="rowjson-head">
+      <h3>Row JSON (copy/paste base for a raw-table mod)</h3>
+      <button class="copy" onclick="copyRow()">Copy JSON</button>
+    </div>
+    <pre id="rowjson">${esc(rowJson)}</pre>
+    <div class="row-provenance">Values from paldb.cc, Palworld ${esc(state.data._provenance.gameVersion)}.
+      paldb renders a subset of each row: fields it doesn't show (BlueprintClassName, RequiredBuildWorkAmount,
+      the raw Material1..4 columns, …) are absent here, not zero. Gate: <code>npm run check:buildings</code>.</div>`;
+}
+
+function copyRow() {
+  navigator.clipboard.writeText(document.getElementById('rowjson').textContent);
+}
+
+async function init() {
+  let data;
+  try {
+    const res = await fetch('./buildings.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('buildings.json HTTP ' + res.status);
+    data = await res.json();
+  } catch (e) {
+    document.getElementById('empty').textContent = 'Could not load buildings.json: ' + e.message;
+    return;
+  }
+  state.data = data;
+  state.codes = Object.keys(data.buildings);
+  const p = data._provenance;
+  const banner = document.getElementById('provenance');
+  banner.innerHTML = `✅ <b>Current-game data:</b> ${data.count} buildings scraped from paldb.cc construction pages ` +
+    `for <b>Palworld ${esc(p.gameVersion)}</b> (${esc(p.gameVersionDate)}). Each field is routed to the table whose ` +
+    `schema declares it — the two build tables share no field name, so routing is unambiguous.`;
+  banner.hidden = false;
+  const cats = [...new Set(state.codes.flatMap(c => data.buildings[c].categories))].sort();
+  const sel = document.getElementById('category');
+  sel.innerHTML = '<option value="">All categories</option>' + cats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  sel.onchange = renderList;
+  document.getElementById('search').oninput = renderList;
+  document.getElementById('main').innerHTML = `
+    <div class="empty">Select a building to see its two table rows, materials and copy/paste JSON.<br><br>
+    <span class="note">${esc(data.note)} · generated ${esc(data.generatedAt.slice(0, 10))} · ${data.count} buildings</span></div>`;
+  renderList();
+}
+init();
+</script>
+</body>
+</html>

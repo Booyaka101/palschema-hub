@@ -1,0 +1,14 @@
+{
+  "_provenance": { "gameVersion": "1.0.3", "valuesCurrent": true },
+  "count": 1,
+  "buildings": {
+    "HatchingPalEgg": {
+      "name": "Egg Incubator",
+      "categories": ["Pal"],
+      "tables": {
+        "DT_MapObjectMasterDataTable": { "DeteriorationDamage": "not-a-number" },
+        "DT_BuildObjectDataTable": { "Hp": 2000 }
+      }
+    }
+  }
+}

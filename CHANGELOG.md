@@ -1,5 +1,33 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.9.0 — 2026-08-19
+
+**Per-building value reference: [`buildings.html`](https://booyaka101.github.io/palschema-hub/buildings.html) /
+`buildings.json` (issue #21).** Asked for on the Nexus page: someone wanted every value
+for one specific building and the hub had nowhere to get it. The trap the issue
+documents is that a building spans two DataTables sharing one row name
+(`HatchingPalEgg` in both `DT_MapObjectMasterDataTable` and
+`DT_BuildObjectDataTable`), while the unlocking `DT_TechnologyRecipeUnlock` row
+prefixes it (`Special_HatchingPalEgg`).
+
+- **460 buildings, current game (Palworld 1.0.3),** scraped from paldb.cc's ten
+  construction category pages — which now render the raw DataTable rows, the
+  blocker the issue was parked on. Every scraped field is routed to the table
+  whose schema declares it; the two schemas share no field name, so routing is
+  unambiguous and `npm run check:buildings` (a test-suite gate) validates every
+  routed field against its schema.
+- **Materials mapped to real item Codes** (930/930) through the item index —
+  paldb shows display names ("Paldium Fragment"), the row columns want Codes
+  (`Pal_crystal_S`). Unrouted display labels (Workload, Worker Max) are kept
+  under `display`; fields paldb does not render (BlueprintClassName,
+  RequiredBuildWorkAmount, raw Material columns) are absent, not zero, and the
+  page says so.
+- **`check-currency` gained a buildings axis:** a balance patch that moves
+  building values while structs stand still now flags `buildings.json` the same
+  way it flags `items.json`.
+- Tests 70 -> 73. `buildings.html`/`buildings.json` join the Pages deploy and
+  the Nexus offline archive.
+
 ## 0.8.0 + palschema-validate (CLI) 0.5.0 — 2026-08-19
 
 **Tracks PalSchema 0.6.3 (2026-08-15) and 0.6.4 (2026-08-18).** 0.6.4 added ranch

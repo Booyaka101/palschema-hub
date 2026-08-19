@@ -102,11 +102,15 @@ const ROW_RE =
 const STATS_HEADING_RE = /<h5 class="card-title[^"]*">\s*Stats\s*<\/h5>/g;
 
 /**
- * Parse one item detail page into one entry per variant block.
+ * Parse one detail page into one entry per Stats block. Label mapping, rarity
+ * words and enum prefixes are per-table concerns, so callers pass their own
+ * (build-buildings uses none of the item mappings — building pages render raw
+ * field names and the item map would misroute e.g. Defense).
  * @param {string} html
+ * @param {{labelMap?: Record<string,string>, enumPrefixes?: Record<string,string>, rarityWords?: boolean}} opts
  * @returns {{ entries: Array<{rowName: string, fields: Record<string, string|number>}>, warnings: string[] }}
  */
-export function parseItemPage(html) {
+export function parseDetailPage(html, { labelMap = {}, enumPrefixes = {}, rarityWords = false } = {}) {
   const warnings = [];
   const rows = [];
   for (const m of html.matchAll(ROW_RE)) {
@@ -135,13 +139,13 @@ export function parseItemPage(html) {
         else warnings.push(`block ${b}: second Code "${value}" inside one block (kept "${code}")`);
         continue;
       }
-      const name = LABEL_MAP[label] ?? label;
-      if (name === 'Rarity' && value in RARITY_WORDS) {
+      const name = labelMap[label] ?? label;
+      if (rarityWords && name === 'Rarity' && value in RARITY_WORDS) {
         // word form; only set if the numeric Others-card row hasn't already won
         if (!('Rarity' in fields)) fields.Rarity = RARITY_WORDS[value];
         continue;
       }
-      const prefix = ENUM_PREFIXES[name];
+      const prefix = enumPrefixes[name];
       fields[name] = prefix && value && !value.includes('::') ? prefix + value : value;
     }
 
@@ -152,6 +156,11 @@ export function parseItemPage(html) {
     entries.push({ rowName: code, fields });
   }
   return { entries, warnings };
+}
+
+/** Item detail pages: the original entry point, with the item mappings applied. */
+export function parseItemPage(html) {
+  return parseDetailPage(html, { labelMap: LABEL_MAP, enumPrefixes: ENUM_PREFIXES, rarityWords: true });
 }
 
 const INDEX_ITEM_RE = /<a href="#" data-hover="[^"]*">([\s\S]*?)<\/a><div>([^<]*)<\/div>/g;

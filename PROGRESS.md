@@ -1,6 +1,45 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-19 (0.8.0 / CLI 0.5.0 — PalSchema 0.6.3/0.6.4 loader tracking)
+**Last updated:** 2026-08-19 (0.9.0 — building reference shipped; 0.8.0/CLI 0.5.0 earlier same day)
+
+## Session 2026-08-19b — 0.9.0: the building value reference (issue #21)
+Owner asked to build #21 once 0.8.0's CI was green, and to check the auto-created
+issue/PR. Status of those: issue #22 auto-closed by the 0.8.0 merge; the auto PR was
+Dependabot #11 (@types/node 26.2.0 in cli/) — it had REBASED itself onto the new
+package-lock, its diff was one version hunk plus removing the stale extraneous ".."
+record, full suite green on it, merged. Nothing broke.
+- **The unblock:** paldb.cc building pages NOW render raw DataTable rows (the issue was
+  parked on "does not render"). Verified live, then built the lane.
+- **scripts/build-buildings.mjs** (`npm run buildings`): scrapes the ten construction
+  category indexes (Production, Pal, Storage, Food, Infrastructure, Lighting,
+  Foundations, Defenses, Furniture, Other — entries are `data-hover="?s=MapObjects%2F<row>"`),
+  then one detail page per building (cache .cache/paldb-buildings/<ver>/, footer-version
+  asserted like build-items). Fields route to whichever schema declares them —
+  DT_MapObjectMasterDataTable and DT_BuildObjectDataTable share NO field name (asserted
+  fatal in the script), so routing is unambiguous. Enum prefixes are the BUILDING enums
+  (EPalBuildObjectTypeA/B). Materials (recipes div, p-1 rows) map display name → item
+  Code via the item index, unique names only: 930/930 mapped (Paldium Fragment →
+  Pal_crystal_S). Unrouted labels land under `display` (Workload, Worker Max + some
+  tutorial-card noise on a few pages); paldb-unrendered fields (BlueprintClassName,
+  RequiredBuildWorkAmount, raw Material1..4 columns, DT_TechnologyRecipeUnlock rows)
+  are documented absent.
+- **paldb-parse refactor:** parseDetailPage(html, {labelMap, enumPrefixes, rarityWords})
+  extracted; parseItemPage delegates with the item mappings. Without this the ITEM
+  label map silently misroutes building fields (Defense → PhysicalDefenseValue) — caught
+  before first full run, worth remembering for any third lane.
+- **scripts/check-buildings.mjs** (`npm run check:buildings`, in npm test): ajv-validates
+  every routed field against its schema, ≥150 rows, ≥80% of buildings with BOTH tables
+  populated, HatchingPalEgg spot values pinned to the live page (Hp 2000,
+  DeteriorationDamage 0.04, TypeB Pal_Breed, materials present). check-currency gained
+  a --buildings-json axis (balance-patch staleness, same as items).
+- **buildings.html**: items.html-style browser (category filter, search, both tables,
+  materials with Codes, copy/paste raw-table JSON, tech-row naming note). Verified by
+  executing the page script in Node with a DOM stub against the real buildings.json
+  (banner, 460/460 count, both tables, Hp 2000, materials, Special_ note) — headless
+  Chrome --dump-dom returned empty on this box, so the DOM-stub path is the render check.
+- Wired: pages.yml cp line (+buildings.html/json), nexus zip FILES (471 entries now),
+  index.html nav link, package.json 0.9.0. Tests 70 → **73**, all green.
+- 460 buildings across 10 categories; result posted on #21 and the issue closed.
 
 ## Session 2026-08-19 — 0.8.0 + CLI 0.5.0: the loader overlay (PalSchema 0.6.3/0.6.4)
 Trigger: cron issue #22 (PalSchema 0.6.4 released, registry claimed 0.6.3). 0.6.4's
