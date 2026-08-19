@@ -26,7 +26,7 @@ import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
-import { parseDetailPage, parseIndex, detailUrlFor, parseFooterVersion, decodeEntities } from './lib/paldb-parse.mjs';
+import { parseDetailPage, parseIndex, detailUrlFor, parseFooterVersion, decodeEntities, stripTags } from './lib/paldb-parse.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const USER_AGENT = 'palschema-hub build-buildings (github.com/Booyaka101/palschema-hub)';
@@ -257,7 +257,7 @@ async function worker(queue) {
         name: decodeEntities(entry.slug.replace(/_/g, ' ')),
         categories: entry.categories,
         ...(entry.group ? { group: entry.group } : {}),
-        ...(desc ? { description: decodeEntities(desc[1].replace(/<[^>]*>/g, '')).replace(/\s+/g, ' ').trim() } : {}),
+        ...(desc ? { description: decodeEntities(stripTags(desc[1])).replace(/\s+/g, ' ').trim() } : {}),
         tables,
         ...(Object.keys(display).length ? { display } : {}),
         ...(materials.length ? { materials } : {}),
