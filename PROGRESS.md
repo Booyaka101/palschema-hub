@@ -1,6 +1,76 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-17 (Nexus 1.5 shipped)
+**Last updated:** 2026-08-19 (0.8.0 / CLI 0.5.0 — PalSchema 0.6.3/0.6.4 loader tracking)
+
+## Session 2026-08-19 — 0.8.0 + CLI 0.5.0: the loader overlay (PalSchema 0.6.3/0.6.4)
+Trigger: cron issue #22 (PalSchema 0.6.4 released, registry claimed 0.6.3). 0.6.4's
+change is loader-side — `RanchActionData` on new pals (PR #143) is implemented in
+`PalMonsterModLoader.cpp`, not on any row struct — so header-derived schemas would
+false-positive a legal mod. Owner asked to fold the open issues into the build.
+- **Phase-0 verified live (all):** 0.6.4 release body + published_at 2026-08-18T07:09:36Z;
+  0.6.3 body (0.6.2+0.6.3) + 2026-08-15T12:54:33Z; issue #134 still open (pal loop has
+  no null-property warning branch); SDK head still 62fad413/2026-07-11 (no header move,
+  1.0 pin 98ee60d intact); PR #143 diff = ONE line (PalMonsterModLoader.cpp:181, the
+  new-pal path call — NO key name in the diff); the key name + object gate + 7 nested
+  properties (ChargeMontage, FunMontage, ChargeFacialEye, FunFacialEye, SpawnSocketName,
+  SpawnLocationOffset, SpawnItemRotator) read off HandleRanchSuitability on main;
+  PR #128 diff (SortID copy on the new-item path). Also pulled PalSchema's own bundled
+  assets/schemas/{pals,items}.schema.json for alignment — notable: THEIR pals schema
+  does not document RanchActionData at all yet.
+- **structs/loader-overlay.json (new):** every loader-implemented key with per-entry
+  source/provenance. pals: RanchActionData (sincePalSchema 0.6.4 + sinceNote),
+  IconAssetPath, BlueprintAssetPath, ActorClassPath, AbilitiesByLevel, Loot, Name,
+  ShortDescription, LongDescription. items: Type (enum, both short + class-name
+  spellings), Name, Description, Recipe, SortID, bLegalInGame. Plus an `advisories`
+  block (SortID/SortId below 0.6.4 → PR #128 note) and per-loader in-game-warning
+  metadata (#134 vs #138).
+- **Generators:** scripts/apply-loader-overlay.mjs merges pals entries into
+  DT_PalMonsterParameter.schema.json (marked with a `palschema-loader-overlay` $comment;
+  idempotent — proven byte-identical on re-run); scripts/derive-loader-schemas.mjs emits
+  schemas/v1.0/PalStaticItemData.schema.json from the UPalStaticItemDataBase/Armor/
+  Weapon/Consume class headers (38 fields incl. enums, chain-parsed like the loader's
+  GetPropertyByNameInChain) + items overlay keys. augment-from-sdk.mjs now PRESERVES
+  overlay-marked props (would otherwise drop them as "removed" on re-run). seed order:
+  derive → augment → sdk-tables → loader-schemas → overlay → index. Registry is now
+  32 schema files.
+- **CLI 0.5.0:** pals/items loader files are first-class targets (detected by DT_ keys →
+  raw; parent folder pals/items; else a ≥50% field-match sniff — delete-only files are
+  items by definition). `--palschema-version` gates overlay keys (`"RanchActionData"
+  requires PalSchema >= 0.6.4 when adding new pals...` + PR link, as a compatibility
+  warning; --strict → exit 1); unknown values fail loudly listing versions.json's
+  recorded releases. `--version` now optional (defaults to newest known, aliases
+  resolved). Warn lines carry per-loader notes: pals → #134 (not caught in game),
+  items → #138 (game also warns since 0.6.3); raw lines BYTE-UNCHANGED (existing test
+  assertions untouched). Item Recipe objects validate against DT_ItemRecipeDataTable;
+  null item entries (delete syntax) legal. Two text-level checks schemas can't express:
+  loader-only keys in raw DT_ files (raw loader would skip them) and bare-integer Loot
+  DropChance (loader's is_number_float() skips the entry; JSON.parse erases 100 vs
+  100.0 so it reads the raw text — an ajv not:{type:integer} would false-positive on a
+  correct "100.0", which JSON.parse collapses to integer 100).
+- **BOM fix (real find from the cold-install test):** PowerShell/Notepad write a UTF-8
+  BOM; nlohmann (the game) skips it; the CLI rejected it. parseJsonc now strips it.
+- **versions.json:** upstream.palSchema → version 0.6.4/2026-08-18 + releases
+  [0.6.3/2026-08-15, 0.6.4/2026-08-18]; serializer round-trip verified. check-currency/
+  bump-version unchanged (fixtures anchor to the file and followed automatically).
+  cli/package-lock.json: version sync also flushed a STALE `palschema-hub file:..`
+  remnant that was still in the lock (harmless but wrong) from the 0.4.1 incident.
+- **Tests 46 → 70, all green.** New fixtures: ranch-new-pal.{json,jsonc} (worked
+  example, byte-equal behavior), pals/typo.json (did-you-mean + #134 + nested
+  RanchActionData key check), items/typo.json (did-you-mean + #138 + Recipe nested +
+  null delete), ranch-raw-mismatch.json, pals/loot-int-dropchance.json, bom.json,
+  unknown --palschema-version, versions/schema provenance asserts. Real-mod corpus
+  still zero warnings. Nexus zip rebuilt (209 entries), REGISTRY_README.txt leads 0.8.0.
+- **VERIFIED cold:** packed tarball → clean D:\tmp\psv-050-e2e install → new-pal mod
+  with RanchActionData: no flags exit 0 clean; --palschema-version 0.6.3 → the
+  requires->=0.6.4 warning; .jsonc identical; BOM'd file parses.
+- Root 0.7.1 → **0.8.0**, CLI 0.4.2 → **0.5.0**. CHANGELOG names 0.6.3, 0.6.4, #134,
+  #138, #139, #128, #143.
+- **Issue #22** closes with this release (registry claims 0.6.4). **Issue #21** (building
+  value browser): investigated live — paldb.cc building pages NOW RENDER the DataTable
+  rows (Egg Incubator page shows Hp 2000, DeteriorationDamage 0.04, SortId 14,
+  BuildExpRate 2.74, materials, Code HatchingPalEgg), so the issue's "does not render
+  the DataTable rows" blocker is GONE. Scoped as its own release (new scrape lane +
+  browser page); findings to be recorded on the issue.
 
 ## Session 2026-08-17e — Nexus mods/4084 → v1.5 SHIPPED
 Owner asked for the Nexus update after the npm release. All of it landed except the file

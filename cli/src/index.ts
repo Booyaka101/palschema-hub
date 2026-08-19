@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import {
   buildDiffIndex,
+  cmpVersions,
   collectFiles,
   invertDiff,
   loadRegistryJson,
@@ -19,11 +20,18 @@ import {
 const HELP = `palschema-validate — validate Palworld PalSchema mod JSON/JSONC against the palschema-hub registry
 
 Usage:
+  palschema-validate <file-or-dir> [more...]
   palschema-validate --version <palworld_version> <file-or-dir> [more...]
   palschema-validate --migrate <from>..<to>      <file-or-dir> [more...]
 
-Modes (exactly one):
-  --version <v>        Validate mod files against version <v>'s schemas (e.g. 1.0)
+Modes:
+  (default)            Validate mod files. Raw-table files ({"DT_*": {...}}),
+                       pal-loader files ({"<CharacterId>": {...}}) and
+                       item-loader files ({"<ItemId>": {...}}) are all
+                       recognized — by their DT_* keys, their pals/ or items/
+                       folder, or their fields.
+  --version <v>        Validate against Palworld version <v>'s schemas
+                       (default: the newest version the registry knows)
   --migrate <a>..<b>   Scan mod files for fields that were removed or retyped
                        between two Palworld versions (e.g. 0.7.2..1.0) — flags
                        every field a mod sets that no longer exists (with a
@@ -31,31 +39,41 @@ Modes (exactly one):
                        Exit 1 if any breaking field is found.
 
 Options:
+  --palschema-version <v>  Target a specific PalSchema release (e.g. 0.6.3).
+                       Loader keys newer than the target are flagged, e.g.
+                       RanchActionData on a new pal needs PalSchema >= 0.6.4
+                       (PR #143). Unknown values fail loudly; the registry's
+                       versions.json records which releases are known.
   --registry <r>   Schema/diff source: a base URL, or a local repo-root path
                    (default: https://raw.githubusercontent.com/<owner>/palschema-hub/main)
   --owner <o>      GitHub owner for the default registry URL          (default: Booyaka101)
-  --strict         CI mode: promote unknown-key warnings to errors (exit 1)
+  --strict         CI mode: promote warnings to errors (exit 1)
   -h, --help       Show this help
 
-Unknown keys (validate mode): a field the registry's row struct doesn't declare is
-reported as a WARNING with a did-you-mean suggestion, not a rejection — matching the
-semantics PalSchema itself is adopting (Okaetsu/PalSchema#134). PalSchema pseudo-keys
-($Filters, the {"Action": "Clear", "Items": [...]} array wrapper) never warn.
+Unknown keys (validate mode): a field the schema doesn't declare is reported as a
+WARNING with a did-you-mean suggestion, not a rejection — the semantics PalSchema
+itself is adopting (Okaetsu/PalSchema#134). The note on each warning says whether
+the game would catch it too: the pal loader stays silent in game (#134), the item
+loader warns at load since PalSchema 0.6.3 (#138). PalSchema pseudo-keys ($Filters,
+the {"Action": "Clear", "Items": [...]} array wrapper) and loader keys read off
+PalSchema's source (RanchActionData, Loot, Recipe, ...) never warn.
 
 Examples:
-  npx palschema-validate --version 1.0 ./mods/
+  npx palschema-validate ./mods/
+  npx palschema-validate --palschema-version 0.6.3 pals/mynewpal.json
   npx palschema-validate --migrate 0.7.2..1.0 ./mods/
-  npx palschema-validate --migrate 0.7.2..1.0 --registry . tests/migrate-fixtures/partner-skill.json
 
-Exit codes: 0 = all files pass (unknown-key warnings alone never fail a run);
-            1 = validation error / breaking field / bad usage, or any unknown-key
-                warning when --strict is given.`;
+Exit codes: 0 = all files pass (warnings alone never fail a run);
+            1 = validation error / breaking field / bad usage, or any warning
+                when --strict is given.`;
 
 interface Parsed {
   opts: Options;
   paths: string[];
   strict: boolean;
   migrate?: { from: string; to: string };
+  /** Raw --palschema-version value; resolved against the registry in main(). */
+  palschemaVersion?: string;
 }
 
 function parseArgs(argv: string[]): Parsed | null {
@@ -64,6 +82,7 @@ function parseArgs(argv: string[]): Parsed | null {
   let registry: string | undefined;
   let owner = process.env.PALSCHEMA_OWNER || 'Booyaka101';
   let strict = false;
+  let palschemaVersion = '';
   const paths: string[] = [];
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
@@ -73,10 +92,12 @@ function parseArgs(argv: string[]): Parsed | null {
     else if (a === '--registry') registry = argv[++i];
     else if (a === '--owner') owner = argv[++i] ?? owner;
     else if (a === '--strict') strict = true;
+    else if (a === '--palschema-version') palschemaVersion = argv[++i] ?? '';
     else if (a.startsWith('--version=')) version = a.slice('--version='.length);
     else if (a.startsWith('--migrate=')) migrate = a.slice('--migrate='.length);
     else if (a.startsWith('--registry=')) registry = a.slice('--registry='.length);
     else if (a.startsWith('--owner=')) owner = a.slice('--owner='.length);
+    else if (a.startsWith('--palschema-version=')) palschemaVersion = a.slice('--palschema-version='.length);
     else if (a.startsWith('-')) {
       console.error(`Unknown option: ${a}`);
       return null;
@@ -86,8 +107,12 @@ function parseArgs(argv: string[]): Parsed | null {
     console.error('Error: --version and --migrate are mutually exclusive — pick one mode.\n');
     return null;
   }
-  if (!version && !migrate) {
-    console.error('Error: one of --version <palworld_version> (validate) or --migrate <from>..<to> (breaking-change scan) is required.\n');
+  if (migrate && palschemaVersion) {
+    console.error('Error: --palschema-version applies to validate mode, not --migrate.\n');
+    return null;
+  }
+  if (!version && !migrate && !paths.length) {
+    console.error('Error: provide mod files/directories to validate, or --migrate <from>..<to> for a breaking-change scan.\n');
     return null;
   }
   if (migrate) {
@@ -102,7 +127,7 @@ function parseArgs(argv: string[]): Parsed | null {
     console.error('Error: provide at least one file or directory to validate.\n');
     return null;
   }
-  return { opts: { version, registry, owner }, paths, strict };
+  return { opts: { version, registry, owner }, paths, strict, palschemaVersion: palschemaVersion || undefined };
 }
 
 async function runMigrate(parsed: Parsed): Promise<never> {
@@ -242,6 +267,55 @@ async function main() {
   if (parsed.migrate) await runMigrate(parsed);
   const { opts, paths } = parsed;
 
+  // No --version: validate against the newest Palworld version the registry
+  // knows (aliases resolve to their pinned version's schemas).
+  if (!opts.version) {
+    let info: VersionsInfo;
+    try {
+      info = await loadRegistryJson('versions.json', opts);
+    } catch (e: any) {
+      console.error(`Error: ${e.message}`);
+      console.error('Pass --version <palworld_version> to skip the versions.json lookup.');
+      process.exit(1);
+    }
+    const labels = [...info.order, ...Object.keys(info.aliases ?? {})];
+    const newest = labels.reduce((a, b) => (cmpVersions(a, b) >= 0 ? a : b));
+    const resolved = resolveVersionLabel(info, newest)!;
+    opts.version = resolved.version;
+    console.log(
+      `validating against Palworld ${opts.version} schemas` +
+        (newest !== opts.version ? ` (newest known: ${newest}, which aliases ${opts.version})` : ' (newest known)')
+    );
+  }
+
+  // --palschema-version: only recorded releases are accepted — an unknown value
+  // fails loudly instead of silently defaulting to the newest behavior.
+  if (parsed.palschemaVersion) {
+    let info: VersionsInfo & { upstream?: { palSchema?: { version?: string; releases?: Array<{ version: string }> } } };
+    try {
+      info = await loadRegistryJson('versions.json', opts);
+    } catch (e: any) {
+      console.error(`Error: ${e.message}`);
+      process.exit(1);
+    }
+    const ps = info.upstream?.palSchema;
+    const known = (ps?.releases ?? []).map((r) => r.version);
+    if (!known.length && ps?.version) known.push(ps.version);
+    if (!known.length) {
+      console.error('Error: this registry does not record PalSchema releases (versions.json upstream.palSchema.releases) — cannot honor --palschema-version.');
+      process.exit(1);
+    }
+    if (!known.includes(parsed.palschemaVersion)) {
+      const newest = known.reduce((a, b) => (cmpVersions(a, b) >= 0 ? a : b));
+      console.error(`Error: unknown PalSchema version "${parsed.palschemaVersion}".`);
+      console.error(`This registry records PalSchema releases: ${known.join(', ')} (newest: ${newest}).`);
+      console.error('Pass one of those, or omit --palschema-version to target the newest.');
+      process.exit(1);
+    }
+    opts.palschemaVersion = parsed.palschemaVersion;
+    console.log(`targeting PalSchema ${opts.palschemaVersion}`);
+  }
+
   const files: string[] = [];
   for (const p of paths) {
     try {
@@ -256,12 +330,24 @@ async function main() {
     process.exit(1);
   }
 
+  // Per-loader note: does the GAME catch this too? The raw table loader always
+  // warned, the item loader warns since PalSchema 0.6.3 (#138), the pal loader
+  // stays silent (#134) — which is exactly why this scan exists for pals files.
+  const LOADER_NOTES: Record<string, string> = {
+    pals: "not caught in game: PalSchema's pal loader silently ignores unknown fields — Okaetsu/PalSchema#134",
+    items: 'PalSchema 0.6.3+ also warns about this at load time — Okaetsu/PalSchema#138',
+  };
+
   // Unknown-key warnings (PalSchema#134 semantics): direct row fields print as
   //   WARN <file>:<rowKey> unknown field "<key>" — did you mean "<suggestion>"?
   // nested keys keep the CLI's established "unknown key" wording plus their path.
+  // Compat warnings (since-version gates, advisories, loader-mismatch) carry
+  // their full message instead.
   const warnLine = (w: FileWarning): string => {
+    if (w.kind === 'compat') return `WARN ${w.file}:${w.row} ${w.message}`;
     const what = w.path ? `unknown key "${w.key}" (in ${w.path})` : `unknown field "${w.key}"`;
-    return `WARN ${w.file}:${w.row} ${what}${w.suggestion ? ` — did you mean "${w.suggestion}"?` : ''}`;
+    const note = w.loader && LOADER_NOTES[w.loader] ? ` (${LOADER_NOTES[w.loader]})` : '';
+    return `WARN ${w.file}:${w.row} ${what}${w.suggestion ? ` — did you mean "${w.suggestion}"?` : ''}${note}`;
   };
 
   const allFindings: Finding[] = [];
@@ -286,13 +372,17 @@ async function main() {
   }
 
   // Never claim unqualified success while warnings exist; --strict promotes them.
+  const compatCount = allWarnings.filter((w) => w.kind === 'compat').length;
+  const unknownCount = allWarnings.length - compatCount;
   const errorCount = allFindings.length + (parsed.strict ? allWarnings.length : 0);
-  const warnCount = parsed.strict ? 0 : allWarnings.length;
   const s = (n: number) => (n === 1 ? '' : 's');
   console.log(
     `${files.length} file${s(files.length)} validated, ` +
       `${errorCount} error${s(errorCount)}${parsed.strict && allWarnings.length ? ' (strict)' : ''}, ` +
-      (parsed.strict ? `${warnCount} warning${s(warnCount)}` : `${warnCount} unknown-key warning${s(warnCount)}`)
+      (parsed.strict
+        ? `0 warning${s(0)}`
+        : `${unknownCount} unknown-key warning${s(unknownCount)}` +
+          (compatCount ? `, ${compatCount} compatibility warning${s(compatCount)}` : ''))
   );
   process.exit(errorCount ? 1 : 0);
 }

@@ -1,0 +1,238 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/PalStaticItemData.schema.json",
+  "title": "PalSchema item-loader entry (UPalStaticItemData)",
+  "description": "One entry of a PalSchema items-folder mod file ({ \"<ItemId>\": { ...these fields } }; a null value deletes the item). The item loader matches keys against UPalStaticItemDataBase and its Armor/Weapon/Consume subclasses (GetPropertyByNameInChain) plus its own keys (Type, Name, Description, Recipe, SortID, bLegalInGame); anything else is ignored, with an in-game warning since PalSchema 0.6.3 (Okaetsu/PalSchema#138). Fields are optional (partial patches edit existing items; only NEW items need Type). Palworld 1.0, class members verified against localcc/PalworldModdingKit@62fad41.",
+  "$comment": "palschema-hub | loader=items | rowStruct=UPalStaticItemDataBase(+Armor/Weapon/Consume) | palworldVersion=1.0 | fields=38 | source=sdk-headers+loader-overlay | sdk=localcc/PalworldModdingKit@62fad41 | loaderKeys=Type,Name,Description,Recipe,SortID,bLegalInGame",
+  "type": "object",
+  "properties": {
+    "ID": {
+      "type": "string",
+      "description": "FName — set from the mod key when adding, ignored when editing. Class property (UPalStaticItemDataBase)."
+    },
+    "ItemBaseName": {
+      "type": "string",
+      "description": "FName — Class property (UPalStaticItemDataBase)."
+    },
+    "IconTexture": {
+      "type": [
+        "object",
+        "string"
+      ],
+      "description": "Asset/class reference (TSoftObjectPtr<UTexture2D>) — string asset path or exported object form — Class property (UPalStaticItemDataBase)."
+    },
+    "TypeA": {
+      "type": "string",
+      "description": "EnumProperty EPalItemTypeA. Values: EPalItemTypeA::None, EPalItemTypeA::Weapon, EPalItemTypeA::SpecialWeapon, EPalItemTypeA::Armor, EPalItemTypeA::Accessory, EPalItemTypeA::Material, EPalItemTypeA::Consume, EPalItemTypeA::Ammo, EPalItemTypeA::Food, EPalItemTypeA::Essential, EPalItemTypeA::Glider, EPalItemTypeA::MonsterEquipWeapon, EPalItemTypeA::Blueprint, EPalItemTypeA::CaptureItemModifier — Class property (UPalStaticItemDataBase).",
+      "examples": [
+        "EPalItemTypeA::None",
+        "EPalItemTypeA::Weapon",
+        "EPalItemTypeA::SpecialWeapon"
+      ]
+    },
+    "TypeB": {
+      "type": "string",
+      "description": "EnumProperty EPalItemTypeB. Values: EPalItemTypeB::None, EPalItemTypeB::WeaponMelee, EPalItemTypeB::WeaponBow, EPalItemTypeB::WeaponCrossbow, EPalItemTypeB::WeaponHandgun, EPalItemTypeB::WeaponAssaultRifle, EPalItemTypeB::WeaponSniperRifle, EPalItemTypeB::WeaponRocketLauncher, EPalItemTypeB::WeaponShotgun, EPalItemTypeB::WeaponFlameThrower, EPalItemTypeB::WeaponGatlingGun, EPalItemTypeB::WeaponCollectionTool, EPalItemTypeB::WeaponThrowObject, EPalItemTypeB::WeaponGrapplingGun, EPalItemTypeB::WeaponMetalDetector, EPalItemTypeB::WeaponFishingRod, EPalItemTypeB::SPWeaponCaptureBall, EPalItemTypeB::SPWeaponDamageTrap, EPalItemTypeB::SPWeaponCaptureTrap, EPalItemTypeB::SPWeaponCaptureRope, EPalItemTypeB::ArmorHead, EPalItemTypeB::ArmorBody, EPalItemTypeB::Accessory, EPalItemTypeB::MaterialOre, EPalItemTypeB::MaterialJewelry, EPalItemTypeB::MaterialIngot, EPalItemTypeB::MaterialWood, EPalItemTypeB::MaterialStone, EPalItemTypeB::MaterialProccessing, EPalItemTypeB::MaterialMonster, EPalItemTypeB::MaterialPalEgg, EPalItemTypeB::ConsumeBandage, EPalItemTypeB::ConsumeSeed, EPalItemTypeB::ConsumeBullet, EPalItemTypeB::ConsumeWazaMachine, EPalItemTypeB::ConsumeTechnologyBook, EPalItemTypeB::ConsumeAncientTechnologyBook, EPalItemTypeB::ConsumeOther, EPalItemTypeB::ConsumeGainStatusPoints, EPalItemTypeB::ConsumePalLevelUp, EPalItemTypeB::ConsumePalGainExp, EPalItemTypeB::ConsumePalTalentUp, EPalItemTypeB::ConsumePalRankUp, EPalItemTypeB::ConsumePalRevive, EPalItemTypeB::ConsumePalWorkSuitabilityUp, EPalItemTypeB::ConsumePalGainFriendshipPoint, EPalItemTypeB::ConsumeFishingBait, EPalItemTypeB::FoodMeat, EPalItemTypeB::FoodVegetable, EPalItemTypeB::FoodFish, EPalItemTypeB::FoodDishMeat, EPalItemTypeB::FoodDishVegetable, EPalItemTypeB::FoodDishFish, EPalItemTypeB::FoodProcessed, EPalItemTypeB::Essential, EPalItemTypeB::Essential_UnlockPlayerFuture, EPalItemTypeB::Essential_BossReward, EPalItemTypeB::Glider, EPalItemTypeB::Shield, EPalItemTypeB::Money, EPalItemTypeB::Medicine, EPalItemTypeB::Drug, EPalItemTypeB::MonsterEquipWeapon, EPalItemTypeB::Blueprint, EPalItemTypeB::ReturnToBaseCamp, EPalItemTypeB::Essential_PalGear, EPalItemTypeB::Essential_AdditionalInventory, EPalItemTypeB::CaptureItemModifier, EPalItemTypeB::ConsumeTreasureMap, EPalItemTypeB::Essential_Lamp, EPalItemTypeB::Essential_PassiveSkillChange, EPalItemTypeB::ConsumePalAwakening, EPalItemTypeB::ConsumePassiveSkillChange, EPalItemTypeB::ConsumeWorldTreeHolyWater — Class property (UPalStaticItemDataBase).",
+      "examples": [
+        "EPalItemTypeB::None",
+        "EPalItemTypeB::WeaponMelee",
+        "EPalItemTypeB::WeaponBow"
+      ]
+    },
+    "Rank": {
+      "type": "integer",
+      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "Rarity": {
+      "type": "integer",
+      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "Price": {
+      "type": "integer",
+      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "MaxStackCount": {
+      "type": "integer",
+      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "SortId": {
+      "type": "integer",
+      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "DynamicItemDataClass": {
+      "type": [
+        "object",
+        "string"
+      ],
+      "description": "Asset/class reference (TSubclassOf<UPalDynamicItemDataBase>) — string asset path or exported object form — Class property (UPalStaticItemDataBase)."
+    },
+    "bNotConsumed": {
+      "type": "boolean",
+      "description": "BoolProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "bNotAvailableInPVP": {
+      "type": "boolean",
+      "description": "BoolProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "actorClass": {
+      "type": [
+        "object",
+        "string"
+      ],
+      "description": "Asset/class reference (TSoftClassPtr<AActor>) — string asset path or exported object form — Class property (UPalStaticItemDataBase)."
+    },
+    "StaticMeshPath": {
+      "type": [
+        "object",
+        "string"
+      ],
+      "description": "Asset/class reference (TSoftObjectPtr<UStaticMesh>) — string asset path or exported object form — Class property (UPalStaticItemDataBase)."
+    },
+    "VisualBlueprintClassSoft": {
+      "type": [
+        "object",
+        "string"
+      ],
+      "description": "Asset/class reference (TSoftClassPtr<AActor>) — string asset path or exported object form — Class property (UPalStaticItemDataBase)."
+    },
+    "DropItemType": {
+      "type": "string",
+      "description": "EnumProperty EPalDropItemType. Values: EPalDropItemType::None, EPalDropItemType::UNKO, EPalDropItemType::Max — Class property (UPalStaticItemDataBase).",
+      "examples": [
+        "EPalDropItemType::None",
+        "EPalDropItemType::UNKO",
+        "EPalDropItemType::Max"
+      ]
+    },
+    "Weight": {
+      "type": "number",
+      "description": "FloatProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "Durability": {
+      "type": "number",
+      "description": "FloatProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "PassiveSkill": {
+      "type": "string",
+      "description": "FName — Class property (UPalStaticItemDataBase)."
+    },
+    "PassiveSkill2": {
+      "type": "string",
+      "description": "FName — Class property (UPalStaticItemDataBase)."
+    },
+    "PassiveSkill3": {
+      "type": "string",
+      "description": "FName — Class property (UPalStaticItemDataBase)."
+    },
+    "PassiveSkill4": {
+      "type": "string",
+      "description": "FName — Class property (UPalStaticItemDataBase)."
+    },
+    "CorruptionFactor": {
+      "type": "number",
+      "description": "FloatProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "FloatValue1": {
+      "type": "number",
+      "description": "FloatProperty — Class property (UPalStaticItemDataBase)."
+    },
+    "OverrideNameMsgID": {
+      "type": "string",
+      "description": "FName — Class property (UPalStaticItemDataBase)."
+    },
+    "OverrideDescMsgID": {
+      "type": "string",
+      "description": "FName — Class property (UPalStaticItemDataBase)."
+    },
+    "AttackValue": {
+      "type": "integer",
+      "description": "IntProperty — Class property (UPalStaticArmorItemData, UPalStaticWeaponItemData)."
+    },
+    "DefenseValue": {
+      "type": "integer",
+      "description": "IntProperty — Class property (UPalStaticArmorItemData, UPalStaticWeaponItemData)."
+    },
+    "HPValue": {
+      "type": "integer",
+      "description": "IntProperty — Armor items only. Class property (UPalStaticArmorItemData)."
+    },
+    "ShieldValue": {
+      "type": "integer",
+      "description": "IntProperty — Armor items only. Class property (UPalStaticArmorItemData)."
+    },
+    "MagazineSize": {
+      "type": "integer",
+      "description": "IntProperty — Weapon items only. Class property (UPalStaticWeaponItemData)."
+    },
+    "SneakAttackRate": {
+      "type": "number",
+      "description": "FloatProperty — Weapon items only. Class property (UPalStaticWeaponItemData)."
+    },
+    "RestoreHP": {
+      "type": "integer",
+      "description": "IntProperty — Consume items only. Class property (UPalStaticConsumeItemData)."
+    },
+    "RestoreSP": {
+      "type": "integer",
+      "description": "IntProperty — Consume items only. Class property (UPalStaticConsumeItemData)."
+    },
+    "RestoreSatiety": {
+      "type": "integer",
+      "description": "IntProperty — Consume items only. Class property (UPalStaticConsumeItemData)."
+    },
+    "RestoreSanity": {
+      "type": "integer",
+      "description": "IntProperty — Consume items only. Class property (UPalStaticConsumeItemData)."
+    },
+    "WazaID": {
+      "type": "string",
+      "description": "EnumProperty EPalWazaID. Values: EPalWazaID::None, EPalWazaID::Human_Punch, EPalWazaID::WorkAttack, EPalWazaID::Throw, EPalWazaID::Scratch, EPalWazaID::EnergyShot, EPalWazaID::Unique_Anubis_LowRoundKick, EPalWazaID::Unique_Anubis_GroundPunch, EPalWazaID::Unique_Anubis_Tackle, EPalWazaID::Unique_Deer_PushupHorn, EPalWazaID::HyperBeam, EPalWazaID::PowerShot, EPalWazaID::PowerBall, EPalWazaID::Unique_Garm_Bite, EPalWazaID::Intimidate, EPalWazaID::Unique_Boar_Tackle, EPalWazaID::Unique_PinkCat_CatPunch, EPalWazaID::Unique_FlowerDinosaur_Whip, EPalWazaID::Unique_SheepBall_Roll, EPalWazaID::Unique_ChickenPal_ChickenPeck, EPalWazaID::Unique_Gorilla_GroundPunch, EPalWazaID::Unique_Grassmammoth_Earthquake, EPalWazaID::AirCanon, EPalWazaID::Unique_GrassPanda_MusclePunch, EPalWazaID::Unique_RobinHood_BowSnipe, EPalWazaID::Unique_Alpaca_Tackle, EPalWazaID::Unique_KingAlpaca_BodyPress, EPalWazaID::Unique_Werewolf_Scratch, EPalWazaID::Unique_FengyunDeeper_CloudTempest, EPalWazaID::Unique_Baphomet_SwallowKite, EPalWazaID::Unique_HerculesBeetle_BeetleTackle, EPalWazaID::Unique_HawkBird_Storm, EPalWazaID::Unique_Eagle_GlidingNail, EPalWazaID::SelfDestruct, EPalWazaID::SelfDestruct_Bee, EPalWazaID::SelfExplosion, EPalWazaID::Unique_Garm_BiteV2, EPalWazaID::Unique_GuardianDog_Bite, EPalWazaID::Unique_GuardianDog_BiteV2, EPalWazaID::RadiantBarrage, EPalWazaID::FireBlast, EPalWazaID::Flamethrower, EPalWazaID::FireBall, EPalWazaID::FlareArrow, EPalWazaID::FireSeed, EPalWazaID::Unique_Horus_FlareBird, EPalWazaID::FlareTornado, EPalWazaID::Inferno, EPalWazaID::Unique_FireKirin_Tackle, EPalWazaID::Unique_AmaterasuWolf_FireCharge, EPalWazaID::Unique_VolcanicMonster_MagmaAttack, EPalWazaID::Unique_FlameBuffalo_FlameHorn, EPalWazaID::Eruption, EPalWazaID::FlameWall, EPalWazaID::FlameFunnel, EPalWazaID::Unique_AmaterasuWolf_Bite, EPalWazaID::Unique_AmaterasuWolf_BiteV2, EPalWazaID::WaterGun, EPalWazaID::WaterWave, EPalWazaID::HydroPump, EPalWazaID::WaterBall, EPalWazaID::TidalWave, EPalWazaID::AquaJet, EPalWazaID::BubbleShot, EPalWazaID::AcidRain, EPalWazaID::SeaGush, EPalWazaID::RipTide, EPalWazaID::DiversionLaser, EPalWazaID::HydroSlicer, EPalWazaID::Unique_KingWhale_HomingBubble, EPalWazaID::Unique_KingWhale_AquaBlade, EPalWazaID::CreepingBubble, EPalWazaID::Unique_KingWhale_Ripple, EPalWazaID::Unique_KingWhale_Maelstrom, EPalWazaID::Unique_KingWhale_TidalWave, EPalWazaID::Unique_KingWhale_AquaTornado, EPalWazaID::Unique_KingWhale_TidalBore, EPalWazaID::Unique_KingWhale_SuperTidalBore, EPalWazaID::Unique_KingWhale_WaveTackle, EPalWazaID::Unique_KingWhale_Breaching, EPalWazaID::Unique_KingWhale_Breaching_P3, EPalWazaID::Unique_KingWhale_BaseCampAttack, EPalWazaID::Unique_BluePlatypus_Toboggan, EPalWazaID::Unique_TentacleTurtle_HydroSpin, EPalWazaID::Unique_SakuraSaurus_Water_SplashTackle, EPalWazaID::WindCutter, EPalWazaID::GrassTornado, EPalWazaID::SolarBeam, EPalWazaID::SeedMachinegun, EPalWazaID::SeedMine, EPalWazaID::RootAttack, EPalWazaID::SpecialCutter, EPalWazaID::CrossWind, EPalWazaID::ReflectiveShuriken, EPalWazaID::HealingTree, EPalWazaID::Unique_QueenBee_SpinLance, EPalWazaID::ThunderRain, EPalWazaID::ThunderBall, EPalWazaID::LineThunder, EPalWazaID::CrossThunder, EPalWazaID::ThreeThunder, EPalWazaID::ElecWave, EPalWazaID::Thunderbolt, EPalWazaID::ThunderFunnel, EPalWazaID::SpreadPulse, EPalWazaID::LockonLaser, EPalWazaID::LightningStrike, EPalWazaID::ThunderSpear, EPalWazaID::Unique_ElecPanda_ElecScratch, EPalWazaID::Unique_Kirin_LightningTackle, EPalWazaID::Unique_FlowerDinosaur_Electric_ThunderWhip, EPalWazaID::Unique_ThunderDog_Bite, EPalWazaID::Unique_ThunderDog_BiteV2, EPalWazaID::IceMissile, EPalWazaID::BlizzardLance, EPalWazaID::SnowStorm, EPalWazaID::IcicleThrow, EPalWazaID::IceBlade, EPalWazaID::Unique_IceHorse_IceBladeAttack, EPalWazaID::Unique_IceNarwhal_JumpingHorn, EPalWazaID::Unique_KingAlpaca_Ice_IcePress, EPalWazaID::SandTornado, EPalWazaID::ThrowRock, EPalWazaID::RockLance, EPalWazaID::MudShot, EPalWazaID::StoneShotgun, EPalWazaID::Unique_DrillGame_ShellAttack, EPalWazaID::Unique_Deer_Ground_DirtyHorn, EPalWazaID::Unique_Gorilla_Ground_EarthPunch, EPalWazaID::Unique_GoldenHorse_Bite, EPalWazaID::Unique_GoldenHorse_BiteV2, EPalWazaID::DarkLaser, EPalWazaID::DarkWave, EPalWazaID::ShadowBall, EPalWazaID::Psychokinesis, EPalWazaID::PoisonShot, EPalWazaID::GhostFlame, EPalWazaID::GravityShot, EPalWazaID::Unique_DarkCrow_TelePoke, EPalWazaID::Unique_Baphomet_Dark_DarkKite, EPalWazaID::Unique_IceHorse_Dark_DarkBladeAttack, EPalWazaID::Unique_AmaterasuWolf_Dark_Bite, EPalWazaID::Unique_AmaterasuWolf_Dark_BiteV2, EPalWazaID::Unique_BlackPuppy_Bite, EPalWazaID::Unique_BlackPuppy_BiteV2, EPalWazaID::DragonMeteor, EPalWazaID::DragonBreath, EPalWazaID::DragonWave, EPalWazaID::DragonCanon, EPalWazaID::Unique_FairyDragon_FairyTornado, EPalWazaID::Funnel_DreamDemon, EPalWazaID::Funnel_RaijinDaughter, EPalWazaID::Funnel_RaijinDaughter_Water, EPalWazaID::StardustArrow, EPalWazaID::Tremor, EPalWazaID::FrostBreath, EPalWazaID::DiamondFall, EPalWazaID::BeamSlicer, EPalWazaID::Commet, EPalWazaID::DarkBall, EPalWazaID::PoisonFog, EPalWazaID::DarkLegion, EPalWazaID::DarkCanon, EPalWazaID::DarkArrow, EPalWazaID::DarkPulse, EPalWazaID::Apocalypse, EPalWazaID::StarMine, EPalWazaID::AirBlade, EPalWazaID::HolyBlast, EPalWazaID::RootLance, EPalWazaID::LineGeyser, EPalWazaID::WallSplash, EPalWazaID::TriSpark, EPalWazaID::ThunderStorm, EPalWazaID::SandTwister, EPalWazaID::IcicleLine, EPalWazaID::ThreeCommet, EPalWazaID::CommetRain, EPalWazaID::BlastCanon, EPalWazaID::ChargeCanon, EPalWazaID::RangeThunder, EPalWazaID::Railbolt, EPalWazaID::ShokeiLaser, EPalWazaID::BubbleShower, EPalWazaID::WaterBalloon, EPalWazaID::IciclePierce, EPalWazaID::DoubleIcicleThrow, EPalWazaID::IceAge, EPalWazaID::RaidCutter, EPalWazaID::WindEdge, EPalWazaID::FlareTwister, EPalWazaID::TrisRing, EPalWazaID::Unique_BirdDragon_FireBreath, EPalWazaID::Unique_BlackMetalDragon_FirePunch, EPalWazaID::Unique_DarkScorpion_Pierce, EPalWazaID::Unique_GhostBeast_Tossin, EPalWazaID::Unique_JetDragon_JumpBeam, EPalWazaID::Unique_ThunderBird_ThunderStorm, EPalWazaID::Unique_Yeti_SnowBall, EPalWazaID::Unique_NaughtyCat_CatPress, EPalWazaID::Unique_IceDeer_IceHorn, EPalWazaID::Unique_KingBahamut_AirCrash, EPalWazaID::Unique_Manticore_InfernoStrike, EPalWazaID::Unique_SoldierBee_NeedleLance, EPalWazaID::Unique_ThunderDog_InazumaShorai, EPalWazaID::Unique_BlackCentaur_TwoSpearRushes, EPalWazaID::Unique_BlackGriffon_TackleLaser, EPalWazaID::Unique_SakuraSaurus_SideTackle, EPalWazaID::Unique_ThunderDragonMan_ThunderSwordAttack, EPalWazaID::Unique_RedArmorBird_TriplePeck, EPalWazaID::Unique_CaptainPenguin_BodySlide, EPalWazaID::Unique_CaptainPenguin_Black_BodySlide_Electric, EPalWazaID::Unique_Ronin_Iai, EPalWazaID::Unique_GrassRabbitMan_GrassRoundKick, EPalWazaID::Unique_SaintCentaur_OneSpearRushes, EPalWazaID::Unique_Umihebi_WindingTackle, EPalWazaID::Unique_WeaselDragon_FlyingTackle, EPalWazaID::Unique_WhiteTiger_IceScratch, EPalWazaID::Unique_IceCrocodile_SpitAttack, EPalWazaID::Unique_BirdDragon_Ice_IceBreath, EPalWazaID::Unique_FireKirin_Dark_DarkTossin, EPalWazaID::Unique_VolcanicMonster_Ice_IceAttack, EPalWazaID::Unique_LeafMomonga_SomerSault, EPalWazaID::Unique_Yeti_Grass_GrassBall, EPalWazaID::Unique_GrassPanda_Electric_ElectricPunch, EPalWazaID::Unique_NightLady_WarpBeam, EPalWazaID::Unique_NightLady_WarpBeam_Straight, EPalWazaID::Unique_NightLady_FlameNightmare, EPalWazaID::Unique_MoonQueen_MoonBeam, EPalWazaID::Unique_MoonQueen_MoonBlade, EPalWazaID::Unique_KingBahamut_ArmSmash, EPalWazaID::Unique_WingGolem_RoundCutter, EPalWazaID::Unique_ScorpionMan_Uppercut, EPalWazaID::Unique_FeatherOstrich_Tossin, EPalWazaID::Unique_DarkAlien_JumpScractch, EPalWazaID::Unique_SifuDog_Counter, EPalWazaID::Unique_ThunderDragonMan_NumerousSwordAttack, EPalWazaID::Unique_ElecPanda_GatlingAttack, EPalWazaID::Unique_LilyQueen_LilyHealing, EPalWazaID::Unique_LilyQueen_LilyHealing_Boss, EPalWazaID::Unique_LilyQueen_WindBarrier, EPalWazaID::Unique_Horus_PerfectStorm, EPalWazaID::Unique_BlackGriffon_TackleLaser2, EPalWazaID::Unique_MoonQueen_IceMoonBlade, EPalWazaID::Unique_DarkMechaDragon_SetFunnel, EPalWazaID::Unique_DarkMechaDragon_ConvergentBeam, EPalWazaID::Unique_DarkMechaDragon_FunnelLaser, EPalWazaID::Unique_DarkMechaDragon_BeamSlash, EPalWazaID::Unique_DarkMechaDragon_WarpComet, EPalWazaID::Unique_Umihebi_Fire_FireWindingTackle, EPalWazaID::Unique_PurpleSpider_SpiderRaid, EPalWazaID::Unique_MysteryMask_LifeSteal, EPalWazaID::Unique_GrimGirl_BrutalMachete, EPalWazaID::Unique_SnowTigerBeastman_TrampleSlash, EPalWazaID::Unique_SnowTigerBeastman_SnowImpact, EPalWazaID::Unique_WhiteShieldDragon_ShieldTackle, EPalWazaID::Unique_NightBlueHorse_DeathStep, EPalWazaID::Unique_BlueThunderHorse_FlashDash, EPalWazaID::Unique_WhiteDeer_HolyPillar, EPalWazaID::Unique_GoldenHorse_StoneDash, EPalWazaID::Unique_WhiteTiger_Ground_IronScratch, EPalWazaID::Unique_FengyunDeeper_Electric_ThunderTempest, EPalWazaID::Unique_Werewolf_Ice_SnowScratch, EPalWazaID::Unique_Horus_Water_AquaStorm, EPalWazaID::Unique_AmaterasuWolf_Dark_DarkCharge, EPalWazaID::Unique_OctopursGirl_InkJet, EPalWazaID::Unique_StuffedShark_HiddenWeapon, EPalWazaID::Unique_Plesiosaur_LongBreath, EPalWazaID::Unique_TropicalOstrich_DashKick, EPalWazaID::Unique_GhostAnglerfish_SweepBait, EPalWazaID::Unique_GhostAnglerfish_Fire_SweepBait_Fire, EPalWazaID::Unique_PoseidonOrca_TorrentLaser, EPalWazaID::Unique_VolcanoDragon_VolcanicLaser, EPalWazaID::Unique_VolcanoDragon_MagmaSpit, EPalWazaID::Unique_Sekhmet_RollingScratch, EPalWazaID::Unique_Sekhmet_SomersaultScratch, EPalWazaID::Unique_LegendDeer_WarpPillarBurst, EPalWazaID::Unique_LegendDeer_BarrierRelease_Normal, EPalWazaID::Unique_LegendDeer_BarrierRelease_Grass, EPalWazaID::Unique_LegendDeer_BarrierRelease_Water, EPalWazaID::Unique_LegendDeer_RadiantPurge, EPalWazaID::Unique_LegendDeer_RadiantWingRush, EPalWazaID::Unique_LegendDeer_RadiantPurge_Otomo, EPalWazaID::PredatorBeam, EPalWazaID::PredatorWave, EPalWazaID::PredatorLockon, EPalWazaID::RockBeat, EPalWazaID::IceWall, EPalWazaID::WindBurst, EPalWazaID::Unique_SamuraiDog_Bite, EPalWazaID::Unique_SamuraiDog_BiteV2, EPalWazaID::Unique_NightBlueHorse_Neutral_Tossin, EPalWazaID::Unique_NightBlueHorse_Neutral_AirStep, EPalWazaID::Unique_Kirin_Ice_IceTackle, EPalWazaID::Unique_ThunderDog_Ice_KoriShorai, EPalWazaID::Unique_ScorpionMan_Erectric_UpperThunder, EPalWazaID::Unique_ThunderDog_Ice_Bite, EPalWazaID::Unique_ThunderDog_Ice_BiteV2, EPalWazaID::Unique_BluePlatypus_Toboggan_Fire, EPalWazaID::Unique_NightBlueHorse_Tossin, EPalWazaID::Unique_BlueThunderHorse_Tossin, EPalWazaID::Unique_MonochromeQueen_BalletJump, EPalWazaID::Unique_CuteMole_DiggingAttack, EPalWazaID::Unique_SamuraiDog_DashSlash, EPalWazaID::Unique_GrassGolem_ArmCannon, EPalWazaID::Unique_GrassGolem_RocketPunch, EPalWazaID::Unique_SnakeGirl_SnakeShot, EPalWazaID::Unique_MummyPal_MummyAttack, EPalWazaID::Unique_ClownRabbit_TrickShow, EPalWazaID::Unique_CubeTurtle_CubePress, EPalWazaID::Unique_SumoDog_SumoStomp, EPalWazaID::Unique_ElecSnail_ShellCharge, EPalWazaID::Unique_LotusDragon_LotusBloom, EPalWazaID::Unique_DomeArmorDragon_ExplosiveMissile, EPalWazaID::Unique_GhostDragon_TailSlash, EPalWazaID::Unique_GhostDragon_PhosphorousBeam, EPalWazaID::Unique_GrassMinotaur_BullRush, EPalWazaID::Unique_GrassMinotaur_Ice_BullRush, EPalWazaID::Unique_PandaGirl_RapidKick, EPalWazaID::Unique_LanternButler_LanternFlame, EPalWazaID::Unique_RockBeast_RockHorn, EPalWazaID::Unique_RockBeast_Ice_IceHorn, EPalWazaID::Unique_ElecPomeranian_Bite, EPalWazaID::Unique_ElecPomeranian_BiteV2, EPalWazaID::Unique_BlueSkyDragon_Tossin, EPalWazaID::Unique_BlueSkyDragon_SweepBreath, EPalWazaID::Unique_BlueSkyDragon_DrainStorm, EPalWazaID::Unique_RedFlowerBird_JumpKick, EPalWazaID::Unique_WhiteDeer_Dark_DarkPillar, EPalWazaID::Unique_GrassGolem_Dark_DarkArmCannon, EPalWazaID::Unique_WingGolem_Fire_FlameCutter, EPalWazaID::Unique_ThunderBird_Ice_SnowStrom, EPalWazaID::Unique_CubeTurtle_Neutral_HolyPress, EPalWazaID::Unique_VolcanoDragon_Ice_IcicleSpit, EPalWazaID::Unique_VolcanoDragon_Ice_IceLaser, EPalWazaID::Unique_GrassMinotaur_BullRush_Lower, EPalWazaID::Unique_GrassMinotaur_Ice_BullRush_Lower, EPalWazaID::Unique_Mothman_GiantSpore, EPalWazaID::Unique_Mothman_SporeScatter, EPalWazaID::Unique_FlowerPrince_PoisonGasDance, EPalWazaID::Unique_FlowerPrince_PoisonGasTackle, EPalWazaID::Unique_WorldTreeDragon_PaldiumShot, EPalWazaID::Unique_WorldTreeDragon_PaldiumCannon, EPalWazaID::Unique_WorldTreeDragon_PaldiumExplosion, EPalWazaID::Unique_WorldTreeDragon_HaloBeam, EPalWazaID::Unique_WorldTreeDragon_BigBang, EPalWazaID::Unique_WorldTreeDragon_Supernova, EPalWazaID::Unique_WorldTreeDragon_PaldiumRain, EPalWazaID::Unique_WorldTreeDragon_HaloCutter, EPalWazaID::Unique_WorldTreeDragon_LaserGliding, EPalWazaID::Unique_LilyQueen_GYM_Act, EPalWazaID::Unique_ThunderDragonMan_GYM_Act, EPalWazaID::Unique_MoonQueen_GYM_Act, EPalWazaID::Unique_MoonQueen_GYM_Hard_Act, EPalWazaID::Unique_BlueSkyDragon_GYM_Act, EPalWazaID::BlueThunderHorse_PartnerSkill, EPalWazaID::Unique_Ronin_Iai_PartnerSkill, EPalWazaID::PoseidonOrca_PartnerSkill_SpearBullet, EPalWazaID::PoseidonOrca_PartnerSkill, EPalWazaID::GrassGolem_PartnerSkill, EPalWazaID::GrassGolem_Dark_PartnerSkill, EPalWazaID::Human_Rolling, EPalWazaID::Weapon_Use, EPalWazaID::Unique_Yakushima_SummonServant, EPalWazaID::Unique_Yakushima_EyeTossin, EPalWazaID::Unique_Yakushima_MouthTossin, EPalWazaID::Unique_YakushimaMonster001_SlimePress_Normal, EPalWazaID::Unique_YakushimaMonster001_SlimePress_Leaf, EPalWazaID::Unique_YakushimaMonster001_SlimePress_Water, EPalWazaID::Unique_YakushimaMonster001_SlimePress_Fire, EPalWazaID::Unique_YakushimaMonster001_SlimePress_Dark, EPalWazaID::Unique_YakushimaMonster001_SlimePress_Rainbow, EPalWazaID::Unique_YakushimaBoss001_Small_DemonEyeCharge, EPalWazaID::Unique_YakushimaMonster002_SwordCharge, EPalWazaID::Unique_YakushimaMonster003_BatCharge, EPalWazaID::Unique_YakushimaBoss001_Green_PhantasmalBolt, EPalWazaID::Unique_YakushimaBoss001_Green_PhantasmalEye, EPalWazaID::Unique_YakushimaBoss001_Green_PhantasmalSphere, EPalWazaID::Unique_YakushimaBoss001_Green_PhantasmalDeathray, EPalWazaID::Unique_YakushimaBoss002_PhantasmalBolt, EPalWazaID::Unique_YakushimaBoss002_PhantasmalEye, EPalWazaID::Unique_YakushimaBoss002_PhantasmalSphere, EPalWazaID::Unique_YakushimaBoss002_PhantasmalDeathray, EPalWazaID::Unique_YakushimaBoss001_Green_2_PhantasmalBolt, EPalWazaID::Unique_YakushimaBoss001_Green_2_PhantasmalEye, EPalWazaID::Unique_YakushimaBoss001_Green_2_PhantasmalSphere, EPalWazaID::Unique_YakushimaBoss001_Green_2_PhantasmalDeathray, EPalWazaID::Unique_YakushimaBoss002_2_PhantasmalBolt, EPalWazaID::Unique_YakushimaBoss002_2_PhantasmalEye, EPalWazaID::Unique_YakushimaBoss002_2_PhantasmalSphere, EPalWazaID::Unique_YakushimaBoss002_2_PhantasmalDeathray, EPalWazaID::MAX — Consume items only. Class property (UPalStaticConsumeItemData).",
+      "examples": [
+        "EPalWazaID::None",
+        "EPalWazaID::Human_Punch",
+        "EPalWazaID::WorkAttack"
+      ]
+    },
+    "Type": {
+      "type": "string",
+      "enum": [
+        "Armor",
+        "Weapon",
+        "Consumable",
+        "Generic",
+        "PalStaticArmorItemData",
+        "PalStaticWeaponItemData",
+        "PalStaticConsumeItemData",
+        "PalStaticItemDataBase"
+      ],
+      "description": "Item class for a NEW item (required when adding, ignored when editing) — PalSchema item-loader key.",
+      "$comment": "palschema-loader-overlay | loader=items | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Display name; becomes the ITEM_NAME_<ItemId> translation row — PalSchema item-loader key.",
+      "$comment": "palschema-loader-overlay | loader=items | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp"
+    },
+    "Description": {
+      "type": "string",
+      "description": "Item description; becomes the ITEM_DESC_<ItemId> translation row — PalSchema item-loader key.",
+      "$comment": "palschema-loader-overlay | loader=items | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp"
+    },
+    "Recipe": {
+      "type": "object",
+      "description": "Crafting recipe; becomes/edits the item's DT_ItemRecipeDataTable row (validated against that table's schema) — PalSchema item-loader key.",
+      "$comment": "palschema-loader-overlay | loader=items | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp"
+    },
+    "SortID": {
+      "type": "integer",
+      "description": "Inventory sort order; written to the item's DT_ItemDataTable row. On NEW items this only functions from PalSchema 0.6.4 (https://github.com/Okaetsu/PalSchema/pull/128) — PalSchema item-loader key.",
+      "$comment": "palschema-loader-overlay | loader=items | source=https://github.com/Okaetsu/PalSchema/pull/128"
+    },
+    "bLegalInGame": {
+      "type": "boolean",
+      "description": "Written to the new item's DT_ItemDataTable row (default true) — PalSchema item-loader key.",
+      "$comment": "palschema-loader-overlay | loader=items | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp"
+    }
+  },
+  "additionalProperties": false
+}

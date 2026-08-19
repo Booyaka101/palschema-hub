@@ -1,0 +1,251 @@
+{
+  "$comment": "PalSchema loader-implemented keys. These are consumed by PalSchema's mod loaders (src/Loader/*.cpp), NOT fields of any UE row struct, so the SDK-header pipeline can never derive them. scripts/apply-loader-overlay.mjs merges the pals entries into schemas/v1.0/DT_PalMonsterParameter.schema.json; scripts/derive-loader-schemas.mjs builds schemas/v1.0/PalStaticItemData.schema.json from the UPalStaticItemData* class headers and merges the items entries in. Every entry is read off PalSchema's source files named in verifiedAgainst, never off a PR title or release note.",
+  "verifiedAgainst": {
+    "repo": "Okaetsu/PalSchema",
+    "release": "0.6.4",
+    "releaseDate": "2026-08-18",
+    "files": ["src/Loader/PalMonsterModLoader.cpp", "src/Loader/PalItemModLoader.cpp"],
+    "checkedAt": "2026-08-19"
+  },
+  "loaders": {
+    "pals": {
+      "folder": "pals",
+      "schema": "DT_PalMonsterParameter",
+      "fileShape": "{ \"<CharacterId>\": { <DT_PalMonsterParameter fields + the pals entries below> } }",
+      "inGameUnknownKeyWarningSince": null,
+      "note": "The pal loader's property loop has no failure/warning branch: a key that is neither a loader key nor a DT_PalMonsterParameter member is silently dropped in game. Open issue: https://github.com/Okaetsu/PalSchema/issues/134"
+    },
+    "items": {
+      "folder": "items",
+      "schema": "PalStaticItemData",
+      "fileShape": "{ \"<ItemId>\": { <UPalStaticItemData* class fields + the items entries below> } } — a null value deletes the item",
+      "inGameUnknownKeyWarningSince": "0.6.3",
+      "note": "Since PalSchema 0.6.3 the item loader logs Warning \"Property '<key>' not found in Item '<id>'\" at load time. https://github.com/Okaetsu/PalSchema/pull/138"
+    },
+    "raw": {
+      "folder": "raw",
+      "inGameUnknownKeyWarningSince": "always",
+      "note": "The raw table loader has always warned (\"Property ... not found\") and increments its error count."
+    }
+  },
+  "advisories": [
+    {
+      "loader": "items",
+      "keys": ["SortID", "SortId"],
+      "whenTargetBelow": "0.6.4",
+      "message": "SortId on NEW items has no effect before PalSchema 0.6.4; edits to existing items are unaffected",
+      "source": "https://github.com/Okaetsu/PalSchema/pull/128"
+    }
+  ],
+  "entries": [
+    {
+      "key": "RanchActionData",
+      "loader": "pals",
+      "sincePalSchema": "0.6.4",
+      "sinceNote": "when adding new pals; edits to existing pals are unaffected",
+      "source": "https://github.com/Okaetsu/PalSchema/pull/143",
+      "note": "PR #143 is a single added line (PalMonsterModLoader.cpp:181) that runs HandleRanchSuitability on the NEW-pal path; the edit path already ran it. Key name, the WorkSuitability_MonsterFarm >= 1 gate, the must-be-an-object check and the nested property list all come from HandleRanchSuitability in src/Loader/PalMonsterModLoader.cpp.",
+      "schema": {
+        "type": "object",
+        "description": "Ranch (SpawnItem) action config, processed by PalSchema's pal loader for pals whose WorkSuitability_MonsterFarm is >= 1. Adding it to a NEW pal requires PalSchema >= 0.6.4 (https://github.com/Okaetsu/PalSchema/pull/143); edits to existing pals ran this earlier. Properties are copied onto the generated BP_Action_SpawnItem class; keys outside this list are silently ignored in game.",
+        "properties": {
+          "ChargeMontage": {
+            "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+          },
+          "FunMontage": {
+            "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+          },
+          "ChargeFacialEye": {
+            "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+          },
+          "FunFacialEye": {
+            "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+          },
+          "SpawnSocketName": {
+            "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+          },
+          "SpawnLocationOffset": {
+            "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+          },
+          "SpawnItemRotator": {
+            "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "key": "IconAssetPath",
+      "loader": "pals",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp",
+      "note": "New pal: adds a DT_PalCharacterIconDataTable row. Existing pal: replaces the icon on its existing row.",
+      "schema": {
+        "type": "string",
+        "description": "Icon texture asset path, e.g. /Game/Pal/Texture/PalIcon/Normal/T_MyPal_icon_normal.T_MyPal_icon_normal — PalSchema pal-loader key, not a row-struct field."
+      }
+    },
+    {
+      "key": "BlueprintAssetPath",
+      "loader": "pals",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp",
+      "note": "New pals only: adds the DT_PalBPClass row pointing at the pal's character blueprint.",
+      "schema": {
+        "type": "string",
+        "description": "Character blueprint asset path for a NEW pal (adds the DT_PalBPClass row) — PalSchema pal-loader key, not a row-struct field."
+      }
+    },
+    {
+      "key": "ActorClassPath",
+      "loader": "pals",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp",
+      "note": "Existing pals only: rewrites the BPClass of the pal's existing DT_PalBPClass row.",
+      "schema": {
+        "type": "string",
+        "description": "Replacement character blueprint class path for an EXISTING pal — PalSchema pal-loader key, not a row-struct field."
+      }
+    },
+    {
+      "key": "AbilitiesByLevel",
+      "loader": "pals",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp",
+      "note": "AddAbilities: each entry needs WazaID (string) and Level (integer) or the loader logs an error and skips it.",
+      "schema": {
+        "type": "array",
+        "description": "Abilities the pal unlocks by level; each entry becomes a DT_WazaMasterLevel row — PalSchema pal-loader key, not a row-struct field.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "WazaID": { "type": "string", "description": "EPalWazaID name, e.g. EPalWazaID::FireBall or FireBall." },
+            "Level": { "type": "integer", "description": "Level the ability unlocks at." }
+          },
+          "required": ["WazaID", "Level"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "key": "Loot",
+      "loader": "pals",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp",
+      "note": "AddLoot: builds one DT_PalDropItem row; entries past the 10th are ignored (the row has 10 slots). DropChance must be a float literal — the loader checks is_number_float() and skips the entry on a bare integer.",
+      "schema": {
+        "type": "array",
+        "description": "Drop table for the pal; becomes a DT_PalDropItem row (max 10 slots, later entries ignored) — PalSchema pal-loader key, not a row-struct field.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ItemId": { "type": "string", "description": "Item code, e.g. Wool." },
+            "DropChance": {
+              "type": "number",
+              "description": "PalSchema requires a float literal here (e.g. 100.0, not 100) — the loader skips the entry otherwise. JSON.parse erases the distinction, so the validator checks the raw text instead of this schema."
+            },
+            "Min": { "type": "integer" },
+            "Max": { "type": "integer" }
+          },
+          "required": ["ItemId", "DropChance", "Min", "Max"],
+          "additionalProperties": false
+        }
+      }
+    },
+    {
+      "key": "Name",
+      "loader": "pals",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp",
+      "note": "Writes the PAL_NAME_<CharacterId> row of DT_PalNameText (all languages).",
+      "schema": {
+        "type": "string",
+        "description": "Display name; becomes the PAL_NAME_<CharacterId> translation row — PalSchema pal-loader key, not a row-struct field."
+      }
+    },
+    {
+      "key": "ShortDescription",
+      "loader": "pals",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp",
+      "note": "Writes the PAL_SHORT_DESC_<CharacterId> row of DT_PalShortDescriptionText.",
+      "schema": {
+        "type": "string",
+        "description": "Short Paldeck description; becomes the PAL_SHORT_DESC_<CharacterId> translation row — PalSchema pal-loader key, not a row-struct field."
+      }
+    },
+    {
+      "key": "LongDescription",
+      "loader": "pals",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp",
+      "note": "Writes the PAL_LONG_DESC_<CharacterId> row of DT_PalLongDescriptionText.",
+      "schema": {
+        "type": "string",
+        "description": "Long Paldeck description; becomes the PAL_LONG_DESC_<CharacterId> translation row — PalSchema pal-loader key, not a row-struct field."
+      }
+    },
+    {
+      "key": "Type",
+      "loader": "items",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp",
+      "note": "Required by the loader when the ItemId is NOT an existing item (it throws without it); edits to existing items do not need it. Both the short and the class-name spellings are accepted.",
+      "schema": {
+        "type": "string",
+        "enum": [
+          "Armor",
+          "Weapon",
+          "Consumable",
+          "Generic",
+          "PalStaticArmorItemData",
+          "PalStaticWeaponItemData",
+          "PalStaticConsumeItemData",
+          "PalStaticItemDataBase"
+        ],
+        "description": "Item class for a NEW item (required when adding, ignored when editing) — PalSchema item-loader key."
+      }
+    },
+    {
+      "key": "Name",
+      "loader": "items",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp",
+      "note": "Writes the ITEM_NAME_<ItemId> row of DT_ItemNameText (all languages).",
+      "schema": {
+        "type": "string",
+        "description": "Display name; becomes the ITEM_NAME_<ItemId> translation row — PalSchema item-loader key."
+      }
+    },
+    {
+      "key": "Description",
+      "loader": "items",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp",
+      "note": "Writes the ITEM_DESC_<ItemId> row of DT_ItemDescriptionText.",
+      "schema": {
+        "type": "string",
+        "description": "Item description; becomes the ITEM_DESC_<ItemId> translation row — PalSchema item-loader key."
+      }
+    },
+    {
+      "key": "Recipe",
+      "loader": "items",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp",
+      "note": "AddRecipe/EditRecipe copy these keys onto a DT_ItemRecipeDataTable row (Product_Id is set from the ItemId; Editor_RowNameHash is skipped). The validator checks the object against the DT_ItemRecipeDataTable schema.",
+      "schema": {
+        "type": "object",
+        "description": "Crafting recipe; becomes/edits the item's DT_ItemRecipeDataTable row (validated against that table's schema) — PalSchema item-loader key."
+      }
+    },
+    {
+      "key": "SortID",
+      "loader": "items",
+      "source": "https://github.com/Okaetsu/PalSchema/pull/128",
+      "note": "Spelling used by PalSchema's own items authoring schema; the class property is SortId (UE FName lookups are case-insensitive, both work). On NEW items this only takes effect from PalSchema 0.6.4 (PR #128).",
+      "schema": {
+        "type": "integer",
+        "description": "Inventory sort order; written to the item's DT_ItemDataTable row. On NEW items this only functions from PalSchema 0.6.4 (https://github.com/Okaetsu/PalSchema/pull/128) — PalSchema item-loader key."
+      }
+    },
+    {
+      "key": "bLegalInGame",
+      "loader": "items",
+      "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp",
+      "note": "AddItemData copies it onto the new DT_ItemDataTable row; defaults to true when omitted.",
+      "schema": {
+        "type": "boolean",
+        "description": "Written to the new item's DT_ItemDataTable row (default true) — PalSchema item-loader key."
+      }
+    }
+  ]
+}

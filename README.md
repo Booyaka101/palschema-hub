@@ -13,18 +13,21 @@ open since Aug 2025). `palschema-hub` fills that gap:
 - **`/cli/`** — `palschema-validate`, a CLI (ajv) that validates mod JSON/JSONC in CI or locally.
 - **`/.github/workflows/palschema-ci.yml.example`** — drop-in CI for mod repos.
 
-**Compatible with PalSchema 0.6.3 + the [experimental-palworld UE4SS](https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld)
-build it requires (UE4SS commit `c838a8a`, release updated July 19 2026).** Checked
-against the full 0.6.0 → 0.6.3 diff, not just the release notes: nothing in 0.6.1,
-0.6.2 or 0.6.3 renames a DataTable field, moves a path, or changes how rows are
-validated. The only schema-file change in that range is PalSchema's own
-`items.schema.json` relaxing `WorkableAttribute` from `minimum: 1` to `minimum: 0`
-([#139](https://github.com/Okaetsu/PalSchema/pull/139)), which this registry never
-constrained; everything else is the custom-item loader, signatures and docs. 0.6.2/0.6.3
-also add unknown-property warnings to the item loader
-([#138](https://github.com/Okaetsu/PalSchema/pull/138)) — the same warn-don't-reject
-semantics `palschema-validate` adopted in 0.4.0. Validated against real published
-PalSchema mods — see [`tests/real-mods/SOURCES.md`](tests/real-mods/SOURCES.md).
+**Compatible with PalSchema 0.6.4 + the [experimental-palworld UE4SS](https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld)
+build it requires (UE4SS commit `c838a8a`, release updated July 19 2026).** No
+DataTable field, path, or row-validation behavior changed in 0.6.1 → 0.6.4 (checked
+against the diffs, not just the release notes). What 0.6.4 did change is the
+**loader**: new pals can now carry ranch suitability through `RanchActionData` in
+pals json ([#143](https://github.com/Okaetsu/PalSchema/pull/143)) — a key that
+exists only in PalSchema's loader, never on a UE row struct, so this registry
+tracks it (and every other loader-implemented key) in
+[`structs/loader-overlay.json`](structs/loader-overlay.json), read off the loader
+source with per-entry provenance. 0.6.3 also fixed `.jsonc` schema application
+([#139](https://github.com/Okaetsu/PalSchema/pull/139)) and added unknown-property
+warnings to the item loader ([#138](https://github.com/Okaetsu/PalSchema/pull/138)) —
+the same warn-don't-reject semantics `palschema-validate` adopted in 0.4.0.
+Validated against real published PalSchema mods — see
+[`tests/real-mods/SOURCES.md`](tests/real-mods/SOURCES.md).
 
 ---
 
@@ -94,45 +97,75 @@ Validates PalSchema mod files. A mod file targets one or more DataTables by name
 }
 ```
 
-The CLI detects the target table(s) from **top-level `DT_*` keys** (the real PalSchema
-format), or falls back to a `$schema` field / `DT_*`-prefixed filename. It fetches each
-table's schema from the registry, validates every row with **ajv**, and prints
-field-level errors (path + message). Since CLI 0.4.0, a key the registry's row struct
-doesn't declare is a **warning with a did-you-mean suggestion, not a rejection** —
-the semantics PalSchema itself is adopting
+The CLI recognizes all three PalSchema mod-file shapes: **raw table files**
+(top-level `DT_*` keys, or a `$schema` field / `DT_*`-prefixed filename),
+**pal-loader files** (`{ "<CharacterId>": {...} }`, from a `pals/` folder or by
+their fields), and **item-loader files** (`{ "<ItemId>": {...} }`, `items/` folder
+or fields; a `null` entry is the delete syntax). It fetches the right schema from
+the registry — `DT_PalMonsterParameter` plus the loader overlay for pals,
+`PalStaticItemData` (derived from the `UPalStaticItemData*` class headers, the set
+the item loader actually matches against) for items — validates every row with
+**ajv**, and prints field-level errors. `.json` and `.jsonc` behave identically.
+
+A key the schema doesn't declare is a **warning with a did-you-mean suggestion,
+not a rejection** — the semantics PalSchema itself is adopting
 ([Okaetsu/PalSchema#134](https://github.com/Okaetsu/PalSchema/issues/134)) — so a
 legitimately-new game field can never turn into a build-breaking false positive.
+Each warning also says whether the game would catch it:
+
+- **Item-loader files:** since 0.6.3 PalSchema itself warns about unknown
+  properties at load time ([#138](https://github.com/Okaetsu/PalSchema/pull/138)),
+  so there this scan duplicates the in-game warning — its value is catching the
+  typo in CI, before anyone launches the game.
+- **Pal-loader files:** the pal loader has **no warning branch at all** — an
+  unknown key is silently dropped in game ([#134](https://github.com/Okaetsu/PalSchema/issues/134),
+  still open). A typo'd pal field is caught by this scan and by nothing else.
+- **Raw table files:** the raw loader has always warned in game; behavior here is
+  unchanged.
+
 PalSchema's pseudo-keys (`$Filters`, the `{"Action":"Clear","Items":[…]}` array
-wrapper) never warn:
+wrapper) and its loader-implemented keys (`RanchActionData`, `Loot`,
+`AbilitiesByLevel`, `Recipe`, `Type`, ... — see
+[`structs/loader-overlay.json`](structs/loader-overlay.json)) never warn:
 
 ```
-WARN mods/pals.json:Lamball unknown field "rarity" — did you mean "Rarity"?
+WARN mods/pals/mypal.json:Lamball unknown field "rarity" — did you mean "Rarity"? (not caught in game: PalSchema's pal loader silently ignores unknown fields — Okaetsu/PalSchema#134)
 1 file validated, 0 errors, 1 unknown-key warning
 ```
 
+`--palschema-version <v>` targets a specific PalSchema release: loader keys newer
+than the target are flagged with the release they need, not a generic
+unknown-field message —
+
+```
+$ palschema-validate --palschema-version 0.6.3 pals/mynewpal.json
+WARN pals/mynewpal.json:MyNewPal "RanchActionData" requires PalSchema >= 0.6.4 when adding new pals; edits to existing pals are unaffected (you targeted 0.6.3) — https://github.com/Okaetsu/PalSchema/pull/143
+```
+
 **Exit codes:** 0 = all files pass (warnings alone never fail a run) · 1 = any
-type/shape error, breaking `--migrate` field, or bad usage — or any unknown-key
-warning when `--strict` (the CI mode) is given.
+type/shape error, breaking `--migrate` field, or bad usage — or any warning when
+`--strict` (the CI mode) is given.
 
 ```bash
-# Once published to npm + the registry is on GitHub, from any mod repo:
-npx palschema-validate --version 1.0 ./mods/
-npx palschema-validate --version 1.0 mod.json
+# From any mod repo (schemas fetched from this registry):
+npx palschema-validate ./mods/                       # newest known game version
+npx palschema-validate --palschema-version 0.6.3 mod.json
 
-# Right now, against the schemas in THIS checkout (no publish needed):
-node cli/dist/index.js --version 1.0 --registry . tests/valid-mod.json    # exit 0
-node cli/dist/index.js --version 1.0 --registry . tests/invalid-mod.json  # exit 1
+# Against the schemas in THIS checkout (no publish needed):
+node cli/dist/index.js --registry . tests/valid-mod.json    # exit 0
+node cli/dist/index.js --registry . tests/invalid-mod.json  # exit 1
 ```
 
 **Options**
 
 | flag | meaning |
 |---|---|
-| `--version <v>` | Palworld version to validate against (e.g. `1.0`) — validate mode |
-| `--migrate <a>..<b>` | scan mods for fields removed/retyped between two game versions (e.g. `0.7.2..1.0`) — exactly one of `--version` / `--migrate` |
+| `--version <v>` | Palworld version to validate against (default: the newest the registry knows) |
+| `--palschema-version <v>` | PalSchema release to target (e.g. `0.6.3`); loader keys newer than it are flagged. Unknown values fail loudly |
+| `--migrate <a>..<b>` | scan mods for fields removed/retyped between two game versions (e.g. `0.7.2..1.0`) — mutually exclusive with `--version` |
 | `--registry <r>` | schema source: a base URL, **or** a local repo-root path (`.`). Default: `https://raw.githubusercontent.com/<owner>/palschema-hub/main` |
 | `--owner <o>` | GitHub owner for the default registry URL (default `Booyaka101`, or `$PALSCHEMA_OWNER`) |
-| `--strict` | CI mode: promote unknown-key warnings to errors (exit 1) |
+| `--strict` | CI mode: promote warnings to errors (exit 1) |
 | `-h, --help` | usage |
 
 ---

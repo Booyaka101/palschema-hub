@@ -35,8 +35,9 @@
       "DT_UniqueNPC": "schemas/v1.0/DT_UniqueNPC.schema.json",
       "DT_WazaDataTable": "schemas/v1.0/DT_WazaDataTable.schema.json",
       "DT_WazaMasterLevel": "schemas/v1.0/DT_WazaMasterLevel.schema.json",
-      "DT_WazaMasterTamago": "schemas/v1.0/DT_WazaMasterTamago.schema.json"
+      "DT_WazaMasterTamago": "schemas/v1.0/DT_WazaMasterTamago.schema.json",
+      "PalStaticItemData": "schemas/v1.0/PalStaticItemData.schema.json"
     }
   },
-  "generatedAt": "2026-07-20T07:33:47.484Z"
+  "generatedAt": "2026-08-19T06:37:07.893Z"
 }

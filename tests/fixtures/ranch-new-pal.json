@@ -1,0 +1,31 @@
+{
+  "PSH_RanchPal": {
+    "Tribe": "EPalTribeID::SheepBall",
+    "GenusCategory": "EPalGenusCategoryType::Humanoid",
+    "Size": "EPalSizeType::S",
+    "Rarity": 2,
+    "ElementType1": "EPalElementType::Normal",
+    "Hp": 70,
+    "MeleeAttack": 70,
+    "ShotAttack": 70,
+    "Defense": 70,
+    "CraftSpeed": 100,
+    "ZukanIndex": -1,
+    "WorkSuitability_MonsterFarm": 1,
+    "Name": "Ranch Test Pal",
+    "ShortDescription": "Fixture for the PalSchema 0.6.4 ranch-suitability path.",
+    "IconAssetPath": "/Game/Pal/Texture/PalIcon/Normal/T_SheepBall_icon_normal.T_SheepBall_icon_normal",
+    "BlueprintAssetPath": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SheepBall/BP_SheepBall.BP_SheepBall_C",
+    "AbilitiesByLevel": [
+      { "WazaID": "EPalWazaID::Unique_SheepBall_Roll", "Level": 1 }
+    ],
+    "Loot": [
+      { "ItemId": "Wool", "DropChance": 100.0, "Min": 1, "Max": 2 }
+    ],
+    "RanchActionData": {
+      "SpawnSocketName": "Socket_Wool",
+      "SpawnLocationOffset": { "X": 0.0, "Y": 0.0, "Z": 10.0 },
+      "SpawnItemRotator": { "Pitch": 0.0, "Yaw": 0.0, "Roll": 0.0 }
+    }
+  }
+}

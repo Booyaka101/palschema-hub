@@ -1,0 +1,15 @@
+{
+  "PSH_TestBlade": {
+    "Type": "Weapon",
+    "Rarty": 2,
+    "AttackValue": 100,
+    "SortID": 900,
+    "Recipe": {
+      "Product_Count": 1,
+      "WorkAmount": 10.0,
+      "Material1_Idd": "Ingot",
+      "Material1_Count": 5
+    }
+  },
+  "PSH_RemovedItem": null
+}
