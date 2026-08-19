@@ -28,7 +28,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'nexus', 'palschema-hub-registry.zip');
 const PREFIX = 'palschema-hub-registry';
 
-const FILES = ['index.html', 'items.html', 'diff.html', 'index.json', 'items.json', 'versions.json', 'LICENSE'];
+const FILES = ['index.html', 'items.html', 'buildings.html', 'diff.html', 'index.json', 'items.json', 'buildings.json', 'versions.json', 'LICENSE'];
 const DIRS = ['schemas', 'structs', 'diffs'];
 const CLI_FILES = [
   ['cli/package.json', 'cli/package.json'],

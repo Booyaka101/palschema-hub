@@ -349,6 +349,19 @@ run('check-items gate: shipped items.json passes (schema-valid, fresh, no SortID
 run('check-items gate: stale Jan-2024-shaped fixture fails, naming SortID',
   ['scripts/check-items.mjs', 'tests/items-stale-fixture.json'], 1, 'SortID');
 
+// 0.9.0 (issue #21): the buildings.json gate — two build tables per building,
+// every scraped field routed by schema membership, spot values pinned to the
+// live page (Egg Incubator, read 2026-08-19).
+run('check-buildings gate: shipped buildings.json passes (schema-valid, both tables, materials mapped)',
+  ['scripts/check-buildings.mjs'], 0, 'all routed fields schema-valid');
+run('check-buildings gate: broken fixture fails naming the violations',
+  ['scripts/check-buildings.mjs', 'tests/buildings-broken-fixture.json'], 1, 'schema violation');
+run('buildings.json: HatchingPalEgg spans both tables with the live-verified values',
+  ['-e', `const b=require('./buildings.json').buildings.HatchingPalEgg;` +
+    `if(b.tables.DT_MapObjectMasterDataTable.Hp!==2000||b.tables.DT_BuildObjectDataTable.SortId!==14` +
+    `||!b.materials.some(m=>m.item==='Paldium Fragment'&&m.code))process.exit(1);` +
+    `console.log('HatchingPalEgg OK');`], 0, 'HatchingPalEgg OK');
+
 // The offline archive ships cli/dist WITHOUT node_modules, and --migrate needs no
 // dependencies (only schema validation uses ajv). Copy dist somewhere with no
 // node_modules above it and prove the scan still runs.

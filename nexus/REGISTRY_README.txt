@@ -12,7 +12,15 @@ cross-checked with real dumped row data.
 Plus a per-item VALUE reference and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry 0.8.0 / validator 0.5.0, 2026-08-19)
+NEW IN THIS VERSION (registry 0.9.0, 2026-08-19)
+  * BUILDING REFERENCE (buildings.html / buildings.json): 460 buildings,
+    current game (Palworld 1.0.3). A building spans TWO DataTables sharing
+    one row name (HatchingPalEgg in both DT_MapObjectMasterDataTable and
+    DT_BuildObjectDataTable; the unlocking DT_TechnologyRecipeUnlock row is
+    Special_HatchingPalEgg). Each entry shows both rows, materials mapped
+    to item Codes, and copy/paste JSON for a raw-table mod.
+
+PREVIOUSLY (registry 0.8.0 / validator 0.5.0, 2026-08-19)
   * TRACKS PALSCHEMA 0.6.3 AND 0.6.4. PalSchema 0.6.4 lets new pals carry
     ranch suitability through a RanchActionData object in pals json
     (its PR #143). That key lives in PalSchema's LOADER, not on any UE row
