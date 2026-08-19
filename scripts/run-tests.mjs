@@ -104,7 +104,7 @@ run('ranch mod: no flags defaults to the newest known Palworld version',
 const ranch063 = run('ranch mod: --palschema-version 0.6.3 -> requires PalSchema >= 0.6.4, naming the key',
   noVersion('tests/fixtures/ranch-new-pal.json', '--palschema-version', '0.6.3'), 0,
   '"RanchActionData" requires PalSchema >= 0.6.4');
-assert('0.6.3 report links PR #143', (ranch063.stdout + ranch063.stderr).includes('https://github.com/Okaetsu/PalSchema/pull/143'));
+assert('0.6.3 report links PR #143', /github\.com\/Okaetsu\/PalSchema\/pull\/143/.test(ranch063.stdout + ranch063.stderr));
 assert('0.6.3 report is NOT the generic unknown-field message',
   !(ranch063.stdout + ranch063.stderr).includes('unknown field "RanchActionData"'));
 run('ranch mod as .jsonc: identical no-flags behavior (PalSchema PR #139)',
