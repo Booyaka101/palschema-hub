@@ -1,5 +1,66 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.8.0 + palschema-validate (CLI) 0.5.0 — 2026-08-19
+
+**Tracks PalSchema 0.6.3 (2026-08-15) and 0.6.4 (2026-08-18).** 0.6.4 added ranch
+suitability for new pals through pals json ([PR #143](https://github.com/Okaetsu/PalSchema/pull/143)),
+a key implemented in PalSchema's loader rather than on any UE row struct — so a
+schema built from SDK headers alone would flag a legal 0.6.4 mod as having an
+unknown field. That is the same false-positive failure mode this project got burned
+by with the stale paldex dump, this time arriving from the loader side.
+
+- **`structs/loader-overlay.json` (new):** every PalSchema loader-implemented key,
+  read off the loader source (`src/Loader/PalMonsterModLoader.cpp`,
+  `PalItemModLoader.cpp`), with provenance per entry. Pal loader: `RanchActionData`
+  (>= 0.6.4 on new pals, with the exact nested property list from
+  `HandleRanchSuitability` — the PR #143 diff itself contains no key name),
+  `IconAssetPath`, `BlueprintAssetPath`, `ActorClassPath`, `AbilitiesByLevel`,
+  `Loot`, `Name`, `ShortDescription`, `LongDescription`. Item loader: `Type`,
+  `Name`, `Description`, `Recipe`, `SortID`, `bLegalInGame`.
+  `scripts/apply-loader-overlay.mjs` merges them into the published schemas
+  (idempotently; the SDK augmenter preserves them on re-runs).
+- **Pal-loader and item-loader files are first-class validation targets.**
+  `{ "<CharacterId>": {...} }` / `{ "<ItemId>": {...} }` files are recognized by
+  their `pals/` or `items/` folder, or by their fields. Pal files validate against
+  `DT_PalMonsterParameter` plus the overlay; item files against the new
+  `schemas/v1.0/PalStaticItemData.schema.json`, derived from the
+  `UPalStaticItemDataBase`/Armor/Weapon/Consume class headers (38 fields, enums
+  resolved) — the exact set the item loader matches via `GetPropertyByNameInChain`.
+  An item `Recipe` object is validated against `DT_ItemRecipeDataTable`; a `null`
+  item entry (delete syntax) is legal.
+- **CLI `--palschema-version <v>`:** target a specific PalSchema release.
+  `RanchActionData` on a pals file targeting 0.6.3 reports
+  `requires PalSchema >= 0.6.4` naming the key and linking PR #143 — not the
+  generic unknown-field message. `SortID` on new items gets a note below 0.6.4
+  ([PR #128](https://github.com/Okaetsu/PalSchema/pull/128)). Unknown values fail
+  loudly, listing the releases `versions.json` records. `--version` is now
+  optional and defaults to the newest Palworld version the registry knows.
+- **The unknown-key reporter now says whether the GAME would catch it too.**
+  Since 0.6.3 PalSchema's item loader warns about unknown properties at load time
+  ([PR #138](https://github.com/Okaetsu/PalSchema/pull/138)) — so item-loader
+  warnings note the overlap. The pal loader still has no warning branch at all
+  ([open issue #134](https://github.com/Okaetsu/PalSchema/issues/134), the reason
+  a pals typo is only caught by this scan), and pal-loader warnings cite it.
+  Raw-table warnings are unchanged (that loader has always warned in game).
+- **Two loader traps the schemas cannot express are checked directly:** a
+  loader-only key inside a raw `DT_*` file (the raw loader will report
+  `Property not found` and skip it) and a pals `Loot` `DropChance` written as a
+  bare integer (the loader's `is_number_float()` check silently skips the loot
+  entry; `JSON.parse` erases `100` vs `100.0`, so this one reads the raw text).
+- **`versions.json`** records PalSchema 0.6.3 (2026-08-15) and 0.6.4 (2026-08-18)
+  in `upstream.palSchema.releases`; the compatibility claim moves to 0.6.4. No
+  Palworld pin moved: PalworldModdingKit `Source/Pal/Public` is still `98ee60d`
+  (2026-07-11), so 0.6.4's loader change needed no schema regeneration beyond the
+  overlay. `.jsonc` files behave identically to `.json` throughout (PalSchema
+  fixed its own schema files for `.jsonc` in 0.6.3, [PR #139](https://github.com/Okaetsu/PalSchema/pull/139)).
+- **A UTF-8 BOM no longer fails the parse.** Notepad and PowerShell write one by
+  default on Windows, and PalSchema's nlohmann parser skips it — so a BOM'd mod
+  file loads fine in game and used to be rejected here. Found by the cold-install
+  smoke test, fixed in CLI 0.5.0.
+- Tests 46 -> 70, including the worked example in both `.json` and `.jsonc` forms,
+  the loud unknown-version failure, and the real-mod corpus still at zero
+  unknown-key warnings.
+
 ## palschema-validate (CLI) 0.4.2 — 2026-08-17
 
 **Fixes a broken 0.4.1: `npm install palschema-validate` did not install ajv's own

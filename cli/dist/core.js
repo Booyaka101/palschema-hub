@@ -1,16 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PSEUDO_KEYS = void 0;
+exports.LOADER_SCHEMAS = exports.PSEUDO_KEYS = void 0;
+exports.cmpVersions = cmpVersions;
 exports.stripJsonc = stripJsonc;
 exports.parseJsonc = parseJsonc;
 exports.collectFiles = collectFiles;
 exports.loadRegistryJson = loadRegistryJson;
 exports.getTableSchema = getTableSchema;
+exports.getLoaderOverlay = getLoaderOverlay;
 exports.getValidator = getValidator;
 exports.levenshtein = levenshtein;
 exports.suggestKey = suggestKey;
 exports.unknownKeys = unknownKeys;
 exports.detectTargets = detectTargets;
+exports.sniffLoaderTargets = sniffLoaderTargets;
 exports.validateFile = validateFile;
 exports.resolveVersionLabel = resolveVersionLabel;
 exports.invertDiff = invertDiff;
@@ -18,6 +21,17 @@ exports.buildDiffIndex = buildDiffIndex;
 exports.migrateScanFile = migrateScanFile;
 const node_fs_1 = require("node:fs");
 const node_path_1 = require("node:path");
+/** Numeric dotted-version compare (same rules as scripts/lib/version-sources.mjs). */
+function cmpVersions(a, b) {
+    const pa = a.split('.').map(Number);
+    const pb = b.split('.').map(Number);
+    for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+        const d = (pa[i] ?? 0) - (pb[i] ?? 0);
+        if (d)
+            return d < 0 ? -1 : 1;
+    }
+    return 0;
+}
 /**
  * ajv is loaded lazily: only schema validation needs it. `--migrate` reads
  * versions.json + a diff JSON and nothing else, so the offline archive can run a
@@ -88,7 +102,10 @@ function stripJsonc(text) {
 }
 function parseJsonc(text, file) {
     try {
-        return JSON.parse(stripJsonc(text));
+        // Strip a UTF-8 BOM: Windows editors (Notepad, PowerShell redirects) write
+        // one, and PalSchema's nlohmann parser skips it — rejecting it here would
+        // fail files the game loads fine.
+        return JSON.parse(stripJsonc(text.replace(/^﻿/, '')));
     }
     catch (e) {
         throw new Error(`${file}: not valid JSON/JSONC — ${e.message}`);
@@ -146,8 +163,8 @@ async function loadRegistryJson(relPath, opts) {
 }
 const validatorCache = new Map();
 const schemaCache = new Map();
-/** Load a table's RAW schema JSON. Returns null (with a warning) if unavailable. */
-async function getTableSchema(table, opts) {
+/** Load a table's RAW schema JSON. Returns null (with a warning unless quiet) if unavailable. */
+async function getTableSchema(table, opts, quiet = false) {
     const key = `${opts.version}:${table}`;
     if (schemaCache.has(key))
         return schemaCache.get(key);
@@ -165,12 +182,27 @@ async function getTableSchema(table, opts) {
         }
     }
     catch (e) {
-        console.warn(`  ! No schema for table "${table}" (v${opts.version}): ${e.message}`);
+        if (!quiet)
+            console.warn(`  ! No schema for table "${table}" (v${opts.version}): ${e.message}`);
         schemaCache.set(key, null);
         return null;
     }
     schemaCache.set(key, schema);
     return schema;
+}
+let overlayCache;
+/** The loader-key overlay, or null when the registry predates it (loader-aware
+ *  checks degrade gracefully — schema validation itself is unaffected). */
+async function getLoaderOverlay(opts) {
+    if (overlayCache !== undefined)
+        return overlayCache;
+    try {
+        overlayCache = (await loadRegistryJson('structs/loader-overlay.json', opts));
+    }
+    catch {
+        overlayCache = null;
+    }
+    return overlayCache;
 }
 /**
  * Deep-clone a schema with every `"additionalProperties": false` removed, so ajv
@@ -226,6 +258,14 @@ function friendly(table, row, err) {
     }
     else if (err.keyword === 'type') {
         message = `must be ${err.params.type}`;
+    }
+    else if (err.keyword === 'not') {
+        // Only used for "float literal required" fields (e.g. Loot DropChance,
+        // which PalSchema's loader rejects as a bare integer) — surface the
+        // schema's own explanation instead of ajv's "must NOT be valid".
+        const desc = err.parentSchema?.description;
+        if (desc)
+            message = `invalid value — ${desc}`;
     }
     return { file: '', table, row, path, message };
 }
@@ -382,6 +422,11 @@ function pruneCompositeNoise(errs) {
     }
     return remaining;
 }
+/** Schema each non-raw loader validates its entries against. */
+exports.LOADER_SCHEMAS = {
+    pals: 'DT_PalMonsterParameter',
+    items: 'PalStaticItemData',
+};
 /** Determine which (table -> table-content) targets a mod file contains. */
 function detectTargets(data, file) {
     if (data === null || typeof data !== 'object' || Array.isArray(data)) {
@@ -394,22 +439,127 @@ function detectTargets(data, file) {
     //   { "DT_Table": { "RowName": { ...fields } }, ... }
     const tableKeys = Object.keys(obj).filter((k) => /^DT_/.test(k));
     if (tableKeys.length) {
-        return tableKeys.map((k) => ({ table: k, content: obj[k] }));
+        return tableKeys.map((k) => ({ table: k, content: obj[k], loader: 'raw' }));
     }
+    // PalSchema dispatches on the folder a file sits in: <mod>/pals/*.json goes to
+    // the pal loader, <mod>/items/*.json to the item loader. Honor the same hint.
+    const parent = (0, node_path_1.basename)((0, node_path_1.dirname)(file)).toLowerCase();
+    if (parent === 'pals')
+        return [{ table: exports.LOADER_SCHEMAS.pals, content: obj, loader: 'pals' }];
+    if (parent === 'items')
+        return [{ table: exports.LOADER_SCHEMAS.items, content: obj, loader: 'items' }];
     // Fallback: single-table file identified by $schema URL or filename prefix,
     // where the whole object is the table-content (RowName -> row).
     const fromHint = schemaHint?.match(/(DT_[A-Za-z0-9_]+)\.schema\.json/)?.[1];
     const fromName = (0, node_path_1.basename)(file).match(/^(DT_[A-Za-z0-9_]+)/)?.[1];
     const table = fromHint || fromName;
     if (table)
-        return [{ table, content: obj }];
+        return [{ table, content: obj, loader: 'raw' }];
     return [];
 }
-/** Validate one mod file. Returns AJV findings (errors) + unknown-key warnings. */
+/**
+ * Content sniff for a bare pals/items-loader file (no DT_ keys, not inside a
+ * pals/ or items/ folder): score the rows' keys against each loader's schema
+ * and take a clear majority. A delete-only file ({ "<ItemId>": null }) is items
+ * syntax by definition.
+ */
+async function sniffLoaderTargets(data, opts) {
+    if (data === null || typeof data !== 'object' || Array.isArray(data))
+        return [];
+    const obj = { ...data };
+    delete obj.$schema;
+    const rows = Object.values(obj);
+    if (!rows.length)
+        return [];
+    if (rows.some((r) => r !== null && (typeof r !== 'object' || Array.isArray(r))))
+        return [];
+    if (rows.every((r) => r === null)) {
+        return [{ table: exports.LOADER_SCHEMAS.items, content: obj, loader: 'items' }];
+    }
+    const keys = new Set();
+    for (const r of rows)
+        if (r)
+            for (const k of Object.keys(r))
+                keys.add(k);
+    if (!keys.size)
+        return [];
+    const score = async (loader) => {
+        const schema = await getTableSchema(exports.LOADER_SCHEMAS[loader], opts, true);
+        if (!schema?.properties)
+            return 0;
+        let hit = 0;
+        for (const k of keys)
+            if (schema.properties[k])
+                hit++;
+        return hit / keys.size;
+    };
+    const pals = await score('pals');
+    const items = await score('items');
+    const best = Math.max(pals, items);
+    if (best < 0.5 || pals === items)
+        return [];
+    const loader = pals > items ? 'pals' : 'items';
+    return [{ table: exports.LOADER_SCHEMAS[loader], content: obj, loader }];
+}
+/** Loader-key checks that schema validation cannot express: since-version gates
+ *  (RanchActionData needs PalSchema >= 0.6.4 on new pals), advisories (SortId on
+ *  new items before 0.6.4), and loader-only keys used in a raw table file. */
+function loaderCompatWarnings(target, overlay, opts) {
+    if (!overlay || !target.content || typeof target.content !== 'object')
+        return [];
+    const out = [];
+    const push = (row, key, message) => out.push({ row, key, path: '', file: '', table: target.table, loader: target.loader, kind: 'compat', message });
+    if (target.loader === 'raw') {
+        // A loader-only key in a raw table file is real: the merged schema accepts
+        // it, but in game only the owning loader processes it — the raw table
+        // loader warns "Property ... not found" and skips it.
+        const owner = Object.entries(overlay.loaders).find(([, l]) => l.schema === target.table)?.[0];
+        if (!owner)
+            return out;
+        const ownKeys = new Map(overlay.entries.filter((e) => e.loader === owner).map((e) => [e.key, e]));
+        const folder = overlay.loaders[owner]?.folder ?? owner;
+        for (const [rowName, row] of Object.entries(target.content)) {
+            if (!row || typeof row !== 'object' || Array.isArray(row))
+                continue;
+            for (const key of Object.keys(row)) {
+                if (ownKeys.has(key)) {
+                    push(rowName, key, `"${key}" is a PalSchema ${owner}-loader key (${folder}/ folder) — the raw table loader will report ` +
+                        `Property not found and skip it in this file`);
+                }
+            }
+        }
+        return out;
+    }
+    const entries = new Map(overlay.entries.filter((e) => e.loader === target.loader).map((e) => [e.key, e]));
+    const target_ = opts.palschemaVersion;
+    for (const [rowName, row] of Object.entries(target.content)) {
+        if (!row || typeof row !== 'object' || Array.isArray(row))
+            continue;
+        for (const key of Object.keys(row)) {
+            if (!target_)
+                continue;
+            const entry = entries.get(key);
+            if (entry?.sincePalSchema && cmpVersions(target_, entry.sincePalSchema) < 0) {
+                push(rowName, key, `"${key}" requires PalSchema >= ${entry.sincePalSchema}` +
+                    (entry.sinceNote ? ` ${entry.sinceNote}` : '') +
+                    ` (you targeted ${target_}) — ${entry.source}`);
+            }
+            for (const adv of overlay.advisories ?? []) {
+                if (adv.loader === target.loader && adv.keys.includes(key) && cmpVersions(target_, adv.whenTargetBelow) < 0) {
+                    push(rowName, key, `${adv.message} (you targeted ${target_}) — ${adv.source}`);
+                }
+            }
+        }
+    }
+    return out;
+}
+/** Validate one mod file. Returns AJV findings (errors) + unknown-key/compat warnings. */
 async function validateFile(file, opts) {
     const text = (0, node_fs_1.readFileSync)(file, 'utf8');
     const data = parseJsonc(text, file);
-    const targets = detectTargets(data, file);
+    let targets = detectTargets(data, file);
+    if (!targets.length)
+        targets = await sniffLoaderTargets(data, opts);
     const findings = [];
     const warnings = [];
     if (!targets.length) {
@@ -418,11 +568,30 @@ async function validateFile(file, opts) {
             table: '(unknown)',
             row: '',
             path: '/',
-            message: 'could not determine target DataTable — expected top-level "DT_*" keys, a "$schema" field, or a DT_*-prefixed filename',
+            message: 'could not determine the target — expected top-level "DT_*" keys, a "$schema" field, a DT_*-prefixed ' +
+                'filename, a pals/ or items/ folder, or rows whose fields match the pal or item loader',
         });
         return { findings, warnings };
     }
-    for (const { table, content } of targets) {
+    const overlay = await getLoaderOverlay(opts);
+    for (const target of targets) {
+        const { table, content, loader } = target;
+        // PalSchema's pal loader skips a Loot entry whose DropChance is a bare
+        // integer literal (is_number_float() check in AddLoot). JSON.parse erases
+        // the 100 vs 100.0 distinction, so this one is checked on the raw text.
+        if (loader === 'pals' && /"DropChance"\s*:\s*-?\d+\s*[,}\]]/.test(text)) {
+            warnings.push({
+                row: '',
+                key: 'DropChance',
+                path: 'Loot',
+                file,
+                table,
+                loader,
+                kind: 'compat',
+                message: 'a Loot DropChance is written as a bare integer — PalSchema requires a float literal (e.g. 100.0, ' +
+                    'not 100) and silently skips the loot entry otherwise (is_number_float() in PalMonsterModLoader.cpp)',
+            });
+        }
         const validate = await getValidator(table, opts);
         if (!validate)
             continue; // unresolved schema already warned
@@ -430,7 +599,10 @@ async function validateFile(file, opts) {
             findings.push({ file, table, row: '', path: '/', message: `table "${table}" must map row names to row objects` });
             continue;
         }
+        const recipeRows = {};
         for (const [rowName, row] of Object.entries(content)) {
+            if (row === null && loader === 'items')
+                continue; // { "<ItemId>": null } deletes the item
             if (row === null || typeof row !== 'object' || Array.isArray(row)) {
                 findings.push({ file, table, row: rowName, path: '/', message: 'row must be an object of fields' });
                 continue;
@@ -441,10 +613,39 @@ async function validateFile(file, opts) {
                     findings.push({ ...friendly(table, rowName, err), file });
                 }
             }
+            // The item loader copies "Recipe" onto a DT_ItemRecipeDataTable row —
+            // validate it against that table's schema (Product_Id comes from the key).
+            if (loader === 'items' && row.Recipe && typeof row.Recipe === 'object' && !Array.isArray(row.Recipe)) {
+                recipeRows[rowName] = row.Recipe;
+            }
+        }
+        if (Object.keys(recipeRows).length) {
+            const recipeTable = 'DT_ItemRecipeDataTable';
+            const recipeValidate = await getValidator(recipeTable, opts);
+            const recipeSchema = await getTableSchema(recipeTable, opts);
+            if (recipeValidate && recipeSchema) {
+                for (const [rowName, recipe] of Object.entries(recipeRows)) {
+                    if (!recipeValidate(recipe) && recipeValidate.errors) {
+                        for (const err of pruneCompositeNoise(recipeValidate.errors)) {
+                            const f = friendly(table, rowName, err);
+                            f.path = `/Recipe${f.path === '/' ? '' : f.path}`;
+                            findings.push({ ...f, file });
+                        }
+                    }
+                    warnings.push(...unknownKeys({ [rowName]: recipe }, recipeSchema).map((w) => ({
+                        ...w,
+                        path: w.path ? `Recipe/${w.path}` : 'Recipe',
+                        file,
+                        table,
+                        loader,
+                    })));
+                }
+            }
         }
         const schema = await getTableSchema(table, opts); // cached — same fetch as getValidator
         if (schema)
-            warnings.push(...unknownKeys(content, schema).map((w) => ({ ...w, file, table })));
+            warnings.push(...unknownKeys(content, schema).map((w) => ({ ...w, file, table, loader })));
+        warnings.push(...loaderCompatWarnings(target, overlay, opts).map((w) => ({ ...w, file })));
     }
     return { findings, warnings };
 }

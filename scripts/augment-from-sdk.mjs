@@ -27,6 +27,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createSdkParser, arrayFrag } from './lib/sdk-parse.mjs';
+import { isOverlayProp } from './lib/loader-overlay.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -141,8 +142,15 @@ for (const entry of manifest.generatedTables) {
       added.push(f.name);
     }
   }
-  for (const name of Object.keys(oldProps)) {
-    if (name !== '$Filters' && !sdkNames.has(name)) removed.push(name);
+  for (const [name, frag] of Object.entries(oldProps)) {
+    if (name !== '$Filters' && !sdkNames.has(name) && !isOverlayProp(frag)) removed.push(name);
+  }
+
+  // PalSchema loader-implemented keys (structs/loader-overlay.json) are not
+  // struct members and must survive a re-augment; apply-loader-overlay.mjs owns
+  // their content, this script only keeps them in place.
+  for (const [name, frag] of Object.entries(oldProps)) {
+    if (isOverlayProp(frag) && !newProps[name]) newProps[name] = frag;
   }
 
   // PalSchema's raw loader skips a "$Filters" key inside any row (wildcard/filter

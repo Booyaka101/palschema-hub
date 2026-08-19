@@ -3,7 +3,7 @@
   "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalMonsterParameter.schema.json",
   "title": "DT_PalMonsterParameter",
   "description": "Palworld DataTable DT_PalMonsterParameter (row struct: PalCharacterParameterDatabaseRow). Each PalSchema mod patch targeting \"DT_PalMonsterParameter\" is an object of rowName -> partial row; this schema validates one such row. Palworld 1.0. Field names verified against the current game's row struct (localcc/PalworldModdingKit@62fad41, pushed 2026-07-11); types inferred from game data (Jan-2024 dump) for long-standing fields and mapped from C++ for newer ones. Fields are optional (partial patches).",
-  "$comment": "palschema-hub | table=DT_PalMonsterParameter | rowStruct=PalCharacterParameterDatabaseRow | palworldVersion=1.0 | fields=90 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=OverridePartnerSkillNameTextID,OverridePartnerSkillDescTextID,Weapon,Hp,Friendship_HP,Friendship_ShotAttack,Friendship_Defense,Friendship_CraftSpeed,EnemyMaxHPRate,EnemyInflictDamageRate,EnemyWazaCoolTimeRate,StatusResistUpRate,SwimSpeed,SwimDashSpeed,IsRaidBoss,UseBossHPGauge,IgnoreStun,CombiDuplicatePriority,IgnoreCombi,MeshCapsuleHalfHeight,MeshCapsuleRadius,MeshRelativeLocation,BestWorkSuitability,FirstDefeatRewardItemID | droppedRemovedFields=OverridePartnerSkillTextID,weapon,HP",
+  "$comment": "palschema-hub | table=DT_PalMonsterParameter | rowStruct=PalCharacterParameterDatabaseRow | palworldVersion=1.0 | fields=90 | source=paldex-dump+sdk-headers | sdk=localcc/PalworldModdingKit@62fad41 | sdkAdded=OverridePartnerSkillNameTextID,OverridePartnerSkillDescTextID,Weapon,Hp,Friendship_HP,Friendship_ShotAttack,Friendship_Defense,Friendship_CraftSpeed,EnemyMaxHPRate,EnemyInflictDamageRate,EnemyWazaCoolTimeRate,StatusResistUpRate,SwimSpeed,SwimDashSpeed,IsRaidBoss,UseBossHPGauge,IgnoreStun,CombiDuplicatePriority,IgnoreCombi,MeshCapsuleHalfHeight,MeshCapsuleRadius,MeshRelativeLocation,BestWorkSuitability,FirstDefeatRewardItemID | droppedRemovedFields=OverridePartnerSkillTextID,weapon,HP | loaderKeys=RanchActionData,IconAssetPath,BlueprintAssetPath,ActorClassPath,AbilitiesByLevel,Loot,Name,ShortDescription,LongDescription",
   "type": "object",
   "properties": {
     "OverrideNameTextID": {
@@ -672,6 +672,119 @@
     "FirstDefeatRewardItemID": {
       "type": "string",
       "description": "FName — current-game field (absent from Jan-2024 dump), verified from SDK headers"
+    },
+    "RanchActionData": {
+      "type": "object",
+      "description": "Ranch (SpawnItem) action config, processed by PalSchema's pal loader for pals whose WorkSuitability_MonsterFarm is >= 1. Adding it to a NEW pal requires PalSchema >= 0.6.4 (https://github.com/Okaetsu/PalSchema/pull/143); edits to existing pals ran this earlier. Properties are copied onto the generated BP_Action_SpawnItem class; keys outside this list are silently ignored in game.",
+      "properties": {
+        "ChargeMontage": {
+          "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+        },
+        "FunMontage": {
+          "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+        },
+        "ChargeFacialEye": {
+          "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+        },
+        "FunFacialEye": {
+          "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+        },
+        "SpawnSocketName": {
+          "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+        },
+        "SpawnLocationOffset": {
+          "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+        },
+        "SpawnItemRotator": {
+          "description": "Copied onto the generated spawn action (blueprint-defined property; type not constrained here)."
+        }
+      },
+      "additionalProperties": false,
+      "$comment": "palschema-loader-overlay | loader=pals | sincePalSchema=0.6.4 | source=https://github.com/Okaetsu/PalSchema/pull/143"
+    },
+    "IconAssetPath": {
+      "type": "string",
+      "description": "Icon texture asset path, e.g. /Game/Pal/Texture/PalIcon/Normal/T_MyPal_icon_normal.T_MyPal_icon_normal — PalSchema pal-loader key, not a row-struct field.",
+      "$comment": "palschema-loader-overlay | loader=pals | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp"
+    },
+    "BlueprintAssetPath": {
+      "type": "string",
+      "description": "Character blueprint asset path for a NEW pal (adds the DT_PalBPClass row) — PalSchema pal-loader key, not a row-struct field.",
+      "$comment": "palschema-loader-overlay | loader=pals | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp"
+    },
+    "ActorClassPath": {
+      "type": "string",
+      "description": "Replacement character blueprint class path for an EXISTING pal — PalSchema pal-loader key, not a row-struct field.",
+      "$comment": "palschema-loader-overlay | loader=pals | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp"
+    },
+    "AbilitiesByLevel": {
+      "type": "array",
+      "description": "Abilities the pal unlocks by level; each entry becomes a DT_WazaMasterLevel row — PalSchema pal-loader key, not a row-struct field.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "WazaID": {
+            "type": "string",
+            "description": "EPalWazaID name, e.g. EPalWazaID::FireBall or FireBall."
+          },
+          "Level": {
+            "type": "integer",
+            "description": "Level the ability unlocks at."
+          }
+        },
+        "required": [
+          "WazaID",
+          "Level"
+        ],
+        "additionalProperties": false
+      },
+      "$comment": "palschema-loader-overlay | loader=pals | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp"
+    },
+    "Loot": {
+      "type": "array",
+      "description": "Drop table for the pal; becomes a DT_PalDropItem row (max 10 slots, later entries ignored) — PalSchema pal-loader key, not a row-struct field.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ItemId": {
+            "type": "string",
+            "description": "Item code, e.g. Wool."
+          },
+          "DropChance": {
+            "type": "number",
+            "description": "PalSchema requires a float literal here (e.g. 100.0, not 100) — the loader skips the entry otherwise. JSON.parse erases the distinction, so the validator checks the raw text instead of this schema."
+          },
+          "Min": {
+            "type": "integer"
+          },
+          "Max": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "ItemId",
+          "DropChance",
+          "Min",
+          "Max"
+        ],
+        "additionalProperties": false
+      },
+      "$comment": "palschema-loader-overlay | loader=pals | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp"
+    },
+    "Name": {
+      "type": "string",
+      "description": "Display name; becomes the PAL_NAME_<CharacterId> translation row — PalSchema pal-loader key, not a row-struct field.",
+      "$comment": "palschema-loader-overlay | loader=pals | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp"
+    },
+    "ShortDescription": {
+      "type": "string",
+      "description": "Short Paldeck description; becomes the PAL_SHORT_DESC_<CharacterId> translation row — PalSchema pal-loader key, not a row-struct field.",
+      "$comment": "palschema-loader-overlay | loader=pals | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp"
+    },
+    "LongDescription": {
+      "type": "string",
+      "description": "Long Paldeck description; becomes the PAL_LONG_DESC_<CharacterId> translation row — PalSchema pal-loader key, not a row-struct field.",
+      "$comment": "palschema-loader-overlay | loader=pals | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalMonsterModLoader.cpp"
     },
     "$Filters": {
       "description": "PalSchema row-filter metadata (used with wildcard row keys); ignored as a row field by the loader."

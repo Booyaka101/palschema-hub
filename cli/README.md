@@ -7,18 +7,30 @@ and scan them for fields the game **removed or retyped between versions**.
 ## Validate (schema check)
 
 ```bash
-npx palschema-validate --version 1.0 ./mods/
+npx palschema-validate ./mods/
 ```
 
 Flags typos, unknown fields, and wrong types per table/row, with PalSchema's exact loader
 semantics (array `{"Action":"Clear","Items":[…]}` wrappers, `$Filters` row keys, JSONC).
+Since 0.5.0 all three PalSchema file shapes are recognized: raw table files
+(`{"DT_*": {...}}`), pal-loader files (`{"<CharacterId>": {...}}`) and item-loader
+files (`{"<ItemId>": {...}}`, where a `null` entry deletes the item) — detected by
+their `DT_*` keys, their `pals/`/`items/` folder, or their fields. Loader-implemented
+keys (`RanchActionData`, `Loot`, `AbilitiesByLevel`, `Recipe`, `Type`, ...) come from
+the registry's loader overlay, read off PalSchema's loader source.
 
 **Unknown keys warn, they don't reject** (since 0.4.0 — the semantics PalSchema itself
-adopted in 0.6.2, [Okaetsu/PalSchema#134](https://github.com/Okaetsu/PalSchema/issues/134)
-/ [#138](https://github.com/Okaetsu/PalSchema/pull/138)): a field the registry's row
-struct doesn't declare gets a warning with a did-you-mean suggestion, so a
-legitimately-new game field never breaks your build. Genuine type/shape errors still
-fail the run.
+adopted for its item loader in 0.6.2, [Okaetsu/PalSchema#134](https://github.com/Okaetsu/PalSchema/issues/134)
+/ [#138](https://github.com/Okaetsu/PalSchema/pull/138)): a field the schema doesn't
+declare gets a warning with a did-you-mean suggestion, so a legitimately-new game field
+never breaks your build. Each warning notes whether the game would catch it too — the
+item loader warns in game since PalSchema 0.6.3, the pal loader silently drops unknown
+keys (#134, still open), which makes this scan the only thing that catches a pals typo.
+
+**`--palschema-version <v>`** targets a specific PalSchema release. Loader keys newer
+than the target are flagged with the release they need — e.g. `RanchActionData` on a
+new pal against 0.6.3 reports `requires PalSchema >= 0.6.4`
+([PR #143](https://github.com/Okaetsu/PalSchema/pull/143)). Unknown values fail loudly.
 
 **Integer columns are enforced** since registry 0.7.0. 158 fields the game declares
 `int32` (`DT_PalDropItem.Level`, `DT_PalHumanParameter.MeleeAttack`, …) used to accept
@@ -27,11 +39,11 @@ from the registry at runtime, so this applies to every installed version, includ
 older ones.
 
 ```
-WARN mods/pals.json:Lamball unknown field "rarity" — did you mean "Rarity"?
+WARN mods/pals/mypal.json:Lamball unknown field "rarity" — did you mean "Rarity"? (not caught in game: PalSchema's pal loader silently ignores unknown fields — Okaetsu/PalSchema#134)
 1 file validated, 0 errors, 1 unknown-key warning
 ```
 
-In CI, add `--strict` to promote unknown-key warnings to errors (exit 1).
+In CI, add `--strict` to promote warnings to errors (exit 1).
 
 ## Migrate (breaking-change scan)
 
@@ -60,18 +72,19 @@ and exits 0 instead of pretending a diff exists. Rename notes are heuristic and 
 
 | flag | meaning |
 |---|---|
-| `--version <v>` | validate against Palworld version `<v>` (exactly one of `--version` / `--migrate`) |
-| `--migrate <a>..<b>` | scan for fields removed/retyped between versions `<a>` and `<b>` |
+| `--version <v>` | validate against Palworld version `<v>` (default: the newest the registry knows) |
+| `--palschema-version <v>` | PalSchema release to target; loader keys newer than it are flagged. Unknown values fail loudly |
+| `--migrate <a>..<b>` | scan for fields removed/retyped between versions `<a>` and `<b>` (mutually exclusive with `--version`) |
 | `--registry <r>` | schema/diff source: base URL or local repo-root path (default: the GitHub registry) |
 | `--owner <o>` | GitHub owner for the default registry URL (default `Booyaka101`) |
-| `--strict` | CI mode: promote unknown-key warnings to errors (exit 1) |
+| `--strict` | CI mode: promote warnings to errors (exit 1) |
 
 ## Exit codes
 
 | code | meaning |
 |---|---|
-| 0 | all files pass — unknown-key warnings alone never fail a run |
-| 1 | validation error / breaking `--migrate` field / bad usage — or any unknown-key warning under `--strict` |
+| 0 | all files pass — warnings alone never fail a run |
+| 1 | validation error / breaking `--migrate` field / bad usage — or any warning under `--strict` |
 
 Browse the registry: https://booyaka101.github.io/palschema-hub/ · version diffs:
 https://booyaka101.github.io/palschema-hub/diff.html

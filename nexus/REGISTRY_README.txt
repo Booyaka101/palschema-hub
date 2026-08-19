@@ -4,14 +4,38 @@ PalSchema Hub — Community Schema Registry (offline archive)
 A complete, self-contained copy of the PalSchema Hub schema registry:
 31 Palworld gameplay DataTables (DT_PalMonsterParameter, DT_ItemDataTable,
 DT_ItemRecipeDataTable, DT_BuildObjectDataTable, DT_PalDropItem,
-DT_WazaDataTable, ...) with every raw-table field name, type, example values
-and enum value lists — verified against the current game's row structs
-(July 2026 SDK headers) and cross-checked with real dumped row data.
+DT_WazaDataTable, ...) plus an item-loader schema (PalStaticItemData), with
+every field name, type, example values and enum value lists — verified
+against the current game's row structs (July 2026 SDK headers) and
+cross-checked with real dumped row data.
 
 Plus a per-item VALUE reference and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry 0.7.0, 2026-08-17)
+NEW IN THIS VERSION (registry 0.8.0 / validator 0.5.0, 2026-08-19)
+  * TRACKS PALSCHEMA 0.6.3 AND 0.6.4. PalSchema 0.6.4 lets new pals carry
+    ranch suitability through a RanchActionData object in pals json
+    (its PR #143). That key lives in PalSchema's LOADER, not on any UE row
+    struct, so schemas built from SDK headers alone would flag a legal
+    0.6.4 mod. The registry now ships structs/loader-overlay.json with
+    every loader-implemented key (RanchActionData, Loot, AbilitiesByLevel,
+    IconAssetPath, Recipe, Type, SortID, ...), read off the loader source.
+  * PAL AND ITEM LOADER FILES VALIDATE DIRECTLY. Files shaped
+    { "<CharacterId>": {...} } (pals folder) and { "<ItemId>": {...} }
+    (items folder) are recognized alongside raw DT_* files. Item files
+    check against the actual UPalStaticItemData class fields; an item's
+    Recipe object checks against DT_ItemRecipeDataTable.
+  * NEW --palschema-version FLAG. Target the PalSchema release you run:
+    RanchActionData on a new pal against 0.6.3 reports
+    "requires PalSchema >= 0.6.4" with the PR link, instead of a generic
+    unknown-field warning. --version now defaults to the newest known
+    Palworld version, so plain `palschema-validate my-mod/` works.
+  * WARNINGS NOW SAY WHETHER THE GAME CATCHES THE SAME MISTAKE. Item
+    loader: PalSchema 0.6.3+ also warns at load time (its PR #138). Pal
+    loader: nothing in game warns (PalSchema issue #134, still open), so
+    a typo'd pal field is caught by this validator and by nothing else.
+
+PREVIOUSLY (registry 0.7.0, 2026-08-17)
   * PALWORLD 1.0.3 COVERED. The patch changed no DataTable row structs, so
     a mod that worked on 1.0 needs no field migration. Verified rather than
     assumed: the decompiled SDK's row-struct headers have not been

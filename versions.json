@@ -8,7 +8,7 @@
   },
   "upstream": {
     "$comment": "Third-party projects whose versions this registry's compatibility claims name. check-currency compares each against its live release list; bump these with the README line that cites them.",
-    "palSchema": { "repo": "Okaetsu/PalSchema", "version": "0.6.3", "date": "2026-08-15" }
+    "palSchema": { "repo": "Okaetsu/PalSchema", "version": "0.6.4", "date": "2026-08-18", "releases": [{ "version": "0.6.3", "date": "2026-08-15" }, { "version": "0.6.4", "date": "2026-08-18" }] }
   },
   "order": ["0.3.1", "0.3.7", "0.3.8", "0.3.9", "0.4.11", "0.5.0", "0.6.0", "0.6.4", "0.7.0", "0.7.1", "0.7.2", "1.0"],
   "versions": {

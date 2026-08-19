@@ -34,7 +34,8 @@
       "DT_UniqueNPC",
       "DT_WazaDataTable",
       "DT_WazaMasterLevel",
-      "DT_WazaMasterTamago"
+      "DT_WazaMasterTamago",
+      "PalStaticItemData"
     ]
   },
   "tables": {
@@ -161,7 +162,7 @@
       },
       "DT_PalMonsterParameter": {
         "rowStruct": "PalCharacterParameterDatabaseRow",
-        "fields": 91,
+        "fields": 100,
         "rows": 0,
         "source": "paldex-dump+sdk-headers"
       },
@@ -224,8 +225,14 @@
         "fields": 3,
         "rows": 0,
         "source": "paldex-dump+sdk-headers"
+      },
+      "PalStaticItemData": {
+        "rowStruct": "UPalStaticItemDataBase(+Armor/Weapon/Consume)",
+        "fields": 44,
+        "rows": 0,
+        "source": "sdk-headers+loader-overlay"
       }
     }
   },
-  "generatedAt": "2026-07-20T07:33:47.484Z"
+  "generatedAt": "2026-08-19T06:37:07.892Z"
 }

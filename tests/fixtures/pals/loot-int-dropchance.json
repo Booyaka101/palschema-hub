@@ -1,0 +1,7 @@
+{
+  "SheepBall": {
+    "Loot": [
+      { "ItemId": "Wool", "DropChance": 100, "Min": 1, "Max": 2 }
+    ]
+  }
+}

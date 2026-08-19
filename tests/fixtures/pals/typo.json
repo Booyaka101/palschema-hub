@@ -1,0 +1,9 @@
+{
+  "Anubis": {
+    "Tirbe": "EPalTribeID::Anubis",
+    "Rarity": 8,
+    "RanchActionData": {
+      "SpawnSocket": "Socket_Item"
+    }
+  }
+}

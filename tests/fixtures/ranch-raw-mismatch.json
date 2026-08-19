@@ -1,0 +1,10 @@
+{
+  "DT_PalMonsterParameter": {
+    "SheepBall": {
+      "WorkSuitability_MonsterFarm": 2,
+      "RanchActionData": {
+        "SpawnSocketName": "Socket_Wool"
+      }
+    }
+  }
+}
