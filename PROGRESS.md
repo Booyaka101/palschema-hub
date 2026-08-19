@@ -1,6 +1,40 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-19 (0.9.0 — building reference shipped; 0.8.0/CLI 0.5.0 earlier same day)
+**Last updated:** 2026-08-19 (0.9.0 + CLI 0.5.0 on npm + Nexus v1.6 — all shipped)
+
+## Session 2026-08-19c — DISTRIBUTION: npm 0.5.0 + Nexus v1.6
+- **npm: `palschema-validate@0.5.0` published and `latest`.** Pre-flight: CI green on the
+  exact merge commit `7428553` (check-runs API, not run-level status), tree clean and
+  synced, 73 tests green, `--dry-run` showed exactly 4 files (dist/core.js, dist/index.js,
+  README, package.json) and no `file:`/`link:` deps. The post-publish `E404` is the known
+  stale-packument race — the registry served 0.5.0 ~10 s later; poll
+  `registry.npmjs.org/<pkg>` directly rather than trusting the local npm cache.
+  **Cold-verified** in a fresh dir: a `pals/` file with `RanchActionData` passes clean with
+  NO flags (folder-based loader detection working through the published build),
+  `--palschema-version 0.6.3` emits the >=0.6.4 gate, `0.9.9` exits 1.
+- **Nexus mods/4084 → v1.6 SHIPPED, fully verified on the public page.** Owner's Chrome
+  session had EXPIRED (every nexusmods tab rendered "unauthenticated / Please log in
+  again", including /users/myaccount) — an expired session looks exactly like a layout
+  change, so probe `myaccount` before blaming selectors. Owner re-authed over TeamViewer.
+  - File **1.6** live (605 KB, 211 entries), **1.5 archived**, 1.0.1 still deliberately
+    under Old files. Virus scan polled to completion: **Safe to use, downloadable**, no
+    quarantine (the v1.0 malformed-archive failure mode did not recur).
+  - **The new upload form is much friendlier than the 08-17 notes suggest:** selecting the
+    existing file in the headlessui combobox **auto-incremented the version 1.5 → 1.6** and
+    auto-filled the display name, and the "Archive existing file" control is now a real
+    `[role=checkbox]` with a readable `aria-checked` — so it can be gated on state instead
+    of a screenshot. Combobox still needs focus + ArrowDown (click alone won't open it).
+  - **Description updated and verified on the PUBLIC page.** Re-read the LIVE bbcode first
+    and diffed it against `git show 2774c74:nexus/NEXUS_DESCRIPTION.bbcode`: byte-identical,
+    so zero live-only drift to lose. Set via the only path that persists —
+    `ta._sceditor.val(bb)` → `inst.updateOriginal()` → native setter → input/change — gated
+    on a whitespace-stripped read-back (8684 == 8684) before saving.
+  - **STILL NOT DONE — the file changelog, now 0 for 3** (1.4 = 403, 1.5 = empty, 1.6 =
+    empty). Filled `#file-changelog-text` with 941 chars, read back byte-exact, saved with
+    the file; the file/version/archive/description all persisted and the Changelogs tab is
+    still empty. Three attempts across two UI generations: treat this as a Nexus-side
+    defect, not an automation bug, and stop spending attempts on it. The same content is
+    public in the description.
 
 ## Session 2026-08-19b — 0.9.0: the building value reference (issue #21)
 Owner asked to build #21 once 0.8.0's CI was green, and to check the auto-created
