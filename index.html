@@ -48,7 +48,11 @@
   td.type code { background: var(--panel2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 12.5px; color: var(--accent2); }
   td.desccol { color: var(--muted); }
   .filterbox { margin: 6px 0 2px; }
-  .note { color: var(--warn); font-size: 12px; margin-top: 4px; }
+  .note { color: var(--warn); font-size: 12.5px; margin-top: 10px; max-width: 900px;
+    background: var(--panel2); border: 1px solid var(--border); border-left: 3px solid var(--warn);
+    border-radius: 6px; padding: 9px 12px; }
+  .note .src { color: var(--muted); display: block; margin-top: 5px; font-size: 11.5px; }
+  .note a { color: var(--accent); text-decoration: none; }
   a.raw { color: var(--accent); font-size: 12.5px; text-decoration: none; }
 </style>
 </head>
@@ -132,6 +136,14 @@ async function fetchSchema(table) {
   return json;
 }
 
+// Per-table note from table-notes.json, baked into index.json by build-index.mjs.
+function noteHtml(note) {
+  if (!note || !note.text) return '';
+  const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  const more = note.see ? ` <a href="${esc(note.see)}" target="_blank" rel="noopener">more ↗</a>` : '';
+  return `<div class="note">${esc(note.text)}${more}<span class="src">${esc(note.source || '')}</span></div>`;
+}
+
 async function selectTable(table) {
   state.activeTable = table;
   renderList();
@@ -170,6 +182,7 @@ async function selectTable(table) {
         <a class="raw" href="${rawUrl}" target="_blank" rel="noopener">raw schema ↗</a>
       </div>
       <div class="desc">${(schema.description || '').replace(/</g,'&lt;')}</div>
+      ${noteHtml(meta.note)}
     </div>
     <table>
       <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>

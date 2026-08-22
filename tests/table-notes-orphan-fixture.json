@@ -1,0 +1,9 @@
+{
+  "$comment": "Fixture: a note whose table no schema version has — a typo, or a table a game patch dropped. check-index.mjs must exit 1 naming it.",
+  "notes": {
+    "DT_TableThatDoesNotExist": {
+      "text": "note for a table nobody ships",
+      "source": "fixture"
+    }
+  }
+}

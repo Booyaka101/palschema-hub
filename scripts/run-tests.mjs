@@ -40,7 +40,14 @@ function run(label, args, expectCode, expectOutput) {
 const validate = (target) => ['cli/dist/index.js', '--version', '1.0', '--registry', '.', target];
 
 console.log('palschema-hub acceptance tests\n');
-run('index.json valid & >=10 tables', ['scripts/check-index.mjs'], 0);
+run('index.json valid & >=10 tables', ['scripts/check-index.mjs'], 0, 'table note(s)');
+// table-notes.json is hand-edited and baked into index.json by build-index.mjs;
+// these prove a note that was never rebuilt, or one naming a table nobody ships,
+// fails the build instead of silently going missing from the browser.
+run('table notes: edited-but-not-rebuilt fixture fails, naming the rebuild',
+  ['scripts/check-index.mjs', 'tests/table-notes-stale-fixture.json'], 1, 'npm run index');
+run('table notes: note for a nonexistent table fails, naming it',
+  ['scripts/check-index.mjs', 'tests/table-notes-orphan-fixture.json'], 1, 'DT_TableThatDoesNotExist');
 run('tests/valid-mod.json passes',   validate('tests/valid-mod.json'), 0);
 run('tests/invalid-mod.json fails',  validate('tests/invalid-mod.json'), 1);
 run('tests/example-chikipi.jsonc passes', validate('tests/example-chikipi.jsonc'), 0);

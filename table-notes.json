@@ -1,0 +1,15 @@
+{
+  "$comment": "Hand-written per-table notes for things the field list cannot say: how a table is joined, which system reaches it, what silently does nothing. SOURCE FILE, not a generated artifact — scripts/build-index.mjs bakes these into index.json (so the browser needs no extra fetch and the offline Nexus archive stays complete) and scripts/check-index.mjs gates the two against drift. A note naming a table no schema version has is a build error. Every note carries its own provenance; keep them short and put the long version in README.md.",
+  "notes": {
+    "DT_ItemLotteryDataTable": {
+      "text": "Row keys here are counters (\"1\", \"2\", \"3\", …) and carry no meaning. What ties an entry to a drop source is the FieldName column, which names a row in DT_FieldLotteryNameDataTable — so searching this table for a lottery name by row key finds nothing. A new drop is a new row under any key the table does not already have (PalSchema's PalRawTableLoader::Apply sends unknown keys to AddRow). Two traps: SlotNo must be a slot the matching DT_FieldLotteryNameDataTable row actually rolls (ItemSlotN_ProbabilityPercent > 0) or the entry can never come out, and WeightInSlot is relative to the other entries sharing that FieldName + SlotNo, so adding one dilutes the existing pool instead of stacking on top of it.",
+      "source": "Row keys and the FieldName join: paldex FModel dump of this table. AddRow behaviour: PalSchema src/Loader/PalRawTableLoader.cpp (Apply).",
+      "see": "https://github.com/Booyaka101/palschema-hub#lottery-buildings-the-ancient-relic-recycler"
+    },
+    "DT_FieldLotteryNameDataTable": {
+      "text": "One row per lottery name, holding nothing but the chance each of the 15 slots rolls at all. The slot contents are in DT_ItemLotteryDataTable, joined by its FieldName column rather than by row key. Field drops and treasure boxes read these rows, and so do lottery buildings: the Ancient Relic Recycler has no DT_ItemRecipeDataTable rows at all, it maps each input relic to a lottery name (AncientRelicRecycler_WorldTreeRelic_01…_05) through UPalMapObjectRecyclerParameterComponent.RelicItemSettings on its blueprint. That map is blueprint data, so which relic feeds which lottery, and how long it takes, is out of PalSchema's reach — the two lottery tables are not.",
+      "source": "SDK headers localcc/PalworldModdingKit@62fad41: PalMapObjectRecyclerParameterComponent.h, PalRecyclerRelicItemSetting.h, PalFieldLotteryName.h.",
+      "see": "https://github.com/Booyaka101/palschema-hub#lottery-buildings-the-ancient-relic-recycler"
+    }
+  }
+}

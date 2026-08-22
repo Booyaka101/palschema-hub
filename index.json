@@ -68,7 +68,12 @@
         "rowStruct": "FPalFieldLotteryName",
         "fields": 16,
         "rows": 0,
-        "source": "sdk-headers-only"
+        "source": "sdk-headers-only",
+        "note": {
+          "text": "One row per lottery name, holding nothing but the chance each of the 15 slots rolls at all. The slot contents are in DT_ItemLotteryDataTable, joined by its FieldName column rather than by row key. Field drops and treasure boxes read these rows, and so do lottery buildings: the Ancient Relic Recycler has no DT_ItemRecipeDataTable rows at all, it maps each input relic to a lottery name (AncientRelicRecycler_WorldTreeRelic_01…_05) through UPalMapObjectRecyclerParameterComponent.RelicItemSettings on its blueprint. That map is blueprint data, so which relic feeds which lottery, and how long it takes, is out of PalSchema's reach — the two lottery tables are not.",
+          "source": "SDK headers localcc/PalworldModdingKit@62fad41: PalMapObjectRecyclerParameterComponent.h, PalRecyclerRelicItemSetting.h, PalFieldLotteryName.h.",
+          "see": "https://github.com/Booyaka101/palschema-hub#lottery-buildings-the-ancient-relic-recycler"
+        }
       },
       "DT_ItemDataTable": {
         "rowStruct": "PalStaticItemDataStruct",
@@ -86,7 +91,12 @@
         "rowStruct": "PalItemLotteryData",
         "fields": 10,
         "rows": 0,
-        "source": "paldex-dump+sdk-headers"
+        "source": "paldex-dump+sdk-headers",
+        "note": {
+          "text": "Row keys here are counters (\"1\", \"2\", \"3\", …) and carry no meaning. What ties an entry to a drop source is the FieldName column, which names a row in DT_FieldLotteryNameDataTable — so searching this table for a lottery name by row key finds nothing. A new drop is a new row under any key the table does not already have (PalSchema's PalRawTableLoader::Apply sends unknown keys to AddRow). Two traps: SlotNo must be a slot the matching DT_FieldLotteryNameDataTable row actually rolls (ItemSlotN_ProbabilityPercent > 0) or the entry can never come out, and WeightInSlot is relative to the other entries sharing that FieldName + SlotNo, so adding one dilutes the existing pool instead of stacking on top of it.",
+          "source": "Row keys and the FieldName join: paldex FModel dump of this table. AddRow behaviour: PalSchema src/Loader/PalRawTableLoader.cpp (Apply).",
+          "see": "https://github.com/Booyaka101/palschema-hub#lottery-buildings-the-ancient-relic-recycler"
+        }
       },
       "DT_ItemRecipeDataTable": {
         "rowStruct": "PalItemRecipe",
@@ -234,5 +244,5 @@
       }
     }
   },
-  "generatedAt": "2026-08-19T06:37:07.892Z"
+  "generatedAt": "2026-08-22T06:13:54.730Z"
 }

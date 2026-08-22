@@ -267,6 +267,11 @@ the existing pool rather than stacking on top of it. The same wiring drives the 
 consumers (treasure boxes, field drops), which is why `FieldName` values like `Grass01` sit in
 the same table.
 
+The short version of this rides on both tables in the
+[schema browser](https://booyaka101.github.io/palschema-hub/) — per-table notes live in
+[`table-notes.json`](table-notes.json), which `scripts/build-index.mjs` bakes into
+`index.json` and `npm run check` gates against drift.
+
 Provenance: read off `PalMapObjectRecyclerParameterComponent.h` and
 `PalRecyclerRelicItemSetting.h` in the SDK headers this registry already tracks
 ([`localcc/PalworldModdingKit@62fad41`](https://github.com/localcc/PalworldModdingKit)). The
@@ -390,6 +395,7 @@ Requirements: Node.js ≥ 18 (uses global `fetch`). Verified on Node 22.
 schemas/v1.0/*.schema.json   31 per-table JSON Schemas (+ _manifest.json)
 schemas/index.json             table-name -> schema-path listing (for Pages consumers)
 index.json                     { versions, schemas:{ver:[tables]}, tables:{...} } catalog
+table-notes.json               hand-written per-table notes (source; baked into index.json)
 index.html                     schema browser (vanilla HTML/CSS/JS, no build step)
 items.html + items.json        per-item value reference for DT_ItemDataTable (asset reuse)
 diff.html                      version-diff viewer (what changed between game versions)
