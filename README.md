@@ -223,6 +223,56 @@ disagrees with the build it claims to capture. Fields paldb doesn't render
 (`BlueprintClassName`, `RequiredBuildWorkAmount`, the raw `Material1..4` columns) are
 absent, not zero. Gate: `npm run check:buildings`, run by `npm test`.
 
+### Lottery buildings (the Ancient Relic Recycler)
+
+Not every producing building uses `DT_ItemRecipeDataTable`. The **Ancient Relic Recycler**
+(`AncientRelicRecycler`) has no recipe rows at all, which is why searching for
+`AncientRelicRecycler_WorldTreeRelic_01`…`_05` turns up nothing (asked on the Nexus posts
+tab). Those names are **lottery names**, and the chain runs through three places, only two
+of which PalSchema can reach:
+
+1. **The building blueprint** holds `UPalMapObjectRecyclerParameterComponent`, whose
+   `RelicItemSettings` is a `TMap<ItemId, FPalRecyclerRelicItemSetting>` mapping each input
+   relic (`WorldTreeRelic_01`…`_05`) to a `LotteryName` plus a `RequiredWorkAmount`. This is
+   blueprint data, **not** a DataTable, so which relic feeds which lottery (and how long it
+   takes) is out of PalSchema's reach.
+2. **`DT_FieldLotteryNameDataTable`** — one row per lottery name, holding only
+   `ItemSlot1_ProbabilityPercent` … `ItemSlot15_ProbabilityPercent`: the chance each slot
+   rolls at all.
+3. **`DT_ItemLotteryDataTable`** — the contents. Row keys here are meaningless counters
+   (`"1"`, `"2"`, `"3"`, …); the join back to the lottery is the **`FieldName` column**, with
+   `SlotNo` / `WeightInSlot` / `StaticItemId` / `MinNum` / `MaxNum` per entry.
+
+So a new recycler output is a new `DT_ItemLotteryDataTable` row under a key the table doesn't
+already have (`PalRawTableLoader::Apply` sends unknown keys to `AddRow`):
+
+```json
+{
+  "DT_ItemLotteryDataTable": {
+    "90001": {
+      "FieldName": "AncientRelicRecycler_WorldTreeRelic_05",
+      "SlotNo": 1,
+      "WeightInSlot": 10,
+      "StaticItemId": "Blueprint_AncientHelmet_4",
+      "MinNum": 1, "MaxNum": 1, "NumUnit": 1
+    }
+  }
+}
+```
+
+Two traps. `SlotNo` must be a slot the matching `DT_FieldLotteryNameDataTable` row actually
+rolls (`ItemSlotN_ProbabilityPercent > 0`) or the entry can never come out, and `WeightInSlot`
+is relative to the other entries sharing that `FieldName` + `SlotNo`, so adding one dilutes
+the existing pool rather than stacking on top of it. The same wiring drives the other lottery
+consumers (treasure boxes, field drops), which is why `FieldName` values like `Grass01` sit in
+the same table.
+
+Provenance: read off `PalMapObjectRecyclerParameterComponent.h` and
+`PalRecyclerRelicItemSetting.h` in the SDK headers this registry already tracks
+([`localcc/PalworldModdingKit@62fad41`](https://github.com/localcc/PalworldModdingKit)). The
+**structure** is verified; the recycler's own vanilla rows are not in the value set, so dump
+both tables in FModel and filter on `FieldName` before picking slot numbers or weights.
+
 ## What changed between game versions
 
 Every Palworld patch can add, remove, or rename DataTable row-struct fields — and a
