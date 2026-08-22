@@ -18,6 +18,11 @@ const versions = existsSync(SCHEMAS)
       .sort()
   : [];
 
+// Hand-written per-table notes ride along inside index.json: the browser already
+// fetches it, and the offline Nexus archive ships it, so neither needs a new file.
+const notesPath = join(ROOT, 'table-notes.json');
+const notes = existsSync(notesPath) ? JSON.parse(readFileSync(notesPath, 'utf8')).notes || {} : {};
+
 const schemas = {};
 const tables = {};
 for (const v of versions) {
@@ -44,7 +49,14 @@ for (const v of versions) {
     } catch {
       tables[v][table] = { rowStruct: '', fields: 0, rows: 0, source: '' };
     }
+    if (notes[table]) tables[v][table].note = notes[table];
   }
+}
+
+const orphans = Object.keys(notes).filter((t) => !versions.some((v) => tables[v][t]));
+if (orphans.length) {
+  console.error(`FAIL: table-notes.json names table(s) no schema version has: ${orphans.join(', ')}`);
+  process.exit(1);
 }
 
 /**

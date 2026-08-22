@@ -1,0 +1,9 @@
+{
+  "$comment": "Fixture: a note edited in table-notes.json but never rebuilt into index.json. check-index.mjs must exit 1 rather than ship a note the browser cannot see.",
+  "notes": {
+    "DT_ItemLotteryDataTable": {
+      "text": "edited but never rebuilt",
+      "source": "fixture"
+    }
+  }
+}
