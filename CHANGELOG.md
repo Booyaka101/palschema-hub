@@ -1,5 +1,32 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.9.1 — 2026-08-22
+
+**Per-table notes, for what a field list cannot say.** Someone on the Nexus page went
+looking for `AncientRelicRecycler_WorldTreeRelic_01`…`_05` in `DT_ItemRecipeDataTable`,
+correctly ruled it out, and had nowhere else to go. The Ancient Relic Recycler has no
+recipe rows at all: it maps each input relic to a lottery name through
+`UPalMapObjectRecyclerParameterComponent.RelicItemSettings` on its blueprint (not a
+DataTable, so PalSchema cannot patch it), and that name is a row in
+`DT_FieldLotteryNameDataTable` whose contents live in `DT_ItemLotteryDataTable`.
+
+- **`table-notes.json` (new)** — hand-written per-table notes, baked into `index.json`
+  by `scripts/build-index.mjs` and rendered by the browser above the field table. Two
+  to start, both on the lottery tables. They stay out of `schemas/v1.0/*.schema.json`
+  on purpose: the README promises official Schema Generator output can supersede those
+  files, and a note written into a generated artifact would leave with it.
+- **The join is a column, not a row key.** `DT_ItemLotteryDataTable` row keys are
+  counters (`"1"`, `"2"`, …); entries are tied to a drop source by `FieldName`. Both
+  ways an added row silently never drops are now written down: a `SlotNo` the matching
+  `DT_FieldLotteryNameDataTable` row never rolls, and `WeightInSlot` diluting the
+  existing pool rather than stacking on it.
+- **Gated both ways.** `check-index.mjs` fails when `table-notes.json` and `index.json`
+  disagree (the drift you get by skipping `npm run index`), when a note lacks `text` or
+  `source`, and `build-index.mjs` refuses a note naming a table no version ships.
+  Tests 73 -> 75.
+- Longer write-up of the whole chain in the README. Offline Nexus archive rebuilt; no
+  schema, struct or value data changed, so mods are unaffected.
+
 ## 0.9.0 — 2026-08-19
 
 **Per-building value reference: [`buildings.html`](https://booyaka101.github.io/palschema-hub/buildings.html) /
