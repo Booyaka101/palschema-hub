@@ -42,15 +42,22 @@ jobs:
         run: |
           set -euo pipefail
           recorded=$(node -e 'process.stdout.write(String(JSON.parse(require("fs").readFileSync("items.json","utf8"))._provenance.sourceCommit || ""))')
-          # An unreachable or rate-limited API is not a signal. Let it resolve to an
-          # empty sha (=> changed=false) instead of failing the step, which would skip
-          # the currency check below and cost a day of staleness detection.
-          current=$(curl -sf -H "Accept: application/vnd.github+json" \
+          # Rate limits and blips are not signals, so an unreadable response resolves to
+          # an empty sha (=> changed=false) rather than failing the step, which would
+          # skip the currency check below and cost a day of staleness detection.
+          # A 404 is not transient: the repo or the dump path is gone and this watch
+          # cannot fire again until someone repoints it, so that one gets an issue.
+          code=$(curl -s -o "$RUNNER_TEMP/paldex.json" -w '%{http_code}' \
+            -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
-            "https://api.github.com/repos/blaynem/paldex/commits?path=data-provider%2Fpalworld-assets%2FDataTable%2FItem%2FDT_ItemDataTable.json&per_page=1" \
-            | node -e 'let d="";process.stdin.on("data",c=>d+=c).on("end",()=>{try{process.stdout.write(JSON.parse(d)[0]?.sha||"")}catch{}})') || true
-          echo "recorded=$recorded current=$current"
-          if [ -z "$current" ]; then echo "upstream sha unreadable this run — treating as no change"; fi
+            "https://api.github.com/repos/blaynem/paldex/commits?path=data-provider%2Fpalworld-assets%2FDataTable%2FItem%2FDT_ItemDataTable.json&per_page=1") || code=000
+          current=""
+          if [ "$code" = 200 ]; then
+            current=$(node -e 'let s="";try{s=JSON.parse(require("fs").readFileSync(process.env.RUNNER_TEMP+"/paldex.json","utf8"))[0]?.sha||""}catch{}process.stdout.write(s)')
+          fi
+          echo "http=$code recorded=$recorded current=$current"
+          if [ -z "$current" ]; then echo "upstream sha unreadable this run (http $code) — treating as no change"; fi
+          if [ "$code" = 404 ]; then echo "gone=true" >> "$GITHUB_OUTPUT"; else echo "gone=false" >> "$GITHUB_OUTPUT"; fi
           if [ -n "$current" ] && [ "$current" != "$recorded" ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "sha=$current" >> "$GITHUB_OUTPUT"
@@ -66,6 +73,18 @@ jobs:
           set -euo pipefail
           title="paldex dump updated — regenerate items.json"
           body=$(printf 'The upstream `blaynem/paldex` DT_ItemDataTable dump changed (now at `%s`; items.json records a different sourceCommit).\n\nRun `node scripts/build-items.mjs`, review the diff (row count, `_provenance`), update `DEFAULT_PROVENANCE` in the script if the dump'\''s game era changed, and commit.' "${{ steps.paldex.outputs.sha }}")
+          if [ -z "$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[].number')" ]; then
+            gh issue create --title "$title" --body "$body"
+          fi
+
+      - name: Open an issue if the dump path is gone for good
+        if: steps.paldex.outputs.gone == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          title="paldex dump lookup 404s — the items.json watch is dead"
+          body=$(printf 'The daily lookup for `blaynem/paldex` `DT_ItemDataTable.json` returned 404, so the repo or that path is gone and this check cannot fire again until it is repointed.\n\nFind where the dump lives now, or drop the check if nothing replaces it. The URL is in `.github/workflows/refresh-items.yml`; `_provenance.mergeSource` in `items.json` names the source in prose and would need the same edit.\n\nNothing about the shipped data is wrong because of this — items.json values come from paldb, and the registry currency check in the same job is unaffected.')
           if [ -z "$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[].number')" ]; then
             gh issue create --title "$title" --body "$body"
           fi
