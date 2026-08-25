@@ -100,8 +100,9 @@ PREVIOUSLY (registry v0.4.0, 2026-08-04)
   * Palworld 1.0.2 covered (from v0.3.0). The whole 1.0.2 patch line
     (v1.0.2, v1.0.2.100993 "Mod Support Improvement", v1.0.2.101103)
     changed NO DataTable row structs, so if your mod worked on 1.0 it
-    needs no field migration. Verified, not assumed: the decompiled SDK
-    has not been regenerated since 1.0 (head 62fad41, 2026-07-11).
+    needs no field migration. Verified, not assumed: the decompiled SDK's
+    row-struct headers have not been regenerated since 1.0
+    (Source/Pal/Public @98ee60d, 2026-07-11).
 
 WHAT'S IN THIS ARCHIVE
 ----------------------
@@ -147,7 +148,7 @@ changes, so they are recorded as aliases of 0.7.2 / 1.0 / 1.0 / 1.0 — those pa
 
     npx palschema-validate --migrate 1.0.1..1.0.2 my-mod/
     -> no row-struct changes between 1.0.1 and 1.0.2
-       (both alias Palworld 1.0, SDK 62fad41)   [exit 0]
+       (both alias Palworld 1.0, SDK e663245)   [exit 0]
 
 HOW CURRENT IS EACH PART? (read this before trusting a value)
 -------------------------------------------------------------

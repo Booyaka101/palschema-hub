@@ -1,9 +1,9 @@
 [size=4][b]PalSchema Hub — Community Schema Registry[/b][/size]
 
 [b]On Palworld 1.0.3? Your mods are fine.[/b]
-The whole 1.0.2 patch line (v1.0.2, v1.0.2.100993 "Mod Support Improvement", v1.0.2.101103) and 1.0.3 ("Balance Adjustments & Bug Fixes") changed [b]no[/b] DataTable row structs — every field that existed in 1.0 still exists, unchanged. That is verified, not assumed: the decompiled SDK has not been regenerated since 1.0 (head 62fad41, 11 Jul 2026). Check any mod yourself in one line:
+The whole 1.0.2 patch line (v1.0.2, v1.0.2.100993 "Mod Support Improvement", v1.0.2.101103) and 1.0.3 ("Balance Adjustments & Bug Fixes") changed [b]no[/b] DataTable row structs — every field that existed in 1.0 still exists, unchanged. That is verified, not assumed: the decompiled SDK's row-struct headers have not been regenerated since 1.0 (Source/Pal/Public @98ee60d, 11 Jul 2026). Check any mod yourself in one line:
 [code]npx palschema-validate --migrate 1.0.2..1.0.3 my-mod/
--> no row-struct changes between 1.0.2 and 1.0.3 (both alias Palworld 1.0, SDK 62fad41)[/code]
+-> no row-struct changes between 1.0.2 and 1.0.3 (both alias Palworld 1.0, SDK e663245)[/code]
 [b]New in 1.6 — PalSchema 0.6.4 tracked, pal/item mod files validate directly, and a building reference.[/b]
 PalSchema 0.6.4 lets new pals carry ranch suitability through a RanchActionData object in pals json (its PR #143). That key lives in PalSchema's loader, not on any game row struct, so schemas built from the SDK headers alone would flag a legal 0.6.4 mod as having an unknown field. The registry now ships a loader-key overlay read off PalSchema's own loader source — RanchActionData with its exact nested property list, plus Loot, AbilitiesByLevel, IconAssetPath, Name, Recipe, Type, SortID and the rest — and the validator understands all three PalSchema file shapes: raw DT_* files, pals files ({"MyPal": {...}}) and items files ({"MyItem": {...}}). Target the release you actually run:
 [code]npx palschema-validate --palschema-version 0.6.3 pals/mynewpal.json

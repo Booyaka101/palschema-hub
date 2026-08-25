@@ -2,9 +2,9 @@
   "$comment": "palschema-hub version pins: each Palworld version -> the localcc/PalworldModdingKit commit that regenerated Source/Pal/Public for it. Verified via https://api.github.com/repos/localcc/PalworldModdingKit/commits?path=Source%2FPal%2FPublic",
   "repo": "localcc/PalworldModdingKit",
   "sdkHead": {
-    "commit": "62fad41",
-    "date": "2026-07-11",
-    "$comment": "Branch head of the SDK repo at last verification (merge of the 'Update 1.0' PR line). scripts/check-currency.mjs compares the live head against this; the newest version's sdkCommit stays the commit that last regenerated Source/Pal/Public."
+    "commit": "e663245",
+    "date": "2026-08-24",
+    "$comment": "Branch head of the SDK repo at last verification (PR #55, an asset-label fix touching only Config/DefaultGame.ini). scripts/check-currency.mjs compares the live head against this; the newest version's sdkCommit stays the commit that last regenerated Source/Pal/Public."
   },
   "upstream": {
     "$comment": "Third-party projects whose versions this registry's compatibility claims name. check-currency compares each against its live release list; bump these with the README line that cites them.",

@@ -1,6 +1,36 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-19 (0.9.0 + CLI 0.5.0 on npm + Nexus v1.6 — all shipped)
+**Last updated:** 2026-08-25 (SDK head e663245 recorded; currency check green on all five axes)
+
+## Session 2026-08-25 — SDK head moved to e663245 (bookkeeping, no data change)
+Cron issue #29: `versions:check` exit 1, "SDK head moved to e663245 (no Source/Pal/Public
+change), registry records 62fad41".
+- **Verified live before touching anything.** Head is `e663245` (2026-08-24, merge of PR #55
+  "Fix primary asset label settings"), and its file list is exactly one entry:
+  `Config/DefaultGame.ini`. `Source/Pal/Public` is still last regenerated at `98ee60d`
+  (2026-07-11), the commit 1.0 pins. So no schema, struct snapshot, diff or item/building
+  value is affected — `sdkHead` was the only stale field in the repo.
+- **versions.json** `sdkHead` → e663245 / 2026-08-24, `$comment` naming what that commit
+  actually was. Round-trips through the bump serializer; check-currency back to exit 0:
+  `registry current: game 1.0.3, SDK e663245, PalSchema 0.6.4, item values 1.0.3, building
+  values 1.0.3`.
+- **What this exposed:** the CLI's alias line names the BRANCH HEAD ("both alias Palworld 1.0,
+  SDK <sha>") and four docs quote that line verbatim — README, cli/README,
+  nexus/REGISTRY_README.txt, nexus/NEXUS_DESCRIPTION.bbcode. Nothing checked them, so they
+  would have read 62fad41 forever. All four updated, and now gated in `npm test`: 75 → **79**.
+- **Two of those docs cited the head as the EVIDENCE** for the alias claim ("the SDK has not
+  been regenerated since 1.0 (head 62fad41)"). The head proves nothing about headers — both
+  re-worded to cite `Source/Pal/Public @98ee60d`, which only moves when structs really change.
+  Left alone on purpose: the schemas' `sdk=...@62fad41` stamps and the `aliasReason` strings.
+  Those are dated derivation/verification records, not claims about today's head, and the
+  1.0.2 alias test was re-anchored to the SHAPE of that evidence rather than the literal sha.
+- README's staleness paragraph said "four axes" and quoted a pre-0.9.0 sample line; it is five
+  axes and the sample now matches real output.
+- The refresh-items stale-registry issue body covered "game moved" and "SDK regenerated" but
+  not this third case; it now says what to do. Deliberately NOT automated: an auto-PR that
+  bumped `sdkHead` would fail the new doc gate, which is the whole point of the gate.
+- Nexus archive rebuilt (211 entries, 606 KB). **Open, owner's call:** the live mods/4084
+  description still quotes 62fad41 until `NEXUS_DESCRIPTION.bbcode` is re-posted.
 
 ## Session 2026-08-19c — DISTRIBUTION: npm 0.5.0 + Nexus v1.6
 - **npm: `palschema-validate@0.5.0` published and `latest`.** Pre-flight: CI green on the
