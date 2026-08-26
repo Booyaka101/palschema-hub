@@ -65,7 +65,7 @@ registry's `versions.json` — each Palworld version maps to the
 [localcc/PalworldModdingKit](https://github.com/localcc/PalworldModdingKit) commit that
 regenerated its SDK headers. Versions that shipped no header change (0.7.3, 1.0.1, the
 whole 1.0.2 patch line, and 1.0.3) are aliases: `--migrate 1.0.1..1.0.2` reports
-"no row-struct changes between 1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK 62fad41)"
+"no row-struct changes between 1.0.1 and 1.0.2 (both alias Palworld 1.0, SDK e663245)"
 and exits 0 instead of pretending a diff exists. Rename notes are heuristic and always labelled (high/medium confidence).
 
 ## Options

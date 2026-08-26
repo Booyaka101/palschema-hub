@@ -14,6 +14,10 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const node = process.execPath;
 let failures = 0;
 
+// Anchors for everything below that would otherwise hardcode a sha or a label.
+const versionsInfo = JSON.parse(readFileSync(join(ROOT, 'versions.json'), 'utf8'));
+const headSha = versionsInfo.sdkHead.commit;
+
 function assert(label, ok, why = '') {
   console.log(`${ok ? 'PASS' : 'FAIL'}  ${label}${why ? `  (${why})` : ''}`);
   if (!ok) failures++;
@@ -195,12 +199,15 @@ run('--migrate 0.7.2..0.7.3 (alias pair) -> "no row-struct changes"',
   migrate('0.7.2..0.7.3'), 0, 'no row-struct changes');
 
 // v0.3.0: Palworld 1.0.2 currency, provenance honesty, staleness detection.
-run('versions.json: 1.0.2 alias of 1.0, aliasReason names SDK head 62fad41',
-  ['-e', `const v=require('./versions.json');const a=v.aliases['1.0.2'];` +
-    `if(!a||a.of!=='1.0'||!/62fad41/.test(a.aliasReason||''))process.exit(1);` +
+// The sha in aliasReason is a DATED record of what the alias was checked against
+// (62fad41 was the head on 2026-08-01), so it must not be re-anchored to today's
+// head — assert the shape of the evidence instead of a literal that would rot.
+run('versions.json: 1.0.2 alias of 1.0, aliasReason cites a sha and a verification date',
+  ['-e', `const v=require('./versions.json');const a=v.aliases['1.0.2'];const r=(a||{}).aliasReason||'';` +
+    `if(!a||a.of!=='1.0'||!/\\b[0-9a-f]{7}\\b/.test(r)||!/Verified \\d{4}-\\d{2}-\\d{2}/.test(r))process.exit(1);` +
     `console.log('1.0.2 alias OK');`], 0, '1.0.2 alias OK');
 run('--migrate 1.0.1..1.0.2 alias-resolves, scans, exits 0',
-  migrate('1.0.1..1.0.2', 'tests/valid-mod.json'), 0, 'both alias Palworld 1.0, SDK 62fad41');
+  migrate('1.0.1..1.0.2', 'tests/valid-mod.json'), 0, `both alias Palworld 1.0, SDK ${headSha}`);
 run('1.0.1..1.0.2 diff is an empty delta',
   ['-e', `const d=require('./diffs/1.0.1..1.0.2.json');` +
     `if(Object.keys(d.structs).length||d.structsAdded.length||d.structsRemoved.length` +
@@ -225,7 +232,6 @@ run('items.json carries _provenance: current-game values, dated version, >= 2400
 // Currency + auto-bump. The fixtures are ANCHORED to versions.json rather than
 // naming a game version: hardcoded ones rotted on every alias bump (the day
 // 1.0.3 shipped, the "1.0.3 is hypothetical" fixture became a lie).
-const versionsInfo = JSON.parse(readFileSync(join(ROOT, 'versions.json'), 'utf8'));
 const newestLabel = registryNewest(versionsInfo);
 const nextLabel = (() => {
   const p = newestLabel.split('.').map(Number);
@@ -234,7 +240,6 @@ const nextLabel = (() => {
 })();
 const pinnedNewest = versionsInfo.order[versionsInfo.order.length - 1];
 const pinnedSha = versionsInfo.versions[pinnedNewest].sdkCommit;
-const headSha = versionsInfo.sdkHead.commit;
 
 const fx = mkdtempSync(join(tmpdir(), 'psv-currency-'));
 try {
@@ -319,6 +324,17 @@ try {
     3, 'is NOT an alias');
 } finally {
   rmSync(fx, { recursive: true, force: true });
+}
+
+// Four docs quote the CLI's alias line verbatim, and that line names the SDK
+// BRANCH HEAD — which moves whenever anything lands in the SDK repo, header
+// change or not. On 2026-08-24 it moved to e663245 for a Config/DefaultGame.ini
+// fix; nothing in the repo noticed the quotes had gone stale. Now they fail here.
+for (const doc of ['README.md', 'cli/README.md', 'nexus/REGISTRY_README.txt', 'nexus/NEXUS_DESCRIPTION.bbcode']) {
+  assert(
+    `${doc} quotes the SDK head the registry records (${headSha})`,
+    readFileSync(join(ROOT, doc), 'utf8').includes(`SDK ${headSha}`),
+  );
 }
 
 // A local path dependency publishes fine and then breaks every fresh install of

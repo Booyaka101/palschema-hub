@@ -332,23 +332,24 @@ field snapshots are committed under `structs/` and the pairwise deltas under `di
 > v1.0.2.100993 "Mod Support Improvement" · v1.0.2.101103) and **1.0.3** ("Balance
 > Adjustments & Bug Fixes") shipped **no** row-struct (header) changes, so they alias
 > `0.7.2` / `1.0` / `1.0` / `1.0` respectively — the CLI and diff page say so explicitly
-> (`--migrate 1.0.1..1.0.2` → "no row-struct changes … both alias Palworld 1.0, SDK
-> 62fad41") instead of pretending a diff exists. Those claims are not assumed: the SDK's
+> (`--migrate 1.0.1..1.0.2` → "no row-struct changes … both alias Palworld 1.0,
+> SDK e663245") instead of pretending a diff exists. Those claims are not assumed: the SDK's
 > `Source/Pal/Public` was last regenerated at `98ee60d` (2026-07-11), the commit 1.0 pins,
 > and each alias records the shas it was checked against in `versions.json`
 > `aliases[...].aliasReason`. Note also that 0.7.0→0.7.2 changed no row structs (those SDK
 > updates touched other classes).
 
 **Staleness detection:** `npm run versions:check` compares this repo against the live world on
-four axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
+five axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
 commit list (SDK head, and whether `Source/Pal/Public` regenerated), the newest
 [PalSchema](https://github.com/Okaetsu/PalSchema) release vs the version this README claims
-compatibility with (`versions.json` `upstream.palSchema`), and `items.json`'s own
-`_provenance.gameVersion` vs the newest game label. That last one exists because a **balance**
-patch moves row VALUES while every struct and sha stays put: 1.0.3 changed World Tree Holy
-Water's weight from 1 to 0.1 with an unchanged SDK, so every sha-based check would have said
-"current" while the shipped values were a patch behind. Exit 0 in sync (`registry current:
-game 1.0.3, SDK 62fad41, PalSchema 0.6.3, item values 1.0.3`), exit 1 stale with one line
+compatibility with (`versions.json` `upstream.palSchema`), and `items.json`'s and
+`buildings.json`'s own `_provenance.gameVersion` vs the newest game label. Those last two exist
+because a **balance** patch moves row VALUES while every struct and sha stays put: 1.0.3 changed
+World Tree Holy Water's weight from 1 to 0.1 with an unchanged SDK, so every sha-based check
+would have said "current" while the shipped values were a patch behind. Exit 0 in sync
+(`registry current: game 1.0.3, SDK e663245, PalSchema 0.6.4, item values 1.0.3, building
+values 1.0.3`), exit 1 stale with one line
 naming exactly what moved, exit 2 on network failure — never conflated. It runs as an
 informational CI step and in the daily cron, which opens an issue when something actually
 moved.

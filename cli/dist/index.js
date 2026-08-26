@@ -146,8 +146,9 @@ async function runMigrate(parsed) {
     // 1.0.1..1.0.2): the row structs are identical, so no mod field can break.
     if (info.versions[from.version].sdkCommit === info.versions[to.version].sdkCommit) {
         const canonical = from.version;
-        // For the newest version's aliases, name the SDK branch head (e.g. 62fad41) —
-        // it proves the whole patch line shipped no header regeneration.
+        // For the newest version's aliases, name the SDK branch head — it proves the
+        // whole patch line shipped no header regeneration. It moves on unrelated SDK
+        // commits too, so docs quoting this line are gated in scripts/run-tests.mjs.
         const sdkName = canonical === info.order[info.order.length - 1] && info.sdkHead
             ? info.sdkHead.commit
             : info.versions[canonical].sdkCommit;
