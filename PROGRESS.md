@@ -1,8 +1,8 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-25 (SDK head e663245 recorded; currency check green on all five axes)
+**Last updated:** 2026-08-26 (SDK head e663245 shipped: PR #30 merged, Nexus description re-posted)
 
-## Session 2026-08-25 — SDK head moved to e663245 (bookkeeping, no data change)
+## Session 2026-08-26 — SDK head moved to e663245 (bookkeeping, no data change)
 Cron issue #29: `versions:check` exit 1, "SDK head moved to e663245 (no Source/Pal/Public
 change), registry records 62fad41".
 - **Verified live before touching anything.** Head is `e663245` (2026-08-24, merge of PR #55
@@ -29,8 +29,20 @@ change), registry records 62fad41".
 - The refresh-items stale-registry issue body covered "game moved" and "SDK regenerated" but
   not this third case; it now says what to do. Deliberately NOT automated: an auto-PR that
   bumped `sdkHead` would fail the new doc gate, which is the whole point of the gate.
-- Nexus archive rebuilt (211 entries, 606 KB). **Open, owner's call:** the live mods/4084
-  description still quotes 62fad41 until `NEXUS_DESCRIPTION.bbcode` is re-posted.
+- Nexus archive rebuilt (211 entries, 606 KB).
+- **Shipped:** PR #30 merged (squash `304f493`), issue #29 auto-closed, all six checks green
+  on the merge commit including the Pages deploy.
+- **Live mods/4084 description re-posted and verified on the PUBLIC page.** Read the live
+  bbcode first and diffed it against `git show 7428553:nexus/NEXUS_DESCRIPTION.bbcode` (the
+  bytes the 1.6 session set): identical but for the trailing newline, so no live-only drift
+  to lose. The 08-19 recipe still holds — `ta._sceditor.val(bb)` → `updateOriginal()` →
+  native setter → input/change — with one addition worth keeping: **Save stays `disabled`
+  afterwards.** The textarea is uncontrolled (`defaultValue` + `ref`) and React's
+  `_valueTracker` had already absorbed sceditor's write, so the input event looked like a
+  no-op. `ta._valueTracker.setValue('')` before dispatching enables both Save buttons.
+  Gated on a byte-exact read-back (8721 == 8721) before clicking, verified after by reloading
+  the editor and by reading the public page. The one remaining `62fad41` there is the
+  intended one: the headers-parsed-at stamp, matching the schema files.
 
 ## Session 2026-08-19c — DISTRIBUTION: npm 0.5.0 + Nexus v1.6
 - **npm: `palschema-validate@0.5.0` published and `latest`.** Pre-flight: CI green on the
