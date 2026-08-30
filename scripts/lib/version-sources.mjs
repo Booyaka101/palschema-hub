@@ -17,6 +17,9 @@ export const publicCommitsUrl = (repo) =>
 /** Release list, not /releases/latest: PalSchema has shipped same-day pairs
  *  (0.6.2 and 0.6.3 both on 2026-08-15), so the newest TAG is the truth. */
 export const releasesUrl = (repo) => `https://api.github.com/repos/${repo}/releases?per_page=10`;
+/** A file's blob metadata on the default branch — check-currency compares its
+ *  sha against the blob a constraint port was read from. */
+export const contentsUrl = (repo, path) => `https://api.github.com/repos/${repo}/contents/${path}`;
 
 /** A source could not be fetched or parsed — callers map this to their own exit code. */
 export class SourceError extends Error {}

@@ -1,0 +1,10 @@
+{
+  "PSH_NewIncomplete": {
+    "Type": "Generic",
+    "IconTexture": "$resource/MyMod/thing",
+    "TypeB": "MaterialOre",
+    "Rank": 1,
+    "Rarity": 0,
+    "MaxStackCount": 999
+  }
+}

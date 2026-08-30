@@ -2,8 +2,8 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/PalStaticItemData.schema.json",
   "title": "PalSchema item-loader entry (UPalStaticItemData)",
-  "description": "One entry of a PalSchema items-folder mod file ({ \"<ItemId>\": { ...these fields } }; a null value deletes the item). The item loader matches keys against UPalStaticItemDataBase and its Armor/Weapon/Consume subclasses (GetPropertyByNameInChain) plus its own keys (Type, Name, Description, Recipe, SortID, bLegalInGame); anything else is ignored, with an in-game warning since PalSchema 0.6.3 (Okaetsu/PalSchema#138). Fields are optional (partial patches edit existing items; only NEW items need Type). Palworld 1.0, class members verified against localcc/PalworldModdingKit@62fad41.",
-  "$comment": "palschema-hub | loader=items | rowStruct=UPalStaticItemDataBase(+Armor/Weapon/Consume) | palworldVersion=1.0 | fields=38 | source=sdk-headers+loader-overlay | sdk=localcc/PalworldModdingKit@62fad41 | loaderKeys=Type,Name,Description,Recipe,SortID,bLegalInGame",
+  "description": "One entry of a PalSchema items-folder mod file ({ \"<ItemId>\": { ...these fields } }; a null value deletes the item). The item loader matches keys against UPalStaticItemDataBase and its Armor/Weapon/Consume subclasses (GetPropertyByNameInChain) plus its own keys (Type, Name, Description, Recipe, SortID, bLegalInGame); anything else is ignored, with an in-game warning since PalSchema 0.6.3 (Okaetsu/PalSchema#138). Fields are optional (partial patches edit existing items; only NEW items need Type). Palworld 1.0, class members verified against localcc/PalworldModdingKit@62fad41. Value constraints ported from PalSchema's own items.schema.json (tag 0.6.5, https://github.com/Okaetsu/PalSchema/pull/145): per-Type scoping is keyed on Type via if/then (upstream's anyOf branches do not scope), the required list is gated on the presence of Type so partial patches of existing items stay valid, float-literal rules are checked on raw text by palschema-validate, and upstream's AttackPower is a typo for AttackValue (not added).",
+  "$comment": "palschema-hub | loader=items | rowStruct=UPalStaticItemDataBase(+Armor/Weapon/Consume) | palworldVersion=1.0 | fields=38 | source=sdk-headers+loader-overlay | sdk=localcc/PalworldModdingKit@62fad41 | upstreamConstraints=0.6.5@b41a965 (https://github.com/Okaetsu/PalSchema/pull/145; scoping is if/then keyed on Type because upstream's anyOf branches do not scope; upstream's AttackPower is a typo for AttackValue and is not added) | floatLiteral=Weight,CorruptionFactor,Durability,SneakAttackRate,WorkAmount | stackSoftCap=MaxStackCount:9999 | loaderKeys=Type,Name,Description,Recipe,SortID,bLegalInGame",
   "type": "object",
   "properties": {
     "ID": {
@@ -19,7 +19,24 @@
         "object",
         "string"
       ],
-      "description": "Asset/class reference (TSoftObjectPtr<UTexture2D>) — string asset path or exported object form — Class property (UPalStaticItemDataBase)."
+      "description": "Asset/class reference (TSoftObjectPtr<UTexture2D>) — string asset path or exported object form — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): A /Game path must repeat the asset name after the dot (/Game/.../T_icon_X.T_icon_X — a mismatch like T_icon_A.T_icon_B is a typo the game resolves to nothing), or use $resource/<ModName>/<Image> for an imported image.",
+      "anyOf": [
+        {
+          "type": "object",
+          "description": "Exported-object form of the soft pointer (TSoftObjectPtr<UTexture2D>)."
+        },
+        {
+          "type": "string",
+          "pattern": "^/Game(?:/[^/]+)*/([A-Za-z0-9_]+)\\.\\1$",
+          "description": "Game asset path; the asset name must repeat after the dot, e.g. /Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Berries.T_itemicon_Food_Berries"
+        },
+        {
+          "type": "string",
+          "pattern": "^\\$resource/",
+          "description": "Image imported via PalSchema's resource loader, e.g. $resource/YourModName/NameOfYourImageWithoutExtension (works since PalSchema 0.5.0)."
+        }
+      ],
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "TypeA": {
       "type": "string",
@@ -41,19 +58,30 @@
     },
     "Rank": {
       "type": "integer",
-      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+      "description": "IntProperty — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): Minimum 0 (crafting-station tier; only relevant for crafting).",
+      "minimum": 0,
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "Rarity": {
       "type": "integer",
-      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+      "description": "IntProperty — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): 0..4 = Common, Uncommon, Rare, Epic, Legendary.",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 0,
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "Price": {
       "type": "integer",
-      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+      "description": "IntProperty — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): Minimum 0; the in-game value is this divided by 10.",
+      "minimum": 0,
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "MaxStackCount": {
       "type": "integer",
-      "description": "IntProperty — Class property (UPalStaticItemDataBase)."
+      "description": "IntProperty — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): Minimum 1. Above 9999 the game duplicates items when moving stacks (upstream documents this in prose, so the validator warns rather than errors — see softCaps).",
+      "minimum": 1,
+      "default": 1,
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "SortId": {
       "type": "integer",
@@ -93,7 +121,19 @@
         "object",
         "string"
       ],
-      "description": "Asset/class reference (TSoftClassPtr<AActor>) — string asset path or exported object form — Class property (UPalStaticItemDataBase)."
+      "description": "Asset/class reference (TSoftClassPtr<AActor>) — string asset path or exported object form — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): The path must repeat the asset name after the dot with a _C suffix (/Game/.../BP_X.BP_X_C).",
+      "anyOf": [
+        {
+          "type": "object",
+          "description": "Exported-object form of the soft class pointer (TSoftClassPtr<AActor>)."
+        },
+        {
+          "type": "string",
+          "pattern": "^/Game(?:/[^/]+)*/([A-Za-z0-9_]+)\\.\\1_C$",
+          "description": "Blueprint class path; the asset name repeats after the dot with a _C suffix, e.g. /Game/Pal/Blueprint/Item/VisualModel/BP_Item_BerryRed.BP_Item_BerryRed_C"
+        }
+      ],
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "DropItemType": {
       "type": "string",
@@ -106,11 +146,15 @@
     },
     "Weight": {
       "type": "number",
-      "description": "FloatProperty — Class property (UPalStaticItemDataBase)."
+      "description": "FloatProperty — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): Minimum 0; PalSchema wants a float literal (1.0, not 1 — checked on the raw text).",
+      "minimum": 0,
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "Durability": {
       "type": "number",
-      "description": "FloatProperty — Class property (UPalStaticItemDataBase)."
+      "description": "FloatProperty — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): Minimum 0; PalSchema wants a float literal (100.0, not 100 — checked on the raw text).",
+      "minimum": 0,
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "PassiveSkill": {
       "type": "string",
@@ -130,7 +174,9 @@
     },
     "CorruptionFactor": {
       "type": "number",
-      "description": "FloatProperty — Class property (UPalStaticItemDataBase)."
+      "description": "FloatProperty — Class property (UPalStaticItemDataBase). Upstream (items.schema.json@0.6.5): Minimum 0 (0.0 never spoils); PalSchema wants a float literal (0.0, not 0 — checked on the raw text).",
+      "minimum": 0,
+      "$comment": "palschema-upstream-constraints | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
     },
     "FloatValue1": {
       "type": "number",
@@ -230,9 +276,148 @@
     },
     "bLegalInGame": {
       "type": "boolean",
+      "default": true,
       "description": "Written to the new item's DT_ItemDataTable row (default true) — PalSchema item-loader key.",
       "$comment": "palschema-loader-overlay | loader=items | source=https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "$comment": "palschema-upstream-required | tag=0.6.5 | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json | note=Type is required when adding and ignored when editing (PalItemModLoader.cpp), so upstream's required list only applies to entries that carry a Type key — partial patches of existing items stay valid",
+      "if": {
+        "required": [
+          "Type"
+        ]
+      },
+      "then": {
+        "$comment": "palschema-upstream-required-then",
+        "required": [
+          "Type",
+          "IconTexture",
+          "TypeA",
+          "TypeB",
+          "Rank",
+          "Rarity",
+          "MaxStackCount"
+        ],
+        "properties": {
+          "Recipe": {
+            "$comment": "palschema-upstream-required-then",
+            "required": [
+              "Product_Count",
+              "WorkAmount",
+              "Material1_Id",
+              "Material1_Count"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "$comment": "palschema-upstream-scope | classes=UPalStaticArmorItemData,UPalStaticWeaponItemData | types=Armor,PalStaticArmorItemData,Weapon,PalStaticWeaponItemData | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json (branch membership where it exists) + localcc/PalworldModdingKit Source/Pal/Public class headers (the authoritative owner list — see divergence anyof-does-not-scope)",
+      "if": {
+        "required": [
+          "Type"
+        ],
+        "properties": {
+          "Type": {
+            "enum": [
+              "Consumable",
+              "Generic",
+              "PalStaticConsumeItemData",
+              "PalStaticItemDataBase"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "AttackValue": false,
+          "DefenseValue": false
+        }
+      }
+    },
+    {
+      "$comment": "palschema-upstream-scope | classes=UPalStaticArmorItemData | types=Armor,PalStaticArmorItemData | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json (branch membership where it exists) + localcc/PalworldModdingKit Source/Pal/Public class headers (the authoritative owner list — see divergence anyof-does-not-scope)",
+      "if": {
+        "required": [
+          "Type"
+        ],
+        "properties": {
+          "Type": {
+            "enum": [
+              "Weapon",
+              "Consumable",
+              "Generic",
+              "PalStaticWeaponItemData",
+              "PalStaticConsumeItemData",
+              "PalStaticItemDataBase"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "HPValue": false,
+          "ShieldValue": false
+        }
+      }
+    },
+    {
+      "$comment": "palschema-upstream-scope | classes=UPalStaticWeaponItemData | types=Weapon,PalStaticWeaponItemData | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json (branch membership where it exists) + localcc/PalworldModdingKit Source/Pal/Public class headers (the authoritative owner list — see divergence anyof-does-not-scope)",
+      "if": {
+        "required": [
+          "Type"
+        ],
+        "properties": {
+          "Type": {
+            "enum": [
+              "Armor",
+              "Consumable",
+              "Generic",
+              "PalStaticArmorItemData",
+              "PalStaticConsumeItemData",
+              "PalStaticItemDataBase"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "MagazineSize": false,
+          "SneakAttackRate": false
+        }
+      }
+    },
+    {
+      "$comment": "palschema-upstream-scope | classes=UPalStaticConsumeItemData | types=Consumable,PalStaticConsumeItemData | source=https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json (branch membership where it exists) + localcc/PalworldModdingKit Source/Pal/Public class headers (the authoritative owner list — see divergence anyof-does-not-scope)",
+      "if": {
+        "required": [
+          "Type"
+        ],
+        "properties": {
+          "Type": {
+            "enum": [
+              "Armor",
+              "Weapon",
+              "Generic",
+              "PalStaticArmorItemData",
+              "PalStaticWeaponItemData",
+              "PalStaticItemDataBase"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "RestoreHP": false,
+          "RestoreSP": false,
+          "RestoreSatiety": false,
+          "RestoreSanity": false,
+          "WazaID": false
+        }
+      }
+    }
+  ]
 }

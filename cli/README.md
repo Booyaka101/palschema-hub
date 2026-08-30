@@ -38,6 +38,19 @@ new pal against 0.6.3 reports `requires PalSchema >= 0.6.4`
 from the registry at runtime, so this applies to every installed version, including
 older ones.
 
+**Item-loader constraints** since registry 0.10.0, ported from PalSchema's own
+`items.schema.json` (0.6.5, [PR #145](https://github.com/Okaetsu/PalSchema/pull/145)).
+Errors: an `IconTexture`/`VisualBlueprintClassSoft` path whose asset name doesn't
+repeat after the dot (reported naming both parts; `$resource/<Mod>/<Image>` imports
+are fine), out-of-range values (`Rarity` 0–4, `Rank`/`Price` ≥ 0, `MaxStackCount` ≥ 1),
+a missing required field on a NEW item (entries with a `Type` key — partial patches
+of existing items are untouched), and a bare integer on the five float-literal
+fields (`Weight`, `CorruptionFactor`, `Durability`, `SneakAttackRate`,
+`Recipe.WorkAmount` — checked on the raw text, since `100.0` and `100` parse
+identically). Warnings: a field used outside its item class (`WazaID` on a Weapon
+names `UPalStaticConsumeItemData`; the loader ignores it and the game warns since
+0.6.3) and `MaxStackCount` above 9999 (the game duplicates items past it).
+
 ```
 WARN mods/pals/mypal.json:Lamball unknown field "rarity" — did you mean "Rarity"? (not caught in game: PalSchema's pal loader silently ignores unknown fields — Okaetsu/PalSchema#134)
 1 file validated, 0 errors, 1 unknown-key warning

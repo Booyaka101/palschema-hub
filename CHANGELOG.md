@@ -1,5 +1,83 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.10.0 + palschema-validate (CLI) 0.6.0 — 2026-08-30
+
+**The item-loader schema learns upstream's real constraints — and the validator
+starts catching what it used to wave through.** Our `PalStaticItemData` schema was
+derived from the SDK class headers, so it knew all 44 property names and almost no
+values: an icon path whose asset name doesn't repeat after the dot, `Rarity: 7`, a
+new item with no `TypeA`, `"Weight": 1` where the loader wants `1.0` — all passed.
+PalSchema's own hand-written `assets/schemas/items.schema.json` declares those
+rules and was updated in 0.6.5
+([released 2026-08-28](https://github.com/Okaetsu/PalSchema/releases/tag/0.6.5),
+[PR #145](https://github.com/Okaetsu/PalSchema/pull/145)); they are now ported
+into the registry schema. Item-loader files only — no other schema changed.
+
+- **`structs/upstream-constraints.json` (new):** every ported rule as data, with
+  provenance naming the upstream tag, file path, blob sha
+  (`b41a965b`) and PR #145. `scripts/apply-upstream-constraints.mjs` (new,
+  `npm run constraints`, wired into `seed` after the loader overlay) merges it
+  into the published schema; a second run is byte-identical, and the test suite
+  asserts that — 0.7.0 shipped three re-run bugs found exactly this way.
+- **What now errors (exit 1):** a failed `IconTexture` /
+  `VisualBlueprintClassSoft` pattern (the backreference report names both
+  mismatched parts: `the path names "T_Icon_A" but after the dot it says
+  "T_Icon_B"`); out-of-range numbers (`Rarity` 0–4, `Rank`/`Price`/`Weight`/
+  `CorruptionFactor`/`Durability` ≥ 0, `MaxStackCount` ≥ 1); a missing required
+  field on a NEW item; and a bare integer on the five float-literal fields.
+- **What warns (exit 0, promoted by `--strict`):** a field used outside its item
+  class — `WazaID` on a Weapon warns naming `UPalStaticConsumeItemData`, with the
+  same "the game warns too since 0.6.3 (#138)" note the unknown-key path carries —
+  and `MaxStackCount` above 9999, which upstream documents (prose only) as the
+  point where the game duplicates items when moving stacks.
+- **A naive port of upstream's schema would enforce none of that. Three traps:**
+  1. Upstream's per-Type `anyOf` branches do not scope — each requires only
+     `["Type"]` and none sets `additionalProperties: false`, so an Armor item
+     carrying `WazaID` validates against upstream's own schema. The port scopes
+     with `if`/`then` keyed on `Type`, and derives the field→class table from the
+     SDK class annotations already in our descriptions, which cover all 44
+     properties rather than upstream's three hand-written branches.
+  2. Upstream's `not: {type: "integer"}` float rule cannot go through ajv:
+     `JSON.parse` turns `100.0` into `100`, so ajv would reject the correct
+     float literal (proven live in 0.8.0 with Loot `DropChance`). The five fields
+     are checked on the raw file text instead, through the same scanner the pals
+     `DropChance` check now shares, and the field list ships in the schema's
+     `$comment` so the CLI reads it from the registry.
+  3. Upstream's Weapon branch declares `AttackPower` — a typo. Its own 0.6.4
+     required list said `AttackValue`, its shipped example mod sets
+     `"AttackValue": 500`, and the SDK has `AttackValue` and no `AttackPower`.
+     The real name is scoped; the typo is not added.
+- **`required[]` applies only when the entry has a `Type` key** — `Type` is
+  required when adding, ignored when editing, so partial patches of existing
+  items stay valid. The real-mod corpus keeps its exact baseline (palvolve,
+  unlimited-buildings and old-school-loot clean with zero warnings;
+  accessory-condenser's one `RedialIndex` warning at exit 0 and its `--strict`
+  failure) — though none of the four mods contains an items-loader file, so the
+  false-positive-safety evidence for the NEW rules is upstream's own
+  `ExampleMod/items/example_items.json` at tag 0.6.5, now a fixture that must
+  pass with zero errors and zero warnings. It earns its keep: the example carries
+  `AttackValue`, `MagazineSize` and `ItemBaseName`, which upstream's own schema
+  doesn't declare, plus `CorruptionFactor: 0.0` and `WorkAmount: 10.0` that the
+  raw-text float check must accept.
+- **`$resource/` icon paths are accepted unconditionally** — no
+  `--palschema-version` gate. The loader has handled them since 0.5.0
+  (`PalResourceLoader.cpp` exists at tag 0.6.0; the item loader source never
+  mentions them at any tag); 0.6.5 only taught the editor schema about them.
+  Provenance recorded in `structs/upstream-constraints.json`.
+- **`check-currency` gained a sixth axis:** the live blob sha of upstream's
+  `items.schema.json` (default branch) vs the pinned `b41a965b`. An upstream edit
+  stales the ported constraints before any release exists to compare against;
+  exit 1 stale / exit 2 network, never conflated, same as the other axes.
+- **`versions.json`:** `upstream.palSchema` → 0.6.5 (2026-08-28), appended to
+  `releases`. The existing fixture-anchored currency tests followed automatically.
+- One test fixture adjusted rather than weakened: `tests/fixtures/items/typo.json`
+  dropped its `Type` key (it never asserted anything about `Type`, and keeping it
+  would have made the fixture a new item missing six required fields instead of
+  the existing-item patch its assertions describe).
+- Tests 79 → **99**. Root 0.9.1 → **0.10.0**, CLI 0.5.0 → **0.6.0** (ajv gains
+  `strictRequired: false` for the standard if/then layout and `verbose: true` so
+  error reports can read the failing subschema's description and marker).
+
 ## 0.9.1 — 2026-08-22
 
 **Per-table notes, for what a field list cannot say.** Someone on the Nexus page went

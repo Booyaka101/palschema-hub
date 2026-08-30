@@ -12,7 +12,31 @@ cross-checked with real dumped row data.
 Plus a per-item VALUE reference and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry 0.9.0, 2026-08-19)
+NEW IN THIS VERSION (registry 0.10.0 / validator 0.6.0, 2026-08-30)
+  * ITEM MODS GET REAL VALUE CHECKS, ported from PalSchema 0.6.5's own
+    items.schema.json (its PR #145, released 2026-08-28). Errors now catch:
+    an IconTexture or VisualBlueprintClassSoft path whose asset name does
+    not repeat after the dot (reported naming both parts — the game
+    resolves the typo to nothing); Rarity outside 0-4; negative
+    Rank/Price/Weight/Durability; MaxStackCount below 1; a missing
+    required field on a NEW item; and Weight/CorruptionFactor/Durability/
+    SneakAttackRate/Recipe.WorkAmount written as bare integers where the
+    loader wants float literals (1.0, not 1 — checked on the raw text,
+    because a JSON parser erases the difference).
+  * $resource/YourMod/YourImage icon paths validate fine — that loader
+    feature has worked since PalSchema 0.5.0.
+  * FIELDS USED ON THE WRONG ITEM CLASS WARN, NAMING THE CLASS. WazaID on
+    a Weapon: the loader ignores it and the game only warns at load time;
+    the validator says so in CI. Upstream's own schema cannot catch this
+    (its per-Type branches do not actually enforce scope), and its Weapon
+    branch's "AttackPower" is a typo for AttackValue — this registry
+    scopes the real name. MaxStackCount above 9999 also warns (the game
+    duplicates items when moving such stacks).
+  * Partial patches of existing items are untouched: the required-field
+    list only applies when the entry carries a Type key, which the loader
+    requires when adding and ignores when editing.
+
+PREVIOUSLY (registry 0.9.0, 2026-08-19)
   * BUILDING REFERENCE (buildings.html / buildings.json): 460 buildings,
     current game (Palworld 1.0.3). A building spans TWO DataTables sharing
     one row name (HatchingPalEgg in both DT_MapObjectMasterDataTable and

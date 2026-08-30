@@ -1,0 +1,12 @@
+{
+  "PSH_NewHeavyThing": {
+    "Type": "Generic",
+    "IconTexture": "$resource/MyMod/thing",
+    "TypeA": "Material",
+    "TypeB": "MaterialOre",
+    "Rank": 1,
+    "Rarity": 0,
+    "MaxStackCount": 999,
+    "Weight": 1
+  }
+}

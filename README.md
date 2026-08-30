@@ -13,16 +13,21 @@ open since Aug 2025). `palschema-hub` fills that gap:
 - **`/cli/`** — `palschema-validate`, a CLI (ajv) that validates mod JSON/JSONC in CI or locally.
 - **`/.github/workflows/palschema-ci.yml.example`** — drop-in CI for mod repos.
 
-**Compatible with PalSchema 0.6.4 + the [experimental-palworld UE4SS](https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld)
-build it requires (UE4SS commit `c838a8a`, release updated July 19 2026).** No
-DataTable field, path, or row-validation behavior changed in 0.6.1 → 0.6.4 (checked
-against the diffs, not just the release notes). What 0.6.4 did change is the
-**loader**: new pals can now carry ranch suitability through `RanchActionData` in
+**Compatible with PalSchema 0.6.5 + the [experimental-palworld UE4SS](https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld)
+build it requires (UE4SS commit `ba2efd55`, release updated August 28 2026).** No
+DataTable field, path, or row-validation behavior changed in 0.6.1 → 0.6.5 (checked
+against the diffs, not just the release notes). What did change: 0.6.4's
+**loader** lets new pals carry ranch suitability through `RanchActionData` in
 pals json ([#143](https://github.com/Okaetsu/PalSchema/pull/143)) — a key that
 exists only in PalSchema's loader, never on a UE row struct, so this registry
 tracks it (and every other loader-implemented key) in
 [`structs/loader-overlay.json`](structs/loader-overlay.json), read off the loader
-source with per-entry provenance. 0.6.3 also fixed `.jsonc` schema application
+source with per-entry provenance. 0.6.5 rewrote the constraints in PalSchema's own
+`assets/schemas/items.schema.json` ([#145](https://github.com/Okaetsu/PalSchema/pull/145)) —
+those are now **ported into this registry's item-loader schema** (see
+[`structs/upstream-constraints.json`](structs/upstream-constraints.json)), so the
+validator catches bad icon paths, out-of-range values and missing new-item fields
+it used to wave through. 0.6.3 also fixed `.jsonc` schema application
 ([#139](https://github.com/Okaetsu/PalSchema/pull/139)) and added unknown-property
 warnings to the item loader ([#138](https://github.com/Okaetsu/PalSchema/pull/138)) —
 the same warn-don't-reject semantics `palschema-validate` adopted in 0.4.0.
@@ -106,6 +111,28 @@ the registry — `DT_PalMonsterParameter` plus the loader overlay for pals,
 `PalStaticItemData` (derived from the `UPalStaticItemData*` class headers, the set
 the item loader actually matches against) for items — validates every row with
 **ajv**, and prints field-level errors. `.json` and `.jsonc` behave identically.
+
+Item-loader files also get the **value constraints from PalSchema's own
+`items.schema.json` (0.6.5)**, ported field by field in
+[`structs/upstream-constraints.json`](structs/upstream-constraints.json):
+`IconTexture` must be a `/Game` path whose asset name repeats after the dot
+(`T_icon_X.T_icon_X` — a mismatch is reported naming both parts) or a
+`$resource/<Mod>/<Image>` import; `VisualBlueprintClassSoft` needs the `_C`
+class suffix; `Rarity` is 0–4, `Rank`/`Price` ≥ 0, `MaxStackCount` ≥ 1 (above
+9999 warns — the game duplicates items past that); and `Weight`,
+`CorruptionFactor`, `Durability`, `SneakAttackRate` and `Recipe.WorkAmount`
+must be **float literals** (`1.0`, not `1`) — checked on the raw file text,
+because `JSON.parse` erases the difference. The upstream required list
+(`Type, IconTexture, TypeA, TypeB, Rank, Rarity, MaxStackCount`, plus
+`Product_Count/WorkAmount/Material1_Id/Material1_Count` inside `Recipe`) applies
+**only when the entry has a `Type` key**: `Type` is required when adding and
+ignored when editing, so a partial patch of an existing item stays valid. A field
+used outside its item class — `WazaID` on a Weapon, `HPValue` on a Consumable —
+warns with the class that declares it (the loader ignores it; the game also warns
+since 0.6.3). The scoping is keyed on `Type` with `if`/`then`, derived from the
+SDK class headers — upstream's own per-Type `anyOf` branches don't actually
+enforce scope, and its Weapon branch's `AttackPower` is a typo for `AttackValue`
+(this registry scopes the real name and doesn't add the typo).
 
 A key the schema doesn't declare is a **warning with a did-you-mean suggestion,
 not a rejection** — the semantics PalSchema itself is adopting
@@ -340,16 +367,18 @@ field snapshots are committed under `structs/` and the pairwise deltas under `di
 > updates touched other classes).
 
 **Staleness detection:** `npm run versions:check` compares this repo against the live world on
-five axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
+six axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
 commit list (SDK head, and whether `Source/Pal/Public` regenerated), the newest
 [PalSchema](https://github.com/Okaetsu/PalSchema) release vs the version this README claims
-compatibility with (`versions.json` `upstream.palSchema`), and `items.json`'s and
+compatibility with (`versions.json` `upstream.palSchema`), the live blob sha of PalSchema's
+`assets/schemas/items.schema.json` vs the sha the ported item constraints pin (an upstream
+schema edit stales the port even before it reaches a release), and `items.json`'s and
 `buildings.json`'s own `_provenance.gameVersion` vs the newest game label. Those last two exist
 because a **balance** patch moves row VALUES while every struct and sha stays put: 1.0.3 changed
 World Tree Holy Water's weight from 1 to 0.1 with an unchanged SDK, so every sha-based check
 would have said "current" while the shipped values were a patch behind. Exit 0 in sync
-(`registry current: game 1.0.3, SDK e663245, PalSchema 0.6.4, item values 1.0.3, building
-values 1.0.3`), exit 1 stale with one line
+(`registry current: game 1.0.3, SDK e663245, PalSchema 0.6.5, item values 1.0.3, building
+values 1.0.3, items.schema.json blob b41a965`), exit 1 stale with one line
 naming exactly what moved, exit 2 on network failure — never conflated. It runs as an
 informational CI step and in the daily cron, which opens an issue when something actually
 moved.

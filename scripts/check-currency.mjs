@@ -14,6 +14,11 @@
  *      (that's what would make the row structs — and this registry — stale).
  *   3. PALSCHEMA: the newest Okaetsu/PalSchema release vs the version this repo
  *      claims compatibility with (versions.json `upstream.palSchema`).
+ *   4. ITEMS SCHEMA: the live blob sha of PalSchema's assets/schemas/items.schema.json
+ *      (default branch) vs the sha structs/upstream-constraints.json pins. The
+ *      item-loader constraints are PORTED from that file, so an upstream edit
+ *      makes the port stale even before it reaches a release — and a release
+ *      that doesn't touch the schema doesn't invalidate the port.
  *
  * Plus one purely local check that the first two structurally cannot catch: a
  * BALANCE patch changes row VALUES while every struct and sha stays put, so
@@ -31,6 +36,7 @@
  *   --public-commits-json <file>   saved commit list filtered to Source/Pal/Public
  *   --releases-json <file>         saved Okaetsu/PalSchema releases response
  *   --items-json <file>            items.json to read _provenance from
+ *   --upstream-schema-json <file>  saved contents-API response for items.schema.json
  */
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -40,6 +46,7 @@ import {
   commitsUrl,
   publicCommitsUrl,
   releasesUrl,
+  contentsUrl,
   SourceError,
   loadJson as loadSource,
   cmpVersions,
@@ -66,6 +73,7 @@ const fixtures = {
   releases: flag('--releases-json'),
   items: flag('--items-json'),
   buildings: flag('--buildings-json'),
+  upstreamSchema: flag('--upstream-schema-json'),
 };
 
 async function loadJson(url, fixturePath, what) {
@@ -164,6 +172,31 @@ if (claimed) {
   }
 }
 
+// ---- UPSTREAM ITEMS SCHEMA: the constraint source the item schema ports ------
+// A release bump alone doesn't invalidate the port (0.6.5's loader changes left
+// the constraints intact); an edit to items.schema.json on main does, before any
+// release exists to compare against. So the blob itself is the axis.
+const pinned = JSON.parse(readFileSync(join(ROOT, 'structs', 'upstream-constraints.json'), 'utf8')).verifiedAgainst;
+let upstreamSchemaSha;
+if (pinned?.blobSha) {
+  const live = await loadJson(
+    contentsUrl(pinned.repo, pinned.file),
+    fixtures.upstreamSchema,
+    `${pinned.repo} ${pinned.file} blob`
+  );
+  upstreamSchemaSha = live?.sha;
+  if (!upstreamSchemaSha) {
+    console.error(`network failure: ${pinned.repo} ${pinned.file} response has no blob sha`);
+    process.exit(2);
+  }
+  if (upstreamSchemaSha !== pinned.blobSha) {
+    problems.push(
+      `upstream items.schema.json changed (blob ${upstreamSchemaSha.slice(0, 7)}, ` +
+        `the ported constraints pin ${pinned.blobSha.slice(0, 7)} from tag ${pinned.tag})`
+    );
+  }
+}
+
 if (problems.length) {
   console.log(problems.join('; '));
   process.exit(1);
@@ -172,6 +205,7 @@ console.log(
   `registry current: game ${newest}, SDK ${recordedHead}` +
     (claimed ? `, PalSchema ${claimed}` : '') +
     (itemsVersion ? `, item values ${itemsVersion}` : '') +
-    (buildingsVersion ? `, building values ${buildingsVersion}` : ''),
+    (buildingsVersion ? `, building values ${buildingsVersion}` : '') +
+    (upstreamSchemaSha ? `, items.schema.json blob ${upstreamSchemaSha.slice(0, 7)}` : ''),
 );
 process.exit(0);

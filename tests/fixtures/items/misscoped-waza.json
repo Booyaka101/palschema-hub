@@ -1,0 +1,13 @@
+{
+  "PSH_WazaSword": {
+    "Type": "Weapon",
+    "IconTexture": "$resource/MyMod/sword",
+    "TypeA": "Weapon",
+    "TypeB": "WeaponMelee",
+    "Rank": 1,
+    "Rarity": 2,
+    "MaxStackCount": 1,
+    "AttackValue": 120,
+    "WazaID": "EPalWazaID::FireBall"
+  }
+}

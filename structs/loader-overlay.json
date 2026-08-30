@@ -241,9 +241,10 @@
       "key": "bLegalInGame",
       "loader": "items",
       "source": "https://github.com/Okaetsu/PalSchema/blob/main/src/Loader/PalItemModLoader.cpp",
-      "note": "AddItemData copies it onto the new DT_ItemDataTable row; defaults to true when omitted.",
+      "note": "AddItemData copies it onto the new DT_ItemDataTable row; defaults to true when omitted. PalSchema 0.6.5 (PR #145) added it to IsCustomProperty, which is what stopped the spurious in-game unknown-property warnings; the key itself worked before that.",
       "schema": {
         "type": "boolean",
+        "default": true,
         "description": "Written to the new item's DT_ItemDataTable row (default true) — PalSchema item-loader key."
       }
     }
