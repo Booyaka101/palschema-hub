@@ -1,6 +1,41 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-30 (0.10.0 + CLI 0.6.0 SHIPPED: PR #33 merged, npm 0.6.0 latest, Nexus v1.7 live)
+**Last updated:** 2026-08-30 (0.10.0 + CLI 0.6.0 SHIPPED; Nexus passive-skill question answered, passive VALUE lane blocked on Oodle)
+
+## Session 2026-08-30b — Nexus comment on passive values, and why the passive lane is blocked
+A commenter (kajsgd7123, right after the 1.7 upload) asked how to change Legend's damage from
+20% to 50%. Answering it properly turned into the scoping study for a passive-skill value lane,
+which is the **second** value-reference request in that thread (Fantafaust's building question
+became 0.9.0).
+- **Answered on the mod page** (comment-174683664, verified live). Two real corrections for
+  them: their donor snippet's row `Rare` is the internal name of the **Lucky** passive, not a
+  rarity tier, and the row has no single damage number. It carries four effect slots of three
+  keys each (`EffectType1..4` / `EffectValue1..4` / `TargetType1..4`), and there is no generic
+  Attack type, `MeleeAttack` and `ShotAttack` are separate enum members. Since PalSchema merges
+  by key, the advice is to write the whole slot (type, value and target) rather than patch a
+  lone `EffectValue`, which is how people buff move speed by accident.
+- **What is verified, and what is not.** Verified: the row id `Legend` (paldb + PalMods), the
+  row struct from our own SDK headers, the current display values Attack/Defense/Move Speed all
+  +20% at Rank 4 (paldb AND palworld.gg agree, so exactly three slots are in use), and the
+  Jan-2024 dump row (`ShotAttack 20 / Defense 20 / MoveSpeed 15`, all `ToSelf`, Rank 3,
+  `OverrideDescMsgID: PASSIVE_Legend_DESC`). NOT verified: that slot 1 is still `ShotAttack`
+  today. That dump is provably stale for this very row (Rank 3 -> 4, MoveSpeed 15 -> 20), so the
+  reply names the assumption and hands the reader a thirty-second in-game check instead of
+  asserting it.
+- **The passive VALUE lane is blocked on Oodle, not on effort.** Went after the live row in the
+  game files and got everything except the last step. `Pal-Windows.pak` is a plain **pak v11**,
+  index unencrypted, 185,014 entries / 9,008 directories; the full-directory-index walk finds
+  `Pal/Content/Pal/DataTable/PassiveSkill/DT_PassiveSkill_Main.uasset` (note: **not** the
+  `DataTable/Skill/` path every web source cites) decoding to method=1 Oodle, 11,434 bytes into
+  35,801, 64 blocks. Palworld **statically links Oodle** and ships no redistributable
+  `oo2core` DLL, and no other game on this box has one. Writing a Kraken decoder is not
+  realistic and downloading an untrusted `oo2core` binary is not acceptable, so it stops there.
+  Parser kept at `D:\tmp\palextract` (`pak.py` footer, `index.py` primary + full dir index +
+  entry bitfield, `extract.py`); deliberately NOT committed, because a lane that cannot
+  decompress is not a feature. **Resume step:** supply an Oodle decoder (FModel/CUE4Parse if the
+  owner authorises installing it) and the remaining work is the usmap-aware unversioned-property
+  parse, for which `D:\tmp\palworld-export\Mappings.usmap` already exists.
+- Full pak-format notes recorded in LESSONS.md so this is not re-derived.
 
 ## Session 2026-08-30 — 0.10.0 + CLI 0.6.0: upstream 0.6.5 item constraints ported
 Trigger: PalSchema 0.6.5 (2026-08-28) updated its hand-written items.schema.json (PR #145).
