@@ -1,6 +1,36 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-30 (0.11.0: values/ — 41,416 live rows across 28 tables, extracted from the game)
+**Last updated:** 2026-08-30 (0.11.0 SHIPPED: PR #36 merged, Pages live, Nexus v1.8 published)
+
+## Session 2026-08-30d — DISTRIBUTION: 0.11.0 live, Nexus v1.8
+- **PR #36 merged** (`bfbe6db`), all checks green including a new **CodeQL `Analyze (rust)`**
+  job that appeared once `tools/ooz-decompress` landed, plus the Pages deploy. PR #37 merged
+  the archive text. Live registry verified after deploy: `values/index.json` serves
+  28 tables / 41,416 rows / game 1.0.3 / 3 recorded unsupported, and the live
+  `DT_PassiveSkill_Main.json` returns Legend as Rank 4, ShotAttack 20, Defense 20,
+  MoveSpeed 20.
+- **Nexus mods/4084 → v1.8 live and verified on the PUBLIC page.** File 1.8 (1.2 MB,
+  242 entries), **1.7 archived** (only 1.0.1 remains under Old files), mod version synced,
+  virus scan **Safe to use**. Description leads on the value browser and is confirmed
+  public: the "New in 1.8" heading, the 41,416-rows line, the Legend `EffectType1
+  ShotAttack` block and the "not MeleeAttack" note all render. Read-back gated at
+  10,906 == 10,906 before saving and re-checked after a reload.
+- **No live-only drift lost:** the live bbcode was diffed against the shipped 1.7 copy
+  first and differed by a trailing newline only.
+- **Two mechanics re-confirmed.** The upload combobox opened directly on the current
+  main file this time rather than the oldest, so the ArrowUp walk must stay conditional
+  (gate on `data-headlessui-state` containing `active`, never a fixed number of presses).
+  And navigating away from the dirty description form still wedges the tab on
+  `Page.navigate` — recovery is `/json/close/<id>` then reopen, which is what the
+  verification pass had to do.
+- **File changelog still not attempted**, deliberately: 0 for 3 across two UI generations
+  is a Nexus-side defect (LESSONS 2026-08-19) and the notes are public in the description.
+- **Left for a future session:** retire the paldb scrape and re-point items.html/
+  buildings.html at `values/` (the cross-check keeps them honest meanwhile); chase the
+  3 unsupported tables with a current `.usmap`; consider extracting beyond the 31
+  registry tables (the pak holds 503 `DT_*` assets).
+
+## Session 2026-08-30c — 0.11.0: the whole DataTable value lane
 
 ## Session 2026-08-30c — 0.11.0: the whole DataTable value lane
 The extractor proved out on one table, so it became the lane. `values/<Table>.json` +
