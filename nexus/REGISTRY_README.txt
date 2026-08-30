@@ -9,10 +9,31 @@ every field name, type, example values and enum value lists — verified
 against the current game's row structs (July 2026 SDK headers) and
 cross-checked with real dumped row data.
 
-Plus a per-item VALUE reference and a VERSION DIFF showing what changed in
+Plus the CURRENT ROW VALUES for 28 of those tables, a per-item and
+per-building VALUE reference, and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry 0.10.0 / validator 0.6.0, 2026-08-30)
+NEW IN THIS VERSION (registry 0.11.0, 2026-08-30)
+  * EVERY TABLE'S ACTUAL VALUES, NOT JUST ITS FIELDS. values.html and
+    values/<Table>.json carry 41,416 rows across 28 of the 31 tables:
+    pals, passive skills, waza, recipes, drops, lotteries, icons and the
+    rest. Pick a table, filter to a row, read every field, and copy a
+    paste-ready raw-table patch for it. Works offline from this archive.
+  * READ FROM THE GAME, NOT SCRAPED. The values come out of Palworld's own
+    cooked DataTables (pak -> Oodle -> unversioned properties), so they are
+    the build you are playing rather than a mirror of it. Example: the
+    Legend passive is Rank 4 with ShotAttack, Defense and Move Speed all
+    at 20 — the widely-copied community dump still says Rank 3 and move
+    speed 15, because it is from January 2024.
+  * EVERY PUBLISHED VALUE IS SCHEMA-CHECKED. All 41,416 rows validate
+    against this registry's own schema for their table, so the field list
+    and the data agree. That check already caught seven fields typed too
+    narrowly to accept the asset paths the game itself stores.
+  * Three tables do not extract yet (DT_TechnologyRecipeUnlock,
+    DT_MapObjectAssignData, DT_TechnologyIconData). values/index.json says
+    so and says why, rather than quietly omitting them.
+
+PREVIOUSLY (registry 0.10.0 / validator 0.6.0, 2026-08-30)
   * ITEM MODS GET REAL VALUE CHECKS, ported from PalSchema 0.6.5's own
     items.schema.json (its PR #145, released 2026-08-28). Errors now catch:
     an IconTexture or VisualBlueprintClassSoft path whose asset name does
