@@ -1,6 +1,50 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-30 (0.10.0 + CLI 0.6.0 SHIPPED: PR #33 merged, npm 0.6.0 latest, Nexus v1.7 live)
+**Last updated:** 2026-08-30 (0.10.0 + CLI 0.6.0 SHIPPED; Nexus passive question answered from LIVE game data — pak extraction now works)
+
+## Session 2026-08-30b — Nexus comment on passive values, and a working DataTable extractor
+A commenter (kajsgd7123, right after the 1.7 upload) asked how to change Legend's damage from
+20% to 50%. Answering it properly turned into the scoping study for a passive-skill value lane,
+which is the **second** value-reference request in that thread (Fantafaust's building question
+became 0.9.0).
+- **Answered on the mod page** (comment-174683664, verified live). Two real corrections for
+  them: their donor snippet's row `Rare` is the internal name of the **Lucky** passive, not a
+  rarity tier, and the row has no single damage number. It carries four effect slots of three
+  keys each (`EffectType1..4` / `EffectValue1..4` / `TargetType1..4`), and there is no generic
+  Attack type, `MeleeAttack` and `ShotAttack` are separate enum members. Since PalSchema merges
+  by key, the advice is to write the whole slot (type, value and target) rather than patch a
+  lone `EffectValue`, which is how people buff move speed by accident.
+- **The live row, extracted from the game files.** First answer hedged on whether slot 1 was
+  still `ShotAttack` (the only public dump is Jan-2024 and is provably stale for this row:
+  Rank 3 -> 4, MoveSpeed 15 -> 20). Rather than leave the reader to test it, the row was read
+  out of the game: **Rank 4, `ShotAttack` 20.0 / `Defense` 20.0 / `MoveSpeed` 20.0, all
+  `ToSelf`, slot 4 unused, `OverrideDescMsgID: PASSIVE_Legend_DESC`.** A second comment posted
+  the confirmed layout and withdrew the caveat.
+- **The Oodle blocker was beaten with no proprietary binary.** Palworld statically links Oodle
+  and ships no `oo2core`, and no other game on this box has one, but that does not block
+  extraction. Working chain (~250 lines, `D:\tmp\palextract`): `Pal-Windows.pak` is a plain
+  **pak v11** (unencrypted index, 185,014 entries / 9,008 dirs) -> FullDirectoryIndex walk ->
+  FPakEntry block table -> **Oodle decompressed by the pure-Rust `oozextract` crate** ->
+  `Mappings.usmap` (v4) -> unversioned-property reader -> **1,905 live rows** of
+  `DT_PassiveSkill_Main` as JSON. paldb's "420 passive skills" is only the player-facing subset.
+- **Two format traps, both of which parse plausibly before desyncing.** usmap v4's
+  `bHasVersioning` is an **int32**, and its per-enum value count is a **uint16** while the
+  entries stay 12 bytes (`int64 value, int32 name`). And `FFragment::Unpack` is
+  `ValueNum = v >> 9` / `bIsLast = v & 0x100`, not `>> 8` / `0x8000`. The reliable oracle for
+  both: a correct DataTable parse ends **exactly** at `len(uexp) - 4` with rows parsed equal to
+  the declared count.
+- **Validated against independent ground truth** before being trusted: Musclehead
+  `ShotAttack +30` / `CraftSpeed -50`, Diamond Body `Defense +30`, Artisan `CraftSpeed +50`,
+  Hard Skin `Defense +10`, Legend 20/20/20 at Rank 4 — all match community values, and the two
+  fields that moved since the stale dump come out at the CURRENT values, which is what proves
+  it is reading live data. `ShotAttack` is confirmed as the pal "Attack" stat, not `MeleeAttack`.
+- Asset path is `Pal/Content/Pal/DataTable/PassiveSkill/`, **not** the `DataTable/Skill/` path
+  every web source cites. Full format notes in LESSONS.md.
+- **Not committed, and needs an owner decision.** The extractor unlocks current values for
+  *every* DataTable, which is the natural next lane after items.html and buildings.html. It also
+  changes provenance: today's shipped values are scraped from paldb.cc, whereas this reads the
+  game's own cooked data, and the README's "no game assets are included" line was written for
+  the former. Worth deciding what is appropriate to publish before building the lane.
 
 ## Session 2026-08-30 — 0.10.0 + CLI 0.6.0: upstream 0.6.5 item constraints ported
 Trigger: PalSchema 0.6.5 (2026-08-28) updated its hand-written items.schema.json (PR #145).
