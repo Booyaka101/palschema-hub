@@ -1,6 +1,6 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-30 (0.10.0 + CLI 0.6.0 built on branch `feat/0.10.0-upstream-item-constraints`, NOT pushed — owner ships)
+**Last updated:** 2026-08-30 (0.10.0 + CLI 0.6.0 SHIPPED: PR #33 merged, npm 0.6.0 latest, Nexus v1.7 live)
 
 ## Session 2026-08-30 — 0.10.0 + CLI 0.6.0: upstream 0.6.5 item constraints ported
 Trigger: PalSchema 0.6.5 (2026-08-28) updated its hand-written items.schema.json (PR #145).
@@ -56,12 +56,48 @@ constraints; they are now ported. Items-loader files only; nothing else changed.
 - Docs: README (compat → 0.6.5/UE4SS ba2efd55, six axes, item-constraints section),
   cli/README, REGISTRY_README.txt leads 0.10.0, NEXUS_DESCRIPTION.bbcode "New in 1.7".
   Nexus zip rebuilt (212 entries, 616 KB), nexus:check green.
-- **NOT DONE (owner ships from phone):** push branch + PR, CI green, npm publish 0.6.0
-  (PUBLISHING.md), Nexus v1.7 upload + description re-post (sceditor recipe in memory),
-  Pages deploy. **Next-release candidates:** SortID minimum 0 (upstream declares it, not
-  ported), Recipe subfield minimums (Product_Count/Material counts >= 1) via
-  DT_ItemRecipeDataTable, TypeA/TypeB/WazaID enum-value warnings (we carry full value lists
-  in descriptions already), surfacing the constraints in the browser UI.
+- **DISTRIBUTION — all shipped this session (owner authorized mid-session: "handle everything"):**
+  - **PR #33 merged** (squash `85a0016`). Seven checks green on the branch head `9b06d14`
+    (ShellCheck, CodeQL x2, validate, test, guards) and six on the merge commit including the
+    **Pages deploy**, all read from the check-runs API rather than run-level status.
+  - **Live registry verified** after deploy: the raw schema URL serves
+    `upstreamConstraints=0.6.5@b41a965`, `floatLiteral=Weight,CorruptionFactor,Durability,`
+    `SneakAttackRate,WorkAmount`, `Rarity.maximum 4`, 4 scope branches, **no AttackPower**;
+    live `versions.json` claims PalSchema 0.6.5 with all three releases; Pages 200s on
+    index.html, `structs/upstream-constraints.json` and the item schema.
+  - **npm `palschema-validate@0.6.0` published and `latest`** (2026-08-30T12:07:36Z, 4 files,
+    19.0 kB). No ETARGET race this time. **Cold-verified from a stranger's path:** fresh
+    `D:\tmp\psv-cold-060`, `npx -y --prefer-online palschema-validate@0.6.0` with **no
+    --registry**, so schemas came from the live GitHub raw registry — the 3-entry mod
+    produced the 4 expected errors + the WazaID warning (exit 1), `--strict` exit 1, and
+    upstream's ExampleMod items file (fetched fresh from tag 0.6.5) validated **0 errors,
+    0 warnings, exit 0** against the published build.
+  - **Nexus mods/4084 → v1.7 LIVE and verified on the PUBLIC page.** File 1.7 (615KB,
+    30 Aug 8:15PM), **1.6 archived** (only 1.0.1 remains under Old files), mod version synced
+    to 1.7, virus scan **"Safe to use"**. Description replaced with the "New in 1.7" lead and
+    verified: byte-exact read-back (9301 == 9301) before saving, persisted through an editor
+    reload, and confirmed on the public page (`New in 1.7`, the `T_Icon_A` backref example,
+    the `$resource/YourMod/YourImage` line, the AttackPower note).
+  - **Issue #32** ("registry stale: PalSchema 0.6.5 released") closed with the outcome. Zero
+    open issues.
+- **Nexus mechanics worth keeping (this session):** the public mod page is the OLD-style
+  `/palworld/mods/4084` — the `/games/palworld/mods/4084` form is edit-only and returns a real
+  **404 page** for the public view, which reads exactly like a dead mod if you don't notice.
+  The upload combobox pre-selects the **OLD 1.0.1** file, not the current main one, and
+  ArrowDown does NOT wrap past it — walking DOWN silently lands you on 1.0.1 and auto-fills
+  version **1.0.2**. Walk **UP** and gate on `data-headlessui-state` containing `active`;
+  selecting the right entry auto-fills 1.6 → **1.7**. Both checkboxes are now real
+  `[role=checkbox]` with readable `aria-checked` (Archive existing file / Update mod version),
+  so they can be gated on state instead of a screenshot.
+- **File changelog: still not attempted, deliberately.** 0 for 3 across two UI generations is
+  a Nexus-side defect (LESSONS 2026-08-19); the release notes are public in the description.
+- **Next-release candidates:** SortID minimum 0 (upstream declares it, not ported), Recipe
+  subfield minimums (Product_Count/Material counts >= 1) via DT_ItemRecipeDataTable,
+  TypeA/TypeB/WazaID enum-value warnings (we carry the full value lists in descriptions
+  already), surfacing the constraints in the browser UI.
+- **Not done, needs the owner's word:** any community announcement. PalSchema #53/#134 and
+  the Nexus audience are the natural venues and past releases were announced there, but
+  house rules put the final wording on the owner, so nothing was posted.
 
 ## Session 2026-08-26 — SDK head moved to e663245 (bookkeeping, no data change)
 Cron issue #29: `versions:check` exit 1, "SDK head moved to e663245 (no Source/Pal/Public
