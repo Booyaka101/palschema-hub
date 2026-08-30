@@ -459,6 +459,47 @@ run('buildings.json: HatchingPalEgg spans both tables with the live-verified val
     `||!b.materials.some(m=>m.item==='Paldium Fragment'&&m.code))process.exit(1);` +
     `console.log('HatchingPalEgg OK');`], 0, 'HatchingPalEgg OK');
 
+// 0.11.0: values/ — current row VALUES for every registry table, read out of the
+// game's own cooked DataTables. The gate is the interesting part: schemas derived
+// from SDK headers and the game's own data agreeing is evidence for both.
+run('check-values gate: every extracted row validates against its published schema',
+  ['scripts/check-values.mjs'], 0, 'all schema-valid');
+run('check-values gate: cross-checks the extracted item table against scraped items.json',
+  ['scripts/check-values.mjs'], 0, 'cross-checked');
+run('values/index.json: 28 tables, dated to a real game version, all files present',
+  ['-e', `const i=require('./values/index.json');const {existsSync}=require('fs');` +
+    `if(!Array.isArray(i.tables)||i.tables.length<28)process.exit(1);` +
+    `if(!/^\\d+(\\.\\d+)+$/.test(i.gameVersion||''))process.exit(1);` +
+    `for(const t of i.tables){if(!existsSync('values/'+t.table+'.json'))process.exit(1);` +
+    `if(!t.rows||!t.rowStruct||!t.assetPath)process.exit(1);}` +
+    `console.log('values index OK: '+i.tables.length+' tables');`], 0, 'values index OK');
+// Pinned against values verified independently on paldb.cc and palworld.gg: the
+// Legend passive is Rank 4 with attack/defense/move speed all 20. Those two moved
+// since the Jan-2024 community dump (Rank 3, move speed 15), so this assertion is
+// what proves the extractor reads the CURRENT game rather than reproducing a
+// stale dump. It also pins ShotAttack as the pal attack stat, not MeleeAttack.
+run('values: DT_PassiveSkill_Main Legend matches the independently-verified live row',
+  ['-e', `const r=require('./values/DT_PassiveSkill_Main.json').Legend;` +
+    `if(r.Rank!==4||r.EffectType1!=='ShotAttack'||r.EffectValue1!==20` +
+    `||r.EffectType2!=='Defense'||r.EffectValue2!==20` +
+    `||r.EffectType3!=='MoveSpeed'||r.EffectValue3!==20` +
+    `||r.EffectType4!=='no'||r.TargetType1!=='ToSelf')process.exit(1);` +
+    `console.log('Legend row OK');`], 0, 'Legend row OK');
+run('values: the extracted item table is complete (2466 rows) and agrees with items.html data',
+  ['-e', `const v=require('./values/DT_ItemDataTable.json');` +
+    `const n=Object.keys(v).length;if(n!==2466)process.exit(1);` +
+    `if(v.PlasticHelmet.SortId!==1320||v.PlasticHelmet.TypeB!=='ArmorHead')process.exit(1);` +
+    `if(!v.SFHelmet)process.exit(1);` +
+    `console.log('item values OK: '+n+' rows');`], 0, 'item values OK');
+// Unsupported tables are a ratchet, not a silent skip: the reason ships in the
+// index so a table that starts working is noticed.
+run('values/index.json records why each unsupported table is unsupported',
+  ['-e', `const i=require('./values/index.json');` +
+    `const u=i.unsupported||{};const names=Object.keys(u);` +
+    `if(!names.length||names.some(k=>!u[k]||u[k].length<20))process.exit(1);` +
+    `if(i.tables.some(t=>names.includes(t.table)))process.exit(1);` +
+    `console.log('unsupported recorded: '+names.length);`], 0, 'unsupported recorded');
+
 // The offline archive ships cli/dist WITHOUT node_modules, and --migrate needs no
 // dependencies (only schema validation uses ajv). Copy dist somewhere with no
 // node_modules above it and prove the scan still runs.

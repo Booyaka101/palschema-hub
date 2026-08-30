@@ -1,0 +1,32 @@
+{
+ "Size_None": {
+  "Size": "None",
+  "EffectScale": 1,
+  "JumpEffectOffsetZ": 0
+ },
+ "Size_XS": {
+  "Size": "XS",
+  "EffectScale": 0.25,
+  "JumpEffectOffsetZ": 55
+ },
+ "Size_S": {
+  "Size": "S",
+  "EffectScale": 0.5,
+  "JumpEffectOffsetZ": 55
+ },
+ "Size_M": {
+  "Size": "M",
+  "EffectScale": 0.8,
+  "JumpEffectOffsetZ": 55
+ },
+ "Size_L": {
+  "Size": "L",
+  "EffectScale": 1.2,
+  "JumpEffectOffsetZ": 55
+ },
+ "Size_XL": {
+  "Size": "XL",
+  "EffectScale": 1.6,
+  "JumpEffectOffsetZ": 55
+ }
+}

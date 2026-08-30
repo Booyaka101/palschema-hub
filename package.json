@@ -1,6 +1,6 @@
 {
   "name": "palschema-hub",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "private": true,
   "description": "A public schema registry + browser + validator CLI for Palworld PalSchema mods.",
   "type": "module",
@@ -16,6 +16,8 @@
     "check:items": "node scripts/check-items.mjs",
     "buildings": "node scripts/build-buildings.mjs",
     "check:buildings": "node scripts/check-buildings.mjs",
+    "extract": "node scripts/extract-tables.mjs",
+    "check:values": "node scripts/check-values.mjs",
     "snapshot": "node scripts/snapshot-structs.mjs",
     "snapshot:all": "node scripts/snapshot-structs.mjs all",
     "diff": "node scripts/build-diff.mjs",

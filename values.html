@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PalSchema Hub — DataTable value browser (every table, current game)</title>
+<style>
+  :root {
+    --bg: #0f1218; --panel: #171b24; --panel2: #1e2430; --border: #2a3242;
+    --text: #e6e9ef; --muted: #8b95a7; --accent: #6db3f2; --accent2: #7ee0a6;
+    --chip: #232b3a; --warn: #f2c14e;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 18px 22px; border-bottom: 1px solid var(--border); background: var(--panel);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  header .tag { color: var(--muted); font-size: 12.5px; }
+  header a { color: var(--accent); text-decoration: none; }
+  .layout { display: grid; grid-template-columns: 340px 1fr; min-height: calc(100vh - 61px); }
+  .sidebar { border-right: 1px solid var(--border); background: var(--panel); display: flex; flex-direction: column; }
+  .controls { padding: 14px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--border); }
+  select, input {
+    width: 100%; padding: 9px 11px; background: var(--panel2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; font-size: 13.5px; outline: none;
+  }
+  input:focus, select:focus { border-color: var(--accent); }
+  .count { color: var(--muted); font-size: 12px; padding: 0 2px; }
+  .list { overflow-y: auto; flex: 1; padding: 6px; }
+  .row { padding: 7px 10px; border-radius: 7px; cursor: pointer; font-size: 13px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .row:hover { background: var(--panel2); }
+  .row.sel { background: var(--chip); color: var(--accent); }
+  .main { padding: 20px 24px; overflow-y: auto; }
+  .banner { background: #16241c; border: 1px solid #274b36; color: #bfe8cf;
+    padding: 10px 13px; border-radius: 9px; margin-bottom: 16px; font-size: 13px; }
+  .banner b { color: var(--accent2); }
+  h2 { margin: 0 0 4px; font-size: 20px; }
+  .sub { color: var(--muted); font-size: 12.5px; margin-bottom: 16px; }
+  table { border-collapse: collapse; width: 100%; max-width: 900px; }
+  td { padding: 6px 10px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 13px; }
+  td.k { color: var(--muted); width: 300px; white-space: nowrap; }
+  td.v { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break: break-word; }
+  .empty { color: var(--muted); font-style: italic; }
+  pre { background: var(--panel2); border: 1px solid var(--border); border-radius: 9px;
+    padding: 13px; overflow-x: auto; font-size: 12.5px; max-width: 900px; }
+  button { background: var(--panel2); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; padding: 7px 12px; font-size: 12.5px; cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  .hint { color: var(--muted); font-size: 12.5px; margin-top: 10px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>DataTable value browser</h1>
+  <span class="tag" id="tag">loading…</span>
+  <span class="tag"><a href="./index.html">schemas</a> · <a href="./items.html">items</a> ·
+    <a href="./buildings.html">buildings</a> · <a href="./diff.html">version diff</a></span>
+</header>
+<div class="layout">
+  <div class="sidebar">
+    <div class="controls">
+      <select id="table"></select>
+      <input id="q" type="search" placeholder="Filter rows…" autocomplete="off" />
+      <div class="count" id="count"></div>
+    </div>
+    <div class="list" id="list"></div>
+  </div>
+  <div class="main" id="main"></div>
+</div>
+<script>
+const state = { index: null, table: null, rows: {}, names: [], sel: null };
+const el = (id) => document.getElementById(id);
+
+async function boot() {
+  const res = await fetch('./values/index.json', { cache: 'no-cache' });
+  state.index = await res.json();
+  el('tag').textContent =
+    `${state.index.tables.length} tables · ${state.index.tables.reduce((n, t) => n + t.rows, 0).toLocaleString()} rows · Palworld ${state.index.gameVersion}`;
+  el('table').innerHTML = state.index.tables
+    .map((t) => `<option value="${t.table}">${t.table} (${t.rows})</option>`).join('');
+  el('table').onchange = () => loadTable(el('table').value);
+  el('q').oninput = render;
+  const wanted = new URLSearchParams(location.search).get('table');
+  if (wanted && state.index.tables.some((t) => t.table === wanted)) el('table').value = wanted;
+  await loadTable(el('table').value);
+}
+
+async function loadTable(name) {
+  state.table = name;
+  el('main').innerHTML = '<div class="empty">loading…</div>';
+  const res = await fetch(`./values/${name}.json`, { cache: 'no-cache' });
+  state.rows = await res.json();
+  state.names = Object.keys(state.rows);
+  state.sel = null;
+  const url = new URL(location);
+  url.searchParams.set('table', name);
+  history.replaceState({}, '', url);
+  render();
+  if (state.names.length) select(filtered()[0] ?? state.names[0]);
+}
+
+const filtered = () => {
+  const q = el('q').value.trim().toLowerCase();
+  if (!q) return state.names;
+  return state.names.filter((n) => n.toLowerCase().includes(q));
+};
+
+function render() {
+  const rows = filtered();
+  el('count').textContent = `${rows.length.toLocaleString()} of ${state.names.length.toLocaleString()} rows`;
+  // Long tables would lock the page if every row became a node.
+  const shown = rows.slice(0, 500);
+  el('list').innerHTML = shown
+    .map((n) => `<div class="row${n === state.sel ? ' sel' : ''}" data-n="${n}">${n}</div>`).join('') +
+    (rows.length > shown.length ? `<div class="count" style="padding:8px 10px">…${rows.length - shown.length} more, keep typing</div>` : '');
+  for (const node of el('list').children) {
+    if (node.dataset.n) node.onclick = () => select(node.dataset.n);
+  }
+}
+
+function select(name) {
+  if (!name || !(name in state.rows)) return;
+  state.sel = name;
+  render();
+  const row = state.rows[name];
+  const meta = state.index.tables.find((t) => t.table === state.table);
+  const cells = Object.entries(row).map(([k, v]) => {
+    const text = v === null ? '<span class="empty">null</span>'
+      : typeof v === 'object' ? JSON.stringify(v)
+      : String(v) === '' ? '<span class="empty">(empty)</span>' : String(v);
+    return `<tr><td class="k">${k}</td><td class="v">${text}</td></tr>`;
+  }).join('');
+  const patch = JSON.stringify({ [state.table]: { [name]: row } }, null, 2);
+  el('main').innerHTML =
+    `<div class="banner">Read from the game's own <b>${state.table}</b> asset (Palworld <b>${state.index.gameVersion}</b>),
+      row struct <b>${meta?.rowStruct ?? '?'}</b>. Every row here validates against
+      <a href="./schemas/v1.0/${state.table}.schema.json">the published schema</a>.</div>
+     <h2>${name}</h2>
+     <div class="sub">${Object.keys(row).length} fields · ${state.table}</div>
+     <table>${cells}</table>
+     <div class="hint">Paste-ready raw-table mod patch (edit the values you want to change, delete the rest):</div>
+     <pre id="json">${patch.replace(/[&<]/g, (c) => (c === '&' ? '&amp;' : '&lt;'))}</pre>
+     <button id="copy">Copy patch JSON</button>`;
+  el('copy').onclick = async () => {
+    await navigator.clipboard.writeText(patch);
+    el('copy').textContent = 'Copied';
+    setTimeout(() => (el('copy').textContent = 'Copy patch JSON'), 1200);
+  };
+}
+
+boot().catch((e) => { el('main').innerHTML = `<div class="empty">could not load values: ${e.message}</div>`; });
+</script>
+</body>
+</html>

@@ -16,7 +16,10 @@
       "description": "Example: \"BP_PalMapObjectFarmCrop_Wheat\""
     },
     "CropClassPath": {
-      "type": "object",
+      "type": [
+        "object",
+        "string"
+      ],
       "properties": {
         "AssetPathName": {
           "type": "string",

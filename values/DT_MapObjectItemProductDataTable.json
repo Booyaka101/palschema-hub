@@ -1,0 +1,82 @@
+{
+ "Well": {
+  "Product_Id": "WaterBucket",
+  "RequiredWorkAmount": 1000,
+  "AutoWorkAmountBySec": 5
+ },
+ "StonePit": {
+  "Product_Id": "Stone",
+  "RequiredWorkAmount": 800,
+  "AutoWorkAmountBySec": 0
+ },
+ "StationDeforest2": {
+  "Product_Id": "Wood",
+  "RequiredWorkAmount": 800,
+  "AutoWorkAmountBySec": 0
+ },
+ "CopperPit": {
+  "Product_Id": "CopperOre",
+  "RequiredWorkAmount": 8000,
+  "AutoWorkAmountBySec": 0
+ },
+ "CopperPit_2": {
+  "Product_Id": "CopperOre",
+  "RequiredWorkAmount": 1600,
+  "AutoWorkAmountBySec": 0
+ },
+ "OilPump": {
+  "Product_Id": "CrudeOil",
+  "RequiredWorkAmount": 8000,
+  "AutoWorkAmountBySec": 150
+ },
+ "CoalPit": {
+  "Product_Id": "Coal",
+  "RequiredWorkAmount": 8000,
+  "AutoWorkAmountBySec": 0
+ },
+ "SulfurPit": {
+  "Product_Id": "Sulfur",
+  "RequiredWorkAmount": 8000,
+  "AutoWorkAmountBySec": 0
+ },
+ "QuartzPit": {
+  "Product_Id": "Quartz",
+  "RequiredWorkAmount": 10000,
+  "AutoWorkAmountBySec": 0
+ },
+ "CrystalPit": {
+  "Product_Id": "RainbowCrystal",
+  "RequiredWorkAmount": 20000,
+  "AutoWorkAmountBySec": 0
+ },
+ "SkyIslandOrePit": {
+  "Product_Id": "SkyIslandOre",
+  "RequiredWorkAmount": 25000,
+  "AutoWorkAmountBySec": 0
+ },
+ "StationDeforest3": {
+  "Product_Id": "Wood_Fine",
+  "RequiredWorkAmount": 8000,
+  "AutoWorkAmountBySec": 0
+ },
+ "PalCrstalPit": {
+  "Product_Id": "Pal_crystal_S",
+  "RequiredWorkAmount": 450,
+  "AutoWorkAmountBySec": 0
+ },
+ "ChromiumPit": {
+  "Product_Id": "Chromium",
+  "RequiredWorkAmount": 8000,
+  "AutoWorkAmountBySec": 0
+ },
+ "OilPump02": {
+  "Product_Id": "CrudeOil",
+  "RequiredWorkAmount": 8000,
+  "AutoWorkAmountBySec": 150
+ },
+ "ManganesePit": {
+  "Product_Id": "ManganeseOre",
+  "RequiredWorkAmount": 20000,
+  "AutoWorkAmountBySec": 0
+ }
+}

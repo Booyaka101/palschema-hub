@@ -1,0 +1,12 @@
+[package]
+name = "ooz-decompress"
+version = "0.1.0"
+edition = "2021"
+description = "Decompress Oodle-compressed blocks out of a UE pak, for scripts/extract-tables.mjs"
+license = "MIT"
+
+[dependencies]
+oozextract = "0.5.5"
+
+[profile.release]
+opt-level = 3
