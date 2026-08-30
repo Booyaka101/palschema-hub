@@ -1,5 +1,63 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.11.0 — 2026-08-30
+
+**Current row values for 28 of the 31 registry tables, read out of the game's own
+cooked DataTables: 41,416 rows.** Until now the hub answered "what fields can I
+set" for every table but "what is this row actually set to" for only two of them
+(items and buildings, scraped from paldb.cc). Everything else — pals, passives,
+waza, recipes, drops, lotteries — you had to guess at or dig out of a
+three-year-old community dump. [`values.html`](https://booyaka101.github.io/palschema-hub/values.html)
+and `values/<Table>.json` close that, and the data is the game's, not a scrape of
+a site that mirrors it.
+
+- **`scripts/extract-tables.mjs` (new, `npm run extract`)** reads
+  `Pal-Windows.pak` directly: pak v11 index → FullDirectoryIndex → the file's own
+  FPakEntry block table → Oodle → package name table → unversioned properties,
+  guided by a `.usmap` mappings file. Maintainer tooling — the registry ships the
+  JSON, so nobody installing `palschema-validate` needs any of it.
+- **Oodle without a proprietary binary.** Palworld statically links Oodle and
+  ships no redistributable `oo2core`, which is where this normally stops.
+  `tools/ooz-decompress` (new, ~60 lines of Rust) uses the pure-Rust `oozextract`
+  crate instead, and is built on demand so a clone needs Rust only to re-extract.
+- **The gate is the point: `npm run check:values` validates every extracted row
+  against the published schema for its table.** Those two come from independent
+  places — schemas from SDK headers plus a community dump, values from the game —
+  so agreement is real evidence for both. It also cross-checks the extracted item
+  table against the scraped `items.json`: 2,438 shared rows, 3 differences, all
+  paldb transcription noise.
+- **It immediately found a schema bug, and it is the same bug 0.7.0 fixed for
+  integers.** The Jan-2024 dump serialized soft object pointers as exported-object
+  dicts, so 7 asset-reference fields were typed `object` and would have rejected
+  the plain asset path the game itself stores and mods actually write.
+  `augment-from-sdk.mjs` gained `alignAssetReferences` alongside
+  `alignIntegerness`, widening those to `["object","string"]`. Widening only ever
+  accepts more, so nothing that validated before can fail now.
+- **Two UE format traps are worth writing down** because both parse plausibly
+  before desyncing: a `.usmap`'s `bHasVersioning` is an int32 and its per-enum
+  value count is a uint16 while entries stay 12 bytes; and `FFragment::Unpack` is
+  `ValueNum = packed >> 9` / `bIsLast = packed & 0x100`. An `EnumProperty` is also
+  not always a byte — `EPalWazaID` (392 values) and `EPalTribeID` (338) are
+  UInt16, which is exactly the kind of thing that silently shifts every later
+  field. The parser refuses to return a row map unless it lands **exactly** on the
+  trailing package tag with the declared row count, so a wrong layout fails loudly
+  instead of returning plausible garbage.
+- **Verified against ground truth rather than trusted.** The Legend passive comes
+  out Rank 4 with `ShotAttack`/`Defense`/`MoveSpeed` all 20.0 — matching paldb.cc
+  and palworld.gg, and differing from the Jan-2024 dump (Rank 3, move speed 15) on
+  exactly the two fields that changed, which is what proves it reads the live
+  game. Musclehead, Diamond Body, Artisan and Hard Skin all match community values
+  too, and `DT_ItemDataTable` lands on 2,466 rows, the count paldb declares (21
+  more than the scrape found).
+- **3 tables do not extract yet** (`DT_TechnologyRecipeUnlock`,
+  `DT_MapObjectAssignData`, `DT_TechnologyIconData`) and say why in
+  `values/index.json`. That list is a ratchet, not a silent skip: any table failing
+  outside it exits non-zero.
+- Hard object references are omitted rather than published as raw package
+  indices, which would look like data without being any.
+- `values.html` joins the Pages deploy and the offline archive (242 entries,
+  1.2 MB — the JSON deflates well). Tests 99 → **105**.
+
 ## 0.10.0 + palschema-validate (CLI) 0.6.0 — 2026-08-30
 
 **The item-loader schema learns upstream's real constraints — and the validator

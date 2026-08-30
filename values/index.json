@@ -1,0 +1,182 @@
+{
+ "$comment": "Current row VALUES for every registry table, read from the game's own cooked DataTables by scripts/extract-tables.mjs. Derived data only (numbers and identifiers); no game asset is redistributed. Field names and types are the published schemas in schemas/v1.0.",
+ "gameVersion": "1.0.3",
+ "usmapVersion": 4,
+ "pakVersion": 11,
+ "generatedAt": "2026-08-30",
+ "unsupported": {
+  "DT_TechnologyIconData": "row struct FPalTechnologyIconData is absent from the mappings file",
+  "DT_TechnologyRecipeUnlock": "row layout does not match the mapped struct (4 unaccounted bytes before the first value)",
+  "DT_MapObjectAssignData": "row layout does not match the mapped struct"
+ },
+ "tables": [
+  {
+   "table": "DT_BuildObjectDataTable",
+   "rowStruct": "PalBuildObjectData",
+   "rows": 498,
+   "assetPath": "Pal/Content/Pal/DataTable/MapObject/Building/DT_BuildObjectDataTable.uasset"
+  },
+  {
+   "table": "DT_BuildObjectIconDataTable",
+   "rowStruct": "PalBuildObjectIconData",
+   "rows": 562,
+   "assetPath": "Pal/Content/Pal/DataTable/MapObject/Building/DT_BuildObjectIconDataTable.uasset"
+  },
+  {
+   "table": "DT_CapturedCagePal",
+   "rowStruct": "PalCapturedCageInfoDatabaseRow",
+   "rows": 139,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_CapturedCagePal.uasset"
+  },
+  {
+   "table": "DT_CharacterUpgradeMasterDataTable",
+   "rowStruct": "PalCharacterUpgradeMasterData",
+   "rows": 20,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_CharacterUpgradeMasterDataTable.uasset"
+  },
+  {
+   "table": "DT_FieldLotteryNameDataTable",
+   "rowStruct": "FPalFieldLotteryName",
+   "rows": 511,
+   "assetPath": "Pal/Content/Pal/DataTable/Common/DT_FieldLotteryNameDataTable.uasset"
+  },
+  {
+   "table": "DT_ItemDataTable",
+   "rowStruct": "PalStaticItemDataStruct",
+   "rows": 2466,
+   "assetPath": "Pal/Content/Pal/DataTable/Item/DT_ItemDataTable.uasset"
+  },
+  {
+   "table": "DT_ItemIconDataTable",
+   "rowStruct": "PalEditorItemIconTableRow",
+   "rows": 1207,
+   "assetPath": "Pal/Content/Pal/DataTable/Item/DT_ItemIconDataTable.uasset"
+  },
+  {
+   "table": "DT_ItemLotteryDataTable",
+   "rowStruct": "PalItemLotteryData",
+   "rows": 8782,
+   "assetPath": "Pal/Content/Pal/DataTable/Item/DT_ItemLotteryDataTable.uasset"
+  },
+  {
+   "table": "DT_ItemRecipeDataTable",
+   "rowStruct": "PalItemRecipe",
+   "rows": 1414,
+   "assetPath": "Pal/Content/Pal/DataTable/Item/DT_ItemRecipeDataTable.uasset"
+  },
+  {
+   "table": "DT_MapObjectFarmCrop",
+   "rowStruct": "PalMapObjectFarmCropData",
+   "rows": 18,
+   "assetPath": "Pal/Content/Pal/DataTable/MapObject/DT_MapObjectFarmCrop.uasset"
+  },
+  {
+   "table": "DT_MapObjectItemProductDataTable",
+   "rowStruct": "PalMapObjectItemProductData",
+   "rows": 16,
+   "assetPath": "Pal/Content/Pal/DataTable/MapObject/DT_MapObjectItemProductDataTable.uasset"
+  },
+  {
+   "table": "DT_MapObjectMasterDataTable",
+   "rowStruct": "PalMapObjectMasterData",
+   "rows": 1034,
+   "assetPath": "Pal/Content/Pal/DataTable/MapObject/DT_MapObjectMasterDataTable.uasset"
+  },
+  {
+   "table": "DT_PalBPClass",
+   "rowStruct": "PalBPClassDataRow",
+   "rows": 940,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalBPClass.uasset"
+  },
+  {
+   "table": "DT_PalCaptureBonusExpTable",
+   "rowStruct": "PalCaptureBonusExpRaw",
+   "rows": 4999,
+   "assetPath": "Pal/Content/Pal/DataTable/Exp/DT_PalCaptureBonusExpTable.uasset"
+  },
+  {
+   "table": "DT_PalCharacterIconDataTable",
+   "rowStruct": "PalCharacterIconDataRow",
+   "rows": 674,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalCharacterIconDataTable.uasset"
+  },
+  {
+   "table": "DT_PalCombiUnique",
+   "rowStruct": "PalCombiUniqueDatabaseRow",
+   "rows": 258,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalCombiUnique.uasset"
+  },
+  {
+   "table": "DT_PalDropItem",
+   "rowStruct": "PalDropItemDatabaseRow",
+   "rows": 1044,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalDropItem.uasset"
+  },
+  {
+   "table": "DT_PalExpTable",
+   "rowStruct": "PalExpDatabaseRaw",
+   "rows": 100,
+   "assetPath": "Pal/Content/Pal/DataTable/Exp/DT_PalExpTable.uasset"
+  },
+  {
+   "table": "DT_PalHumanParameter",
+   "rowStruct": "PalCharacterParameterDatabaseRow",
+   "rows": 433,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalHumanParameter.uasset"
+  },
+  {
+   "table": "DT_PalMonsterParameter",
+   "rowStruct": "PalCharacterParameterDatabaseRow",
+   "rows": 753,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalMonsterParameter.uasset"
+  },
+  {
+   "table": "DT_PalPlayerParameter",
+   "rowStruct": "PalPlayerParameterDatabaseRow",
+   "rows": 100,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalPlayerParameter.uasset"
+  },
+  {
+   "table": "DT_PalSizeParameter",
+   "rowStruct": "PalSizeParameterDataRow",
+   "rows": 6,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalSizeParameter.uasset"
+  },
+  {
+   "table": "DT_PassiveSkill_Main",
+   "rowStruct": "PalPassiveSkillDatabaseRow",
+   "rows": 1905,
+   "assetPath": "Pal/Content/Pal/DataTable/PassiveSkill/DT_PassiveSkill_Main.uasset"
+  },
+  {
+   "table": "DT_StatusEffectFood",
+   "rowStruct": "PalStatusEffectFoodDataRow",
+   "rows": 54,
+   "assetPath": "Pal/Content/Pal/DataTable/Item/DT_StatusEffectFood.uasset"
+  },
+  {
+   "table": "DT_UniqueNPC",
+   "rowStruct": "PalUniqueNPCDatabaseRow",
+   "rows": 216,
+   "assetPath": "Pal/Content/Pal/DataTable/Character/DT_UniqueNPC.uasset"
+  },
+  {
+   "table": "DT_WazaDataTable",
+   "rowStruct": "PalWazaDatabaseRaw",
+   "rows": 384,
+   "assetPath": "Pal/Content/Pal/DataTable/Waza/DT_WazaDataTable.uasset"
+  },
+  {
+   "table": "DT_WazaMasterLevel",
+   "rowStruct": "PalWazaMasterLevelDataRow",
+   "rows": 5772,
+   "assetPath": "Pal/Content/Pal/DataTable/Waza/DT_WazaMasterLevel.uasset"
+  },
+  {
+   "table": "DT_WazaMasterTamago",
+   "rowStruct": "PalWazaMasterTamagoDataRow",
+   "rows": 7111,
+   "assetPath": "Pal/Content/Pal/DataTable/Waza/DT_WazaMasterTamago.uasset"
+  }
+ ]
+}

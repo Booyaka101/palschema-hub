@@ -9,6 +9,9 @@ open since Aug 2025). `palschema-hub` fills that gap:
 
 - **`/schemas/v1.0/*.schema.json`** — 31 JSON Schemas, one per moddable DataTable.
 - **`/schemas/index.json`** — machine-readable table-name → schema-path listing.
+- **`/values/<Table>.json`** — the **current row values** for 28 of those tables
+  (41,416 rows), read out of the game's own cooked DataTables. Browse them at
+  [`values.html`](https://booyaka101.github.io/palschema-hub/values.html).
 - **`/index.html`** — a zero-build schema browser (GitHub Pages), searchable.
 - **`/cli/`** — `palschema-validate`, a CLI (ajv) that validates mod JSON/JSONC in CI or locally.
 - **`/.github/workflows/palschema-ci.yml.example`** — drop-in CI for mod repos.
@@ -196,6 +199,35 @@ node cli/dist/index.js --registry . tests/invalid-mod.json  # exit 1
 | `-h, --help` | usage |
 
 ---
+
+## Every table's values, from the game itself
+
+[`values.html`](https://booyaka101.github.io/palschema-hub/values.html) browses the
+**current row values for 28 of the 31 registry tables — 41,416 rows** — pals, passives,
+waza, recipes, drops, lotteries and the rest, each row with a paste-ready raw-table
+patch. `values/<Table>.json` is the same data as plain JSON, and `values/index.json`
+lists what shipped, the row struct each table uses, and which three tables do not
+extract yet (with the reason).
+
+This is read out of the game's own cooked DataTables by
+`scripts/extract-tables.mjs` (`npm run extract`), not scraped: `Pal-Windows.pak`
+(pak v11) → full directory index → the file's own block table → Oodle → the package
+name table → unversioned properties, resolved through a `.usmap` mappings file.
+Palworld statically links Oodle and ships no redistributable `oo2core`, so
+decompression goes through `tools/ooz-decompress`, a small Rust helper built on the
+pure-Rust `oozextract` crate. **You only need any of that to re-extract** — the
+registry ships the JSON, and the CLI never touches it.
+
+**The gate is the interesting half.** `npm run check:values` validates every
+extracted row against the published schema for its table. The two come from
+independent sources (schemas from SDK headers plus a community dump, values from the
+game), so them agreeing is real evidence for both — and it immediately caught seven
+asset-reference fields typed `object` that would have rejected the plain asset paths
+the game itself stores. It also cross-checks the extracted item table against the
+scraped `items.json`, which is how you find out a scrape has drifted.
+
+Values are **derived data** — numbers and identifiers only, the same class of content
+the item and building references already carried. No game asset is redistributed.
 
 ## Item asset reference (values, not just schemas)
 
@@ -413,6 +445,11 @@ npm test
 
 # 4. Preview the browser (GitHub Pages serves these exact files, no build)
 npm run serve         # -> http://localhost:8080
+
+# Optional: re-extract values/ from a local Palworld install. Needs the game and
+# a Rust toolchain (once, for tools/ooz-decompress); everything else works without.
+npm run extract -- --game "D:/SteamLibrary/steamapps/common/Palworld" --usmap Mappings.usmap
+npm run check:values  # every extracted row must validate against its published schema
 ```
 
 Requirements: Node.js ≥ 18 (uses global `fetch`). Verified on Node 22.
@@ -428,6 +465,8 @@ index.json                     { versions, schemas:{ver:[tables]}, tables:{...} 
 table-notes.json               hand-written per-table notes (source; baked into index.json)
 index.html                     schema browser (vanilla HTML/CSS/JS, no build step)
 items.html + items.json        per-item value reference for DT_ItemDataTable (asset reuse)
+values.html + values/*.json    current row values for 28 tables, read from the game's DataTables
+tools/ooz-decompress/          Rust helper: Oodle decompression for the extractor (build on demand)
 diff.html                      version-diff viewer (what changed between game versions)
 versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3/1.0.1/1.0.2/1.0.3 aliases + sdkHead)
 structs/<ver>.json             12 committed row-struct snapshots (field -> C++ type, ordered) + alias copies

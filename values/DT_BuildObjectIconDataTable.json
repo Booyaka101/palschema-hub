@@ -1,0 +1,1688 @@
+{
+ "---": {
+  "SoftIcon": ""
+ },
+ "Barrel01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Barrel01_Iron.T_icon_buildObject_Barrel01_Iron"
+ },
+ "Barrel02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Barrel02_Iron.T_icon_buildObject_Barrel02_Iron"
+ },
+ "Barrel03_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Barrel03_Iron.T_icon_buildObject_Barrel03_Iron"
+ },
+ "BaseCampWorkHard": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BaseCampWorkHard.T_icon_buildObject_BaseCampWorkHard"
+ },
+ "BathTub_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BathTub_Stone.T_icon_buildObject_BathTub_Stone"
+ },
+ "BlastFurnace": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BlastFurnace.T_icon_buildObject_BlastFurnace"
+ },
+ "BlastFurnace2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BlastFurnace_2.T_icon_buildObject_BlastFurnace_2"
+ },
+ "BlastFurnace3": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BlastFurnace3.T_icon_buildObject_BlastFurnace3"
+ },
+ "BlastFurnace4": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BlastFurnace4.T_icon_buildObject_BlastFurnace4"
+ },
+ "BlastFurnace_2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BlastFurnace_2.T_icon_buildObject_BlastFurnace_2"
+ },
+ "Box01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Box01_Iron.T_icon_buildObject_Box01_Iron"
+ },
+ "Box01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Box01_Stone.T_icon_buildObject_Box01_Stone"
+ },
+ "Box02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Box02_Iron.T_icon_buildObject_Box02_Iron"
+ },
+ "BreedFarm": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BreedFarm.T_icon_buildObject_BreedFarm"
+ },
+ "CableCoil01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CableCoil01_Iron.T_icon_buildObject_CableCoil01_Iron"
+ },
+ "CampFire": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CampFire.T_icon_buildObject_CampFire"
+ },
+ "Cauldron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Cauldron.T_icon_buildObject_Cauldron"
+ },
+ "Chair01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Chair01_Iron.T_icon_buildObject_Chair01_Iron"
+ },
+ "Chair01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Chair01_Stone.T_icon_buildObject_Chair01_Stone"
+ },
+ "Chair02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Chair02_Iron.T_icon_buildObject_Chair02_Iron"
+ },
+ "Chair02_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Chair02_Stone.T_icon_buildObject_Chair02_Stone"
+ },
+ "CharacterRankUp": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CharacterRankUp.T_icon_buildObject_CharacterRankUp"
+ },
+ "Clock01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Clock01_Stone.T_icon_buildObject_Clock01_Stone"
+ },
+ "Clock01_Wall_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Clock01_Wall_Iron.T_icon_buildObject_Clock01_Wall_Iron"
+ },
+ "Container01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Container01_Iron.T_icon_buildObject_Container01_Iron"
+ },
+ "CookingStove": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CookingStove.T_icon_buildObject_CookingStove"
+ },
+ "CoolerBox": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CoolerBox.T_icon_buildObject_CoolerBox"
+ },
+ "CoolerElectric": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CoolerElectric.T_icon_buildObject_CoolerElectric"
+ },
+ "CoolerMedieval": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CoolerMedieval.T_icon_buildObject_CoolerMedieval"
+ },
+ "Crusher": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Crusher.T_icon_buildObject_Crusher"
+ },
+ "Curtain01_Wall_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Curtain01_Wall_Stone.T_icon_buildObject_Curtain01_Wall_Stone"
+ },
+ "DamagedScarecrow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DamagedScarecrow.T_icon_buildObject_DamagedScarecrow"
+ },
+ "DefenseGatlingGun": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_DefenseGatlingGun.T_icon_buildObject_DefenseGatlingGun"
+ },
+ "DefenseMachinegun": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DefenseMachinegun.T_icon_buildObject_DefenseMachinegun"
+ },
+ "DefenseWait": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DefenseWait.T_icon_buildObject_DefenseWait"
+ },
+ "Desk01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Desk01_Stone.T_icon_buildObject_Desk01_Stone"
+ },
+ "efenseBulletLauncher_BowGun": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_efenseBulletLauncher_BowGun.T_icon_buildObject_efenseBulletLauncher_BowGun"
+ },
+ "efenseBulletLauncher_Missile": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_efenseBulletLauncher_Missile.T_icon_buildObject_efenseBulletLauncher_Missile"
+ },
+ "ElectricGenerator": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_EnergyGenerator_Electric.T_icon_buildObject_EnergyGenerator_Electric"
+ },
+ "ElectricGenerator2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ElectricGenerator.T_icon_buildObject_ElectricGenerator"
+ },
+ "ElectricGenerator3": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ElectricGenerator.T_icon_buildObject_ElectricGenerator"
+ },
+ "ElectricKitchen": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ElectricKitchen.T_icon_buildObject_ElectricKitchen"
+ },
+ "EnergyGenerator_Electric": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_EnergyGenerator_Electric.T_icon_buildObject_EnergyGenerator_Electric"
+ },
+ "Factory_Comfortable_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Factory_Comfortable_01.T_icon_buildObject_Factory_Comfortable_01"
+ },
+ "Factory_Comfortable_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Factory_Comfortable_02.T_icon_buildObject_Factory_Comfortable_02"
+ },
+ "Factory_Hard_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Factory_Hard_01.T_icon_buildObject_Factory_Hard_01"
+ },
+ "Factory_Hard_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Factory_Hard_02.T_icon_buildObject_Factory_Hard_02"
+ },
+ "Factory_Hard_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Factory_Hard_03.T_icon_buildObject_Factory_Hard_03"
+ },
+ "FarmBlock": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_FarmBlock.T_icon_buildObject_FarmBlock"
+ },
+ "FarmBlockV2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_FarmBlockV2.T_icon_buildObject_FarmBlockV2"
+ },
+ "FarmBlockV2_Berries": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FarmBlockV2_Berries.T_icon_buildObject_FarmBlockV2_Berries"
+ },
+ "FastTravelPoint": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_FastTravelPoint.T_icon_buildObject_FastTravelPoint"
+ },
+ "Floor": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Floor.T_icon_buildObject_Floor"
+ },
+ "Floor_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Floor_Stone.T_icon_buildObject_Floor_Stone"
+ },
+ "Floor_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Floor_Wood.T_icon_buildObject_Floor_Wood"
+ },
+ "FlourMill": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FlourMill.T_icon_buildObject_FlourMill"
+ },
+ "FlowerBed": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FlowerBed.T_icon_buildObject_FlowerBed"
+ },
+ "Fountain": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Fountain.T_icon_buildObject_Fountain"
+ },
+ "GarbageBag_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_GarbageBag_Iron.T_icon_buildObject_GarbageBag_Iron"
+ },
+ "Globe01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Globe01_Stone.T_icon_buildObject_Globe01_Stone"
+ },
+ "GoalSoccer_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_GoalSoccer_Iron.T_icon_buildObject_GoalSoccer_Iron"
+ },
+ "HatchingPalEgg": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_HatchingPalEgg.T_icon_buildObject_HatchingPalEgg"
+ },
+ "HeaterMedieval": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_HeaterMedieval.T_icon_buildObject_HeaterMedieval"
+ },
+ "HighTechKitchen": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_HighTechKitchen.T_icon_buildObject_HighTechKitchen"
+ },
+ "House_1": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_House_1.T_icon_buildObject_House_1"
+ },
+ "ItemChest": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ItemChest.T_icon_buildObject_ItemChest"
+ },
+ "ItemChest_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ItemChest_02.T_icon_buildObject_ItemChest_02"
+ },
+ "ItemChest_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ItemChest_03.T_icon_buildObject_ItemChest_03"
+ },
+ "LampStand": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LampStand.T_icon_buildObject_LampStand"
+ },
+ "LampStandLarge": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LampStandLarge.T_icon_buildObject_LampStandLarge"
+ },
+ "LampTopLarge": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LampTopLarge.T_icon_buildObject_LampTopLarge"
+ },
+ "Light_CandleSticks_Top": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_CandleSticks_Top.T_icon_buildObject_Light_CandleSticks_Top"
+ },
+ "Light_FirePlace01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_FirePlace01.T_icon_buildObject_Light_FirePlace01"
+ },
+ "Light_FirePlace02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_FirePlace02.T_icon_buildObject_Light_FirePlace02"
+ },
+ "Light_FloorLamp01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_FloorLamp01.T_icon_buildObject_Light_FloorLamp01"
+ },
+ "Light_FloorLamp02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_FloorLamp02.T_icon_buildObject_Light_FloorLamp02"
+ },
+ "Light_LightPole01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_LightPole01.T_icon_buildObject_Light_LightPole01"
+ },
+ "Light_LightPole02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_LightPole02.T_icon_buildObject_Light_LightPole02"
+ },
+ "Light_LightPole03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_LightPole03.T_icon_buildObject_Light_LightPole03"
+ },
+ "Light_LightPole04": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_LightPole04.T_icon_buildObject_Light_LightPole04"
+ },
+ "MachineGame01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MachineGame01_Iron.T_icon_buildObject_MachineGame01_Iron"
+ },
+ "MachineVending01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MachineVending01_Iron.T_icon_buildObject_MachineVending01_Iron"
+ },
+ "MedicalPalBed": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicalPalBed.T_icon_buildObject_MedicalPalBed"
+ },
+ "MedicalPalBed_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicalPalBed_02.T_icon_buildObject_MedicalPalBed_02"
+ },
+ "MedicalPalBed_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicalPalBed_03.T_icon_buildObject_MedicalPalBed_03"
+ },
+ "MedicalPalBed_04": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicalPalBed_04.T_icon_buildObject_MedicalPalBed_04"
+ },
+ "MedicineFacility_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicineFacility_01.T_icon_buildObject_MedicineFacility_01"
+ },
+ "MedicineFacility_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicineFacility_02.T_icon_buildObject_MedicineFacility_02"
+ },
+ "MedicineFacility_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicineFacility_03.T_icon_buildObject_MedicineFacility_03"
+ },
+ "Metal_DoorWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_DoorWall.T_icon_buildObject_Metal_DoorWall"
+ },
+ "Metal_Foundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_Foundation.T_icon_buildObject_Metal_Foundation"
+ },
+ "Metal_Gate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_Gate.T_icon_buildObject_Metal_Gate"
+ },
+ "Metal_Roof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_Roof.T_icon_buildObject_Metal_Roof"
+ },
+ "Metal_Stair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_Stair.T_icon_buildObject_Metal_Stair"
+ },
+ "Metal_Wall_V2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_Wall_V2.T_icon_buildObject_Metal_Wall_V2"
+ },
+ "MiningTool": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MiningTool.T_icon_buildObject_MiningTool"
+ },
+ "Mirror01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Mirror01_Stone.T_icon_buildObject_Mirror01_Stone"
+ },
+ "Mirror01_Wall_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Mirror01_Wall_Stone.T_icon_buildObject_Mirror01_Wall_Stone"
+ },
+ "Mirror02_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Mirror02_Stone.T_icon_buildObject_Mirror02_Stone"
+ },
+ "MonsterFarm": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MonsterFarm.T_icon_buildObject_MonsterFarm"
+ },
+ "OlympicCauldron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_OlympicCauldron.T_icon_buildObject_OlympicCauldron"
+ },
+ "PalBoxTerminal": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_PalBoxTerminal.T_icon_buildObject_PalBoxTerminal"
+ },
+ "PalFoodBox": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PalFoodBox.T_icon_buildObject_PalFoodBox"
+ },
+ "PalStorage": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PalStorage.T_icon_buildObject_PalStorage"
+ },
+ "Partition_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Partition_Stone.T_icon_buildObject_Partition_Stone"
+ },
+ "Piano01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Piano01_Stone.T_icon_buildObject_Piano01_Stone"
+ },
+ "Piano02_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Piano02_Stone.T_icon_buildObject_Piano02_Stone"
+ },
+ "PipeClay01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PipeClay01_Iron.T_icon_buildObject_PipeClay01_Iron"
+ },
+ "PlayerBed": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_PlayerBed.T_icon_buildObject_PlayerBed"
+ },
+ "PlayerBed_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PlayerBed_02.T_icon_buildObject_PlayerBed_02"
+ },
+ "PlayerBed_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PlayerBed_03.T_icon_buildObject_PlayerBed_03"
+ },
+ "RecoverOtomo": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_RecoverOtomo.T_icon_buildObject_RecoverOtomo"
+ },
+ "Refrigerator": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Refrigerator.T_icon_buildObject_Refrigerator"
+ },
+ "RepairBench": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_RepairBench.T_icon_buildObject_RepairBench"
+ },
+ "Rug01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Rug01_Stone.T_icon_buildObject_Rug01_Stone"
+ },
+ "Rug02_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Rug02_Stone.T_icon_buildObject_Rug02_Stone"
+ },
+ "Rug03_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Rug03_Stone.T_icon_buildObject_Rug03_Stone"
+ },
+ "Rug04_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Rug04_Stone.T_icon_buildObject_Rug04_Stone"
+ },
+ "Rug_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Rug_Wood.T_icon_buildObject_Rug_Wood"
+ },
+ "Shelf01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf01_Iron.T_icon_buildObject_Shelf01_Iron"
+ },
+ "Shelf02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf02_Iron.T_icon_buildObject_Shelf02_Iron"
+ },
+ "Shelf03_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf03_Iron.T_icon_buildObject_Shelf03_Iron"
+ },
+ "Shelf04_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf04_Iron.T_icon_buildObject_Shelf04_Iron"
+ },
+ "ShippingItemBox": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_ShippingItemBox.T_icon_buildObject_ShippingItemBox"
+ },
+ "Signboard": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Signboard.T_icon_buildObject_Signboard"
+ },
+ "SignExit_Ceiling_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SignExit_Ceiling_Iron.T_icon_buildObject_SignExit_Ceiling_Iron"
+ },
+ "SignExit_Wall_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SignExit_Wall_Iron.T_icon_buildObject_SignExit_Wall_Iron"
+ },
+ "Silo": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Silo.T_icon_buildObject_Silo"
+ },
+ "Snowman": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Snowman.T_icon_buildObject_Snowman"
+ },
+ "Sofa01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Sofa01_Iron.T_icon_buildObject_Sofa01_Iron"
+ },
+ "Sofa01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Sofa01_Stone.T_icon_buildObject_Sofa01_Stone"
+ },
+ "Sofa02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Sofa02_Iron.T_icon_buildObject_Sofa02_Iron"
+ },
+ "Sofa02_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Sofa02_Stone.T_icon_buildObject_Sofa02_Stone"
+ },
+ "Sofa03_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Sofa03_Stone.T_icon_buildObject_Sofa03_Stone"
+ },
+ "Spa": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Spa.T_icon_buildObject_Spa"
+ },
+ "Spa_2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Spa_2.T_icon_buildObject_Spa_2"
+ },
+ "SphereFactory": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_SphereFactory.T_icon_buildObject_SphereFactory"
+ },
+ "SphereFactory_Black_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SphereFactory_Black_01.T_icon_buildObject_SphereFactory_Black_01"
+ },
+ "SphereFactory_Black_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SphereFactory_Black_02.T_icon_buildObject_SphereFactory_Black_02"
+ },
+ "SphereFactory_Black_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SphereFactory_Black_03.T_icon_buildObject_SphereFactory_Black_03"
+ },
+ "SphereFactory_White_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_SphereFactory_White_01.T_icon_buildObject_SphereFactory_White_01"
+ },
+ "SphereFactory_White_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_SphereFactory_White_02.T_icon_buildObject_SphereFactory_White_02"
+ },
+ "SphereFactory_White_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_SphereFactory_White_03.T_icon_buildObject_SphereFactory_White_03"
+ },
+ "StationDeforest": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_StationDeforest.T_icon_buildObject_StationDeforest"
+ },
+ "StationDeforest2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_StationDeforest2.T_icon_buildObject_StationDeforest2"
+ },
+ "Stone_DoorWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_DoorWall.T_icon_buildObject_Stone_DoorWall"
+ },
+ "Stone_Foundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_Foundation.T_icon_buildObject_Stone_Foundation"
+ },
+ "Stone_Gate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_Gate.T_icon_buildObject_Stone_Gate"
+ },
+ "Stone_Roof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_Roof.T_icon_buildObject_Stone_Roof"
+ },
+ "Stone_SlantedRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_SlantedRoof.T_icon_buildObject_Stone_SlantedRoof"
+ },
+ "Stone_Stair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_Stair.T_icon_buildObject_Stone_Stair"
+ },
+ "Stone_Wall_V2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_Wall_V2.T_icon_buildObject_Stone_Wall_V2"
+ },
+ "Stonehouse1": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Stonehouse1.T_icon_buildObject_Stonehouse1"
+ },
+ "StonePit": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_StonePit.T_icon_buildObject_StonePit"
+ },
+ "Stool01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stool01_Iron.T_icon_buildObject_Stool01_Iron"
+ },
+ "Stool01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stool01_Stone.T_icon_buildObject_Stool01_Stone"
+ },
+ "Stove01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stove01_Stone.T_icon_buildObject_Stove01_Stone"
+ },
+ "StrawHouse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_StrawHouse.T_icon_buildObject_StrawHouse"
+ },
+ "Stump": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stump.T_icon_buildObject_Stump"
+ },
+ "TableCircular01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableCircular01_Iron.T_icon_buildObject_TableCircular01_Iron"
+ },
+ "TableCircular01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableCircular01_Stone.T_icon_buildObject_TableCircular01_Stone"
+ },
+ "TableDresser01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableDresser01_Stone.T_icon_buildObject_TableDresser01_Stone"
+ },
+ "TableSide01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableSide01_Iron.T_icon_buildObject_TableSide01_Iron"
+ },
+ "TableSink01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableSink01_Stone.T_icon_buildObject_TableSink01_Stone"
+ },
+ "TableSquare01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableSquare01_Iron.T_icon_buildObject_TableSquare01_Iron"
+ },
+ "TableSquare02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableSquare02_Iron.T_icon_buildObject_TableSquare02_Iron"
+ },
+ "Tire01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Tire01_Iron.T_icon_buildObject_Tire01_Iron"
+ },
+ "Toilet01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Toilet01_Stone.T_icon_buildObject_Toilet01_Stone"
+ },
+ "ToiletHolder01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ToiletHolder01_Stone.T_icon_buildObject_ToiletHolder01_Stone"
+ },
+ "ToolBoxV1": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ToolBoxV1.T_icon_buildObject_ToolBoxV1"
+ },
+ "ToolBoxV2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_ToolBoxV2.T_icon_buildObject_ToolBoxV2"
+ },
+ "TorchHang": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TorchHang.T_icon_buildObject_TorchHang"
+ },
+ "TorchStand": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TorchStand.T_icon_buildObject_TorchStand"
+ },
+ "TowlRack01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TowlRack01_Stone.T_icon_buildObject_TowlRack01_Stone"
+ },
+ "TrafficBarricade01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficBarricade01_Iron.T_icon_buildObject_TrafficBarricade01_Iron"
+ },
+ "TrafficBarricade02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficBarricade02_Iron.T_icon_buildObject_TrafficBarricade02_Iron"
+ },
+ "TrafficBarricade03_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficBarricade03_Iron.T_icon_buildObject_TrafficBarricade03_Iron"
+ },
+ "TrafficBarricade04_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficBarricade04_Iron.T_icon_buildObject_TrafficBarricade04_Iron"
+ },
+ "TrafficBarricade05_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficBarricade05_Iron.T_icon_buildObject_TrafficBarricade05_Iron"
+ },
+ "TrafficCone01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficCone01_Iron.T_icon_buildObject_TrafficCone01_Iron"
+ },
+ "TrafficCone02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficCone02_Iron.T_icon_buildObject_TrafficCone02_Iron"
+ },
+ "TrafficCone03_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficCone03_Iron.T_icon_buildObject_TrafficCone03_Iron"
+ },
+ "TrafficLight01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficLight01_Iron.T_icon_buildObject_TrafficLight01_Iron"
+ },
+ "TransmissionTower": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TransmissionTower.T_icon_buildObject_TransmissionTower"
+ },
+ "Trap_LegHold": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Trap_LegHold.T_icon_buildObject_Trap_LegHold"
+ },
+ "Trap_LegHold_Big": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Trap_LegHold_Big.T_icon_buildObject_Trap_LegHold_Big"
+ },
+ "Trap_MineAttack": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Trap_MineAttack.T_icon_buildObject_Trap_MineAttack"
+ },
+ "Trap_MineElecShock": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Trap_MineElecShock.T_icon_buildObject_Trap_MineElecShock"
+ },
+ "Trap_MineFreeze": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Trap_MineFreeze.T_icon_buildObject_Trap_MineFreeze"
+ },
+ "Trap_Noose": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Trap_Noose.T_icon_buildObject_Trap_Noose"
+ },
+ "Wall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Wall.T_icon_buildObject_Wall"
+ },
+ "Wall_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Wall_Stone.T_icon_buildObject_Wall_Stone"
+ },
+ "Wall_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_Wall_Wood.T_icon_buildObject_Wall_Wood"
+ },
+ "WeaponChest": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_WeaponChest.T_icon_buildObject_WeaponChest"
+ },
+ "WeaponFactory_Clean_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_WeaponFactory_Clean_01.T_icon_buildObject_WeaponFactory_Clean_01"
+ },
+ "WeaponFactory_Clean_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_WeaponFactory_Clean_02.T_icon_buildObject_WeaponFactory_Clean_02"
+ },
+ "WeaponFactory_Clean_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_WeaponFactory_Clean_03.T_icon_buildObject_WeaponFactory_Clean_03"
+ },
+ "WeaponFactory_Dirty_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WeaponFactory_Dirty_01.T_icon_buildObject_WeaponFactory_Dirty_01"
+ },
+ "WeaponFactory_Dirty_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WeaponFactory_Dirty_02.T_icon_buildObject_WeaponFactory_Dirty_02"
+ },
+ "WeaponFactory_Dirty_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WeaponFactory_Dirty_03.T_icon_buildObject_WeaponFactory_Dirty_03"
+ },
+ "WeaponFactry": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_WeaponFactry.T_icon_buildObject_WeaponFactry"
+ },
+ "Well": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Well.T_icon_buildObject_Well"
+ },
+ "Wood_DoorWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_DoorWall.T_icon_buildObject_Wood_DoorWall"
+ },
+ "Wood_Foundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Foundation.T_icon_buildObject_Wood_Foundation"
+ },
+ "Wood_Gate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Gate.T_icon_buildObject_Wood_Gate"
+ },
+ "Wood_Roof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Roof.T_icon_buildObject_Wood_Roof"
+ },
+ "Wood_Stair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Stair.T_icon_buildObject_Wood_Stair"
+ },
+ "Wood_Wall_V2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Wall_V2.T_icon_buildObject_Wood_Wall_V2"
+ },
+ "Woodhouse1": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WoodHouse.T_icon_buildObject_WoodHouse"
+ },
+ "WorkBench": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WorkBench.T_icon_buildObject_WorkBench"
+ },
+ "WorkBench_SkillUnlock": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WorkBench_SkillUnlock.T_icon_buildObject_WorkBench_SkillUnlock"
+ },
+ "Cooler": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CoolerMedieval.T_icon_buildObject_CoolerMedieval"
+ },
+ "PalBoxV2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PalBoxV2.T_icon_buildObject_PalBoxV2"
+ },
+ "Wooden_foundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Foundation.T_icon_buildObject_Wood_Foundation"
+ },
+ "Wooden_wall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Wall_V2.T_icon_buildObject_Wood_Wall_V2"
+ },
+ "Wood_WindowWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_WindowWall.T_icon_buildObject_Wood_WindowWall"
+ },
+ "Wood_TriangleWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_TriangleWall.T_icon_buildObject_Wood_TriangleWall"
+ },
+ "Wooden_roof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Roof.T_icon_buildObject_Wood_Roof"
+ },
+ "Wood_SlantedRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_SlantedRoof.T_icon_buildObject_Wood_SlantedRoof"
+ },
+ "Wooden_stair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Stair.T_icon_buildObject_Wood_Stair"
+ },
+ "Stone_wall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_Wall_V2.T_icon_buildObject_Stone_Wall_V2"
+ },
+ "WorkBench_SkillCard": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_WorkBench.T_icon_buildObject_WorkBench"
+ },
+ "FarmBlockV2_wheet": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FarmBlockV2_wheet.T_icon_buildObject_FarmBlockV2_wheet"
+ },
+ "FarmBlockV2_tomato": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FarmBlockV2_tomato.T_icon_buildObject_FarmBlockV2_tomato"
+ },
+ "FarmBlockV2_Lettuce": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FarmBlockV2_Lettuce.T_icon_buildObject_FarmBlockV2_Lettuce"
+ },
+ "Torch": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TorchStand.T_icon_buildObject_TorchStand"
+ },
+ "WallTorch": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TorchHang.T_icon_buildObject_TorchHang"
+ },
+ "Lamp": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LampStand.T_icon_buildObject_LampStand"
+ },
+ "CeilingLamp": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LampTop.T_icon_buildObject_LampTop"
+ },
+ "DefenseWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DefenseWall.T_icon_buildObject_DefenseWall"
+ },
+ "DefenseWall_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DefenseWall_Wood.T_icon_buildObject_DefenseWall_Wood"
+ },
+ "DefenseWall_Metal": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DefenseWall_Metal.T_icon_buildObject_DefenseWall_Metal"
+ },
+ "Wooden_DoorWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_DoorWall.T_icon_buildObject_Wood_DoorWall"
+ },
+ "Metal_wall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_Wall_V2.T_icon_buildObject_Metal_Wall_V2"
+ },
+ "DefenseBowGun": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_efenseBulletLauncher_BowGun.T_icon_buildObject_efenseBulletLauncher_BowGun"
+ },
+ "DefenseMissile": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_efenseBulletLauncher_Missile.T_icon_buildObject_efenseBulletLauncher_Missile"
+ },
+ "BuildableGoddessStatue": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BuildableGoddessStatue.T_icon_buildObject_BuildableGoddessStatue"
+ },
+ "Heater": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_HeaterMedieval.T_icon_buildObject_HeaterMedieval"
+ },
+ "LargeLamp": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LampStandLarge.T_icon_buildObject_LampStandLarge"
+ },
+ "LargeCeilingLamp": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LampTopLarge.T_icon_buildObject_LampTopLarge"
+ },
+ "Trap_MovingPanel": {
+  "SoftIcon": ""
+ },
+ "DisplayCharacter": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DisplayCharacter.T_icon_buildObject_DisplayCharacter"
+ },
+ "Spa2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Spa_2.T_icon_buildObject_Spa_2"
+ },
+ "WoodCrusher": {
+  "SoftIcon": ""
+ },
+ "TableSquare_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableSquare_Wood.T_icon_buildObject_TableSquare_Wood"
+ },
+ "TableCircular_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableCircular_Wood.T_icon_buildObject_TableCircular_Wood"
+ },
+ "Bench_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Bench_Wood.T_icon_buildObject_Bench_Wood"
+ },
+ "Stool_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stool_Wood.T_icon_buildObject_Stool_Wood"
+ },
+ "Decal_PalSticker_PinkCat": {
+  "SoftIcon": ""
+ },
+ "Stool_High_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stool_High_Wood.T_icon_buildObject_Stool_High_Wood"
+ },
+ "Barrel_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Barrel_Wood.T_icon_buildObject_Barrel_Wood"
+ },
+ "Box_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Box_Wood.T_icon_buildObject_Box_Wood"
+ },
+ "Shelf_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf_Wood.T_icon_buildObject_Shelf_Wood"
+ },
+ "Shelf_Cask_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf_Cask_Wood.T_icon_buildObject_Shelf_Cask_Wood"
+ },
+ "Shelf_Hang01_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf_Hang01_Wood.T_icon_buildObject_Shelf_Hang01_Wood"
+ },
+ "Shelf_Hang02_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf_Hang02_Wood.T_icon_buildObject_Shelf_Hang02_Wood"
+ },
+ "Counter_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Counter_Wood.T_icon_buildObject_Counter_Wood"
+ },
+ "Ivy01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ivy01.T_icon_buildObject_Ivy01"
+ },
+ "Ivy02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ivy02.T_icon_buildObject_Ivy02"
+ },
+ "Ivy03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ivy03.T_icon_buildObject_Ivy03"
+ },
+ "Chair01_Wood": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Chair01_Wood.T_icon_buildObject_Chair01_Wood"
+ },
+ "Shelf01_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf01_Stone.T_icon_buildObject_Shelf01_Stone"
+ },
+ "Shelf02_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf02_Stone.T_icon_buildObject_Shelf02_Stone"
+ },
+ "Shelf03_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf03_Stone.T_icon_buildObject_Shelf03_Stone"
+ },
+ "Shelf04_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf04_Stone.T_icon_buildObject_Shelf04_Stone"
+ },
+ "Shelf05_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf05_Stone.T_icon_buildObject_Shelf05_Stone"
+ },
+ "Shelf06_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf06_Stone.T_icon_buildObject_Shelf06_Stone"
+ },
+ "Shelf07_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf07_Stone.T_icon_buildObject_Shelf07_Stone"
+ },
+ "Shelf01_Wall_Stone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf01_Wall_Stone.T_icon_buildObject_Shelf01_Wall_Stone"
+ },
+ "Shelf01_Wall_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf01_Wall_Iron.T_icon_buildObject_Shelf01_Wall_Iron"
+ },
+ "Plant01_Plant": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Plant01_Plant.T_icon_buildObject_Plant01_Plant"
+ },
+ "Plant02_Plant": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Plant02_Plant.T_icon_buildObject_Plant02_Plant"
+ },
+ "Plant03_Plant": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Plant03_Plant.T_icon_buildObject_Plant03_Plant"
+ },
+ "Plant04_Plant": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Plant04_Plant.T_icon_buildObject_Plant04_Plant"
+ },
+ "Desk01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Desk01_Iron.T_icon_buildObject_Desk01_Iron"
+ },
+ "Television01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Television01_Iron.T_icon_buildObject_Television01_Iron"
+ },
+ "TrafficSign01_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficSign01_Iron.T_icon_buildObject_TrafficSign01_Iron"
+ },
+ "TrafficSign02_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficSign02_Iron.T_icon_buildObject_TrafficSign02_Iron"
+ },
+ "TrafficSign03_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficSign03_Iron.T_icon_buildObject_TrafficSign03_Iron"
+ },
+ "TrafficSign04_Iron": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TrafficSign04_Iron.T_icon_buildObject_TrafficSign04_Iron"
+ },
+ "ect_ItemChest": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ect_ItemChest.T_icon_buildObject_ect_ItemChest"
+ },
+ "efenseBulletLauncher_GatlingGun": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_efenseBulletLauncher_GatlingGun.T_icon_buildObject_efenseBulletLauncher_GatlingGun"
+ },
+ "efenseBulletLauncher_Machinegun": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_efenseBulletLauncher_Machinegun.T_icon_buildObject_efenseBulletLauncher_Machinegun"
+ },
+ "efenseBulletLauncher_Minigun": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_efenseBulletLauncher_Minigun.T_icon_buildObject_efenseBulletLauncher_Minigun"
+ },
+ "EnergyGenerator_Electric3": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_EnergyGenerator_Electric3.T_icon_buildObject_EnergyGenerator_Electric3"
+ },
+ "LampTop": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LampTop.T_icon_buildObject_LampTop"
+ },
+ "SphereFactory_Black_Base": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SphereFactory_Black_Base.T_icon_buildObject_SphereFactory_Black_Base"
+ },
+ "WeaponFactoryBase": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WeaponFactoryBase.T_icon_buildObject_WeaponFactoryBase"
+ },
+ "WoodHouse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WoodHouse.T_icon_buildObject_WoodHouse"
+ },
+ "BaseCampBattleDirector": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BaseCampBattleDirector.T_icon_buildObject_BaseCampBattleDirector"
+ },
+ "Chair01_Pal": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Chair01_Pal.T_icon_buildObject_Chair01_Pal"
+ },
+ "Light_CandleSticks_Wall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Light_CandleSticks_Wall.T_icon_buildObject_Light_CandleSticks_Wall"
+ },
+ "ElectricCooler": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CoolerElectric.T_icon_buildObject_CoolerElectric"
+ },
+ "ElectricHeater": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_HeaterElectric.T_icon_buildObject_HeaterElectric"
+ },
+ "Stone_WindowWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_WindowWall.T_icon_buildObject_Stone_WindowWall"
+ },
+ "Stone_TriangleWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_TriangleWall.T_icon_buildObject_Stone_TriangleWall"
+ },
+ "Metal_WindowWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_WindowWall.T_icon_buildObject_Metal_WindowWall"
+ },
+ "Metal_TriangleWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_TriangleWall.T_icon_buildObject_Metal_TriangleWall"
+ },
+ "Metal_SlantedRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_SlantedRoof.T_icon_buildObject_Metal_SlantedRoof"
+ },
+ "Altar": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Altar.T_icon_buildObject_Altar"
+ },
+ "CopperPit": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CopperPit.T_icon_buildObject_CopperPit"
+ },
+ "CopperPit_2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CopperPit_2.T_icon_buildObject_CopperPit_2"
+ },
+ "ElectricHatchingPalEgg": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ElectricHatchingPalEgg.T_icon_buildObject_ElectricHatchingPalEgg"
+ },
+ "Glass_foundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_foundation.T_icon_buildObject_Glass_foundation"
+ },
+ "Glass_wall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_wall.T_icon_buildObject_Glass_wall"
+ },
+ "Glass_WindowWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_WindowWall.T_icon_buildObject_Glass_WindowWall"
+ },
+ "Glass_TriangleWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_TriangleWall.T_icon_buildObject_Glass_TriangleWall"
+ },
+ "Glass_roof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_roof.T_icon_buildObject_Glass_roof"
+ },
+ "Glass_SlantedRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_SlantedRoof.T_icon_buildObject_Glass_SlantedRoof"
+ },
+ "Glass_stair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_stair.T_icon_buildObject_Glass_stair"
+ },
+ "Glass_DoorWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_DoorWall.T_icon_buildObject_Glass_DoorWall"
+ },
+ "Glass_pillars": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_pillar.T_icon_buildObject_Glass_pillar"
+ },
+ "CoolerPalFoodBox": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CoolerPalFoodBox.T_icon_buildObject_CoolerPalFoodBox"
+ },
+ "DismantlingConveyor": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DismantlingConveyor.T_icon_buildObject_DismantlingConveyor"
+ },
+ "ElectricGenerator_Large": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ElectricGenerator_Large.T_icon_buildObject_ElectricGenerator_Large"
+ },
+ "OilPump": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_OilPump.T_icon_buildObject_OilPump"
+ },
+ "CoalPit": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CoalPit.T_icon_buildObject_CoalPit"
+ },
+ "SulfurPit": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SulfurPit.T_icon_buildObject_SulfurPit"
+ },
+ "IceCrusher": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_IceCrusher.T_icon_buildObject_IceCrusher"
+ },
+ "Wooden_pillar": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_pillar.T_icon_buildObject_Wooden_pillar"
+ },
+ "Stone_pillar": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_pillar.T_icon_buildObject_Stone_pillar"
+ },
+ "Metal_pillars": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Metal_pillar.T_icon_buildObject_Metal_pillar"
+ },
+ "WallSignboard": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WallSignboard.T_icon_buildObject_WallSignboard"
+ },
+ "SkinChange": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SkinChange.T_icon_buildObject_SkinChange"
+ },
+ "JapaneseStyle_wall_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_wall_01.T_icon_buildObject_JapaneseStyle_wall_01"
+ },
+ "JapaneseStyle_DoorWall_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_DoorWall_01.T_icon_buildObject_JapaneseStyle_DoorWall_01"
+ },
+ "JapaneseStyle_DoorWall_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_DoorWall_02.T_icon_buildObject_JapaneseStyle_DoorWall_02"
+ },
+ "JapaneseStyle_DoorWall_03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_DoorWall_03.T_icon_buildObject_JapaneseStyle_DoorWall_03"
+ },
+ "JapaneseStyle_roof_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_roof_01.T_icon_buildObject_JapaneseStyle_roof_01"
+ },
+ "JapaneseStyle_roof_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_roof_02.T_icon_buildObject_JapaneseStyle_roof_02"
+ },
+ "JapaneseStyle_SlantedRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_SlantedRoof.T_icon_buildObject_JapaneseStyle_SlantedRoof"
+ },
+ "JapaneseStyle_TriangleWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_TriangleWall.T_icon_buildObject_JapaneseStyle_TriangleWall"
+ },
+ "JapaneseStyle_WindowWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_WindowWall.T_icon_buildObject_JapaneseStyle_WindowWall"
+ },
+ "JapaneseStyle_foundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_foundation.T_icon_buildObject_JapaneseStyle_foundation"
+ },
+ "JapaneseStyle_stair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_stair.T_icon_buildObject_JapaneseStyle_stair"
+ },
+ "JapaneseStyle_Pillar": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_Pillar.T_icon_buildObject_JapaneseStyle_Pillar"
+ },
+ "SanityDecrease1": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SanityDecrease1.T_icon_buildObject_SanityDecrease1"
+ },
+ "WorkSpeedIncrease1": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WorkSpeedIncrease1.T_icon_buildObject_WorkSpeedIncrease1"
+ },
+ "QuartzPit": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_QuartzPit.T_icon_buildObject_QuartzPit"
+ },
+ "Factory_Money": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Factory_Money.T_icon_buildObject_Factory_Money"
+ },
+ "ItemChest_04": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ItemChest_04.T_icon_buildObject_ItemChest_04"
+ },
+ "MedicalPalBed_05": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicalPalBed_05.T_icon_buildObject_MedicalPalBed_05"
+ },
+ "BaseCampItemDispenser": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BaseCampItemDispenser.T_icon_buildObject_BaseCampItemDispenser"
+ },
+ "GuildChest": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_GuildChest.T_icon_buildObject_GuildChest"
+ },
+ "Expedition": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Expedition.T_icon_buildObject_Expedition"
+ },
+ "ItemBooth": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ItemBooth.T_icon_buildObject_ItemBooth"
+ },
+ "PalBooth": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PalBooth.T_icon_buildObject_PalBooth"
+ },
+ "Lab": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Lab.T_icon_buildObject_Lab"
+ },
+ "ManualElectricGenerator": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ManualElectricGenerator.T_icon_buildObject_ManualElectricGenerator"
+ },
+ "Farm_SkillFruits": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Farm_SkillFruits.T_icon_buildObject_Farm_SkillFruits"
+ },
+ "Wooden_ladder": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_Ladder.T_icon_buildObject_Wooden_Ladder"
+ },
+ "PalMedicineBox": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PalMedicineBox.T_icon_buildObject_PalMedicineBox"
+ },
+ "EnergyStorage_Electric": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_EnergyStorage_Electric.T_icon_buildObject_EnergyStorage_Electric"
+ },
+ "Headstone": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Headstone.T_icon_buildObject_Headstone"
+ },
+ "FarmBlockV2_Carrot": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FarmBlockV2_Carrot.T_icon_buildObject_FarmBlockV2_Carrot"
+ },
+ "FarmBlockV2_Onion": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FarmBlockV2_Onion.T_icon_buildObject_FarmBlockV2_Onion"
+ },
+ "FarmBlockV2_Potato": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FarmBlockV2_Potato.T_icon_buildObject_FarmBlockV2_Potato"
+ },
+ "HugeKitchen": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_HugeKitchen.T_icon_buildObject_HugeKitchen"
+ },
+ "SphereFactory_Black_04": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SphereFactory_Black_04.T_icon_buildObject_SphereFactory_Black_04"
+ },
+ "MultiElectricHatchingPalEgg": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MultiElectricHatchingPalEgg.T_icon_buildObject_MultiElectricHatchingPalEgg"
+ },
+ "Byobu": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Byobu.T_icon_buildObject_Byobu"
+ },
+ "Kakejiku": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Kakejiku.T_icon_buildObject_Kakejiku"
+ },
+ "Zaisu": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Zaisu.T_icon_buildObject_Zaisu"
+ },
+ "Zabuton": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Zabuton.T_icon_buildObject_Zabuton"
+ },
+ "Irori": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Irori.T_icon_buildObject_Irori"
+ },
+ "Toro": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Toro.T_icon_buildObject_Toro"
+ },
+ "Andon": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Andon.T_icon_buildObject_Andon"
+ },
+ "Shishiodoshi": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shishiodoshi.T_icon_buildObject_Shishiodoshi"
+ },
+ "Bonsai": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Bonsai.T_icon_buildObject_Bonsai"
+ },
+ "Koro": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Koro.T_icon_buildObject_Koro"
+ },
+ "Seika": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Seika.T_icon_buildObject_Seika"
+ },
+ "Tansu": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Tansu.T_icon_buildObject_Tansu"
+ },
+ "Fudukue": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Fudukue.T_icon_buildObject_Fudukue"
+ },
+ "GlobalPalStorage": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_GlobalPalStorage.T_icon_buildObject_GlobalPalStorage"
+ },
+ "DimensionPalStorage": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DimensionPalStorage.T_icon_buildObject_DimensionPalStorage"
+ },
+ "CompositeDesk": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CompositeDesk.T_icon_buildObject_CompositeDesk"
+ },
+ "PalCage": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PalCage.T_icon_buildObject_PalCage"
+ },
+ "ConservationGroupBannerA": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ConservationGroupBannerA.T_icon_buildObject_ConservationGroupBannerA"
+ },
+ "ConservationGroupBannerB": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ConservationGroupBannerB.T_icon_buildObject_ConservationGroupBannerB"
+ },
+ "LilyQueenStatue": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LilyQueenStatue.T_icon_buildObject_LilyQueenStatue"
+ },
+ "WoodenBarricade": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WoodenBarricade.T_icon_buildObject_WoodenBarricade"
+ },
+ "Hunter_GangFlag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Hunter_GangFlag.T_icon_buildObject_Hunter_GangFlag"
+ },
+ "WallTorch02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WallTorch02.T_icon_buildObject_WallTorch02"
+ },
+ "CandleStand": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CandleStand.T_icon_buildObject_CandleStand"
+ },
+ "FireStand": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FireStand.T_icon_buildObject_FireStand"
+ },
+ "OperatingTable": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_OperatingTable.T_icon_buildObject_OperatingTable"
+ },
+ "CrystalPit": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CrystalPit.T_icon_buildObject_CrystalPit"
+ },
+ "Spa3": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Spa3.T_icon_buildObject_Spa3"
+ },
+ "MultiHatchingPalEgg": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MultiHatchingPalEgg.T_icon_buildObject_MultiHatchingPalEgg"
+ },
+ "FishingPond1": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FishingPond1.T_icon_buildObject_FishingPond1"
+ },
+ "FishingPond2": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FishingPond2.T_icon_buildObject_FishingPond2"
+ },
+ "Wire_Fence": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wire_Fence.T_icon_buildObject_Wire_Fence"
+ },
+ "Wood_Fence": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_Fence.T_icon_buildObject_Wood_Fence"
+ },
+ "Stone_Fence": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_Fence.T_icon_buildObject_Stone_Fence"
+ },
+ "Iron_Fence": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_Fence.T_icon_buildObject_Iron_Fence"
+ },
+ "Glass_Fence": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_Fence.T_icon_buildObject_Glass_Fence"
+ },
+ "JapaneseStyle_Fence": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_Fence.T_icon_buildObject_JapaneseStyle_Fence"
+ },
+ "SF_Fence": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_Fence.T_icon_buildObject_SF_Fence"
+ },
+ "SF_foundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_foundation.T_icon_buildObject_SF_foundation"
+ },
+ "SF_wall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_wall.T_icon_buildObject_SF_wall"
+ },
+ "SF_roof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_roof.T_icon_buildObject_SF_roof"
+ },
+ "SF_stair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_stair.T_icon_buildObject_SF_stair"
+ },
+ "SF_DoorWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_DoorWall.T_icon_buildObject_SF_DoorWall"
+ },
+ "SF_TriangleWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_TriangleWall.T_icon_buildObject_SF_TriangleWall"
+ },
+ "SF_SlantedRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_SlantedRoof.T_icon_buildObject_SF_SlantedRoof"
+ },
+ "SF_WindowWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_WindowWall.T_icon_buildObject_SF_WindowWall"
+ },
+ "SF_Pillars": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_Pillars.T_icon_buildObject_SF_Pillars"
+ },
+ "BaseCampWorkerExtraStation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BaseCampWorkerExtraStation.T_icon_buildObject_BaseCampWorkerExtraStation"
+ },
+ "LanternTop": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_LanternTop.T_icon_buildObject_LanternTop"
+ },
+ "Shrine_Lantern": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shrine_Lantern.T_icon_buildObject_Shrine_Lantern"
+ },
+ "GuardianDogStatue": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_GuardianDogStatue.T_icon_buildObject_GuardianDogStatue"
+ },
+ "Hunter_Flag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Hunter_Flag.T_icon_buildObject_Hunter_Flag"
+ },
+ "Hunter_Banner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Hunter_Banner.T_icon_buildObject_Hunter_Banner"
+ },
+ "Believer_Flag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Believer_Flag.T_icon_buildObject_Believer_Flag"
+ },
+ "Believer_Banner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Believer_Banner.T_icon_buildObject_Believer_Banner"
+ },
+ "FireCult_Flag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FireCult_Flag.T_icon_buildObject_FireCult_Flag"
+ },
+ "FireCult_Banner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FireCult_Banner.T_icon_buildObject_FireCult_Banner"
+ },
+ "Police_Flag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Police_Flag.T_icon_buildObject_Police_Flag"
+ },
+ "Police_Banner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Police_Banner.T_icon_buildObject_Police_Banner"
+ },
+ "Scientist_Flag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Scientist_Flag.T_icon_buildObject_Scientist_Flag"
+ },
+ "Scientist_Banner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Scientist_Banner.T_icon_buildObject_Scientist_Banner"
+ },
+ "Ninja_Flag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ninja_Flag.T_icon_buildObject_Ninja_Flag"
+ },
+ "Ninja_Banner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ninja_Banner.T_icon_buildObject_Ninja_Banner"
+ },
+ "Factory_Hard_04": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Factory_Hard_04.T_icon_buildObject_Factory_Hard_04"
+ },
+ "WeaponFactory_Dirty_04": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WeaponFactory_Dirty_04.T_icon_buildObject_WeaponFactory_Dirty_04"
+ },
+ "SF_Desk": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_Desk.T_icon_buildObject_SF_Desk"
+ },
+ "SF_Chair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_Chair.T_icon_buildObject_SF_Chair"
+ },
+ "YakushimaBoss002_Relic": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_YakushimaBoss002_Relic.T_icon_buildObject_YakushimaBoss002_Relic"
+ },
+ "Wooden_TriangleFoundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_TriangleFoundation.T_icon_buildObject_Wooden_TriangleFoundation"
+ },
+ "Wooden_DiagonalWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_DiagonalWall.T_icon_buildObject_Wooden_DiagonalWall"
+ },
+ "Wooden_TriangleRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_TriangleRoof.T_icon_buildObject_Wooden_TriangleRoof"
+ },
+ "Wooden_TriangleStairsCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_TriangleStairsCorner.T_icon_buildObject_Wooden_TriangleStairsCorner"
+ },
+ "Wood_TriangleWallReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wood_TriangleWallReverse.T_icon_buildObject_Wood_TriangleWallReverse"
+ },
+ "Wooden_WallGate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_WallGate.T_icon_buildObject_Wooden_WallGate"
+ },
+ "Wooden_SlopedRoofCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_SlopedRoofCorner.T_icon_buildObject_Wooden_SlopedRoofCorner"
+ },
+ "Wooden_PyramidRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_PyramidRoof.T_icon_buildObject_Wooden_PyramidRoof"
+ },
+ "Stone_TriangleFoundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_TriangleFoundation.T_icon_buildObject_Stone_TriangleFoundation"
+ },
+ "Stone_DiagonalWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_DiagonalWall.T_icon_buildObject_Stone_DiagonalWall"
+ },
+ "Stone_TriangleRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_TriangleRoof.T_icon_buildObject_Stone_TriangleRoof"
+ },
+ "Stone_TriangleStairsCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_TriangleStairsCorner.T_icon_buildObject_Stone_TriangleStairsCorner"
+ },
+ "Stone_TriangleWallReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_TriangleWallReverse.T_icon_buildObject_Stone_TriangleWallReverse"
+ },
+ "Stone_WallGate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_WallGate.T_icon_buildObject_Stone_WallGate"
+ },
+ "Stone_SlopedRoofCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_SlopedRoofCorner.T_icon_buildObject_Stone_SlopedRoofCorner"
+ },
+ "Stone_PyramidRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_PyramidRoof.T_icon_buildObject_Stone_PyramidRoof"
+ },
+ "Iron_TriangleFoundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_TriangleFoundation.T_icon_buildObject_Iron_TriangleFoundation"
+ },
+ "Iron_DiagonalWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_DiagonalWall.T_icon_buildObject_Iron_DiagonalWall"
+ },
+ "Iron_TriangleRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_TriangleRoof.T_icon_buildObject_Iron_TriangleRoof"
+ },
+ "Iron_TriangleStairsCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_TriangleStairsCorner.T_icon_buildObject_Iron_TriangleStairsCorner"
+ },
+ "Iron_TriangleWallReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_TriangleWallReverse.T_icon_buildObject_Iron_TriangleWallReverse"
+ },
+ "Iron_WallGate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_WallGate.T_icon_buildObject_Iron_WallGate"
+ },
+ "Iron_SlopedRoofCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_SlopedRoofCorner.T_icon_buildObject_Iron_SlopedRoofCorner"
+ },
+ "Iron_PyramidRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_PyramidRoof.T_icon_buildObject_Iron_PyramidRoof"
+ },
+ "Glass_TriangleFoundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_TriangleFoundation.T_icon_buildObject_Glass_TriangleFoundation"
+ },
+ "Glass_DiagonalWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_DiagonalWall.T_icon_buildObject_Glass_DiagonalWall"
+ },
+ "Glass_TriangleRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_TriangleRoof.T_icon_buildObject_Glass_TriangleRoof"
+ },
+ "Glass_TriangleStairsCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_TriangleStairsCorner.T_icon_buildObject_Glass_TriangleStairsCorner"
+ },
+ "Glass_TriangleWallReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_TriangleWallReverse.T_icon_buildObject_Glass_TriangleWallReverse"
+ },
+ "Glass_WallGate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_WallGate.T_icon_buildObject_Glass_WallGate"
+ },
+ "Glass_SlopedRoofCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_SlopedRoofCorner.T_icon_buildObject_Glass_SlopedRoofCorner"
+ },
+ "Glass_PyramidRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_PyramidRoof.T_icon_buildObject_Glass_PyramidRoof"
+ },
+ "JapaneseStyle_TriangleFoundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_TriangleFoundation.T_icon_buildObject_JapaneseStyle_TriangleFoundation"
+ },
+ "JapaneseStyle_DiagonalWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_DiagonalWall.T_icon_buildObject_JapaneseStyle_DiagonalWall"
+ },
+ "JapaneseStyle_TriangleRoof_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_TriangleRoof_01.T_icon_buildObject_JapaneseStyle_TriangleRoof_01"
+ },
+ "JapaneseStyle_TriangleRoof_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_TriangleRoof_02.T_icon_buildObject_JapaneseStyle_TriangleRoof_02"
+ },
+ "JapaneseStyle_TriangleStairsCorner_01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_TriangleStairsCorner.T_icon_buildObject_JapaneseStyle_TriangleStairsCorner"
+ },
+ "JapaneseStyle_TriangleStairsCorner_02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_TriangleStairsCorner.T_icon_buildObject_JapaneseStyle_TriangleStairsCorner"
+ },
+ "JapaneseStyle_TriangleWallReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_TriangleWallReverse.T_icon_buildObject_JapaneseStyle_TriangleWallReverse"
+ },
+ "JapaneseStyle_WallGate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_WallGate.T_icon_buildObject_JapaneseStyle_WallGate"
+ },
+ "JapaneseStyle_SlopedRoofCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_SlopedRoofCorner.T_icon_buildObject_JapaneseStyle_SlopedRoofCorner"
+ },
+ "JapaneseStyle_PyramidRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_PyramidRoof.T_icon_buildObject_JapaneseStyle_PyramidRoof"
+ },
+ "SF_TriangleFoundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_TriangleFoundation.T_icon_buildObject_SF_TriangleFoundation"
+ },
+ "SF_DiagonalWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_DiagonalWall.T_icon_buildObject_SF_DiagonalWall"
+ },
+ "SF_TriangleRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_TriangleRoof.T_icon_buildObject_SF_TriangleRoof"
+ },
+ "SF_TriangleStairsCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_TriangleStairsCorner.T_icon_buildObject_SF_TriangleStairsCorner"
+ },
+ "SF_TriangleWallReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_TriangleWallReverse.T_icon_buildObject_SF_TriangleWallReverse"
+ },
+ "SF_WallGate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_WallGate.T_icon_buildObject_SF_WallGate"
+ },
+ "SF_SlopedRoofCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_SlopedRoofCorner.T_icon_buildObject_SF_SlopedRoofCorner"
+ },
+ "SF_PyramidRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_PyramidRoof.T_icon_buildObject_SF_PyramidRoof"
+ },
+ "FurnitureTree01_Green": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree01_Green.T_icon_buildObject_FurnitureTree01_Green"
+ },
+ "FurnitureTree02_Green": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree02_Green.T_icon_buildObject_FurnitureTree02_Green"
+ },
+ "FurnitureTree03_Green": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree03_Green.T_icon_buildObject_FurnitureTree03_Green"
+ },
+ "FurnitureTree01_Red": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree01_Red.T_icon_buildObject_FurnitureTree01_Red"
+ },
+ "FurnitureTree02_Red": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree02_Red.T_icon_buildObject_FurnitureTree02_Red"
+ },
+ "FurnitureTree03_Red": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree03_Red.T_icon_buildObject_FurnitureTree03_Red"
+ },
+ "FurnitureTree01_Yellow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree01_Yellow.T_icon_buildObject_FurnitureTree01_Yellow"
+ },
+ "FurnitureTree02_Yellow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree02_Yellow.T_icon_buildObject_FurnitureTree02_Yellow"
+ },
+ "FurnitureTree03_Yellow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree03_Yellow.T_icon_buildObject_FurnitureTree03_Yellow"
+ },
+ "FurnitureTree01_Cherry": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree01_Cherry.T_icon_buildObject_FurnitureTree01_Cherry"
+ },
+ "FurnitureTree02_Cherry": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree02_Cherry.T_icon_buildObject_FurnitureTree02_Cherry"
+ },
+ "FurnitureTree03_Cherry": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree03_Cherry.T_icon_buildObject_FurnitureTree03_Cherry"
+ },
+ "FurnitureTree01_Tropical": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree01_Tropical.T_icon_buildObject_FurnitureTree01_Tropical"
+ },
+ "FurnitureTree02_Tropical": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree02_Tropical.T_icon_buildObject_FurnitureTree02_Tropical"
+ },
+ "FurnitureTree03_Tropical": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree03_Tropical.T_icon_buildObject_FurnitureTree03_Tropical"
+ },
+ "FurnitureTree01_Snow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree01_Snow.T_icon_buildObject_FurnitureTree01_Snow"
+ },
+ "FurnitureTree02_Snow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree02_Snow.T_icon_buildObject_FurnitureTree02_Snow"
+ },
+ "FurnitureTree03_Snow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree03_Snow.T_icon_buildObject_FurnitureTree03_Snow"
+ },
+ "FurnitureTree01_Desert": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree01_Desert.T_icon_buildObject_FurnitureTree01_Desert"
+ },
+ "FurnitureTree02_Desert": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree02_Desert.T_icon_buildObject_FurnitureTree02_Desert"
+ },
+ "FurnitureTree03_Desert": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree03_Desert.T_icon_buildObject_FurnitureTree03_Desert"
+ },
+ "FurnitureTree01_Bamboo": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree01_Bamboo.T_icon_buildObject_FurnitureTree01_Bamboo"
+ },
+ "FurnitureTree02_Bamboo": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree02_Bamboo.T_icon_buildObject_FurnitureTree02_Bamboo"
+ },
+ "FurnitureTree03_Bamboo": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureTree03_Bamboo.T_icon_buildObject_FurnitureTree03_Bamboo"
+ },
+ "FurnitureBush01_Green": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureBush01_Green.T_icon_buildObject_FurnitureBush01_Green"
+ },
+ "FurnitureBush01_Yellow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureBush01_Yellow.T_icon_buildObject_FurnitureBush01_Yellow"
+ },
+ "FurnitureBush01_Flower": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureBush01_Flower.T_icon_buildObject_FurnitureBush01_Flower"
+ },
+ "FurnitureBush02_Flower": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureBush02_Flower.T_icon_buildObject_FurnitureBush02_Flower"
+ },
+ "FurnitureBush01_Tropical": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureBush01_Tropical.T_icon_buildObject_FurnitureBush01_Tropical"
+ },
+ "FurnitureBush01_Snow": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureBush01_Snow.T_icon_buildObject_FurnitureBush01_Snow"
+ },
+ "FurnitureStone01": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_FurnitureStone01.T_icon_buildObject_FurnitureStone01"
+ },
+ "TableCircular_Wood_None": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableCircular_Wood_None.T_icon_buildObject_TableCircular_Wood_None"
+ },
+ "TableSquare_Wood_None": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableSquare_Wood_None.T_icon_buildObject_TableSquare_Wood_None"
+ },
+ "JetDragonStatue": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JetDragonStatue.T_icon_buildObject_JetDragonStatue"
+ },
+ "IceHorseStatue": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_IceHorseStatue.T_icon_buildObject_IceHorseStatue"
+ },
+ "ArcadeVideoGame": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ArcadeVideoGame.T_icon_buildObject_ArcadeVideoGame"
+ },
+ "Ancient_foundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_foundation.T_icon_buildObject_Ancient_foundation"
+ },
+ "Ancient_wall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_wall.T_icon_buildObject_Ancient_wall"
+ },
+ "Ancient_roof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_roof.T_icon_buildObject_Ancient_roof"
+ },
+ "Ancient_stair": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_stair.T_icon_buildObject_Ancient_stair"
+ },
+ "Ancient_DoorWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_DoorWall.T_icon_buildObject_Ancient_DoorWall"
+ },
+ "Ancient_TriangleWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_TriangleWall.T_icon_buildObject_Ancient_TriangleWall"
+ },
+ "Ancient_SlantedRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_SlantedRoof.T_icon_buildObject_Ancient_SlantedRoof"
+ },
+ "Ancient_WindowWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_WindowWall.T_icon_buildObject_Ancient_WindowWall"
+ },
+ "Ancient_Pillars": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_Pillars.T_icon_buildObject_Ancient_Pillars"
+ },
+ "Ancient_Fence": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_Fence.T_icon_buildObject_Ancient_Fence"
+ },
+ "Ancient_TriangleFoundation": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_TriangleFoundation.T_icon_buildObject_Ancient_TriangleFoundation"
+ },
+ "Ancient_DiagonalWall": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_DiagonalWall.T_icon_buildObject_Ancient_DiagonalWall"
+ },
+ "Ancient_TriangleRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_TriangleRoof.T_icon_buildObject_Ancient_TriangleRoof"
+ },
+ "Ancient_TriangleStairsCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_TriangleStairsCorner.T_icon_buildObject_Ancient_TriangleStairsCorner"
+ },
+ "Ancient_TriangleWallReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_TriangleWallReverse.T_icon_buildObject_Ancient_TriangleWallReverse"
+ },
+ "Ancient_WallGate": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_WallGate.T_icon_buildObject_Ancient_WallGate"
+ },
+ "Ancient_SlopedRoofCorner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_SlopedRoofCorner.T_icon_buildObject_Ancient_SlopedRoofCorner"
+ },
+ "Ancient_PyramidRoof": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_PyramidRoof.T_icon_buildObject_Ancient_PyramidRoof"
+ },
+ "Ancient_Spa": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_Spa.T_icon_buildObject_Ancient_Spa"
+ },
+ "MultiElectricHatchingPalEggWithBreed": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MultiElectricHatchingPalEggWithBreed.T_icon_buildObject_MultiElectricHatchingPalEggWithBreed"
+ },
+ "Clinic": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Clinic.T_icon_buildObject_Clinic"
+ },
+ "BaseCampWorkHard02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BaseCampWorkHard02.T_icon_buildObject_BaseCampWorkHard02"
+ },
+ "BaseCampWorkHard03": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_BaseCampWorkHard03.T_icon_buildObject_BaseCampWorkHard03"
+ },
+ "AncientWorkBench": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_AncientWorkBench.T_icon_buildObject_AncientWorkBench"
+ },
+ "AncientMultiProduct": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_AncientMultiProduct.T_icon_buildObject_AncientMultiProduct"
+ },
+ "AncientElectricGenerator": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_AncientElectricGenerator.T_icon_buildObject_AncientElectricGenerator"
+ },
+ "AncientCookingStove": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_AncientCookingStove.T_icon_buildObject_AncientCookingStove"
+ },
+ "AncientBlastFurnace": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_AncientBlastFurnace.T_icon_buildObject_AncientBlastFurnace"
+ },
+ "DarkIsland_Banner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DarkIsland_Banner.T_icon_buildObject_DarkIsland_Banner"
+ },
+ "DarkIsland_Flag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_DarkIsland_Flag.T_icon_buildObject_DarkIsland_Flag"
+ },
+ "SkyIsland_Banner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SkyIsland_Banner.T_icon_buildObject_SkyIsland_Banner"
+ },
+ "SkyIsland_Flag": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SkyIsland_Flag.T_icon_buildObject_SkyIsland_Flag"
+ },
+ "SkyIslandOrePit": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SkyIslandOrePit.T_icon_buildObject_SkyIslandOrePit"
+ },
+ "StationDeforest3": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_StationDeforest3.T_icon_buildObject_StationDeforest3"
+ },
+ "Ancient_Clinic": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_Clinic.T_icon_buildObject_Ancient_Clinic"
+ },
+ "Ancient_AirConditioner": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_AirConditioner.T_icon_buildObject_Ancient_AirConditioner"
+ },
+ "AncientFarmBlock": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_AncientFarmBlock.T_icon_buildObject_AncientFarmBlock"
+ },
+ "AncientRelicRecycler": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_AncientRelicRecycler.T_icon_buildObject_AncientRelicRecycler"
+ },
+ "Wooden_SlopedRoofCornerReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Wooden_SlopedRoofCornerReverse.T_icon_buildObject_Wooden_SlopedRoofCornerReverse"
+ },
+ "Stone_SlopedRoofCornerReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Stone_SlopedRoofCornerReverse.T_icon_buildObject_Stone_SlopedRoofCornerReverse"
+ },
+ "Iron_SlopedRoofCornerReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Iron_SlopedRoofCornerReverse.T_icon_buildObject_Iron_SlopedRoofCornerReverse"
+ },
+ "Glass_SlopedRoofCornerReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Glass_SlopedRoofCornerReverse.T_icon_buildObject_Glass_SlopedRoofCornerReverse"
+ },
+ "JapaneseStyle_SlopedRoofCornerReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_JapaneseStyle_SlopedRoofCornerReverse.T_icon_buildObject_JapaneseStyle_SlopedRoofCornerReverse"
+ },
+ "SF_SlopedRoofCornerReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_SF_SlopedRoofCornerReverse.T_icon_buildObject_SF_SlopedRoofCornerReverse"
+ },
+ "Ancient_SlopedRoofCornerReverse": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_SlopedRoofCornerReverse.T_icon_buildObject_Ancient_SlopedRoofCornerReverse"
+ },
+ "Ancient_MedicalPalBed": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ancient_MedicalPalBed.T_icon_buildObject_Ancient_MedicalPalBed"
+ },
+ "OilPump02": {
+  "SoftIcon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_OilPump02.T_icon_buildObject_OilPump02"
+ }
+}

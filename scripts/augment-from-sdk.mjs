@@ -60,6 +60,7 @@ const SDK_ADDED_MARKER = 'current-game field (absent from Jan-2024 dump), verifi
 
 const retyped = [];
 const retypeConflicts = [];
+const widened = [];
 
 /**
  * Observed types beat the bare C++ map everywhere EXCEPT integer-ness: the
@@ -80,6 +81,22 @@ function alignIntegerness(frag, cppType, where) {
   }
   retyped.push(where);
   return { ...frag, type: 'integer' };
+}
+
+/**
+ * Same shape of fix as alignIntegerness, for asset references. The Jan-2024
+ * dump serialized soft pointers as exported-object dicts, so those fields were
+ * typed `object` and rejected the plain asset path the game itself stores (and
+ * that mods actually write). The SDK knows they are soft pointers, so widen to
+ * accept both forms. Widening only ever accepts more, so no mod that validated
+ * before can fail afterwards.
+ */
+function alignAssetReferences(frag, cppType, where) {
+  if (!frag || frag.type !== 'object') return frag;
+  const want = fragForType(cppType);
+  if (!Array.isArray(want.type) || !want.type.includes('string') || !want.type.includes('object')) return frag;
+  widened.push(where);
+  return { ...frag, type: ['object', 'string'] };
 }
 
 const manifest = JSON.parse(readFileSync(join(SCHEMA_DIR, '_manifest.json'), 'utf8'));
@@ -133,7 +150,8 @@ for (const entry of manifest.generatedTables) {
         newProps[f.name] = frag;
       } else {
         // Observed data (with examples) beats a bare type map, except int-ness.
-        newProps[f.name] = alignIntegerness(existing, f.type, `${table}.${f.name}`);
+        newProps[f.name] = alignAssetReferences(
+          alignIntegerness(existing, f.type, `${table}.${f.name}`), f.type, `${table}.${f.name}`);
       }
     } else {
       const frag = fragForType(f.type);
@@ -203,4 +221,5 @@ for (const r of report) {
 const ok = report.filter((r) => r.status === 'ok');
 console.log(`\nAugmented ${ok.length}/${report.length} schemas (SDK ${SDK_TAG}); +${ok.reduce((a, r) => a + r.added, 0)} fields added, -${ok.reduce((a, r) => a + r.removed, 0)} removed.`);
 console.log(`Integer-ness aligned with the headers on ${retyped.length} field(s) (number -> integer).`);
+console.log(`Asset references widened on ${widened.length} field(s) (object -> object|string).`);
 for (const c of retypeConflicts) console.log(`  ! ${c}`);

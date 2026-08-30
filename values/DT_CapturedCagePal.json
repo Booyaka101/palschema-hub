@@ -1,0 +1,975 @@
+{
+ "1": {
+  "FieldName": "Grass",
+  "PalId": "Bastet_Ice",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "2": {
+  "FieldName": "Grass",
+  "PalId": "Hedgehog_Ice",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "3": {
+  "FieldName": "Grass",
+  "PalId": "MopBaby",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "4": {
+  "FieldName": "Grass",
+  "PalId": "Carbunclo",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "5": {
+  "FieldName": "Grass",
+  "PalId": "CuteFox",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "6": {
+  "FieldName": "Grass",
+  "PalId": "CuteMole",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "7": {
+  "FieldName": "Grass",
+  "PalId": "ElecCat",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "8": {
+  "FieldName": "Grass",
+  "PalId": "Penguin",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "9": {
+  "FieldName": "Grass",
+  "PalId": "PinkRabbit",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "10": {
+  "FieldName": "Grass",
+  "PalId": "FlameBuffalo",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "11": {
+  "FieldName": "Grass",
+  "PalId": "RaijinDaughter",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "12": {
+  "FieldName": "Grass",
+  "PalId": "FlowerRabbit",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "13": {
+  "FieldName": "Grass",
+  "PalId": "LittleBriarRose",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "14": {
+  "FieldName": "Grass",
+  "PalId": "LazyCatfish",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "15": {
+  "FieldName": "Grass",
+  "PalId": "ColorfulBird",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "16": {
+  "FieldName": "Grass",
+  "PalId": "LavaGirl",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "17": {
+  "FieldName": "Grass",
+  "PalId": "NightFox",
+  "Weight": 1,
+  "MinLevel": 1,
+  "MaxLevel": 10
+ },
+ "18": {
+  "FieldName": "Grass2",
+  "PalId": "Bastet_Ice",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "19": {
+  "FieldName": "Grass2",
+  "PalId": "BluePlatypus",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "20": {
+  "FieldName": "Grass2",
+  "PalId": "SheepBall",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "21": {
+  "FieldName": "Grass2",
+  "PalId": "Hedgehog_Ice",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "22": {
+  "FieldName": "Grass2",
+  "PalId": "PinkCat",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "23": {
+  "FieldName": "Grass2",
+  "PalId": "Monkey",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "24": {
+  "FieldName": "Grass2",
+  "PalId": "LittleBriarRose",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "25": {
+  "FieldName": "Grass2",
+  "PalId": "PinkRabbit",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "26": {
+  "FieldName": "Grass2",
+  "PalId": "FlameBuffalo",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "27": {
+  "FieldName": "Grass2",
+  "PalId": "RaijinDaughter",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "28": {
+  "FieldName": "Grass2",
+  "PalId": "FlowerRabbit",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "29": {
+  "FieldName": "Grass2",
+  "PalId": "LittleBriarRose",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "30": {
+  "FieldName": "Grass2",
+  "PalId": "LazyCatfish",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "31": {
+  "FieldName": "Grass2",
+  "PalId": "ColorfulBird",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "32": {
+  "FieldName": "Grass2",
+  "PalId": "LavaGirl",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "33": {
+  "FieldName": "Grass2",
+  "PalId": "NightFox",
+  "Weight": 1,
+  "MinLevel": 10,
+  "MaxLevel": 20
+ },
+ "34": {
+  "FieldName": "Forest1",
+  "PalId": "FlowerDinosaur_Electric",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "35": {
+  "FieldName": "Forest1",
+  "PalId": "GrassPanda_Electric",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "36": {
+  "FieldName": "Forest1",
+  "PalId": "ChickenPal",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "37": {
+  "FieldName": "Forest1",
+  "PalId": "Ganesha",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "38": {
+  "FieldName": "Forest1",
+  "PalId": "CuteFox",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "39": {
+  "FieldName": "Forest1",
+  "PalId": "Boar",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "40": {
+  "FieldName": "Forest1",
+  "PalId": "Bastet",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "41": {
+  "FieldName": "Forest1",
+  "PalId": "PinkRabbit",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "42": {
+  "FieldName": "Forest1",
+  "PalId": "FlameBuffalo",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "43": {
+  "FieldName": "Forest1",
+  "PalId": "RaijinDaughter",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "44": {
+  "FieldName": "Forest1",
+  "PalId": "FlowerRabbit",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "45": {
+  "FieldName": "Forest1",
+  "PalId": "LittleBriarRose",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "46": {
+  "FieldName": "Forest1",
+  "PalId": "LazyCatfish",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "47": {
+  "FieldName": "Forest1",
+  "PalId": "ColorfulBird",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "48": {
+  "FieldName": "Forest1",
+  "PalId": "LavaGirl",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "49": {
+  "FieldName": "Forest1",
+  "PalId": "NightFox",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 25
+ },
+ "50": {
+  "FieldName": "Volcano1",
+  "PalId": "Kelpie_Fire",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "51": {
+  "FieldName": "Volcano1",
+  "PalId": "SharkKid_Fire",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "52": {
+  "FieldName": "Volcano1",
+  "PalId": "RaijinDaughter",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "53": {
+  "FieldName": "Volcano1",
+  "PalId": "RaijinDaughter_Water",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "54": {
+  "FieldName": "Volcano1",
+  "PalId": "LazyCatfish",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "55": {
+  "FieldName": "Volcano1",
+  "PalId": "ColorfulBird",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "56": {
+  "FieldName": "Volcano1",
+  "PalId": "LavaGirl",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "57": {
+  "FieldName": "Volcano1",
+  "PalId": "FlameBambi",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "58": {
+  "FieldName": "Volcano1",
+  "PalId": "FoxMage",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "59": {
+  "FieldName": "Desert1",
+  "PalId": "ThunderDog",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "60": {
+  "FieldName": "Desert1",
+  "PalId": "CuteMole",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "61": {
+  "FieldName": "Desert1",
+  "PalId": "WindChimes",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "62": {
+  "FieldName": "Desert1",
+  "PalId": "RaijinDaughter",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "63": {
+  "FieldName": "Desert1",
+  "PalId": "FlowerDinosaur_Electric",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "64": {
+  "FieldName": "Desert1",
+  "PalId": "GrassPanda_Electric",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "65": {
+  "FieldName": "Desert1",
+  "PalId": "LazyCatfish",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "66": {
+  "FieldName": "Desert1",
+  "PalId": "ColorfulBird",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "67": {
+  "FieldName": "Desert1",
+  "PalId": "PurpleSpider",
+  "Weight": 1,
+  "MinLevel": 20,
+  "MaxLevel": 30
+ },
+ "68": {
+  "FieldName": "Snow1",
+  "PalId": "Bastet_Ice",
+  "Weight": 1,
+  "MinLevel": 25,
+  "MaxLevel": 30
+ },
+ "69": {
+  "FieldName": "Snow1",
+  "PalId": "WhiteMoth",
+  "Weight": 1,
+  "MinLevel": 25,
+  "MaxLevel": 30
+ },
+ "70": {
+  "FieldName": "Snow1",
+  "PalId": "WeaselDragon",
+  "Weight": 1,
+  "MinLevel": 25,
+  "MaxLevel": 30
+ },
+ "71": {
+  "FieldName": "Snow1",
+  "PalId": "Penguin",
+  "Weight": 1,
+  "MinLevel": 25,
+  "MaxLevel": 30
+ },
+ "72": {
+  "FieldName": "Snow1",
+  "PalId": "WindChimes_Ice",
+  "Weight": 1,
+  "MinLevel": 25,
+  "MaxLevel": 30
+ },
+ "73": {
+  "FieldName": "Snow1",
+  "PalId": "BerryGoat",
+  "Weight": 1,
+  "MinLevel": 25,
+  "MaxLevel": 30
+ },
+ "74": {
+  "FieldName": "Snow1",
+  "PalId": "Mutant",
+  "Weight": 1,
+  "MinLevel": 25,
+  "MaxLevel": 30
+ },
+ "75": {
+  "FieldName": "Snow1",
+  "PalId": "DarkAlien",
+  "Weight": 1,
+  "MinLevel": 25,
+  "MaxLevel": 30
+ },
+ "76": {
+  "FieldName": "Sakurajima1",
+  "PalId": "SmallArmadillo",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "77": {
+  "FieldName": "Sakurajima1",
+  "PalId": "GuardianDog",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "78": {
+  "FieldName": "Sakurajima1",
+  "PalId": "FoxMage_Dark",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "79": {
+  "FieldName": "Sakurajima1",
+  "PalId": "WeaselDragon_Fire",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "80": {
+  "FieldName": "Sakurajima1",
+  "PalId": "FlowerRabbit",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "81": {
+  "FieldName": "Sakurajima1",
+  "PalId": "PinkRabbit",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "82": {
+  "FieldName": "Sakurajima1",
+  "PalId": "FlowerDinosaur",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "83": {
+  "FieldName": "Sakurajima1",
+  "PalId": "LeafPrincess",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "84": {
+  "FieldName": "Sakurajima1",
+  "PalId": "NegativeKoala",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "85": {
+  "FieldName": "Sakurajima1",
+  "PalId": "ColorfulBird",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "86": {
+  "FieldName": "Sakurajima1",
+  "PalId": "MushroomDragon",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "87": {
+  "FieldName": "Sakurajima1",
+  "PalId": "KendoFrog",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "88": {
+  "FieldName": "Sakurajima1",
+  "PalId": "FlowerDoll",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "89": {
+  "FieldName": "Sakurajima1",
+  "PalId": "CatMage_Fire",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 35
+ },
+ "90": {
+  "FieldName": "Viking1",
+  "PalId": "BerryGoat_Dark",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "91": {
+  "FieldName": "Viking1",
+  "PalId": "RaijinDaughter_Water",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "92": {
+  "FieldName": "Viking1",
+  "PalId": "PinkRabbit_Grass",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "93": {
+  "FieldName": "Viking1",
+  "PalId": "BlackPuppy",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "94": {
+  "FieldName": "Viking1",
+  "PalId": "Kitsunebi_Ice",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "95": {
+  "FieldName": "Viking1",
+  "PalId": "BlueberryFairy",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "96": {
+  "FieldName": "Viking1",
+  "PalId": "BadCatgirl",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "97": {
+  "FieldName": "Viking1",
+  "PalId": "LeafPrincess",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "98": {
+  "FieldName": "Viking1",
+  "PalId": "Werewolf_Ice",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "99": {
+  "FieldName": "Viking1",
+  "PalId": "HerculesBeetle_Ground",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "100": {
+  "FieldName": "Viking1",
+  "PalId": "GrassPanda_Electric",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "101": {
+  "FieldName": "Viking1",
+  "PalId": "LizardMan_Fire",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "102": {
+  "FieldName": "Viking1",
+  "PalId": "RobinHood_Ground",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "103": {
+  "FieldName": "Viking1",
+  "PalId": "Gorilla_Ground",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "104": {
+  "FieldName": "Viking1",
+  "PalId": "WeaselDragon_Fire",
+  "Weight": 1,
+  "MinLevel": 30,
+  "MaxLevel": 40
+ },
+ "105": {
+  "FieldName": "SeaBase_Grass_1",
+  "PalId": "Penguin",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 20
+ },
+ "106": {
+  "FieldName": "SeaBase_Grass_1",
+  "PalId": "Kelpie",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 20
+ },
+ "107": {
+  "FieldName": "SeaBase_Grass_1",
+  "PalId": "BluePlatypus",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 20
+ },
+ "108": {
+  "FieldName": "SeaBase_Grass_1",
+  "PalId": "FlyingManta",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 20
+ },
+ "109": {
+  "FieldName": "SeaBase_Grass_1",
+  "PalId": "Ganesha",
+  "Weight": 1,
+  "MinLevel": 15,
+  "MaxLevel": 20
+ },
+ "110": {
+  "FieldName": "SeaBase_Desert_1",
+  "PalId": "FlyingManta_Thunder",
+  "Weight": 1,
+  "MinLevel": 50,
+  "MaxLevel": 55
+ },
+ "111": {
+  "FieldName": "SeaBase_Desert_1",
+  "PalId": "NegativeOctopus_Neutral",
+  "Weight": 1,
+  "MinLevel": 50,
+  "MaxLevel": 55
+ },
+ "112": {
+  "FieldName": "SeaBase_Desert_1",
+  "PalId": "RaijinDaughter",
+  "Weight": 1,
+  "MinLevel": 50,
+  "MaxLevel": 55
+ },
+ "113": {
+  "FieldName": "SeaBase_Desert_1",
+  "PalId": "RobinHood_Ground",
+  "Weight": 1,
+  "MinLevel": 50,
+  "MaxLevel": 55
+ },
+ "114": {
+  "FieldName": "SeaBase_Desert_1",
+  "PalId": "Penguin_Electric",
+  "Weight": 1,
+  "MinLevel": 50,
+  "MaxLevel": 55
+ },
+ "115": {
+  "FieldName": "SeaBase_Volcano_1",
+  "PalId": "LazyCatfish",
+  "Weight": 1,
+  "MinLevel": 45,
+  "MaxLevel": 50
+ },
+ "116": {
+  "FieldName": "SeaBase_Volcano_1",
+  "PalId": "TentacleTurtle",
+  "Weight": 1,
+  "MinLevel": 45,
+  "MaxLevel": 50
+ },
+ "117": {
+  "FieldName": "SeaBase_Volcano_1",
+  "PalId": "BluePlatypus_Fire",
+  "Weight": 1,
+  "MinLevel": 45,
+  "MaxLevel": 50
+ },
+ "118": {
+  "FieldName": "SeaBase_Volcano_1",
+  "PalId": "SharkKid_Fire",
+  "Weight": 1,
+  "MinLevel": 45,
+  "MaxLevel": 50
+ },
+ "119": {
+  "FieldName": "SeaBase_Volcano_1",
+  "PalId": "LavaGirl",
+  "Weight": 1,
+  "MinLevel": 45,
+  "MaxLevel": 50
+ },
+ "120": {
+  "FieldName": "SeaBase_Snow_1",
+  "PalId": "IceSeal",
+  "Weight": 1,
+  "MinLevel": 55,
+  "MaxLevel": 60
+ },
+ "121": {
+  "FieldName": "SeaBase_Snow_1",
+  "PalId": "IceCrocodile",
+  "Weight": 1,
+  "MinLevel": 55,
+  "MaxLevel": 60
+ },
+ "122": {
+  "FieldName": "SeaBase_Snow_1",
+  "PalId": "SnowPeafowl",
+  "Weight": 1,
+  "MinLevel": 55,
+  "MaxLevel": 60
+ },
+ "123": {
+  "FieldName": "SeaBase_Snow_1",
+  "PalId": "GhostBeast",
+  "Weight": 1,
+  "MinLevel": 55,
+  "MaxLevel": 60
+ },
+ "124": {
+  "FieldName": "SeaBase_Snow_1",
+  "PalId": "WindChimes_Ice",
+  "Weight": 1,
+  "MinLevel": 55,
+  "MaxLevel": 60
+ },
+ "125": {
+  "FieldName": "SeaBase_Sakurajima_1",
+  "PalId": "LazyCatfish_Gold",
+  "Weight": 1,
+  "MinLevel": 60,
+  "MaxLevel": 65
+ },
+ "126": {
+  "FieldName": "SeaBase_Sakurajima_1",
+  "PalId": "TentacleTurtle_Ground",
+  "Weight": 1,
+  "MinLevel": 60,
+  "MaxLevel": 65
+ },
+ "127": {
+  "FieldName": "SeaBase_Sakurajima_1",
+  "PalId": "KendoFrog",
+  "Weight": 1,
+  "MinLevel": 60,
+  "MaxLevel": 65
+ },
+ "128": {
+  "FieldName": "SeaBase_Sakurajima_1",
+  "PalId": "LeafPrincess",
+  "Weight": 1,
+  "MinLevel": 60,
+  "MaxLevel": 65
+ },
+ "129": {
+  "FieldName": "SeaBase_Sakurajima_1",
+  "PalId": "GuardianDog",
+  "Weight": 1,
+  "MinLevel": 60,
+  "MaxLevel": 65
+ },
+ "130": {
+  "FieldName": "SeaBase_Yamijima_1",
+  "PalId": "OctopusGirl",
+  "Weight": 1,
+  "MinLevel": 75,
+  "MaxLevel": 80
+ },
+ "131": {
+  "FieldName": "SeaBase_Yamijima_1",
+  "PalId": "GhostAnglerfish",
+  "Weight": 1,
+  "MinLevel": 75,
+  "MaxLevel": 80
+ },
+ "132": {
+  "FieldName": "SeaBase_Yamijima_1",
+  "PalId": "JellyfishGhost",
+  "Weight": 1,
+  "MinLevel": 75,
+  "MaxLevel": 80
+ },
+ "133": {
+  "FieldName": "SeaBase_Yamijima_1",
+  "PalId": "JellyfishFairy",
+  "Weight": 1,
+  "MinLevel": 75,
+  "MaxLevel": 80
+ },
+ "134": {
+  "FieldName": "SeaBase_Yamijima_1",
+  "PalId": "KendoFrog_Dark",
+  "Weight": 1,
+  "MinLevel": 75,
+  "MaxLevel": 80
+ },
+ "135": {
+  "FieldName": "Skyisland1",
+  "PalId": "ElecPomeranian",
+  "Weight": 1,
+  "MinLevel": 65,
+  "MaxLevel": 69
+ },
+ "136": {
+  "FieldName": "Skyisland1",
+  "PalId": "SleeveRabbit",
+  "Weight": 1,
+  "MinLevel": 65,
+  "MaxLevel": 69
+ },
+ "137": {
+  "FieldName": "Skyisland1",
+  "PalId": "PandaGirl",
+  "Weight": 1,
+  "MinLevel": 65,
+  "MaxLevel": 69
+ },
+ "138": {
+  "FieldName": "Skyisland1",
+  "PalId": "FoxExorcist",
+  "Weight": 1,
+  "MinLevel": 65,
+  "MaxLevel": 69
+ },
+ "139": {
+  "FieldName": "Skyisland1",
+  "PalId": "RedFlowerBird",
+  "Weight": 1,
+  "MinLevel": 65,
+  "MaxLevel": 69
+ }
+}

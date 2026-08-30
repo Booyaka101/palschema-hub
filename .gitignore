@@ -5,3 +5,6 @@ node_modules/
 # CLI build output is committed so the repo runs after clone without a build step.
 # (npm publish rebuilds it via prepublishOnly.)
 .cache/
+
+# Rust build output for tools/ooz-decompress (built on demand by npm run extract).
+tools/**/target/

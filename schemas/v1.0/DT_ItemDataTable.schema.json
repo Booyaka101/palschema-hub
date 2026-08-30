@@ -183,7 +183,10 @@
       "description": "Example: \"BP_Item_CoinGold\""
     },
     "VisualBlueprintClassSoft": {
-      "type": "object",
+      "type": [
+        "object",
+        "string"
+      ],
       "properties": {
         "AssetPathName": {
           "type": "string",

@@ -1,0 +1,3623 @@
+{
+ "Stone": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Stone.T_itemicon_Material_Stone"
+ },
+ "Wood": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Wood.T_itemicon_Material_Wood"
+ },
+ "Claws": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Claws.T_itemicon_Material_Claws"
+ },
+ "Fang": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Fang.T_itemicon_Material_Fang"
+ },
+ "AnimalSkin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_AnimalSkin.T_itemicon_Material_AnimalSkin"
+ },
+ "LeatherClothing": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_ClothArmor.T_itemicon_Armor_ClothArmor"
+ },
+ "Meat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat.T_itemicon_Food_Meat"
+ },
+ "GrilledMeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_GrilledMeat.T_itemicon_Food_GrilledMeat"
+ },
+ "CopperOre": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_CopperOre.T_itemicon_Material_CopperOre"
+ },
+ "CopperIngot": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_CopperIngot.T_itemicon_Material_CopperIngot"
+ },
+ "Bandage": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_Bandage_Good.T_itemicon_Consume_Bandage_Good"
+ },
+ "AssaultRifle_Default": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_AssaultRifle_Default1.T_itemicon_Weapon_AssaultRifle_Default1"
+ },
+ "CapturePrism": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere.T_itemicon_PalSphere"
+ },
+ "ShotGun_Default": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_PumpActionShotgun.T_itemicon_Weapon_PumpActionShotgun"
+ },
+ "Launcher_Default": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Launcher_Default.T_itemicon_Weapon_Launcher_Default"
+ },
+ "HandGun_Default": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_HandGun_Default.T_itemicon_Weapon_HandGun_Default"
+ },
+ "WoodcutterAxe": {
+  "Icon": "/Game/Others/CraftResourcesIcons/Textures/Tex_tools_09.Tex_tools_09"
+ },
+ "StonePickaxe": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Pickaxe_Tier_00.T_itemicon_Weapon_Pickaxe_Tier_00"
+ },
+ "Seed": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_Seed_Tmp.T_itemicon_Consume_Seed_Tmp"
+ },
+ "FarmCrop": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FarmCrop_Tmp.T_itemicon_Consume_FarmCrop_Tmp"
+ },
+ "Scroll": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_PiratesIconsPack/Tex_pirates_23_t.Tex_pirates_23_t"
+ },
+ "Wool": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Wool.T_itemicon_Material_Wool"
+ },
+ "Cloth": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Cloth.T_itemicon_Material_Cloth"
+ },
+ "Pilot_light": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_PrehistoricAgeIcons/Tex_PrehistoricIcon_04_t.Tex_PrehistoricIcon_04_t"
+ },
+ "ScaleClothing": {
+  "Icon": "/Game/Others/Survival_Icons_Pack/Textures/Tex_clothes_27.Tex_clothes_27"
+ },
+ "Sharkkid_Scale": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_NecromancerIcons/Tex_NecromancerIcons_44_t.Tex_NecromancerIcons_44_t"
+ },
+ "IronIngot": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_IronIngot.T_itemicon_Material_IronIngot"
+ },
+ "IronOre": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_MiningIcons/Tex_MiningIcons_97_t.Tex_MiningIcons_97_t"
+ },
+ "LeatherHat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_ClothHat.T_itemicon_Armor_ClothHat"
+ },
+ "ScaleHelm": {
+  "Icon": "/Game/Others/Survival_Icons_Pack/Textures/Tex_clothes_23.Tex_clothes_23"
+ },
+ "ClawsPendant": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_JewelryIcons/Tex_05_ff_t.Tex_05_ff_t"
+ },
+ "FangNecklace": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_JewelryIcons/Tex_02_t.Tex_02_t"
+ },
+ "Wheat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Wheat.T_itemicon_Food_Wheat"
+ },
+ "Tomato": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Tomato.T_itemicon_Food_Tomato"
+ },
+ "Rope": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_CaptureRope.T_itemicon_Weapon_CaptureRope"
+ },
+ "WaterBucket": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_WaterBucket.T_itemicon_Consume_WaterBucket"
+ },
+ "Bat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Bat.T_itemicon_Weapon_Bat"
+ },
+ "Sword": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Sword.T_itemicon_Weapon_Sword"
+ },
+ "StealIngot": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_StealIngot.T_itemicon_Material_StealIngot"
+ },
+ "Meat2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat2.T_itemicon_Food_Meat2"
+ },
+ "FishMeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_FishMeat.T_itemicon_Food_FishMeat"
+ },
+ "Berries": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Berries.T_itemicon_Food_Berries"
+ },
+ "Herbs": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Herbs.T_itemicon_Food_Herbs"
+ },
+ "Claws2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Claws2.T_itemicon_Material_Claws2"
+ },
+ "Fang2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Fang2.T_itemicon_Material_Fang2"
+ },
+ "AnimalSkin2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_AnimalSkin2.T_itemicon_Material_AnimalSkin2"
+ },
+ "Leather": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Leather.T_itemicon_Material_Leather"
+ },
+ "Leather2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Leather2.T_itemicon_Material_Leather2"
+ },
+ "Scales": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Scales.T_itemicon_Material_Scales"
+ },
+ "Scales2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Scales2.T_itemicon_Material_Scales2"
+ },
+ "GunPowder": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Gunpowder.T_itemicon_Material_Gunpowder"
+ },
+ "GunPowder2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Gunpowder2.T_itemicon_Material_Gunpowder2"
+ },
+ "ElectronicCircuit": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_ElectronicCircuit.T_itemicon_Material_ElectronicCircuit"
+ },
+ "MachineParts": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_MachineParts.T_itemicon_Material_MachineParts"
+ },
+ "Bow3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Bow.T_itemicon_Weapon_Bow"
+ },
+ "Arrow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_Arrow.T_itemicon_Ammo_Arrow"
+ },
+ "Flint": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Flint.T_itemicon_Material_Flint"
+ },
+ "Coal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Coal.T_itemicon_Material_Coal"
+ },
+ "Charcoal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Charcoal.T_itemicon_Material_Charcoal"
+ },
+ "Fiber": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Fiber.T_itemicon_Material_Fiber"
+ },
+ "SmallBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_SmallBullet.T_itemicon_Ammo_SmallBullet"
+ },
+ "LargeBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_RifleBullet.T_itemicon_Ammo_RifleBullet"
+ },
+ "ExplosiveBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_ExplosiveBullet.T_itemicon_Ammo_ExplosiveBullet"
+ },
+ "LaserBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_LaserBullet.T_itemicon_Ammo_LaserBullet"
+ },
+ "Pickaxe_Default": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Pickaxe_Tier_00.T_itemicon_Weapon_Pickaxe_Tier_00"
+ },
+ "Axe_Default": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Axe_Tier_00.T_itemicon_Weapon_Axe_Tier_00"
+ },
+ "Pan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Pan.T_itemicon_Food_Pan"
+ },
+ "MeatDish": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_BarbarianIcons/Tex_Barbarian_icons_102_b.Tex_Barbarian_icons_102_b"
+ },
+ "FishDish": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_BarbarianIcons/Tex_Barbarian_icons_105_b.Tex_Barbarian_icons_105_b"
+ },
+ "Dish": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_BarbarianIcons/Tex_Barbarian_icons_106_b.Tex_Barbarian_icons_106_b"
+ },
+ "Clothing": {
+  "Icon": "/Game/Others/Survival_Icons_Pack/Textures/Tex_clothes_02.Tex_clothes_02"
+ },
+ "Helmet": {
+  "Icon": "/Game/Others/Survival_Icons_Pack/Textures/Tex_clothes_20_b.Tex_clothes_20_b"
+ },
+ "CrudeOil": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_CrudeOil.T_itemicon_Material_CrudeOil"
+ },
+ "Plastic": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Plastic.T_itemicon_Material_Plastic"
+ },
+ "Computer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Computer.T_itemicon_Material_Computer"
+ },
+ "Cabbage": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_FruitAndVegetablesIcons/Tex_Cabbige_01.Tex_Cabbige_01"
+ },
+ "Grape": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Grape.T_itemicon_Food_Grape"
+ },
+ "Hop": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Hop.T_itemicon_Food_Hop"
+ },
+ "Egg": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Egg.T_itemicon_Food_Egg"
+ },
+ "Milk": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Milk.T_itemicon_Food_Milk"
+ },
+ "Sandwich": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Sandwich.T_itemicon_Food_Sandwich"
+ },
+ "CornSoup": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_CornSoup.T_itemicon_Food_CornSoup"
+ },
+ "Stew": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Stew.T_itemicon_Food_Stew"
+ },
+ "Hamburger": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Hamburger.T_itemicon_Food_Hamburger"
+ },
+ "GrilledFish": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_GrilledFish.T_itemicon_Food_GrilledFish"
+ },
+ "SeafoodSoup": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_SeafoodSoup.T_itemicon_Food_SeafoodSoup"
+ },
+ "FriedEggs": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_FriedEggs.T_itemicon_Food_FriedEggs"
+ },
+ "LuxuryOmelette": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_LuxuryOmelette.T_itemicon_Food_LuxuryOmelette"
+ },
+ "Beer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Beer.T_itemicon_Food_Beer"
+ },
+ "Wine": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Wine.T_itemicon_Food_Wine"
+ },
+ "Antibiotic": {
+  "Icon": "/Game/Others/Survival_Icons_Pack/Textures/Tex_medicines_05.Tex_medicines_05"
+ },
+ "FishingRod": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_FishingIcons/Tex_fishing_95_t.Tex_fishing_95_t"
+ },
+ "Torch": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Torch.T_itemicon_Weapon_Torch"
+ },
+ "Glider_Old": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Glider_Glider_Old.T_itemicon_Glider_Glider_Old"
+ },
+ "Glider_Good": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Glider_Glider_Good.T_itemicon_Glider_Glider_Good"
+ },
+ "Glider_Super": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Glider_Glider_Super.T_itemicon_Glider_Glider_Super"
+ },
+ "Glider_Legendary": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Glider_Glider_Legendary.T_itemicon_Glider_Glider_Legendary"
+ },
+ "LightzHelmet": {
+  "Icon": "/Game/Others/Survival_Icons_Pack/Textures/Tex_clothes_19.Tex_clothes_19"
+ },
+ "GasMask": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_GasMask.T_itemicon_Accessory_GasMask"
+ },
+ "NightVisionGoggles": {
+  "Icon": "/Game/Others/Survival_Icons_Pack/Textures/Tex_clothes_24.Tex_clothes_24"
+ },
+ "Debug_Handgun_Poison": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_poison.T_Icon_hund_gun_UI_debug_poison"
+ },
+ "Debug_Handgun_Burn": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_burn.T_Icon_hund_gun_UI_debug_burn"
+ },
+ "Debug_Handgun_Wetness": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_wetness.T_Icon_hund_gun_UI_debug_wetness"
+ },
+ "Debug_Handgun_Freeze": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_freeze.T_Icon_hund_gun_UI_debug_freeze"
+ },
+ "Debug_Handgun_Electrical": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_electrical.T_Icon_hund_gun_UI_debug_electrical"
+ },
+ "Debug_Handgun_Muddy": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_muddy.T_Icon_hund_gun_UI_debug_muddy"
+ },
+ "Debug_Handgun_IvyCling": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_ivyCling.T_Icon_hund_gun_UI_debug_ivyCling"
+ },
+ "Debug_Handgun_Darkness": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_darkness.T_Icon_hund_gun_UI_debug_darkness"
+ },
+ "Debug_Handgun_Stun": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_hund_gun_UI_debug_stun.T_Icon_hund_gun_UI_debug_stun"
+ },
+ "Debug_Handgun_AttackUp": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_assault_rifle_UI_debug_AttackUP.T_Icon_assault_rifle_UI_debug_AttackUP"
+ },
+ "Debug_Handgun_DefenseUp": {
+  "Icon": "/Game/Pal/Texture/Item/Weapon/debug/T_Icon_assault_rifle_UI_debug_DefenseUP.T_Icon_assault_rifle_UI_debug_DefenseUP"
+ },
+ "Unko": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Unko_S.T_itemicon_Material_Unko_S"
+ },
+ "Potato": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Potato.T_itemicon_Food_Potato"
+ },
+ "Corn": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Corn.T_itemicon_Food_Corn"
+ },
+ "Pumpkin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Pumpkin.T_itemicon_Food_Pumpkin"
+ },
+ "Money": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Money.T_itemicon_Material_Money"
+ },
+ "PalEgg_Normal_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg.T_itemicon_Material_PalEgg"
+ },
+ "Relic": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic.T_itemicon_Relic"
+ },
+ "heart": {
+  "Icon": "/Game/Others/VFX_41/Texture/T_Heart01.T_Heart01"
+ },
+ "Eemerald": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Eemerald.T_itemicon_Material_Eemerald"
+ },
+ "Ruby": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Ruby.T_itemicon_Material_Ruby"
+ },
+ "Sapphire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Sapphire.T_itemicon_Material_Sapphire"
+ },
+ "Diamond": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Diamond.T_itemicon_Material_Diamond"
+ },
+ "Bed": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PlayerBed_02.T_icon_buildObject_PlayerBed_02"
+ },
+ "Palbed": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicalPalBed_02.T_icon_buildObject_MedicalPalBed_02"
+ },
+ "Stonepit": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_StonePit.T_icon_buildObject_StonePit"
+ },
+ "StationDeforest2": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_StationDeforest2.T_icon_buildObject_StationDeforest2"
+ },
+ "Campfire": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CampFire.T_icon_buildObject_CampFire"
+ },
+ "CookingStove": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CookingStove.T_icon_buildObject_CookingStove"
+ },
+ "WeaponFactry": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WeaponFactory_Clean_01.T_icon_buildObject_WeaponFactory_Clean_01"
+ },
+ "PalFoodBox": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PalFoodBox.T_icon_buildObject_PalFoodBox"
+ },
+ "Shield_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Shield_01.T_itemicon_Armor_Shield_01"
+ },
+ "BowGun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_BowGun.T_itemicon_Weapon_BowGun"
+ },
+ "Bow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_WeakerBow.T_itemicon_Weapon_WeakerBow"
+ },
+ "RecoverOtomo": {
+  "Icon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_RecoverOtomo.T_icon_buildObject_RecoverOtomo"
+ },
+ "Chest": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ItemChest.T_icon_buildObject_ItemChest"
+ },
+ "PalSphere_Mega": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Mega.T_itemicon_PalSphere_Mega"
+ },
+ "PalSphere_Giga": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Giga.T_itemicon_PalSphere_Giga"
+ },
+ "PalSphere_Master": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Master.T_itemicon_PalSphere_Master"
+ },
+ "farm": {
+  "Icon": "/Game/Pal/Texture/BuildObject/Icon/T_icon_buildObject_FarmBlock.T_icon_buildObject_FarmBlock"
+ },
+ "Medicines": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Medicines.T_itemicon_Food_Medicines"
+ },
+ "LuxuryMedicines": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_LuxuryMedicines.T_itemicon_Food_LuxuryMedicines"
+ },
+ "MindControlDrug": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_MindControlDrug.T_itemicon_Food_MindControlDrug"
+ },
+ "Pal_Growth_Stone": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_BarbarianIcons/Tex_Barbarian_icons_79_t.Tex_Barbarian_icons_79_t"
+ },
+ "PalSphere_Legend": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Legend.T_itemicon_PalSphere_Legend"
+ },
+ "WorkBench": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_WorkBench.T_icon_buildObject_WorkBench"
+ },
+ "WazaTestIcon": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_BarbarianIcons/Tex_Barbarian_icons_79_t.Tex_Barbarian_icons_79_t"
+ },
+ "Mushroom": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Mushroom.T_itemicon_Food_Mushroom"
+ },
+ "PalOil": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalOil.T_itemicon_Material_PalOil"
+ },
+ "Honey": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Honey.T_itemicon_Food_Honey"
+ },
+ "JamBun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_JamBun.T_itemicon_Food_JamBun"
+ },
+ "Salad": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Salad.T_itemicon_Food_Salad"
+ },
+ "Omelet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Omelet.T_itemicon_Food_Omelet"
+ },
+ "Carbonara": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Carbonara.T_itemicon_Food_Carbonara"
+ },
+ "BLT": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BLT.T_itemicon_Food_BLT"
+ },
+ "CheeseBurger": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_CheeseBurger.T_itemicon_Food_CheeseBurger"
+ },
+ "Pizza": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Pizza.T_itemicon_Food_Pizza"
+ },
+ "Quartz": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Quartz.T_itemicon_Material_Quartz"
+ },
+ "Polymer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Polymer.T_itemicon_Material_Polymer"
+ },
+ "Sulfur": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Sulfur.T_itemicon_Material_Sulfur"
+ },
+ "ElectricOrgan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_ElectricOrgan.T_itemicon_Material_ElectricOrgan"
+ },
+ "Bone": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Bone.T_itemicon_Material_Bone"
+ },
+ "Sand": {
+  "Icon": "/Game/Others/FairytaleIconsMegapack/Textures/Tex_BagsAndBoxesIcons/Tex_BagsAndBoxes_86_t.Tex_BagsAndBoxes_86_t"
+ },
+ "Silicon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Silicon.T_itemicon_Material_Silicon"
+ },
+ "Cement": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Cement.T_itemicon_Material_Cement"
+ },
+ "CarbonFiber": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_CarbonFiber.T_itemicon_Material_CarbonFiber"
+ },
+ "Horn": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Horn.T_itemicon_Material_Horn"
+ },
+ "RepairKit": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_RepairKit.T_itemicon_Material_RepairKit"
+ },
+ "Chest2": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ItemChest_02.T_icon_buildObject_ItemChest_02"
+ },
+ "Chest3": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_ItemChest_03.T_icon_buildObject_ItemChest_03"
+ },
+ "Heater": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_HeaterMedieval.T_icon_buildObject_HeaterMedieval"
+ },
+ "Cooler": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_CoolerMedieval.T_icon_buildObject_CoolerMedieval"
+ },
+ "Spa": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Spa.T_icon_buildObject_Spa"
+ },
+ "ElecBaton": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_ElecBaton.T_itemicon_Weapon_ElecBaton"
+ },
+ "Palbed2": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_MedicalPalBed_03.T_icon_buildObject_MedicalPalBed_03"
+ },
+ "Bed2": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_PlayerBed_03.T_icon_buildObject_PlayerBed_03"
+ },
+ "Spear": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Spear_Tier_00.T_itemicon_Weapon_Spear_Tier_00"
+ },
+ "PalSphere_Tera": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Tera.T_itemicon_PalSphere_Tera"
+ },
+ "Bag": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AutoMealPouch_Tier1.T_itemicon_Essential_AutoMealPouch_Tier1"
+ },
+ "Venom": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Venom.T_itemicon_Material_Venom"
+ },
+ "FireOrgan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_FireOrgan.T_itemicon_Material_FireOrgan"
+ },
+ "FragGrenade": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade.T_itemicon_Weapon_FragGrenade"
+ },
+ "IceOrgan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_IceOrgan.T_itemicon_Material_IceOrgan"
+ },
+ "Alpaca": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Alpaca_icon_normal.T_Alpaca_icon_normal"
+ },
+ "AmaterasuWolf": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_AmaterasuWolf_icon_normal.T_AmaterasuWolf_icon_normal"
+ },
+ "Anubis": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Anubis_icon_normal.T_Anubis_icon_normal"
+ },
+ "Baphomet": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Baphomet_icon_normal.T_Baphomet_icon_normal"
+ },
+ "Baphomet_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Baphomet_Dark_icon_normal.T_Baphomet_Dark_icon_normal"
+ },
+ "Bastet": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Bastet_icon_normal.T_Bastet_icon_normal"
+ },
+ "Bastet_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Bastet_Ice_icon_normal.T_Bastet_Ice_icon_normal"
+ },
+ "BeardedDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_dummy_icon.T_dummy_icon"
+ },
+ "BerryGoat": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BerryGoat_icon_normal.T_BerryGoat_icon_normal"
+ },
+ "BirdDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BirdDragon_icon_normal.T_BirdDragon_icon_normal"
+ },
+ "BirdDragon_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BirdDragon_Ice_icon_normal.T_BirdDragon_Ice_icon_normal"
+ },
+ "BlackGriffon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlackGriffon_icon_normal.T_BlackGriffon_icon_normal"
+ },
+ "BlackMetalDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlackMetalDragon_icon_normal.T_BlackMetalDragon_icon_normal"
+ },
+ "BlueDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlueDragon_icon_normal.T_BlueDragon_icon_normal"
+ },
+ "BluePlatypus": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BluePlatypus_icon_normal.T_BluePlatypus_icon_normal"
+ },
+ "Boar": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Boar_icon_normal.T_Boar_icon_normal"
+ },
+ "Carbunclo": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Carbunclo_icon_normal.T_Carbunclo_icon_normal"
+ },
+ "CatBat": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CatBat_icon_normal.T_CatBat_icon_normal"
+ },
+ "CatMage": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CatMage_icon_normal.T_CatMage_icon_normal"
+ },
+ "CatVampire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CatVampire_icon_normal.T_CatVampire_icon_normal"
+ },
+ "ChickenPal": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ChickenPal_icon_normal.T_ChickenPal_icon_normal"
+ },
+ "ColorfulBird": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ColorfulBird_icon_normal.T_ColorfulBird_icon_normal"
+ },
+ "CowPal": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CowPal_icon_normal.T_CowPal_icon_normal"
+ },
+ "CuteFox": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CuteFox_icon_normal.T_CuteFox_icon_normal"
+ },
+ "CuteMole": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CuteMole_icon_normal.T_CuteMole_icon_normal"
+ },
+ "DarkCrow": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_DarkCrow_icon_normal.T_DarkCrow_icon_normal"
+ },
+ "DarkMutant": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_dummy_icon.T_dummy_icon"
+ },
+ "Deer": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Deer_icon_normal.T_Deer_icon_normal"
+ },
+ "Deer_Ground": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Deer_Ground_icon_normal.T_Deer_Ground_icon_normal"
+ },
+ "DreamDemon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_DreamDemon_icon_normal.T_DreamDemon_icon_normal"
+ },
+ "DrillGame": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_DrillGame_icon_normal.T_DrillGame_icon_normal"
+ },
+ "Eagle": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Eagle_icon_normal.T_Eagle_icon_normal"
+ },
+ "ElecCat": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ElecCat_icon_normal.T_ElecCat_icon_normal"
+ },
+ "ElecLion": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ElecLion_icon_normal.T_ElecLion_icon_normal"
+ },
+ "ElecPanda": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ElecPanda_icon_normal.T_ElecPanda_icon_normal"
+ },
+ "FairyDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FairyDragon_icon_normal.T_FairyDragon_icon_normal"
+ },
+ "FairyDragon_Water": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FairyDragon_Water_icon_normal.T_FairyDragon_Water_icon_normal"
+ },
+ "FengyunDeeper": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FengyunDeeper_icon_normal.T_FengyunDeeper_icon_normal"
+ },
+ "FireKirin": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FireKirin_icon_normal.T_FireKirin_icon_normal"
+ },
+ "FireKirin_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FireKirin_Dark_icon_normal.T_FireKirin_Dark_icon_normal"
+ },
+ "FlameBuffalo": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FlameBuffalo_icon_normal.T_FlameBuffalo_icon_normal"
+ },
+ "FlowerDinosaur": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FlowerDinosaur_icon_normal.T_FlowerDinosaur_icon_normal"
+ },
+ "FlowerDinosaur_Electric": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FlowerDinosaur_Electric_icon_normal.T_FlowerDinosaur_Electric_icon_normal"
+ },
+ "FlowerRabbit": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FlowerRabbit_icon_normal.T_FlowerRabbit_icon_normal"
+ },
+ "FoxMage": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FoxMage_icon_normal.T_FoxMage_icon_normal"
+ },
+ "Ganesha": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Ganesha_icon_normal.T_Ganesha_icon_normal"
+ },
+ "Garm": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Garm_icon_normal.T_Garm_icon_normal"
+ },
+ "GhostBeast": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GhostBeast_icon_normal.T_GhostBeast_icon_normal"
+ },
+ "Gorilla": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Gorilla_icon_normal.T_Gorilla_icon_normal"
+ },
+ "GrassMammoth": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GrassMammoth_icon_normal.T_GrassMammoth_icon_normal"
+ },
+ "GrassMammoth_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GrassMammoth_Ice_icon_normal.T_GrassMammoth_Ice_icon_normal"
+ },
+ "GrassPanda": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GrassPanda_icon_normal.T_GrassPanda_icon_normal"
+ },
+ "GrassPanda_Electric": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GrassPanda_Electric_icon_normal.T_GrassPanda_Electric_icon_normal"
+ },
+ "HawkBird": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_HawkBird_icon_normal.T_HawkBird_icon_normal"
+ },
+ "Hedgehog": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Hedgehog_icon_normal.T_Hedgehog_icon_normal"
+ },
+ "Hedgehog_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Hedgehog_Ice_icon_normal.T_Hedgehog_Ice_icon_normal"
+ },
+ "Horus": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Horus_icon_normal.T_Horus_icon_normal"
+ },
+ "IceDeer": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_IceDeer_icon_normal.T_IceDeer_icon_normal"
+ },
+ "IceFox": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_IceFox_icon_normal.T_IceFox_icon_normal"
+ },
+ "IceHorse": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_IceHorse_icon_normal.T_IceHorse_icon_normal"
+ },
+ "IceHorse_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_IceHorse_Dark_icon_normal.T_IceHorse_Dark_icon_normal"
+ },
+ "JetDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_JetDragon_icon_normal.T_JetDragon_icon_normal"
+ },
+ "Kelpie": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Kelpie_icon_normal.T_Kelpie_icon_normal"
+ },
+ "Kelpie_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Kelpie_Fire_icon_normal.T_Kelpie_Fire_icon_normal"
+ },
+ "KingAlpaca": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_KingAlpaca_icon_normal.T_KingAlpaca_icon_normal"
+ },
+ "KingAlpaca_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_KingAlpaca_Ice_icon_normal.T_KingAlpaca_Ice_icon_normal"
+ },
+ "KingBahamut": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_KingBahamut_icon_normal.T_KingBahamut_icon_normal"
+ },
+ "Kirin": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Kirin_icon_normal.T_Kirin_icon_normal"
+ },
+ "Kitsunebi": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Kitsunebi_icon_normal.T_Kitsunebi_icon_normal"
+ },
+ "LazyDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LazyDragon_icon_normal.T_LazyDragon_icon_normal"
+ },
+ "LazyDragon_Electric": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LazyDragon_Electric_icon_normal.T_LazyDragon_Electric_icon_normal"
+ },
+ "LilyQueen": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LilyQueen_icon_normal.T_LilyQueen_icon_normal"
+ },
+ "LilyQueen_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LilyQueen_Dark_icon_normal.T_LilyQueen_Dark_icon_normal"
+ },
+ "LittleBriarRose": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LittleBriarRose_icon_normal.T_LittleBriarRose_icon_normal"
+ },
+ "LizardMan": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LizardMan_icon_normal.T_LizardMan_icon_normal"
+ },
+ "LizardMan_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LizardMan_Fire_icon_normal.T_LizardMan_Fire_icon_normal"
+ },
+ "Manticore": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Manticore_icon_normal.T_Manticore_icon_normal"
+ },
+ "Manticore_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Manticore_Dark_icon_normal.T_Manticore_Dark_icon_normal"
+ },
+ "Monkey": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Monkey_icon_normal.T_Monkey_icon_normal"
+ },
+ "MopBaby": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_MopBaby_icon_normal.T_MopBaby_icon_normal"
+ },
+ "MopKing": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_MopKing_icon_normal.T_MopKing_icon_normal"
+ },
+ "Mutant": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Mutant_icon_normal.T_Mutant_icon_normal"
+ },
+ "NegativeKoala": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_NegativeKoala_icon_normal.T_NegativeKoala_icon_normal"
+ },
+ "NegativeOctopus": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_NegativeOctopus_icon_normal.T_NegativeOctopus_icon_normal"
+ },
+ "Penguin": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Penguin_icon_normal.T_Penguin_icon_normal"
+ },
+ "PinkCat": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_PinkCat_icon_normal.T_PinkCat_icon_normal"
+ },
+ "PinkLizard": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_PinkLizard_icon_normal.T_PinkLizard_icon_normal"
+ },
+ "PinkRabbit": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_PinkRabbit_icon_normal.T_PinkRabbit_icon_normal"
+ },
+ "PlantSlime": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_PlantSlime_icon_normal.T_PlantSlime_icon_normal"
+ },
+ "QueenBee": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_QueenBee_icon_normal.T_QueenBee_icon_normal"
+ },
+ "RaijinDaughter": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_RaijinDaughter_icon_normal.T_RaijinDaughter_icon_normal"
+ },
+ "RobinHood": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_RobinHood_icon_normal.T_RobinHood_icon_normal"
+ },
+ "RobinHood_Ground": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_RobinHood_Ground_icon_normal.T_RobinHood_Ground_icon_normal"
+ },
+ "SakuraSaurus": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SakuraSaurus_icon_normal.T_SakuraSaurus_icon_normal"
+ },
+ "SakuraSaurus_Water": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SakuraSaurus_Water_icon_normal.T_SakuraSaurus_Water_icon_normal"
+ },
+ "Serpent": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Serpent_icon_normal.T_Serpent_icon_normal"
+ },
+ "Serpent_Ground": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Serpent_Ground_icon_normal.T_Serpent_Ground_icon_normal"
+ },
+ "SharkKid": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SharkKid_icon_normal.T_SharkKid_icon_normal"
+ },
+ "SharkKid_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SharkKid_Fire_icon_normal.T_SharkKid_Fire_icon_normal"
+ },
+ "SheepBall": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SheepBall_icon_normal.T_SheepBall_icon_normal"
+ },
+ "SoldierBee": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SoldierBee_icon_normal.T_SoldierBee_icon_normal"
+ },
+ "Suzaku": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Suzaku_icon_normal.T_Suzaku_icon_normal"
+ },
+ "Suzaku_Water": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Suzaku_Water_icon_normal.T_Suzaku_Water_icon_normal"
+ },
+ "SweetsSheep": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SweetsSheep_icon_normal.T_SweetsSheep_icon_normal"
+ },
+ "ThunderDog": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ThunderDog_icon_normal.T_ThunderDog_icon_normal"
+ },
+ "Umihebi": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Umihebi_icon_normal.T_Umihebi_icon_normal"
+ },
+ "VioletFairy": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_VioletFairy_icon_normal.T_VioletFairy_icon_normal"
+ },
+ "VolcanicMonster": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_VolcanicMonster_icon_normal.T_VolcanicMonster_icon_normal"
+ },
+ "VolcanicMonster_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_VolcanicMonster_Ice_icon_normal.T_VolcanicMonster_Ice_icon_normal"
+ },
+ "Werewolf": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Werewolf_icon_normal.T_Werewolf_icon_normal"
+ },
+ "WhiteMoth": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WhiteMoth_icon_normal.T_WhiteMoth_icon_normal"
+ },
+ "WhiteTiger": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WhiteTiger_icon_normal.T_WhiteTiger_icon_normal"
+ },
+ "WindChimes": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WindChimes_icon_normal.T_WindChimes_icon_normal"
+ },
+ "WizardOwl": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WizardOwl_icon_normal.T_WizardOwl_icon_normal"
+ },
+ "Yeti": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Yeti_icon_normal.T_Yeti_icon_normal"
+ },
+ "Yeti_Grass": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Yeti_Grass_icon_normal.T_Yeti_Grass_icon_normal"
+ },
+ "ThunderBird": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ThunderBird_icon_normal.T_ThunderBird_icon_normal"
+ },
+ "HerculesBeetle": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_HerculesBeetle_icon_normal.T_HerculesBeetle_icon_normal"
+ },
+ "SaintCentaur": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SaintCentaur_icon_normal.T_SaintCentaur_icon_normal"
+ },
+ "NightFox": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_NightFox_icon_normal.T_NightFox_icon_normal"
+ },
+ "CaptainPenguin": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CaptainPenguin_icon_normal.T_CaptainPenguin_icon_normal"
+ },
+ "WeaselDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WeaselDragon_icon_normal.T_WeaselDragon_icon_normal"
+ },
+ "SkyDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SkyDragon_icon_normal.T_SkyDragon_icon_normal"
+ },
+ "FlyingManta": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FlyingManta_icon_normal.T_FlyingManta_icon_normal"
+ },
+ "BlackCentaur": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlackCentaur_icon_normal.T_BlackCentaur_icon_normal"
+ },
+ "NaughtyCat": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_NaughtyCat_icon_normal.T_NaughtyCat_icon_normal"
+ },
+ "CuteButterfly": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CuteButterfly_icon_normal.T_CuteButterfly_icon_normal"
+ },
+ "DarkScorpion": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_DarkScorpion_icon_normal.T_DarkScorpion_icon_normal"
+ },
+ "FriedVegetables": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_FriedVegetables.T_itemicon_Food_FriedVegetables"
+ },
+ "HotDog": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_HotDog.T_itemicon_Food_HotDog"
+ },
+ "Pancake": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Pancake.T_itemicon_Food_Pancake"
+ },
+ "MarinatedMushrooms": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_MarinatedMushrooms.T_itemicon_Food_MarinatedMushrooms"
+ },
+ "MushroomSoup": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_MushroomSoup.T_itemicon_Food_MushroomSoup"
+ },
+ "MeatSauce": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_MeatSauce.T_itemicon_Food_MeatSauce"
+ },
+ "Cake": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Cake.T_itemicon_Food_Cake"
+ },
+ "MushroomStew": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_MushroomStew.T_itemicon_Food_MushroomStew"
+ },
+ "HotMilk": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_HotMilk.T_itemicon_Food_HotMilk"
+ },
+ "Flour": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Flour.T_itemicon_Material_Flour"
+ },
+ "Ronin": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Ronin_icon_normal.T_Ronin_icon_normal"
+ },
+ "ThunderDragonMan": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ThunderDragonMan_icon_normal.T_ThunderDragonMan_icon_normal"
+ },
+ "WoolFox": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WoolFox_icon_normal.T_WoolFox_icon_normal"
+ },
+ "RedArmorBird": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_RedArmorBird_icon_normal.T_RedArmorBird_icon_normal"
+ },
+ "HadesBird": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_HadesBird_icon_normal.T_HadesBird_icon_normal"
+ },
+ "FlowerDoll": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FlowerDoll_icon_normal.T_FlowerDoll_icon_normal"
+ },
+ "LavaGirl": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LavaGirl_icon_normal.T_LavaGirl_icon_normal"
+ },
+ "LazyCatfish": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LazyCatfish_icon_normal.T_LazyCatfish_icon_normal"
+ },
+ "Umihebi_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Umihebi_Fire_icon_normal.T_Umihebi_Fire_icon_normal"
+ },
+ "FlameBambi": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FlameBambi_icon_normal.T_FlameBambi_icon_normal"
+ },
+ "WindChimes_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WindChimes_Ice_icon_normal.T_WindChimes_Ice_icon_normal"
+ },
+ "PalEgg_Fire_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_Fire_01.T_itemicon_Material_PalEgg_Fire_01"
+ },
+ "PalEgg_Water_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_Water_01.T_itemicon_Material_PalEgg_Water_01"
+ },
+ "PalEgg_Leaf_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_Leaf_01.T_itemicon_Material_PalEgg_Leaf_01"
+ },
+ "PalEgg_Electricity_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_Electricity_01.T_itemicon_Material_PalEgg_Electricity_01"
+ },
+ "PalEgg_Ice_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_Ice_01.T_itemicon_Material_PalEgg_Ice_01"
+ },
+ "PalEgg_Earth_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_Earth_01.T_itemicon_Material_PalEgg_Earth_01"
+ },
+ "PalEgg_Dark_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_Dark_01.T_itemicon_Material_PalEgg_Dark_01"
+ },
+ "PalEgg_Dragon_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_Dragon_01.T_itemicon_Material_PalEgg_Dragon_01"
+ },
+ "MeatCutterKnife": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_MeatCutterKnife.T_itemicon_Weapon_MeatCutterKnife"
+ },
+ "PalFluid": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalFluid.T_itemicon_Material_PalFluid"
+ },
+ "Opium": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Opium.T_itemicon_Food_Opium"
+ },
+ "Narcotic": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Narcotic.T_itemicon_Food_Narcotic"
+ },
+ "StatusPointResetSan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_StatusPointResetSan.T_itemicon_Food_StatusPointResetSan"
+ },
+ "Baked_Berries": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Baked_Berries.T_itemicon_Food_Baked_Berries"
+ },
+ "SkillCard_Neutral": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Neutral.T_itemicon_Consume_SkillCard_Neutral"
+ },
+ "SkillCard_Grass": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Grass.T_itemicon_Consume_SkillCard_Grass"
+ },
+ "SkillCard_Frost": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Frost.T_itemicon_Consume_SkillCard_Frost"
+ },
+ "SkillCard_Earth": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Earth.T_itemicon_Consume_SkillCard_Earth"
+ },
+ "SkillCard_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Electric.T_itemicon_Consume_SkillCard_Electric"
+ },
+ "SkillCard_Flame": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Flame.T_itemicon_Consume_SkillCard_Flame"
+ },
+ "SkillCard_Water": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Water.T_itemicon_Consume_SkillCard_Water"
+ },
+ "SkillCard_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Dark.T_itemicon_Consume_SkillCard_Dark"
+ },
+ "SkillCard_Dragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_SkillCard_Dragon.T_itemicon_Consume_SkillCard_Dragon"
+ },
+ "TechnologyBook_G1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_TechnologyBook_G1.T_itemicon_Consume_TechnologyBook_G1"
+ },
+ "TechnologyBook_G2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_TechnologyBook_G2.T_itemicon_Consume_TechnologyBook_G2"
+ },
+ "TechnologyBook_G3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_TechnologyBook_G3.T_itemicon_Consume_TechnologyBook_G3"
+ },
+ "TechnologyBook_G4": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_TechnologyBook_G4.T_itemicon_Consume_TechnologyBook_G4"
+ },
+ "Pal_crystal_S": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Pal_crystal_S.T_itemicon_Material_Pal_crystal_S"
+ },
+ "Pal_crystal_L": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Pal_crystal_L.T_itemicon_Material_Pal_crystal_L"
+ },
+ "PalCrystal_Ex": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalCrystal_Ex.T_itemicon_Material_PalCrystal_Ex"
+ },
+ "PalItem_ToSell_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_ToSell_01.T_itemicon_Material_PalItem_ToSell_01"
+ },
+ "PalItem_ToSell_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_ToSell_02.T_itemicon_Material_PalItem_ToSell_02"
+ },
+ "PalItem_ToSell_03": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_ToSell_03.T_itemicon_Material_PalItem_ToSell_03"
+ },
+ "PalItem_ToSell_04": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_ToSell_04.T_itemicon_Material_PalItem_ToSell_04"
+ },
+ "PalItem_ToSell_05": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_ToSell_05.T_itemicon_Material_PalItem_ToSell_05"
+ },
+ "Sweet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Sweet.T_itemicon_Food_Sweet"
+ },
+ "TreasureBoxKey01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_TreasureBoxKey01.T_itemicon_Consume_TreasureBoxKey01"
+ },
+ "TreasureBoxKey02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_TreasureBoxKey02.T_itemicon_Consume_TreasureBoxKey02"
+ },
+ "TreasureBoxKey03": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_TreasureBoxKey03.T_itemicon_Consume_TreasureBoxKey03"
+ },
+ "Musket": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Musket.T_itemicon_Weapon_Musket"
+ },
+ "Shield_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Shield_02.T_itemicon_Armor_Shield_02"
+ },
+ "Shield_03": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Shield_03.T_itemicon_Armor_Shield_03"
+ },
+ "Shield_04": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Shield_04.T_itemicon_Armor_Shield_04"
+ },
+ "Shield_05": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Shield_05.T_itemicon_Armor_Shield_05"
+ },
+ "Shield_06": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Shield_01.T_itemicon_Armor_Shield_01"
+ },
+ "PalSphere_Robbery": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Robbery.T_itemicon_PalSphere_Robbery"
+ },
+ "Accessory_HP": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_HP_1.T_itemicon_Accessory_HP_1"
+ },
+ "Accessory_AT": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_AT_1.T_itemicon_Accessory_AT_1"
+ },
+ "Accessory_defense": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_defense_1.T_itemicon_Accessory_defense_1"
+ },
+ "Accessory_WorkSpeed": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_WorkSpeed_1.T_itemicon_Accessory_WorkSpeed_1"
+ },
+ "Accessory_NormalResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_NormalResist_1.T_itemicon_Accessory_NormalResist_1"
+ },
+ "Accessory_FireResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_FireResist_1.T_itemicon_Accessory_FireResist_1"
+ },
+ "Accessory_AquaResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_AquaResist_1.T_itemicon_Accessory_AquaResist_1"
+ },
+ "Accessory_ThunderResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_ThunderResist_1.T_itemicon_Accessory_ThunderResist_1"
+ },
+ "Accessory_LeafResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_LeafResist_1.T_itemicon_Accessory_LeafResist_1"
+ },
+ "Accessory_IceResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_IceResist_1.T_itemicon_Accessory_IceResist_1"
+ },
+ "Accessory_EarthResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_EarthResist_1.T_itemicon_Accessory_EarthResist_1"
+ },
+ "Accessory_DarkResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_DarkResist_1.T_itemicon_Accessory_DarkResist_1"
+ },
+ "Accessory_DragonResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_DragonResist_1.T_itemicon_Accessory_DragonResist_1"
+ },
+ "Accessory_HeatResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_CoolResist_1.T_itemicon_Accessory_CoolResist_1"
+ },
+ "Accessory_CoolResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_HeatResist_1.T_itemicon_Accessory_HeatResist_1"
+ },
+ "PalUpgradeStone1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalUpgradeStone.T_itemicon_PalUpgradeStone"
+ },
+ "PalUpgradeStone2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalUpgradeStone2.T_itemicon_PalUpgradeStone2"
+ },
+ "PalUpgradeStone3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalUpgradeStone3.T_itemicon_PalUpgradeStone3"
+ },
+ "BakedMushroom": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMushroom.T_itemicon_Food_BakedMushroom"
+ },
+ "RoughBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_RoughBullet.T_itemicon_Ammo_RoughBullet"
+ },
+ "MachingunBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_MachingunBullet.T_itemicon_Ammo_MachingunBullet"
+ },
+ "AssaultRifleBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_AssaultRifleBullet.T_itemicon_Ammo_AssaultRifleBullet"
+ },
+ "MagnumBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_MagnumBullet.T_itemicon_Ammo_MagnumBullet"
+ },
+ "Poppy": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Poppy.T_itemicon_Food_Poppy"
+ },
+ "InkBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_InkBullet.T_itemicon_Ammo_InkBullet"
+ },
+ "HandgunBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_HandgunBullet.T_itemicon_Ammo_HandgunBullet"
+ },
+ "RifleBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_RifleBullet.T_itemicon_Ammo_RifleBullet"
+ },
+ "ShotgunBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_ShotgunBullet.T_itemicon_Ammo_ShotgunBullet"
+ },
+ "Blueprint": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Blueprint.T_itemicon_Material_Blueprint"
+ },
+ "CopperArmor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_CopperArmor.T_itemicon_Armor_CopperArmor"
+ },
+ "CopperHelmet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_CopperHelmet.T_itemicon_Armor_CopperHelmet"
+ },
+ "CopperArmorCold": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_CopperArmorCold.T_itemicon_Armor_CopperArmorCold"
+ },
+ "CopperArmorHeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_CopperArmorHeat.T_itemicon_Armor_CopperArmorHeat"
+ },
+ "IronArmor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_IronArmor.T_itemicon_Armor_IronArmor"
+ },
+ "IronHelmet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_IronHelmet.T_itemicon_Armor_IronHelmet"
+ },
+ "IronArmorCold": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_IronArmorCold.T_itemicon_Armor_IronArmorCold"
+ },
+ "IronArmorHeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_IronArmorHeat.T_itemicon_Armor_IronArmorHeat"
+ },
+ "StealArmor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_StealArmor.T_itemicon_Armor_StealArmor"
+ },
+ "StealHelmet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_StealHelmet.T_itemicon_Armor_StealHelmet"
+ },
+ "StealArmorCold": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_StealArmorCold.T_itemicon_Armor_StealArmorCold"
+ },
+ "StealArmorHeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_StealArmorHeat.T_itemicon_Armor_StealArmorHeat"
+ },
+ "FurArmor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_FurArmor.T_itemicon_Armor_FurArmor"
+ },
+ "FurHelmet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_FurHelmet.T_itemicon_Armor_FurHelmet"
+ },
+ "FurArmorCold": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_FurArmorCold.T_itemicon_Armor_FurArmorCold"
+ },
+ "FurArmorHeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_FurArmorHeat.T_itemicon_Armor_FurArmorHeat"
+ },
+ "ClothArmorCold": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_ClothArmorCold.T_itemicon_Armor_ClothArmorCold"
+ },
+ "ClothArmorHeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_ClothArmorHeat.T_itemicon_Armor_ClothArmorHeat"
+ },
+ "Head001": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head001.T_itemicon_Armor_Head001"
+ },
+ "Head002": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head002.T_itemicon_Armor_Head002"
+ },
+ "Head003": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head003.T_itemicon_Armor_Head003"
+ },
+ "Head004": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head004.T_itemicon_Armor_Head004"
+ },
+ "Head005": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head005.T_itemicon_Armor_Head005"
+ },
+ "Head006": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head006.T_itemicon_Armor_Head006"
+ },
+ "Head007": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head007.T_itemicon_Armor_Head007"
+ },
+ "Head008": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head008.T_itemicon_Armor_Head008"
+ },
+ "Head009": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head009.T_itemicon_Armor_Head009"
+ },
+ "Head010": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head010.T_itemicon_Armor_Head010"
+ },
+ "Head011": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head011.T_itemicon_Armor_Head011"
+ },
+ "Head012": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head012.T_itemicon_Armor_Head012"
+ },
+ "FurnitureSet_1": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_TableSquare_Wood.T_icon_buildObject_TableSquare_Wood"
+ },
+ "FurnitureSet_2": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Barrel_Wood.T_icon_buildObject_Barrel_Wood"
+ },
+ "FurnitureSet_3": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Counter_Wood.T_icon_buildObject_Counter_Wood"
+ },
+ "FurnitureSet_4": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Ivy01.T_icon_buildObject_Ivy01"
+ },
+ "FurnitureSet_5": {
+  "Icon": ""
+ },
+ "FurnitureSet_6": {
+  "Icon": ""
+ },
+ "FurnitureSet_7": {
+  "Icon": ""
+ },
+ "FurnitureSet_8": {
+  "Icon": ""
+ },
+ "FurnitureSet_9": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Plant01_Plant.T_icon_buildObject_Plant01_Plant"
+ },
+ "FurnitureSet_10": {
+  "Icon": ""
+ },
+ "FurnitureSet_11": {
+  "Icon": ""
+ },
+ "FurnitureSet_12": {
+  "Icon": ""
+ },
+ "FurnitureSet_13": {
+  "Icon": ""
+ },
+ "FurnitureSet_14": {
+  "Icon": ""
+ },
+ "FurnitureSet_15": {
+  "Icon": ""
+ },
+ "FurnitureSet_16": {
+  "Icon": ""
+ },
+ "FurnitureSet_17": {
+  "Icon": ""
+ },
+ "FurnitureSet_18": {
+  "Icon": ""
+ },
+ "FurnitureSet_19": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf01_Stone.T_icon_buildObject_Shelf01_Stone"
+ },
+ "FurnitureSet_20": {
+  "Icon": ""
+ },
+ "FurnitureSet_21": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf01_Stone.T_icon_buildObject_Shelf01_Stone"
+ },
+ "FurnitureSet_22": {
+  "Icon": "/Game/Pal/Texture/BuildObject/PNG/T_icon_buildObject_Shelf05_Stone.T_icon_buildObject_Shelf05_Stone"
+ },
+ "FurnitureSet_23": {
+  "Icon": ""
+ },
+ "FurnitureSet_24": {
+  "Icon": ""
+ },
+ "FurnitureSet_25": {
+  "Icon": ""
+ },
+ "FurnitureSet_26": {
+  "Icon": ""
+ },
+ "FurnitureSet_27": {
+  "Icon": ""
+ },
+ "FurnitureSet_28": {
+  "Icon": ""
+ },
+ "FurnitureSet_29": {
+  "Icon": ""
+ },
+ "FurnitureSet_30": {
+  "Icon": ""
+ },
+ "FurnitureSet_31": {
+  "Icon": ""
+ },
+ "FurnitureSet_32": {
+  "Icon": ""
+ },
+ "Spear_QueenBee": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Spear_QueenBee.T_itemicon_Weapon_Spear_QueenBee"
+ },
+ "Spear_SoldierBee": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Spear_SoldierBee.T_itemicon_Weapon_Spear_SoldierBee"
+ },
+ "Spear_ForestBoss": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Spear_ForestBoss.T_itemicon_Weapon_Spear_ForestBoss"
+ },
+ "DecalGun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_DecalGun.T_itemicon_Weapon_DecalGun"
+ },
+ "GrapplingGun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_GrapplingGun.T_itemicon_Weapon_GrapplingGun"
+ },
+ "MakeshiftHandgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_MakeshiftHandgun.T_itemicon_Weapon_MakeshiftHandgun"
+ },
+ "BowGun_Fire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_BowGun_Fire.T_itemicon_Weapon_BowGun_Fire"
+ },
+ "HomingSphereLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_HomingSphereLauncher.T_itemicon_Weapon_HomingSphereLauncher"
+ },
+ "SphereLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SphereLauncher.T_itemicon_Weapon_SphereLauncher"
+ },
+ "SphereLauncher_Once": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SphereLauncher_Once.T_itemicon_Weapon_SphereLauncher_Once"
+ },
+ "FragGrenade_Fire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Fire.T_itemicon_Weapon_FragGrenade_Fire"
+ },
+ "FragGrenade_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Ice.T_itemicon_Weapon_FragGrenade_Ice"
+ },
+ "FragGrenade_Elec": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Elec.T_itemicon_Weapon_FragGrenade_Elec"
+ },
+ "Bow_Fire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Bow_Fire.T_itemicon_Weapon_Bow_Fire"
+ },
+ "Bow_Poison": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Bow_Poison.T_itemicon_Weapon_Bow_Poison"
+ },
+ "BowGun_Poison": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_BowGun_Poison.T_itemicon_Weapon_BowGun_Poison"
+ },
+ "Bat2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Spear_Bat2.T_itemicon_Weapon_Spear_Bat2"
+ },
+ "BerrySeeds": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_BerrySeeds.T_itemicon_Material_BerrySeeds"
+ },
+ "TomatoSeeds": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_TomatoSeeds.T_itemicon_Material_TomatoSeeds"
+ },
+ "LettuceSeeds": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_LettuceSeeds.T_itemicon_Material_LettuceSeeds"
+ },
+ "WheatSeeds": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WheatSeeds.T_itemicon_Material_WheatSeeds"
+ },
+ "SkillUnlock_AssaultRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_AssaultRifle.T_itemicon_Essential_SkillUnlock_AssaultRifle"
+ },
+ "SkillUnlock_Choker": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Choker.T_itemicon_Essential_SkillUnlock_Choker"
+ },
+ "SkillUnlock_Garland": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Garland.T_itemicon_Essential_SkillUnlock_Garland"
+ },
+ "SkillUnlock_Gloves": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Gloves.T_itemicon_Essential_SkillUnlock_Gloves"
+ },
+ "SkillUnlock_Grenadelauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Grenadelauncher.T_itemicon_Essential_SkillUnlock_Grenadelauncher"
+ },
+ "SkillUnlock_Harness": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Harness.T_itemicon_Essential_SkillUnlock_Harness"
+ },
+ "SkillUnlock_Launcher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Launcher.T_itemicon_Essential_SkillUnlock_Launcher"
+ },
+ "SkillUnlock_Minigun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Minigun.T_itemicon_Essential_SkillUnlock_Minigun"
+ },
+ "SkillUnlock_Saddle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Saddle.T_itemicon_Essential_SkillUnlock_Saddle"
+ },
+ "SkillUnlock_Shotgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Shotgun.T_itemicon_Essential_SkillUnlock_Shotgun"
+ },
+ "SkillUnlock_SMG": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_SMG.T_itemicon_Essential_SkillUnlock_SMG"
+ },
+ "Lantern": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_Lantern.T_itemicon_Essential_Lantern"
+ },
+ "Lettuce": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lettuce.T_itemicon_Food_Lettuce"
+ },
+ "PalItem_ColorfulBird": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_ColorfulBird.T_itemicon_Material_PalItem_ColorfulBird"
+ },
+ "Head013": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head013.T_itemicon_Armor_Head013"
+ },
+ "Head014": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head014.T_itemicon_Armor_Head014"
+ },
+ "AutoMealPouch_Tier1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AutoMealPouch_Tier1.T_itemicon_Essential_AutoMealPouch_Tier1"
+ },
+ "AutoMealPouch_Tier2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AutoMealPouch_Tier2.T_itemicon_Essential_AutoMealPouch_Tier2"
+ },
+ "AutoMealPouch_Tier3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AutoMealPouch_Tier3.T_itemicon_Essential_AutoMealPouch_Tier3"
+ },
+ "AutoMealPouch_Tier4": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AutoMealPouch_Tier4.T_itemicon_Essential_AutoMealPouch_Tier4"
+ },
+ "AutoMealPouch_Tier5": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AutoMealPouch_Tier5.T_itemicon_Essential_AutoMealPouch_Tier5"
+ },
+ "Meat_ChickenPal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_ChickenPal.T_itemicon_Food_Meat_ChickenPal"
+ },
+ "Meat_SheepBall": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_SheepBall.T_itemicon_Food_Meat_SheepBall"
+ },
+ "Meat_Kelpie": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_Kelpie.T_itemicon_Food_Meat_Kelpie"
+ },
+ "Meat_Eagle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_Eagle.T_itemicon_Food_Meat_Eagle"
+ },
+ "Meat_Boar": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_Boar.T_itemicon_Food_Meat_Boar"
+ },
+ "Meat_LazyCatfish": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_LazyCatfish.T_itemicon_Food_Meat_LazyCatfish"
+ },
+ "Meat_Deer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_Deer.T_itemicon_Food_Meat_Deer"
+ },
+ "Meat_IceDeer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_IceDeer.T_itemicon_Food_Meat_IceDeer"
+ },
+ "Meat_BerryGoat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_BerryGoat.T_itemicon_Food_Meat_BerryGoat"
+ },
+ "Meat_CowPal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_CowPal.T_itemicon_Food_Meat_CowPal"
+ },
+ "Meat_SakuraSaurus": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_SakuraSaurus.T_itemicon_Food_Meat_SakuraSaurus"
+ },
+ "Meat_GrassMammoth": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_GrassMammoth.T_itemicon_Food_Meat_GrassMammoth"
+ },
+ "BakedMeat_ChickenPal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_ChickenPal.T_itemicon_Food_BakedMeat_ChickenPal"
+ },
+ "BakedMeat_SheepBall": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_SheepBall.T_itemicon_Food_BakedMeat_SheepBall"
+ },
+ "BakedMeat_Kelpie": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_Kelpie.T_itemicon_Food_BakedMeat_Kelpie"
+ },
+ "BakedMeat_Eagle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_Eagle.T_itemicon_Food_BakedMeat_Eagle"
+ },
+ "BakedMeat_Boar": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_Boar.T_itemicon_Food_BakedMeat_Boar"
+ },
+ "BakedMeat_LazyCatfish": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_LazyCatfish.T_itemicon_Food_BakedMeat_LazyCatfish"
+ },
+ "BakedMeat_Deer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_Deer.T_itemicon_Food_BakedMeat_Deer"
+ },
+ "BakedMeat_IceDeer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_IceDeer.T_itemicon_Food_BakedMeat_IceDeer"
+ },
+ "BakedMeat_BerryGoat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_BerryGoat.T_itemicon_Food_BakedMeat_BerryGoat"
+ },
+ "BakedMeat_CowPal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_CowPal.T_itemicon_Food_BakedMeat_CowPal"
+ },
+ "BakedMeat_SakuraSaurus": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_SakuraSaurus.T_itemicon_Food_BakedMeat_SakuraSaurus"
+ },
+ "BakedMeat_GrassMammoth": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BakedMeat_GrassMammoth.T_itemicon_Food_BakedMeat_GrassMammoth"
+ },
+ "ChickenSaute": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_ChickenSaute.T_itemicon_Food_ChickenSaute"
+ },
+ "GrilledSheepHerbs": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_GrilledSheepHerbs.T_itemicon_Food_GrilledSheepHerbs"
+ },
+ "GenghisKhan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_GenghisKhan.T_itemicon_Food_GenghisKhan"
+ },
+ "Eaglestew": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Eaglestew.T_itemicon_Food_Eaglestew"
+ },
+ "BaconEggs": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_BaconEggs.T_itemicon_Food_BaconEggs"
+ },
+ "StewedIceDeer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_StewedIceDeer.T_itemicon_Food_StewedIceDeer"
+ },
+ "FriedChicken": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_FriedChicken.T_itemicon_Food_FriedChicken"
+ },
+ "HotDog_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_HotDog_2.T_itemicon_Food_HotDog_2"
+ },
+ "DeerLocoMoco": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_DeerLocoMoco.T_itemicon_Food_DeerLocoMoco"
+ },
+ "DeerStew": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_DeerStew.T_itemicon_Food_DeerStew"
+ },
+ "Hamburger_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Hamburger_2.T_itemicon_Food_Hamburger_2"
+ },
+ "Cheeseburger_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_CheeseBurger_2.T_itemicon_Food_CheeseBurger_2"
+ },
+ "FriedKelpie": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_FriedKelpie.T_itemicon_Food_FriedKelpie"
+ },
+ "Chowder": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Chowder.T_itemicon_Food_Chowder"
+ },
+ "Head015": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head015.T_itemicon_Armor_Head015"
+ },
+ "Head016": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head016.T_itemicon_Armor_Head016"
+ },
+ "Head017": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head017.T_itemicon_Armor_Head017"
+ },
+ "PalItem_PlantSlime": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_PlantSlime.T_itemicon_Material_PalItem_PlantSlime"
+ },
+ "PalItem_CaptainPenguin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_CaptainPenguin.T_itemicon_Material_PalItem_CaptainPenguin"
+ },
+ "PalItem_CatMage": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_CatMage.T_itemicon_Material_PalItem_CatMage"
+ },
+ "SkillUnlock_Headband": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Headband.T_itemicon_Essential_SkillUnlock_Headband"
+ },
+ "SingleShotRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SingleShotRifle.T_itemicon_Weapon_SingleShotRifle"
+ },
+ "Arrow_Poison": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_Arrow_Poison.T_itemicon_Ammo_Arrow_Poison"
+ },
+ "Arrow_Fire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_Arrow_Fire.T_itemicon_Ammo_Arrow_Fire"
+ },
+ "DoubleBarrelShotgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_DoubleBarrelShotgun.T_itemicon_Weapon_DoubleBarrelShotgun"
+ },
+ "SkillUnlock_MultiMissile": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_MultiMissile.T_itemicon_Essential_SkillUnlock_MultiMissile"
+ },
+ "PalSummon_NightLady": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_NightLady.T_itemicon_Consume_PalSummon_NightLady"
+ },
+ "PalSummon_NightLady_Parts": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_NightLady_Parts.T_itemicon_Blueprint_PalSummon_NightLady_Parts"
+ },
+ "PalSummon_NightLady_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_NightLady_Dark.T_itemicon_Consume_PalSummon_NightLady_Dark"
+ },
+ "PalSummon_NightLady_Dark_Parts": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_NightLady_Dark_Parts.T_itemicon_Blueprint_PalSummon_NightLady_Dark_Parts"
+ },
+ "PalItem_PinkRabbit": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_PinkRabbit.T_itemicon_Material_PalItem_PinkRabbit"
+ },
+ "PalItem_MopBaby": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_MopBaby.T_itemicon_Material_PalItem_MopBaby"
+ },
+ "PalItem_NegativeOctopus": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_NegativeOctopus.T_itemicon_Material_PalItem_NegativeOctopus"
+ },
+ "PalItem_RaijinDaughter": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_RaijinDaughter.T_itemicon_Material_PalItem_RaijinDaughter"
+ },
+ "PalItem_LizardMan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalItem_LizardMan.T_itemicon_Material_PalItem_LizardMan"
+ },
+ "Potion_Low": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Potion_Low.T_itemicon_Food_Potion_Low"
+ },
+ "Potion": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Potion.T_itemicon_Food_Potion"
+ },
+ "Potion_High": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Potion_High.T_itemicon_Food_Potion_High"
+ },
+ "Accessory_TalentChecker": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_TalentChecker.T_itemicon_Accessory_TalentChecker"
+ },
+ "HealingMushroom": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_HealingMushroom.T_itemicon_Food_HealingMushroom"
+ },
+ "AncientParts2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_AncientParts2.T_itemicon_Material_AncientParts2"
+ },
+ "Homeward": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_Homeward.T_itemicon_Consume_Homeward"
+ },
+ "Accessory_HeatColdResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_HeatColdResist_1.T_itemicon_Accessory_HeatColdResist_1"
+ },
+ "Accessory_Nonkilling": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Nonkilling.T_itemicon_Accessory_Nonkilling"
+ },
+ "HeadEquip001_purple": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Head001_purple.T_itemicon_Armor_Head001_purple"
+ },
+ "PalSummon_NightLady_Dark_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_NightLady_Dark_2.T_itemicon_Consume_PalSummon_NightLady_Dark_2"
+ },
+ "PalSummon_NightLady_Dark_Parts_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_NightLady_Dark_Parts_2.T_itemicon_Blueprint_PalSummon_NightLady_Dark_Parts_2"
+ },
+ "ExpBoost_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_ExpBoost_01.T_itemicon_Consume_ExpBoost_01"
+ },
+ "ExpBoost_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_ExpBoost_02.T_itemicon_Consume_ExpBoost_02"
+ },
+ "ExpBoost_03": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_ExpBoost_03.T_itemicon_Consume_ExpBoost_03"
+ },
+ "ExpBoost_04": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_ExpBoost_04.T_itemicon_Consume_ExpBoost_04"
+ },
+ "LvUP_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_LvUP_01.T_itemicon_Consume_LvUP_01"
+ },
+ "Fruit_hp_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Fruit_hp_01.T_itemicon_Food_Fruit_hp_01"
+ },
+ "Fruit_attack_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Fruit_attack_01.T_itemicon_Food_Fruit_attack_01"
+ },
+ "Fruit__defense_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Fruit__defense_01.T_itemicon_Food_Fruit__defense_01"
+ },
+ "LaserRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_LaserRifle.T_itemicon_Weapon_LaserRifle"
+ },
+ "LaserGatlingGun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_LaserGatlingGun.T_itemicon_Weapon_LaserGatlingGun"
+ },
+ "GrenadeLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_GrenadeLauncher.T_itemicon_Weapon_GrenadeLauncher"
+ },
+ "GuidedMissileLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_GuidedMissileLauncher.T_itemicon_Weapon_GuidedMissileLauncher"
+ },
+ "MultiGuidedMissileLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_MultiGuidedMissileLauncher.T_itemicon_Weapon_MultiGuidedMissileLauncher"
+ },
+ "FlameThrower": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FlameThrower_Default.T_itemicon_Weapon_FlameThrower_Default"
+ },
+ "GatlingGun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_GatlingGun.T_itemicon_Weapon_GatlingGun"
+ },
+ "FragGrenade_Super": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Super.T_itemicon_Weapon_FragGrenade_Super"
+ },
+ "FlamethrowerBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_FlamethrowerBullet.T_itemicon_Ammo_FlamethrowerBullet"
+ },
+ "GatlingBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_GatlingBullet.T_itemicon_Ammo_GatlingBullet"
+ },
+ "MissileBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_MissileBullet.T_itemicon_Ammo_MissileBullet"
+ },
+ "GrenadeBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_GrenadeBullet.T_itemicon_Ammo_GrenadeBullet"
+ },
+ "Elixir_hp_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_hp_01.T_itemicon_Food_Elixir_hp_01"
+ },
+ "Elixir_stamina_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_stamina_01.T_itemicon_Food_Elixir_stamina_01"
+ },
+ "Elixir_attack_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_attack_01.T_itemicon_Food_Elixir_attack_01"
+ },
+ "Elixir_workspeed_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_workspeed_01.T_itemicon_Food_Elixir_workspeed_01"
+ },
+ "Elixir_weight_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_weight_01.T_itemicon_Food_Elixir_weight_01"
+ },
+ "Elixir_hp_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_hp_02.T_itemicon_Food_Elixir_hp_02"
+ },
+ "Elixir_stamina_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_stamina_02.T_itemicon_Food_Elixir_stamina_02"
+ },
+ "Elixir_attack_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_attack_02.T_itemicon_Food_Elixir_attack_02"
+ },
+ "Elixir_workspeed_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_workspeed_02.T_itemicon_Food_Elixir_workspeed_02"
+ },
+ "Elixir_weight_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Elixir_weight_02.T_itemicon_Food_Elixir_weight_02"
+ },
+ "Gasoline": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Gasoline.T_itemicon_Material_Gasoline"
+ },
+ "HeadEquip023": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip023.T_itemicon_Armor_HeadEquip023"
+ },
+ "HeadEquip024": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip024.T_itemicon_Armor_HeadEquip024"
+ },
+ "HeadEquip025": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip025.T_itemicon_Armor_HeadEquip025"
+ },
+ "HeadEquip026": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip026.T_itemicon_Armor_HeadEquip026"
+ },
+ "HeadEquip027": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip027.T_itemicon_Armor_HeadEquip027"
+ },
+ "HeadEquip028": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip028.T_itemicon_Armor_HeadEquip028"
+ },
+ "HeadEquip029": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip029.T_itemicon_Armor_HeadEquip029"
+ },
+ "HeadEquip030": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip030.T_itemicon_Armor_HeadEquip030"
+ },
+ "HeadEquip031": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip031.T_itemicon_Armor_HeadEquip031"
+ },
+ "HeadEquip032": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip032.T_itemicon_Armor_HeadEquip032"
+ },
+ "HeadEquip033": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip033.T_itemicon_Armor_HeadEquip033"
+ },
+ "HeadEquip041": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip041.T_itemicon_Armor_HeadEquip041"
+ },
+ "GYM_Head_Grass": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_GYM_Head_Grass.T_itemicon_Armor_GYM_Head_Grass"
+ },
+ "GYM_Head_Forest": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_GYM_Head_Forest.T_itemicon_Armor_GYM_Head_Forest"
+ },
+ "GYM_Head_Desert": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_GYM_Head_Desert.T_itemicon_Armor_GYM_Head_Desert"
+ },
+ "GYM_Head_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_GYM_Head_Electric.T_itemicon_Armor_GYM_Head_Electric"
+ },
+ "GYM_Head_Snow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_GYM_Head_Snow.T_itemicon_Armor_GYM_Head_Snow"
+ },
+ "GYM_Head_Sakurajima": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_GYM_Head_Sakurajima.T_itemicon_Armor_GYM_Head_Sakurajima"
+ },
+ "PalSphere_Ultimate": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Ultimate.T_itemicon_PalSphere_Ultimate"
+ },
+ "PalSummon_KingBahamut_Dragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_KingBahamut_Dragon.T_itemicon_Consume_PalSummon_KingBahamut_Dragon"
+ },
+ "PalSummon_KingBahamut_Dragon_Parts": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_KingBahamut_Dragon_Parts.T_itemicon_Blueprint_PalSummon_KingBahamut_Dragon_Parts"
+ },
+ "PalSummon_KingBahamut_Dragon_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_KingBahamut_Dragon_2.T_itemicon_Consume_PalSummon_KingBahamut_Dragon_2"
+ },
+ "PalSummon_KingBahamut_Dragon_Parts_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_KingBahamut_Dragon_Parts_2.T_itemicon_Blueprint_PalSummon_KingBahamut_Dragon_Parts_2"
+ },
+ "Lotus_hp_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_hp_01.T_itemicon_Food_Lotus_hp_01"
+ },
+ "Lotus_stamina_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_stamina_01.T_itemicon_Food_Lotus_stamina_01"
+ },
+ "Lotus_attack_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_attack_01.T_itemicon_Food_Lotus_attack_01"
+ },
+ "Lotus_workspeed_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_workspeed_01.T_itemicon_Food_Lotus_workspeed_01"
+ },
+ "Lotus_weight_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_weight_01.T_itemicon_Food_Lotus_weight_01"
+ },
+ "Lotus_hp_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_hp_02.T_itemicon_Food_Lotus_hp_02"
+ },
+ "Lotus_stamina_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_stamina_02.T_itemicon_Food_Lotus_stamina_02"
+ },
+ "Lotus_attack_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_attack_02.T_itemicon_Food_Lotus_attack_02"
+ },
+ "Lotus_workspeed_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_workspeed_02.T_itemicon_Food_Lotus_workspeed_02"
+ },
+ "Lotus_weight_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Lotus_weight_02.T_itemicon_Food_Lotus_weight_02"
+ },
+ "PlasticHelmet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_PlasticHelmet.T_itemicon_Armor_PlasticHelmet"
+ },
+ "PlasticArmor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_PlasticArmor.T_itemicon_Armor_PlasticArmor"
+ },
+ "PlasticArmorHeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_PlasticArmorHeat.T_itemicon_Armor_PlasticArmorHeat"
+ },
+ "PlasticArmorCold": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_PlasticArmorCold.T_itemicon_Armor_PlasticArmorCold"
+ },
+ "PlasticArmorWeight": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_PlasticArmorWeight.T_itemicon_Armor_PlasticArmorWeight"
+ },
+ "DogCoin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_DogCoin.T_itemicon_Material_DogCoin"
+ },
+ "MeteorDrop": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_MeteorDrop.T_itemicon_Material_MeteorDrop"
+ },
+ "Unlock_Picking": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_Unlock_Picking.T_itemicon_Essential_Unlock_Picking"
+ },
+ "Unlock_Picking_Tier2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_Unlock_Picking_Tier2.T_itemicon_Essential_Unlock_Picking_Tier2"
+ },
+ "Unlock_Picking_Tier3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_Unlock_Picking_Tier3.T_itemicon_Essential_Unlock_Picking_Tier3"
+ },
+ "Accessory_MaxWeightUp": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_MaxWeightUp.T_itemicon_Accessory_MaxWeightUp"
+ },
+ "UnlockEquipmentSlot_Accessory": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_UnlockEquipmentSlot_Accessory.T_itemicon_Essential_UnlockEquipmentSlot_Accessory"
+ },
+ "UnlockEquipmentSlot_Accessory_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_UnlockEquipmentSlot_Accessory_1.T_itemicon_Essential_UnlockEquipmentSlot_Accessory_1"
+ },
+ "Rankup_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Rankup_1.T_itemicon_Food_Rankup_1"
+ },
+ "Rankup_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Rankup_2.T_itemicon_Food_Rankup_2"
+ },
+ "Rankup_3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Rankup_3.T_itemicon_Food_Rankup_3"
+ },
+ "Rankup_4": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Rankup_4.T_itemicon_Food_Rankup_4"
+ },
+ "Rankup_Arbitrary": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Rankup_Arbitrary.T_itemicon_Food_Rankup_Arbitrary"
+ },
+ "Launcher_Meteor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Launcher_Meteor.T_itemicon_Weapon_Launcher_Meteor"
+ },
+ "MeteorBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_MeteorBullet.T_itemicon_Ammo_MeteorBullet"
+ },
+ "PoisonMushroom": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_PoisonMushroom.T_itemicon_Food_PoisonMushroom"
+ },
+ "MushroomJuice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_MushroomJuice.T_itemicon_Food_MushroomJuice"
+ },
+ "KingBahamut_Dragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_KingBahamut_Dragon_icon_normal.T_KingBahamut_Dragon_icon_normal"
+ },
+ "MoonQueen": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_MoonQueen_icon_normal.T_MoonQueen_icon_normal"
+ },
+ "HadesBird_Electric": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_HadesBird_Electric_icon_normal.T_HadesBird_Electric_icon_normal"
+ },
+ "WhiteAlienDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WhiteAlienDragon_icon_normal.T_WhiteAlienDragon_icon_normal"
+ },
+ "SkyDragon_Grass": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SkyDragon_Grass_icon_normal.T_SkyDragon_Grass_icon_normal"
+ },
+ "MushroomDragon_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_MushroomDragon_Dark_icon_normal.T_MushroomDragon_Dark_icon_normal"
+ },
+ "MushroomDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_MushroomDragon_icon_normal.T_MushroomDragon_icon_normal"
+ },
+ "WeaselDragon_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WeaselDragon_Fire_icon_normal.T_WeaselDragon_Fire_icon_normal"
+ },
+ "FeatherOstrich": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FeatherOstrich_icon_normal.T_FeatherOstrich_icon_normal"
+ },
+ "GuardianDog": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GuardianDog_icon_normal.T_GuardianDog_icon_normal"
+ },
+ "FragGrenade_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Dark.T_itemicon_Weapon_FragGrenade_Dark"
+ },
+ "FragGrenade_Dragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Dragon.T_itemicon_Weapon_FragGrenade_Dragon"
+ },
+ "FragGrenade_Ground": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Ground.T_itemicon_Weapon_FragGrenade_Ground"
+ },
+ "FragGrenade_Leaf": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Leaf.T_itemicon_Weapon_FragGrenade_Leaf"
+ },
+ "FragGrenade_Water": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FragGrenade_Water.T_itemicon_Weapon_FragGrenade_Water"
+ },
+ "Katana": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Katana.T_itemicon_Weapon_Katana"
+ },
+ "BeamSword": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_BeamSword.T_itemicon_Weapon_BeamSword"
+ },
+ "SemiAutoShotgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SemiAutoShotgun.T_itemicon_Weapon_SemiAutoShotgun"
+ },
+ "PalSummon_DarkMechaDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_DarkMechaDragon.T_itemicon_Consume_PalSummon_DarkMechaDragon"
+ },
+ "PalSummon_DarkMechaDragon_Parts": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_DarkMechaDragon_Parts.T_itemicon_Blueprint_PalSummon_DarkMechaDragon_Parts"
+ },
+ "PalUpgradeStone4": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalUpgradeStone4.T_itemicon_PalUpgradeStone4"
+ },
+ "EnergyRocketLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_EnergyRocketLauncher.T_itemicon_Weapon_EnergyRocketLauncher"
+ },
+ "PotatoSeeds": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PotatoSeeds.T_itemicon_Material_PotatoSeeds"
+ },
+ "CarrotSeeds": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_CarrotSeeds.T_itemicon_Material_CarrotSeeds"
+ },
+ "OnionSeeds": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_OnionSeeds.T_itemicon_Material_OnionSeeds"
+ },
+ "Carrot": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Carrot.T_itemicon_Food_Carrot"
+ },
+ "Onion": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Onion.T_itemicon_Food_Onion"
+ },
+ "Gyoza": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Gyoza.T_itemicon_Food_Gyoza"
+ },
+ "StirFriedVegetables": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_FriedVegetables.T_itemicon_Food_FriedVegetables"
+ },
+ "PotatoChips": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_PotatoChips.T_itemicon_Food_PotatoChips"
+ },
+ "Yakisoba": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Yakisoba.T_itemicon_Food_Yakisoba"
+ },
+ "SpringRolls": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_SpringRolls.T_itemicon_Food_SpringRolls"
+ },
+ "Gratin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Gratin.T_itemicon_Food_Gratin"
+ },
+ "Minestrone": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Minestrone.T_itemicon_Food_Minestrone"
+ },
+ "Curry": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Curry.T_itemicon_Food_Curry"
+ },
+ "MeatAndPotatoes": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_MeatAndPotatoes.T_itemicon_Food_MeatAndPotatoes"
+ },
+ "Quiche": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Quiche.T_itemicon_Food_Quiche"
+ },
+ "SFArmor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_SFArmor.T_itemicon_Armor_SFArmor"
+ },
+ "SFArmorHeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_SFArmorHeat.T_itemicon_Armor_SFArmorHeat"
+ },
+ "SFArmorCold": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_SFArmorCold.T_itemicon_Armor_SFArmorCold"
+ },
+ "SFArmorWeight": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_SFArmorWeight.T_itemicon_Armor_SFArmorWeight"
+ },
+ "PalRevive": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalRevive.T_itemicon_Consume_PalRevive"
+ },
+ "AdditionalInventory_001": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AdditionalInventory_001.T_itemicon_Essential_AdditionalInventory_001"
+ },
+ "AdditionalInventory_002": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AdditionalInventory_002.T_itemicon_Essential_AdditionalInventory_002"
+ },
+ "AdditionalInventory_003": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AdditionalInventory_003.T_itemicon_Essential_AdditionalInventory_003"
+ },
+ "AdditionalInventory_004": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_AdditionalInventory_004.T_itemicon_Essential_AdditionalInventory_004"
+ },
+ "HeadEquip044": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip044.T_itemicon_Armor_HeadEquip044"
+ },
+ "EnergyLauncherBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_EnergyLauncherBullet.T_itemicon_Ammo_EnergyLauncherBullet"
+ },
+ "OldRevolver": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_OldRevolver.T_itemicon_Weapon_OldRevolver"
+ },
+ "SFHelmet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_SFHelmet.T_itemicon_Armor_SFHelmet"
+ },
+ "MakeshiftAssaultRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_MakeshiftAssaultRifle.T_itemicon_Weapon_MakeshiftAssaultRifle"
+ },
+ "SemiAutoRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SemiAutoRifle.T_itemicon_Weapon_SemiAutoRifle"
+ },
+ "MakeshiftSubmachineGun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_MakeshiftSubmachineGun.T_itemicon_Weapon_MakeshiftSubmachineGun"
+ },
+ "SubmachineGun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SubmachineGun.T_itemicon_Weapon_SubmachineGun"
+ },
+ "MakeshiftShotgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_MakeshiftShotgun.T_itemicon_Weapon_MakeshiftShotgun"
+ },
+ "GYM_Head_Viking": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_GYM_Head_Viking.T_itemicon_Armor_GYM_Head_Viking"
+ },
+ "PredatorCrystal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PredatorCrystal.T_itemicon_Material_PredatorCrystal"
+ },
+ "BountyProof_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_Jewelry_BountyProof_1.T_icon_item_Jewelry_BountyProof_1"
+ },
+ "BountyProof_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_Jewelry_BountyProof_2.T_icon_item_Jewelry_BountyProof_2"
+ },
+ "AncientParts3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_AncientParts3.T_itemicon_Material_AncientParts3"
+ },
+ "Accessory_JumpPower_Increase": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_JumpPower_Increase.T_itemicon_Accessory_JumpPower_Increase"
+ },
+ "Accessory_JumpCount_Increase1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_JumpCount_Increase.T_itemicon_Accessory_JumpCount_Increase"
+ },
+ "Accessory_JumpCount_Increase2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_JumpCount_Increase.T_itemicon_Accessory_JumpCount_Increase"
+ },
+ "Accessory_JumpCount_Increase3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_JumpCount_Increase.T_itemicon_Accessory_JumpCount_Increase"
+ },
+ "Accessory_AirDash1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_AirDash.T_itemicon_Accessory_AirDash"
+ },
+ "Accessory_AirDash2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_AirDash.T_itemicon_Accessory_AirDash"
+ },
+ "Accessory_AirDash3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_AirDash.T_itemicon_Accessory_AirDash"
+ },
+ "Accessory_AirDash4": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_AirDash.T_itemicon_Accessory_AirDash"
+ },
+ "LaserGatlingBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_LaserGatlingBullet.T_itemicon_Ammo_LaserGatlingBullet"
+ },
+ "Shield_SF": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Shield_06.T_itemicon_Armor_Shield_06"
+ },
+ "PalSphere_Exotic": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Exotic.T_itemicon_PalSphere_Exotic"
+ },
+ "CompoundBow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_CompoundBow.T_itemicon_Weapon_CompoundBow"
+ },
+ "ReinforcedArrow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_ReinforcedArrow.T_itemicon_Ammo_ReinforcedArrow"
+ },
+ "SFBow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SFBow.T_itemicon_Weapon_SFBow"
+ },
+ "SFArrow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_SFArrow.T_itemicon_Ammo_SFArrow"
+ },
+ "Chromium": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Chromium.T_itemicon_Material_Chromium"
+ },
+ "StainlessSteel": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_StainlessSteel.T_itemicon_Material_StainlessSteel"
+ },
+ "PalSummon_DarkMechaDragon_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_DarkMechaDragon_2.T_itemicon_Consume_PalSummon_DarkMechaDragon_2"
+ },
+ "PalSummon_DarkMechaDragon_Parts_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_DarkMechaDragon_Parts_2.T_itemicon_Blueprint_PalSummon_DarkMechaDragon_Parts_2"
+ },
+ "Potion_Extreme": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Potion_Extreme.T_itemicon_Food_Potion_Extreme"
+ },
+ "NightStone": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_NightStone.T_itemicon_Material_NightStone"
+ },
+ "PalDarkParts": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalDarkParts.T_itemicon_Material_PalDarkParts"
+ },
+ "SphereModule_Heavy": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_SphereModule_Heavy.T_itemicon_SphereModule_Heavy"
+ },
+ "SphereModule_Curve": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_SphereModule_Curve.T_itemicon_SphereModule_Curve"
+ },
+ "SphereModule_Sniper": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_SphereModule_Spiper.T_itemicon_SphereModule_Spiper"
+ },
+ "SphereModule_Curve2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_SphereModule_Curve2.T_itemicon_SphereModule_Curve2"
+ },
+ "SphereModule_Sniper2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_SphereModule_Sniper2.T_itemicon_SphereModule_Sniper2"
+ },
+ "SphereModule_Homing": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_SphereModule_Homing.T_itemicon_SphereModule_Homing"
+ },
+ "WorkSuitability_AddTicket_EmitFlame": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_00.T_itemicon_Consume_PalWorkLvUp_00"
+ },
+ "WorkSuitability_AddTicket_Watering": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_01.T_itemicon_Consume_PalWorkLvUp_01"
+ },
+ "WorkSuitability_AddTicket_Seeding": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_02.T_itemicon_Consume_PalWorkLvUp_02"
+ },
+ "WorkSuitability_AddTicket_GenerateElectricity": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_03.T_itemicon_Consume_PalWorkLvUp_03"
+ },
+ "WorkSuitability_AddTicket_Handcraft": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_04.T_itemicon_Consume_PalWorkLvUp_04"
+ },
+ "WorkSuitability_AddTicket_Collection": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_05.T_itemicon_Consume_PalWorkLvUp_05"
+ },
+ "WorkSuitability_AddTicket_Deforest": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_06.T_itemicon_Consume_PalWorkLvUp_06"
+ },
+ "WorkSuitability_AddTicket_Mining": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_07.T_itemicon_Consume_PalWorkLvUp_07"
+ },
+ "WorkSuitability_AddTicket_ProductMedicine": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_08.T_itemicon_Consume_PalWorkLvUp_08"
+ },
+ "WorkSuitability_AddTicket_Cool": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_10.T_itemicon_Consume_PalWorkLvUp_10"
+ },
+ "WorkSuitability_AddTicket_Transport": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_11.T_itemicon_Consume_PalWorkLvUp_11"
+ },
+ "WorkSuitability_AddTicket_MonsterFarm": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalWorkLvUp_12.T_itemicon_Consume_PalWorkLvUp_12"
+ },
+ "BossDefeatReward_WeaselDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_WeaselDragon.T_icon_item_BossDefeatReward_WeaselDragon"
+ },
+ "BossDefeatReward_MopKing": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_MopKing.T_icon_item_BossDefeatReward_MopKing"
+ },
+ "BossDefeatReward_PlantSlime": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_PlantSlime.T_icon_item_BossDefeatReward_PlantSlime"
+ },
+ "BossDefeatReward_LazyCatfish": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_LazyCatfish.T_icon_item_BossDefeatReward_LazyCatfish"
+ },
+ "BossDefeatReward_CaptainPenguin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_CaptainPenguin.T_icon_item_BossDefeatReward_CaptainPenguin"
+ },
+ "BossDefeatReward_BlueDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_BlueDragon.T_icon_item_BossDefeatReward_BlueDragon"
+ },
+ "BossDefeatReward_NaughtyCat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_NaughtyCat.T_icon_item_BossDefeatReward_NaughtyCat"
+ },
+ "BossDefeatReward_HawkBird": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_HawkBird.T_icon_item_BossDefeatReward_HawkBird"
+ },
+ "BossDefeatReward_SkyDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_SkyDragon.T_icon_item_BossDefeatReward_SkyDragon"
+ },
+ "BossDefeatReward_CatVampire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_CatVampire.T_icon_item_BossDefeatReward_CatVampire"
+ },
+ "BossDefeatReward_KingAlpaca": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_KingAlpaca.T_icon_item_BossDefeatReward_KingAlpaca"
+ },
+ "BossDefeatReward_SakuraSaurus": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_SakuraSaurus.T_icon_item_BossDefeatReward_SakuraSaurus"
+ },
+ "BossDefeatReward_CatMage": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_CatMage.T_icon_item_BossDefeatReward_CatMage"
+ },
+ "BossDefeatReward_Ronin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Ronin.T_icon_item_BossDefeatReward_Ronin"
+ },
+ "BossDefeatReward_FengyunDeeper": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FengyunDeeper.T_icon_item_BossDefeatReward_FengyunDeeper"
+ },
+ "BossDefeatReward_FlowerDoll": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FlowerDoll.T_icon_item_BossDefeatReward_FlowerDoll"
+ },
+ "BossDefeatReward_ThunderBird": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_ThunderBird.T_icon_item_BossDefeatReward_ThunderBird"
+ },
+ "BossDefeatReward_HerculesBeetle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_HerculesBeetle.T_icon_item_BossDefeatReward_HerculesBeetle"
+ },
+ "BossDefeatReward_SakuraSaurus_Water": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_SakuraSaurus_Water.T_icon_item_BossDefeatReward_SakuraSaurus_Water"
+ },
+ "BossDefeatReward_FairyDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FairyDragon.T_icon_item_BossDefeatReward_FairyDragon"
+ },
+ "BossDefeatReward_LazyDragon_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_LazyDragon_Electric.T_icon_item_BossDefeatReward_LazyDragon_Electric"
+ },
+ "BossDefeatReward_Kirin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Kirin.T_icon_item_BossDefeatReward_Kirin"
+ },
+ "BossDefeatReward_QueenBee": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_QueenBee.T_icon_item_BossDefeatReward_QueenBee"
+ },
+ "BossDefeatReward_GrassPanda_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GrassPanda_Electric.T_icon_item_BossDefeatReward_GrassPanda_Electric"
+ },
+ "BossDefeatReward_Mutant": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Mutant.T_icon_item_BossDefeatReward_Mutant"
+ },
+ "BossDefeatReward_GrassRabbitMan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GrassRabbitMan.T_icon_item_BossDefeatReward_GrassRabbitMan"
+ },
+ "BossDefeatReward_Yeti_Grass": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Yeti_Grass.T_icon_item_BossDefeatReward_Yeti_Grass"
+ },
+ "BossDefeatReward_GrassMammoth": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GrassMammoth.T_icon_item_BossDefeatReward_GrassMammoth"
+ },
+ "BossDefeatReward_VioletFairy": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_VioletFairy.T_icon_item_BossDefeatReward_VioletFairy"
+ },
+ "BossDefeatReward_WhiteMoth": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_WhiteMoth.T_icon_item_BossDefeatReward_WhiteMoth"
+ },
+ "BossDefeatReward_DarkScorpion": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_DarkScorpion.T_icon_item_BossDefeatReward_DarkScorpion"
+ },
+ "BossDefeatReward_Suzaku": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Suzaku.T_icon_item_BossDefeatReward_Suzaku"
+ },
+ "BossDefeatReward_Umihebi": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Umihebi.T_icon_item_BossDefeatReward_Umihebi"
+ },
+ "BossDefeatReward_KingAlpaca_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_KingAlpaca_Ice.T_icon_item_BossDefeatReward_KingAlpaca_Ice"
+ },
+ "BossDefeatReward_FlowerDinosaur_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FlowerDinosaur_Electric.T_icon_item_BossDefeatReward_FlowerDinosaur_Electric"
+ },
+ "BossDefeatReward_Anubis": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Anubis.T_icon_item_BossDefeatReward_Anubis"
+ },
+ "BossDefeatReward_BlackMetalDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_BlackMetalDragon.T_icon_item_BossDefeatReward_BlackMetalDragon"
+ },
+ "BossDefeatReward_KingBahamut": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_KingBahamut.T_icon_item_BossDefeatReward_KingBahamut"
+ },
+ "BossDefeatReward_LilyQueen_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_LilyQueen_Dark.T_icon_item_BossDefeatReward_LilyQueen_Dark"
+ },
+ "BossDefeatReward_DarkScorpion_Ground": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_DarkScorpion_Ground.T_icon_item_BossDefeatReward_DarkScorpion_Ground"
+ },
+ "BossDefeatReward_WingGolem": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_WingGolem.T_icon_item_BossDefeatReward_WingGolem"
+ },
+ "BossDefeatReward_GrimGirl": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GrimGirl.T_icon_item_BossDefeatReward_GrimGirl"
+ },
+ "BossDefeatReward_BlueThunderHorse": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_BlueThunderHorse.T_icon_item_BossDefeatReward_BlueThunderHorse"
+ },
+ "BossDefeatReward_AmaterasuWolf_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_AmaterasuWolf_Dark.T_icon_item_BossDefeatReward_AmaterasuWolf_Dark"
+ },
+ "BossDefeatReward_FengyunDeeper_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FengyunDeeper_Electric.T_icon_item_BossDefeatReward_FengyunDeeper_Electric"
+ },
+ "BossDefeatReward_WhiteDeer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_WhiteDeer.T_icon_item_BossDefeatReward_WhiteDeer"
+ },
+ "BossDefeatReward_WhiteShieldDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_WhiteShieldDragon.T_icon_item_BossDefeatReward_WhiteShieldDragon"
+ },
+ "BossDefeatReward_Horus_Water": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Horus_Water.T_icon_item_BossDefeatReward_Horus_Water"
+ },
+ "BossDefeatReward_JetDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_JetDragon.T_icon_item_BossDefeatReward_JetDragon"
+ },
+ "BossDefeatReward_IceHorse": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_IceHorse.T_icon_item_BossDefeatReward_IceHorse"
+ },
+ "BossDefeatReward_SaintCentaur": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_SaintCentaur.T_icon_item_BossDefeatReward_SaintCentaur"
+ },
+ "BossDefeatReward_BlackPuppy": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_BlackPuppy.T_icon_item_BossDefeatReward_BlackPuppy"
+ },
+ "BossDefeatReward_GhostRabbit": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GhostRabbit.T_icon_item_BossDefeatReward_GhostRabbit"
+ },
+ "BossDefeatReward_NightBlueHorse": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_NightBlueHorse.T_icon_item_BossDefeatReward_NightBlueHorse"
+ },
+ "BossDefeatReward_BlueberryFairy": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_BlueberryFairy.T_icon_item_BossDefeatReward_BlueberryFairy"
+ },
+ "BossDefeatReward_BadCatgirl": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_BadCatgirl.T_icon_item_BossDefeatReward_BadCatgirl"
+ },
+ "BossDefeatReward_GoldenHorse": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GoldenHorse.T_icon_item_BossDefeatReward_GoldenHorse"
+ },
+ "BossDefeatReward_MysteryMask": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_MysteryMask.T_icon_item_BossDefeatReward_MysteryMask"
+ },
+ "BossDefeatReward_PurpleSpider": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_PurpleSpider.T_icon_item_BossDefeatReward_PurpleSpider"
+ },
+ "BossDefeatReward_IceHorse_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_IceHorse_Dark.T_icon_item_BossDefeatReward_IceHorse_Dark"
+ },
+ "BossDefeatReward_Kitsunebi_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Kitsunebi_Ice.T_icon_item_BossDefeatReward_Kitsunebi_Ice"
+ },
+ "BossDefeatReward_RaijinDaughter_Water": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_RaijinDaughter_Water.T_icon_item_BossDefeatReward_RaijinDaughter_Water"
+ },
+ "BossDefeatReward_WhiteTiger_Ground": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_WhiteTiger_Ground.T_icon_item_BossDefeatReward_WhiteTiger_Ground"
+ },
+ "BossDefeatReward_BerryGoat_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_BerryGoat_Dark.T_icon_item_BossDefeatReward_BerryGoat_Dark"
+ },
+ "BossDefeatReward_Werewolf_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Werewolf_Ice.T_icon_item_BossDefeatReward_Werewolf_Ice"
+ },
+ "BossDefeatReward_PinkRabbit_Grass": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_PinkRabbit_Grass.T_icon_item_BossDefeatReward_PinkRabbit_Grass"
+ },
+ "BossDefeatReward_HerculesBeetle_Ground": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_HerculesBeetle_Ground.T_icon_item_BossDefeatReward_HerculesBeetle_Ground"
+ },
+ "Axe_Steal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Axe_Tier_03.T_itemicon_Weapon_Axe_Tier_03"
+ },
+ "Pickaxe_Steal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Pickaxe_Tier_03.T_itemicon_Weapon_Pickaxe_Tier_03"
+ },
+ "MetalDetector": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_MetalDetector.T_itemicon_Essential_MetalDetector"
+ },
+ "RainbowCrystal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_RainbowCrystal.T_itemicon_Material_RainbowCrystal"
+ },
+ "YakushimaBlade": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_YakushimaBlade.T_itemicon_Weapon_YakushimaBlade"
+ },
+ "GoldenHorse": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GoldenHorse_icon_normal.T_GoldenHorse_icon_normal"
+ },
+ "BadCatgirl": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BadCatgirl_icon_normal.T_BadCatgirl_icon_normal"
+ },
+ "BlueberryFairy": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlueberryFairy_icon_normal.T_BlueberryFairy_icon_normal"
+ },
+ "DarkMechaDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_DarkMechaDragon_icon_normal.T_DarkMechaDragon_icon_normal"
+ },
+ "GhostRabbit": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GhostRabbit_icon_normal.T_GhostRabbit_icon_normal"
+ },
+ "NightBlueHorse": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_NightBlueHorse_icon_normal.T_NightBlueHorse_icon_normal"
+ },
+ "WhiteShieldDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WhiteShieldDragon_icon_normal.T_WhiteShieldDragon_icon_normal"
+ },
+ "BlackPuppy": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlackPuppy_icon_normal.T_BlackPuppy_icon_normal"
+ },
+ "WhiteDeer": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WhiteDeer_icon_normal.T_WhiteDeer_icon_normal"
+ },
+ "MysteryMask": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_MysteryMask_icon_normal.T_MysteryMask_icon_normal"
+ },
+ "GrimGirl": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GrimGirl_icon_normal.T_GrimGirl_icon_normal"
+ },
+ "PurpleSpider": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_PurpleSpider_icon_normal.T_PurpleSpider_icon_normal"
+ },
+ "BlueThunderHorse": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlueThunderHorse_icon_normal.T_BlueThunderHorse_icon_normal"
+ },
+ "SnowTigerBeastman": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SnowTigerBeastman_icon_normal.T_SnowTigerBeastman_icon_normal"
+ },
+ "Kitsunebi_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Kitsunebi_Ice_icon_normal.T_Kitsunebi_Ice_icon_normal"
+ },
+ "RaijinDaughter_Water": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_RaijinDaughter_Water_icon_normal.T_RaijinDaughter_Water_icon_normal"
+ },
+ "WhiteTiger_Ground": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WhiteTiger_Ground_icon_normal.T_WhiteTiger_Ground_icon_normal"
+ },
+ "FengyunDeeper_Electric": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FengyunDeeper_Electric_icon_normal.T_FengyunDeeper_Electric_icon_normal"
+ },
+ "BerryGoat_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BerryGoat_Dark_icon_normal.T_BerryGoat_Dark_icon_normal"
+ },
+ "Werewolf_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Werewolf_Ice_icon_normal.T_Werewolf_Ice_icon_normal"
+ },
+ "Horus_Water": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Horus_Water_icon_normal.T_Horus_Water_icon_normal"
+ },
+ "PinkRabbit_Grass": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_PinkRabbit_Grass_icon_normal.T_PinkRabbit_Grass_icon_normal"
+ },
+ "HerculesBeetle_Ground": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_HerculesBeetle_Ground_icon_normal.T_HerculesBeetle_Ground_icon_normal"
+ },
+ "AmaterasuWolf_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_AmaterasuWolf_Dark_icon_normal.T_AmaterasuWolf_Dark_icon_normal"
+ },
+ "ButcheringImportPal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_ButcheringImportPal.T_itemicon_Material_ButcheringImportPal"
+ },
+ "SkillUnlock_Hammer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_SkillUnlock_Hammer.T_itemicon_Essential_SkillUnlock_Hammer"
+ },
+ "ChargeLaserRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_ChargeLaserRifle.T_itemicon_Weapon_ChargeLaserRifle"
+ },
+ "OverheatRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_OverheatRifle.T_itemicon_Weapon_OverheatRifle"
+ },
+ "EnergyShotgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_EnergyShotgun.T_itemicon_Weapon_EnergyShotgun"
+ },
+ "PalDopingShot": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_PalDopingShot.T_itemicon_Weapon_PalDopingShot"
+ },
+ "PalDopingShot_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_PalDopingShot_2.T_itemicon_Weapon_PalDopingShot_2"
+ },
+ "PalHealingGrenade": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_PalHealingGrenade.T_itemicon_Weapon_PalHealingGrenade"
+ },
+ "Accessory_Otomo_ElementBoost_Normal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Normal.T_itemicon_Accessory_Otomo_ElementBoost_Normal"
+ },
+ "Accessory_Otomo_ElementBoost_Fire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Fire.T_itemicon_Accessory_Otomo_ElementBoost_Fire"
+ },
+ "Accessory_Otomo_ElementBoost_Water": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Water.T_itemicon_Accessory_Otomo_ElementBoost_Water"
+ },
+ "Accessory_Otomo_ElementBoost_Electricity": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Electricity.T_itemicon_Accessory_Otomo_ElementBoost_Electricity"
+ },
+ "Accessory_Otomo_ElementBoost_Leaf": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Leaf.T_itemicon_Accessory_Otomo_ElementBoost_Leaf"
+ },
+ "Accessory_Otomo_ElementBoost_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Ice.T_itemicon_Accessory_Otomo_ElementBoost_Ice"
+ },
+ "Accessory_Otomo_ElementBoost_Earth": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Earth.T_itemicon_Accessory_Otomo_ElementBoost_Earth"
+ },
+ "Accessory_Otomo_ElementBoost_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Dark.T_itemicon_Accessory_Otomo_ElementBoost_Dark"
+ },
+ "Accessory_Otomo_ElementBoost_Dragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ElementBoost_Dragon.T_itemicon_Accessory_Otomo_ElementBoost_Dragon"
+ },
+ "Accessory_Otomo_Attack_up": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Attack_up.T_itemicon_Accessory_Otomo_Attack_up"
+ },
+ "Accessory_Otomo_Defense_up": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Defense_up.T_itemicon_Accessory_Otomo_Defense_up"
+ },
+ "Accessory_Otomo_Exp_up": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Exp_up.T_itemicon_Accessory_Otomo_Exp_up"
+ },
+ "Accessory_Otomo_MoveSpeed_up": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_MoveSpeed_up.T_itemicon_Accessory_Otomo_MoveSpeed_up"
+ },
+ "ChargeLaserRifleBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_ChargeLaserRifleBullet.T_itemicon_Ammo_ChargeLaserRifleBullet"
+ },
+ "OverheatRifleBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_OverheatRifleBullet.T_itemicon_Ammo_OverheatRifleBullet"
+ },
+ "EnergyShotgunBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_EnergyShotgunBullet.T_itemicon_Ammo_EnergyShotgunBullet"
+ },
+ "PalDopingShotBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_PalDopingShotBullet.T_itemicon_Ammo_PalDopingShotBullet"
+ },
+ "TreasureMap01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_TreasureMap01.T_itemicon_Consume_TreasureMap01"
+ },
+ "PalSummon_YakushimaBoss002": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_YakushimaBoss002.T_itemicon_Consume_PalSummon_YakushimaBoss002"
+ },
+ "YakushimaHeadEquip001": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_YakushimaHeadEquip001.T_itemicon_Armor_YakushimaHeadEquip001"
+ },
+ "YakushimaHeadEquip002": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_YakushimaHeadEquip002.T_itemicon_Armor_YakushimaHeadEquip002"
+ },
+ "YakushimaArmor001": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_YakushimaArmor001.T_itemicon_Armor_YakushimaArmor001"
+ },
+ "YakushimaHeadEquip003": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_YakushimaHeadEquip003.T_itemicon_Armor_YakushimaHeadEquip003"
+ },
+ "YakushimaHeadEquip004": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_YakushimaHeadEquip004.T_itemicon_Armor_YakushimaHeadEquip004"
+ },
+ "YakushimaHeadEquip005": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_YakushimaHeadEquip005.T_itemicon_Armor_YakushimaHeadEquip005"
+ },
+ "YakushimaHeadEquip006": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_YakushimaHeadEquip006.T_itemicon_Armor_YakushimaHeadEquip006"
+ },
+ "YakushimaParts001": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_YakushimaParts001.T_itemicon_Material_YakushimaParts001"
+ },
+ "YakushimaParts002": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_YakushimaParts002.T_itemicon_Material_YakushimaParts002"
+ },
+ "YakushimaParts003": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_YakushimaParts003.T_itemicon_Material_YakushimaParts003"
+ },
+ "YakushimaBlade002": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_YakushimaBlade002.T_itemicon_Weapon_YakushimaBlade002"
+ },
+ "YakushimaBlade003": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_YakushimaBlade003.T_itemicon_Weapon_YakushimaBlade003"
+ },
+ "YakushimaBlade004": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_YakushimaBlade004.T_itemicon_Weapon_YakushimaBlade004"
+ },
+ "YakushimaBlade005": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_YakushimaBlade005.T_itemicon_Weapon_YakushimaBlade005"
+ },
+ "YakushimaGun001": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_YakushimaGun001.T_itemicon_Weapon_YakushimaGun001"
+ },
+ "YakushimaLantern001": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_YakushimaLantern001.T_itemicon_Weapon_YakushimaLantern001"
+ },
+ "YakushimaIngot001": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_YakushimaIngot001.T_itemicon_Material_YakushimaIngot001"
+ },
+ "YakushimaIngot002": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_YakushimaIngot002.T_itemicon_Material_YakushimaIngot002"
+ },
+ "Elixir_hp_Yakushima": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_Elixir_hp_Yakushima.T_itemicon_Consume_Elixir_hp_Yakushima"
+ },
+ "Lantern_High": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_Lantern.T_itemicon_Essential_Lantern"
+ },
+ "Blueprint_Building": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_Building.T_itemicon_Blueprint_Building"
+ },
+ "PalPassiveSkillChange": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalPassiveSkillChange.T_itemicon_Material_PalPassiveSkillChange"
+ },
+ "PalGenderReverse": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalGenderReverse.T_itemicon_Material_PalGenderReverse"
+ },
+ "BattleTicket": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Jewelry_BattleTicket.T_itemicon_Jewelry_BattleTicket"
+ },
+ "Salvage_TreasureBoxKey01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Salvage_TreasureBoxKey01.T_itemicon_Salvage_TreasureBoxKey01"
+ },
+ "Salvage_TreasureBoxKey02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Salvage_TreasureBoxKey02.T_itemicon_Salvage_TreasureBoxKey02"
+ },
+ "FishingRod_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FishingRod_1.T_itemicon_Weapon_FishingRod_1"
+ },
+ "FishingRod_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FishingRod_2.T_itemicon_Weapon_FishingRod_2"
+ },
+ "FishingRod_3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FishingRod_3.T_itemicon_Weapon_FishingRod_3"
+ },
+ "FishingRod_4": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FishingRod_4.T_itemicon_Weapon_FishingRod_4"
+ },
+ "FishingRod_5": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FishingRod_5.T_itemicon_Weapon_FishingRod_5"
+ },
+ "FishingRod_6": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_FishingRod_6.T_itemicon_Weapon_FishingRod_6"
+ },
+ "BossDefeatReward_IceNarwhal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_IceNarwhal.T_icon_item_BossDefeatReward_IceNarwhal"
+ },
+ "BossDefeatReward_PoseidonOrca": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_PoseidonOrca.T_icon_item_BossDefeatReward_PoseidonOrca"
+ },
+ "Shield_07": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Shield_07.T_itemicon_Armor_Shield_07"
+ },
+ "ManganeseIngot": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_ManganeseIngot.T_itemicon_Material_ManganeseIngot"
+ },
+ "ManganeseOre": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_ManganeseOre.T_itemicon_Material_ManganeseOre"
+ },
+ "Meat_OctopusGirl": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Meat_OctopusGirl.T_itemicon_food_Meat_OctopusGirl"
+ },
+ "Meat_JellyfishFairy": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Meat_JellyfishFairy.T_itemicon_food_Meat_JellyfishFairy"
+ },
+ "Meat_JellyfishGhost": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Meat_JellyfishGhost.T_itemicon_food_Meat_JellyfishGhost"
+ },
+ "Meat_IceCrocodile": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Meat_IceCrocodile.T_itemicon_food_Meat_IceCrocodile"
+ },
+ "OctopusGirl_Takoyaki": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_OctopusGirl_Takoyaki.T_itemicon_food_OctopusGirl_Takoyaki"
+ },
+ "JellyfishFairy_jelly": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_JellyfishFairy_jelly.T_itemicon_food_JellyfishFairy_jelly"
+ },
+ "JellyfishGhost_jelly": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_JellyfishGhost_jelly.T_itemicon_food_JellyfishGhost_jelly"
+ },
+ "BakedMeat_IceCrocodile": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_BakedMeat_IceCrocodile.T_itemicon_food_BakedMeat_IceCrocodile"
+ },
+ "QuestItem_Farmer_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_QuestItem_Farmer_1.T_itemicon_QuestItem_Farmer_1"
+ },
+ "QuestItem_Zoe_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_QuestItem_Zoe_1.T_itemicon_QuestItem_Zoe_1"
+ },
+ "QuestItem_Breeder_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_QuestItem_Breeder_1.T_itemicon_QuestItem_Breeder_1"
+ },
+ "AffectionFruit_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_AffectionFruit_01.T_itemicon_Consume_AffectionFruit_01"
+ },
+ "FishingBait_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_1.T_itemicon_Consume_FishingBait_1"
+ },
+ "FishingBait_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_2.T_itemicon_Consume_FishingBait_2"
+ },
+ "FishingBait_3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_3.T_itemicon_Consume_FishingBait_3"
+ },
+ "FishingBait_1_A": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_1.T_itemicon_Consume_FishingBait_1"
+ },
+ "FishingBait_1_B": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_1.T_itemicon_Consume_FishingBait_1"
+ },
+ "FishingBait_2_A": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_2.T_itemicon_Consume_FishingBait_2"
+ },
+ "FishingBait_2_B": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_2.T_itemicon_Consume_FishingBait_2"
+ },
+ "FishingBait_3_A": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_3_A.T_itemicon_Consume_FishingBait_3_A"
+ },
+ "FishingBait_3_B": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_FishingBait_3.T_itemicon_Consume_FishingBait_3"
+ },
+ "PoseidonOrca": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_PoseidonOrca_icon_normal.T_PoseidonOrca_icon_normal"
+ },
+ "IceNarwhal_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_IceNarwhal_Fire_icon_normal.T_IceNarwhal_Fire_icon_normal"
+ },
+ "GhostAnglerfish_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GhostAnglerfish_Fire_icon_normal.T_GhostAnglerfish_Fire_icon_normal"
+ },
+ "TropicalOstrich": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_TropicalOstrich_icon_normal.T_TropicalOstrich_icon_normal"
+ },
+ "Penguin_Electric": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Penguin_Electric_icon_normal.T_Penguin_Electric_icon_normal"
+ },
+ "GhostAnglerfish": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GhostAnglerfish_icon_normal.T_GhostAnglerfish_icon_normal"
+ },
+ "IceNarwhal": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_IceNarwhal_icon_normal.T_IceNarwhal_icon_normal"
+ },
+ "IceSeal": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_IceSeal_icon_normal.T_IceSeal_icon_normal"
+ },
+ "BlueDragon_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlueDragon_Ice_icon_normal.T_BlueDragon_Ice_icon_normal"
+ },
+ "LeafMomonga": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LeafMomonga_icon_normal.T_LeafMomonga_icon_normal"
+ },
+ "FlyingManta_Thunder": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_FlyingManta_Thunder_icon_normal.T_FlyingManta_Thunder_icon_normal"
+ },
+ "NegativeOctopus_Neutral": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_NegativeOctopus_Neutral_icon_normal.T_NegativeOctopus_Neutral_icon_normal"
+ },
+ "Plesiosaur": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Plesiosaur_icon_normal.T_Plesiosaur_icon_normal"
+ },
+ "BossDefeatReward_IceNarwhal_Fire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_IceNarwhal_Fire.T_icon_item_BossDefeatReward_IceNarwhal_Fire"
+ },
+ "Seafood_Salada": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Seafood_Salada.T_itemicon_food_Seafood_Salada"
+ },
+ "Supplement": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Supplement.T_itemicon_food_Supplement"
+ },
+ "PalSummon_YakushimaBoss002_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_YakushimaBoss002_2.T_itemicon_Consume_PalSummon_YakushimaBoss002_2"
+ },
+ "Kigurumi001_Armor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Kigurumi001_Armor.T_itemicon_Armor_Kigurumi001_Armor"
+ },
+ "Kigurumi001_Helmet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Kigurumi001_Helmet.T_itemicon_Armor_Kigurumi001_Helmet"
+ },
+ "QuestItem_Zoe_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_QuestItem_Zoe_Halloweenskin_1.T_itemicon_QuestItem_Zoe_Halloweenskin_1"
+ },
+ "LegendDeer": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LegendDeer_icon_normal.T_LegendDeer_icon_normal"
+ },
+ "OctaviaRevolver": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_OctaviaRevolver.T_itemicon_Weapon_OctaviaRevolver"
+ },
+ "OctaviaShotgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_OctaviaShotgun.T_itemicon_Weapon_OctaviaShotgun"
+ },
+ "PalSummon_LegendDeer": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_LegendDeer.T_itemicon_Consume_PalSummon_LegendDeer"
+ },
+ "PalSummon_LegendDeer_Parts": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_LegendDeer_Parts.T_itemicon_Blueprint_PalSummon_LegendDeer_Parts"
+ },
+ "PalSummon_LegendDeer_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalSummon_LegendDeer_2.T_itemicon_Consume_PalSummon_LegendDeer_2"
+ },
+ "PalSummon_LegendDeer_Parts_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_PalSummon_LegendDeer_Parts_2.T_itemicon_Blueprint_PalSummon_LegendDeer_Parts_2"
+ },
+ "HeadEquip046": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip046.T_itemicon_Armor_HeadEquip046"
+ },
+ "Octavia001_Armor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Octavia001_Armor.T_itemicon_Armor_Octavia001_Armor"
+ },
+ "Octavia002_Armor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_Octavia002_Armor.T_itemicon_Armor_Octavia002_Armor"
+ },
+ "Sweet_Caramel": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Sweet_Caramel.T_itemicon_Food_Sweet_Caramel"
+ },
+ "PlayerDropItem": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PlayerDropItem.T_itemicon_Material_PlayerDropItem"
+ },
+ "PalEgg_WorldTree_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_WorldTree_01.T_itemicon_Material_PalEgg_WorldTree_01"
+ },
+ "WorldTreeRelic_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WorldTreeRelic_1.T_itemicon_Material_WorldTreeRelic_1"
+ },
+ "WorldTreeRelic_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WorldTreeRelic_2.T_itemicon_Material_WorldTreeRelic_2"
+ },
+ "WorldTreeRelic_3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WorldTreeRelic_3.T_itemicon_Material_WorldTreeRelic_3"
+ },
+ "WorldTreeRelic_4": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WorldTreeRelic_4.T_itemicon_Material_WorldTreeRelic_4"
+ },
+ "WorldTreeRelic_5": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WorldTreeRelic_5.T_itemicon_Material_WorldTreeRelic_5"
+ },
+ "WorldTreeHolyWater": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WorldTreeHolyWater.T_itemicon_Material_WorldTreeHolyWater"
+ },
+ "Relic_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_01.T_itemicon_Relic_01"
+ },
+ "Relic_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_02.T_itemicon_Relic_02"
+ },
+ "Relic_03": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_03.T_itemicon_Relic_03"
+ },
+ "Relic_04": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_04.T_itemicon_Relic_04"
+ },
+ "Relic_05": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_05.T_itemicon_Relic_05"
+ },
+ "Relic_06": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_06.T_itemicon_Relic_06"
+ },
+ "Relic_07": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_07.T_itemicon_Relic_07"
+ },
+ "Relic_08": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_08.T_itemicon_Relic_08"
+ },
+ "Relic_09": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_09.T_itemicon_Relic_09"
+ },
+ "Relic_10": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_10.T_itemicon_Relic_10"
+ },
+ "Relic_11": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_11.T_itemicon_Relic_11"
+ },
+ "Relic_12": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Relic_12.T_itemicon_Relic_12"
+ },
+ "PalPassiveSkillChange_Consumable": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalPassiveSkillChange_Consumable.T_itemicon_Material_PalPassiveSkillChange_Consumable"
+ },
+ "Wood_Fine": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Wood_Fine.T_itemicon_Material_Wood_Fine"
+ },
+ "Wood_WorldTree": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Wood_WorldTree.T_itemicon_Material_Wood_WorldTree"
+ },
+ "KingSunfish": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_KingSunfish_icon_normal.T_KingSunfish_icon_normal"
+ },
+ "KingSunfish_Thunder": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_KingSunfish_Thunder_icon_normal.T_KingSunfish_Thunder_icon_normal"
+ },
+ "Monkey_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Monkey_Fire_icon_normal.T_Monkey_Fire_icon_normal"
+ },
+ "ThunderFluffyBird": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ThunderFluffyBird_icon_normal.T_ThunderFluffyBird_icon_normal"
+ },
+ "BlackPuppy_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlackPuppy_Ice_icon_normal.T_BlackPuppy_Ice_icon_normal"
+ },
+ "NightBlueHorse_Neutral": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_NightBlueHorse_Neutral_icon_normal.T_NightBlueHorse_Neutral_icon_normal"
+ },
+ "ThunderBird_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ThunderBird_Ice_icon_normal.T_ThunderBird_Ice_icon_normal"
+ },
+ "GrassGolem": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GrassGolem_icon_normal.T_GrassGolem_icon_normal"
+ },
+ "GrassGolem_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GrassGolem_Dark_icon_normal.T_GrassGolem_Dark_icon_normal"
+ },
+ "WhiteDeer_Dark": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_WhiteDeer_Dark_icon_normal.T_WhiteDeer_Dark_icon_normal"
+ },
+ "GhostDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GhostDragon_icon_normal.T_GhostDragon_icon_normal"
+ },
+ "GhostDragon_Fire": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_GhostDragon_Fire_icon_normal.T_GhostDragon_Fire_icon_normal"
+ },
+ "CubeTurtle": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CubeTurtle_icon_normal.T_CubeTurtle_icon_normal"
+ },
+ "CubeTurtle_Neutral": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_CubeTurtle_Neutral_icon_normal.T_CubeTurtle_Neutral_icon_normal"
+ },
+ "VolcanoDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_VolcanoDragon_icon_normal.T_VolcanoDragon_icon_normal"
+ },
+ "VolcanoDragon_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_VolcanoDragon_Ice_icon_normal.T_VolcanoDragon_Ice_icon_normal"
+ },
+ "Kirin_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Kirin_Ice_icon_normal.T_Kirin_Ice_icon_normal"
+ },
+ "Thunderdog_Ice": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_Thunderdog_Ice_icon_normal.T_Thunderdog_Ice_icon_normal"
+ },
+ "DomeArmorDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_DomeArmorDragon_icon_normal.T_DomeArmorDragon_icon_normal"
+ },
+ "SumoDog": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_SumoDog_icon_normal.T_SumoDog_icon_normal"
+ },
+ "IceSeal_Ground": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_IceSeal_Ground_icon_normal.T_IceSeal_Ground_icon_normal"
+ },
+ "ThiefBird": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_ThiefBird_icon_normal.T_ThiefBird_icon_normal"
+ },
+ "BlueSkyDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_BlueSkyDragon_icon_normal.T_BlueSkyDragon_icon_normal"
+ },
+ "GrilledSwordCutlassFish": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_GrilledSwordCutlassFish.T_itemicon_Food_GrilledSwordCutlassFish"
+ },
+ "OctopusGirl_Takoyaki2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_OctopusGirl_Takoyaki2.T_itemicon_Food_OctopusGirl_Takoyaki2"
+ },
+ "KeySphere_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_KeySphere_01.T_itemicon_Essential_KeySphere_01"
+ },
+ "KeySphere_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_KeySphere_02.T_itemicon_Essential_KeySphere_02"
+ },
+ "KeySphere_03": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_KeySphere_03.T_itemicon_Essential_KeySphere_03"
+ },
+ "KeySphere_04": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_KeySphere_04.T_itemicon_Essential_KeySphere_04"
+ },
+ "KeySphere_05": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_KeySphere_05.T_itemicon_Essential_KeySphere_05"
+ },
+ "KeySphere_06": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_KeySphere_06.T_itemicon_Essential_KeySphere_06"
+ },
+ "KeySphere_07": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_KeySphere_07.T_itemicon_Essential_KeySphere_07"
+ },
+ "KeySphere_08": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_KeySphere_08.T_itemicon_Essential_KeySphere_08"
+ },
+ "LotusDragon": {
+  "Icon": "/Game/Pal/Texture/PalIcon/Normal/T_LotusDragon_icon_normal.T_LotusDragon_icon_normal"
+ },
+ "AIcore": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_AIcore.T_itemicon_Material_AIcore"
+ },
+ "Bio_Coolant": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Bio_Coolant.T_itemicon_Material_Bio_Coolant"
+ },
+ "Bio_Battery": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Bio_Battery.T_itemicon_Material_Bio_Battery"
+ },
+ "Thermal_Core": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Thermal_Core.T_itemicon_Material_Thermal_Core"
+ },
+ "Corrosive_Solvent": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Corrosive_Solvent.T_itemicon_Material_Corrosive_Solvent"
+ },
+ "WhaleWhistleFragment_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WhaleWhistleFragment_01.T_itemicon_Material_WhaleWhistleFragment_01"
+ },
+ "WhaleWhistleFragment_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WhaleWhistleFragment_02.T_itemicon_Material_WhaleWhistleFragment_02"
+ },
+ "WhaleWhistleFragment_03": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WhaleWhistleFragment_03.T_itemicon_Material_WhaleWhistleFragment_03"
+ },
+ "WhaleWhistleFragment_04": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WhaleWhistleFragment_04.T_itemicon_Material_WhaleWhistleFragment_04"
+ },
+ "WhaleWhistle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_WhaleWhistle.T_itemicon_Essential_WhaleWhistle"
+ },
+ "SkyBow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SkyBow.T_itemicon_Weapon_SkyBow"
+ },
+ "SkySubmachineGun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SkySubmachineGun.T_itemicon_Weapon_SkySubmachineGun"
+ },
+ "SkyShotgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SkyShotgun.T_itemicon_Weapon_SkyShotgun"
+ },
+ "SkyAssaultRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SkyAssaultRifle.T_itemicon_Weapon_SkyAssaultRifle"
+ },
+ "SkyGrenadeLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SkyGrenadeLauncher.T_itemicon_Weapon_SkyGrenadeLauncher"
+ },
+ "SkyBeamSword": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_SkyBeamSword.T_itemicon_Weapon_SkyBeamSword"
+ },
+ "WidePenetrateShotgun": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_WidePenetrateShotgun.T_itemicon_Weapon_WidePenetrateShotgun"
+ },
+ "DroneLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_DroneLauncher.T_itemicon_Weapon_DroneLauncher"
+ },
+ "ElectricArcAssaultRifle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_ElectricArcAssaultRifle.T_itemicon_Weapon_ElectricArcAssaultRifle"
+ },
+ "BeamLauncher": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_BeamLauncher.T_itemicon_Weapon_BeamLauncher"
+ },
+ "BronzeSword": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_BronzeSword.T_itemicon_Weapon_BronzeSword"
+ },
+ "Bat3": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Bat3.T_itemicon_Weapon_Bat3"
+ },
+ "Spear_ForestBoss2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_Spear_ForestBoss2.T_itemicon_Weapon_Spear_ForestBoss2"
+ },
+ "SkyIslandOre": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_SkyIslandOre.T_itemicon_Material_SkyIslandOre"
+ },
+ "WorldTreeOre": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WorldTreeOre.T_itemicon_Material_WorldTreeOre"
+ },
+ "BossDefeatReward_FlowerPrince": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_BossDefeatReward_FlowerPrince.T_itemicon_Essential_BossDefeatReward_FlowerPrince"
+ },
+ "BossDefeatReward_Mothman": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_BossDefeatReward_Mothman.T_itemicon_Essential_BossDefeatReward_Mothman"
+ },
+ "BossDefeatReward_BossRush": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_BossDefeatReward_BossRush.T_itemicon_Essential_BossDefeatReward_BossRush"
+ },
+ "WaterBuildKit": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Essential_WaterBuildKit.T_itemicon_Essential_WaterBuildKit"
+ },
+ "Accessory_PPAT_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_PPAT_1.T_itemicon_Accessory_PPAT_1"
+ },
+ "Accessory_PPDF_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_PPDF_1.T_itemicon_Accessory_PPDF_1"
+ },
+ "WingGlider_Fuel": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WingGlider_Fuel.T_itemicon_Material_WingGlider_Fuel"
+ },
+ "WingGlider": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Glider_WingGlider.T_itemicon_Glider_WingGlider"
+ },
+ "LaserMiningTool": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Weapon_LaserMiningTool.T_itemicon_Weapon_LaserMiningTool"
+ },
+ "BossDefeatReward_FireKirin": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FireKirin.T_icon_item_BossDefeatReward_FireKirin"
+ },
+ "BossDefeatReward_CubeTurtle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_CubeTurtle.T_icon_item_BossDefeatReward_CubeTurtle"
+ },
+ "BossDefeatReward_VolcanicMonster": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_VolcanicMonster.T_icon_item_BossDefeatReward_VolcanicMonster"
+ },
+ "BossDefeatReward_KabukiMan": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_KabukiMan.T_icon_item_BossDefeatReward_KabukiMan"
+ },
+ "BossDefeatReward_VolcanoDragon_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_VolcanoDragon_Ice.T_icon_item_BossDefeatReward_VolcanoDragon_Ice"
+ },
+ "BossDefeatReward_GrassGolem": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GrassGolem.T_icon_item_BossDefeatReward_GrassGolem"
+ },
+ "BossDefeatReward_MushroomLady": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_MushroomLady.T_icon_item_BossDefeatReward_MushroomLady"
+ },
+ "BossDefeatReward_WhiteDeer_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_WhiteDeer_Dark.T_icon_item_BossDefeatReward_WhiteDeer_Dark"
+ },
+ "BossDefeatReward_RockBeast_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_RockBeast_Ice.T_icon_item_BossDefeatReward_RockBeast_Ice"
+ },
+ "BossDefeatReward_LotusDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_LotusDragon.T_icon_item_BossDefeatReward_LotusDragon"
+ },
+ "BossDefeatReward_FoxExorcist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FoxExorcist.T_icon_item_BossDefeatReward_FoxExorcist"
+ },
+ "BossDefeatReward_ThunderFluffyBird": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_ThunderFluffyBird.T_icon_item_BossDefeatReward_ThunderFluffyBird"
+ },
+ "BossDefeatReward_ElecLizard": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_ElecLizard.T_icon_item_BossDefeatReward_ElecLizard"
+ },
+ "BossDefeatReward_ElecSnail": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_ElecSnail.T_icon_item_BossDefeatReward_ElecSnail"
+ },
+ "BossDefeatReward_GhostDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GhostDragon.T_icon_item_BossDefeatReward_GhostDragon"
+ },
+ "BossDefeatReward_LilyQueen": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_LilyQueen.T_icon_item_BossDefeatReward_LilyQueen"
+ },
+ "BossDefeatReward_ElecPanda": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_ElecPanda.T_icon_item_BossDefeatReward_ElecPanda"
+ },
+ "BossDefeatReward_GrassGolem_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_GrassGolem_Dark.T_icon_item_BossDefeatReward_GrassGolem_Dark"
+ },
+ "BossDefeatReward_Manticore": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_Manticore.T_icon_item_BossDefeatReward_Manticore"
+ },
+ "BossDefeatReward_FlameBuffalo": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FlameBuffalo.T_icon_item_BossDefeatReward_FlameBuffalo"
+ },
+ "BossDefeatReward_IceFox": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_IceFox.T_icon_item_BossDefeatReward_IceFox"
+ },
+ "BossDefeatReward_FoxMage": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_FoxMage.T_icon_item_BossDefeatReward_FoxMage"
+ },
+ "BossDefeatReward_CubeTurtle_Neutral": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_CubeTurtle_Neutral.T_icon_item_BossDefeatReward_CubeTurtle_Neutral"
+ },
+ "BossDefeatReward_MoonChild": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_MoonChild.T_icon_item_BossDefeatReward_MoonChild"
+ },
+ "BossDefeatReward_ScorpionMan_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_ScorpionMan_Electric.T_icon_item_BossDefeatReward_ScorpionMan_Electric"
+ },
+ "BossDefeatReward_RockBeast": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_RockBeast.T_icon_item_BossDefeatReward_RockBeast"
+ },
+ "BossDefeatReward_VolcanoDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_VolcanoDragon.T_icon_item_BossDefeatReward_VolcanoDragon"
+ },
+ "BossDefeatReward_CactusDoll": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_CactusDoll.T_icon_item_BossDefeatReward_CactusDoll"
+ },
+ "SkyBowArrow": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_SkyBowArrow.T_itemicon_Ammo_SkyBowArrow"
+ },
+ "Meat_SwordCutlassFish": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Meat_SwordCutlassFish.T_itemicon_Food_Meat_SwordCutlassFish"
+ },
+ "HeadEquip048": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip048.T_itemicon_Armor_HeadEquip048"
+ },
+ "HeadEquip049": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip049.T_itemicon_Armor_HeadEquip049"
+ },
+ "HeadEquip050": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip050.T_itemicon_Armor_HeadEquip050"
+ },
+ "HeadEquip051": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip051.T_itemicon_Armor_HeadEquip051"
+ },
+ "HeadEquip052": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip052.T_itemicon_Armor_HeadEquip052"
+ },
+ "HeadEquip053": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip053.T_itemicon_Armor_HeadEquip053"
+ },
+ "HeadEquip054": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip054.T_itemicon_Armor_HeadEquip054"
+ },
+ "HeadEquip055": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip055.T_itemicon_Armor_HeadEquip055"
+ },
+ "HeadEquip056": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip056.T_itemicon_Armor_HeadEquip056"
+ },
+ "HeadEquip057": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip057.T_itemicon_Armor_HeadEquip057"
+ },
+ "HeadEquip058": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip058.T_itemicon_Armor_HeadEquip058"
+ },
+ "HeadEquip059": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip059.T_itemicon_Armor_HeadEquip059"
+ },
+ "HeadEquip060": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip060.T_itemicon_Armor_HeadEquip060"
+ },
+ "HeadEquip061": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip061.T_itemicon_Armor_HeadEquip061"
+ },
+ "HeadEquip062": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_HeadEquip062.T_itemicon_Armor_HeadEquip062"
+ },
+ "PalEgg_MutationPal": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalEgg_MutationPal.T_itemicon_Material_PalEgg_MutationPal"
+ },
+ "SkyislandIngot": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_SkyislandIngot.T_itemicon_Material_SkyislandIngot"
+ },
+ "WorldTreeIngot": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_WorldTreeIngot.T_itemicon_Material_WorldTreeIngot"
+ },
+ "PalAwakening_Water": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Water.T_itemicon_Consume_PalAwakening_Water"
+ },
+ "PalAwakening_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Electric.T_itemicon_Consume_PalAwakening_Electric"
+ },
+ "PalAwakening_Ground": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Ground.T_itemicon_Consume_PalAwakening_Ground"
+ },
+ "PalAwakening_Grass": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Grass.T_itemicon_Consume_PalAwakening_Grass"
+ },
+ "PalAwakening_Fire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Fire.T_itemicon_Consume_PalAwakening_Fire"
+ },
+ "PalAwakening_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Ice.T_itemicon_Consume_PalAwakening_Ice"
+ },
+ "PalAwakening_Dragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Dragon.T_itemicon_Consume_PalAwakening_Dragon"
+ },
+ "PalAwakening_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Dark.T_itemicon_Consume_PalAwakening_Dark"
+ },
+ "PalAwakening_Neutral": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Consume_PalAwakening_Neutral.T_itemicon_Consume_PalAwakening_Neutral"
+ },
+ "PalAwakening_Material_Water": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalAwakening_Material_Water.T_itemicon_PalAwakening_Material_Water"
+ },
+ "PalAwakening_Material_Electric": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalAwakening_Material_Electric.T_itemicon_PalAwakening_Material_Electric"
+ },
+ "PalAwakening_Material_Ground": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalAwakening_Material_Ground.T_itemicon_PalAwakening_Material_Ground"
+ },
+ "PalAwakening_Material_Grass": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalAwakening_Material_Grass.T_itemicon_PalAwakening_Material_Grass"
+ },
+ "PalAwakening_Material_Fire": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalAwakening_Material_Fire.T_itemicon_PalAwakening_Material_Fire"
+ },
+ "PalAwakening_Material_Ice": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalAwakening_Material_Ice.T_itemicon_PalAwakening_Material_Ice"
+ },
+ "PalAwakening_Material_Dragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalAwakening_Material_Dragon.T_itemicon_PalAwakening_Material_Dragon"
+ },
+ "PalAwakening_Material_Dark": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalAwakening_Material_Dark.T_itemicon_PalAwakening_Material_Dark"
+ },
+ "PalAwakening_Material_Neutral": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_PalAwakening_Material_Neutral.T_itemicon_Material_PalAwakening_Material_Neutral"
+ },
+ "AncientArmor": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_AncientArmor.T_itemicon_Armor_AncientArmor"
+ },
+ "AncientArmorHeat": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_AncientArmorHeat.T_itemicon_Armor_AncientArmorHeat"
+ },
+ "AncientArmorCold": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_AncientArmorCold.T_itemicon_Armor_AncientArmorCold"
+ },
+ "AncientArmorWeight": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_AncientArmorWeight.T_itemicon_Armor_AncientArmorWeight"
+ },
+ "AncientHelmet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Armor_AncientHelmet.T_itemicon_Armor_AncientHelmet"
+ },
+ "PalSphere_Ancient_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Ancient_1.T_itemicon_PalSphere_Ancient_1"
+ },
+ "PalSphere_Ancient_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_PalSphere_Ancient_2.T_itemicon_PalSphere_Ancient_2"
+ },
+ "Cake02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Cake02.T_itemicon_food_Cake02"
+ },
+ "Cake03": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Cake03.T_itemicon_food_Cake03"
+ },
+ "Cake04": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Cake04.T_itemicon_food_Cake04"
+ },
+ "Cake05": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_food_Cake05.T_itemicon_food_Cake05"
+ },
+ "Blueprint_WhaleWhistle": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Blueprint_WhaleWhistle.T_itemicon_Blueprint_WhaleWhistle"
+ },
+ "Processed_Wood": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Processed_Wood.T_itemicon_Material_Processed_Wood"
+ },
+ "HighGrade_Processed_Wood": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_HighGrade_Processed_Wood.T_itemicon_Material_HighGrade_Processed_Wood"
+ },
+ "UnlockEquipmentSlot_Weapon_01": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_UnlockEquipmentSlot_Weapon_01.T_itemicon_Accessory_UnlockEquipmentSlot_Weapon_01"
+ },
+ "WidePenetrateShotgunBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_WidePenetrateShotgunBullet.T_itemicon_Ammo_WidePenetrateShotgunBullet"
+ },
+ "ElectricArcAssaultRifleBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_ElectricArcAssaultRifleBullet.T_itemicon_Ammo_ElectricArcAssaultRifleBullet"
+ },
+ "BeamLauncherBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_BeamLauncherBullet.T_itemicon_Ammo_BeamLauncherBullet"
+ },
+ "Accessory_HCMW_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_HCMW_1.T_itemicon_Accessory_HCMW_1"
+ },
+ "Accessory_HCHP_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_HCHP_1.T_itemicon_Accessory_HCHP_1"
+ },
+ "UniqueMaterial_FlowerPrince": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_UniqueMaterial_FlowerPrince.T_itemicon_Material_UniqueMaterial_FlowerPrince"
+ },
+ "UniqueMaterial_Mothman": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_UniqueMaterial_Mothman.T_itemicon_Material_UniqueMaterial_Mothman"
+ },
+ "Accessory_ExplosionResist": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_ExplosionResist.T_itemicon_Accessory_ExplosionResist"
+ },
+ "Accessory_DFHP_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_DFHP_1.T_itemicon_Accessory_DFHP_1"
+ },
+ "Accessory_WKMC_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_WKMC_1.T_itemicon_Accessory_WKMC_1"
+ },
+ "Otomo_ATNormal_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATNormal_ElementBoost_1.T_itemicon_Accessory_Otomo_ATNormal_ElementBoost_1"
+ },
+ "Otomo_ATFire_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATFire_ElementBoost_1.T_itemicon_Accessory_Otomo_ATFire_ElementBoost_1"
+ },
+ "Otomo_ATWater_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATWater_ElementBoost_1.T_itemicon_Accessory_Otomo_ATWater_ElementBoost_1"
+ },
+ "Otomo_ATElectricity_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATElectricity_ElementBoost_1.T_itemicon_Accessory_Otomo_ATElectricity_ElementBoost_1"
+ },
+ "Otomo_ATLeaf_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATLeaf_ElementBoost_1.T_itemicon_Accessory_Otomo_ATLeaf_ElementBoost_1"
+ },
+ "Otomo_ATIce_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATIce_ElementBoost_1.T_itemicon_Accessory_Otomo_ATIce_ElementBoost_1"
+ },
+ "Otomo_ATEarth_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATEarth_ElementBoost_1.T_itemicon_Accessory_Otomo_ATEarth_ElementBoost_1"
+ },
+ "Otomo_ATDark_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATDark_ElementBoost_1.T_itemicon_Accessory_Otomo_ATDark_ElementBoost_1"
+ },
+ "Otomo_ATDragon_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_ATDragon_ElementBoost_1.T_itemicon_Accessory_Otomo_ATDragon_ElementBoost_1"
+ },
+ "Accessory_NonkChecker_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_NonkChecker_1.T_itemicon_Accessory_NonkChecker_1"
+ },
+ "Accessory_JumpAir_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_JumpAir_1.T_itemicon_Accessory_JumpAir_1"
+ },
+ "Accessory_JumpAir_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_JumpAir_2.T_itemicon_Accessory_JumpAir_2"
+ },
+ "Accessory_SuperJumpAir_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_SuperJumpAir_1.T_itemicon_Accessory_SuperJumpAir_1"
+ },
+ "Accessory_SuperJumpAir_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_SuperJumpAir_2.T_itemicon_Accessory_SuperJumpAir_2"
+ },
+ "Otomo_DFNormal_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFNormal_ElementBoost_1.T_itemicon_Accessory_Otomo_DFNormal_ElementBoost_1"
+ },
+ "Otomo_DFFire_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFFire_ElementBoost_1.T_itemicon_Accessory_Otomo_DFFire_ElementBoost_1"
+ },
+ "Otomo_DFWater_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFWater_ElementBoost_1.T_itemicon_Accessory_Otomo_DFWater_ElementBoost_1"
+ },
+ "Otomo_DFElectricity_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFElectricity_ElementBoost_1.T_itemicon_Accessory_Otomo_DFElectricity_ElementBoost_1"
+ },
+ "Otomo_DFLeaf_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFLeaf_ElementBoost_1.T_itemicon_Accessory_Otomo_DFLeaf_ElementBoost_1"
+ },
+ "Otomo_DFIce_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFIce_ElementBoost_1.T_itemicon_Accessory_Otomo_DFIce_ElementBoost_1"
+ },
+ "Otomo_DFEarth_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFEarth_ElementBoost_1.T_itemicon_Accessory_Otomo_DFEarth_ElementBoost_1"
+ },
+ "Otomo_DFDark_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFDark_ElementBoost_1.T_itemicon_Accessory_Otomo_DFDark_ElementBoost_1"
+ },
+ "Otomo_DFDragon_ElementBoost_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_DFDragon_ElementBoost_1.T_itemicon_Accessory_Otomo_DFDragon_ElementBoost_1"
+ },
+ "Accessory_HeatFire_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_HeatFire_1.T_itemicon_Accessory_HeatFire_1"
+ },
+ "Accessory_ColdIce_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_ColdIce_1.T_itemicon_Accessory_ColdIce_1"
+ },
+ "Accessory_Otomo_Fire_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Fire_1.T_itemicon_Accessory_Otomo_Fire_1"
+ },
+ "Accessory_Otomo_Water_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Water_1.T_itemicon_Accessory_Otomo_Water_1"
+ },
+ "Accessory_Otomo_Electricity_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Electricity_1.T_itemicon_Accessory_Otomo_Electricity_1"
+ },
+ "Accessory_Otomo_Earth_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Earth_1.T_itemicon_Accessory_Otomo_Earth_1"
+ },
+ "Accessory_Otomo_Leaf_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Leaf_1.T_itemicon_Accessory_Otomo_Leaf_1"
+ },
+ "Accessory_Otomo_Dark_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Dark_1.T_itemicon_Accessory_Otomo_Dark_1"
+ },
+ "Accessory_Otomo_Dargon_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Dargon_1.T_itemicon_Accessory_Otomo_Dargon_1"
+ },
+ "Accessory_Otomo_Ice_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Ice_1.T_itemicon_Accessory_Otomo_Ice_1"
+ },
+ "Accessory_Otomo_Fire_2": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_Fire_2.T_itemicon_Accessory_Otomo_Fire_2"
+ },
+ "Otomo_PalConfidence_Increase_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Otomo_PalConfidence_Increase_1.T_itemicon_Accessory_Otomo_PalConfidence_Increase_1"
+ },
+ "Accessory_Avoid_1": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_Accessory_Avoid_1.T_itemicon_Accessory_Accessory_Avoid_1"
+ },
+ "UnlockEquipmentSlot_Weapon_02": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Accessory_UnlockEquipmentSlot_Weapon_02.T_itemicon_Accessory_UnlockEquipmentSlot_Weapon_02"
+ },
+ "SkySubmachineGunBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_SkySubmachineGunBullet.T_itemicon_Ammo_SkySubmachineGunBullet"
+ },
+ "SkyShotgunBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_SkyShotgunBullet.T_itemicon_Ammo_SkyShotgunBullet"
+ },
+ "SkyAssaultRifleBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_SkyAssaultRifleBullet.T_itemicon_Ammo_SkyAssaultRifleBullet"
+ },
+ "SkyGrenadeLauncherBullet": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Ammo_SkyGrenadeLauncherBullet.T_itemicon_Ammo_SkyGrenadeLauncherBullet"
+ },
+ "Wood_Ancient": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Wood_Ancient.T_itemicon_Material_Wood_Ancient"
+ },
+ "Lava_Ancient": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_Lava_Ancient.T_itemicon_Material_Lava_Ancient"
+ },
+ "BeastBone_Ancient": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_itemicon_Material_BeastBone_Ancient.T_itemicon_Material_BeastBone_Ancient"
+ },
+ "BossDefeatReward_DomeArmorDragon": {
+  "Icon": "/Game/Others/InventoryItemIcon/Texture/T_icon_item_BossDefeatReward_DomeArmorDragon.T_icon_item_BossDefeatReward_DomeArmorDragon"
+ }
+}

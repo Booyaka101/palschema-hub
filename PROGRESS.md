@@ -1,6 +1,55 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-30 (0.10.0 + CLI 0.6.0 SHIPPED; Nexus passive question answered from LIVE game data — pak extraction now works)
+**Last updated:** 2026-08-30 (0.11.0: values/ — 41,416 live rows across 28 tables, extracted from the game)
+
+## Session 2026-08-30c — 0.11.0: the whole DataTable value lane
+The extractor proved out on one table, so it became the lane. `values/<Table>.json` +
+`values.html` now answer "what is this row actually set to" for 28 of the 31 registry
+tables (41,416 rows), which the hub previously answered for two (items and buildings,
+both scraped from paldb.cc).
+- **scripts/extract-tables.mjs (`npm run extract`)** + `scripts/lib/{pak,usmap,uasset}.mjs`:
+  pak v11 index -> FullDirectoryIndex -> FPakEntry block table -> Oodle -> package name
+  table -> unversioned properties via `.usmap`. Maintainer-only: the registry ships the
+  JSON, so nothing a CLI user installs needs the game or Rust.
+- **tools/ooz-decompress (new, Rust, ~60 lines)** wraps the pure-Rust `oozextract` crate,
+  built on demand. That is the whole answer to Palworld statically linking Oodle.
+- **scripts/check-values.mjs (`npm run check:values`) is the point of the release.** Every
+  extracted row is validated against the published schema for its table — two independent
+  derivations (SDK headers + community dump vs the game's own data) agreeing. It also
+  cross-checks the extracted item table against scraped items.json: 2,438 shared rows,
+  3 differences, all paldb transcription noise.
+- **It found a real schema bug on the first run**, the exact shape 0.7.0 fixed for
+  integers: 7 asset-reference fields were typed `object` (the Jan-2024 dump serialized
+  soft pointers as exported-object dicts) and would have rejected the plain asset path
+  the game stores and mods write. `augment-from-sdk.mjs` gained `alignAssetReferences`
+  next to `alignIntegerness`; the diff is 7 files, type-widening only.
+- **Traps, all of which parse plausibly then desync:** usmap `bHasVersioning` is int32;
+  its per-enum value count is uint16 while entries stay 12 bytes; `FFragment::Unpack` is
+  `ValueNum = packed >> 9` / `bIsLast = packed & 0x100`; and `EnumProperty` width comes
+  from its `inner` type — `EPalWazaID` (392) and `EPalTribeID` (338) are UInt16, not
+  bytes. The parser only accepts a row map that lands EXACTLY on the trailing package tag
+  with the declared row count, which is what turns all of these into loud failures.
+- **Validated, not trusted:** Legend comes out Rank 4 / ShotAttack 20 / Defense 20 /
+  MoveSpeed 20, matching paldb and palworld.gg and differing from the Jan-2024 dump on
+  exactly the two fields that changed. DT_ItemDataTable lands on 2,466 rows (paldb's
+  declared count, 21 more than the scrape). Musclehead, Diamond Body, Artisan, Hard Skin
+  all match community values. Those are pinned as tests.
+- **3 tables still fail** (DT_TechnologyRecipeUnlock, DT_MapObjectAssignData,
+  DT_TechnologyIconData) and say why in `values/index.json`. Ratchet, not a silent skip:
+  a failure outside that list exits non-zero. The first two show 4 unaccounted bytes
+  between the zero mask and the first value; the third's row struct is absent from the
+  mappings. A current usmap (this one is 2026-07-24, the pak is 2026-08-13) is the first
+  thing to try.
+- Hard object references are omitted rather than published as raw package indices.
+- values.html verified in a real browser via CDP (Legend row rendered, 28 tables,
+  41,416 rows, copy-patch works); wired into pages.yml, the Nexus archive (242 entries,
+  1.2 MB) and index.html nav. Tests 99 -> **105**. Root 0.10.0 -> **0.11.0**; CLI
+  untouched at 0.6.0 (it reads the registry at runtime, so no republish needed).
+- **Open decision recorded:** items.json/buildings.json are still the paldb-scraped lane
+  and now overlap values/. The cross-check keeps them honest, but a later release should
+  probably re-point items.html at the extracted data and retire the scrape.
+
+## Session 2026-08-30b — Nexus comment on passive values, and a working DataTable extractor
 
 ## Session 2026-08-30b — Nexus comment on passive values, and a working DataTable extractor
 A commenter (kajsgd7123, right after the 1.7 upload) asked how to change Legend's damage from

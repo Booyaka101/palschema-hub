@@ -1,0 +1,2822 @@
+{
+ "Anubis": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Anubis/BP_Anubis.BP_Anubis_C"
+ },
+ "Baphomet": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Baphomet/BP_Baphomet.BP_Baphomet_C"
+ },
+ "Bastet": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Bastet/BP_Bastet.BP_Bastet_C"
+ },
+ "Boar": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Boar/BP_Boar.BP_Boar_C"
+ },
+ "Carbunclo": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Carbunclo/BP_Carbunclo.BP_Carbunclo_C"
+ },
+ "ColorfulBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ColorfulBird/BP_ColorfulBird.BP_ColorfulBird_C"
+ },
+ "Deer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Deer/BP_Deer_Normal.BP_Deer_Normal_C"
+ },
+ "DrillGame": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DrillGame/BP_DrillGame.BP_DrillGame_C"
+ },
+ "Eagle": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Eagle/BP_Eagle.BP_Eagle_C"
+ },
+ "ElecPanda": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecPanda/BP_ElecPanda_Normal.BP_ElecPanda_Normal_C"
+ },
+ "Ganesha": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Ganesha/BP_Ganesha.BP_Ganesha_C"
+ },
+ "Garm": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Garm/BP_Garm.BP_Garm_C"
+ },
+ "Gorilla": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Gorilla/BP_Gorilla.BP_Gorilla_C"
+ },
+ "Hedgehog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Hedgehog/BP_Hedgehog.BP_Hedgehog_C"
+ },
+ "Kirin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kirin/BP_Kirin_Normal.BP_Kirin_Normal_C"
+ },
+ "Kitsunebi": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kitsunebi/BP_Kitsunebi.BP_Kitsunebi_C"
+ },
+ "LittleBriarRose": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LittleBriarRose/BP_LIttleBriarRose.BP_LIttleBriarRose_C"
+ },
+ "Mutant": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Mutant/BP_Mutant.BP_Mutant_C"
+ },
+ "Owl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WizardOwl/BP_WizardOwl.BP_WizardOwl_C"
+ },
+ "Penguin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Penguin/BP_Penguin.BP_Penguin_C"
+ },
+ "RaijinDaughter": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RaijinDaughter/BP_RaijinDaughter.BP_RaijinDaughter_C"
+ },
+ "SharkKid": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SharkKid/BP_SharkKid.BP_SharkKid_C"
+ },
+ "SheepBall": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SheepBall/BP_SheepBall.BP_SheepBall_C"
+ },
+ "Umihebi": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Umihebi/BP_Umihebi.BP_Umihebi_C"
+ },
+ "Werewolf": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Werewolf/BP_Werewolf.BP_Werewolf_C"
+ },
+ "WindChimes": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WindChimes/BP_WindChimes.BP_WindChimes_C"
+ },
+ "Suzaku": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Suzaku/BP_Suzaku.BP_Suzaku_C"
+ },
+ "FireKirin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FireKirin/BP_FireKirin_Normal.BP_FireKirin_Normal_C"
+ },
+ "FairyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FairyDragon/BP_FairyDragon.BP_FairyDragon_C"
+ },
+ "SweetsSheep": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SweetsSheep/BP_SweetsSheep.BP_SweetsSheep_C"
+ },
+ "WhiteTiger": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteTiger/BP_WhiteTiger.BP_WhiteTiger_C"
+ },
+ "Alpaca": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Alpaca/BP_Alpaca_Normal.BP_Alpaca_Normal_C"
+ },
+ "DarkCrow": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkCrow/BP_DarkCrow.BP_DarkCrow_C"
+ },
+ "BlueDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueDragon/BP_BlueDragon.BP_BlueDragon_C"
+ },
+ "PinkCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkCat/BP_PinkCat.BP_PinkCat_C"
+ },
+ "NegativeKoala": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NegativeKoala/BP_NegativeKoala.BP_NegativeKoala_C"
+ },
+ "FengyunDeeper": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FengyunDeeper/BP_FengyunDeeper.BP_FengyunDeeper_C"
+ },
+ "VolcanicMonster": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanicMonster/BP_VolcanicMonster.BP_VolcanicMonster_C"
+ },
+ "GhostBeast": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostBeast/BP_GhostBeast_Normal.BP_GhostBeast_Normal_C"
+ },
+ "RobinHood": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RobinHood/BP_RobinHood.BP_RobinHood_C"
+ },
+ "LazyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyDragon/BP_LazyDragon.BP_LazyDragon_C"
+ },
+ "AmaterasuWolf": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/AmaterasuWolf/BP_AmaterasuWolf_Normal.BP_AmaterasuWolf_Normal_C"
+ },
+ "LizardMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LizardMan/BP_LizardMan.BP_LizardMan_C"
+ },
+ "BluePlatypus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BluePlatypus/BP_BluePlatypus.BP_BluePlatypus_C"
+ },
+ "BlackFurDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackFurDragon/BP_BlackFurDragon.BP_BlackFurDragon_C"
+ },
+ "BeardedDragon": {
+  "BPClass": ""
+ },
+ "BirdDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BirdDragon/BP_BirdDragon.BP_BirdDragon_C"
+ },
+ "PinkKangaroo": {
+  "BPClass": ""
+ },
+ "Boss_Anubis": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Anubis/BP_Anubis_MiddleBoss.BP_Anubis_MiddleBoss_C"
+ },
+ "NPC": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal.BP_NPC_HumanNormal_C"
+ },
+ "ChickenPal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ChickenPal/BP_ChickenPal.BP_ChickenPal_C"
+ },
+ "FlowerDinosaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDinosaur/BP_FlowerDinosaur.BP_FlowerDinosaur_C"
+ },
+ "ElecCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecCat/BP_ElecCat.BP_ElecCat_C"
+ },
+ "IceHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceHorse/BP_IceHorse_Normal.BP_IceHorse_Normal_C"
+ },
+ "GrassMammoth": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMammoth/BP_GrassMammoth.BP_GrassMammoth_C"
+ },
+ "CatVampire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CatVampire/BP_CatVampire.BP_CatVampire_C"
+ },
+ "SakuraSaurus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SakuraSaurus/BP_SakuraSaurus.BP_SakuraSaurus_C"
+ },
+ "Horus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Horus/BP_Horus.BP_Horus_C"
+ },
+ "KingBahamut": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingBahamut/BP_KingBahamut.BP_KingBahamut_C"
+ },
+ "BerryGoat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BerryGoat/BP_BerryGoat.BP_BerryGoat_C"
+ },
+ "IceDeer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceDeer/BP_IceDeer.BP_IceDeer_C"
+ },
+ "BlackGriffon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackGriffon/BP_BlackGriffon_Normal.BP_BlackGriffon_Normal_C"
+ },
+ "WhiteMoth": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteMoth/BP_WhiteMoth.BP_WhiteMoth_C"
+ },
+ "CuteFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CuteFox/BP_CuteFox.BP_CuteFox_C"
+ },
+ "FoxMage": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FoxMage/BP_FoxMage.BP_FoxMage_C"
+ },
+ "PinkLizard": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkLizard/BP_PinkLizard.BP_PinkLizard_C"
+ },
+ "WaterLizard": {
+  "BPClass": ""
+ },
+ "ElecLion": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecLion/BP_ElecLion.BP_ElecLion_C"
+ },
+ "GuardianDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GuardianDog/BP_GuardianDog.BP_GuardianDog_C"
+ },
+ "GrassDragon": {
+  "BPClass": ""
+ },
+ "WizardOwl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WizardOwl/BP_WizardOwl.BP_WizardOwl_C"
+ },
+ "Kelpie": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kelpie/BP_Kelpie.BP_Kelpie_C"
+ },
+ "NegativeOctopus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NegativeOctopus/BP_NegativeOctopus.BP_NegativeOctopus_C"
+ },
+ "CowPal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CowPal/BP_CowPal.BP_CowPal_C"
+ },
+ "Yeti": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Yeti/BP_Yeti.BP_Yeti_C"
+ },
+ "NPC_HumanFat": {
+  "BPClass": "/Game/PalEditor/Maps/PalNPCModelTest/Fat/BP_TestNPC_Fat.BP_TestNPC_Fat_C"
+ },
+ "NPC_HumanTall": {
+  "BPClass": "/Game/PalEditor/Maps/PalNPCModelTest/Tall/BP_TestNPC_Tall.BP_TestNPC_Tall_C"
+ },
+ "GrassPanda": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassPanda/BP_GrassPanda.BP_GrassPanda_C"
+ },
+ "Serpent": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Serpent/BP_Serpent.BP_Serpent_C"
+ },
+ "DreamDemon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DreamDemon/BP_DreamDemon.BP_DreamDemon_C"
+ },
+ "Monkey": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Monkey/BP_Monkey.BP_Monkey_C"
+ },
+ "LilyQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LilyQueen/BP_LilyQueen.BP_LilyQueen_C"
+ },
+ "ThunderDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDog/BP_ThunderDog.BP_ThunderDog_C"
+ },
+ "FlowerRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerRabbit/BP_FlowerRabbit.BP_FlowerRabbit_C"
+ },
+ "QueenBee": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/QueenBee/BP_QueenBee.BP_QueenBee_C"
+ },
+ "Manticore": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Manticore/BP_Manticore.BP_Manticore_C"
+ },
+ "Bastet_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Bastet/BP_Bastet_Ice.BP_Bastet_Ice_C"
+ },
+ "LazyDragon_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyDragon/BP_LazyDragon_Electric.BP_LazyDragon_Electric_C"
+ },
+ "BirdDragon_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BirdDragon/BP_BirdDragon_Ice.BP_BirdDragon_Ice_C"
+ },
+ "Hedgehog_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Hedgehog/BP_Hedgehog_Ice.BP_Hedgehog_Ice_C"
+ },
+ "IceHorse_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceHorse/BP_IceHorse_Dark.BP_IceHorse_Dark_C"
+ },
+ "SakuraSaurus_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SakuraSaurus/BP_SakuraSaurus_Water.BP_SakuraSaurus_Water_C"
+ },
+ "Suzaku_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Suzaku/BP_Suzaku_Water.BP_Suzaku_Water_C"
+ },
+ "VolcanicMonster_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanicMonster/BP_VolcanicMonster_Ice.BP_VolcanicMonster_Ice_C"
+ },
+ "HawkBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HawkBird/BP_HawkBird.BP_HawkBird_C"
+ },
+ "SoldierBee": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SoldierBee/BP_SoldierBee.BP_SoldierBee_C"
+ },
+ "GrassPanda_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassPanda/BP_GrassPanda_Electric.BP_GrassPanda_Electric_C"
+ },
+ "Yeti_Grass": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Yeti/BP_Yeti_Grass.BP_Yeti_Grass_C"
+ },
+ "LilyQueen_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LilyQueen/BP_LilyQueen_Dark.BP_LilyQueen_Dark_C"
+ },
+ "Serpent_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Serpent/BP_Serpent_Ground.BP_Serpent_Ground_C"
+ },
+ "FairyDragon_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FairyDragon/BP_FairyDragon_Water.BP_FairyDragon_Water_C"
+ },
+ "NPC_SHOP": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson.BP_NPC_SalesPerson_C"
+ },
+ "VioletFairy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VioletFairy/BP_VioletFairy.BP_VioletFairy_C"
+ },
+ "FlowerDinosaur_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDinosaur/BP_FlowerDinosaur_Electric.BP_FlowerDinosaur_Electric_C"
+ },
+ "Manticore_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Manticore/BP_Manticore_Dark.BP_Manticore_Dark_C"
+ },
+ "JetDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/JetDragon/BP_JetDragon.BP_JetDragon_C"
+ },
+ "CuteMole": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CuteMole/BP_CuteMole.BP_CuteMole_C"
+ },
+ "NPC_PALSHOP": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_PalDealer.BP_NPC_PalDealer_C"
+ },
+ "Baphomet_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Baphomet/BP_Baphomet_Dark.BP_Baphomet_Dark_C"
+ },
+ "CatBat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CatBat/BP_CatBat.BP_CatBat_C"
+ },
+ "KingAlpaca": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingAlpaca/BP_KingAlpaca.BP_KingAlpaca_C"
+ },
+ "GYM_ElecPanda": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecPanda/BP_ElecPanda_Gym.BP_ElecPanda_Gym_C"
+ },
+ "BlackMetalDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackMetalDragon/BP_BlackMetalDragon.BP_BlackMetalDragon_C"
+ },
+ "PlantSlime": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PlantSlime/BP_PlantSlime.BP_PlantSlime_C"
+ },
+ "FlameBuffalo": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlameBuffalo/BP_FlameBuffalo_Normal.BP_FlameBuffalo_Normal_C"
+ },
+ "NPC_Hunter": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Hunter.BP_NPC_Hunter_C"
+ },
+ "NPC_Police": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Police.BP_NPC_Police_C"
+ },
+ "DarkMutant": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkMutant/BP_DarkMutant.BP_DarkMutant_C"
+ },
+ "MopBaby": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MopBaby/BP_MopBaby.BP_MopBaby_C"
+ },
+ "BOSS_Bastet": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Bastet/BP_Bastet_BOSS.BP_Bastet_BOSS_C"
+ },
+ "SecurityDrone": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Machine/CombatHeli/BP_CombatHeli.BP_CombatHeli_C"
+ },
+ "MopKing": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MopKing/BP_MopKing.BP_MopKing_C"
+ },
+ "CatMage": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CatMage/BP_CatMage.BP_CatMage_C"
+ },
+ "BOSS_Carbunclo": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Carbunclo/BP_Carbunclo_BOSS.BP_Carbunclo_BOSS_C"
+ },
+ "BOSS_ColorfulBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ColorfulBird/BP_ColorfulBird_BOSS.BP_ColorfulBird_BOSS_C"
+ },
+ "BOSS_Deer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Deer/BP_Deer_BOSS.BP_Deer_BOSS_C"
+ },
+ "BOSS_DrillGame": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DrillGame/BP_DrillGame_BOSS.BP_DrillGame_BOSS_C"
+ },
+ "BOSS_PinkCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkCat/BP_PinkCat_BOSS.BP_PinkCat_BOSS_C"
+ },
+ "BOSS_Garm": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Garm/BP_Garm_BOSS.BP_Garm_BOSS_C"
+ },
+ "BOSS_ChickenPal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ChickenPal/BP_ChickenPal_BOSS.BP_ChickenPal_BOSS_C"
+ },
+ "BOSS_Penguin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Penguin/BP_Penguin_BOSS.BP_Penguin_BOSS_C"
+ },
+ "BOSS_ElecPanda": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecPanda/BP_ElecPanda_BOSS.BP_ElecPanda_BOSS_C"
+ },
+ "BOSS_Baphomet": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Baphomet/BP_Baphomet_BOSS.BP_Baphomet_BOSS_C"
+ },
+ "BOSS_Baphomet_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Baphomet/BP_Baphomet_Dark_BOSS.BP_Baphomet_Dark_BOSS_C"
+ },
+ "BOSS_Bastet_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Bastet/BP_Bastet_Ice_BOSS2.BP_Bastet_Ice_BOSS2_C"
+ },
+ "BOSS_Boar": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Boar/BP_Boar_BOSS.BP_Boar_BOSS_C"
+ },
+ "BOSS_Eagle": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Eagle/BP_Eagle_BOSS.BP_Eagle_BOSS_C"
+ },
+ "BOSS_Ganesha": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Ganesha/BP_Ganesha_BOSS.BP_Ganesha_BOSS_C"
+ },
+ "BOSS_Gorilla": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Gorilla/BP_Gorilla_BOSS.BP_Gorilla_BOSS_C"
+ },
+ "BOSS_Hedgehog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Hedgehog/BP_Hedgehog_BOSS.BP_Hedgehog_BOSS_C"
+ },
+ "BOSS_Hedgehog_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Hedgehog/BP_Hedgehog_Ice_BOSS.BP_Hedgehog_Ice_BOSS_C"
+ },
+ "BOSS_Kirin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kirin/BP_Kirin_BOSS.BP_Kirin_BOSS_C"
+ },
+ "BOSS_Kitsunebi": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kitsunebi/BP_Kitsunebi_BOSS.BP_Kitsunebi_BOSS_C"
+ },
+ "BOSS_LittleBriarRose": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LittleBriarRose/BP_LIttleBriarRose_BOSS.BP_LIttleBriarRose_BOSS_C"
+ },
+ "BOSS_Mutant": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Mutant/BP_Mutant_BOSS.BP_Mutant_BOSS_C"
+ },
+ "BOSS_RaijinDaughter": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RaijinDaughter/BP_RaijinDaughter_BOSS.BP_RaijinDaughter_BOSS_C"
+ },
+ "BOSS_SharkKid": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SharkKid/BP_SharkKid_BOSS.BP_SharkKid_BOSS_C"
+ },
+ "BOSS_SheepBall": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SheepBall/BP_SheepBall_BOSS.BP_SheepBall_BOSS_C"
+ },
+ "BOSS_Umihebi": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Umihebi/BP_Umihebi_BOSS.BP_Umihebi_BOSS_C"
+ },
+ "BOSS_Werewolf": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Werewolf/BP_Werewolf_BOSS.BP_Werewolf_BOSS_C"
+ },
+ "BOSS_WindChimes": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WindChimes/BP_WindChimes_BOSS.BP_WindChimes_BOSS_C"
+ },
+ "BOSS_Suzaku": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Suzaku/BP_Suzaku_BOSS.BP_Suzaku_BOSS_C"
+ },
+ "BOSS_Suzaku_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Suzaku/BP_Suzaku_Water_BOSS.BP_Suzaku_Water_BOSS_C"
+ },
+ "BOSS_FireKirin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FireKirin/BP_FireKirin_BOSS.BP_FireKirin_BOSS_C"
+ },
+ "BOSS_SweetsSheep": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SweetsSheep/BP_SweetsSheep_BOSS.BP_SweetsSheep_BOSS_C"
+ },
+ "BOSS_WhiteTiger": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteTiger/BP_WhiteTiger_BOSS.BP_WhiteTiger_BOSS_C"
+ },
+ "BOSS_Alpaca": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Alpaca/BP_Alpaca_BOSS.BP_Alpaca_BOSS_C"
+ },
+ "BOSS_Serpent": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Serpent/BP_Serpent_BOSS.BP_Serpent_BOSS_C"
+ },
+ "BOSS_Serpent_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Serpent/BP_Serpent_Ground_BOSS.BP_Serpent_Ground_BOSS_C"
+ },
+ "BOSS_DarkCrow": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkCrow/BP_DarkCrow_BOSS.BP_DarkCrow_BOSS_C"
+ },
+ "BOSS_BlueDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueDragon/BP_BlueDragon_BOSS.BP_BlueDragon_BOSS_C"
+ },
+ "BOSS_NegativeKoala": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NegativeKoala/BP_NegativeKoala_BOSS.BP_NegativeKoala_BOSS_C"
+ },
+ "BOSS_VolcanicMonster": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanicMonster/BP_VolcanicMonster_BOSS.BP_VolcanicMonster_BOSS_C"
+ },
+ "BOSS_VolcanicMonster_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanicMonster/BP_VolcanicMonster_Ice_BOSS.BP_VolcanicMonster_Ice_BOSS_C"
+ },
+ "BOSS_GhostBeast": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostBeast/BP_GhostBeast_BOSS.BP_GhostBeast_BOSS_C"
+ },
+ "BOSS_RobinHood": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RobinHood/BP_RobinHood_BOSS.BP_RobinHood_BOSS_C"
+ },
+ "BOSS_LazyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyDragon/BP_LazyDragon_BOSS.BP_LazyDragon_BOSS_C"
+ },
+ "BOSS_LazyDragon_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyDragon/BP_LazyDragon_Electric_BOSS.BP_LazyDragon_Electric_BOSS_C"
+ },
+ "BOSS_AmaterasuWolf": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/AmaterasuWolf/BP_AmaterasuWolf_BOSS.BP_AmaterasuWolf_BOSS_C"
+ },
+ "BOSS_LizardMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LizardMan/BP_LizardMan_BOSS.BP_LizardMan_BOSS_C"
+ },
+ "BOSS_Blueplatypus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BluePlatypus/BP_BluePlatypus_BOSS.BP_BluePlatypus_BOSS_C"
+ },
+ "BOSS_BlackFurDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackFurDragon/BP_BlackFurDragon_BOSS.BP_BlackFurDragon_BOSS_C"
+ },
+ "BOSS_BirdDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BirdDragon/BP_BirdDragon_BOSS.BP_BirdDragon_BOSS_C"
+ },
+ "BOSS_BirdDragon_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BirdDragon/BP_BirdDragon_Ice_BOSS.BP_BirdDragon_Ice_BOSS_C"
+ },
+ "BOSS_FlowerDinosaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDinosaur/BP_FlowerDinosaur_BOSS.BP_FlowerDinosaur_BOSS_C"
+ },
+ "BOSS_FlowerDinosaur_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDinosaur/BP_FlowerDinosaur_Electric_BOSS.BP_FlowerDinosaur_Electric_BOSS_C"
+ },
+ "BOSS_ElecCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecCat/BP_ElecCat_BOSS.BP_ElecCat_BOSS_C"
+ },
+ "BOSS_IceHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceHorse/BP_IceHorse_BOSS.BP_IceHorse_BOSS_C"
+ },
+ "BOSS_IceHorse_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceHorse/BP_IceHorse_Dark_BOSS.BP_IceHorse_Dark_BOSS_C"
+ },
+ "BOSS_GrassMammoth": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMammoth/BP_GrassMammoth_BOSS.BP_GrassMammoth_BOSS_C"
+ },
+ "BOSS_CatVampire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CatVampire/BP_CatVampire_BOSS.BP_CatVampire_BOSS_C"
+ },
+ "BOSS_SakuraSaurus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SakuraSaurus/BP_SakuraSaurus_BOSS.BP_SakuraSaurus_BOSS_C"
+ },
+ "BOSS_SakuraSaurus_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SakuraSaurus/BP_SakuraSaurus_Water_BOSS.BP_SakuraSaurus_Water_BOSS_C"
+ },
+ "BOSS_Horus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Horus/BP_Horus_BOSS.BP_Horus_BOSS_C"
+ },
+ "BOSS_BerryGoat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BerryGoat/BP_BerryGoat_BOSS.BP_BerryGoat_BOSS_C"
+ },
+ "BOSS_BlackGriffon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackGriffon/BP_BlackGriffon_BOSS.BP_BlackGriffon_BOSS_C"
+ },
+ "BOSS_WhiteMoth": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteMoth/BP_WhiteMoth_BOSS.BP_WhiteMoth_BOSS_C"
+ },
+ "BOSS_CuteFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CuteFox/BP_CuteFox_BOSS.BP_CuteFox_BOSS_C"
+ },
+ "BOSS_FoxMage": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FoxMage/BP_FoxMage_BOSS.BP_FoxMage_BOSS_C"
+ },
+ "BOSS_PinkLizard": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkLizard/BP_PinkLizard_BOSS.BP_PinkLizard_BOSS_C"
+ },
+ "BOSS_ElecLion": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecLion/BP_ElecLion_BOSS.BP_ElecLion_BOSS_C"
+ },
+ "BOSS_WizardOwl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WizardOwl/BP_WizardOwl_BOSS.BP_WizardOwl_BOSS_C"
+ },
+ "BOSS_Kelpie": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kelpie/BP_Kelpie_BOSS.BP_Kelpie_BOSS_C"
+ },
+ "BOSS_NegativeOctopus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NegativeOctopus/BP_NegativeOctopus_BOSS.BP_NegativeOctopus_BOSS_C"
+ },
+ "BOSS_CowPal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CowPal/BP_CowPal_BOSS.BP_CowPal_BOSS_C"
+ },
+ "BOSS_Yeti": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Yeti/BP_Yeti_BOSS.BP_Yeti_BOSS_C"
+ },
+ "BOSS_Yeti_Grass": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Yeti/BP_Yeti_Grass_BOSS.BP_Yeti_Grass_BOSS_C"
+ },
+ "BOSS_VioletFairy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VioletFairy/BP_VioletFairy_BOSS.BP_VioletFairy_BOSS_C"
+ },
+ "BOSS_HawkBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HawkBird/BP_HawkBird_BOSS.BP_HawkBird_BOSS_C"
+ },
+ "BOSS_FlowerRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerRabbit/BP_FlowerRabbit_BOSS.BP_FlowerRabbit_BOSS_C"
+ },
+ "BOSS_LilyQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LilyQueen/BP_LilyQueen_BOSS.BP_LilyQueen_BOSS_C"
+ },
+ "BOSS_LilyQueen_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LilyQueen/BP_LilyQueen_Dark_BOSS.BP_LilyQueen_Dark_BOSS_C"
+ },
+ "BOSS_QueenBee": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/QueenBee/BP_QueenBee_BOSS.BP_QueenBee_BOSS_C"
+ },
+ "BOSS_SoldierBee": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SoldierBee/BP_SoldierBee_BOSS.BP_SoldierBee_BOSS_C"
+ },
+ "BOSS_CatBat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CatBat/BP_CatBat_BOSS.BP_CatBat_BOSS_C"
+ },
+ "BOSS_GrassPanda": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassPanda/BP_GrassPanda_BOSS.BP_GrassPanda_BOSS_C"
+ },
+ "BOSS_GrassPanda_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassPanda/BP_GrassPanda_Electric_BOSS.BP_GrassPanda_Electric_BOSS_C"
+ },
+ "BOSS_FlameBuffalo": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlameBuffalo/BP_FlameBuffalo_BOSS.BP_FlameBuffalo_BOSS_C"
+ },
+ "BOSS_ThunderDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDog/BP_ThunderDog_BOSS.BP_ThunderDog_BOSS_C"
+ },
+ "BOSS_CuteMole": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CuteMole/BP_CuteMole_BOSS.BP_CuteMole_BOSS_C"
+ },
+ "BOSS_BlackMetalDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackMetalDragon/BP_BlackMetalDragon_BOSS.BP_BlackMetalDragon_BOSS_C"
+ },
+ "BOSS_JetDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/JetDragon/BP_JetDragon_BOSS.BP_JetDragon_BOSS_C"
+ },
+ "BOSS_DreamDemon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DreamDemon/BP_DreamDemon_BOSS.BP_DreamDemon_BOSS_C"
+ },
+ "BOSS_Monkey": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Monkey/BP_Monkey_BOSS.BP_Monkey_BOSS_C"
+ },
+ "BOSS_Manticore": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Manticore/BP_Manticore_BOSS.BP_Manticore_BOSS_C"
+ },
+ "BOSS_Manticore_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Manticore/BP_Manticore_Dark_BOSS.BP_Manticore_Dark_BOSS_C"
+ },
+ "BOSS_PlantSlime": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PlantSlime/BP_PlantSlime_BOSS.BP_PlantSlime_BOSS_C"
+ },
+ "BOSS_DarkMutant": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkMutant/BP_DarkMutant_BOSS.BP_DarkMutant_BOSS_C"
+ },
+ "BOSS_MopBaby": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MopBaby/BP_MopBaby_BOSS.BP_MopBaby_BOSS_C"
+ },
+ "BOSS_CatMage": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CatMage/BP_CatMage_BOSS.BP_CatMage_BOSS_C"
+ },
+ "BOSS_KingAlpaca": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingAlpaca/BP_KingAlpaca_BOSS.BP_KingAlpaca_BOSS_C"
+ },
+ "PinkRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkRabbit/BP_PinkRabbit.BP_PinkRabbit_C"
+ },
+ "BOSS_PinkRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkRabbit/BP_PinkRabbit_BOSS.BP_PinkRabbit_BOSS_C"
+ },
+ "ThunderBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderBird/BP_ThunderBird.BP_ThunderBird_C"
+ },
+ "BOSS_ThunderBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderBird/BP_ThunderBird_Boss.BP_ThunderBird_Boss_C"
+ },
+ "HerculesBeetle": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HerculesBeetle/BP_HerculesBeetle.BP_HerculesBeetle_C"
+ },
+ "BOSS_HerculesBeetle": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HerculesBeetle/BP_HerculesBeetle_BOSS.BP_HerculesBeetle_BOSS_C"
+ },
+ "SaintCentaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SaintCentaur/BP_SaintCentaur.BP_SaintCentaur_C"
+ },
+ "BOSS_SaintCentaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SaintCentaur/BP_SaintCentaur_BOSS.BP_SaintCentaur_BOSS_C"
+ },
+ "NightFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightFox/BP_NightFox.BP_NightFox_C"
+ },
+ "BOSS_NightFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightFox/BP_NightFox_BOSS.BP_NightFox_BOSS_C"
+ },
+ "CaptainPenguin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CaptainPenguin/BP_CaptainPenguin.BP_CaptainPenguin_C"
+ },
+ "BOSS_CaptainPenguin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CaptainPenguin/BP_CaptainPenguin_BOSS.BP_CaptainPenguin_BOSS_C"
+ },
+ "NPC_FireCult": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_FireCult.BP_NPC_FireCult_C"
+ },
+ "WeaselDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WeaselDragon/BP_WeaselDragon.BP_WeaselDragon_C"
+ },
+ "BOSS_WeaselDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WeaselDragon/BP_WeaselDragon_BOSS.BP_WeaselDragon_BOSS_C"
+ },
+ "SkyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SkyDragon/BP_SkyDragon.BP_SkyDragon_C"
+ },
+ "BOSS_SkyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SkyDragon/BP_SkyDragon_BOSS.BP_SkyDragon_BOSS_C"
+ },
+ "HadesBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HadesBird/BP_HadesBird.BP_HadesBird_C"
+ },
+ "BOSS_HadesBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HadesBird/BP_HadesBird_BOSS.BP_HadesBird_BOSS_C"
+ },
+ "RedArmorBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RedArmorBird/BP_RedArmorBird.BP_RedArmorBird_C"
+ },
+ "BOSS_RedArmorBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RedArmorBird/BP_RedArmorBird_BOSS.BP_RedArmorBird_BOSS_C"
+ },
+ "Ronin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Ronin/BP_Ronin.BP_Ronin_C"
+ },
+ "BOSS_Ronin": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Ronin/BP_Ronin_Boss.BP_Ronin_Boss_C"
+ },
+ "FlyingManta": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlyingManta/BP_FlyingManta.BP_FlyingManta_C"
+ },
+ "BOSS_FlyingManta": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlyingManta/BP_FlyingManta_BOSS.BP_FlyingManta_BOSS_C"
+ },
+ "BlackCentaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackCentaur/BP_BlackCentaur.BP_BlackCentaur_C"
+ },
+ "BOSS_BlackCentaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackCentaur/BP_BlackCentaur_BOSS.BP_BlackCentaur_BOSS_C"
+ },
+ "FlowerDoll": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDoll/BP_FlowerDoll.BP_FlowerDoll_C"
+ },
+ "BOSS_FlowerDoll": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDoll/BP_FlowerDoll_BOSS.BP_FlowerDoll_BOSS_C"
+ },
+ "NaughtyCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NaughtyCat/BP_NaughtyCat.BP_NaughtyCat_C"
+ },
+ "BOSS_NaughtyCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NaughtyCat/BP_NaughtyCat_BOSS.BP_NaughtyCat_BOSS_C"
+ },
+ "CuteButterfly": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CuteButterfly/BP_CuteButterfly.BP_CuteButterfly_C"
+ },
+ "BOSS_CuteButterfly": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CuteButterfly/BP_CuteButterfly_BOSS.BP_CuteButterfly_BOSS_C"
+ },
+ "DarkScorpion": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkScorpion/BP_DarkScorpion.BP_DarkScorpion_C"
+ },
+ "BOSS_DarkScorpion": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkScorpion/BP_DarkScorpion_BOSS.BP_DarkScorpion_BOSS_C"
+ },
+ "ThunderDragonMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDragonMan/BP_ThunderDragonMan.BP_ThunderDragonMan_C"
+ },
+ "BOSS_ThunderDragonMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDragonMan/BP_ThunderDragonMan_BOSS.BP_ThunderDragonMan_BOSS_C"
+ },
+ "NPC_Believer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Believer.BP_NPC_Believer_C"
+ },
+ "NPC_Hunter_Fat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_HunterFat.BP_NPC_HunterFat_C"
+ },
+ "GYM_LilyQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LilyQueen/BP_LilyQueen_GYM.BP_LilyQueen_GYM_C"
+ },
+ "NPC_Male02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Male_2.BP_NPC_HumanNormal_Male_2_C"
+ },
+ "NPC_Male03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Male_3.BP_NPC_HumanNormal_Male_3_C"
+ },
+ "NPC_Female02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Female_2.BP_NPC_HumanNormal_Female_2_C"
+ },
+ "NPC_Female03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Female_3.BP_NPC_HumanNormal_Female_3_C"
+ },
+ "NPC_Male_Trader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader.BP_NPC_Male_Trader_C"
+ },
+ "NPC_Male_Trader02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader_2.BP_NPC_Male_Trader_2_C"
+ },
+ "NPC_Male_Trader03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader_3.BP_NPC_Male_Trader_3_C"
+ },
+ "NPC_Male_DarkTrader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_DarkTrader.BP_NPC_DarkTrader_C"
+ },
+ "NPC_Female_DesertPeople": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_DesertPeople.BP_NPC_Female_DesertPeople_C"
+ },
+ "NPC_Male01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Male_1.BP_NPC_HumanNormal_Male_1_C"
+ },
+ "NPC_Male_Police_old": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Police_old.BP_NPC_Police_old_C"
+ },
+ "NPC_Female_Soldier": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier.BP_NPC_Female_Soldier_C"
+ },
+ "SifuDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SifuDog/BP_SifuDog.BP_SifuDog_C"
+ },
+ "BOSS_SifuDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SifuDog/BP_SifuDog_BOSS.BP_SifuDog_BOSS_C"
+ },
+ "TentacleTurtle": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/TentacleTurtle/BP_TentacleTurtle.BP_TentacleTurtle_C"
+ },
+ "BOSS_TentacleTurtle": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/TentacleTurtle/BP_TentacleTurtle_BOSS.BP_TentacleTurtle_BOSS_C"
+ },
+ "GoldenHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GoldenHorse/BP_GoldenHorse.BP_GoldenHorse_C"
+ },
+ "BOSS_GoldenHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GoldenHorse/BP_GoldenHorse_BOSS.BP_GoldenHorse_BOSS_C"
+ },
+ "BadCatgirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BadCatgirl/BP_BadCatgirl.BP_BadCatgirl_C"
+ },
+ "BOSS_BadCatgirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BadCatgirl/BP_BadCatgirl_BOSS.BP_BadCatgirl_BOSS_C"
+ },
+ "BrownRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BrownRabbit/BP_BrownRabbit.BP_BrownRabbit_C"
+ },
+ "BOSS_BrownRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BrownRabbit/BP_BrownRabbit_BOSS.BP_BrownRabbit_BOSS_C"
+ },
+ "FeatherOstrich": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FeatherOstrich/BP_FeatherOstrich.BP_FeatherOstrich_C"
+ },
+ "BOSS_FeatherOstrich": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FeatherOstrich/BP_FeatherOstrich_BOSS.BP_FeatherOstrich_BOSS_C"
+ },
+ "WingGolem": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WingGolem/BP_WingGolem.BP_WingGolem_C"
+ },
+ "BOSS_WingGolem": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WingGolem/BP_WingGolem_BOSS.BP_WingGolem_BOSS_C"
+ },
+ "ScorpionMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ScorpionMan/BP_ScorpionMan.BP_ScorpionMan_C"
+ },
+ "BOSS_ScorpionMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ScorpionMan/BP_ScorpionMan_BOSS.BP_ScorpionMan_BOSS_C"
+ },
+ "BlueberryFairy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueberryFairy/BP_BlueberryFairy.BP_BlueberryFairy_C"
+ },
+ "BOSS_BlueberryFairy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueberryFairy/BP_BlueberryFairy_BOSS.BP_BlueberryFairy_BOSS_C"
+ },
+ "WoolFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WoolFox/BP_WoolFox.BP_WoolFox_C"
+ },
+ "BOSS_WoolFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WoolFox/BP_WoolFox_BOSS.BP_WoolFox_BOSS_C"
+ },
+ "LazyCatfish": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyCatfish/BP_LazyCatfish.BP_LazyCatfish_C"
+ },
+ "BOSS_LazyCatfish": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyCatfish/BP_LazyCatfish_BOSS.BP_LazyCatfish_BOSS_C"
+ },
+ "Deer_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Deer/BP_Deer_Ground.BP_Deer_Ground_C"
+ },
+ "FireKirin_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FireKirin/BP_FireKirin_Dark.BP_FireKirin_Dark_C"
+ },
+ "KingAlpaca_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingAlpaca/BP_KingAlpaca_Ice.BP_KingAlpaca_Ice_C"
+ },
+ "RobinHood_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RobinHood/BP_RobinHood_Ground.BP_RobinHood_Ground_C"
+ },
+ "GrassMammoth_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMammoth/BP_GrassMammoth_Ice.BP_GrassMammoth_Ice_C"
+ },
+ "Kelpie_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kelpie/BP_Kelpie_Fire.BP_Kelpie_Fire_C"
+ },
+ "SharkKid_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SharkKid/BP_SharkKid_Fire.BP_SharkKid_Fire_C"
+ },
+ "LizardMan_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LizardMan/BP_LizardMan_Fire.BP_LizardMan_Fire_C"
+ },
+ "BOSS_Deer_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Deer/BP_Deer_Ground_BOSS.BP_Deer_Ground_BOSS_C"
+ },
+ "BOSS_FireKirin_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FireKirin/BP_FireKirin_Dark_BOSS.BP_FireKirin_Dark_BOSS_C"
+ },
+ "BOSS_KingAlpaca_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingAlpaca/BP_KingAlpaca_Ice_BOSS.BP_KingAlpaca_Ice_BOSS_C"
+ },
+ "BOSS_RobinHood_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RobinHood/BP_RobinHood_Ground_BOSS.BP_RobinHood_Ground_BOSS_C"
+ },
+ "BOSS_GrassMammoth_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMammoth/BP_GrassMammoth_Ice_BOSS.BP_GrassMammoth_Ice_BOSS_C"
+ },
+ "BOSS_Kelpie_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kelpie/BP_Kelpie_Fire_BOSS.BP_Kelpie_Fire_BOSS_C"
+ },
+ "BOSS_SharkKid_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SharkKid/BP_SharkKid_Fire_BOSS.BP_SharkKid_Fire_BOSS_C"
+ },
+ "BOSS_LizardMan_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LizardMan/BP_LizardMan_Fire_BOSS.BP_LizardMan_Fire_BOSS_C"
+ },
+ "IceFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceFox/BP_IceFox.BP_IceFox_C"
+ },
+ "BOSS_IceFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceFox/BP_IceFox_BOSS.BP_IceFox_BOSS_C"
+ },
+ "NPC_Male_Soldier": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier.BP_NPC_Male_Soldier_C"
+ },
+ "NPC_Male_DesertPeople": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_DesertPeople.BP_NPC_Male_DesertPeople_C"
+ },
+ "NPC_Male_Scientist01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Scientist.BP_NPC_Male_Scientist_C"
+ },
+ "GrassRabbitMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassRabbitMan/BP_GrassRabbitMan.BP_GrassRabbitMan_C"
+ },
+ "BOSS_GrassRabbitMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassRabbitMan/BP_GrassRabbitMan_Boss.BP_GrassRabbitMan_Boss_C"
+ },
+ "GYM_Horus": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Horus/BP_Horus_GYM.BP_Horus_GYM_C"
+ },
+ "GYM_ThunderDragonMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDragonMan/BP_ThunderDragonMan_GYM.BP_ThunderDragonMan_GYM_C"
+ },
+ "GYM_BlackGriffon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackGriffon/BP_BlackGriffon_GYM.BP_BlackGriffon_GYM_C"
+ },
+ "NPC_Shop_Desert": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_2.BP_NPC_SalesPerson_2_C"
+ },
+ "NPC_PALSHOP_Desert": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_PalDealer_2.BP_NPC_PalDealer_2_C"
+ },
+ "LavaGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LavaGirl/BP_LavaGirl.BP_LavaGirl_C"
+ },
+ "FlameBambi": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlameBambi/BP_FlameBambi.BP_FlameBambi_C"
+ },
+ "BOSS_LavaGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LavaGirl/BP_LavaGirl_BOSS.BP_LavaGirl_BOSS_C"
+ },
+ "BOSS_FlameBambi": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlameBambi/BP_FlameBambi_BOSS.BP_FlameBambi_BOSS_C"
+ },
+ "Umihebi_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Umihebi/BP_Umihebi_Fire.BP_Umihebi_Fire_C"
+ },
+ "BOSS_Umihebi_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Umihebi/BP_Umihebi_Fire_BOSS.BP_Umihebi_Fire_BOSS_C"
+ },
+ "NPC_Shop_Volcano": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_3.BP_NPC_SalesPerson_3_C"
+ },
+ "NPC_PALSHOP_Volcano": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_PalDealer_3.BP_NPC_PalDealer_3_C"
+ },
+ "NPC_Shop_Wander": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_4.BP_NPC_SalesPerson_4_C"
+ },
+ "BOSS_Icedeer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceDeer/BP_IceDeer_BOSS.BP_IceDeer_BOSS_C"
+ },
+ "BOSS_KingBahamut": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingBahamut/BP_KingBahamut_BOSS.BP_KingBahamut_BOSS_C"
+ },
+ "BOSS_Mopking": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MopKing/BP_MopKing_BOSS.BP_MopKing_BOSS_C"
+ },
+ "WindChimes_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WindChimes/BP_WindChimes_Ice.BP_WindChimes_Ice_C"
+ },
+ "BOSS_WindChimes_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WindChimes/BP_WindChimes_Ice_BOSS.BP_WindChimes_Ice_BOSS_C"
+ },
+ "PlantSlime_Flower": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PlantSlime/BP_PlantSlime_Flower.BP_PlantSlime_Flower_C"
+ },
+ "BOSS_PlantSlime_Flower": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PlantSlime/BP_PlantSlime_Flower_BOSS.BP_PlantSlime_Flower_BOSS_C"
+ },
+ "BOSS_FengyunDeeper": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FengyunDeeper/BP_FengyunDeeper_BOSS.BP_FengyunDeeper_BOSS_C"
+ },
+ "BOSS_FairyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FairyDragon/BP_FairyDragon_BOSS.BP_FairyDragon_BOSS_C"
+ },
+ "BOSS_FairyDragon_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FairyDragon/BP_FairyDragon_Water_BOSS.BP_FairyDragon_Water_BOSS_C"
+ },
+ "NPC_Shop_Desert2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_Weapon_1.BP_NPC_SalesPerson_Weapon_1_C"
+ },
+ "NPC_Shop_Volcano2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_Weapon_2.BP_NPC_SalesPerson_Weapon_2_C"
+ },
+ "SmallArmadillo": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SmallArmadillo/BP_SmallArmadillo.BP_SmallArmadillo_C"
+ },
+ "MushroomDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MushroomDragon/BP_MushroomDragon.BP_MushroomDragon_C"
+ },
+ "GhostRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostRabbit/BP_GhostRabbit.BP_GhostRabbit_C"
+ },
+ "KingWhale": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingWhale/BP_KingWhale.BP_KingWhale_C"
+ },
+ "NPC_Believer_Fat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_BelieverFat.BP_NPC_BelieverFat_C"
+ },
+ "NightLady": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightLady/BP_NightLady.BP_NightLady_C"
+ },
+ "BOSS_NightLady": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightLady/BP_NightLady_BOSS.BP_NightLady_BOSS_C"
+ },
+ "NightLady_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightLady/BP_NightLady_Dark.BP_NightLady_Dark_C"
+ },
+ "BOSS_NightLady_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightLady/BP_NightLady_Dark_BOSS.BP_NightLady_Dark_BOSS_C"
+ },
+ "RAID_NightLady": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightLady/BP_NightLady_RAID.BP_NightLady_RAID_C"
+ },
+ "RAID_NightLady_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightLady/BP_NightLady_Dark_RAID.BP_NightLady_Dark_RAID_C"
+ },
+ "KendoFrog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KendoFrog/BP_KendoFrog.BP_KendoFrog_C"
+ },
+ "NPC_Male_Soldier02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier02.BP_NPC_Male_Soldier02_C"
+ },
+ "NPC_Male_Soldier03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier03.BP_NPC_Male_Soldier03_C"
+ },
+ "NPC_Male_Soldier04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier04.BP_NPC_Male_Soldier04_C"
+ },
+ "NPC_Female_Soldier02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier02.BP_NPC_Female_Soldier02_C"
+ },
+ "NPC_Female_Soldier03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier03.BP_NPC_Female_Soldier03_C"
+ },
+ "NPC_Female_Soldier04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier04.BP_NPC_Female_Soldier04_C"
+ },
+ "VolcanoDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanoDragon/BP_VolcanoDragon.BP_VolcanoDragon_C"
+ },
+ "DarkAlien": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkAlien/BP_DarkAlien.BP_DarkAlien_C"
+ },
+ "DarkMechaDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkMechaDragon/BP_DarkMechaDragon.BP_DarkMechaDragon_C"
+ },
+ "LeafPrincess": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LeafPrincess/BP_LeafPrincess.BP_LeafPrincess_C"
+ },
+ "NightBlueHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightBlueHorse/BP_NightBlueHorse.BP_NightBlueHorse_C"
+ },
+ "WhiteAlienDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteAlienDragon/BP_WhiteAlienDragon.BP_WhiteAlienDragon_C"
+ },
+ "WhiteShieldDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteShieldDragon/BP_WhiteShieldDragon.BP_WhiteShieldDragon_C"
+ },
+ "BlackPuppy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackPuppy/BP_BlackPuppy.BP_BlackPuppy_C"
+ },
+ "CandleGhost": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CandleGhost/BP_CandleGhost.BP_CandleGhost_C"
+ },
+ "WhiteDeer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteDeer/BP_WhiteDeer.BP_WhiteDeer_C"
+ },
+ "MysteryMask": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MysteryMask/BP_MysteryMask.BP_MysteryMask_C"
+ },
+ "HoodGhost": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HoodGhost/BP_HoodGhost.BP_HoodGhost_C"
+ },
+ "Sekhmet": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Sekhmet/BP_Sekhmet.BP_Sekhmet_C"
+ },
+ "BOSS_Sekhmet": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Sekhmet/BP_Sekhmet_BOSS.BP_Sekhmet_BOSS_C"
+ },
+ "ElecLizard": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecLizard/BP_ElecLizard.BP_ElecLizard_C"
+ },
+ "MoonQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MoonQueen/BP_MoonQueen.BP_MoonQueen_C"
+ },
+ "GrimGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrimGirl/BP_GrimGirl.BP_GrimGirl_C"
+ },
+ "PurpleSpider": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PurpleSpider/BP_PurpleSpider.BP_PurpleSpider_C"
+ },
+ "BlueThunderHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueThunderHorse/BP_BlueThunderHorse.BP_BlueThunderHorse_C"
+ },
+ "RockBeast": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RockBeast/BP_RockBeast.BP_RockBeast_C"
+ },
+ "KingBahamut_Dragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingBahamut/BP_KingBahamut_Dragon.BP_KingBahamut_Dragon_C"
+ },
+ "HerculesBeetle_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HerculesBeetle/BP_HerculesBeetle_Ground.BP_HerculesBeetle_Ground_C"
+ },
+ "Gorilla_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Gorilla/BP_Gorilla_Ground.BP_Gorilla_Ground_C"
+ },
+ "HadesBird_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HadesBird/BP_HadesBird_Electric.BP_HadesBird_Electric_C"
+ },
+ "MushroomDragon_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MushroomDragon/BP_MushroomDragon_Dark.BP_MushroomDragon_Dark_C"
+ },
+ "DarkScorpion_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkScorpion/BP_DarkScorpion_Ground.BP_DarkScorpion_Ground_C"
+ },
+ "Ronin_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Ronin/BP_Ronin_Dark.BP_Ronin_Dark_C"
+ },
+ "CatMage_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CatMage/BP_CatMage_Fire.BP_CatMage_Fire_C"
+ },
+ "FoxMage_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FoxMage/BP_FoxMage_Dark.BP_FoxMage_Dark_C"
+ },
+ "SkyDragon_Grass": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SkyDragon/BP_SkyDragon_Grass.BP_SkyDragon_Grass_C"
+ },
+ "WeaselDragon_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WeaselDragon/BP_WeaselDragon_Fire.BP_WeaselDragon_Fire_C"
+ },
+ "BOSS_KingBahamut_Dragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingBahamut/BP_KingBahamut_Dragon_BOSS.BP_KingBahamut_Dragon_BOSS_C"
+ },
+ "BOSS_HerculesBeetle_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HerculesBeetle/BP_HerculesBeetle_Ground_BOSS.BP_HerculesBeetle_Ground_BOSS_C"
+ },
+ "BOSS_Gorilla_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Gorilla/BP_Gorilla_Ground_BOSS.BP_Gorilla_Ground_BOSS_C"
+ },
+ "BOSS_HadesBird_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HadesBird/BP_HadesBird_Electric_BOSS.BP_HadesBird_Electric_BOSS_C"
+ },
+ "BOSS_MushroomDragon_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MushroomDragon/BP_MushroomDragon_Dark_BOSS.BP_MushroomDragon_Dark_BOSS_C"
+ },
+ "BOSS_DarkScorpion_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkScorpion/BP_DarkScorpion_Ground_BOSS.BP_DarkScorpion_Ground_BOSS_C"
+ },
+ "BOSS_Ronin_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Ronin/BP_Ronin_Dark_BOSS.BP_Ronin_Dark_BOSS_C"
+ },
+ "BOSS_CatMage_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CatMage/BP_CatMage_Fire_BOSS.BP_CatMage_Fire_BOSS_C"
+ },
+ "BOSS_FoxMage_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FoxMage/BP_FoxMage_Dark_BOSS.BP_FoxMage_Dark_BOSS_C"
+ },
+ "BOSS_SkyDragon_Grass": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SkyDragon/BP_SkyDragon_Grass_BOSS.BP_SkyDragon_Grass_BOSS_C"
+ },
+ "RAID_KingBahamut_Dragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingBahamut/BP_KingBahamut_Dragon_RAID.BP_KingBahamut_Dragon_RAID_C"
+ },
+ "BOSS_SmallArmadillo": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SmallArmadillo/BP_SmallArmadillo_BOSS.BP_SmallArmadillo_BOSS_C"
+ },
+ "BOSS_MushroomDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MushroomDragon/BP_MushroomDragon_BOSS.BP_MushroomDragon_BOSS_C"
+ },
+ "BOSS_GuardianDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GuardianDog/BP_GuardianDog_BOSS.BP_GuardianDog_BOSS_C"
+ },
+ "BOSS_DarkAlien": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkAlien/BP_DarkAlien_BOSS.BP_DarkAlien_BOSS_C"
+ },
+ "BOSS_KendoFrog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KendoFrog/BP_KendoFrog_BOSS.BP_KendoFrog_BOSS_C"
+ },
+ "BOSS_CandleGhost": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CandleGhost/BP_CandleGhost_BOSS.BP_CandleGhost_BOSS_C"
+ },
+ "BOSS_MoonQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MoonQueen/BP_BOSS_MoonQueen.BP_BOSS_MoonQueen_C"
+ },
+ "BOSS_LeafPrincess": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LeafPrincess/BP_LeafPrincess_BOSS.BP_LeafPrincess_BOSS_C"
+ },
+ "GYM_MoonQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MoonQueen/BP_MoonQueen_Gym.BP_MoonQueen_Gym_C"
+ },
+ "NPC_MedalTrader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_MedalTrader.BP_NPC_MedalTrader_C"
+ },
+ "MimicDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MimicDog/BP_MimicDog.BP_MimicDog_C"
+ },
+ "BOSS_MimicDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MimicDog/BP_MimicDog_BOSS.BP_MimicDog_BOSS_C"
+ },
+ "NPC_Male_Ninja01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Ninja01.BP_NPC_Male_Ninja01_C"
+ },
+ "NPC_Male_NinjaElite01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_NinjaElite01.BP_NPC_Male_NinjaElite01_C"
+ },
+ "BOSS_WeaselDragon_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WeaselDragon/BP_WeaselDragon_Fire_BOSS.BP_WeaselDragon_Fire_BOSS_C"
+ },
+ "BOSS_WhiteAlienDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteAlienDragon/BP_WhiteAlienDragon_BOSS.BP_WhiteAlienDragon_BOSS_C"
+ },
+ "IceNarwhal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceNarwhal/BP_IceNarwhal.BP_IceNarwhal_C"
+ },
+ "BOSS_IceNarwhal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceNarwhal/BP_IceNarwhal_BOSS.BP_IceNarwhal_BOSS_C"
+ },
+ "JellyfishFairy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/JellyfishFairy/BP_JellyfishFairy.BP_JellyfishFairy_C"
+ },
+ "BOSS_JellyfishFairy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/JellyfishFairy/BP_JellyfishFairy_BOSS.BP_JellyfishFairy_BOSS_C"
+ },
+ "ThunderFluffyBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderFluffyBird/BP_ThunderFluffyBird.BP_ThunderFluffyBird_C"
+ },
+ "BOSS_ThunderFluffyBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderFluffyBird/BP_ThunderFluffyBird_BOSS.BP_ThunderFluffyBird_BOSS_C"
+ },
+ "MoonChild": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MoonChild/BP_MoonChild.BP_MoonChild_C"
+ },
+ "BOSS_MoonChild": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MoonChild/BP_MoonChild_BOSS.BP_MoonChild_BOSS_C"
+ },
+ "SnowTigerBeastman": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnowTigerBeastman/BP_SnowTigerBeastman.BP_SnowTigerBeastman_C"
+ },
+ "SnakeGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnakeGirl/BP_SnakeGirl.BP_SnakeGirl_C"
+ },
+ "BOSS_SnakeGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnakeGirl/BP_SnakeGirl_BOSS.BP_SnakeGirl_BOSS_C"
+ },
+ "GhostAnglerfish": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostAnglerfish/BP_GhostAnglerfish.BP_GhostAnglerfish_C"
+ },
+ "BOSS_GhostAnglerfish": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostAnglerfish/BP_GhostAnglerfish_BOSS.BP_GhostAnglerfish_BOSS_C"
+ },
+ "BOSS_NPC_Hunter": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Hunter_Boss.BP_NPC_Hunter_Boss_C"
+ },
+ "RAID_DarkMechaDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkMechaDragon/BP_DarkMechaDragon_RAID.BP_DarkMechaDragon_RAID_C"
+ },
+ "BOSS_NPC_Hunter_Fat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_HunterFat_Boss.BP_NPC_HunterFat_Boss_C"
+ },
+ "BOSS_NPC_Believer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Believer_BOSS.BP_NPC_Believer_BOSS_C"
+ },
+ "BOSS_NPC_Police": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Police_BOSS.BP_NPC_Police_BOSS_C"
+ },
+ "BOSS_NPC_FireCult": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_FireCult_BOSS.BP_NPC_FireCult_BOSS_C"
+ },
+ "BOSS_NPC_Male_Scientist": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Scientist_BOSS.BP_NPC_Male_Scientist_BOSS_C"
+ },
+ "BOSS_NPC_Male_Ninja": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Ninja01_BOSS.BP_NPC_Male_Ninja01_BOSS_C"
+ },
+ "BOSS_NPC_Male_NinjaElite": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_NinjaElite01_BOSS.BP_NPC_Male_NinjaElite01_BOSS_C"
+ },
+ "BOSS_NPC_Female_Soldier": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier_BOSS.BP_NPC_Female_Soldier_BOSS_C"
+ },
+ "BOSS_NPC_Female_Soldier02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier02_BOSS.BP_NPC_Female_Soldier02_BOSS_C"
+ },
+ "BOSS_NPC_Female_Soldier03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier03_BOSS.BP_NPC_Female_Soldier03_BOSS_C"
+ },
+ "BOSS_NPC_Female_Soldier04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier04_BOSS.BP_NPC_Female_Soldier04_BOSS_C"
+ },
+ "BOSS_NPC_Male_Soldier": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier_BOSS.BP_NPC_Male_Soldier_BOSS_C"
+ },
+ "BOSS_NPC_Male_Soldier02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier02_BOSS.BP_NPC_Male_Soldier02_BOSS_C"
+ },
+ "BOSS_NPC_Male_Soldier03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier03_BOSS.BP_NPC_Male_Soldier03_BOSS_C"
+ },
+ "BOSS_NPC_Male_Soldier04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier04_BOSS.BP_NPC_Male_Soldier04_BOSS_C"
+ },
+ "BOSS_NPC_Male_DesertPeople": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_DesertPeople_BOSS.BP_NPC_Male_DesertPeople_BOSS_C"
+ },
+ "BOSS_NPC_Female_DesertPeople": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_DesertPeople_BOSS.BP_NPC_Female_DesertPeople_BOSS_C"
+ },
+ "BOSS_NPC_Female": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_BOSS.BP_NPC_HumanNormal_BOSS_C"
+ },
+ "BOSS_NPC_Female02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Female_2_BOSS.BP_NPC_HumanNormal_Female_2_BOSS_C"
+ },
+ "BOSS_NPC_Female03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Female_3_BOSS.BP_NPC_HumanNormal_Female_3_BOSS_C"
+ },
+ "BOSS_NPC_Male": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Male_1_BOSS.BP_NPC_HumanNormal_Male_1_BOSS_C"
+ },
+ "BOSS_NPC_Male02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Male_2_BOSS.BP_NPC_HumanNormal_Male_2_BOSS_C"
+ },
+ "BOSS_NPC_Male03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_HumanNormal_Male_3_BOSS.BP_NPC_HumanNormal_Male_3_BOSS_C"
+ },
+ "BOSS_NPC_Believer_Fat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_BelieverFat_BOSS.BP_NPC_BelieverFat_BOSS_C"
+ },
+ "PREDATOR_FairyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FairyDragon/BP_FairyDragon_BOSS_Predator.BP_FairyDragon_BOSS_Predator_C"
+ },
+ "AmaterasuWolf_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/AmaterasuWolf/BP_AmaterasuWolf_Dark.BP_AmaterasuWolf_Dark_C"
+ },
+ "BOSS_AmaterasuWolf_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/AmaterasuWolf/BP_AmaterasuWolf_Dark_BOSS.BP_AmaterasuWolf_Dark_BOSS_C"
+ },
+ "BerryGoat_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BerryGoat/BP_BerryGoat_Dark.BP_BerryGoat_Dark_C"
+ },
+ "BOSS_BerryGoat_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BerryGoat/BP_BerryGoat_Dark_BOSS.BP_BerryGoat_Dark_BOSS_C"
+ },
+ "FengyunDeeper_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FengyunDeeper/BP_FengyunDeeper_Electric.BP_FengyunDeeper_Electric_C"
+ },
+ "BOSS_FengyunDeeper_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FengyunDeeper/BP_FengyunDeeper_Electric_BOSS.BP_FengyunDeeper_Electric_BOSS_C"
+ },
+ "Horus_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Horus/BP_Horus_Water.BP_Horus_Water_C"
+ },
+ "BOSS_Horus_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Horus/BP_Horus_Water_BOSS.BP_Horus_Water_BOSS_C"
+ },
+ "KendoFrog_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KendoFrog/BP_KendoFrog_Dark.BP_KendoFrog_Dark_C"
+ },
+ "BOSS_KendoFrog_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KendoFrog/BP_KendoFrog_Dark_BOSS.BP_KendoFrog_Dark_BOSS_C"
+ },
+ "Kitsunebi_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kitsunebi/BP_Kitsunebi_Ice.BP_Kitsunebi_Ice_C"
+ },
+ "BOSS_Kitsunebi_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kitsunebi/BP_Kitsunebi_Ice_BOSS.BP_Kitsunebi_Ice_BOSS_C"
+ },
+ "RaijinDaughter_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RaijinDaughter/BP_RaijinDaughter_Water.BP_RaijinDaughter_Water_C"
+ },
+ "BOSS_RaijinDaughter_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RaijinDaughter/BP_RaijinDaughter_Water_BOSS.BP_RaijinDaughter_Water_BOSS_C"
+ },
+ "Werewolf_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Werewolf/BP_Werewolf_Ice.BP_Werewolf_Ice_C"
+ },
+ "BOSS_Werewolf_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Werewolf/BP_Werewolf_Ice_BOSS.BP_Werewolf_Ice_BOSS_C"
+ },
+ "WhiteTiger_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteTiger/BP_WhiteTiger_Ground.BP_WhiteTiger_Ground_C"
+ },
+ "BOSS_WhiteTiger_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteTiger/BP_WhiteTiger_Ground_BOSS.BP_WhiteTiger_Ground_BOSS_C"
+ },
+ "PREDATOR_ThunderDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDog/BP_ThunderDog_BOSS_Predator.BP_ThunderDog_BOSS_Predator_C"
+ },
+ "PREDATOR_LazyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyDragon/BP_LazyDragon_BOSS_Predator.BP_LazyDragon_BOSS_Predator_C"
+ },
+ "PREDATOR_BirdDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BirdDragon/BP_BirdDragon_BOSS_Predator.BP_BirdDragon_BOSS_Predator_C"
+ },
+ "PREDATOR_GrassPanda": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassPanda/BP_GrassPanda_BOSS_Predator.BP_GrassPanda_BOSS_Predator_C"
+ },
+ "PREDATOR_PinkLizard": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkLizard/BP_PinkLizard_BOSS_Predator.BP_PinkLizard_BOSS_Predator_C"
+ },
+ "PREDATOR_Garm": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Garm/BP_Garm_BOSS_Predator.BP_Garm_BOSS_Predator_C"
+ },
+ "PREDATOR_SifuDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SifuDog/BP_SifuDog_BOSS_Predator.BP_SifuDog_BOSS_Predator_C"
+ },
+ "PREDATOR_Gorilla": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Gorilla/BP_Gorilla_BOSS_Predator.BP_Gorilla_BOSS_Predator_C"
+ },
+ "PREDATOR_RedArmorBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RedArmorBird/BP_RedArmorBird_BOSS_Predator.BP_RedArmorBird_BOSS_Predator_C"
+ },
+ "PREDATOR_GhostBeast": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostBeast/BP_GhostBeast_BOSS_Predator.BP_GhostBeast_BOSS_Predator_C"
+ },
+ "PREDATOR_FlowerDinosaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDinosaur/BP_FlowerDinosaur_BOSS_Predator.BP_FlowerDinosaur_BOSS_Predator_C"
+ },
+ "PREDATOR_VolcanicMonster_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanicMonster/BP_VolcanicMonster_Ice_BOSS_Predator.BP_VolcanicMonster_Ice_BOSS_Predator_C"
+ },
+ "PREDATOR_DrillGame": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DrillGame/BP_DrillGame_BOSS_Predator.BP_DrillGame_BOSS_Predator_C"
+ },
+ "PREDATOR_Umihebi_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Umihebi/BP_Umihebi_Fire_BOSS_Predator.BP_Umihebi_Fire_BOSS_Predator_C"
+ },
+ "PREDATOR_FeatherOstrich": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FeatherOstrich/BP_FeatherOstrich_BOSS_Predator.BP_FeatherOstrich_BOSS_Predator_C"
+ },
+ "PREDATOR_ScorpionMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ScorpionMan/BP_ScorpionMan_BOSS_Predator.BP_ScorpionMan_BOSS_Predator_C"
+ },
+ "PREDATOR_AmaterasuWolf": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/AmaterasuWolf/BP_AmaterasuWolf_BOSS_Predator.BP_AmaterasuWolf_BOSS_Predator_C"
+ },
+ "PREDATOR_Yeti": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Yeti/BP_Yeti_BOSS_Predator.BP_Yeti_BOSS_Predator_C"
+ },
+ "PREDATOR_Manticore_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Manticore/BP_Manticore_Dark_BOSS_Predator.BP_Manticore_Dark_BOSS_Predator_C"
+ },
+ "PREDATOR_MushroomDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MushroomDragon/BP_MushroomDragon_BOSS_Predator.BP_MushroomDragon_BOSS_Predator_C"
+ },
+ "PREDATOR_WhiteTiger_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteTiger/BP_WhiteTiger_Ground_BOSS_Predator.BP_WhiteTiger_Ground_BOSS_Predator_C"
+ },
+ "PREDATOR_Horus_Water": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Horus/BP_Horus_Water_BOSS_Predator.BP_Horus_Water_BOSS_Predator_C"
+ },
+ "PREDATOR_WereWolf_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Werewolf/BP_Werewolf_Ice_BOSS_Predator.BP_Werewolf_Ice_BOSS_Predator_C"
+ },
+ "BOSS_DarkMechaDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkMechaDragon/BP_DarkMechaDragon_BOSS.BP_DarkMechaDragon_BOSS_C"
+ },
+ "BOSS_GhostRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostRabbit/BP_GhostRabbit_BOSS.BP_GhostRabbit_BOSS_C"
+ },
+ "BOSS_NightBlueHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightBlueHorse/BP_NightBlueHorse_BOSS.BP_NightBlueHorse_BOSS_C"
+ },
+ "BOSS_WhiteShieldDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteShieldDragon/BP_WhiteShieldDragon_BOSS.BP_WhiteShieldDragon_BOSS_C"
+ },
+ "BOSS_BlackPuppy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackPuppy/BP_BlackPuppy_BOSS.BP_BlackPuppy_BOSS_C"
+ },
+ "BOSS_WhiteDeer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteDeer/BP_WhiteDeer_BOSS.BP_WhiteDeer_BOSS_C"
+ },
+ "BOSS_MysteryMask": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MysteryMask/BP_MysteryMask_BOSS.BP_MysteryMask_BOSS_C"
+ },
+ "BOSS_GrimGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrimGirl/BP_GrimGirl_BOSS.BP_GrimGirl_BOSS_C"
+ },
+ "BOSS_PurpleSpider": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PurpleSpider/BP_PurpleSpider_BOSS.BP_PurpleSpider_BOSS_C"
+ },
+ "BOSS_BlueThunderHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueThunderHorse/BP_BlueThunderHorse_BOSS.BP_BlueThunderHorse_BOSS_C"
+ },
+ "BOSS_SnowTigerBeastman": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnowTigerBeastman/BP_SnowTigerBeastman_BOSS.BP_SnowTigerBeastman_BOSS_C"
+ },
+ "PREDATOR_PurpleSpider": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PurpleSpider/BP_PurpleSpider_BOSS_Predator.BP_PurpleSpider_BOSS_Predator_C"
+ },
+ "PREDATOR_MysteryMask": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MysteryMask/BP_MysteryMask_BOSS_Predator.BP_MysteryMask_BOSS_Predator_C"
+ },
+ "PREDATOR_NightBlueHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightBlueHorse/BP_NightBlueHorse_BOSS_Predator.BP_NightBlueHorse_BOSS_Predator_C"
+ },
+ "PREDATOR_GoldenHorse": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GoldenHorse/BP_GoldenHorse_BOSS_Predator.BP_GoldenHorse_BOSS_Predator_C"
+ },
+ "PREDATOR_GrimGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrimGirl/BP_GrimGirl_BOSS_Predator.BP_GrimGirl_BOSS_Predator_C"
+ },
+ "SUMMON_DarkAlien": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkAlien/BP_DarkAlien_Summon.BP_DarkAlien_Summon_C"
+ },
+ "SUMMON_WhiteAlienDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteAlienDragon/BP_WhiteAlienDragon_Summon.BP_WhiteAlienDragon_Summon_C"
+ },
+ "NPC_VikingElite": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_VikingElite.BP_NPC_VikingElite_C"
+ },
+ "NPC_Recruiter": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_Recruiter.BP_NPC_Recruiter_C"
+ },
+ "NPC_Viking": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Viking.BP_NPC_Viking_C"
+ },
+ "NPC_Doctor": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Doctor.BP_NPC_Doctor_C"
+ },
+ "GYM_SnowTigerBeastman": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnowTigerBeastman/BP_SnowTigerBeastman_GYM.BP_SnowTigerBeastman_GYM_C"
+ },
+ "BOSS_NPC_Viking": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Viking_BOSS.BP_NPC_Viking_BOSS_C"
+ },
+ "BOSS_NPC_VikingElite": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_VikingElite_BOSS.BP_NPC_VikingElite_BOSS_C"
+ },
+ "BOSS_NPC_Police_Old": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Police_old_BOSS.BP_NPC_Police_old_BOSS_C"
+ },
+ "BOSS_NPC_DarkTrader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_DarkTrader_BOSS.BP_NPC_DarkTrader_BOSS_C"
+ },
+ "BOSS_Male_Trader01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader_BOSS.BP_NPC_Male_Trader_BOSS_C"
+ },
+ "BOSS_Male_Trader02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader_2_BOSS.BP_NPC_Male_Trader_2_BOSS_C"
+ },
+ "BOSS_Male_Trader03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader_3_BOSS.BP_NPC_Male_Trader_3_BOSS_C"
+ },
+ "PREDATOR_HadesBird_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HadesBird/BP_HadesBird_Electric_BOSS_Predator.BP_HadesBird_Electric_BOSS_Predator_C"
+ },
+ "PREDATOR_Ronin_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Ronin/BP_Ronin_Dark_BOSS_Predator.BP_Ronin_Dark_BOSS_Predator_C"
+ },
+ "PREDATOR_CandleGhost": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CandleGhost/BP_CandleGhost_BOSS_Predator.BP_CandleGhost_BOSS_Predator_C"
+ },
+ "PREDATOR_Baphomet_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Baphomet/BP_Baphomet_Dark_BOSS_Predator.BP_Baphomet_Dark_BOSS_Predator_C"
+ },
+ "NPC_Female_Presenter01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Presenter01.BP_NPC_Female_Presenter01_C"
+ },
+ "PinkRabbit_Grass": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkRabbit/BP_PinkRabbit_Grass.BP_PinkRabbit_Grass_C"
+ },
+ "BOSS_PinkRabbit_Grass": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkRabbit/BP_PinkRabbit_Grass_BOSS.BP_PinkRabbit_Grass_BOSS_C"
+ },
+ "NPC_EmoteTester": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_EmoteTester.BP_NPC_EmoteTester_C"
+ },
+ "NPC_SalesPerson_Caravan_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_Caravan_01.BP_NPC_SalesPerson_Caravan_01_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd.BP_NPC_Reward_Emote_GeneralRnd_C"
+ },
+ "NPC_FoodRequire_1": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_FoodRequire_1.BP_NPC_FoodRequire_1_C"
+ },
+ "NPC_PalDisplay_1": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_1.BP_NPC_PalDisplay_1_C"
+ },
+ "NPC_BountyTrader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_BountyTrader.BP_NPC_BountyTrader_C"
+ },
+ "NPC_SalesPerson_Caravan_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_Caravan_02.BP_NPC_SalesPerson_Caravan_02_C"
+ },
+ "NPC_SalesPerson_Caravan_03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_Caravan_03.BP_NPC_SalesPerson_Caravan_03_C"
+ },
+ "NPC_Ambassador01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Ambassador01.BP_NPC_Ambassador01_C"
+ },
+ "NPC_Blacksmith01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Blacksmith01.BP_NPC_Blacksmith01_C"
+ },
+ "NPC_Epicure01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Epicure01.BP_NPC_Epicure01_C"
+ },
+ "NPC_Escort_Warrior01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Escort_Warrior01.BP_NPC_Escort_Warrior01_C"
+ },
+ "NPC_Escort_PalTamer01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Escort_PalTamer01.BP_NPC_Escort_PalTamer01_C"
+ },
+ "NPC_Reward_Food": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Reward_Food.BP_NPC_Reward_Food_C"
+ },
+ "NPC_Reward_Paldex": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Reward_Paldex.BP_NPC_Reward_Paldex_C"
+ },
+ "NPC_Reward_BossDefeat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Reward_BossDefeat.BP_NPC_Reward_BossDefeat_C"
+ },
+ "NPC_Reward_PalCaptureCount": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Reward_PalCaptureCount.BP_NPC_Reward_PalCaptureCount_C"
+ },
+ "GYM_SnowTigerBeastman_2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnowTigerBeastman/BP_SnowTigerBeastman_GYM_Hard.BP_SnowTigerBeastman_GYM_Hard_C"
+ },
+ "NPC_Viking_Tower": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Viking_BOSS_Tower.BP_NPC_Viking_BOSS_Tower_C"
+ },
+ "NPC_VikingElite_Tower": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_VikingElite_BOSS_Tower.BP_NPC_VikingElite_BOSS_Tower_C"
+ },
+ "NPC_Male_NinjaElite01_Invader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_NinjaElite01_Invader.BP_NPC_Male_NinjaElite01_Invader_C"
+ },
+ "NPC_VikingElite_Invader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_VikingElite_Invader.BP_NPC_VikingElite_Invader_C"
+ },
+ "NPC_Male_Soldier02_Invader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Soldier02_Invader.BP_NPC_Male_Soldier02_Invader_C"
+ },
+ "NPC_Female_Soldier03_Invader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier03_Invader.BP_NPC_Female_Soldier03_Invader_C"
+ },
+ "NPC_Female_Soldier04_Invader": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Soldier04_Invader.BP_NPC_Female_Soldier04_Invader_C"
+ },
+ "WingGolem_Oilrig": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WingGolem/BP_WingGolem_Oilrig.BP_WingGolem_Oilrig_C"
+ },
+ "DarkAlien_Oilrig": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkAlien/BP_DarkAlien_Oilrig.BP_DarkAlien_Oilrig_C"
+ },
+ "Horus_Oilrig": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Horus/BP_Horus_Oilrig.BP_Horus_Oilrig_C"
+ },
+ "Baphomet_Dark_Oilrig": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Baphomet/BP_Baphomet_Dark_Oilrig.BP_Baphomet_Dark_Oilrig_C"
+ },
+ "HadesBird_Oilrig": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HadesBird/BP_HadesBird_Oilrig.BP_HadesBird_Oilrig_C"
+ },
+ "LizardMan_Oilrig": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LizardMan/BP_LizardMan_Oilrig.BP_LizardMan_Oilrig_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_A": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_A.BP_NPC_Reward_Emote_GeneralRnd_A_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_B": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_B.BP_NPC_Reward_Emote_GeneralRnd_B_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_C": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_C.BP_NPC_Reward_Emote_GeneralRnd_C_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_D": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_D.BP_NPC_Reward_Emote_GeneralRnd_D_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_E": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_E.BP_NPC_Reward_Emote_GeneralRnd_E_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_F": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_F.BP_NPC_Reward_Emote_GeneralRnd_F_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_G": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_G.BP_NPC_Reward_Emote_GeneralRnd_G_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_H": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_H.BP_NPC_Reward_Emote_GeneralRnd_H_C"
+ },
+ "NPC_Reward_Emote_GeneralRnd_I": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_GeneralRnd_I.BP_NPC_Reward_Emote_GeneralRnd_I_C"
+ },
+ "NPC_Reward_Emote_location_A_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_A_01.BP_NPC_Reward_Emote_location_A_01_C"
+ },
+ "NPC_Reward_Emote_location_A_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_A_02.BP_NPC_Reward_Emote_location_A_02_C"
+ },
+ "NPC_Reward_Emote_location_B_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_B_01.BP_NPC_Reward_Emote_location_B_01_C"
+ },
+ "NPC_Reward_Emote_location_B_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_B_02.BP_NPC_Reward_Emote_location_B_02_C"
+ },
+ "NPC_Reward_Emote_location_C_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_C_01.BP_NPC_Reward_Emote_location_C_01_C"
+ },
+ "NPC_Reward_Emote_location_C_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_C_02.BP_NPC_Reward_Emote_location_C_02_C"
+ },
+ "NPC_Reward_Emote_location_D_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_D_01.BP_NPC_Reward_Emote_location_D_01_C"
+ },
+ "NPC_Reward_Emote_location_D_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_D_02.BP_NPC_Reward_Emote_location_D_02_C"
+ },
+ "NPC_Reward_Emote_location_E_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_E_01.BP_NPC_Reward_Emote_location_E_01_C"
+ },
+ "NPC_Reward_Emote_location_E_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_E_02.BP_NPC_Reward_Emote_location_E_02_C"
+ },
+ "NPC_Reward_Emote_location_F_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_F_01.BP_NPC_Reward_Emote_location_F_01_C"
+ },
+ "NPC_Reward_Emote_location_F_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_F_02.BP_NPC_Reward_Emote_location_F_02_C"
+ },
+ "NPC_Reward_Emote_location_G_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_G_01.BP_NPC_Reward_Emote_location_G_01_C"
+ },
+ "NPC_Reward_Emote_location_G_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_G_02.BP_NPC_Reward_Emote_location_G_02_C"
+ },
+ "NPC_Reward_Emote_location_H_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_H_01.BP_NPC_Reward_Emote_location_H_01_C"
+ },
+ "NPC_Reward_Emote_location_H_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_H_02.BP_NPC_Reward_Emote_location_H_02_C"
+ },
+ "NPC_Reward_Emote_location_I_01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_I_01.BP_NPC_Reward_Emote_location_I_01_C"
+ },
+ "NPC_Reward_Emote_location_I_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/Emote/BP_NPC_Reward_Emote_location_I_02.BP_NPC_Reward_Emote_location_I_02_C"
+ },
+ "NPC_PalDisplay_A": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_A.BP_NPC_PalDisplay_A_C"
+ },
+ "NPC_PalDisplay_B": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_B.BP_NPC_PalDisplay_B_C"
+ },
+ "NPC_PalDisplay_C": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_C.BP_NPC_PalDisplay_C_C"
+ },
+ "NPC_PalDisplay_D": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_D.BP_NPC_PalDisplay_D_C"
+ },
+ "NPC_PalDisplay_E": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_E.BP_NPC_PalDisplay_E_C"
+ },
+ "NPC_PalDisplay_F": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_F.BP_NPC_PalDisplay_F_C"
+ },
+ "NPC_PalDisplay_G": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_G.BP_NPC_PalDisplay_G_C"
+ },
+ "NPC_PalDisplay_H": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_H.BP_NPC_PalDisplay_H_C"
+ },
+ "NPC_PalDisplay_I": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/PalDisplay/BP_NPC_PalDisplay_I.BP_NPC_PalDisplay_I_C"
+ },
+ "NPC_Help01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Help01.BP_NPC_Help01_C"
+ },
+ "NPC_Help02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Help02.BP_NPC_Help02_C"
+ },
+ "NPC_Help03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Help03.BP_NPC_Help03_C"
+ },
+ "NPC_Help04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Help04.BP_NPC_Help04_C"
+ },
+ "LeafMomonga": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LeafMomonga/BP_LeafMomonga.BP_LeafMomonga_C"
+ },
+ "BOSS_LeafMomonga": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LeafMomonga/BP_LeafMomonga_BOSS.BP_LeafMomonga_BOSS_C"
+ },
+ "IceWitch": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceWitch/BP_IceWitch.BP_IceWitch_C"
+ },
+ "BOSS_IceWitch": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceWitch/BP_IceWitch_BOSS.BP_IceWitch_BOSS_C"
+ },
+ "ClownRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ClownRabbit/BP_ClownRabbit.BP_ClownRabbit_C"
+ },
+ "BOSS_ClownRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ClownRabbit/BP_ClownRabbit_BOSS.BP_ClownRabbit_BOSS_C"
+ },
+ "LegendDeer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LegendDeer/BP_LegendDeer.BP_LegendDeer_C"
+ },
+ "BOSS_LegendDeer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LegendDeer/BP_LegendDeer_BOSS.BP_LegendDeer_BOSS_C"
+ },
+ "SmallYeti": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SmallYeti/BP_SmallYeti.BP_SmallYeti_C"
+ },
+ "BOSS_SmallYeti": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SmallYeti/BP_SmallYeti_BOSS.BP_SmallYeti_BOSS_C"
+ },
+ "IceCrocodile": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceCrocodile/BP_IceCrocodile.BP_IceCrocodile_C"
+ },
+ "BOSS_IceCrocodile": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceCrocodile/BP_IceCrocodile_BOSS.BP_IceCrocodile_BOSS_C"
+ },
+ "CactusDoll": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CactusDoll/BP_CactusDoll.BP_CactusDoll_C"
+ },
+ "BOSS_CactusDoll": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CactusDoll/BP_CactusDoll_BOSS.BP_CactusDoll_BOSS_C"
+ },
+ "MushroomLady": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MushroomLady/BP_MushroomLady.BP_MushroomLady_C"
+ },
+ "BOSS_MushroomLady": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MushroomLady/BP_MushroomLady_BOSS.BP_MushroomLady_BOSS_C"
+ },
+ "StuffedShark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/StuffedShark/BP_StuffedShark.BP_StuffedShark_C"
+ },
+ "BOSS_StuffedShark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/StuffedShark/BP_StuffedShark_BOSS.BP_StuffedShark_BOSS_C"
+ },
+ "FoxExorcist": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FoxExorcist/BP_FoxExorcist.BP_FoxExorcist_C"
+ },
+ "BOSS_FoxExorcist": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FoxExorcist/BP_FoxExorcist_BOSS.BP_FoxExorcist_BOSS_C"
+ },
+ "IceSeal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceSeal/BP_IceSeal.BP_IceSeal_C"
+ },
+ "BOSS_IceSeal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceSeal/BP_IceSeal_BOSS.BP_IceSeal_BOSS_C"
+ },
+ "CloverFairy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CloverFairy/BP_CloverFairy.BP_CloverFairy_C"
+ },
+ "BOSS_CloverFairy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CloverFairy/BP_CloverFairy_BOSS.BP_CloverFairy_BOSS_C"
+ },
+ "ElecPomeranian": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecPomeranian/BP_ElecPomeranian.BP_ElecPomeranian_C"
+ },
+ "BOSS_ElecPomeranian": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecPomeranian/BP_ElecPomeranian_BOSS.BP_ElecPomeranian_BOSS_C"
+ },
+ "GhostBlackCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostBlackCat/BP_GhostBlackCat.BP_GhostBlackCat_C"
+ },
+ "BOSS_GhostBlackCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostBlackCat/BP_GhostBlackCat_BOSS.BP_GhostBlackCat_BOSS_C"
+ },
+ "ThiefBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThiefBird/BP_ThiefBird.BP_ThiefBird_C"
+ },
+ "BOSS_ThiefBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThiefBird/BP_ThiefBird_BOSS.BP_ThiefBird_BOSS_C"
+ },
+ "OniGhostGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/OniGhostGirl/BP_OniGhostGirl.BP_OniGhostGirl_C"
+ },
+ "BOSS_OniGhostGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/OniGhostGirl/BP_OniGhostGirl_BOSS.BP_OniGhostGirl_BOSS_C"
+ },
+ "KingCrab": {
+  "BPClass": ""
+ },
+ "BOSS_KingCrab": {
+  "BPClass": ""
+ },
+ "Plesiosaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Plesiosaur/BP_Plesiosaur.BP_Plesiosaur_C"
+ },
+ "BOSS_Plesiosaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Plesiosaur/BP_Plesiosaur_BOSS.BP_Plesiosaur_BOSS_C"
+ },
+ "TropicalOstrich": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/TropicalOstrich/BP_TropicalOstrich.BP_TropicalOstrich_C"
+ },
+ "BOSS_TropicalOstrich": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/TropicalOstrich/BP_TropicalOstrich_BOSS.BP_TropicalOstrich_BOSS_C"
+ },
+ "GrassGolem": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassGolem/BP_GrassGolem.BP_GrassGolem_C"
+ },
+ "BOSS_GrassGolem": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassGolem/BP_GrassGolem_BOSS.BP_GrassGolem_BOSS_C"
+ },
+ "SnowPeafowl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnowPeafowl/BP_SnowPeafowl.BP_SnowPeafowl_C"
+ },
+ "BOSS_SnowPeafowl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnowPeafowl/BP_SnowPeafowl_BOSS.BP_SnowPeafowl_BOSS_C"
+ },
+ "CubeTurtle": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CubeTurtle/BP_CubeTurtle.BP_CubeTurtle_C"
+ },
+ "BOSS_CubeTurtle": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CubeTurtle/BP_CubeTurtle_BOSS.BP_CubeTurtle_BOSS_C"
+ },
+ "LongCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LongCat/BP_LongCat.BP_LongCat_C"
+ },
+ "BOSS_LongCat": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LongCat/BP_LongCat_BOSS.BP_LongCat_BOSS_C"
+ },
+ "JellyfishGhost": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/JellyfishGhost/BP_JellyfishGhost.BP_JellyfishGhost_C"
+ },
+ "BOSS_JellyfishGhost": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/JellyfishGhost/BP_JellyfishGhost_BOSS.BP_JellyfishGhost_BOSS_C"
+ },
+ "SamuraiDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SamuraiDog/BP_SamuraiDog.BP_SamuraiDog_C"
+ },
+ "BOSS_SamuraiDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SamuraiDog/BP_SamuraiDog_BOSS.BP_SamuraiDog_BOSS_C"
+ },
+ "OctopusGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/OctopusGirl/BP_OctopusGirl.BP_OctopusGirl_C"
+ },
+ "BOSS_OctopusGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/OctopusGirl/BP_OctopusGirl_BOSS.BP_OctopusGirl_BOSS_C"
+ },
+ "PoseidonOrca": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PoseidonOrca/BP_PoseidonOrca.BP_PoseidonOrca_C"
+ },
+ "SwordCutlassfish": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SwordCutlassfish/BP_SwordCutlassfish.BP_SwordCutlassfish_C"
+ },
+ "BOSS_PoseidonOrca": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PoseidonOrca/BP_PoseidonOrca_BOSS.BP_PoseidonOrca_BOSS_C"
+ },
+ "BOSS_SwordCutlassfish": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SwordCutlassfish/BP_SwordCutlassfish_BOSS.BP_SwordCutlassfish_BOSS_C"
+ },
+ "NPC_Respawn_guide": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Respawn_guide.BP_NPC_Respawn_guide_C"
+ },
+ "NPC_DeathPenalty_guide": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_DeathPenalty_guide.BP_NPC_DeathPenalty_guide_C"
+ },
+ "YakushimaMonster001": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster001/BP_YakushimaMonster001_Green_Normal.BP_YakushimaMonster001_Green_Normal_C"
+ },
+ "YakushimaMonster001_Blue": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster001/BP_YakushimaMonster001_Blue_Normal.BP_YakushimaMonster001_Blue_Normal_C"
+ },
+ "YakushimaMonster001_Red": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster001/BP_YakushimaMonster001_Red_Normal.BP_YakushimaMonster001_Red_Normal_C"
+ },
+ "YakushimaMonster001_Purple": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster001/BP_YakushimaMonster001_Purple_Normal.BP_YakushimaMonster001_Purple_Normal_C"
+ },
+ "YakushimaMonster001_Pink": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster001/BP_YakushimaMonster001_Pink_Normal.BP_YakushimaMonster001_Pink_Normal_C"
+ },
+ "YakushimaMonster001_Rainbow": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster001/BP_YakushimaMonster001_Rainbow_Normal.BP_YakushimaMonster001_Rainbow_Normal_C"
+ },
+ "YakushimaMonster002": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster002/BP_YakushimaMonster002.BP_YakushimaMonster002_C"
+ },
+ "YakushimaMonster003": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster003/BP_YakushimaMonster003.BP_YakushimaMonster003_C"
+ },
+ "YakushimaMonster003_Purple": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaMonster003/BP_YakushimaMonster003_Purple.BP_YakushimaMonster003_Purple_C"
+ },
+ "YakushimaBoss001": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss001/BP_YakushimaBoss001.BP_YakushimaBoss001_C"
+ },
+ "YakushimaBoss001_Small": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss001/BP_YakushimaBoss001_Small.BP_YakushimaBoss001_Small_C"
+ },
+ "YakushimaBoss001_Green": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss001_Green.BP_YakushimaBoss001_Green_C"
+ },
+ "YakushimaBoss002": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss002_B.BP_YakushimaBoss002_B_C"
+ },
+ "YakushimaBoss002_Hand_Left": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss002_L.BP_YakushimaBoss002_L_C"
+ },
+ "YakushimaBoss002_Hand_Right": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss002_R.BP_YakushimaBoss002_R_C"
+ },
+ "BOSS_YakushimaBoss001": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss001/BP_YakushimaBoss001_BOSS.BP_YakushimaBoss001_BOSS_C"
+ },
+ "NegativeOctopus_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NegativeOctopus/BP_NegativeOctopus_Neutral.BP_NegativeOctopus_Neutral_C"
+ },
+ "BOSS_NegativeOctopus_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NegativeOctopus/BP_NegativeOctopus_Neutral_BOSS.BP_NegativeOctopus_Neutral_BOSS_C"
+ },
+ "Penguin_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Penguin/BP_Penguin_Electric.BP_Penguin_Electric_C"
+ },
+ "BOSS_Penguin_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Penguin/BP_Penguin_Electric_BOSS.BP_Penguin_Electric_BOSS_C"
+ },
+ "CaptainPenguin_Black": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CaptainPenguin/BP_CaptainPenguin_Black.BP_CaptainPenguin_Black_C"
+ },
+ "BOSS_CaptainPenguin_Black": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CaptainPenguin/BP_CaptainPenguin_Black_BOSS.BP_CaptainPenguin_Black_BOSS_C"
+ },
+ "FlyingManta_Thunder": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlyingManta/BP_FlyingManta_Thunder.BP_FlyingManta_Thunder_C"
+ },
+ "BOSS_FlyingManta_Thunder": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlyingManta/BP_FlyingManta_Thunder_BOSS.BP_FlyingManta_Thunder_BOSS_C"
+ },
+ "BluePlatypus_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BluePlatypus/BP_BluePlatypus_Fire.BP_BluePlatypus_Fire_C"
+ },
+ "BOSS_BluePlatypus_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BluePlatypus/BP_BluePlatypus_Fire_BOSS.BP_BluePlatypus_Fire_BOSS_C"
+ },
+ "LazyCatfish_Gold": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyCatfish/BP_LazyCatfish_Gold.BP_LazyCatfish_Gold_C"
+ },
+ "BOSS_LazyCatfish_Gold": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LazyCatfish/BP_LazyCatfish_Gold_BOSS.BP_LazyCatfish_Gold_BOSS_C"
+ },
+ "TentacleTurtle_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/TentacleTurtle/BP_TentacleTurtle_Ground.BP_TentacleTurtle_Ground_C"
+ },
+ "BOSS_TentacleTurtle_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/TentacleTurtle/BP_TentacleTurtle_Ground_BOSS.BP_TentacleTurtle_Ground_BOSS_C"
+ },
+ "BlueDragon_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueDragon/BP_BlueDragon_Ice.BP_BlueDragon_Ice_C"
+ },
+ "BOSS_BlueDragon_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueDragon/BP_BlueDragon_Ice_BOSS.BP_BlueDragon_Ice_BOSS_C"
+ },
+ "IceNarwhal_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceNarwhal/BP_IceNarwhal_Fire.BP_IceNarwhal_Fire_C"
+ },
+ "BOSS_IceNarwhal_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceNarwhal/BP_IceNarwhal_Fire_BOSS.BP_IceNarwhal_Fire_BOSS_C"
+ },
+ "GhostAnglerfish_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostAnglerfish/BP_GhostAnglerfish_Fire.BP_GhostAnglerfish_Fire_C"
+ },
+ "BOSS_GhostAnglerfish_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostAnglerfish/BP_GhostAnglerfish_Fire_BOSS.BP_GhostAnglerfish_Fire_BOSS_C"
+ },
+ "StuffedShark_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/StuffedShark/BP_StuffedShark_Fire.BP_StuffedShark_Fire_C"
+ },
+ "BOSS_StuffedShark_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/StuffedShark/BP_StuffedShark_Fire_BOSS.BP_StuffedShark_Fire_BOSS_C"
+ },
+ "NPC_GrassBoss": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_GrassBoss.BP_NPC_GrassBoss_C"
+ },
+ "NPC_ForestBoss": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_ForestBoss.BP_NPC_ForestBoss_C"
+ },
+ "NPC_DesertBoss": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_DesertBoss.BP_NPC_DesertBoss_C"
+ },
+ "NPC_ElectricBoss": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_ElectricBoss.BP_NPC_ElectricBoss_C"
+ },
+ "NPC_SnowBoss": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_SnowBoss.BP_NPC_SnowBoss_C"
+ },
+ "NPC_SakurajimaBoss": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_SakurajimaBoss.BP_NPC_SakurajimaBoss_C"
+ },
+ "NPC_VikingBoss": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_VikingBoss.BP_NPC_VikingBoss_C"
+ },
+ "NPC_ArenaShop": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_ArenaShop.BP_NPC_ArenaShop_C"
+ },
+ "NPC_Female_Ranger01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Ranger01_v01.BP_NPC_Female_Ranger01_v01_C"
+ },
+ "NPC_Male_Breeder01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Breeder01_v01.BP_NPC_Male_Breeder01_v01_C"
+ },
+ "NPC_Female_Farmer01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Farmer01_v01.BP_NPC_Female_Farmer01_v01_C"
+ },
+ "NPC_Male_Scholar01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Scholar01_v01.BP_NPC_Male_Scholar01_v01_C"
+ },
+ "NPC_Female_Nomad01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Nomad01_v01.BP_NPC_Female_Nomad01_v01_C"
+ },
+ "NPC_Female_Farmer01_v02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Farmer01_v02.BP_NPC_Female_Farmer01_v02_C"
+ },
+ "NPC_Female_Farmer01_v03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Farmer01_v03.BP_NPC_Female_Farmer01_v03_C"
+ },
+ "NPC_Female_Farmer01_v04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Farmer01_v04.BP_NPC_Female_Farmer01_v04_C"
+ },
+ "NPC_Male_Scholar01_v02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Scholar01_v02.BP_NPC_Male_Scholar01_v02_C"
+ },
+ "NPC_Male_Scholar01_v03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Scholar01_v03.BP_NPC_Male_Scholar01_v03_C"
+ },
+ "NPC_Male_Scholar01_v04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Scholar01_v04.BP_NPC_Male_Scholar01_v04_C"
+ },
+ "NPC_Female_Nomad01_v02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Nomad01_v02.BP_NPC_Female_Nomad01_v02_C"
+ },
+ "NPC_Female_Nomad01_v03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Nomad01_v03.BP_NPC_Female_Nomad01_v03_C"
+ },
+ "NPC_Female_Nomad01_v04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Nomad01_v04.BP_NPC_Female_Nomad01_v04_C"
+ },
+ "NPC_Female_Ranger01_v02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Ranger01_v02.BP_NPC_Female_Ranger01_v02_C"
+ },
+ "NPC_Female_Ranger01_v03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Ranger01_v03.BP_NPC_Female_Ranger01_v03_C"
+ },
+ "NPC_Female_Ranger01_v04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Ranger01_v04.BP_NPC_Female_Ranger01_v04_C"
+ },
+ "NPC_Male_Breeder01_v02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Breeder01_v02.BP_NPC_Male_Breeder01_v02_C"
+ },
+ "NPC_Male_Breeder01_v03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Breeder01_v03.BP_NPC_Male_Breeder01_v03_C"
+ },
+ "NPC_Male_Breeder01_v04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Breeder01_v04.BP_NPC_Male_Breeder01_v04_C"
+ },
+ "NPC_Male_Angler01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Angler01_v01.BP_NPC_Male_Angler01_v01_C"
+ },
+ "YakushimaBoss002_Head": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss002_Head.BP_YakushimaBoss002_Head_C"
+ },
+ "YakushimaBoss001_Green_2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss001_Green_2.BP_YakushimaBoss001_Green_2_C"
+ },
+ "YakushimaBoss002_2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss002_B_2.BP_YakushimaBoss002_B_2_C"
+ },
+ "YakushimaBoss002_Hand_Left_2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss002_L_2.BP_YakushimaBoss002_L_2_C"
+ },
+ "YakushimaBoss002_Hand_Right_2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss002_R_2.BP_YakushimaBoss002_R_2_C"
+ },
+ "YakushimaBoss002_Head_2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/YakushimaBoss002/BP_YakushimaBoss002_Head_2.BP_YakushimaBoss002_Head_2_C"
+ },
+ "Police_Shield_Tower": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_Police_Shield_Tower.BP_Police_Shield_Tower_C"
+ },
+ "NPC_Male_Kigurumi01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Kigurumi01_v01.BP_NPC_Male_Kigurumi01_v01_C"
+ },
+ "ElecSnail": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecSnail/BP_ElecSnail.BP_ElecSnail_C"
+ },
+ "BOSS_ElecSnail": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecSnail/BP_ElecSnail_BOSS.BP_ElecSnail_BOSS_C"
+ },
+ "BOSS_RockBeast": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RockBeast/BP_RockBeast_BOSS.BP_RockBeast_BOSS_C"
+ },
+ "ThunderDog_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDog/BP_ThunderDog_Ice.BP_ThunderDog_Ice_C"
+ },
+ "BOSS_ThunderDog_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDog/BP_ThunderDog_Ice_BOSS.BP_ThunderDog_Ice_BOSS_C"
+ },
+ "Monkey_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Monkey/BP_Monkey_Ice.BP_Monkey_Ice_C"
+ },
+ "BOSS_Monkey_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Monkey/BP_Monkey_Ice_BOSS.BP_Monkey_Ice_BOSS_C"
+ },
+ "Kirin_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kirin/BP_Kirin_Ice.BP_Kirin_Ice_C"
+ },
+ "BOSS_Kirin_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Kirin/BP_Kirin_Ice_BOSS.BP_Kirin_Ice_BOSS_C"
+ },
+ "ScorpionMan_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ScorpionMan/BP_ScorpionMan_Electric.BP_ScorpionMan_Electric_C"
+ },
+ "BOSS_ScorpionMan_Electric": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ScorpionMan/BP_ScorpionMan_Electric_BOSS.BP_ScorpionMan_Electric_BOSS_C"
+ },
+ "SweetsSheep_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SweetsSheep/BP_SweetsSheep_Ground.BP_SweetsSheep_Ground_C"
+ },
+ "BOSS_SweetsSheep_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SweetsSheep/BP_SweetsSheep_Ground_BOSS.BP_SweetsSheep_Ground_BOSS_C"
+ },
+ "BlackPuppy_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackPuppy/BP_BlackPuppy_Ice.BP_BlackPuppy_Ice_C"
+ },
+ "BOSS_BlackPuppy_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackPuppy/BP_BlackPuppy_Ice_BOSS.BP_BlackPuppy_Ice_BOSS_C"
+ },
+ "GhostRabbit_Grass": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostRabbit/BP_GhostRabbit_Grass.BP_GhostRabbit_Grass_C"
+ },
+ "BOSS_GhostRabbit_Grass": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostRabbit/BP_GhostRabbit_Grass_BOSS.BP_GhostRabbit_Grass_BOSS_C"
+ },
+ "CactusDoll_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CactusDoll/BP_CactusDoll_Dark.BP_CactusDoll_Dark_C"
+ },
+ "BOSS_CactusDoll_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CactusDoll/BP_CactusDoll_Dark_BOSS.BP_CactusDoll_Dark_BOSS_C"
+ },
+ "ElecSnail_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecSnail/BP_ElecSnail_Fire.BP_ElecSnail_Fire_C"
+ },
+ "BOSS_ElecSnail_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecSnail/BP_ElecSnail_Fire_BOSS.BP_ElecSnail_Fire_BOSS_C"
+ },
+ "RockBeast_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RockBeast/BP_RockBeast_Ice.BP_RockBeast_Ice_C"
+ },
+ "BOSS_RockBeast_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RockBeast/BP_RockBeast_Ice_BOSS.BP_RockBeast_Ice_BOSS_C"
+ },
+ "OctopusGirl_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/OctopusGirl/BP_OctopusGirl_Neutral.BP_OctopusGirl_Neutral_C"
+ },
+ "BOSS_OctopusGirl_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/OctopusGirl/BP_OctopusGirl_Neutral_BOSS.BP_OctopusGirl_Neutral_BOSS_C"
+ },
+ "NightBlueHorse_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightBlueHorse/BP_NightBlueHorse_Neutral.BP_NightBlueHorse_Neutral_C"
+ },
+ "BOSS_NightBlueHorse_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/NightBlueHorse/BP_NightBlueHorse_Neutral_BOSS.BP_NightBlueHorse_Neutral_BOSS_C"
+ },
+ "BOSS_KingWhale": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingWhale/BP_KingWhale_BOSS.BP_KingWhale_BOSS_C"
+ },
+ "BOSS_VolcanoDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanoDragon/BP_VolcanoDragon_BOSS.BP_VolcanoDragon_BOSS_C"
+ },
+ "BOSS_HoodGhost": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HoodGhost/BP_HoodGhost_BOSS.BP_HoodGhost_BOSS_C"
+ },
+ "MonochromeQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MonochromeQueen/BP_MonochromeQueen.BP_MonochromeQueen_C"
+ },
+ "RAID_LegendDeer": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LegendDeer/BP_LegendDeer_RAID.BP_LegendDeer_RAID_C"
+ },
+ "MummyPal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MummyPal/BP_MummyPal.BP_MummyPal_C"
+ },
+ "KingSunfish": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingSunfish/BP_KingSunfish.BP_KingSunfish_C"
+ },
+ "BOSS_MummyPal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MummyPal/BP_MummyPal_BOSS.BP_MummyPal_BOSS_C"
+ },
+ "BOSS_KingSunFish": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingSunfish/BP_KingSunfish_BOSS.BP_KingSunfish_BOSS_C"
+ },
+ "SleeveRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SleeveRabbit/BP_SleeveRabbit.BP_SleeveRabbit_C"
+ },
+ "NPC_Negotiator": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Negotiator.BP_NPC_Negotiator_C"
+ },
+ "KingSunfish_Thunder": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingSunfish/BP_KingSunfish_Thunder.BP_KingSunfish_Thunder_C"
+ },
+ "BOSS_KingSunfish_Thunder": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingSunfish/BP_KingSunfish_Thunder_BOSS.BP_KingSunfish_Thunder_BOSS_C"
+ },
+ "ElecSnail_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecSnail/BP_ElecSnail_Ground.BP_ElecSnail_Ground_C"
+ },
+ "BOSS_ElecSnail_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecSnail/BP_ElecSnail_Ground_BOSS.BP_ElecSnail_Ground_BOSS_C"
+ },
+ "Monkey_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Monkey/BP_Monkey_Fire.BP_Monkey_Fire_C"
+ },
+ "BOSS_Monkey_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Monkey/BP_Monkey_Fire_BOSS.BP_Monkey_Fire_BOSS_C"
+ },
+ "ClioneTwins": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ClioneTwins/BP_ClioneTwins.BP_ClioneTwins_C"
+ },
+ "BOSS_MonochromeQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MonochromeQueen/BP_MonochromeQueen_BOSS.BP_MonochromeQueen_BOSS_C"
+ },
+ "BOSS_ElecLizard": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecLizard/BP_ElecLizard_BOSS.BP_ElecLizard_BOSS_C"
+ },
+ "BOSS_ClioneTwins": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ClioneTwins/BP_ClioneTwins_BOSS.BP_ClioneTwins_BOSS_C"
+ },
+ "BOSS_SleeveRabbit": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SleeveRabbit/BP_SleeveRabbit_BOSS.BP_SleeveRabbit_BOSS_C"
+ },
+ "WildlifeSanctuaryDrone": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Machine/WildlifeSanctuaryDrone/BP_WildlifeSanctuaryDrone.BP_WildlifeSanctuaryDrone_C"
+ },
+ "RedFlowerBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RedFlowerBird/BP_RedFlowerBird.BP_RedFlowerBird_C"
+ },
+ "DarkFlameFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkFlameFox/BP_DarkFlameFox.BP_DarkFlameFox_C"
+ },
+ "BOSS_RedFlowerBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RedFlowerBird/BP_RedFlowerBird_BOSS.BP_RedFlowerBird_BOSS_C"
+ },
+ "BOSS_DarkFlameFox": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkFlameFox/BP_DarkFlameFox_BOSS.BP_DarkFlameFox_BOSS_C"
+ },
+ "SumoDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SumoDog/BP_SumoDog.BP_SumoDog_C"
+ },
+ "FluffyBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FluffyBird/BP_FluffyBird.BP_FluffyBird_C"
+ },
+ "VenusFlytrap": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VenusFlytrap/BP_VenusFlytrap.BP_VenusFlytrap_C"
+ },
+ "BOSS_SumoDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SumoDog/BP_SumoDog_BOSS.BP_SumoDog_BOSS_C"
+ },
+ "BOSS_FluffyBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FluffyBird/BP_FluffyBird_BOSS.BP_FluffyBird_BOSS_C"
+ },
+ "BOSS_VenusFlytrap": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VenusFlytrap/BP_VenusFlytrap_BOSS.BP_VenusFlytrap_BOSS_C"
+ },
+ "LanternButler": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LanternButler/BP_LanternButler.BP_LanternButler_C"
+ },
+ "BOSS_LanternButler": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LanternButler/BP_LanternButler_BOSS.BP_LanternButler_BOSS_C"
+ },
+ "BlueSkyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueSkyDragon/BP_BlueSkyDragon.BP_BlueSkyDragon_C"
+ },
+ "GYM_BlueSkyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueSkyDragon/BP_BlueSkyDragon_GYM.BP_BlueSkyDragon_GYM_C"
+ },
+ "BOSS_BlueSkyDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueSkyDragon/BP_BlueSkyDragon_BOSS.BP_BlueSkyDragon_BOSS_C"
+ },
+ "BOSS_KingWhale_otomo": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KingWhale/BP_KingWhale_BOSS_otomo.BP_KingWhale_BOSS_otomo_C"
+ },
+ "NPC_Reward_Paldex_v02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Reward_Paldex_v02.BP_NPC_Reward_Paldex_v02_C"
+ },
+ "NPC_Reward_PalCaptureCount_v02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Reward_PalCaptureCount_v02.BP_NPC_Reward_PalCaptureCount_v02_C"
+ },
+ "NPC_Female_Farmer01_v05": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Farmer01_v05.BP_NPC_Female_Farmer01_v05_C"
+ },
+ "NPC_Male_Scholar01_v05": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Scholar01_v05.BP_NPC_Male_Scholar01_v05_C"
+ },
+ "NPC_Male_Breeder01_v05": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Breeder01_v05.BP_NPC_Male_Breeder01_v05_C"
+ },
+ "NPC_Female_Ranger01_v05": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Ranger01_v05.BP_NPC_Female_Ranger01_v05_C"
+ },
+ "NPC_Female_Nomad01_v05": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Nomad01_v05.BP_NPC_Female_Nomad01_v05_C"
+ },
+ "GhostDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostDragon/BP_GhostDragon.BP_GhostDragon_C"
+ },
+ "BOSS_GhostDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostDragon/BP_GhostDragon_BOSS.BP_GhostDragon_BOSS_C"
+ },
+ "FlowerPrince": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerPrince/BP_FlowerPrince.BP_FlowerPrince_C"
+ },
+ "WorldTreeDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WorldTreeDragon/BP_WorldTreeDragon.BP_WorldTreeDragon_C"
+ },
+ "BOSS_WorldTreeDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WorldTreeDragon/BP_WorldTreeDragon_BOSS.BP_WorldTreeDragon_BOSS_C"
+ },
+ "FlowerDoll_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDoll/BP_FlowerDoll_Fire.BP_FlowerDoll_Fire_C"
+ },
+ "BOSS_FlowerDoll_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerDoll/BP_FlowerDoll_Fire_BOSS.BP_FlowerDoll_Fire_BOSS_C"
+ },
+ "IceSeal_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceSeal/BP_IceSeal_Ground.BP_IceSeal_Ground_C"
+ },
+ "BOSS_IceSeal_Ground": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/IceSeal/BP_IceSeal_Ground_BOSS.BP_IceSeal_Ground_BOSS_C"
+ },
+ "CubeTurtle_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CubeTurtle/BP_CubeTurtle_Neutral.BP_CubeTurtle_Neutral_C"
+ },
+ "BOSS_CubeTurtle_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/CubeTurtle/BP_CubeTurtle_Neutral_BOSS.BP_CubeTurtle_Neutral_BOSS_C"
+ },
+ "SwordCutlassfish_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SwordCutlassfish/BP_SwordCutlassfish_Fire.BP_SwordCutlassfish_Fire_C"
+ },
+ "BOSS_SwordCutlassfish_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SwordCutlassfish/BP_SwordCutlassfish_Fire_BOSS.BP_SwordCutlassfish_Fire_BOSS_C"
+ },
+ "VolcanoDragon_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanoDragon/BP_VolcanoDragon_Ice.BP_VolcanoDragon_Ice_C"
+ },
+ "BOSS_VolcanoDragon_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanoDragon/BP_VolcanoDragon_Ice_BOSS.BP_VolcanoDragon_Ice_BOSS_C"
+ },
+ "WhiteMoth_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteMoth/BP_WhiteMoth_Neutral.BP_WhiteMoth_Neutral_C"
+ },
+ "BOSS_WhiteMoth_Neutral": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteMoth/BP_WhiteMoth_Neutral_BOSS.BP_WhiteMoth_Neutral_BOSS_C"
+ },
+ "WingGolem_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WingGolem/BP_WingGolem_Fire.BP_WingGolem_Fire_C"
+ },
+ "BOSS_WingGolem_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WingGolem/BP_WingGolem_Fire_BOSS.BP_WingGolem_Fire_BOSS_C"
+ },
+ "GrassGolem_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassGolem/BP_GrassGolem_Dark.BP_GrassGolem_Dark_C"
+ },
+ "BOSS_GrassGolem_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassGolem/BP_GrassGolem_Dark_BOSS.BP_GrassGolem_Dark_BOSS_C"
+ },
+ "WhiteDeer_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteDeer/BP_WhiteDeer_Dark.BP_WhiteDeer_Dark_C"
+ },
+ "BOSS_WhiteDeer_Dark": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteDeer/BP_WhiteDeer_Dark_BOSS.BP_WhiteDeer_Dark_BOSS_C"
+ },
+ "GhostDragon_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostDragon/BP_GhostDragon_Fire.BP_GhostDragon_Fire_C"
+ },
+ "BOSS_GhostDragon_Fire": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GhostDragon/BP_GhostDragon_Fire_BOSS.BP_GhostDragon_Fire_BOSS_C"
+ },
+ "ThunderBird_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderBird/BP_ThunderBird_Ice.BP_ThunderBird_Ice_C"
+ },
+ "BOSS_ThunderBird_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderBird/BP_ThunderBird_Ice_BOSS.BP_ThunderBird_Ice_BOSS_C"
+ },
+ "GYM_WorldTreeDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WorldTreeDragon/BP_WorldTreeDragon_GYM.BP_WorldTreeDragon_GYM_C"
+ },
+ "NPC_Male_DTairikuPeople01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_DTairikuPeople01_v01.BP_NPC_Male_DTairikuPeople01_v01_C"
+ },
+ "NPC_Female_DTairikuPeople01_v01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_DTairikuPeople01_v01.BP_NPC_Female_DTairikuPeople01_v01_C"
+ },
+ "Mothman": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Mothman/BP_Mothman.BP_Mothman_C"
+ },
+ "NPC_Female_SurveyGirl01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SurveyGirl01.BP_NPC_Female_SurveyGirl01_C"
+ },
+ "NPC_Female_SurveyGirl02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SurveyGirl02.BP_NPC_Female_SurveyGirl02_C"
+ },
+ "NPC_Female_SurveyGirl03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SurveyGirl03.BP_NPC_Female_SurveyGirl03_C"
+ },
+ "PREDATOR_WhiteShieldDragon_Quest": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WhiteShieldDragon/BP_WhiteShieldDragon_BOSS_Predator_Quest.BP_WhiteShieldDragon_BOSS_Predator_Quest_C"
+ },
+ "NPC_Male_StrongOldMan01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_StrongOldMan01.BP_NPC_Male_StrongOldMan01_C"
+ },
+ "NPC_Male_StrongOldMan02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_StrongOldMan02.BP_NPC_Male_StrongOldMan02_C"
+ },
+ "NPC_Female_SurveyWoman01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SurveyWoman01.BP_NPC_Female_SurveyWoman01_C"
+ },
+ "NPC_Female_SurveyWoman02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SurveyWoman02.BP_NPC_Female_SurveyWoman02_C"
+ },
+ "PREDATOR_FlowerRabbit_Quest": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerRabbit/BP_FlowerRabbit_Predator_Quest.BP_FlowerRabbit_Predator_Quest_C"
+ },
+ "GrassMinotaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMinotaur/BP_GrassMinotaur.BP_GrassMinotaur_C"
+ },
+ "NPC_Male_TenrakuPeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_TenrakuPeople01.BP_NPC_Male_TenrakuPeople01_C"
+ },
+ "NPC_Female_TenrakuPeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_TenrakuPeople01.BP_NPC_Female_TenrakuPeople01_C"
+ },
+ "POLICE_ThunderDog": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDog/BP_ThunderDog_Police.BP_ThunderDog_Police_C"
+ },
+ "POLICE_HawkBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/HawkBird/BP_HawkBird_Police.BP_HawkBird_Police_C"
+ },
+ "GrassMinotaur_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMinotaur/BP_GrassMinotaur_Ice.BP_GrassMinotaur_Ice_C"
+ },
+ "BOSS_GrassMinotaur": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMinotaur/BP_GrassMinotaur_BOSS.BP_GrassMinotaur_BOSS_C"
+ },
+ "BOSS_GrassMinotaur_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMinotaur/BP_GrassMinotaur_Ice_BOSS.BP_GrassMinotaur_Ice_BOSS_C"
+ },
+ "BOSS_Mothman": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Mothman/BP_Mothman_BOSS.BP_Mothman_BOSS_C"
+ },
+ "NPC_Male_SurveyMan01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_SurveyMan01.BP_NPC_Male_SurveyMan01_C"
+ },
+ "NPC_Male_SurveyMan02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_SurveyMan02.BP_NPC_Male_SurveyMan02_C"
+ },
+ "NPC_Male_SurveyMan03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_SurveyMan03.BP_NPC_Male_SurveyMan03_C"
+ },
+ "DandelionGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DandelionGirl/BP_DandelionGirl.BP_DandelionGirl_C"
+ },
+ "BOSS_DandelionGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DandelionGirl/BP_DandelionGirl_BOSS.BP_DandelionGirl_BOSS_C"
+ },
+ "NPC_Male_SnowPeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_SnowPeople01.BP_NPC_Male_SnowPeople01_C"
+ },
+ "NPC_Female_SnowPeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SnowPeople01.BP_NPC_Female_SnowPeople01_C"
+ },
+ "PandaGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PandaGirl/BP_PandaGirl.BP_PandaGirl_C"
+ },
+ "BOSS_ElecPanda_BossRush": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ElecPanda/BP_ElecPanda_BossRush.BP_ElecPanda_BossRush_C"
+ },
+ "BOSS_LilyQueen_BossRush": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LilyQueen/BP_LilyQueen_BossRush.BP_LilyQueen_BossRush_C"
+ },
+ "BOSS_ThunderDragonMan_BossRush": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/ThunderDragonMan/BP_ThunderDragonMan_BossRush.BP_ThunderDragonMan_BossRush_C"
+ },
+ "BOSS_Horus_BossRush": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Horus/BP_Horus_BossRush.BP_Horus_BossRush_C"
+ },
+ "BOSS_BlackGriffon_BossRush": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlackGriffon/BP_BlackGriffon_BossRush.BP_BlackGriffon_BossRush_C"
+ },
+ "BOSS_MoonQueen_BossRush": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MoonQueen/BP_MoonQueen_BossRush.BP_MoonQueen_BossRush_C"
+ },
+ "BOSS_SnowTigerBeastman_BossRush": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnowTigerBeastman/BP_SnowTigerBeastman_BossRush.BP_SnowTigerBeastman_BossRush_C"
+ },
+ "BOSS_BlueSkyDragon_BossRush": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/BlueSkyDragon/BP_BlueSkyDragon_BossRush.BP_BlueSkyDragon_BossRush_C"
+ },
+ "BOSS_FlowerPrince": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/FlowerPrince/BP_FlowerPrince_BOSS.BP_FlowerPrince_BOSS_C"
+ },
+ "LotusDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LotusDragon/BP_LotusDragon.BP_LotusDragon_C"
+ },
+ "BOSS_PandaGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PandaGirl/BP_PandaGirl_BOSS.BP_PandaGirl_BOSS_C"
+ },
+ "BOSS_LotusDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/LotusDragon/BP_LotusDragon_BOSS.BP_LotusDragon_BOSS_C"
+ },
+ "KabukiMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KabukiMan/BP_KabukiMan.BP_KabukiMan_C"
+ },
+ "BOSS_KabukiMan": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/KabukiMan/BP_KabukiMan_BOSS.BP_KabukiMan_BOSS_C"
+ },
+ "NPC_Male_SorajimaPeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_SorajimaPeople01.BP_NPC_Male_SorajimaPeople01_C"
+ },
+ "NPC_Female_SorajimaPeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SorajimaPeople01.BP_NPC_Female_SorajimaPeople01_C"
+ },
+ "DomeArmorDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DomeArmorDragon/BP_DomeArmorDragon.BP_DomeArmorDragon_C"
+ },
+ "NPC_Male_SakurajimaPeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_SakurajimaPeople01.BP_NPC_Male_SakurajimaPeople01_C"
+ },
+ "NPC_Female_SakurajimaPeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SakurajimaPeople01.BP_NPC_Female_SakurajimaPeople01_C"
+ },
+ "SecurityDrone_Field": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Machine/CombatHeli/BP_CombatHeli_Field.BP_CombatHeli_Field_C"
+ },
+ "BOSS_DomeArmorDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DomeArmorDragon/BP_DomeArmorDragon_BOSS.BP_DomeArmorDragon_BOSS_C"
+ },
+ "NPC_Male_WorldTreePeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_WorldTreePeople01.BP_NPC_Male_WorldTreePeople01_C"
+ },
+ "NPC_Female_WorldTreePeople01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_WorldTreePeople01.BP_NPC_Female_WorldTreePeople01_C"
+ },
+ "NPC_Female_Kunoichi01": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_Kunoichi01.BP_NPC_Female_Kunoichi01_C"
+ },
+ "NPC_Male_Scholar02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Scholar02.BP_NPC_Male_Scholar02_C"
+ },
+ "NPC_Male_Trader01_v04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v04.BP_NPC_Male_Trader01_v04_C"
+ },
+ "NPC_Male_Trader01_v05": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v05.BP_NPC_Male_Trader01_v05_C"
+ },
+ "NPC_Male_Trader01_v06": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v06.BP_NPC_Male_Trader01_v06_C"
+ },
+ "NPC_Male_Trader01_v07": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v07.BP_NPC_Male_Trader01_v07_C"
+ },
+ "NPC_Male_Trader01_v08": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v08.BP_NPC_Male_Trader01_v08_C"
+ },
+ "NPC_Male_Trader01_v09": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v09.BP_NPC_Male_Trader01_v09_C"
+ },
+ "NPC_Male_Trader01_v10": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v10.BP_NPC_Male_Trader01_v10_C"
+ },
+ "NPC_Male_Trader01_v11": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v11.BP_NPC_Male_Trader01_v11_C"
+ },
+ "NPC_Male_Trader01_v12": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v12.BP_NPC_Male_Trader01_v12_C"
+ },
+ "NPC_Male_Trader01_v13": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v13.BP_NPC_Male_Trader01_v13_C"
+ },
+ "NPC_Male_Trader01_v14": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v14.BP_NPC_Male_Trader01_v14_C"
+ },
+ "NPC_Male_Trader01_v15": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v15.BP_NPC_Male_Trader01_v15_C"
+ },
+ "NPC_Male_Trader01_v16": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v16.BP_NPC_Male_Trader01_v16_C"
+ },
+ "NPC_Male_Trader01_v17": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v17.BP_NPC_Male_Trader01_v17_C"
+ },
+ "NPC_Male_Trader01_v18": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v18.BP_NPC_Male_Trader01_v18_C"
+ },
+ "NPC_Male_Trader01_v19": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v19.BP_NPC_Male_Trader01_v19_C"
+ },
+ "NPC_Male_Trader01_v20": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v20.BP_NPC_Male_Trader01_v20_C"
+ },
+ "NPC_Male_Trader01_v21": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v21.BP_NPC_Male_Trader01_v21_C"
+ },
+ "NPC_Male_Trader01_v22": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v22.BP_NPC_Male_Trader01_v22_C"
+ },
+ "NPC_Male_Trader01_v23": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v23.BP_NPC_Male_Trader01_v23_C"
+ },
+ "NPC_Male_Trader01_v24": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v24.BP_NPC_Male_Trader01_v24_C"
+ },
+ "NPC_Male_Trader01_v25": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Male_Trader01_v25.BP_NPC_Male_Trader01_v25_C"
+ },
+ "GYM_WorldTreeDragon_2": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/WorldTreeDragon/BP_WorldTreeDragon_GYM_Hard.BP_WorldTreeDragon_GYM_Hard_C"
+ },
+ "NPC_Female_SurveyGirl04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Normal/BP_NPC_Female_SurveyGirl04.BP_NPC_Female_SurveyGirl04_C"
+ },
+ "PREDATOR_Garm_Quest": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Garm/BP_Garm_BOSS_Predator_Quest.BP_Garm_BOSS_Predator_Quest_C"
+ },
+ "PREDATOR_PinkLizard_Quest": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PinkLizard/BP_PinkLizard_BOSS_Predator_Quest.BP_PinkLizard_BOSS_Predator_Quest_C"
+ },
+ "PREDATOR_Umihebi_Fire_Quest": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Umihebi/BP_Umihebi_Fire_BOSS_Predator_Quest.BP_Umihebi_Fire_BOSS_Predator_Quest_C"
+ },
+ "AmaterasuWolf_Dark_Quest_Friend": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/AmaterasuWolf/BP_AmaterasuWolf_Dark_Quest.BP_AmaterasuWolf_Dark_Quest_C"
+ },
+ "AmaterasuWolf_Dark_Quest_Enemy": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/AmaterasuWolf/BP_AmaterasuWolf_Dark_Quest_Enemy.BP_AmaterasuWolf_Dark_Quest_Enemy_C"
+ },
+ "NPC_Dungeon_Shop": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Shop/BP_NPC_SalesPerson_5.BP_NPC_SalesPerson_5_C"
+ },
+ "PREDATOR_VolcanoDragon": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/VolcanoDragon/BP_VolcanoDragon_BOSS_Predator.BP_VolcanoDragon_BOSS_Predator_C"
+ },
+ "PREDATOR_MummyPal": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MummyPal/BP_MummyPal_BOSS_Predator.BP_MummyPal_BOSS_Predator_C"
+ },
+ "PREDATOR_Suzaku": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/Suzaku/BP_Suzaku_BOSS_Predator.BP_Suzaku_BOSS_Predator_C"
+ },
+ "PREDATOR_GrassMammoth_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMammoth/BP_GrassMammoth_Ice_BOSS_Predator.BP_GrassMammoth_Ice_BOSS_Predator_C"
+ },
+ "PREDATOR_RedFlowerBird": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/RedFlowerBird/BP_RedFlowerBird_BOSS_Predator.BP_RedFlowerBird_BOSS_Predator_C"
+ },
+ "PREDATOR_GrassMinotaur_Ice": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/GrassMinotaur/BP_GrassMinotaur_Ice_BOSS_Predator.BP_GrassMinotaur_Ice_BOSS_Predator_C"
+ },
+ "PREDATOR_PandaGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/PandaGirl/BP_PandaGirl_BOSS_Predator.BP_PandaGirl_BOSS_Predator_C"
+ },
+ "PREDATOR_DarkScorpion": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/DarkScorpion/BP_DarkScorpion_BOSS_Predator.BP_DarkScorpion_BOSS_Predator_C"
+ },
+ "PREDATOR_SnakeGirl": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/SnakeGirl/BP_SnakeGirl_BOSS_Predator.BP_SnakeGirl_BOSS_Predator_C"
+ },
+ "PREDATOR_MonochromeQueen": {
+  "BPClass": "/Game/Pal/Blueprint/Character/Monster/PalActorBP/MonochromeQueen/BP_MonochromeQueen_BOSS_Predator.BP_MonochromeQueen_BOSS_Predator_C"
+ },
+ "NPC_Male_DarkTrader_02": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_DarkTrader_02.BP_NPC_DarkTrader_02_C"
+ },
+ "NPC_Male_DarkTrader_03": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_DarkTrader_03.BP_NPC_DarkTrader_03_C"
+ },
+ "NPC_Male_DarkTrader_04": {
+  "BPClass": "/Game/Pal/Blueprint/Character/NPC/Fat/BP_NPC_DarkTrader_04.BP_NPC_DarkTrader_04_C"
+ }
+}

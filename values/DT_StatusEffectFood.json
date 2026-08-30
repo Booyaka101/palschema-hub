@@ -1,0 +1,488 @@
+{
+ "JamBun": {
+  "EffectTime": 0,
+  "EffectType1": "None",
+  "EffectValue1": 0,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Salad": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 30,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Omelet": {
+  "EffectTime": 600,
+  "EffectType1": "Attack",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "FriedVegetables": {
+  "EffectTime": 600,
+  "EffectType1": "Attack",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "HotDog": {
+  "EffectTime": 600,
+  "EffectType1": "HungerResist",
+  "EffectValue1": 30,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Pancake": {
+  "EffectTime": 600,
+  "EffectType1": "SANResist",
+  "EffectValue1": 25,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "MarinatedMushrooms": {
+  "EffectTime": 600,
+  "EffectType1": "Defense",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "MushroomSoup": {
+  "EffectTime": 600,
+  "EffectType1": "HungerResist",
+  "EffectValue1": 25,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Carbonara": {
+  "EffectTime": 600,
+  "EffectType1": "Defense",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "BLT": {
+  "EffectTime": 600,
+  "EffectType1": "Attack",
+  "EffectValue1": 15,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Hamburger": {
+  "EffectTime": 600,
+  "EffectType1": "HungerResist",
+  "EffectValue1": 30,
+  "Interaval1": 0,
+  "EffectType2": "Attack",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "CheeseBurger": {
+  "EffectTime": 600,
+  "EffectType1": "HungerResist",
+  "EffectValue1": 30,
+  "Interaval1": 0,
+  "EffectType2": "Defense",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "Pizza": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 30,
+  "Interaval1": 0,
+  "EffectType2": "HungerResist",
+  "EffectValue2": 25,
+  "Interaval2": 0
+ },
+ "MeatSauce": {
+  "EffectTime": 600,
+  "EffectType1": "SANResist",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "Attack",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "MushroomStew": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "Attack",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "Opium": {
+  "EffectTime": 10,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 200,
+  "Interaval1": 0,
+  "EffectType2": "SANResist",
+  "EffectValue2": -25000,
+  "Interaval2": 0
+ },
+ "Narcotic": {
+  "EffectTime": 10,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 400,
+  "Interaval1": 0,
+  "EffectType2": "SANResist",
+  "EffectValue2": -50000,
+  "Interaval2": 0
+ },
+ "ChickenSaute": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 30,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "GrilledSheepHerbs": {
+  "EffectTime": 600,
+  "EffectType1": "Defense",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "GenghisKhan": {
+  "EffectTime": 600,
+  "EffectType1": "SANResist",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "WorkSpeed",
+  "EffectValue2": 30,
+  "Interaval2": 0
+ },
+ "Eaglestew": {
+  "EffectTime": 600,
+  "EffectType1": "SANResist",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "BaconEggs": {
+  "EffectTime": 600,
+  "EffectType1": "Attack",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "StewedIceDeer": {
+  "EffectTime": 600,
+  "EffectType1": "HungerResist",
+  "EffectValue1": 25,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "FriedChicken": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 30,
+  "Interaval1": 0,
+  "EffectType2": "SANResist",
+  "EffectValue2": 25,
+  "Interaval2": 0
+ },
+ "HotDog_2": {
+  "EffectTime": 600,
+  "EffectType1": "Defense",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "DeerLocoMoco": {
+  "EffectTime": 600,
+  "EffectType1": "Attack",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "DeerStew": {
+  "EffectTime": 600,
+  "EffectType1": "Defense",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Hamburger_2": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 50,
+  "Interaval1": 0,
+  "EffectType2": "SANResist",
+  "EffectValue2": 25,
+  "Interaval2": 0
+ },
+ "Cheeseburger_2": {
+  "EffectTime": 600,
+  "EffectType1": "Attack",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "HungerResist",
+  "EffectValue2": 50,
+  "Interaval2": 0
+ },
+ "FriedKelpie": {
+  "EffectTime": 600,
+  "EffectType1": "Defense",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "SANResist",
+  "EffectValue2": 50,
+  "Interaval2": 0
+ },
+ "Chowder": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 50,
+  "Interaval1": 0,
+  "EffectType2": "HungerResist",
+  "EffectValue2": 25,
+  "Interaval2": 0
+ },
+ "Potion_Low": {
+  "EffectTime": 600,
+  "EffectType1": "Regene_Hp",
+  "EffectValue1": 3,
+  "Interaval1": 1,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Potion": {
+  "EffectTime": 600,
+  "EffectType1": "Regene_Hp",
+  "EffectValue1": 5,
+  "Interaval1": 1,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Potion_High": {
+  "EffectTime": 600,
+  "EffectType1": "Regene_Hp",
+  "EffectValue1": 10,
+  "Interaval1": 1,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "MushroomJuice": {
+  "EffectTime": 10,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 600,
+  "Interaval1": 0,
+  "EffectType2": "SANResist",
+  "EffectValue2": -100000,
+  "Interaval2": 0
+ },
+ "PoisonMushroom": {
+  "EffectTime": 60,
+  "EffectType1": "HungerResist",
+  "EffectValue1": -25,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Gyoza": {
+  "EffectTime": 600,
+  "EffectType1": "HungerResist",
+  "EffectValue1": 25,
+  "Interaval1": 0,
+  "EffectType2": "Attack",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "StirFriedVegetables": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "Defense",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "PotatoChips": {
+  "EffectTime": 600,
+  "EffectType1": "SANResist",
+  "EffectValue1": 25,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Yakisoba": {
+  "EffectTime": 600,
+  "EffectType1": "Attack",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "SpringRolls": {
+  "EffectTime": 600,
+  "EffectType1": "SANResist",
+  "EffectValue1": 50,
+  "Interaval1": 0,
+  "EffectType2": "Attack",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "Gratin": {
+  "EffectTime": 600,
+  "EffectType1": "HungerResist",
+  "EffectValue1": 50,
+  "Interaval1": 0,
+  "EffectType2": "Defense",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "Minestrone": {
+  "EffectTime": 600,
+  "EffectType1": "WorkSpeed",
+  "EffectValue1": 40,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Curry": {
+  "EffectTime": 600,
+  "EffectType1": "Attack",
+  "EffectValue1": 25,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "MeatAndPotatoes": {
+  "EffectTime": 600,
+  "EffectType1": "Defense",
+  "EffectValue1": 25,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Quiche": {
+  "EffectTime": 600,
+  "EffectType1": "HungerResist",
+  "EffectValue1": 50,
+  "Interaval1": 0,
+  "EffectType2": "SANResist",
+  "EffectValue2": 50,
+  "Interaval2": 0
+ },
+ "Potion_Extreme": {
+  "EffectTime": 600,
+  "EffectType1": "Regene_Hp",
+  "EffectValue1": 15,
+  "Interaval1": 1,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "OctopusGirl_Takoyaki": {
+  "EffectTime": 1800,
+  "EffectType1": "Exp_Increase",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "JellyfishFairy_jelly": {
+  "EffectTime": 600,
+  "EffectType1": "Exp_Increase",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "Attack",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "JellyfishGhost_jelly": {
+  "EffectTime": 600,
+  "EffectType1": "Exp_Increase",
+  "EffectValue1": 10,
+  "Interaval1": 0,
+  "EffectType2": "Defense",
+  "EffectValue2": 10,
+  "Interaval2": 0
+ },
+ "Seafood_Salada": {
+  "EffectTime": 1800,
+  "EffectType1": "Exp_Increase",
+  "EffectValue1": 20,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "Supplement": {
+  "EffectTime": 600,
+  "EffectType1": "FullStomachKeep",
+  "EffectValue1": 100,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "GrilledSwordCutlassFish": {
+  "EffectTime": 600,
+  "EffectType1": "LeanBackAndKnockbackInvalid",
+  "EffectValue1": 1,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ },
+ "OctopusGirl_Takoyaki2": {
+  "EffectTime": 600,
+  "EffectType1": "ExplosionResist",
+  "EffectValue1": 100,
+  "Interaval1": 0,
+  "EffectType2": "None",
+  "EffectValue2": 0,
+  "Interaval2": 0
+ }
+}

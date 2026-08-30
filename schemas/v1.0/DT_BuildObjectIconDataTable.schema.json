@@ -7,7 +7,10 @@
   "type": "object",
   "properties": {
     "SoftIcon": {
-      "type": "object",
+      "type": [
+        "object",
+        "string"
+      ],
       "properties": {
         "AssetPathName": {
           "type": "string",

@@ -1,0 +1,122 @@
+{
+ "1": {
+  "Rank": 1,
+  "RequiredStaticItemId": "PalUpgradeStone",
+  "RequiredItemNum": 1,
+  "ResetRequiredMoney": 100
+ },
+ "2": {
+  "Rank": 2,
+  "RequiredStaticItemId": "PalUpgradeStone",
+  "RequiredItemNum": 2,
+  "ResetRequiredMoney": 300
+ },
+ "3": {
+  "Rank": 3,
+  "RequiredStaticItemId": "PalUpgradeStone",
+  "RequiredItemNum": 3,
+  "ResetRequiredMoney": 500
+ },
+ "4": {
+  "Rank": 4,
+  "RequiredStaticItemId": "PalUpgradeStone",
+  "RequiredItemNum": 4,
+  "ResetRequiredMoney": 700
+ },
+ "5": {
+  "Rank": 5,
+  "RequiredStaticItemId": "PalUpgradeStone2",
+  "RequiredItemNum": 1,
+  "ResetRequiredMoney": 1000
+ },
+ "6": {
+  "Rank": 6,
+  "RequiredStaticItemId": "PalUpgradeStone2",
+  "RequiredItemNum": 2,
+  "ResetRequiredMoney": 1200
+ },
+ "7": {
+  "Rank": 7,
+  "RequiredStaticItemId": "PalUpgradeStone2",
+  "RequiredItemNum": 3,
+  "ResetRequiredMoney": 1500
+ },
+ "8": {
+  "Rank": 8,
+  "RequiredStaticItemId": "PalUpgradeStone3",
+  "RequiredItemNum": 1,
+  "ResetRequiredMoney": 2000
+ },
+ "9": {
+  "Rank": 9,
+  "RequiredStaticItemId": "PalUpgradeStone3",
+  "RequiredItemNum": 2,
+  "ResetRequiredMoney": 2500
+ },
+ "10": {
+  "Rank": 10,
+  "RequiredStaticItemId": "PalUpgradeStone3",
+  "RequiredItemNum": 3,
+  "ResetRequiredMoney": 3000
+ },
+ "11": {
+  "Rank": 11,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 1,
+  "ResetRequiredMoney": 4000
+ },
+ "12": {
+  "Rank": 12,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 2,
+  "ResetRequiredMoney": 5000
+ },
+ "13": {
+  "Rank": 13,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 2,
+  "ResetRequiredMoney": 6000
+ },
+ "14": {
+  "Rank": 14,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 3,
+  "ResetRequiredMoney": 7000
+ },
+ "15": {
+  "Rank": 15,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 3,
+  "ResetRequiredMoney": 8000
+ },
+ "16": {
+  "Rank": 16,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 3,
+  "ResetRequiredMoney": 9000
+ },
+ "17": {
+  "Rank": 17,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 4,
+  "ResetRequiredMoney": 10000
+ },
+ "18": {
+  "Rank": 18,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 4,
+  "ResetRequiredMoney": 15000
+ },
+ "19": {
+  "Rank": 19,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 4,
+  "ResetRequiredMoney": 20000
+ },
+ "20": {
+  "Rank": 20,
+  "RequiredStaticItemId": "PalUpgradeStone4",
+  "RequiredItemNum": 4,
+  "ResetRequiredMoney": 30000
+ }
+}
