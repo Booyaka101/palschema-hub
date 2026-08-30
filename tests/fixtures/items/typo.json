@@ -1,6 +1,5 @@
 {
   "PSH_TestBlade": {
-    "Type": "Weapon",
     "Rarty": 2,
     "AttackValue": 100,
     "SortID": 900,

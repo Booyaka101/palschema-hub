@@ -1,6 +1,67 @@
 # PROGRESS — palschema-hub
 
-**Last updated:** 2026-08-26 (SDK head e663245 shipped: PR #30 merged, Nexus description re-posted)
+**Last updated:** 2026-08-30 (0.10.0 + CLI 0.6.0 built on branch `feat/0.10.0-upstream-item-constraints`, NOT pushed — owner ships)
+
+## Session 2026-08-30 — 0.10.0 + CLI 0.6.0: upstream 0.6.5 item constraints ported
+Trigger: PalSchema 0.6.5 (2026-08-28) updated its hand-written items.schema.json (PR #145).
+Our SDK-derived PalStaticItemData schema knew all 44 property names and almost no value
+constraints; they are now ported. Items-loader files only; nothing else changed.
+- **Phase-0 verified live (all):** 0.6.5 items.schema.json fetched at the tag (blob
+  b41a965b14da064c6bef05bd8361194b85cb233c, cached .cache/upstream-items-0.6.5.schema.json),
+  0.6.4 baseline (per-Type required lists incl. AttackValue; no bLegalInGame/WazaID/$resource),
+  release body + published_at 2026-08-28T20:39:46Z, PR #145 file list + loader diff
+  (bLegalInGame → IsCustomProperty; IsThrowableWeapon for SPWeaponCaptureRope/Ball; nothing
+  icon-related), ExampleMod/items/example_items.json (AttackValue 500, MagazineSize,
+  ItemBaseName, CorruptionFactor 0.0, WorkAmount 10.0).
+- **structs/upstream-constraints.json (new):** every ported rule as data with tag/file/blob/PR
+  provenance, plus the seven recorded divergences (anyOf-does-not-scope, AttackPower typo,
+  $resource-predates-0.6.5, float-literals-raw-text, required-gated-on-Type,
+  base-class-fields-not-branch-scoped, type-enum-superset).
+- **scripts/apply-upstream-constraints.mjs (new, in `seed` after the overlay):** merges field
+  keywords (IconTexture/VisualBlueprintClassSoft anyOf patterns, Rarity 0-4, Rank/Price/Weight/
+  CorruptionFactor/Durability >= 0, MaxStackCount >= 1, defaults), the required list as
+  if:{required:[Type]}/then (+ Recipe's 4), and per-Type scope branches DERIVED from the
+  "Class property (...)" annotations in the schema's own descriptions (11 scoped fields in 4
+  owner groups). Byte-idempotent, asserted in the suite. **Re-run bug found the 0.7.0 way:**
+  the first $comment-segment strip regex ate the space before the next segment, which broke
+  the loaderKeys-last invariant and compounded garbage on every run — three different hashes
+  before the segment-split rewrite.
+- **CLI 0.6.0 (cli/src/core.ts):** shared bareIntegerLiterals() raw-text scanner (pals
+  DropChance now goes through it too, comment-stripped first); items float-literal ERRORS from
+  the schema's floatLiteral= $comment segment; classScopeWarnings() reads the marked scope
+  branches (getValidator strips them pre-ajv so they stay warnings, #134 semantics);
+  MaxStackCount soft-cap warning from stackSoftCap=; backreference mismatch note names both
+  parts; required-when-adding message explains the Type gate. ajv config gains
+  strictRequired:false (standard if/then layout) and **verbose:true — without it
+  err.parentSchema is undefined and the existing description-fallback path had been silently
+  dead**.
+- **check-currency sixth axis:** live blob sha of upstream items.schema.json (contents API,
+  default branch) vs the pinned b41a965; exit 1 stale / 2 network; --upstream-schema-json
+  fixture flag; in-sync line appends "items.schema.json blob b41a965". Live run: exit 0, fully
+  current.
+- **versions.json:** upstream.palSchema → 0.6.5/2026-08-28 + releases append; the palSchema
+  record crossed the serializer's 200-char inline limit so it is now expanded — round-trip
+  verified byte-identical (edit made with the file's CRLF EOLs preserved).
+- **Tests 79 → 99, all green.** New fixtures under tests/fixtures/items/: upstream example
+  (must be zero errors AND zero warnings — the false-positive canary), icon-backref,
+  resource-icon, misscoped-waza (+--strict), weight-int, new-item-missing-typea, edit-patch,
+  rarity-5, stack-10000; apply idempotency (2 runs byte-identical to committed); AttackPower
+  absence; constraints provenance; 2 new currency-axis tests. items/typo.json dropped its
+  Type key (kept it an existing-item patch; its assertions never touched Type). Real-mod
+  corpus baseline unchanged and unweakened.
+- **E2E COLD-VERIFIED:** packed tarball → clean D:\tmp\psv-060-e2e install (relative path) →
+  3-entry mod: 4 errors (backref naming both parts, Rarity 7, Weight 1 float, Recipe missing
+  Material1_Count via the Type gate) + WazaID-on-Weapon warning; the Price-only existing-item
+  patch stayed silent; exit 1.
+- Docs: README (compat → 0.6.5/UE4SS ba2efd55, six axes, item-constraints section),
+  cli/README, REGISTRY_README.txt leads 0.10.0, NEXUS_DESCRIPTION.bbcode "New in 1.7".
+  Nexus zip rebuilt (212 entries, 616 KB), nexus:check green.
+- **NOT DONE (owner ships from phone):** push branch + PR, CI green, npm publish 0.6.0
+  (PUBLISHING.md), Nexus v1.7 upload + description re-post (sceditor recipe in memory),
+  Pages deploy. **Next-release candidates:** SortID minimum 0 (upstream declares it, not
+  ported), Recipe subfield minimums (Product_Count/Material counts >= 1) via
+  DT_ItemRecipeDataTable, TypeA/TypeB/WazaID enum-value warnings (we carry full value lists
+  in descriptions already), surfacing the constraints in the browser UI.
 
 ## Session 2026-08-26 — SDK head moved to e663245 (bookkeeping, no data change)
 Cron issue #29: `versions:check` exit 1, "SDK head moved to e663245 (no Source/Pal/Public

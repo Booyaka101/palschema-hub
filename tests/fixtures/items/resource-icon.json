@@ -1,0 +1,11 @@
+{
+  "PSH_ResourceIcon": {
+    "Type": "Consumable",
+    "IconTexture": "$resource/MyMod/icon",
+    "TypeA": "Food",
+    "TypeB": "FoodDishVegetable",
+    "Rank": 1,
+    "Rarity": 1,
+    "MaxStackCount": 99
+  }
+}

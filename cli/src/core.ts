@@ -48,6 +48,13 @@ function getAjv(): any {
     allErrors: true,
     allowUnionTypes: true, // derived schemas use union types (e.g. ["string","object"])
     strictTypes: false, // silence advisory type warnings; keep genuine strict-schema checks
+    // The upstream-constraints if/then branches put required[] in subschemas that
+    // declare no properties of their own (if:{required:["Type"]}) — the standard
+    // draft-07 conditional layout, which strictRequired rejects.
+    strictRequired: false,
+    // Errors need parentSchema: friendly() reads its description for composite
+    // fallbacks and its $comment to spot the required-when-adding branch.
+    verbose: true,
   });
   return ajvInstance;
 }
@@ -240,6 +247,16 @@ export async function getValidator(table: string, opts: Options): Promise<Valida
     return null;
   }
   const stripped = stripAdditionalProps(schema);
+  // Class-scope branches (palschema-upstream-scope) are warnings, not errors: a
+  // misscoped field is ignored by the loader (and warned about in game since
+  // 0.6.3), so classScopeWarnings re-implements them and ajv must not see them.
+  // The published schema keeps them for editors and other draft-07 consumers.
+  if (Array.isArray(stripped.allOf)) {
+    stripped.allOf = stripped.allOf.filter(
+      (b: any) => !String(b?.$comment ?? '').startsWith('palschema-upstream-scope')
+    );
+    if (!stripped.allOf.length) delete stripped.allOf;
+  }
   // ajv keys schemas by $id — avoid "already exists" if two files share a $id.
   const ajv = getAjv();
   let validate = stripped.$id ? ajv.getSchema(stripped.$id) : undefined;
@@ -259,7 +276,17 @@ export interface Finding {
 function friendly(table: string, row: string, err: ErrorObject): Finding {
   let path = err.instancePath || '/';
   let message = err.message || 'is invalid';
-  if (err.keyword === 'additionalProperties') {
+  if (err.keyword === 'required') {
+    // The upstream-constraints branch gates required[] on the presence of Type
+    // (required when adding, ignored when editing) — say so, or the bare ajv
+    // message reads like every partial patch is broken.
+    const missing = (err.params as any).missingProperty;
+    if (String((err.parentSchema as any)?.$comment ?? '').startsWith('palschema-upstream-required')) {
+      message =
+        `missing required field "${missing}" — required when adding a new item ` +
+        `(this entry has a Type key); a patch to an existing item may omit it`;
+    }
+  } else if (err.keyword === 'additionalProperties') {
     const bad = (err.params as any).additionalProperty;
     path = `${err.instancePath}/${bad}`;
     // Top level = row struct member; nested = key inside a struct/array-patch object.
@@ -421,6 +448,8 @@ export function unknownKeys(rows: Record<string, any>, schema: any): UnknownKeyW
  * more specific remains inside it, emit a single self-describing error instead.
  */
 function pruneCompositeNoise(errs: ErrorObject[]): ErrorObject[] {
+  // "must match then schema" restates whatever the then-branch already reported.
+  errs = errs.filter((e) => e.keyword !== 'if');
   const compositePaths = [
     ...new Set(errs.filter((e) => e.keyword === 'oneOf' || e.keyword === 'anyOf').map((e) => e.instancePath)),
   ].sort((a, b) => b.length - a.length); // deepest first
@@ -428,8 +457,11 @@ function pruneCompositeNoise(errs: ErrorObject[]): ErrorObject[] {
   for (const p of compositePaths) {
     const inside = remaining.filter((e) => e.instancePath === p || e.instancePath.startsWith(p + '/'));
     const outside = remaining.filter((e) => !inside.includes(e));
+    // 'pattern' joins the same-path drop list: an anyOf of asset-path patterns
+    // (IconTexture) would otherwise surface each branch's raw regex; the
+    // composite's own description explains the rule better.
     const kept = inside.filter(
-      (e) => e.instancePath !== p || !['type', 'oneOf', 'anyOf'].includes(e.keyword)
+      (e) => e.instancePath !== p || !['type', 'oneOf', 'anyOf', 'pattern'].includes(e.keyword)
     );
     if (kept.length) {
       remaining = [...outside, ...kept];
@@ -445,6 +477,106 @@ function pruneCompositeNoise(errs: ErrorObject[]): ErrorObject[] {
     }
   }
   return remaining;
+}
+
+/**
+ * "<field>": <bare integer> occurrences in the comment-stripped source text.
+ * PalSchema wants float literals for these fields and JSON.parse erases 100 vs
+ * 100.0 (proven live in 0.8.0 with Loot DropChance), so the check must read the
+ * text, not the parsed value. Shared by the pals Loot DropChance warning and the
+ * item float-field errors (the field lists come from their schemas' $comments).
+ */
+export function bareIntegerLiterals(
+  text: string,
+  fields: Iterable<string>
+): Array<{ field: string; literal: string }> {
+  const src = stripJsonc(text);
+  const out: Array<{ field: string; literal: string }> = [];
+  for (const field of fields) {
+    for (const m of src.matchAll(new RegExp(`"${field}"\\s*:\\s*(-?\\d+)\\s*[,}\\]]`, 'g'))) {
+      out.push({ field, literal: m[1] });
+    }
+  }
+  return out;
+}
+
+/** Value of a named segment in a schema's "a | b=c | d=e" $comment, if present. */
+function commentSegment(schema: any, name: string): string | undefined {
+  return String(schema?.$comment ?? '')
+    .split(' | ')
+    .find((s) => s.startsWith(`${name}=`))
+    ?.slice(name.length + 1);
+}
+
+/**
+ * A /Game soft-object path must repeat the asset name after the dot (optionally
+ * with _C). When a failed value has that shape, name the two mismatched parts —
+ * the composite error alone only restates the rule.
+ */
+function backrefNote(value: unknown): string {
+  if (typeof value !== 'string') return '';
+  const m = value.match(/^\/Game(?:\/[^/]+)*\/([A-Za-z0-9_]+)\.([A-Za-z0-9_]+?)(_C)?$/);
+  if (!m || m[1] === m[2]) return '';
+  return ` (the path names "${m[1]}" but after the dot it says "${m[2]}" — they must match)`;
+}
+
+const valueAt = (row: any, path: string): unknown =>
+  path
+    .split('/')
+    .filter(Boolean)
+    .reduce((v: any, k) => (v && typeof v === 'object' ? v[k] : undefined), row);
+
+/**
+ * Fields used outside the item class the entry's Type constructs. The schema's
+ * marked if/then scope branches (derived from the SDK class annotations — see
+ * structs/upstream-constraints.json) carry the table; getValidator strips them
+ * before ajv compilation so these surface as warnings, not errors: the loader's
+ * GetPropertyByNameInChain just misses them, and PalSchema 0.6.3+ warns in game.
+ */
+function classScopeWarnings(
+  content: Record<string, any>,
+  schema: any,
+  table: string,
+  loader: LoaderKind
+): FileWarning[] {
+  const out: FileWarning[] = [];
+  const branches = (schema?.allOf ?? []).filter((b: any) =>
+    String(b?.$comment ?? '').startsWith('palschema-upstream-scope')
+  );
+  if (!branches.length) return out;
+  const typeEnum: string[] = schema?.properties?.Type?.enum ?? [];
+  for (const [rowName, row] of Object.entries<any>(content)) {
+    if (!row || typeof row !== 'object' || Array.isArray(row)) continue;
+    const type = row.Type;
+    // Without a (valid) Type the entry patches an existing item whose class we
+    // cannot know from the file alone — no scope claim is possible.
+    if (typeof type !== 'string' || !typeEnum.includes(type)) continue;
+    for (const b of branches) {
+      const outOfScope: string[] = b.if?.properties?.Type?.enum ?? [];
+      if (!outOfScope.includes(type)) continue;
+      const classes = (commentSegment(b, 'classes') ?? '').split(',').filter(Boolean);
+      const shortTypes = (commentSegment(b, 'types') ?? '')
+        .split(',')
+        .filter((t) => t && !t.startsWith('PalStatic'));
+      for (const key of Object.keys(b.then?.properties ?? {})) {
+        if (!(key in row)) continue;
+        out.push({
+          row: rowName,
+          key,
+          path: '',
+          file: '',
+          table,
+          loader,
+          kind: 'compat',
+          message:
+            `"${key}" is declared by ${classes.join(', ')} (${shortTypes.join('/')} items only) — ` +
+            `this entry's Type is "${type}", so the item loader ignores it ` +
+            `(PalSchema 0.6.3+ also warns about this at load time — Okaetsu/PalSchema#138)`,
+        });
+      }
+    }
+  }
+  return out;
 }
 
 /** Schema each non-raw loader validates its entries against. */
@@ -632,22 +764,44 @@ export async function validateFile(file: string, opts: Options): Promise<FileRes
     // PalSchema's pal loader skips a Loot entry whose DropChance is a bare
     // integer literal (is_number_float() check in AddLoot). JSON.parse erases
     // the 100 vs 100.0 distinction, so this one is checked on the raw text.
-    if (loader === 'pals' && /"DropChance"\s*:\s*-?\d+\s*[,}\]]/.test(text)) {
-      warnings.push({
-        row: '',
-        key: 'DropChance',
-        path: 'Loot',
-        file,
-        table,
-        loader,
-        kind: 'compat',
-        message:
-          'a Loot DropChance is written as a bare integer — PalSchema requires a float literal (e.g. 100.0, ' +
-          'not 100) and silently skips the loot entry otherwise (is_number_float() in PalMonsterModLoader.cpp)',
-      });
+    if (loader === 'pals') {
+      for (const _hit of bareIntegerLiterals(text, ['DropChance'])) {
+        warnings.push({
+          row: '',
+          key: 'DropChance',
+          path: 'Loot',
+          file,
+          table,
+          loader,
+          kind: 'compat',
+          message:
+            'a Loot DropChance is written as a bare integer — PalSchema requires a float literal (e.g. 100.0, ' +
+            'not 100) and silently skips the loot entry otherwise (is_number_float() in PalMonsterModLoader.cpp)',
+        });
+      }
     }
     const validate = await getValidator(table, opts);
     if (!validate) continue; // unresolved schema already warned
+    const schema = await getTableSchema(table, opts); // cached — same fetch as getValidator
+    // Upstream's items.schema.json marks five fields "must be a float value"
+    // (not:{type:integer}) — an error, unlike the pals warning: the field lands
+    // on a real FloatProperty, upstream requires the literal, and the registry's
+    // schema $comment (floatLiteral=...) says which fields, so an older registry
+    // simply skips the check.
+    if (loader === 'items' && schema) {
+      const floatFields = commentSegment(schema, 'floatLiteral')?.split(',') ?? [];
+      for (const { field, literal } of bareIntegerLiterals(text, floatFields)) {
+        findings.push({
+          file,
+          table,
+          row: '',
+          path: `/${field}`,
+          message:
+            `"${field}": ${literal} — must be a float value e.g. ${literal}.0 ` +
+            `(PalSchema requires a float literal here; JSON.parse hides the difference, so this is read off the raw text)`,
+        });
+      }
+    }
     if (content === null || typeof content !== 'object' || Array.isArray(content)) {
       findings.push({ file, table, row: '', path: '/', message: `table "${table}" must map row names to row objects` });
       continue;
@@ -662,7 +816,30 @@ export async function validateFile(file: string, opts: Options): Promise<FileRes
       const valid = validate(row);
       if (!valid && validate.errors) {
         for (const err of pruneCompositeNoise(validate.errors)) {
-          findings.push({ ...friendly(table, rowName, err), file });
+          const f = { ...friendly(table, rowName, err), file };
+          if (f.message.startsWith('invalid value')) f.message += backrefNote(valueAt(row, f.path));
+          findings.push(f);
+        }
+      }
+      // MaxStackCount's 9999 cap is prose-only upstream ("the game ... will
+      // cause items to duplicate when moving them around"), so it warns instead
+      // of erroring; the cap comes from the schema $comment (stackSoftCap=).
+      for (const seg of (commentSegment(schema, 'stackSoftCap') ?? '').split(',').filter(Boolean)) {
+        const [capField, capValue] = seg.split(':');
+        const v = row[capField];
+        if (typeof v === 'number' && v > Number(capValue)) {
+          warnings.push({
+            row: rowName,
+            key: capField,
+            path: '',
+            file,
+            table,
+            loader,
+            kind: 'compat',
+            message:
+              `"${capField}": ${v} is above ${capValue} — the game duplicates items when moving stacks ` +
+              `larger than that (documented in PalSchema's own items.schema.json, prose only, so this is a warning)`,
+          });
         }
       }
       // The item loader copies "Recipe" onto a DT_ItemRecipeDataTable row —
@@ -696,8 +873,10 @@ export async function validateFile(file: string, opts: Options): Promise<FileRes
         }
       }
     }
-    const schema = await getTableSchema(table, opts); // cached — same fetch as getValidator
-    if (schema) warnings.push(...unknownKeys(content, schema).map((w) => ({ ...w, file, table, loader })));
+    if (schema) {
+      warnings.push(...unknownKeys(content, schema).map((w) => ({ ...w, file, table, loader })));
+      warnings.push(...classScopeWarnings(content, schema, table, loader).map((w) => ({ ...w, file })));
+    }
     warnings.push(...loaderCompatWarnings(target, overlay, opts).map((w) => ({ ...w, file })));
   }
   return { findings, warnings };

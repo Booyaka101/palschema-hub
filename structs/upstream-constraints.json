@@ -1,0 +1,164 @@
+{
+  "$comment": "Value constraints from PalSchema's own hand-written items authoring schema (assets/schemas/items.schema.json), ported onto schemas/v1.0/PalStaticItemData.schema.json by scripts/apply-upstream-constraints.mjs. Our schema knows all 44 property names (38 SDK class members + 6 loader keys) and almost no constraints; upstream declares the constraints but covers only three hand-written per-Type branches. Every entry here traces to the file fetched verbatim at the pinned tag (cached as .cache/upstream-items-0.6.5.schema.json), or to the SDK class headers where the two disagree.",
+  "verifiedAgainst": {
+    "repo": "Okaetsu/PalSchema",
+    "tag": "0.6.5",
+    "file": "assets/schemas/items.schema.json",
+    "blobSha": "b41a965b14da064c6bef05bd8361194b85cb233c",
+    "releaseDate": "2026-08-28",
+    "pr": "https://github.com/Okaetsu/PalSchema/pull/145",
+    "checkedAt": "2026-08-30"
+  },
+  "divergences": [
+    {
+      "id": "anyof-does-not-scope",
+      "note": "Upstream's per-Type anyOf (Generic/Consumable/Weapon/Armor branches) does not actually scope fields: each branch requires only [\"Type\"] and none sets additionalProperties false, so an Armor entry carrying WazaID validates against upstream's own schema. This port scopes with if/then keyed on Type instead, and derives the field->class table from the SDK 'Class property (...)' annotations already in our descriptions, which cover all 44 properties."
+    },
+    {
+      "id": "attackpower-typo",
+      "note": "Upstream 0.6.5's Weapon branch declares AttackPower, which is not a real property: its own 0.6.4 required list said AttackValue, its shipped assets/examples/ExampleMod/items/example_items.json sets \"AttackValue\": 500, and the SDK headers have AttackValue on UPalStaticArmorItemData/UPalStaticWeaponItemData and no AttackPower anywhere. AttackValue is scoped here; AttackPower is deliberately NOT added as a property.",
+      "evidence": [
+        "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.4/assets/schemas/items.schema.json (Weapon required: [Type, AttackValue, SneakAttackRate, Durability, actorClass])",
+        "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/examples/ExampleMod/items/example_items.json (Sword_Test: \"AttackValue\": 500)"
+      ]
+    },
+    {
+      "id": "resource-predates-0.6.5",
+      "note": "The $resource/ IconTexture form is accepted unconditionally, with no --palschema-version gate. 0.6.5 only taught the EDITOR schema to recognize a loader feature that already worked: src/Loader/PalItemModLoader.cpp contains no 'resource' string at tags 0.6.0, 0.6.3, 0.6.4 or 0.6.5 (the handling lives in src/Loader/PalResourceLoader.cpp, present since tag 0.6.0), and PalSchema's own docs (website/versioned_docs/version-0.6.0/guides/resources/importingimages.md) say image import is 'a new feature in 0.5.0' referenced as $resource/modname/filename from any TSoftObjectPtr field. PR #145's loader diff has nothing to do with icons: it adds bLegalInGame to IsCustomProperty and adds IsThrowableWeapon covering SPWeaponCaptureRope/SPWeaponCaptureBall."
+    },
+    {
+      "id": "float-literals-raw-text",
+      "note": "Upstream marks Weight, CorruptionFactor, Durability, SneakAttackRate and Recipe.WorkAmount with not:{type:integer} ('Must be a float value'). That keyword cannot go through ajv: JSON.parse collapses 100.0 to 100, so ajv would reject the canonically-correct float literal (proven live in 0.8.0 with Loot DropChance). palschema-validate checks these on the file's raw text instead; the published schema keeps plain number and records the field list in its $comment (floatLiteral=...)."
+    },
+    {
+      "id": "required-gated-on-type",
+      "note": "Upstream requires [Type, IconTexture, TypeA, TypeB, Rank, Rarity, MaxStackCount] on every entry. The loader only needs them when ADDING an item: Type is 'required when adding, ignored when editing' (PalItemModLoader.cpp throws on a missing item id without Type; the edit path patches whatever keys are present). The port gates the required list (and Recipe's) behind the presence of a Type key, so partial patches of existing items stay valid."
+    },
+    {
+      "id": "base-class-fields-not-branch-scoped",
+      "note": "Upstream lists Durability and PassiveSkill/2/3/4 only inside its Weapon/Armor branches, but the SDK declares them on UPalStaticItemDataBase (every item class inherits them), so they are deliberately NOT scoped here. actorClass is base-class too."
+    },
+    {
+      "id": "type-enum-superset",
+      "note": "Upstream's Type enum is [Weapon, Armor, Consumable, Generic]; the loader also accepts the class-name spellings (PalStaticWeaponItemData etc., read off PalItemModLoader.cpp for 0.8.0), so our wider enum stands."
+    }
+  ],
+  "requiredWhenNew": {
+    "fields": ["Type", "IconTexture", "TypeA", "TypeB", "Rank", "Rarity", "MaxStackCount"],
+    "recipeRequired": ["Product_Count", "WorkAmount", "Material1_Id", "Material1_Count"],
+    "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json",
+    "note": "Applied as if:{required:[Type]} then:{required:[...]} — see divergence required-gated-on-type."
+  },
+  "fields": [
+    {
+      "field": "IconTexture",
+      "set": {
+        "anyOf": [
+          {
+            "type": "object",
+            "description": "Exported-object form of the soft pointer (TSoftObjectPtr<UTexture2D>)."
+          },
+          {
+            "type": "string",
+            "pattern": "^/Game(?:/[^/]+)*/([A-Za-z0-9_]+)\\.\\1$",
+            "description": "Game asset path; the asset name must repeat after the dot, e.g. /Game/Others/InventoryItemIcon/Texture/T_itemicon_Food_Berries.T_itemicon_Food_Berries"
+          },
+          {
+            "type": "string",
+            "pattern": "^\\$resource/",
+            "description": "Image imported via PalSchema's resource loader, e.g. $resource/YourModName/NameOfYourImageWithoutExtension (works since PalSchema 0.5.0)."
+          }
+        ]
+      },
+      "descriptionSuffix": "A /Game path must repeat the asset name after the dot (/Game/.../T_icon_X.T_icon_X — a mismatch like T_icon_A.T_icon_B is a typo the game resolves to nothing), or use $resource/<ModName>/<Image> for an imported image.",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json",
+      "note": "The $resource alternative entered the editor schema in 0.6.5 (PR #145) but the loader accepted it long before — see divergence resource-predates-0.6.5."
+    },
+    {
+      "field": "VisualBlueprintClassSoft",
+      "set": {
+        "anyOf": [
+          {
+            "type": "object",
+            "description": "Exported-object form of the soft class pointer (TSoftClassPtr<AActor>)."
+          },
+          {
+            "type": "string",
+            "pattern": "^/Game(?:/[^/]+)*/([A-Za-z0-9_]+)\\.\\1_C$",
+            "description": "Blueprint class path; the asset name repeats after the dot with a _C suffix, e.g. /Game/Pal/Blueprint/Item/VisualModel/BP_Item_BerryRed.BP_Item_BerryRed_C"
+          }
+        ]
+      },
+      "descriptionSuffix": "The path must repeat the asset name after the dot with a _C suffix (/Game/.../BP_X.BP_X_C).",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
+    },
+    {
+      "field": "Rank",
+      "set": { "minimum": 0 },
+      "descriptionSuffix": "Minimum 0 (crafting-station tier; only relevant for crafting).",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
+    },
+    {
+      "field": "Rarity",
+      "set": { "minimum": 0, "maximum": 4, "default": 0 },
+      "descriptionSuffix": "0..4 = Common, Uncommon, Rare, Epic, Legendary.",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
+    },
+    {
+      "field": "Price",
+      "set": { "minimum": 0 },
+      "descriptionSuffix": "Minimum 0; the in-game value is this divided by 10.",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
+    },
+    {
+      "field": "MaxStackCount",
+      "set": { "minimum": 1, "default": 1 },
+      "descriptionSuffix": "Minimum 1. Above 9999 the game duplicates items when moving stacks (upstream documents this in prose, so the validator warns rather than errors — see softCaps).",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
+    },
+    {
+      "field": "Weight",
+      "set": { "minimum": 0 },
+      "descriptionSuffix": "Minimum 0; PalSchema wants a float literal (1.0, not 1 — checked on the raw text).",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
+    },
+    {
+      "field": "CorruptionFactor",
+      "set": { "minimum": 0 },
+      "descriptionSuffix": "Minimum 0 (0.0 never spoils); PalSchema wants a float literal (0.0, not 0 — checked on the raw text).",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
+    },
+    {
+      "field": "Durability",
+      "set": { "minimum": 0 },
+      "descriptionSuffix": "Minimum 0; PalSchema wants a float literal (100.0, not 100 — checked on the raw text).",
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json"
+    }
+  ],
+  "classScopes": {
+    "note": "The field->class ownership table is derived at apply time from the 'Class property (...)' annotations scripts/derive-loader-schemas.mjs writes into every property description (SDK headers, localcc/PalworldModdingKit). Fields owned only by a subclass become if/then branches: when the entry's Type maps to a different class, the field is out of scope — the loader's GetPropertyByNameInChain on the constructed class cannot find it, so it is ignored in game (with a load-time warning since PalSchema 0.6.3, Okaetsu/PalSchema#138). palschema-validate reports these as warnings, not errors, and strips the branches before ajv compilation so the severity model stays warn-first (#134 semantics); other draft-07 consumers of the published schema (editors) enforce them as written.",
+    "typeValues": {
+      "UPalStaticArmorItemData": ["Armor", "PalStaticArmorItemData"],
+      "UPalStaticWeaponItemData": ["Weapon", "PalStaticWeaponItemData"],
+      "UPalStaticConsumeItemData": ["Consumable", "PalStaticConsumeItemData"]
+    },
+    "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json (branch membership where it exists) + localcc/PalworldModdingKit Source/Pal/Public class headers (the authoritative owner list — see divergence anyof-does-not-scope)"
+  },
+  "floatLiteralFields": {
+    "fields": ["Weight", "CorruptionFactor", "Durability", "SneakAttackRate", "WorkAmount"],
+    "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json (the five not:{type:integer} fields; WorkAmount lives under Recipe)",
+    "note": "Checked on the raw file text by palschema-validate — see divergence float-literals-raw-text."
+  },
+  "softCaps": {
+    "MaxStackCount": {
+      "above": 9999,
+      "source": "https://raw.githubusercontent.com/Okaetsu/PalSchema/0.6.5/assets/schemas/items.schema.json",
+      "note": "Upstream's description: \"The game doesn't like the stack size being higher than 9999 and will cause items to duplicate when moving them around\". Prose only (no maximum keyword upstream), so this is a warning, promoted by --strict."
+    }
+  },
+  "coveredElsewhere": {
+    "bLegalInGame": "boolean, default true — a loader key, so its schema lives in structs/loader-overlay.json (source: PalItemModLoader.cpp AddItemData; PR #145 added it to IsCustomProperty, which is what stopped the spurious in-game warnings).",
+    "Type": "enum — loader key, structs/loader-overlay.json (wider than upstream's on purpose, see divergence type-enum-superset).",
+    "Recipe": "presence/type — loader key; its row content validates against DT_ItemRecipeDataTable, and its required list applies via requiredWhenNew."
+  }
+}

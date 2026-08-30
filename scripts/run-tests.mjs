@@ -152,10 +152,70 @@ run('raw table file using a pals-loader key gets a loader-mismatch warning',
 run('pals Loot with a bare-integer DropChance is flagged (the loader skips it in game)',
   validate('tests/fixtures/pals/loot-int-dropchance.json'), 0, 'float literal');
 
-run('versions.json records PalSchema 0.6.3 and 0.6.4 with published dates',
+// 0.10.0: upstream PalSchema 0.6.5 items.schema.json constraints, ported around
+// its three traps (structs/upstream-constraints.json records each divergence).
+// First: upstream's own example mod is the false-positive canary — it carries
+// AttackValue, MagazineSize and ItemBaseName (which upstream's schema doesn't
+// even declare) plus CorruptionFactor 0.0 / WorkAmount 10.0 that the raw-text
+// float check must accept.
+const example = run('items: upstream 0.6.5 example mod passes with zero errors and zero warnings',
+  validate('tests/fixtures/items/upstream-example-items.json'), 0, '1 file validated, 0 errors, 0 unknown-key warnings');
+assert('upstream example mod: no compatibility warnings either',
+  !(example.stdout + example.stderr).includes('compatibility warning'));
+run('items: IconTexture backreference mismatch -> error naming both parts',
+  validate('tests/fixtures/items/icon-backref.json'), 1,
+  'the path names "T_Icon_A" but after the dot it says "T_Icon_B"');
+run('items: $resource icon path is valid, no version gate (loader feature since PalSchema 0.5.0)',
+  validate('tests/fixtures/items/resource-icon.json'), 0, '1 file validated, 0 errors, 0 unknown-key warnings');
+const waza = run('items: Weapon entry with WazaID -> misscoped warning naming the declaring class, exit 0',
+  validate('tests/fixtures/items/misscoped-waza.json'), 0, '"WazaID" is declared by UPalStaticConsumeItemData');
+assert('misscoped warning carries the game-warns-too note (#138)',
+  (waza.stdout + waza.stderr).includes('Okaetsu/PalSchema#138'));
+run('items: misscoped WazaID fails under --strict',
+  [...validate('tests/fixtures/items/misscoped-waza.json'), '--strict'], 1);
+run('items: "Weight": 1 -> error demanding a float literal (raw-text check, not ajv)',
+  validate('tests/fixtures/items/weight-int.json'), 1, 'must be a float value e.g. 1.0');
+run('items: new item (Type present) missing TypeA -> error explaining the add-vs-edit gate',
+  validate('tests/fixtures/items/new-item-missing-typea.json'), 1, 'missing required field "TypeA"');
+run('items: existing-item patch without Type/TypeA stays valid (required is gated on Type)',
+  validate('tests/fixtures/items/edit-patch.json'), 0, '1 file validated, 0 errors, 0 unknown-key warnings');
+run('items: Rarity 5 -> out-of-range error (upstream maximum is 4)',
+  validate('tests/fixtures/items/rarity-5.json'), 1, 'must be <= 4');
+run('items: MaxStackCount 10000 -> duplication warning (prose-only upstream), exit 0',
+  validate('tests/fixtures/items/stack-10000.json'), 0, 'the game duplicates items when moving stacks');
+
+run('published item schema: AttackValue scoped, AttackPower (upstream typo) absent, constraints stamped',
+  ['-e', `const s=require('./schemas/v1.0/PalStaticItemData.schema.json');` +
+    `if(s.properties.AttackPower||!s.properties.AttackValue)process.exit(1);` +
+    `if(!/upstreamConstraints=0\\.6\\.5@/.test(s.$comment)||!/floatLiteral=/.test(s.$comment))process.exit(1);` +
+    `const scoped=(s.allOf||[]).some(b=>String(b.$comment||'').startsWith('palschema-upstream-scope')` +
+    `&&b.then&&b.then.properties&&('WazaID' in b.then.properties));` +
+    `if(!scoped)process.exit(1);console.log('constraints stamped, no AttackPower');`],
+  0, 'constraints stamped, no AttackPower');
+run('structs/upstream-constraints.json pins tag 0.6.5, the blob sha and PR #145',
+  ['-e', `const c=require('./structs/upstream-constraints.json').verifiedAgainst;` +
+    `if(c.tag!=='0.6.5'||!/^[0-9a-f]{40}$/.test(c.blobSha)||!/pull\\/145$/.test(c.pr)` +
+    `||c.releaseDate!=='2026-08-28')process.exit(1);console.log('provenance pinned');`],
+  0, 'provenance pinned');
+
+// apply-upstream-constraints must be a byte-level no-op on the committed schema
+// (0.7.0 shipped three re-run bugs found exactly this way).
+{
+  const schemaPath = join(ROOT, 'schemas/v1.0/PalStaticItemData.schema.json');
+  const before = readFileSync(schemaPath, 'utf8');
+  run('apply-upstream-constraints: runs clean on the committed schema',
+    ['scripts/apply-upstream-constraints.mjs', '1.0'], 0, 'PalStaticItemData.schema.json');
+  assert('apply-upstream-constraints: run output is byte-identical to the committed schema',
+    readFileSync(schemaPath, 'utf8') === before);
+  run('apply-upstream-constraints: second run', ['scripts/apply-upstream-constraints.mjs', '1.0'], 0);
+  assert('apply-upstream-constraints: re-run is still byte-identical',
+    readFileSync(schemaPath, 'utf8') === before);
+}
+
+run('versions.json records PalSchema 0.6.3, 0.6.4 and 0.6.5 with published dates',
   ['-e', `const v=require('./versions.json').upstream.palSchema;` +
     `const r=Object.fromEntries((v.releases||[]).map(x=>[x.version,x.date]));` +
-    `if(v.version!=='0.6.4'||r['0.6.3']!=='2026-08-15'||r['0.6.4']!=='2026-08-18')process.exit(1);` +
+    `if(v.version!=='0.6.5'||r['0.6.3']!=='2026-08-15'||r['0.6.4']!=='2026-08-18'||r['0.6.5']!=='2026-08-28')process.exit(1);` +
     `console.log('palSchema releases OK');`], 0, 'palSchema releases OK');
 run('published DT_PalMonsterParameter schema declares RanchActionData with PR #143 provenance',
   ['-e', `const s=require('./schemas/v1.0/DT_PalMonsterParameter.schema.json');` +
@@ -282,9 +342,14 @@ try {
   const itemsBehind = write('items-behind.json', {
     _provenance: { gameVersion: versionsInfo.order[0], valuesCurrent: true },
   });
+  // The upstream items.schema.json blob, anchored to what the constraint port pins.
+  const pinnedBlob = JSON.parse(readFileSync(join(ROOT, 'structs/upstream-constraints.json'), 'utf8')).verifiedAgainst;
+  const upstreamInsync = write('upstream-schema-insync.json', { sha: pinnedBlob.blobSha });
+  const upstreamMoved = write('upstream-schema-moved.json', { sha: 'deadbee1234567890deadbee1234567890deadbe' });
   const currency = (extra = []) => [
     'scripts/check-currency.mjs',
     '--steam-json', steamInsync, '--commits-json', commitsHead, '--releases-json', releasesCurrent,
+    '--upstream-schema-json', upstreamInsync,
     ...extra,
   ];
 
@@ -293,7 +358,7 @@ try {
     0, `registry current: game ${newestLabel}, SDK ${headSha}, PalSchema ${psClaimed}`);
   run('check-currency: stale fixture -> exit 1 naming the new game version',
     ['scripts/check-currency.mjs', '--steam-json', steamStale, '--commits-json', commitsHead,
-      '--releases-json', releasesCurrent],
+      '--releases-json', releasesCurrent, '--upstream-schema-json', upstreamInsync],
     1, `game ${nextLabel} released, registry newest is ${newestLabel}`);
   // A balance patch: structs and shas are untouched, only the VALUES moved.
   run('check-currency: item values behind the game -> exit 1 (the 1.0.3 case)',
@@ -301,8 +366,17 @@ try {
     1, `items.json values are Palworld ${versionsInfo.order[0]}, registry newest is ${newestLabel}`);
   run('check-currency: newer PalSchema release -> exit 1 naming it',
     ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
-      '--releases-json', releasesNew],
+      '--releases-json', releasesNew, '--upstream-schema-json', upstreamInsync],
     1, `PalSchema ${bumpLast(psClaimed)} released, this registry claims ${psClaimed}`);
+  // 0.10.0: the ported item constraints go stale when the upstream FILE moves,
+  // release or not — the blob sha is its own axis, never conflated with releases.
+  run('check-currency: upstream items.schema.json blob moved -> exit 1 naming both shas',
+    ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
+      '--releases-json', releasesCurrent, '--upstream-schema-json', upstreamMoved],
+    1, `upstream items.schema.json changed (blob deadbee, the ported constraints pin ${pinnedBlob.blobSha.slice(0, 7)} from tag ${pinnedBlob.tag})`);
+  run('check-currency: in-sync line reports the pinned items.schema.json blob',
+    currency(),
+    0, `items.schema.json blob ${pinnedBlob.blobSha.slice(0, 7)}`);
 
   // bump-version: the alias path is mechanical, the regenerate path must refuse.
   run('bump-version: versions.json round-trips through the serializer byte-for-byte',

@@ -1,0 +1,11 @@
+{
+  "PSH_BackrefTypo": {
+    "Type": "Consumable",
+    "IconTexture": "/Game/Others/InventoryItemIcon/Texture/T_Icon_A.T_Icon_B",
+    "TypeA": "Food",
+    "TypeB": "FoodDishVegetable",
+    "Rank": 1,
+    "Rarity": 1,
+    "MaxStackCount": 99
+  }
+}
