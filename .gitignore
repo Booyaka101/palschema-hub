@@ -8,3 +8,6 @@ node_modules/
 
 # Rust build output for tools/ooz-decompress (built on demand by npm run extract).
 tools/**/target/
+
+# Local build notes, not for the public repo
+PROGRESS.md
