@@ -1,5 +1,11 @@
 # 🧩 palschema-hub
 
+[![registry 0.12.0](https://img.shields.io/badge/registry-0.12.0-blue)](CHANGELOG.md)
+[![PalSchema 0.6.7](https://img.shields.io/badge/PalSchema-0.6.7-green)](https://github.com/Okaetsu/PalSchema/releases/tag/0.6.7)
+[![UE4SS 2281fa31](https://img.shields.io/badge/UE4SS-2281fa31-green)](https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31)
+[![Palworld 1.0.4](https://img.shields.io/badge/Palworld-1.0.4-orange)](versions.json)
+[![license MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
+
 A public **schema registry + browser + validator CLI** for [Palworld](https://store.steampowered.com/app/1623730/Palworld/) **[PalSchema](https://github.com/Okaetsu/PalSchema)** mods.
 
 PalSchema lets modders patch Palworld's DataTables with JSON. But there has been no
@@ -10,15 +16,15 @@ open since Aug 2025). `palschema-hub` fills that gap:
 - **`/schemas/v1.0/*.schema.json`** — 31 JSON Schemas, one per moddable DataTable.
 - **`/schemas/index.json`** — machine-readable table-name → schema-path listing.
 - **`/values/<Table>.json`** — the **current row values** for 28 of those tables
-  (41,416 rows), read out of the game's own cooked DataTables. Browse them at
+  (41,402 rows), read out of the game's own cooked DataTables. Browse them at
   [`values.html`](https://booyaka101.github.io/palschema-hub/values.html).
 - **`/index.html`** — a zero-build schema browser (GitHub Pages), searchable.
 - **`/cli/`** — `palschema-validate`, a CLI (ajv) that validates mod JSON/JSONC in CI or locally.
 - **`/.github/workflows/palschema-ci.yml.example`** — drop-in CI for mod repos.
 
-**Compatible with PalSchema 0.6.5 + the [experimental-palworld UE4SS](https://github.com/Okaetsu/RE-UE4SS/releases/tag/experimental-palworld)
-build it requires (UE4SS commit `ba2efd55`, release updated August 28 2026).** No
-DataTable field, path, or row-validation behavior changed in 0.6.1 → 0.6.5 (checked
+**Compatible with PalSchema 0.6.7 + the [UE4SS build it requires](https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31)
+(UE4SS commit `2281fa31`, released September 3 2026).** No
+DataTable field, path, or row-validation behavior changed in 0.6.1 → 0.6.7 (checked
 against the diffs, not just the release notes). What did change: 0.6.4's
 **loader** lets new pals carry ranch suitability through `RanchActionData` in
 pals json ([#143](https://github.com/Okaetsu/PalSchema/pull/143)) — a key that
@@ -30,7 +36,13 @@ source with per-entry provenance. 0.6.5 rewrote the constraints in PalSchema's o
 those are now **ported into this registry's item-loader schema** (see
 [`structs/upstream-constraints.json`](structs/upstream-constraints.json)), so the
 validator catches bad icon paths, out-of-range values and missing new-item fields
-it used to wave through. 0.6.3 also fixed `.jsonc` schema application
+it used to wave through. 0.6.6 and 0.6.7 touch nothing this registry derives from:
+0.6.6 is only the UE4SS bump to `2281fa31`, and 0.6.7 fixes an `FSoftObjectPtr` crash
+in the appearance loader ([#149](https://github.com/Okaetsu/PalSchema/pull/149)).
+That is a finding, not an assumption: the upstream `0.6.4...0.6.7` compare leaves
+`assets/schemas/items.schema.json` at blob `b41a965` for all three tags, and adds no
+loader key to any of `PalItemModLoader`, `PalMonsterModLoader` or `PalHumanModLoader`.
+0.6.3 also fixed `.jsonc` schema application
 ([#139](https://github.com/Okaetsu/PalSchema/pull/139)) and added unknown-property
 warnings to the item loader ([#138](https://github.com/Okaetsu/PalSchema/pull/138)) —
 the same warn-don't-reject semantics `palschema-validate` adopted in 0.4.0.
@@ -174,7 +186,10 @@ WARN pals/mynewpal.json:MyNewPal "RanchActionData" requires PalSchema >= 0.6.4 w
 
 **Exit codes:** 0 = all files pass (warnings alone never fail a run) · 1 = any
 type/shape error, breaking `--migrate` field, or bad usage — or any warning when
-`--strict` (the CI mode) is given.
+`--strict` (the CI mode) is given · 2 = the registry itself could not be read
+(bad `--registry`, network failure, or a GitHub rate limit), so nothing was
+validated. A table this registry simply does not carry stays a warning; only a
+registry that could not answer at all is exit 2.
 
 ```bash
 # From any mod repo (schemas fetched from this registry):
@@ -203,7 +218,7 @@ node cli/dist/index.js --registry . tests/invalid-mod.json  # exit 1
 ## Every table's values, from the game itself
 
 [`values.html`](https://booyaka101.github.io/palschema-hub/values.html) browses the
-**current row values for 28 of the 31 registry tables — 41,416 rows** — pals, passives,
+**current row values for 28 of the 31 registry tables — 41,402 rows** — pals, passives,
 waza, recipes, drops, lotteries and the rest, each row with a paste-ready raw-table
 patch. `values/<Table>.json` is the same data as plain JSON, and `values/index.json`
 lists what shipped, the row struct each table uses, and which three tables do not
@@ -419,18 +434,22 @@ field snapshots are committed under `structs/` and the pairwise deltas under `di
 > that carry it.
 
 **Staleness detection:** `npm run versions:check` compares this repo against the live world on
-six axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
+seven axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
 commit list (SDK head, and whether `Source/Pal/Public` regenerated), the newest
 [PalSchema](https://github.com/Okaetsu/PalSchema) release vs the version this README claims
 compatibility with (`versions.json` `upstream.palSchema`), the live blob sha of PalSchema's
 `assets/schemas/items.schema.json` vs the sha the ported item constraints pin (an upstream
-schema edit stales the port even before it reaches a release), and `items.json`'s and
+schema edit stales the port even before it reaches a release), the UE4SS commit the claimed
+PalSchema release says it must run against (read out of that release's own body) vs the
+`ue4ssCommit` this README quotes, and `items.json`'s and
 `buildings.json`'s own `_provenance.gameVersion` vs the newest game label. Those last two exist
 because a **balance** patch moves row VALUES while every struct and sha stays put: 1.0.3 changed
 World Tree Holy Water's weight from 1 to 0.1 with an unchanged SDK, so every sha-based check
-would have said "current" while the shipped values were a patch behind. Exit 0 in sync
-(`registry current: game 1.0.4, SDK e663245, PalSchema 0.6.5, item values 1.0.4, building
-values 1.0.4, items.schema.json blob b41a965`), exit 1 stale with one line
+would have said "current" while the shipped values were a patch behind. The UE4SS axis has the
+same shape one level up: PalSchema 0.6.6 shipped nothing but a UE4SS bump, and a reader left on
+the old build gets signature errors rather than anything a schema could report. Exit 0 in sync
+(`registry current: game 1.0.4, SDK e663245, PalSchema 0.6.7, item values 1.0.4, building
+values 1.0.4, items.schema.json blob b41a965, UE4SS 2281fa31`), exit 1 stale with one line
 naming exactly what moved, exit 2 on network failure — never conflated. It runs as an
 informational CI step and in the daily cron, which opens an issue when something actually
 moved.

@@ -19,6 +19,11 @@
  *      item-loader constraints are PORTED from that file, so an upstream edit
  *      makes the port stale even before it reaches a release — and a release
  *      that doesn't touch the schema doesn't invalidate the port.
+ *   5. UE4SS: the commit the declared PalSchema release says it must be run
+ *      with, read from that release's own body, vs versions.json
+ *      `upstream.palSchema.ue4ssCommit` (which the README quotes). PalSchema
+ *      0.6.6 shipped nothing but a UE4SS bump, so this is the axis that would
+ *      have caught it even if the version had matched.
  *
  * Plus one purely local check that the first two structurally cannot catch: a
  * BALANCE patch changes row VALUES while every struct and sha stays put, so
@@ -52,6 +57,8 @@ import {
   cmpVersions,
   newestGameVersion,
   registryNewest,
+  ue4ssCommitFromRelease,
+  shaMatches,
 } from './lib/version-sources.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -156,8 +163,9 @@ if (buildingsVersion && cmpVersions(buildingsVersion, newest) < 0) {
 // ---- PALSCHEMA: the framework these schemas are written for ------------------
 const claimed = versionsInfo.upstream?.palSchema?.version;
 let palSchemaNewest = claimed;
+let releases = [];
 if (claimed) {
-  const releases = await loadJson(RELEASES_URL, fixtures.releases, 'Okaetsu/PalSchema releases');
+  releases = await loadJson(RELEASES_URL, fixtures.releases, 'Okaetsu/PalSchema releases');
   // Releases are returned newest-first, but tags are compared by version anyway.
   const tags = (Array.isArray(releases) ? releases : [])
     .map((r) => String(r?.tag_name ?? '').replace(/^v/i, ''))
@@ -197,6 +205,23 @@ if (pinned?.blobSha) {
   }
 }
 
+// ---- UE4SS: the loader build the declared release must run against ----------
+// A PalSchema release can move nothing but its UE4SS pin (0.6.6 was exactly
+// that), and a user on the wrong UE4SS gets signature errors rather than a
+// schema complaint, so the pin is its own axis. Releases before 0.6.5 named no
+// commit at all, and a release that pins none is not a mismatch.
+const pinnedUe4ss = versionsInfo.upstream?.palSchema?.ue4ssCommit;
+let ue4ssLive;
+if (pinnedUe4ss) {
+  const claimedRelease = (Array.isArray(releases) ? releases : []).find(
+    (r) => String(r?.tag_name ?? '').replace(/^v/i, '') === claimed,
+  );
+  ue4ssLive = claimedRelease ? ue4ssCommitFromRelease(claimedRelease) : undefined;
+  if (ue4ssLive && !shaMatches(ue4ssLive, pinnedUe4ss)) {
+    problems.push(`PalSchema ${claimed} requires UE4SS ${ue4ssLive}, this registry pins ${pinnedUe4ss}`);
+  }
+}
+
 if (problems.length) {
   console.log(problems.join('; '));
   process.exit(1);
@@ -206,6 +231,7 @@ console.log(
     (claimed ? `, PalSchema ${claimed}` : '') +
     (itemsVersion ? `, item values ${itemsVersion}` : '') +
     (buildingsVersion ? `, building values ${buildingsVersion}` : '') +
-    (upstreamSchemaSha ? `, items.schema.json blob ${upstreamSchemaSha.slice(0, 7)}` : ''),
+    (upstreamSchemaSha ? `, items.schema.json blob ${upstreamSchemaSha.slice(0, 7)}` : '') +
+    (ue4ssLive ? `, UE4SS ${ue4ssLive}` : ''),
 );
 process.exit(0);

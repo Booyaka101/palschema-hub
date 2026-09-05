@@ -13,7 +13,24 @@ Plus the CURRENT ROW VALUES for 28 of those tables, a per-item and
 per-building VALUE reference, and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry 0.11.0, 2026-08-30)
+NEW IN THIS VERSION (registry 0.12.0, 2026-09-05)
+  * CAUGHT UP TO PALSCHEMA 0.6.7, AND THE UE4SS PIN IS NOW CHECKED.
+    0.6.7 must be run with UE4SS commit 2281fa31, which is a change 0.6.6
+    made and nothing about a schema could have told you. That commit is now
+    recorded in versions.json and compared against the release itself, so a
+    UE4SS-only PalSchema release cannot slip past this registry again.
+  * NOTHING IN 0.6.6 OR 0.6.7 CHANGES A FIELD, AND THAT WAS PROVEN, NOT
+    ASSUMED. Every generated file was hashed, the whole registry was
+    regenerated from the SDK headers, and the result matched byte for byte
+    across all 34 files. 0.6.5's item changes (bLegalInGame, WazaID on
+    Consumables, $resource icons) were already shipped in 0.10.0 and are
+    still exact: PalSchema's items.schema.json is the same blob at 0.6.5,
+    0.6.6, 0.6.7 and on main.
+  * A MISSING SDK HEADER NOW FAILS THE BUILD BY NAME instead of quietly
+    leaving that table on three-year-old dump data under a comment claiming
+    otherwise.
+
+PREVIOUSLY (registry 0.11.0, 2026-08-30)
   * EVERY TABLE'S ACTUAL VALUES, NOT JUST ITS FIELDS. values.html and
     values/<Table>.json carry 41,416 rows across 28 of the 31 tables:
     pals, passive skills, waza, recipes, drops, lotteries, icons and the
@@ -247,6 +264,9 @@ Exit codes:
     0   all files pass (unknown-key warnings alone never fail a run)
     1   type/shape error, breaking --migrate field, or bad usage —
         or any unknown-key warning when --strict is given
+    2   the registry could not be read at all (bad --registry path, network
+        failure, or a GitHub rate limit) — nothing was validated. A table this
+        registry does not carry is still only a warning.
 
 LINKS
 -----
@@ -255,6 +275,9 @@ LINKS
   Source (MIT)   :  https://github.com/Booyaka101/palschema-hub
   CLI on npm     :  https://www.npmjs.com/package/palschema-validate
   Pal Schema     :  https://www.nexusmods.com/palworld/mods/2361  (by Okaetsu)
+
+Compatible with PalSchema 0.6.7 and the UE4SS build it requires
+(commit 2281fa31): https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31
 
 This archive contains no game assets. Schema data derived from the public
 paldex game-data dump (blaynem) and PalworldModdingKit SDK headers (localcc),

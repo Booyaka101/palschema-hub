@@ -1,5 +1,100 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.12.0 / palschema-validate 0.6.1 — 2026-09-05
+
+**Caught up to PalSchema 0.6.7, and the UE4SS commit is now a checked pin rather
+than a sentence in the README.** `npm run versions:check` opened
+[#41](https://github.com/Booyaka101/palschema-hub/issues/41) on 2026-09-04 with
+"registry stale: PalSchema 0.6.6 released, this registry claims 0.6.5". Two of the
+three new releases turned out to be compatibility-only, and the third was already
+absorbed. The interesting part is how that was established, and what it exposed.
+
+- **What actually moved, read off the upstream `0.6.4...0.6.7` compare rather than
+  the release notes.** 0.6.5 (2026-08-28) is the substantive one: `bLegalInGame`
+  recognized as a custom property, `WazaID` allowed on Consumables, `$resource`
+  accepted for `IconTexture`, plus `IsThrowableWeapon` covering
+  `SPWeaponCaptureRope`/`SPWeaponCaptureBall`. All of it landed here in 0.10.0, and
+  it is still exact: upstream's `assets/schemas/items.schema.json` is blob
+  `b41a965` at 0.6.5, 0.6.6, 0.6.7 **and** on `main`, which is the sha
+  `structs/upstream-constraints.json` pins. 0.6.6 (2026-09-03) is nothing but the
+  UE4SS bump to `2281fa31`. 0.6.7 (2026-09-04) fixes an `FSoftObjectPtr` crash in
+  the appearance loader ([#149](https://github.com/Okaetsu/PalSchema/pull/149)).
+  Across all 16 commits the loaders gain exactly one recognized key,
+  `bLegalInGame`, which the overlay already carried; everything else is the
+  `TSoftObjectPtr` migration onto UE4SS's own types, which has no JSON surface.
+
+- **The regeneration was run, not argued.** Every generated file was hashed to a
+  baseline, `npm run seed` was re-run end to end, and the output was compared byte
+  for byte: **34 files, zero diff lines**, so there was nothing to explain. That is
+  the expected result and it was worth proving, because the reason is a claim the
+  registry makes about the SDK: `Source/Pal/Public` was last regenerated at
+  `98ee60d` (2026-07-11), the commit 1.0 pins, and the branch head `e663245`
+  (2026-08-24) only moved a `Config/DefaultGame.ini` asset label. Both SDK tarballs
+  were fetched and diffed to confirm it: **3,670 headers, identical**, and
+  `Config/DefaultGame.ini` is the only file that differs in the whole repository.
+  So the header pin stays `62fad41` and nothing downstream of it changed.
+
+- **New staleness axis: the UE4SS commit (seventh).** `versions.json`
+  `upstream.palSchema` now carries `ue4ssCommit`, and every recorded release
+  carries the commit its own release body names. `check-currency` reads that body
+  live and fails naming both shas when they disagree
+  (`PalSchema 0.6.7 requires UE4SS 2281fa31, this registry pins ba2efd55`).
+  This is the axis 0.6.6 needed: a release that moves nothing but its loader build
+  is invisible to every schema and sha check, and a reader left on the old UE4SS
+  gets signature errors, not a validation message. Releases before 0.6.5 name no
+  commit at all, and that reads as "nothing to compare", never as a mismatch.
+
+- **A missing SDK header is now a build failure, by name.** `augment-from-sdk.mjs`
+  used to print one `!` line and carry on, shipping a schema derived from the
+  Jan-2024 dump alone under a `$comment` claiming the SDK. It now names the header
+  it looked for (`PalDropItemDatabaseRow.h (DT_PalDropItem)`) and exits 1, with one
+  allow-listed exception, `FPalTechnologyIconData`, which the SDK genuinely omits.
+  The manifest write moved after the gate, so a refused run leaves the committed
+  schemas and `_manifest.json` untouched. `PALSCHEMA_SDK_DIR` points the generator
+  at an extracted SDK tree outside `.cache/`, which is how the gate is tested.
+
+- **Regression fixture for the three 0.6.5 item changes, asserted both ways.**
+  `tests/fixtures/items/legal-in-game-waza.json` is a custom Consumable carrying
+  `bLegalInGame`, `WazaID` and a `$resource` icon; against the shipped registry it
+  is 0 errors and 0 warnings. Against a copy of the registry with those two keys
+  removed from the item schema, the same file draws two `unknown field` warnings.
+  That second half is the point: it is the false positive a regeneration could
+  reintroduce, and it now fails the suite instead of reaching a modder.
+
+- README gains version badges (registry, PalSchema, UE4SS, Palworld, licence), and
+  the suite asserts each one quotes `package.json` or `versions.json`, so they
+  cannot drift the way the SDK-head quotes did before 0.11.0.
+- Compatibility line reads **PalSchema 0.6.7 + UE4SS `2281fa31`**.
+  `structs/loader-overlay.json` re-verified against 0.6.7 with the method recorded.
+- **CLI 0.6.1 — an unreadable registry is no longer a green run.** Driving the
+  release end to end turned up a real defect that predates it: `getTableSchema`
+  collapsed every failure into `! No schema for table "X": HTTP 429` and carried on
+  at exit 0. A CI job pointed at a rate-limited `raw.githubusercontent.com` would
+  have passed having validated nothing. `readRegistryFile` now separates the two
+  cases. A registry that answers and does not carry that table stays a warning, so
+  mods patching tables outside the 31 are unaffected; a registry that cannot be
+  read at all raises `RegistryUnavailableError` and the run stops with
+  **exit 2** naming the URL or path. 404, DNS failure, 5xx, 429 and a `--registry`
+  directory that does not exist are all distinguished, and the response body is
+  drained on every path (an unread `undici` response holds its socket open and the
+  process hangs instead of reporting the failure). Three tests pin it, including a
+  real 429 served from a second process.
+- **`npm test` now runs in CI.** The 124-assertion acceptance suite was the one
+  gate that only ever ran locally: `self-test.yml` hand-repeated eight of its
+  checks as individual steps and stopped there, so the real-mod corpus, the schema
+  provenance assertions and the value gates were never enforced on a PR. Those
+  eight steps are replaced by the suite itself, which subsumes all of them and
+  needs no network and no SDK tarball (verified by running it with `.cache/`
+  moved aside). The informational currency check stays.
+- **`locateSdk` extracted into `scripts/lib/sdk-parse.mjs`.** The clone check that
+  precedes every release found `derive-loader-schemas.mjs` and
+  `derive-sdk-tables.mjs` carrying the SDK-locating block at **100% line
+  similarity**, with `augment-from-sdk.mjs` a third copy. One function now serves
+  all three, which is also what makes `PALSCHEMA_SDK_DIR` work for every
+  generator rather than one. Proven inert the same way as the rest: `npm run seed`
+  after the extraction is byte-identical to the baseline.
+- All four real published mods in the corpus still pass with zero new warnings.
+  Tests 105 → **124**.
 ## 0.11.0 — 2026-08-30
 
 **Current row values for 28 of the 31 registry tables, read out of the game's own

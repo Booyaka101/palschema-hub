@@ -5,6 +5,7 @@ import {
   collectFiles,
   invertDiff,
   loadRegistryJson,
+  RegistryUnavailableError,
   migrateScanFile,
   resolveVersionLabel,
   validateFile,
@@ -358,6 +359,13 @@ async function main() {
     try {
       result = await validateFile(file, opts);
     } catch (e: any) {
+      // A file this run could not parse is one finding; a registry it could not
+      // read is not a per-file problem and must not be reported as one.
+      if (e instanceof RegistryUnavailableError) {
+        console.error(`Registry unavailable: ${e.message}`);
+        console.error('Nothing was validated. Check --registry, your network, or a GitHub rate limit.');
+        process.exit(2);
+      }
       result = { findings: [{ file, table: '(parse)', row: '', path: '/', message: e.message }], warnings: [] };
     }
     if (result.findings.length) {

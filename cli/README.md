@@ -101,6 +101,7 @@ can write was removed or retyped, but something was added. Rename notes are heur
 |---|---|
 | 0 | all files pass — warnings alone never fail a run |
 | 1 | validation error / breaking `--migrate` field / bad usage — or any warning under `--strict` |
+| 2 | the registry could not be read (bad `--registry`, network failure, HTTP 429) — nothing was validated |
 
 Browse the registry: https://booyaka101.github.io/palschema-hub/ · version diffs:
 https://booyaka101.github.io/palschema-hub/diff.html
