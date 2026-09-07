@@ -441,23 +441,32 @@ compatibility with (`versions.json` `upstream.palSchema`), the live blob sha of 
 `assets/schemas/items.schema.json` vs the sha the ported item constraints pin (an upstream
 schema edit stales the port even before it reaches a release), the UE4SS commit the claimed
 PalSchema release says it must run against (read out of that release's own body) vs the
-`ue4ssCommit` this README quotes, and `items.json`'s and
-`buildings.json`'s own `_provenance.gameVersion` vs the newest game label. Those last two exist
+`ue4ssCommit` this README quotes, and the game version each of the three value lanes records
+(`items.json`, `buildings.json` and `values/index.json`) vs the newest game label. Those last
+ones exist
 because a **balance** patch moves row VALUES while every struct and sha stays put: 1.0.3 changed
 World Tree Holy Water's weight from 1 to 0.1 with an unchanged SDK, so every sha-based check
 would have said "current" while the shipped values were a patch behind. The UE4SS axis has the
 same shape one level up: PalSchema 0.6.6 shipped nothing but a UE4SS bump, and a reader left on
 the old build gets signature errors rather than anything a schema could report. Exit 0 in sync
 (`registry current: game 1.0.4, SDK e663245, PalSchema 0.6.7, item values 1.0.4, building
-values 1.0.4, items.schema.json blob b41a965, UE4SS 2281fa31`), exit 1 stale with one line
+values 1.0.4, extracted values 1.0.4, items.schema.json blob b41a965, UE4SS 2281fa31`),
+exit 1 stale with one line
 naming exactly what moved, exit 2 on network failure — never conflated. It runs as an
 informational CI step and in the daily cron, which opens an issue when something actually
 moved.
 
-None of the six reads the game's own struct layout, which is how 1.0.4's added property got
-past all of them: it was found by re-running `npm run extract` against the new build, where
-the mapped struct no longer accounted for every property in the row. Comparing extracted
-layouts against the pinned SDK's would be the seventh axis.
+**The eighth axis cannot be a network check.** None of the seven above reads the game's own
+struct layout, which is how 1.0.4's added property got past all of them: it was found by
+re-running `npm run extract`, where the mapped struct stopped accounting for every property in
+the row. Reading that needs the pak, a Rust toolchain and a `.usmap`, so it lives where the
+evidence does. The extractor records what it found in `values/index.json`
+(`unmappedTrailingProperty`), and `npm run check:values` — which runs in `npm test`, no game
+required — fails unless `versions.json` acknowledges it in that version's `gameDelta.tables`.
+It fails in both directions: an unmapped property nobody recorded, and a recorded claim the
+current extraction no longer shows (which is what the SDK catching up looks like). So the
+registry cannot ship "this version changed no row struct" while its own extraction says
+otherwise.
 
 **Auto-bump:** `npm run versions:bump` (`scripts/bump-version.mjs`) handles the one case that
 is fully derivable: the game shipped a patch and `Source/Pal/Public` did **not** regenerate,

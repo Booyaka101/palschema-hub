@@ -13,6 +13,10 @@
  * scraped items.json agreeing with the extracted DT_ItemDataTable where they
  * overlap (two independent sources for the same rows).
  *
+ * And the one staleness axis check-currency structurally cannot have, because
+ * reading it needs the pak: every property the game serializes that the pinned
+ * SDK does not describe must be acknowledged in versions.json.
+ *
  * Usage: node scripts/check-values.mjs [values-dir]
  */
 import { readdirSync, readFileSync } from 'node:fs';
@@ -132,6 +136,48 @@ try {
   console.log(`  cross-checked ${compared} item rows against items.json`);
 } catch (e) {
   fail(`item cross-check failed: ${e.message}`);
+}
+
+// The game's struct layout is its own staleness axis, and the only one that
+// cannot be read over the network: a patch can add a property the pinned SDK
+// headers do not describe, which every sha check reports as "current" (1.0.4 did
+// exactly that to PalCharacterParameterDatabaseRow). The extractor is what sees
+// it, so what it recorded has to be acknowledged in versions.json before this
+// registry can claim the version changed no row struct. Both directions fail:
+// an unacknowledged property, and a claim the current extraction no longer shows.
+try {
+  const versionsInfo = JSON.parse(readFileSync(join(ROOT, 'versions.json'), 'utf8'));
+  const label = index.gameVersion;
+  const record = versionsInfo.aliases?.[label] ?? versionsInfo.versions?.[label];
+  const found = index.tables.filter((t) => t.unmappedTrailingProperty).map((t) => t.table);
+  const declared = record?.gameDelta?.tables ?? [];
+  if (!label) {
+    fail('index.json records no gameVersion, so its unmapped properties cannot be checked against versions.json');
+  } else if (found.length && !record) {
+    fail(`values/ carries unmapped properties (${found.join(', ')}) but versions.json has no record for ${label}`);
+  } else {
+    for (const t of found) {
+      if (!declared.includes(t)) {
+        const p = index.tables.find((x) => x.table === t).unmappedTrailingProperty;
+        fail(
+          `${t} carries a property at index ${p.index} that the pinned SDK does not describe, and ` +
+            `versions.json ${label} does not say so — record it in gameDelta.tables before shipping`
+        );
+      }
+    }
+    for (const t of declared) {
+      // A table that stopped extracting entirely says nothing either way; that is
+      // the unsupported ratchet's business, not this one.
+      if (listed.has(t) && !found.includes(t)) {
+        fail(
+          `versions.json ${label} claims ${t} carries a property the SDK lacks, but the current extraction ` +
+            'maps every one — if the SDK caught up, say that in gameDelta instead of leaving the claim'
+        );
+      }
+    }
+  }
+} catch (e) {
+  fail(`struct-delta cross-check failed: ${e.message}`);
 }
 
 if (problems.length) {

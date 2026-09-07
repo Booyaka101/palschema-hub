@@ -430,6 +430,14 @@ try {
   run('check-currency: item values behind the game -> exit 1 (the 1.0.3 case)',
     currency(['--items-json', itemsBehind]),
     1, `items.json values are Palworld ${versionsInfo.order[0]}, registry newest is ${newestLabel}`);
+  // values/ is the third value lane and the one read from the game itself, so it
+  // goes stale the same way and is checked the same way.
+  const valuesBehind = write('values-behind.json', { gameVersion: versionsInfo.order[0], tables: [] });
+  run('check-currency: extracted values behind the game -> exit 1',
+    currency(['--values-json', valuesBehind]),
+    1, `values/ was extracted from Palworld ${versionsInfo.order[0]}, registry newest is ${newestLabel}`);
+  run('check-currency: in-sync line reports which build values/ was extracted from',
+    currency(), 0, `extracted values ${newestLabel}`);
   run('check-currency: newer PalSchema release -> exit 1 naming it',
     ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
       '--releases-json', releasesNew, '--upstream-schema-json', upstreamInsync],
@@ -600,6 +608,57 @@ run('values: the extracted item table is complete (2466 rows) and agrees with it
     `if(v.PlasticHelmet.SortId!==1320||v.PlasticHelmet.TypeB!=='ArmorHead')process.exit(1);` +
     `if(!v.SFHelmet)process.exit(1);` +
     `console.log('item values OK: '+n+' rows');`], 0, 'item values OK');
+// The game's struct layout is a staleness axis of its own, and the only one no
+// network check can see — 1.0.4 added a property to
+// PalCharacterParameterDatabaseRow that the pinned SDK does not describe, while
+// every sha check reported "current". The extractor records what it found; this
+// is the gate that makes the registry acknowledge it, in both directions.
+{
+  const vfx = mkdtempSync(join(tmpdir(), 'psv-delta-'));
+  try {
+    const realIndex = JSON.parse(readFileSync(join(ROOT, 'values/index.json'), 'utf8'));
+    const label = realIndex.gameVersion;
+    // Two real rows are enough: they still have to pass the published schema, so
+    // a fabricated row would fail this gate for the wrong reason.
+    const twoRowsOf = (table) => {
+      const all = JSON.parse(readFileSync(join(ROOT, `values/${table}.json`), 'utf8'));
+      return Object.fromEntries(Object.entries(all).slice(0, 2));
+    };
+    const dirWith = (name, entry, table) => {
+      const dir = join(vfx, name);
+      mkdirSync(dir, { recursive: true });
+      writeFileSync(join(dir, `${table}.json`), JSON.stringify(twoRowsOf(table), null, 1));
+      writeFileSync(join(dir, 'index.json'), JSON.stringify({ gameVersion: label, tables: [entry] }, null, 1));
+      return dir;
+    };
+    const undeclared = dirWith('undeclared', {
+      table: 'DT_PalSizeParameter',
+      rowStruct: 'PalSizeParameterDatabaseRow',
+      rows: 2,
+      unmappedTrailingProperty: { index: 90, size: 1, rows: 1 },
+      assetPath: 'x.uasset',
+    }, 'DT_PalSizeParameter');
+    const declaredTable = versionsInfo.aliases?.[label]?.gameDelta?.tables?.[0] ?? 'DT_PalMonsterParameter';
+    const gone = dirWith('gone', {
+      table: declaredTable,
+      rowStruct: 'PalCharacterParameterDatabaseRow',
+      rows: 2,
+      assetPath: 'x.uasset',
+    }, declaredTable);
+
+    run('check-values: an unmapped property versions.json does not acknowledge -> exit 1',
+      ['scripts/check-values.mjs', undeclared], 1,
+      'DT_PalSizeParameter carries a property at index 90 that the pinned SDK does not describe');
+    run('check-values: a gameDelta claim the extraction no longer shows -> exit 1',
+      ['scripts/check-values.mjs', gone], 1,
+      'maps every one');
+    run('check-values: the shipped values acknowledge every unmapped property (exit 0)',
+      ['scripts/check-values.mjs'], 0, 'all schema-valid');
+  } finally {
+    rmSync(vfx, { recursive: true, force: true });
+  }
+}
+
 // Unsupported tables are a ratchet, not a silent skip: the reason ships in the
 // index so a table that starts working is noticed.
 run('values/index.json records why each unsupported table is unsupported',
