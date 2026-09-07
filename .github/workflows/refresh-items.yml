@@ -158,6 +158,9 @@ jobs:
         if: steps.bump.outputs.exit == '0'
         run: |
           npm run cli:build
+          # The offline archive bundles versions.json, so the bump above left the
+          # committed zip stale and the suite fails on it until it is rebuilt.
+          npm run nexus:zip
           npm test
 
       - name: Open the PR
@@ -175,20 +178,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$branch"
-          git add versions.json structs diffs
+          git add versions.json structs diffs nexus/palschema-hub-registry.zip
           git commit -F - <<COMMIT
           data: Palworld $VERSION aliases $ALIAS_OF (no SDK header change)
 
           Opened by refresh-items/version-alias. scripts/bump-version.mjs verified
           against the Steam news API (appid 1623730) and the PalworldModdingKit
           commit list that Source/Pal/Public did not regenerate for this patch, so
-          the row structs are identical to $ALIAS_OF. Regenerated struct snapshots
-          and pairwise diffs; the acceptance suite ran green before this commit.
+          the row structs are identical to $ALIAS_OF. Regenerated struct snapshots,
+          pairwise diffs and the offline archive; the acceptance suite ran green
+          before this commit.
           COMMIT
           git push -u origin "$branch"
           issue=$(gh issue list --state open --search '"registry stale" in:title' --json number --jq '.[0].number // empty')
           closes=""
           if [ -n "$issue" ]; then closes=$(printf 'Closes #%s\n\n' "$issue"); fi
-          body=$(printf '%sPalworld **%s** shipped and `Source/Pal/Public` did not regenerate, so it is an alias of **%s**. The shas this was checked against are in `versions.json`, `aliases["%s"].aliasReason`.\n\nGenerated: the `versions.json` entry, `structs/%s.json`, and the `..%s` diffs. The acceptance suite ran green in the job that opened this PR. Note that self-test does NOT auto-run on PRs opened with `GITHUB_TOKEN`, so push a commit or close/reopen if you want its checks on record.\n\nStill human work, if it matters for this patch: the README alias caveat, `cli/README.md`, and CHANGELOG all name the alias list in prose.' \
+          body=$(printf '%sPalworld **%s** shipped and `Source/Pal/Public` did not regenerate, so it is an alias of **%s**. The shas this was checked against are in `versions.json`, `aliases["%s"].aliasReason`.\n\nGenerated: the `versions.json` entry, `structs/%s.json`, the `..%s` diffs, and the rebuilt offline archive. The acceptance suite ran green in the job that opened this PR. Note that self-test does NOT auto-run on PRs opened with `GITHUB_TOKEN`, so push a commit or close/reopen if you want its checks on record.\n\nStill human work, if it matters for this patch: the README alias caveat, `cli/README.md`, and CHANGELOG all name the alias list in prose.' \
             "$closes" "$VERSION" "$ALIAS_OF" "$VERSION" "$VERSION" "$VERSION")
           gh pr create --title "data: Palworld $VERSION aliases $ALIAS_OF (no SDK header change)" --body "$body"
