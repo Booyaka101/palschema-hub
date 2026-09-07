@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, basename, dirname, extname } from 'node:path';
 import type { ErrorObject, ValidateFunction } from 'ajv';
 
@@ -140,17 +140,68 @@ function schemaLocation(table: string, opts: Options): { url?: string; path?: st
   return registryLocation(`schemas/v${opts.version}/${table}.schema.json`, opts);
 }
 
+/**
+ * The registry itself could not be read: transport failure, 5xx, or a rate
+ * limit. Distinct from "the registry answered, and carries no schema for that
+ * table" — conflating the two lets a CI run go green having validated nothing,
+ * which is what a raw GitHub 429 used to look like.
+ */
+export class RegistryUnavailableError extends Error {}
+
+/**
+ * Read a registry-relative JSON file. Returns null when the registry answered
+ * but does not carry the file (404, or a missing file under a registry root that
+ * does exist); throws RegistryUnavailableError when the registry could not be
+ * read at all.
+ */
+async function readRegistryFile(relPath: string, opts: Pick<Options, 'registry' | 'owner'>): Promise<any | null> {
+  const loc = registryLocation(relPath, opts);
+  if (loc.path) {
+    if (!existsSync(loc.path)) {
+      const root = opts.registry!;
+      if (!existsSync(root)) throw new RegistryUnavailableError(`no such registry directory: ${root}`);
+      return null;
+    }
+    try {
+      return JSON.parse(readFileSync(loc.path, 'utf8'));
+    } catch (e: any) {
+      throw new RegistryUnavailableError(`${loc.path} is unreadable: ${e.message}`);
+    }
+  }
+  let res: Response;
+  try {
+    res = await fetch(loc.url!);
+  } catch (e: any) {
+    throw new RegistryUnavailableError(`${loc.url}: ${e.message}`);
+  }
+  // Drain the body on every path: an undici response left unread keeps its socket
+  // alive, and the process then hangs instead of reporting the failure.
+  const body = await res.text().catch(() => '');
+  if (res.status === 404) return null;
+  if (res.status === 429) {
+    throw new RegistryUnavailableError(`${loc.url}: HTTP 429 (rate limited) — retry later`);
+  }
+  if (!res.ok) throw new RegistryUnavailableError(`${loc.url}: HTTP ${res.status}`);
+  try {
+    return JSON.parse(body);
+  } catch (e: any) {
+    throw new RegistryUnavailableError(`${loc.url}: response is not JSON (${e.message})`);
+  }
+}
+
 /** Fetch/read a registry-relative JSON file. Throws with a clear message on failure. */
 export async function loadRegistryJson(relPath: string, opts: Pick<Options, 'registry' | 'owner'>): Promise<any> {
   const loc = registryLocation(relPath, opts);
+  let json: any;
   try {
-    if (loc.path) return JSON.parse(readFileSync(loc.path, 'utf8'));
-    const res = await fetch(loc.url!);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
+    json = await readRegistryFile(relPath, opts);
   } catch (e: any) {
     throw new Error(`cannot load ${relPath} from registry (${loc.path ?? loc.url}): ${e.message}`);
   }
+  if (json === null) {
+    throw new Error(`cannot load ${relPath} from registry (${loc.path ?? loc.url}): not found`);
+  }
+  return json;
 }
 
 const validatorCache = new Map<string, ValidateFunction | null>();
@@ -160,18 +211,12 @@ const schemaCache = new Map<string, any | null>();
 export async function getTableSchema(table: string, opts: Options, quiet = false): Promise<any | null> {
   const key = `${opts.version}:${table}`;
   if (schemaCache.has(key)) return schemaCache.get(key)!;
-  const loc = schemaLocation(table, opts);
-  let schema: any;
-  try {
-    if (loc.path) {
-      schema = JSON.parse(readFileSync(loc.path, 'utf8'));
-    } else {
-      const res = await fetch(loc.url!);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      schema = await res.json();
-    }
-  } catch (e: any) {
-    if (!quiet) console.warn(`  ! No schema for table "${table}" (v${opts.version}): ${e.message}`);
+  // A table this registry does not carry is a warning (mods legitimately patch
+  // tables outside the 31); a registry that cannot be read is not, and
+  // readRegistryFile throws for that case rather than returning null.
+  const schema = await readRegistryFile(`schemas/v${opts.version}/${table}.schema.json`, opts);
+  if (schema === null) {
+    if (!quiet) console.warn(`  ! No schema for table "${table}" (v${opts.version}): not in this registry`);
     schemaCache.set(key, null);
     return null;
   }
@@ -208,11 +253,7 @@ let overlayCache: LoaderOverlay | null | undefined;
  *  checks degrade gracefully — schema validation itself is unaffected). */
 export async function getLoaderOverlay(opts: Options): Promise<LoaderOverlay | null> {
   if (overlayCache !== undefined) return overlayCache;
-  try {
-    overlayCache = (await loadRegistryJson('structs/loader-overlay.json', opts)) as LoaderOverlay;
-  } catch {
-    overlayCache = null;
-  }
+  overlayCache = (await readRegistryFile('structs/loader-overlay.json', opts)) as LoaderOverlay | null;
   return overlayCache;
 }
 

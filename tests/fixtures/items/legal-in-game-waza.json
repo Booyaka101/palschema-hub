@@ -1,0 +1,15 @@
+{
+  "PSH_TestSkillFruit": {
+    "Type": "Consumable",
+    "Name": "Test Skill Fruit",
+    "Description": "Teaches one move to a pal.",
+    "IconTexture": "$resource/PalSchemaHub/skillfruit",
+    "TypeA": "Consume",
+    "TypeB": "ConsumeWazaMachine",
+    "Rank": 1,
+    "Rarity": 1,
+    "MaxStackCount": 99,
+    "WazaID": "EPalWazaID::PowerBall",
+    "bLegalInGame": false
+  }
+}

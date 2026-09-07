@@ -3,8 +3,8 @@
  * run-tests.mjs — portable acceptance-test runner (works on Windows cmd & Unix).
  * Asserts: index.json valid w/ >=10 tables; valid-mod passes (0); invalid-mod fails (1).
  */
-import { spawnSync } from 'node:child_process';
-import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { spawn, spawnSync } from 'node:child_process';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -23,8 +23,8 @@ function assert(label, ok, why = '') {
   if (!ok) failures++;
 }
 
-function run(label, args, expectCode, expectOutput) {
-  const r = spawnSync(node, args, { cwd: ROOT, encoding: 'utf8' });
+function run(label, args, expectCode, expectOutput, env) {
+  const r = spawnSync(node, args, { cwd: ROOT, encoding: 'utf8', env: { ...process.env, ...env } });
   const code = r.status;
   let ok = code === expectCode;
   let why = `exit ${code}, expected ${expectCode}`;
@@ -184,6 +184,35 @@ run('items: Rarity 5 -> out-of-range error (upstream maximum is 4)',
 run('items: MaxStackCount 10000 -> duplication warning (prose-only upstream), exit 0',
   validate('tests/fixtures/items/stack-10000.json'), 0, 'the game duplicates items when moving stacks');
 
+// 0.6.5 taught PalSchema three item things at once: bLegalInGame is a recognized
+// custom property, Consumables may carry WazaID, and IconTexture accepts a
+// $resource import. One fixture uses all three. The "before" half is the point:
+// a registry whose item schema does not know those keys warns on a file the game
+// loads fine, which is exactly the false positive a regeneration could reintroduce.
+run('items: bLegalInGame + WazaID + $resource icon (PalSchema 0.6.5) validate clean',
+  validate('tests/fixtures/items/legal-in-game-waza.json'), 0,
+  '1 file validated, 0 errors, 0 unknown-key warnings');
+{
+  const pre = mkdtempSync(join(tmpdir(), 'psv-pre065-'));
+  try {
+    for (const d of ['schemas', 'structs']) cpSync(join(ROOT, d), join(pre, d), { recursive: true });
+    cpSync(join(ROOT, 'versions.json'), join(pre, 'versions.json'));
+    const itemSchema = join(pre, 'schemas/v1.0/PalStaticItemData.schema.json');
+    const stripped = JSON.parse(readFileSync(itemSchema, 'utf8'));
+    delete stripped.properties.bLegalInGame;
+    delete stripped.properties.WazaID;
+    writeFileSync(itemSchema, JSON.stringify(stripped, null, 2));
+    const withoutKeys = ['cli/dist/index.js', '--version', '1.0', '--registry', pre,
+      'tests/fixtures/items/legal-in-game-waza.json'];
+    run('items: the same file warns twice against a registry without the 0.6.5 keys',
+      withoutKeys, 0, '0 errors, 2 unknown-key warnings');
+    run('items: that warning names bLegalInGame, so the fixture guards the right key',
+      withoutKeys, 0, 'unknown field "bLegalInGame"');
+  } finally {
+    rmSync(pre, { recursive: true, force: true });
+  }
+}
+
 run('published item schema: AttackValue scoped, AttackPower (upstream typo) absent, constraints stamped',
   ['-e', `const s=require('./schemas/v1.0/PalStaticItemData.schema.json');` +
     `if(s.properties.AttackPower||!s.properties.AttackValue)process.exit(1);` +
@@ -197,6 +226,31 @@ run('structs/upstream-constraints.json pins tag 0.6.5, the blob sha and PR #145'
     `if(c.tag!=='0.6.5'||!/^[0-9a-f]{40}$/.test(c.blobSha)||!/pull\\/145$/.test(c.pr)` +
     `||c.releaseDate!=='2026-08-28')process.exit(1);console.log('provenance pinned');`],
   0, 'provenance pinned');
+
+// A missing SDK header used to print one "!" line and carry on, which ships a
+// schema derived from the Jan-2024 dump alone under a $comment claiming the SDK.
+// Pointed at an SDK tree with no headers at all, the augmenter must refuse and name
+// what it looked for — except FPalTechnologyIconData, which the SDK really omits.
+{
+  const fake = mkdtempSync(join(tmpdir(), 'psv-sdk-'));
+  try {
+    const tree = join(fake, 'localcc-PalworldModdingKit-faketest');
+    mkdirSync(join(tree, 'Source', 'Pal', 'Public'), { recursive: true });
+    const env = { PALSCHEMA_SDK_DIR: tree };
+    run('augment-from-sdk: a header the SDK should have but does not fails the run',
+      ['scripts/augment-from-sdk.mjs', '1.0'], 1, 'PalDropItemDatabaseRow.h (DT_PalDropItem)', env);
+    const r = spawnSync(node, ['scripts/augment-from-sdk.mjs', '1.0'],
+      { cwd: ROOT, encoding: 'utf8', env: { ...process.env, ...env } });
+    const failLine = (r.stderr.split('FAIL:')[1] ?? '');
+    assert('augment-from-sdk: the one struct the SDK genuinely omits is not reported as missing',
+      failLine.includes('PalDropItemDatabaseRow.h') && !failLine.includes('FPalTechnologyIconData'));
+    assert('augment-from-sdk: a refused run leaves the committed schemas alone',
+      spawnSync('git', ['status', '--porcelain', 'schemas'],
+        { cwd: ROOT, encoding: 'utf8' }).stdout.trim() === '');
+  } finally {
+    rmSync(fake, { recursive: true, force: true });
+  }
+}
 
 // apply-upstream-constraints must be a byte-level no-op on the committed schema
 // (0.7.0 shipped three re-run bugs found exactly this way).
@@ -212,11 +266,23 @@ run('structs/upstream-constraints.json pins tag 0.6.5, the blob sha and PR #145'
     readFileSync(schemaPath, 'utf8') === before);
 }
 
-run('versions.json records PalSchema 0.6.3, 0.6.4 and 0.6.5 with published dates',
+run('versions.json records every PalSchema release 0.6.3-0.6.7 with its published date',
   ['-e', `const v=require('./versions.json').upstream.palSchema;` +
     `const r=Object.fromEntries((v.releases||[]).map(x=>[x.version,x.date]));` +
-    `if(v.version!=='0.6.5'||r['0.6.3']!=='2026-08-15'||r['0.6.4']!=='2026-08-18'||r['0.6.5']!=='2026-08-28')process.exit(1);` +
+    `const want={'0.6.3':'2026-08-15','0.6.4':'2026-08-18','0.6.5':'2026-08-28','0.6.6':'2026-09-03','0.6.7':'2026-09-04'};` +
+    `for(const [k,d] of Object.entries(want)) if(r[k]!==d) process.exit(1);` +
     `console.log('palSchema releases OK');`], 0, 'palSchema releases OK');
+// The declared record is what the README and the compatibility badge quote, and
+// PalSchema 0.6.6 moved nothing but its UE4SS pin, so the pin is asserted here
+// alongside the version rather than left to the README.
+run('versions.json declares the newest recorded PalSchema release and its UE4SS commit',
+  ['-e', `const v=require('./versions.json').upstream.palSchema;` +
+    `const last=v.releases[v.releases.length-1];` +
+    `if(v.version!==last.version||v.date!==last.date||v.ue4ssCommit!==last.ue4ss)process.exit(1);` +
+    `if(v.version!=='0.6.7'||v.ue4ssCommit!=='2281fa31')process.exit(1);` +
+    `const dates=v.releases.map(r=>r.date);` +
+    `if(dates.some((d,i)=>i&&d<dates[i-1]))process.exit(1);` +
+    `console.log('palSchema pin OK');`], 0, 'palSchema pin OK');
 run('published DT_PalMonsterParameter schema declares RanchActionData with PR #143 provenance',
   ['-e', `const s=require('./schemas/v1.0/DT_PalMonsterParameter.schema.json');` +
     `const p=s.properties.RanchActionData;` +
@@ -378,6 +444,27 @@ try {
     currency(),
     0, `items.schema.json blob ${pinnedBlob.blobSha.slice(0, 7)}`);
 
+  // 0.6.6 was a UE4SS bump and nothing else. Nothing above could see that, so the
+  // pin is read out of the claimed release's own body and compared here.
+  const pinnedUe4ss = versionsInfo.upstream.palSchema.ue4ssCommit;
+  const ue4ssBody = (sha) => `${psClaimed} is built with and must be used with [UE4SS ${sha}]` +
+    `(https://github.com/Okaetsu/RE-UE4SS/releases/tag/${sha}) for PalSchema to function properly.`;
+  const releasesPinned = write('releases-ue4ss-pinned.json',
+    [{ tag_name: psClaimed, body: ue4ssBody(pinnedUe4ss) }, { tag_name: '0.6.0' }]);
+  const releasesUe4ssMoved = write('releases-ue4ss-moved.json',
+    [{ tag_name: psClaimed, body: ue4ssBody('deadbee') }, { tag_name: '0.6.0' }]);
+  const withReleases = (f) => ['scripts/check-currency.mjs', '--steam-json', steamInsync,
+    '--commits-json', commitsHead, '--releases-json', f, '--upstream-schema-json', upstreamInsync];
+  run('check-currency: in-sync line reports the UE4SS commit it verified',
+    withReleases(releasesPinned), 0, `UE4SS ${pinnedUe4ss}`);
+  run('check-currency: a release that moved its UE4SS pin -> exit 1 naming both',
+    withReleases(releasesUe4ssMoved), 1,
+    `PalSchema ${psClaimed} requires UE4SS deadbee, this registry pins ${pinnedUe4ss}`);
+  // Releases before 0.6.5 name no commit at all; that must read as "nothing to
+  // compare", never as a mismatch.
+  run('check-currency: a release naming no UE4SS commit is not a mismatch',
+    currency(), 0, 'registry current');
+
   // bump-version: the alias path is mechanical, the regenerate path must refuse.
   run('bump-version: versions.json round-trips through the serializer byte-for-byte',
     ['scripts/bump-version.mjs', '--check-format'], 0, 'round-trips byte-identically');
@@ -408,6 +495,28 @@ for (const doc of ['README.md', 'cli/README.md', 'nexus/REGISTRY_README.txt', 'n
   assert(
     `${doc} quotes the SDK head the registry records (${headSha})`,
     readFileSync(join(ROOT, doc), 'utf8').includes(`SDK ${headSha}`),
+  );
+}
+
+// The README badges are static SVG links, so they are the easiest thing in the
+// repo to leave a release behind. Anchor them to the manifest they claim to show.
+{
+  const readme = readFileSync(join(ROOT, 'README.md'), 'utf8');
+  const pkgVersion = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version;
+  const ps = versionsInfo.upstream.palSchema;
+  const badges = {
+    [`registry-${pkgVersion}`]: pkgVersion,
+    [`PalSchema-${ps.version}`]: ps.version,
+    [`UE4SS-${ps.ue4ssCommit}`]: ps.ue4ssCommit,
+    [`Palworld-${newestLabel}`]: newestLabel,
+  };
+  for (const badge of Object.keys(badges)) {
+    assert(`README badge quotes ${badge.replace('-', ' ')}`, readme.includes(`/badge/${badge}-`));
+  }
+  assert(
+    `README compatibility line reads PalSchema ${ps.version} with UE4SS ${ps.ue4ssCommit}`,
+    readme.includes(`Compatible with PalSchema ${ps.version}`) &&
+      readme.includes(`UE4SS commit \`${ps.ue4ssCommit}\``),
   );
 }
 
@@ -514,6 +623,52 @@ try {
       'tests/valid-mod.json'], 1, "'ajv' package is required");
 } finally {
   rmSync(isolated, { recursive: true, force: true });
+}
+
+// A registry that answers "no such table" and a registry that cannot be read at
+// all used to look identical: one "!" line and exit 0. That is a CI job going
+// green having validated nothing, and a raw-GitHub 429 is the likely way to hit
+// it. They are now separate outcomes and both are pinned here.
+run('registry unavailable: a --registry path that does not exist -> exit 2, not a green run',
+  ['cli/dist/index.js', '--version', '1.0', '--registry', join(tmpdir(), 'psv-no-such-registry'),
+    'tests/real-mods/palvolve'], 2, 'no such registry directory');
+{
+  const thin = mkdtempSync(join(tmpdir(), 'psv-thin-'));
+  try {
+    mkdirSync(join(thin, 'schemas', 'v1.0'), { recursive: true });
+    cpSync(join(ROOT, 'versions.json'), join(thin, 'versions.json'));
+    cpSync(join(ROOT, 'structs'), join(thin, 'structs'), { recursive: true });
+    cpSync(join(ROOT, 'schemas/v1.0/DT_PalMonsterParameter.schema.json'),
+      join(thin, 'schemas/v1.0/DT_PalMonsterParameter.schema.json'));
+    run('registry reachable but missing that table -> still a warning and exit 0',
+      ['cli/dist/index.js', '--version', '1.0', '--registry', thin, 'tests/real-mods/palvolve'],
+      0, 'not in this registry');
+  } finally {
+    rmSync(thin, { recursive: true, force: true });
+  }
+}
+{
+  // The rate-limit case, served rather than described: raw.githubusercontent
+  // rate-limits by IP, which is the realistic way this registry goes unreadable.
+  // The server needs its own process — spawnSync blocks this one, so an
+  // in-process server would never get to accept the connection.
+  const marker = join(tmpdir(), `psv-429-${process.pid}.port`);
+  const src = 'require("node:http").createServer((_q, res) => { res.writeHead(429); res.end("rate limited"); })' +
+    `.listen(0, "127.0.0.1", function () { require("node:fs").writeFileSync(${JSON.stringify(marker)}, String(this.address().port)); });`;
+  const server = spawn(node, ['-e', src], { stdio: 'ignore' });
+  const sleep = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+  for (let i = 0; i < 100 && !existsSync(marker); i++) sleep(50);
+  try {
+    assert('rate-limit fixture: the 429 server came up', existsSync(marker));
+    if (existsSync(marker)) {
+      run('registry rate-limited (HTTP 429) -> exit 2 saying so',
+        ['cli/dist/index.js', '--version', '1.0', '--registry', `http://127.0.0.1:${readFileSync(marker, 'utf8')}`,
+          'tests/real-mods/palvolve'], 2, 'HTTP 429 (rate limited)');
+    }
+  } finally {
+    server.kill();
+    rmSync(marker, { force: true });
+  }
 }
 
 console.log(`\n${failures ? failures + ' test(s) FAILED' : 'All tests passed ✓'}`);

@@ -73,6 +73,26 @@ export function patchEntries(steam) {
     .sort((a, b) => b.date - a.date);
 }
 
+/**
+ * The UE4SS commit a PalSchema release says it must be run with, read from the
+ * release body. Two wordings appear: 0.6.6/0.6.7 use "must be used with
+ * [UE4SS <sha>]", 0.6.5 only has "Updated UE4SS to commit [<sha>]". Releases
+ * older than 0.6.5 name no commit at all (they link the moving
+ * experimental-palworld tag), so null means "this release does not pin one",
+ * never "mismatch".
+ */
+export function ue4ssCommitFromRelease(release) {
+  const body = String(release?.body ?? '');
+  for (const re of [/must be used with \[UE4SS\s+([0-9a-f]{7,40})\]/i, /Updated UE4SS to commit \[([0-9a-f]{7,40})\]/i]) {
+    const m = body.match(re);
+    if (m) return m[1];
+  }
+  return null;
+}
+
+/** Shas are quoted at different lengths upstream and here; compare by prefix. */
+export const shaMatches = (a, b) => Boolean(a && b) && (a.startsWith(b) || b.startsWith(a));
+
 /** Highest patch version anywhere in the news window (not just the most recent item). */
 export function newestGameVersion(steam) {
   let newest = null;

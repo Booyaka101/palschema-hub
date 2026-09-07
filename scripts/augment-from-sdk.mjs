@@ -23,10 +23,10 @@
  *
  * Run: node scripts/augment-from-sdk.mjs [palworldVersion]
  */
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createSdkParser, arrayFrag } from './lib/sdk-parse.mjs';
+import { createSdkParser, arrayFrag, locateSdk } from './lib/sdk-parse.mjs';
 import { isOverlayProp } from './lib/loader-overlay.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -34,17 +34,7 @@ const ROOT = join(__dirname, '..');
 const VER = process.argv[2] || '1.0';
 const SCHEMA_DIR = join(ROOT, 'schemas', `v${VER}`);
 
-// Locate the extracted SDK (any localcc-PalworldModdingKit-* under .cache/)
-const cacheEntries = existsSync(join(ROOT, '.cache')) ? readdirSync(join(ROOT, '.cache')) : [];
-const sdkDirName = cacheEntries.find((n) => n.startsWith('localcc-PalworldModdingKit-'));
-if (!sdkDirName) {
-  console.error('SDK not found in .cache/. Download with:');
-  console.error('  curl -sL -o .cache/sdk.tar.gz https://api.github.com/repos/localcc/PalworldModdingKit/tarball/main && tar -xzf .cache/sdk.tar.gz -C .cache/');
-  process.exit(1);
-}
-const SDK_COMMIT = sdkDirName.split('-').pop();
-const HDR_DIR = join(ROOT, '.cache', sdkDirName, 'Source', 'Pal', 'Public');
-const SDK_TAG = `localcc/PalworldModdingKit@${SDK_COMMIT}`;
+const { commit: SDK_COMMIT, headerDir: HDR_DIR, tag: SDK_TAG } = locateSdk(ROOT);
 
 /* C++ header parsing + C++ type -> JSON Schema mapping live in lib/sdk-parse.mjs
  * (shared with snapshot-structs.mjs); the parser is bound to this SDK's headers. */
@@ -54,6 +44,12 @@ const { parseStructFields, headerFor, fragForType } = createSdkParser(HDR_DIR);
 
 /** True if a derived fragment is (or unions with) an array type. */
 const isArrayish = (frag) => frag.type === 'array' || (Array.isArray(frag.type) && frag.type.includes('array'));
+
+/* Row structs the SDK genuinely ships no header for. Any OTHER missing or
+ * unparseable header means the tarball is wrong or a struct was renamed, and the
+ * schema would quietly stay on the Jan-2024 dump alone — so anything outside this
+ * list fails the run by header name (see the gate at the end of the file). */
+const HEADERLESS_ROW_STRUCTS = new Set(['FPalTechnologyIconData']);
 
 /** Suffix marking a field the dump never had. Written once, preserved on re-runs. */
 const SDK_ADDED_MARKER = 'current-game field (absent from Jan-2024 dump), verified from SDK headers';
@@ -115,12 +111,12 @@ for (const entry of manifest.generatedTables) {
   }
   const hp = headerFor(rowStruct);
   if (!hp) {
-    report.push({ table, rowStruct, status: 'NO SDK HEADER — left untouched' });
+    report.push({ table, rowStruct, status: `NO SDK HEADER (looked for ${rowStruct}.h) — left untouched` });
     continue;
   }
   const sdkFields = parseStructFields(readFileSync(hp, 'utf8'));
   if (!sdkFields.length) {
-    report.push({ table, rowStruct, status: 'HEADER PARSE EMPTY — left untouched' });
+    report.push({ table, rowStruct, status: `HEADER PARSE EMPTY (${basename(hp)} declares no UPROPERTY) — left untouched` });
     continue;
   }
   const sdkNames = new Set(sdkFields.map((f) => f.name));
@@ -205,10 +201,6 @@ for (const entry of manifest.generatedTables) {
   report.push({ table, rowStruct, status: 'ok', fields: sdkFields.length, added: added.length, removed: removed.length, addedNames: added, removedNames: removed });
 }
 
-manifest.source = `derived-from-paldex + field-verified-against-${SDK_TAG}`;
-manifest.sdk = { repo: 'localcc/PalworldModdingKit', commit: SDK_COMMIT, pushedAt: '2026-07-11' };
-writeFileSync(join(SCHEMA_DIR, '_manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
-
 for (const r of report) {
   if (r.status !== 'ok') {
     console.log(`  ! ${r.table.padEnd(38)} ${r.status}`);
@@ -223,3 +215,20 @@ console.log(`\nAugmented ${ok.length}/${report.length} schemas (SDK ${SDK_TAG});
 console.log(`Integer-ness aligned with the headers on ${retyped.length} field(s) (number -> integer).`);
 console.log(`Asset references widened on ${widened.length} field(s) (object -> object|string).`);
 for (const c of retypeConflicts) console.log(`  ! ${c}`);
+
+const missing = report.filter(
+  (r) => /^NO SDK HEADER|^HEADER PARSE EMPTY/.test(r.status) && !HEADERLESS_ROW_STRUCTS.has(r.rowStruct),
+);
+if (missing.length) {
+  console.error(
+    `\nFAIL: ${missing.length} row struct(s) have no usable header in ${SDK_TAG}: ` +
+      missing.map((r) => `${r.rowStruct}.h (${r.table})`).join(', '),
+  );
+  console.error('Refusing to ship schemas derived from the dump alone. Re-fetch the SDK tarball,');
+  console.error('or add the struct to HEADERLESS_ROW_STRUCTS if the SDK really does not carry it.');
+  process.exit(1);
+}
+
+manifest.source = `derived-from-paldex + field-verified-against-${SDK_TAG}`;
+manifest.sdk = { repo: 'localcc/PalworldModdingKit', commit: SDK_COMMIT, pushedAt: '2026-07-11' };
+writeFileSync(join(SCHEMA_DIR, '_manifest.json'), JSON.stringify(manifest, null, 2) + '\n');

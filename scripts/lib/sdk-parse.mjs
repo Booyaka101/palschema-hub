@@ -8,8 +8,34 @@
  *
  * Conventions follow PalSchema's own src/Generator/JsonSchema/JsonSchemaGenerator.cpp.
  */
-import { readFileSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { basename, join } from 'node:path';
+
+/**
+ * Locate the extracted SDK every generator here reads: any
+ * localcc-PalworldModdingKit-* directory under .cache/, or the tree
+ * PALSCHEMA_SDK_DIR names (a local SDK checkout, or a deliberately incomplete
+ * one — see the missing-header gate in augment-from-sdk.mjs). Exits 1 with the
+ * download command if there is none, since nothing downstream can run without it.
+ */
+export function locateSdk(root) {
+  const cache = join(root, '.cache');
+  const dirName = existsSync(cache)
+    ? readdirSync(cache).find((n) => n.startsWith('localcc-PalworldModdingKit-'))
+    : undefined;
+  const sdkRoot = process.env.PALSCHEMA_SDK_DIR ?? (dirName && join(cache, dirName));
+  if (!sdkRoot) {
+    console.error('SDK not found in .cache/. Download with:');
+    console.error('  curl -sL -o .cache/sdk.tar.gz https://api.github.com/repos/localcc/PalworldModdingKit/tarball/main && tar -xzf .cache/sdk.tar.gz -C .cache/');
+    process.exit(1);
+  }
+  const commit = basename(sdkRoot).split('-').pop();
+  return {
+    commit,
+    headerDir: join(sdkRoot, 'Source', 'Pal', 'Public'),
+    tag: `localcc/PalworldModdingKit@${commit}`,
+  };
+}
 
 const INT_RE = /^(u?int(8|16|32|64)(_t)?|long|short|char)$/;
 

@@ -340,6 +340,13 @@ async function main() {
             result = await (0, core_1.validateFile)(file, opts);
         }
         catch (e) {
+            // A file this run could not parse is one finding; a registry it could not
+            // read is not a per-file problem and must not be reported as one.
+            if (e instanceof core_1.RegistryUnavailableError) {
+                console.error(`Registry unavailable: ${e.message}`);
+                console.error('Nothing was validated. Check --registry, your network, or a GitHub rate limit.');
+                process.exit(2);
+            }
             result = { findings: [{ file, table: '(parse)', row: '', path: '/', message: e.message }], warnings: [] };
         }
         if (result.findings.length) {

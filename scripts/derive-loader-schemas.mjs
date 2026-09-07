@@ -13,26 +13,17 @@
  * Emits: schemas/v<ver>/PalStaticItemData.schema.json
  * Run:   node scripts/derive-loader-schemas.mjs [palworldVersion]
  */
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createSdkParser } from './lib/sdk-parse.mjs';
+import { createSdkParser, locateSdk } from './lib/sdk-parse.mjs';
 import { loadOverlay, overlayFrag } from './lib/loader-overlay.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const VER = process.argv[2] || '1.0';
 const SCHEMA_DIR = join(ROOT, 'schemas', `v${VER}`);
 
-const cacheEntries = existsSync(join(ROOT, '.cache')) ? readdirSync(join(ROOT, '.cache')) : [];
-const sdkDirName = cacheEntries.find((n) => n.startsWith('localcc-PalworldModdingKit-'));
-if (!sdkDirName) {
-  console.error('SDK not found in .cache/. Download with:');
-  console.error('  curl -sL -o .cache/sdk.tar.gz https://api.github.com/repos/localcc/PalworldModdingKit/tarball/main && tar -xzf .cache/sdk.tar.gz -C .cache/');
-  process.exit(1);
-}
-const SDK_COMMIT = sdkDirName.split('-').pop();
-const HDR_DIR = join(ROOT, '.cache', sdkDirName, 'Source', 'Pal', 'Public');
-const SDK_TAG = `localcc/PalworldModdingKit@${SDK_COMMIT}`;
+const { commit: SDK_COMMIT, headerDir: HDR_DIR, tag: SDK_TAG } = locateSdk(ROOT);
 
 const { parseStructFields, fragForType } = createSdkParser(HDR_DIR);
 
