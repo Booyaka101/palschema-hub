@@ -25,10 +25,14 @@
  *      0.6.6 shipped nothing but a UE4SS bump, so this is the axis that would
  *      have caught it even if the version had matched.
  *
- * Plus one purely local check that the first two structurally cannot catch: a
- * BALANCE patch changes row VALUES while every struct and sha stays put, so
- * items.json._provenance.gameVersion is compared against the newest game label
- * too. Palworld 1.0.3 was exactly that case (Holy Water weight 1 -> 0.1).
+ * Plus purely local checks that the sha axes structurally cannot catch: a BALANCE
+ * patch changes row VALUES while every struct and sha stays put, so the game
+ * version each value lane records — items.json, buildings.json and values/ — is
+ * compared against the newest game label too. Palworld 1.0.3 was exactly that
+ * case (Holy Water weight 1 -> 0.1), and 1.0.4 moved three of the extracted
+ * tables. What none of this sees is the game's own STRUCT layout moving without
+ * the SDK: that one is caught by check-values.mjs against what the last
+ * extraction recorded, because reading it needs the pak.
  *
  * Exit codes (never conflated):
  *   0  in sync   — prints "registry current: game <v>, SDK <sha>, PalSchema <v>"
@@ -41,6 +45,7 @@
  *   --public-commits-json <file>   saved commit list filtered to Source/Pal/Public
  *   --releases-json <file>         saved Okaetsu/PalSchema releases response
  *   --items-json <file>            items.json to read _provenance from
+ *   --values-json <file>           values/index.json to read gameVersion from
  *   --upstream-schema-json <file>  saved contents-API response for items.schema.json
  */
 import { readFileSync } from 'node:fs';
@@ -80,6 +85,7 @@ const fixtures = {
   releases: flag('--releases-json'),
   items: flag('--items-json'),
   buildings: flag('--buildings-json'),
+  values: flag('--values-json'),
   upstreamSchema: flag('--upstream-schema-json'),
 };
 
@@ -160,6 +166,21 @@ if (buildingsVersion && cmpVersions(buildingsVersion, newest) < 0) {
   problems.push(`buildings.json values are Palworld ${buildingsVersion}, registry newest is ${newest}`);
 }
 
+// values/ is the same blindness again, and the lane that matters most: it is read
+// from the game rather than scraped, so it is what the registry points at when a
+// number is disputed. 1.0.4 moved three of its tables while every sha held still.
+const valuesPath = fixtures.values ?? join(ROOT, 'values', 'index.json');
+let valuesVersion;
+try {
+  valuesVersion = JSON.parse(readFileSync(valuesPath, 'utf8')).gameVersion;
+} catch (e) {
+  console.error(`network failure: cannot read ${valuesPath}: ${e.message}`);
+  process.exit(2);
+}
+if (valuesVersion && cmpVersions(valuesVersion, newest) < 0) {
+  problems.push(`values/ was extracted from Palworld ${valuesVersion}, registry newest is ${newest}`);
+}
+
 // ---- PALSCHEMA: the framework these schemas are written for ------------------
 const claimed = versionsInfo.upstream?.palSchema?.version;
 let palSchemaNewest = claimed;
@@ -231,6 +252,7 @@ console.log(
     (claimed ? `, PalSchema ${claimed}` : '') +
     (itemsVersion ? `, item values ${itemsVersion}` : '') +
     (buildingsVersion ? `, building values ${buildingsVersion}` : '') +
+    (valuesVersion ? `, extracted values ${valuesVersion}` : '') +
     (upstreamSchemaSha ? `, items.schema.json blob ${upstreamSchemaSha.slice(0, 7)}` : '') +
     (ue4ssLive ? `, UE4SS ${ue4ssLive}` : ''),
 );
