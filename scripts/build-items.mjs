@@ -31,7 +31,7 @@ import { parseIndex, parseItemPage, detailUrlFor, parseFooterVersion } from './l
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const INDEX_URL = 'https://paldb.cc/en/Items_Table';
 const USER_AGENT = 'palschema-hub build-items (github.com/Booyaka101/palschema-hub)';
-const GAME_VERSION = '1.0.3'; // paldb.cc footer: "v1.0.3 2026/8/12" (matches Steam news)
+const GAME_VERSION = '1.0.4'; // paldb.cc footer: "v1.0.4 2026/09/07" (matches Steam news)
 // Cached pages are keyed by game version. A balance patch changes VALUES while
 // every URL stays the same, so a flat cache would silently rebuild the previous
 // version's numbers from disk; --refresh bypasses it entirely.
@@ -184,27 +184,35 @@ async function worker(queue) {
       continue;
     }
     const { entries, warnings } = parseItemPage(res.html);
+    page.parsed = entries;
     for (const w of warnings) parseWarnings.push(`${page.name}: ${w}`);
     if (!entries.length) parseWarnings.push(`${page.name}: page parsed to zero variant blocks`);
-    for (const { rowName, fields } of entries) {
-      // Item pages also render OTHER DataTables' entities as variant-shaped blocks
-      // (e.g. /en/Coal carries the mineable rock "DamagableRock0004" with Hp/Defense
-      // pal-object stats). Only Codes the item index lists are DT_ItemDataTable rows.
-      if (!expectedCodes.has(rowName)) {
-        foreignCodes.set(rowName, page.name);
-        continue;
-      }
-      if (paldbRows.has(rowName)) {
-        duplicateCodes.push(`${rowName} (again on ${page.name} — first occurrence kept)`);
-        continue;
-      }
-      paldbRows.set(rowName, fields);
-    }
     if (++done % 200 === 0) console.log(`  ${done}/${pages.length} pages…`);
   }
 }
 const queue = [...pages];
 await Promise.all(Array.from({ length: CONCURRENCY }, () => worker(queue)));
+
+// Rows are collected in INDEX order, not in the order four concurrent workers
+// happened to finish: page order is what makes a re-scrape diff to the values
+// that moved instead of to a reshuffle of every row. It also settles which page
+// wins a Code rendered on two of them, which used to be a race.
+for (const page of pages) {
+  for (const { rowName, fields } of page.parsed ?? []) {
+    // Item pages also render OTHER DataTables' entities as variant-shaped blocks
+    // (e.g. /en/Coal carries the mineable rock "DamagableRock0004" with Hp/Defense
+    // pal-object stats). Only Codes the item index lists are DT_ItemDataTable rows.
+    if (!expectedCodes.has(rowName)) {
+      foreignCodes.set(rowName, page.name);
+      continue;
+    }
+    if (paldbRows.has(rowName)) {
+      duplicateCodes.push(`${rowName} (again on ${page.name} — first occurrence kept)`);
+      continue;
+    }
+    paldbRows.set(rowName, fields);
+  }
+}
 console.log(`detail pages: ${done} fetched/cached, ${skipped404.length} skipped, ${paldbRows.size} rows parsed`);
 
 if (skipped404.length / pages.length > MAX_404_RATIO) {

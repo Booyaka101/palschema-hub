@@ -42,6 +42,18 @@
       "of": "1.0",
       "note": "Palworld 1.0.3 (v1.0.3: Balance Adjustments & Bug Fixes) shipped no Source/Pal/Public header change. Its row structs are identical to 1.0.",
       "aliasReason": "Source/Pal/Public was last regenerated at 98ee60d (2026-07-11), which is the commit Palworld 1.0 pins, and the SDK head is 62fad41 (2026-07-11), so 1.0.3 aliases 1.0. Verified 2026-08-17 against the Steam news API (appid 1623730) and the SDK commit list."
+    },
+    "1.0.4": {
+      "of": "1.0",
+      "note": "Palworld 1.0.4 (v1.0.4: Balance Adjustments & Bug Fixes) shipped no Source/Pal/Public header change, so every row struct the SDK describes is identical to 1.0. It is not a pure alias: the game's own cooked tables carry one property the pinned SDK does not have, on PalCharacterParameterDatabaseRow (DT_PalMonsterParameter, DT_PalHumanParameter). See aliases[\"1.0.4\"].gameDelta in versions.json.",
+      "aliasReason": "Source/Pal/Public was last regenerated at 98ee60d (2026-07-11), which is the commit Palworld 1.0 pins, and the SDK head is e663245 (2026-08-24), so 1.0.4 aliases 1.0. Verified 2026-09-07 against the Steam news API (appid 1623730) and the SDK commit list.",
+      "gameDelta": {
+        "summary": "PalCharacterParameterDatabaseRow gained a 91st property that the pinned SDK headers do not describe.",
+        "tables": ["DT_PalMonsterParameter", "DT_PalHumanParameter"],
+        "property": { "index": 90, "bytes": 1, "setOnRows": 103, "ofRows": 753 },
+        "evidence": "Read out of the 1.0.4 pak (Steam build 25094871) on 2026-09-07. Every row's unversioned header declares property index 90 while the 1.0-era mappings stop at 89; skipping one byte for it parses all 753 DT_PalMonsterParameter and 433 DT_PalHumanParameter rows and lands exactly on the trailing package tag, and only 16 monster and 4 human rows differ from 1.0.3 at all. It is set on 103 monster rows, every one a RAID, GYM, PREDATOR, SUMMON or BOSS entry, and on no human row. Its name and type stay unknown until Source/Pal/Public is regenerated or a 1.0.4 Mappings.usmap names it.",
+        "impact": "No property a mod can already write was removed, retyped or reordered, so \"no row-struct changes\" holds for every field the registry describes. values/ carries the 90 mapped properties and records the unmapped one in values/index.json."
+      }
     }
   }
 }

@@ -30,7 +30,7 @@ import { parseDetailPage, parseIndex, detailUrlFor, parseFooterVersion, decodeEn
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const USER_AGENT = 'palschema-hub build-buildings (github.com/Booyaka101/palschema-hub)';
-const GAME_VERSION = '1.0.3'; // paldb.cc footer: "v1.0.3 2026/8/12" — asserted below
+const GAME_VERSION = '1.0.4'; // paldb.cc footer: "v1.0.4 2026/09/07" — asserted below
 const CACHE_DIR = join(ROOT, '.cache', 'paldb-buildings', GAME_VERSION);
 const CONCURRENCY = 4;
 const SPACING_MS = 150;
@@ -168,6 +168,29 @@ if (footer.version !== GAME_VERSION) {
 }
 console.log(`index: ${pagesByName.size} buildings; paldb.cc footer: Palworld ${footer.version} (${footer.date})`);
 
+// The category indexes cover a SHIFTING subset: the 1.0.4 crawl stopped listing
+// 16 buildings whose detail pages are still live and whose rows the game still
+// ships (DT_BuildObjectDataTable is byte-identical across 1.0.3 and 1.0.4), so a
+// plain re-scrape would delete them. Anything the previous file carried is queued
+// by display name instead, and re-read from its page like every other row.
+const carriedForward = new Set();
+try {
+  const prev = JSON.parse(readFileSync(join(ROOT, 'buildings.json'), 'utf8'));
+  const listed = new Set([...pagesByName.values()].flatMap((e) => e.mapObjectIds));
+  for (const [rowName, row] of Object.entries(prev.buildings ?? {})) {
+    if (listed.has(rowName) || !row.name) continue;
+    const slug = row.name.replace(/ /g, '_');
+    const entry = pagesByName.get(slug) ??
+      { slug, mapObjectIds: [], categories: row.categories ?? [], group: row.group ?? '' };
+    if (!entry.mapObjectIds.includes(rowName)) entry.mapObjectIds.push(rowName);
+    pagesByName.set(slug, entry);
+    carriedForward.add(rowName);
+  }
+} catch {
+  console.log('note: no previous buildings.json — index listing only');
+}
+if (carriedForward.size) console.log(`  + ${carriedForward.size} building(s) the indexes no longer list, queued by name`);
+
 // ---- item display-name -> Code map (for materials) --------------------------
 // The item index is what build-items.mjs scrapes; only UNIQUE display names map
 // (a name shared by several Codes stays unmapped rather than guessing).
@@ -299,6 +322,7 @@ const out = {
     gameVersionDate: footer.date,
     valuesCurrent: true,
     rowCount: Object.keys(sorted).length,
+    carriedForwardRows: [...carriedForward].filter((k) => k in sorted).length,
   },
   count: Object.keys(sorted).length,
   buildings: sorted,

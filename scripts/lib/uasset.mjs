@@ -225,9 +225,10 @@ function readStructBody(r, structName, ctx) {
   return out;
 }
 
-function readRows(buf, at, count, schema, ctx) {
+function readRows(buf, at, count, schema, ctx, trailing) {
   const r = new Reader(buf, at);
   const rows = {};
+  let trailingRows = 0;
   for (let i = 0; i < count; i++) {
     const nameIndex = r.i32();
     const number = r.i32();
@@ -237,19 +238,29 @@ function readRows(buf, at, count, schema, ctx) {
     const row = {};
     for (const { index, isZero } of readUnversionedHeader(r)) {
       const node = schema.get(index);
-      if (!node) throw new Error(`property index ${index} absent from schema`);
+      if (!node) {
+        if (!trailing || index !== trailing.index) throw new Error(`property index ${index} absent from schema`);
+        if (!isZero) { r.o += trailing.size; trailingRows++; }
+        continue;
+      }
       const value = isZero ? defaultValue(node, ctx) : readValue(r, node, ctx);
       if (value !== UNRESOLVED) row[node.name] = value;
     }
     rows[rowName] = row;
   }
-  return { rows, end: r.o };
+  return { rows, end: r.o, trailingRows };
 }
 
 /**
  * Read every row of a cooked DataTable. Throws unless the parse lands exactly on
  * the trailing package tag with the declared number of rows — a wrong property
  * layout drifts and fails that check rather than returning plausible garbage.
+ *
+ * A game patch can append a property the mappings file predates, which is not a
+ * wrong layout: every mapped property still reads, and one unmapped value sits at
+ * the end of each row. That is retried for, with the same exact-landing proof and
+ * only for the one index past the mapped struct, and reported so the caller can
+ * record it. Its name and type stay unknown; only its size is recovered.
  */
 export function readDataTable(uassetPath, uexpPath, schema, usmap, schemaFor) {
   const { names } = readPackageNames(uassetPath);
@@ -259,19 +270,34 @@ export function readDataTable(uassetPath, uexpPath, schema, usmap, schemaFor) {
 
   const limit = Math.min(uexp.length - 8, 4096);
   let lastError = null;
-  for (let start = 0; start < limit; start++) {
-    const count = uexp.readInt32LE(start);
-    if (count < 1 || count > 200000) continue;
-    let parsed;
-    try {
-      parsed = readRows(uexp, start + 4, count, schema, ctx);
-    } catch (e) {
-      if (start < 64) lastError = e;
-      continue;
+  const scan = (trailing) => {
+    for (let start = 0; start < limit; start++) {
+      const count = uexp.readInt32LE(start);
+      if (count < 1 || count > 200000) continue;
+      let parsed;
+      try {
+        parsed = readRows(uexp, start + 4, count, schema, ctx, trailing);
+      } catch (e) {
+        if (start < 64 && !trailing) lastError = e;
+        continue;
+      }
+      if (parsed.end === targetEnd && Object.keys(parsed.rows).length === count) {
+        return { rows: parsed.rows, count, rowMapOffset: start, trailingRows: parsed.trailingRows };
+      }
     }
-    if (parsed.end === targetEnd && Object.keys(parsed.rows).length === count) {
-      return { rows: parsed.rows, count, rowMapOffset: start };
-    }
+    return null;
+  };
+
+  const hit = scan(null);
+  if (hit) return hit;
+
+  const index = Math.max(...schema.keys()) + 1;
+  for (const size of [1, 2, 4, 8]) {
+    const tolerated = scan({ index, size });
+    if (!tolerated) continue;
+    // Never serialized on any row: the size that made it land is not evidence.
+    const unmapped = tolerated.trailingRows ? { index, size, rows: tolerated.trailingRows } : { index, rows: 0 };
+    return { ...tolerated, unmapped };
   }
   throw new Error(`row map not found${lastError ? ` (${lastError.message})` : ''}`);
 }

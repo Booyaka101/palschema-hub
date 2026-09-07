@@ -187,8 +187,8 @@ Scan your own mod for fields a patch broke:
 It prints one line per affected field (with a labelled possible-rename note)
 and exits 1 if anything broke, so it drops straight into CI.
 
-Note: Palworld 0.7.3, 1.0.1, the 1.0.2 line and 1.0.3 shipped no row-struct
-changes, so they are recorded as aliases of 0.7.2 / 1.0 / 1.0 / 1.0 — those pairs report
+Note: Palworld 0.7.3, 1.0.1, the 1.0.2 line, 1.0.3 and 1.0.4 shipped no row-struct
+changes, so they are recorded as aliases of 0.7.2 / 1.0 / 1.0 / 1.0 / 1.0 — those pairs report
 "no row-struct changes" rather than inventing a diff. For example:
 
     npx palschema-validate --migrate 1.0.1..1.0.2 my-mod/
@@ -199,11 +199,18 @@ HOW CURRENT IS EACH PART? (read this before trusting a value)
 -------------------------------------------------------------
 Field NAMES and TYPES — the schemas, the version diffs, the --migrate scan —
 are verified against the CURRENT game's row structs (PalworldModdingKit SDK
-headers @62fad41). That part is 1.0.3-current.
+headers @62fad41). That part is 1.0.4-current, with one exception the SDK
+cannot cover: 1.0.4 added a property to PalCharacterParameterDatabaseRow
+(DT_PalMonsterParameter, DT_PalHumanParameter) that the headers do not
+describe, so it is absent here. Nothing was removed, retyped or reordered,
+so a mod written against 1.0 still needs no field migration. versions.json
+aliases["1.0.4"].gameDelta records what was read out of the game.
 
-Row VALUES in items.json / items.html are current too, re-scraped for 1.0.3.
+Row VALUES in items.json / items.html are current too, re-scraped for 1.0.4
+(the patch moved no item row at all — the game's own DT_ItemDataTable is
+byte-identical to 1.0.3).
 They come from paldb.cc, which tracks the live build (its footer pins to
-v1.0.3, 2026/8/12): 2,445 rows, one per rarity variant. Fields paldb.cc does not
+v1.0.4, 2026/09/07): 2,445 rows, one per rarity variant. Fields paldb.cc does not
 render (VisualBlueprintClassSoft, DropItemType, GrantEffect*, TechnologyTreeLock
 and friends) are filled from the old Jan-2024 paldex dump where that row existed
 back then; paldb wins every conflict, and items.json's fieldSources object
