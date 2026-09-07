@@ -1,6 +1,56 @@
 # Changelog — palschema-hub / palschema-validate
 
-## 0.12.0 / palschema-validate 0.6.1 — 2026-09-05
+## 0.12.0 / palschema-validate 0.6.1 — 2026-09-07
+
+**Palworld 1.0.4, and the property the SDK could not see.** The daily currency
+watch caught 1.0.4 on the morning it shipped, `bump-version.mjs` checked the Steam
+news API and the PalworldModdingKit commit list, found `Source/Pal/Public`
+unregenerated since 1.0, and called it an alias. Re-extracting `values/` against
+the new build said otherwise.
+
+- **`PalCharacterParameterDatabaseRow` gained a 91st property.**
+  `DT_PalMonsterParameter` and `DT_PalHumanParameter` stopped parsing, and they are
+  exactly the two tables that share that row struct. At the row map their counts
+  are unchanged (753 and 433), every property the 1.0-era mappings know decodes,
+  and then the row header declares index 90, which the mappings have no entry for.
+  The SDK is a decompile that lags the game, so no sha-based check could have seen
+  this.
+- **Recovered, not guessed.** Skipping **one byte** for it parses all 753 monster
+  and 433 human rows and lands exactly on the trailing package tag, which is the
+  proof `readDataTable` already demands of every table. The recovered rows differ
+  from 1.0.3 on 16 monster and 4 human rows, all ordinary balance edits (speeds,
+  `MaxFullStomach`, a `PassiveSkill1`), not the scramble a misread layout gives. It
+  is set on 103 monster rows, every one a `RAID_`/`GYM_`/`PREDATOR_`/`SUMMON_`/
+  `BOSS_` entry, and on no human row. Its name and type stay unknown until the SDK
+  regenerates or a 1.0.4 `Mappings.usmap` names it, so the reader tolerates one
+  unmapped trailing property and `values/index.json` records where it is, rather
+  than the registry dropping two of its most-modded tables.
+- **1.0.4 still aliases 1.0, and now says why that is not the whole story.**
+  Nothing a mod can already write was removed, retyped or reordered. But the alias
+  note, every diff it feeds, the CLI's `--migrate` output and `versions.json`
+  `aliases["1.0.4"].gameDelta` all state that something was **added** and the
+  registry cannot describe it yet.
+- **What the patch actually moved,** read from the game rather than a mirror of it:
+  `DT_ItemDataTable`, `DT_BuildObjectDataTable` and `DT_MapObjectMasterDataTable`
+  are byte-identical to 1.0.3. Only `DT_PalDropItem` (15 rows gone, 24 changed),
+  `DT_PassiveSkill_Main` (7) and `DT_WazaDataTable` (one new row, 7 changed,
+  including the Power Bomb `MinRange` drop from 1000 to 400 the notes describe).
+- **buildings.json is 483 rows and lost nothing.** paldb's ten category indexes
+  stopped listing 16 buildings whose pages are still live and whose rows the game
+  still ships, `HatchingPalEgg` among them, so a plain re-scrape would have deleted
+  them from the published browser. Anything the previous file carried is queued by
+  display name now and re-read like every other row
+  (`_provenance.carriedForwardRows`).
+- **items.json re-scraped at the 1.0.4 footer is value-for-value identical**, and
+  the file no longer reshuffles itself. `build-items.mjs` collected rows in the
+  order four concurrent workers finished in, so this refresh produced a 39,000 line
+  diff for zero value changes. Rows are assembled in index order after the workers
+  finish: two consecutive runs are byte-identical, and the same refresh diffs to
+  220 lines.
+- **The gap this leaves:** none of `check-currency`'s seven axes reads the game's
+  own struct layout, which is how the added property got past all of them. It was
+  found by running the extractor, not by the watch. Comparing extracted layouts
+  against the pinned SDK's is the axis that would have caught it on the morning.
 
 **Caught up to PalSchema 0.6.7, and the UE4SS commit is now a checked pin rather
 than a sentence in the README.** `npm run versions:check` opened
@@ -95,6 +145,7 @@ absorbed. The interesting part is how that was established, and what it exposed.
   after the extraction is byte-identical to the baseline.
 - All four real published mods in the corpus still pass with zero new warnings.
   Tests 105 → **124**.
+
 ## 0.11.0 — 2026-08-30
 
 **Current row values for 28 of the 31 registry tables, read out of the game's own

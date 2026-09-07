@@ -13,7 +13,26 @@ Plus the CURRENT ROW VALUES for 28 of those tables, a per-item and
 per-building VALUE reference, and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry 0.12.0, 2026-09-05)
+NEW IN THIS VERSION (registry 0.12.0, 2026-09-07)
+  * PALWORLD 1.0.4 COVERED, WITH ONE HONEST ASTERISK. The patch changed no
+    row struct the modding SDK describes, so a mod that worked on 1.0 needs
+    no field migration. But the game's own cooked tables carry a property
+    the SDK does not have yet: PalCharacterParameterDatabaseRow gained a
+    91st (DT_PalMonsterParameter, DT_PalHumanParameter), set on 103 of the
+    753 monster rows, all raid, tower, predator and boss entries. It was
+    read out of the 1.0.4 pak rather than inferred. Nothing was removed,
+    retyped or reordered; something was added, and this registry cannot
+    name it until the SDK regenerates. versions.json records the whole
+    finding under aliases["1.0.4"].gameDelta.
+  * VALUES RE-READ FROM THE 1.0.4 BUILD. Item, build-object and map-object
+    tables came back byte-identical, so items.json and buildings.json move
+    only their version label. DT_PalDropItem, DT_PassiveSkill_Main and
+    DT_WazaDataTable did move, including the Power Bomb minimum range drop
+    from 1000 to 400.
+  * BUILDING REFERENCE IS 483 ROWS, up from 460, and lost nothing. The
+    source site quietly stopped listing 16 buildings whose pages are still
+    live (the Egg Incubator among them); those are re-read by name now
+    instead of vanishing from the reference.
   * CAUGHT UP TO PALSCHEMA 0.6.7, AND THE UE4SS PIN IS NOW CHECKED.
     0.6.7 must be run with UE4SS commit 2281fa31, which is a change 0.6.6
     made and nothing about a schema could have told you. That commit is now
