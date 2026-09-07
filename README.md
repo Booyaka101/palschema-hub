@@ -232,8 +232,8 @@ the item and building references already carried. No game asset is redistributed
 ## Item asset reference (values, not just schemas)
 
 [`items.html`](https://booyaka101.github.io/palschema-hub/items.html) is a searchable per-item
-**value** reference for `DT_ItemDataTable` — **2,445 rows, current-game (Palworld 1.0.3,
-2026-08-12)**: row name → `ItemActorClass` / `ItemStaticClass` / `ItemDynamicClass` / visual
+**value** reference for `DT_ItemDataTable` — **2,445 rows, current-game (Palworld 1.0.4,
+2026-09-07)**: row name → `ItemActorClass` / `ItemStaticClass` / `ItemDynamicClass` / visual
 fields, plus stats (`SortId`, `Rarity`, `Durability`, Defense/Health) and the full row JSON to
 copy as a base for variants. Motivated by
 [PalSchema #53](https://github.com/Okaetsu/PalSchema/issues/53): cloning an equipment row
@@ -245,7 +245,7 @@ Machine-readable: [`items.json`](https://booyaka101.github.io/palschema-hub/item
 public paldex FModel dump — frozen at Jan-2024 (947 rows, and the dead field `SortID`, which
 the current game renamed to `SortId`, so the file failed our own schema). Now
 `scripts/build-items.mjs` scrapes **[paldb.cc](https://paldb.cc/en/Items_Table)** (robots.txt
-`Allow: /`; the site tracks the live game — 2,466 listed rows at 1.0.3), one cached page per
+`Allow: /`; the site tracks the live game — 2,466 listed rows at 1.0.4), one cached page per
 item, one row per rarity variant. The scrape reads paldb's own version footer and refuses to
 write if it disagrees with the build the script claims to be capturing, and the page cache is
 keyed by game version so a balance patch can't be rebuilt from the previous build's HTML. **Merge rule:** fields paldb.cc doesn't render
@@ -266,7 +266,7 @@ are **not** in the schema are printed at the end, which is how new game fields g
 ## Building reference (two tables, one row name)
 
 [`buildings.html`](https://booyaka101.github.io/palschema-hub/buildings.html) is the same
-idea for buildings — **460 rows, current-game (Palworld 1.0.3)** — and untangles the part
+idea for buildings — **483 rows, current-game (Palworld 1.0.4)** — and untangles the part
 people trip on (issue #21): a building spans **two DataTables sharing one row name**.
 The Egg Incubator is `HatchingPalEgg` in `DT_MapObjectMasterDataTable` (world-object
 side: `Hp`, `Defense`, `DeteriorationDamage`, …) **and** in `DT_BuildObjectDataTable`
@@ -281,6 +281,13 @@ render the raw field names), routes every field to the table whose schema declar
 disagrees with the build it claims to capture. Fields paldb doesn't render
 (`BlueprintClassName`, `RequiredBuildWorkAmount`, the raw `Material1..4` columns) are
 absent, not zero. Gate: `npm run check:buildings`, run by `npm test`.
+
+Those category indexes cover a **shifting subset**. The 1.0.4 crawl stopped listing 16
+buildings whose detail pages are still live and whose rows the game still ships
+(`DT_BuildObjectDataTable` is byte-identical across 1.0.3 and 1.0.4), `HatchingPalEgg` among
+them, so a plain re-scrape would have deleted them. Anything the previous file carried is
+queued by display name instead and re-read from its own page like every other row;
+`_provenance.carriedForwardRows` counts them.
 
 ### Lottery buildings (the Ancient Relic Recycler)
 
@@ -388,15 +395,28 @@ field snapshots are committed under `structs/` and the pairwise deltas under `di
 | 1.0 | `98ee60d` | 2026-07-11 |
 
 > **Alias caveat:** Palworld **0.7.3**, **1.0.1**, the **1.0.2** patch line (v1.0.2 ·
-> v1.0.2.100993 "Mod Support Improvement" · v1.0.2.101103) and **1.0.3** ("Balance
-> Adjustments & Bug Fixes") shipped **no** row-struct (header) changes, so they alias
-> `0.7.2` / `1.0` / `1.0` / `1.0` respectively — the CLI and diff page say so explicitly
+> v1.0.2.100993 "Mod Support Improvement" · v1.0.2.101103), **1.0.3** ("Balance
+> Adjustments & Bug Fixes") and **1.0.4** (same title) shipped **no** row-struct (header)
+> changes, so they alias
+> `0.7.2` / `1.0` / `1.0` / `1.0` / `1.0` respectively — the CLI and diff page say so explicitly
 > (`--migrate 1.0.1..1.0.2` → "no row-struct changes … both alias Palworld 1.0,
 > SDK e663245") instead of pretending a diff exists. Those claims are not assumed: the SDK's
 > `Source/Pal/Public` was last regenerated at `98ee60d` (2026-07-11), the commit 1.0 pins,
 > and each alias records the shas it was checked against in `versions.json`
 > `aliases[...].aliasReason`. Note also that 0.7.0→0.7.2 changed no row structs (those SDK
 > updates touched other classes).
+
+> **1.0.4 is where the SDK proxy shows its limit.** `Source/Pal/Public` did not regenerate,
+> but the game's own cooked tables did move: `PalCharacterParameterDatabaseRow` gained a 91st
+> property (a 1-byte value at index 90, set on 103 of the 753 `DT_PalMonsterParameter` rows
+> and on none of `DT_PalHumanParameter`'s 433), which the pinned headers cannot name. That was
+> read out of the 1.0.4 pak, not inferred: skipping one byte for it parses every row and lands
+> exactly on the trailing package tag, and only 16 monster and 4 human rows differ from 1.0.3
+> at all. No property a mod can already write was removed, retyped or reordered, so "no
+> row-struct changes" holds for every field the registry describes; it just does not also mean
+> "nothing was added". `versions.json` `aliases["1.0.4"].gameDelta` records the delta and how
+> it was read, and `values/index.json` records the unmapped property beside the two tables
+> that carry it.
 
 **Staleness detection:** `npm run versions:check` compares this repo against the live world on
 six axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
@@ -409,11 +429,16 @@ schema edit stales the port even before it reaches a release), and `items.json`'
 because a **balance** patch moves row VALUES while every struct and sha stays put: 1.0.3 changed
 World Tree Holy Water's weight from 1 to 0.1 with an unchanged SDK, so every sha-based check
 would have said "current" while the shipped values were a patch behind. Exit 0 in sync
-(`registry current: game 1.0.3, SDK e663245, PalSchema 0.6.5, item values 1.0.3, building
-values 1.0.3, items.schema.json blob b41a965`), exit 1 stale with one line
+(`registry current: game 1.0.4, SDK e663245, PalSchema 0.6.5, item values 1.0.4, building
+values 1.0.4, items.schema.json blob b41a965`), exit 1 stale with one line
 naming exactly what moved, exit 2 on network failure — never conflated. It runs as an
 informational CI step and in the daily cron, which opens an issue when something actually
 moved.
+
+None of the six reads the game's own struct layout, which is how 1.0.4's added property got
+past all of them: it was found by re-running `npm run extract` against the new build, where
+the mapped struct no longer accounted for every property in the row. Comparing extracted
+layouts against the pinned SDK's would be the seventh axis.
 
 **Auto-bump:** `npm run versions:bump` (`scripts/bump-version.mjs`) handles the one case that
 is fully derivable: the game shipped a patch and `Source/Pal/Public` did **not** regenerate,
@@ -468,7 +493,7 @@ items.html + items.json        per-item value reference for DT_ItemDataTable (as
 values.html + values/*.json    current row values for 28 tables, read from the game's DataTables
 tools/ooz-decompress/          Rust helper: Oodle decompression for the extractor (build on demand)
 diff.html                      version-diff viewer (what changed between game versions)
-versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3/1.0.1/1.0.2/1.0.3 aliases + sdkHead)
+versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3/1.0.1/1.0.2/1.0.3/1.0.4 aliases + sdkHead)
 structs/<ver>.json             12 committed row-struct snapshots (field -> C++ type, ordered) + alias copies
 diffs/<a>..<b>.json + .md      pairwise struct deltas (added/removed/retyped + rename notes)
 cli/                           palschema-validate (TypeScript -> dist/*.js), ajv strict

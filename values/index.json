@@ -1,9 +1,9 @@
 {
  "$comment": "Current row VALUES for every registry table, read from the game's own cooked DataTables by scripts/extract-tables.mjs. Derived data only (numbers and identifiers); no game asset is redistributed. Field names and types are the published schemas in schemas/v1.0.",
- "gameVersion": "1.0.3",
+ "gameVersion": "1.0.4",
  "usmapVersion": 4,
  "pakVersion": 11,
- "generatedAt": "2026-08-30",
+ "generatedAt": "2026-09-07",
  "unsupported": {
   "DT_TechnologyIconData": "row struct FPalTechnologyIconData is absent from the mappings file",
   "DT_TechnologyRecipeUnlock": "row layout does not match the mapped struct (4 unaccounted bytes before the first value)",
@@ -109,7 +109,7 @@
   {
    "table": "DT_PalDropItem",
    "rowStruct": "PalDropItemDatabaseRow",
-   "rows": 1044,
+   "rows": 1029,
    "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalDropItem.uasset"
   },
   {
@@ -122,12 +122,21 @@
    "table": "DT_PalHumanParameter",
    "rowStruct": "PalCharacterParameterDatabaseRow",
    "rows": 433,
+   "unmappedTrailingProperty": {
+    "index": 90,
+    "rows": 0
+   },
    "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalHumanParameter.uasset"
   },
   {
    "table": "DT_PalMonsterParameter",
    "rowStruct": "PalCharacterParameterDatabaseRow",
    "rows": 753,
+   "unmappedTrailingProperty": {
+    "index": 90,
+    "size": 1,
+    "rows": 103
+   },
    "assetPath": "Pal/Content/Pal/DataTable/Character/DT_PalMonsterParameter.uasset"
   },
   {
@@ -163,7 +172,7 @@
   {
    "table": "DT_WazaDataTable",
    "rowStruct": "PalWazaDatabaseRaw",
-   "rows": 384,
+   "rows": 385,
    "assetPath": "Pal/Content/Pal/DataTable/Waza/DT_WazaDataTable.uasset"
   },
   {

@@ -154,10 +154,20 @@ for (const t of planned) {
   const schema = schemaFor(t.rowStruct);
   if (!schema.size) { record(t.table, `struct ${t.rowStruct} absent from the mappings`); continue; }
   try {
-    const { rows, count } = readDataTable(t.paths.uasset, t.paths.uexp, schema, usmap, schemaFor);
+    const { rows, count, unmapped } = readDataTable(t.paths.uasset, t.paths.uexp, schema, usmap, schemaFor);
     writeFileSync(join(outDir, `${t.table}.json`), JSON.stringify(rows, null, 1) + '\n');
-    index.push({ table: t.table, rowStruct: t.rowStruct, rows: count, assetPath: `${t.assetPath}.uasset` });
-    console.log(`  ✓ ${t.table.padEnd(38)} ${String(count).padStart(5)} rows`);
+    index.push({
+      table: t.table,
+      rowStruct: t.rowStruct,
+      rows: count,
+      ...(unmapped ? { unmappedTrailingProperty: unmapped } : {}),
+      assetPath: `${t.assetPath}.uasset`,
+    });
+    const extra = unmapped
+      ? `  + one property at index ${unmapped.index} the mappings do not have` +
+        (unmapped.rows ? ` (${unmapped.size} byte(s), set on ${unmapped.rows} row(s))` : ' (never serialized)')
+      : '';
+    console.log(`  ✓ ${t.table.padEnd(38)} ${String(count).padStart(5)} rows${extra}`);
   } catch (e) {
     record(t.table, e.message);
   }

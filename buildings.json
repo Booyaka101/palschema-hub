@@ -1,19 +1,20 @@
 {
- "generatedAt": "2026-08-19T07:06:12.231Z",
+ "generatedAt": "2026-09-07T07:21:55.864Z",
  "tables": [
   "DT_MapObjectMasterDataTable",
   "DT_BuildObjectDataTable"
  ],
- "source": "paldb.cc construction category pages (Palworld 1.0.3)",
+ "source": "paldb.cc construction category pages (Palworld 1.0.4)",
  "note": "Per-building row VALUES for the two build tables, which share one row name per building (e.g. HatchingPalEgg in both DT_MapObjectMasterDataTable and DT_BuildObjectDataTable; the unlocking DT_TechnologyRecipeUnlock row prefixes it, e.g. Special_HatchingPalEgg — not rendered by paldb, so not here). Fields are routed to a table by which schema declares them; labels neither schema declares are display-side derivations kept under \"display\". Materials are captured by display name and mapped to item Codes via the item index where the name is unique; the raw Material1..4_Id/_Count columns are not rendered by paldb. Field names/types: schemas/ and index.html.",
  "_provenance": {
   "source": "paldb.cc /en/{Production,Pal,Storage,Food,Infrastructure,Lighting,Foundations,Defenses,Furniture,Other} + per-building detail pages",
-  "gameVersion": "1.0.3",
-  "gameVersionDate": "2026-08-12",
+  "gameVersion": "1.0.4",
+  "gameVersionDate": "2026-09-07",
   "valuesCurrent": true,
-  "rowCount": 460
+  "rowCount": 483,
+  "carriedForwardRows": 21
  },
- "count": 460,
+ "count": 483,
  "buildings": {
   "AncientBlastFurnace": {
    "name": "Ancient Furnace",
@@ -125,6 +126,58 @@
      "item": "Cryogenic Coolant",
      "code": "Bio_Coolant",
      "count": 50
+    },
+    {
+     "item": "Ancient Civilization Core",
+     "code": "AncientParts2",
+     "count": 10
+    }
+   ]
+  },
+  "AncientElectricGenerator": {
+   "name": "Ancient Power Generator",
+   "categories": [
+    "Infrastructure"
+   ],
+   "group": "Electricity",
+   "description": "A highly efficient power generator restored from lost ancient technology. It produces massive amounts of electricity, but is prone to overheating while in operation. It requires Pals with high-level Generating Electricity and any level of Watering suitability.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 4,
+     "Hp": 100000,
+     "Hp_PVP": 100000,
+     "Defense_PVP": 40,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 1,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Infrastructure",
+     "SortId": 10,
+     "TypeB": "EPalBuildObjectTypeB::Infra_GeneratePower",
+     "TypeUIDisplay": "Electricity",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bIsInstallOnlyHubAround": true,
+     "BuildExpRate": 21.76
+    }
+   },
+   "display": {
+    "Type": "Infrastructure",
+    "Workload": "Handiwork x10000",
+    "Generating Electricity": "6",
+    "Worker Max": "2"
+   },
+   "materials": [
+    {
+     "item": "Paloxite Ingot",
+     "code": "WorldTreeIngot",
+     "count": 100
+    },
+    {
+     "item": "Electric Organ",
+     "code": "ElectricOrgan",
+     "count": 200
     },
     {
      "item": "Ancient Civilization Core",
@@ -746,7 +799,7 @@
    ]
   },
   "Ancient_SlopedRoofCornerReverse": {
-   "name": "Ancient Slanted Triangular Roof %28Inverted%29",
+   "name": "Ancient Slanted Triangular Roof Inverted",
    "categories": [
     "Foundations"
    ],
@@ -1005,7 +1058,7 @@
    ]
   },
   "Ancient_TriangleWallReverse": {
-   "name": "Ancient Triangular Wall %28Inverted%29",
+   "name": "Ancient Triangular Wall Inverted",
    "categories": [
     "Foundations"
    ],
@@ -2345,6 +2398,46 @@
     }
    ]
   },
+  "Box01_Stone": {
+   "name": "Antique Braided Basket",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Decorations",
+   "description": "Decorative antique braided basket.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 2,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 6,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.08,
+     "ExtinguishBurnWorkAmount": 1000,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 83,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Ornament",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 1.64
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x15"
+   },
+   "materials": [
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 10
+    }
+   ]
+  },
   "Box02_Iron": {
    "name": "Cloth Covered Container",
    "categories": [
@@ -2958,6 +3051,46 @@
     }
    ]
   },
+  "Chair01_Wood": {
+   "name": "Wooden Chair",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Chairs",
+   "description": "Decorative wooden chair.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 2,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 6,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.08,
+     "ExtinguishBurnWorkAmount": 1000,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 17,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Chair",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 1.37
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x10"
+   },
+   "materials": [
+    {
+     "item": "Wood",
+     "code": "Wood",
+     "count": 10
+    }
+   ]
+  },
   "Chair02_Iron": {
    "name": "Iron Chair",
    "categories": [
@@ -3232,6 +3365,61 @@
      "item": "Paldium Fragment",
      "code": "Pal_crystal_S",
      "count": 3
+    }
+   ]
+  },
+  "CoalPit": {
+   "name": "Coal Mine",
+   "categories": [
+    "Production"
+   ],
+   "group": "Lumbering/Mining",
+   "description": "Facility for producing Coal. Digging Coal is grueling physical work. Leave it to a Pal that is good at mining.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 4,
+     "Hp": 10000,
+     "Hp_PVP": 10000,
+     "Defense_PVP": 12,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.2,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Product",
+     "SortId": 24,
+     "TypeB": "EPalBuildObjectTypeB::Prod_Resource",
+     "TypeUIDisplay": "Deforest_Mining",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 5.67
+    }
+   },
+   "display": {
+    "Type": "Production",
+    "Workload": "Handiwork x300",
+    "Mining": "1"
+   },
+   "materials": [
+    {
+     "item": "Stone",
+     "code": "Stone",
+     "count": 70
+    },
+    {
+     "item": "Coal",
+     "code": "Coal",
+     "count": 100
+    },
+    {
+     "item": "Paldium Fragment",
+     "code": "Pal_crystal_S",
+     "count": 30
+    },
+    {
+     "item": "Ancient Civilization Parts",
+     "code": "PalCrystal_Ex",
+     "count": 10
     }
    ]
   },
@@ -3741,6 +3929,59 @@
     }
    ]
   },
+  "Crusher": {
+   "name": "Crusher",
+   "categories": [
+    "Production"
+   ],
+   "group": "Milling/Crushing",
+   "description": "Facility for breaking down Stone and Wood to exchange them for other materials. Requires Pal with the Watering trait to spin the water turbine.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 3,
+     "Hp": 4000,
+     "Hp_PVP": 4000,
+     "Defense_PVP": 31,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.12,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Product",
+     "SortId": 38,
+     "TypeB": "EPalBuildObjectTypeB::Prod_Craft",
+     "TypeUIDisplay": "Milling_Crusher",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 3.32
+    }
+   },
+   "display": {
+    "Type": "Production",
+    "Workload": "Handiwork x80",
+    "Watering": "1",
+    "TypesA": "Material",
+    "TypesB": "MaterialOre MaterialWood MaterialMonster",
+    "Rank Max": "2"
+   },
+   "materials": [
+    {
+     "item": "Wood",
+     "code": "Wood",
+     "count": 50
+    },
+    {
+     "item": "Stone",
+     "code": "Stone",
+     "count": 20
+    },
+    {
+     "item": "Paldium Fragment",
+     "code": "Pal_crystal_S",
+     "count": 10
+    }
+   ]
+  },
   "CrystalPit": {
    "name": "Hexolite Quartz Mine",
    "categories": [
@@ -3888,6 +4129,56 @@
      "item": "Paldium Fragment",
      "code": "Pal_crystal_S",
      "count": 5
+    }
+   ]
+  },
+  "DarkIsland_Banner": {
+   "name": "Feybreak Banner",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Flags",
+   "description": "Decorative Feybreak banner.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 4,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 62,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.02,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 150,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Flag",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bInstallAtReticle": true,
+     "BuildExpRate": 1.86
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x20"
+   },
+   "materials": [
+    {
+     "item": "Refined Ingot",
+     "code": "IronIngot",
+     "count": 10
+    },
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 10
+    },
+    {
+     "item": "High Quality Cloth",
+     "code": "Cloth2",
+     "count": 20
     }
    ]
   },
@@ -4039,6 +4330,58 @@
     }
    ]
   },
+  "DefenseMachinegun": {
+   "name": "Mounted Machine Gun",
+   "categories": [
+    "Defenses"
+   ],
+   "group": "Defensive Structures",
+   "description": "A defensive installation for protecting a base from enemies. When a Pal with Handiwork suitability is assigned, it will continuously defend the base using a machine gun.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 3,
+     "Hp": 10000,
+     "Hp_PVP": 10000,
+     "Defense_PVP": 12,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.2,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Defense",
+     "SortId": 8,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Defense",
+     "TypeUIDisplay": "Interception",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bIsInstallOnlyHubAround": true,
+     "BuildExpRate": 6.94
+    }
+   },
+   "display": {
+    "Type": "Defenses",
+    "Workload": "Handiwork x500",
+    "Handiwork": "1",
+    "Worker Max": "1"
+   },
+   "materials": [
+    {
+     "item": "Ingot",
+     "code": "CopperIngot",
+     "count": 15
+    },
+    {
+     "item": "Nail",
+     "code": "MachineParts",
+     "count": 10
+    },
+    {
+     "item": "Cement",
+     "code": "Cement",
+     "count": 15
+    }
+   ]
+  },
   "DefenseMachinegun_AutoTurret": {
    "name": "Ancient Turret",
    "categories": [
@@ -4089,6 +4432,65 @@
      "item": "Cement",
      "code": "Cement",
      "count": 15
+    }
+   ]
+  },
+  "DefenseMissile": {
+   "name": "Mounted Missile Launcher",
+   "categories": [
+    "Defenses"
+   ],
+   "group": "Defensive Structures",
+   "description": "A defensive installation for protecting a base from enemies. When a Pal with Handiwork suitability is assigned, it will continuously defend the base using a missile launcher.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 3,
+     "Hp": 10000,
+     "Hp_PVP": 10000,
+     "Defense_PVP": 12,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.1,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Defense",
+     "SortId": 9,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Defense",
+     "TypeUIDisplay": "Interception",
+     "Rank": 1,
+     "AssetValue": 1,
+     "ConsumeEnergySpeed": 1000,
+     "bIsInstallOnlyHubAround": true,
+     "BuildExpRate": 10.62
+    }
+   },
+   "display": {
+    "Type": "Defenses",
+    "Workload": "Handiwork x1500",
+    "Energy Type": "Electric",
+    "Handiwork": "1",
+    "Worker Max": "1"
+   },
+   "materials": [
+    {
+     "item": "Refined Ingot",
+     "code": "IronIngot",
+     "count": 20
+    },
+    {
+     "item": "Computer",
+     "code": "Computer",
+     "count": 5
+    },
+    {
+     "item": "Bio Battery",
+     "code": "Bio_Battery",
+     "count": 3
+    },
+    {
+     "item": "Cement",
+     "code": "Cement",
+     "count": 30
     }
    ]
   },
@@ -4405,6 +4807,61 @@
     }
    ]
   },
+  "DismantlingConveyor": {
+   "name": "Pal Disassembly Conveyor",
+   "categories": [
+    "Pal"
+   ],
+   "group": "Pal (Other)",
+   "description": "A dream-like facility that automatically butchers any Pal that is placed inside.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 3,
+     "Hp": 4000,
+     "Hp_PVP": 4000,
+     "Defense_PVP": 31,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.12,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Pal",
+     "SortId": 21,
+     "TypeB": "EPalBuildObjectTypeB::Pal_Modify",
+     "TypeUIDisplay": "PalOther",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 9.75,
+     "bIsProhibitedInRaidBossArea": true
+    }
+   },
+   "display": {
+    "Type": "Pal",
+    "Workload": "Handiwork x1200"
+   },
+   "materials": [
+    {
+     "item": "Pal Metal Ingot",
+     "code": "StealIngot",
+     "count": 100
+    },
+    {
+     "item": "Computer",
+     "code": "Computer",
+     "count": 15
+    },
+    {
+     "item": "Nail",
+     "code": "MachineParts",
+     "count": 30
+    },
+    {
+     "item": "Plasteel",
+     "code": "Plastic",
+     "count": 30
+    }
+   ]
+  },
   "DisplayCharacter": {
    "name": "Viewing Cage",
    "categories": [
@@ -4506,6 +4963,159 @@
      "item": "Cryogenic Coolant",
      "code": "Bio_Coolant",
      "count": 10
+    }
+   ]
+  },
+  "ElectricGenerator": {
+   "name": "Power Generator",
+   "categories": [
+    "Infrastructure"
+   ],
+   "group": "Electricity",
+   "description": "A power generator fueled by Electric Pals. Electric equipment won't run without this.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 4,
+     "Hp": 10000,
+     "Hp_PVP": 10000,
+     "Defense_PVP": 12,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.1,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Infrastructure",
+     "SortId": 8,
+     "TypeB": "EPalBuildObjectTypeB::Infra_GeneratePower",
+     "TypeUIDisplay": "Electricity",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bIsInstallOnlyHubAround": true,
+     "BuildExpRate": 6.94
+    }
+   },
+   "display": {
+    "Type": "Infrastructure",
+    "Workload": "Handiwork x500",
+    "Generating Electricity": "1",
+    "Worker Max": "1"
+   },
+   "materials": [
+    {
+     "item": "Ingot",
+     "code": "CopperIngot",
+     "count": 50
+    },
+    {
+     "item": "Electric Organ",
+     "code": "ElectricOrgan",
+     "count": 20
+    }
+   ]
+  },
+  "ElectricGenerator_Large": {
+   "name": "Large Power Generator",
+   "categories": [
+    "Infrastructure"
+   ],
+   "group": "Electricity",
+   "description": "A power generator fueled by Electric Pals. Larger and with improved power generation efficiency.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 4,
+     "Hp": 100000,
+     "Hp_PVP": 100000,
+     "Defense_PVP": 1,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 1,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Infrastructure",
+     "SortId": 9,
+     "TypeB": "EPalBuildObjectTypeB::Infra_GeneratePower",
+     "TypeUIDisplay": "Electricity",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bIsInstallOnlyHubAround": true,
+     "BuildExpRate": 16.79
+    }
+   },
+   "display": {
+    "Type": "Infrastructure",
+    "Workload": "Handiwork x5000",
+    "Generating Electricity": "1",
+    "Worker Max": "2"
+   },
+   "materials": [
+    {
+     "item": "Pal Metal Ingot",
+     "code": "StealIngot",
+     "count": 150
+    },
+    {
+     "item": "Electric Organ",
+     "code": "ElectricOrgan",
+     "count": 150
+    }
+   ]
+  },
+  "ElectricHatchingPalEgg": {
+   "name": "Electric Egg Incubator",
+   "categories": [
+    "Pal"
+   ],
+   "group": "Pal Training",
+   "description": "Device for incubating Pal eggs. Requires electricity, but automatically keeps the inside of the incubator at appropriate temperatures.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 3,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 62,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.04,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Pal",
+     "SortId": 15,
+     "TypeB": "EPalBuildObjectTypeB::Pal_Breed",
+     "TypeUIDisplay": "PalTraining",
+     "Rank": 1,
+     "AssetValue": 1,
+     "ConsumeEnergySpeed": 200,
+     "bIsInstallOnlyHubAround": true,
+     "BuildExpRate": 2.74,
+     "bIsProhibitedInRaidBossArea": true
+    }
+   },
+   "display": {
+    "Type": "Pal",
+    "Workload": "Handiwork x50",
+    "Energy Type": "Electric",
+    "Worker Max": "1"
+   },
+   "materials": [
+    {
+     "item": "Refined Ingot",
+     "code": "IronIngot",
+     "count": 50
+    },
+    {
+     "item": "Circuit Board",
+     "code": "MachineParts2",
+     "count": 15
+    },
+    {
+     "item": "Ancient Civilization Parts",
+     "code": "PalCrystal_Ex",
+     "count": 5
+    },
+    {
+     "item": "Ancient Civilization Core",
+     "code": "AncientParts2",
+     "count": 2
     }
    ]
   },
@@ -7389,7 +7999,7 @@
    ]
   },
   "Glass_SlopedRoofCornerReverse": {
-   "name": "Glass Slanted Corner Roof %28Inverted%29",
+   "name": "Glass Slanted Corner Roof Inverted",
    "categories": [
     "Foundations"
    ],
@@ -7618,7 +8228,7 @@
    ]
   },
   "Glass_TriangleWallReverse": {
-   "name": "Glass Triangular Wall %28Inverted%29",
+   "name": "Glass Triangular Wall Inverted",
    "categories": [
     "Foundations"
    ],
@@ -8765,7 +9375,7 @@
    ]
   },
   "Iron_SlopedRoofCornerReverse": {
-   "name": "Metal Slanted Corner Roof %28Inverted%29",
+   "name": "Metal Slanted Corner Roof Inverted",
    "categories": [
     "Foundations"
    ],
@@ -8949,7 +9559,7 @@
    ]
   },
   "Iron_TriangleWallReverse": {
-   "name": "Metal Triangular Wall %28Inverted%29",
+   "name": "Metal Triangular Wall Inverted",
    "categories": [
     "Foundations"
    ],
@@ -9091,7 +9701,7 @@
    ]
   },
   "ItemBooth": {
-   "name": "Flea Market %28Items%29",
+   "name": "Flea Market Items",
    "categories": [
     "Other"
    ],
@@ -9816,7 +10426,7 @@
    ]
   },
   "JapaneseStyle_SlopedRoofCornerReverse": {
-   "name": "Japanese-Style Slanted Corner Roof %28Inverted%29",
+   "name": "Japanese-Style Slanted Corner Roof Inverted",
    "categories": [
     "Foundations"
    ],
@@ -10097,7 +10707,7 @@
    ]
   },
   "JapaneseStyle_TriangleWallReverse": {
-   "name": "Japanese-Style Triangular Wall %28Inverted%29",
+   "name": "Japanese-Style Triangular Wall Inverted",
    "categories": [
     "Foundations"
    ],
@@ -10413,6 +11023,45 @@
      "item": "Hardwood",
      "code": "Wood_Fine",
      "count": 4
+    }
+   ]
+  },
+  "JetDragonStatue": {
+   "name": "Jetragon Statue",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Decorations",
+   "description": "Decorative Jetragon statue.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 4,
+     "Hp": 3000,
+     "Hp_PVP": 3000,
+     "Defense_PVP": 15,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.12,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 129,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Ornament",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 2.21
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x30"
+   },
+   "materials": [
+    {
+     "item": "Stone",
+     "code": "Stone",
+     "count": 100
     }
    ]
   },
@@ -11553,6 +12202,62 @@
     }
    ]
   },
+  "MedicalPalBed_04": {
+   "name": "Large Pal Bed",
+   "categories": [
+    "Infrastructure"
+   ],
+   "group": "Bedding",
+   "description": "A fluffy bed that Pals can get a good rest on. Pals can rest on it when injured, or to sleep at night. Even large Pals can sleep soundly on a bed like this.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 3,
+     "Hp": 5000,
+     "Hp_PVP": 5000,
+     "Defense_PVP": 25,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.05,
+     "ExtinguishBurnWorkAmount": 1000,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Infrastructure",
+     "SortId": 4,
+     "TypeB": "EPalBuildObjectTypeB::Other",
+     "TypeUIDisplay": "Bed",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 6.94,
+     "bIsProhibitedInRaidBossArea": true
+    }
+   },
+   "display": {
+    "Type": "Infrastructure",
+    "Workload": "Handiwork x500"
+   },
+   "materials": [
+    {
+     "item": "High Quality Cloth",
+     "code": "Cloth2",
+     "count": 5
+    },
+    {
+     "item": "Hardwood",
+     "code": "Wood_Fine",
+     "count": 5
+    },
+    {
+     "item": "Nail",
+     "code": "MachineParts",
+     "count": 20
+    },
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 20
+    }
+   ]
+  },
   "MedicalPalBed_05": {
    "name": "Pal Pod",
    "categories": [
@@ -11654,6 +12359,64 @@
     {
      "item": "Paldium Fragment",
      "code": "Pal_crystal_S",
+     "count": 10
+    }
+   ]
+  },
+  "MedicineFacility_02": {
+   "name": "Electric Medicine Workbench",
+   "categories": [
+    "Production"
+   ],
+   "group": "Medicine Production",
+   "description": "A facility for making Pal medicine. It requires electricity, but can produce high quality medicine. Leave its operation to a Pal that can make medicine.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 3,
+     "Hp": 10000,
+     "Hp_PVP": 10000,
+     "Defense_PVP": 10,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.1,
+     "ExtinguishBurnWorkAmount": 1000,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Product",
+     "SortId": 41,
+     "TypeB": "EPalBuildObjectTypeB::Prod_Medicine",
+     "TypeUIDisplay": "Medicine",
+     "Rank": 1,
+     "AssetValue": 1,
+     "ConsumeEnergySpeed": 50,
+     "bIsInstallOnlyHubAround": true,
+     "BuildExpRate": 6.94
+    }
+   },
+   "display": {
+    "Type": "Production",
+    "Workload": "Handiwork x500",
+    "Energy Type": "Electric",
+    "Medicine Production": "1",
+    "TypesA": "Food Consume Material",
+    "TypesB": "Medicine Drug ConsumeGainStatusPoints",
+    "Rank Max": "4",
+    "Speed Rate": "2"
+   },
+   "materials": [
+    {
+     "item": "Refined Ingot",
+     "code": "IronIngot",
+     "count": 40
+    },
+    {
+     "item": "Circuit Board",
+     "code": "MachineParts2",
+     "count": 10
+    },
+    {
+     "item": "Carbon Fiber",
+     "code": "CarbonFiber",
      "count": 10
     }
    ]
@@ -12847,7 +13610,7 @@
    ]
   },
   "PalBooth": {
-   "name": "Flea Market %28Pals%29",
+   "name": "Flea Market Pals",
    "categories": [
     "Other"
    ],
@@ -12968,6 +13731,52 @@
      "item": "Stone",
      "code": "Stone",
      "count": 3
+    }
+   ]
+  },
+  "PalCage": {
+   "name": "Aerial Cage",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "In Develop",
+   "description": "Decorative aerial cage.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 2,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 25,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.08,
+     "bShowHPGauge": true,
+     "bInDevelop": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 155,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Other",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bInstallAtReticle": true,
+     "BuildExpRate": 1.86
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x20"
+   },
+   "materials": [
+    {
+     "item": "Wood",
+     "code": "Wood",
+     "count": 10
+    },
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 10
     }
    ]
   },
@@ -14376,7 +15185,7 @@
    ]
   },
   "SF_SlopedRoofCornerReverse": {
-   "name": "Clean Slanted Corner Roof %28Inverted%29",
+   "name": "Clean Slanted Corner Roof Inverted",
    "categories": [
     "Foundations"
    ],
@@ -14580,7 +15389,7 @@
    ]
   },
   "SF_TriangleWallReverse": {
-   "name": "Clean Triangular Wall %28Inverted%29",
+   "name": "Clean Triangular Wall Inverted",
    "categories": [
     "Foundations"
    ],
@@ -14912,6 +15721,106 @@
     {
      "item": "Paldium Fragment",
      "code": "Pal_crystal_S",
+     "count": 20
+    }
+   ]
+  },
+  "Scientist_Banner": {
+   "name": "PAL Genetic Research Unit Vertical Banner",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Flags",
+   "description": "Decorative PAL Genetic Research Unit Vertical Banner.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 4,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 62,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.02,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 146,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Flag",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bInstallAtReticle": true,
+     "BuildExpRate": 1.86
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x20"
+   },
+   "materials": [
+    {
+     "item": "Refined Ingot",
+     "code": "IronIngot",
+     "count": 10
+    },
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 10
+    },
+    {
+     "item": "High Quality Cloth",
+     "code": "Cloth2",
+     "count": 20
+    }
+   ]
+  },
+  "Scientist_Flag": {
+   "name": "PAL Genetic Research Unit Standard",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Flags",
+   "description": "Decorative PAL Genetic Research Unit Standard.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 2,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 25,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.08,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 145,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Flag",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bInstallAtReticle": true,
+     "BuildExpRate": 1.86
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x20"
+   },
+   "materials": [
+    {
+     "item": "Refined Ingot",
+     "code": "IronIngot",
+     "count": 20
+    },
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 10
+    },
+    {
+     "item": "High Quality Cloth",
+     "code": "Cloth2",
      "count": 20
     }
    ]
@@ -15996,6 +16905,61 @@
     }
    ]
   },
+  "Silo": {
+   "name": "Silo",
+   "categories": [
+    "Other"
+   ],
+   "group": "Efficiency Enhancement",
+   "description": "Place in base to improve planting speed. Placing more than one has no additional effect.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 3,
+     "Hp": 5000,
+     "Hp_PVP": 5000,
+     "Defense_PVP": 25,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.15,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Other",
+     "SortId": 2,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "EfficiencEnhancement",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bIsInstallOnlyHubAround": true,
+     "BuildExpRate": 6.35
+    }
+   },
+   "display": {
+    "Type": "Other",
+    "Workload": "Handiwork x400"
+   },
+   "materials": [
+    {
+     "item": "Wood",
+     "code": "Wood",
+     "count": 30
+    },
+    {
+     "item": "Stone",
+     "code": "Stone",
+     "count": 20
+    },
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 30
+    },
+    {
+     "item": "Cement",
+     "code": "Cement",
+     "count": 10
+    }
+   ]
+  },
   "SkinChange": {
    "name": "Pal Dressing Facility",
    "categories": [
@@ -16087,6 +17051,56 @@
      "item": "Ancient Civilization Parts",
      "code": "PalCrystal_Ex",
      "count": 10
+    }
+   ]
+  },
+  "SkyIsland_Banner": {
+   "name": "Azure Covenant Banner",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Flags",
+   "description": "Decorative Azure Covenant banner.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 4,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 62,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.02,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 152,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Flag",
+     "Rank": 1,
+     "AssetValue": 1,
+     "bInstallAtReticle": true,
+     "BuildExpRate": 1.86
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x20"
+   },
+   "materials": [
+    {
+     "item": "Refined Ingot",
+     "code": "IronIngot",
+     "count": 10
+    },
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 10
+    },
+    {
+     "item": "High Quality Cloth",
+     "code": "Cloth2",
+     "count": 20
     }
    ]
   },
@@ -16330,6 +17344,56 @@
      "item": "Leather",
      "code": "Leather",
      "count": 3
+    }
+   ]
+  },
+  "Sofa02_Stone": {
+   "name": "Antique Couch",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Chairs",
+   "description": "Decorative antique couch.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 2,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 6,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.08,
+     "ExtinguishBurnWorkAmount": 1000,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 22,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Chair",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 2.74
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x50"
+   },
+   "materials": [
+    {
+     "item": "Wood",
+     "code": "Wood",
+     "count": 20
+    },
+    {
+     "item": "Cloth",
+     "code": "Cloth",
+     "count": 3
+    },
+    {
+     "item": "Flame Organ",
+     "code": "FireOrgan",
+     "count": 2
     }
    ]
   },
@@ -17277,7 +18341,7 @@
    ]
   },
   "Stone_SlopedRoofCornerReverse": {
-   "name": "Stone Slanted Corner Roof %28Inverted%29",
+   "name": "Stone Slanted Corner Roof Inverted",
    "categories": [
     "Foundations"
    ],
@@ -17481,7 +18545,7 @@
    ]
   },
   "Stone_TriangleWallReverse": {
-   "name": "Stone Triangular Wall %28Inverted%29",
+   "name": "Stone Triangular Wall Inverted",
    "categories": [
     "Foundations"
    ],
@@ -18107,6 +19171,56 @@
      "item": "Ingot",
      "code": "CopperIngot",
      "count": 5
+    }
+   ]
+  },
+  "TableCircular01_Stone": {
+   "name": "Antique Round Table",
+   "categories": [
+    "Furniture"
+   ],
+   "group": "Tables",
+   "description": "Decorative antique round table.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 2,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 6,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.08,
+     "ExtinguishBurnWorkAmount": 1000,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Furniture",
+     "SortId": 6,
+     "TypeB": "EPalBuildObjectTypeB::Infra_Environment",
+     "TypeUIDisplay": "Desk",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 2.21
+    }
+   },
+   "display": {
+    "Type": "Furniture",
+    "Workload": "Handiwork x30"
+   },
+   "materials": [
+    {
+     "item": "Wood",
+     "code": "Wood",
+     "count": 20
+    },
+    {
+     "item": "Fiber",
+     "code": "Fiber",
+     "count": 5
+    },
+    {
+     "item": "Stone",
+     "code": "Stone",
+     "count": 2
     }
    ]
   },
@@ -19505,7 +20619,7 @@
    ]
   },
   "Trap_LegHold": {
-   "name": "Bear Trap %28Small%29",
+   "name": "Bear Trap Small",
    "categories": [
     "Defenses"
    ],
@@ -19543,7 +20657,7 @@
    ]
   },
   "Trap_LegHold_Big": {
-   "name": "Bear Trap %28Large%29",
+   "name": "Bear Trap Large",
    "categories": [
     "Defenses"
    ],
@@ -19931,6 +21045,61 @@
     }
    ]
   },
+  "WeaponFactory_Dirty_01": {
+   "name": "Weapon Workbench",
+   "categories": [
+    "Production"
+   ],
+   "group": "Weapons",
+   "description": "A Primitive Workbench for producing weapons and ammunition. A small workspace prevents the production of high quality weapons. Requires Pals that can work with their hands.",
+   "tables": {
+    "DT_MapObjectMasterDataTable": {
+     "Defense": 2,
+     "Hp": 2000,
+     "Hp_PVP": 2000,
+     "Defense_PVP": 25,
+     "bBelongToBaseCamp": true,
+     "DeteriorationDamage": 0.08,
+     "ExtinguishBurnWorkAmount": 1000,
+     "bShowHPGauge": true
+    },
+    "DT_BuildObjectDataTable": {
+     "TypeA": "EPalBuildObjectTypeA::Product",
+     "SortId": 15,
+     "TypeB": "EPalBuildObjectTypeB::Prod_Craft",
+     "TypeUIDisplay": "Weapon",
+     "Rank": 1,
+     "AssetValue": 1,
+     "BuildExpRate": 2.74
+    }
+   },
+   "display": {
+    "Type": "Production",
+    "Workload": "Handiwork x50",
+    "Handiwork": "1",
+    "TypesA": "Weapon Consume Ammo",
+    "TypesB": "WeaponShotgun WeaponHandgun WeaponCrossbow WeaponBow WeaponMelee ConsumeBullet WeaponAssaultRifle WeaponBow WeaponRocketLauncher WeaponThrowObject WeaponGrapplingGun",
+    "Rank Max": "2",
+    "Speed Rate": "1.5"
+   },
+   "materials": [
+    {
+     "item": "Ingot",
+     "code": "CopperIngot",
+     "count": 15
+    },
+    {
+     "item": "Wooden Board",
+     "code": "Processed_Wood",
+     "count": 10
+    },
+    {
+     "item": "Nail",
+     "code": "MachineParts",
+     "count": 10
+    }
+   ]
+  },
   "Wire_Fence": {
    "name": "Wire Fence",
    "categories": [
@@ -20190,7 +21359,7 @@
    ]
   },
   "Wood_TriangleWallReverse": {
-   "name": "Wooden Triangular Wall %28Inverted%29",
+   "name": "Wooden Triangular Wall Inverted",
    "categories": [
     "Foundations"
    ],
@@ -20523,7 +21692,7 @@
    ]
   },
   "Wooden_SlopedRoofCornerReverse": {
-   "name": "Wooden Slanted Corner Roof %28Inverted%29",
+   "name": "Wooden Slanted Corner Roof Inverted",
    "categories": [
     "Foundations"
    ],
