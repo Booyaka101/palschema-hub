@@ -295,7 +295,7 @@ LINKS
   CLI on npm     :  https://www.npmjs.com/package/palschema-validate
   Pal Schema     :  https://www.nexusmods.com/palworld/mods/2361  (by Okaetsu)
 
-Compatible with PalSchema 0.6.7 and the UE4SS build it requires
+Compatible with PalSchema 0.6.71 and the UE4SS build it requires
 (commit 2281fa31): https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31
 
 This archive contains no game assets. Schema data derived from the public

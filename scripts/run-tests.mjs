@@ -266,10 +266,10 @@ run('structs/upstream-constraints.json pins tag 0.6.5, the blob sha and PR #145'
     readFileSync(schemaPath, 'utf8') === before);
 }
 
-run('versions.json records every PalSchema release 0.6.3-0.6.7 with its published date',
+run('versions.json records every PalSchema release 0.6.3-0.6.71 with its published date',
   ['-e', `const v=require('./versions.json').upstream.palSchema;` +
     `const r=Object.fromEntries((v.releases||[]).map(x=>[x.version,x.date]));` +
-    `const want={'0.6.3':'2026-08-15','0.6.4':'2026-08-18','0.6.5':'2026-08-28','0.6.6':'2026-09-03','0.6.7':'2026-09-04'};` +
+    `const want={'0.6.3':'2026-08-15','0.6.4':'2026-08-18','0.6.5':'2026-08-28','0.6.6':'2026-09-03','0.6.7':'2026-09-04','0.6.71':'2026-09-09'};` +
     `for(const [k,d] of Object.entries(want)) if(r[k]!==d) process.exit(1);` +
     `console.log('palSchema releases OK');`], 0, 'palSchema releases OK');
 // The declared record is what the README and the compatibility badge quote, and
@@ -279,7 +279,7 @@ run('versions.json declares the newest recorded PalSchema release and its UE4SS 
   ['-e', `const v=require('./versions.json').upstream.palSchema;` +
     `const last=v.releases[v.releases.length-1];` +
     `if(v.version!==last.version||v.date!==last.date||v.ue4ssCommit!==last.ue4ss)process.exit(1);` +
-    `if(v.version!=='0.6.7'||v.ue4ssCommit!=='2281fa31')process.exit(1);` +
+    `if(v.version!=='0.6.71'||v.ue4ssCommit!=='2281fa31')process.exit(1);` +
     `const dates=v.releases.map(r=>r.date);` +
     `if(dates.some((d,i)=>i&&d<dates[i-1]))process.exit(1);` +
     `console.log('palSchema pin OK');`], 0, 'palSchema pin OK');
@@ -442,6 +442,23 @@ try {
     ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
       '--releases-json', releasesNew, '--upstream-schema-json', upstreamInsync],
     1, `PalSchema ${bumpLast(psClaimed)} released, this registry claims ${psClaimed}`);
+  // Upstream's tags are not ordered by version: 0.6.71 shipped after 0.6.7 and
+  // compares ABOVE a later 0.6.8, so a version max would report "current" with a
+  // newer release sitting upstream. The axis reads publish time instead, and
+  // lowerTag builds exactly that shape out of whatever the manifest claims today.
+  const lowerTag = (v) => {
+    const p = v.split('.').map(Number);
+    p[p.length - 1] -= 1;
+    return p.join('.');
+  };
+  const releasesOutOfOrder = write('releases-out-of-order.json', [
+    { tag_name: lowerTag(psClaimed), published_at: '2099-01-01T00:00:00Z' },
+    { tag_name: psClaimed, published_at: '2026-09-09T14:45:21Z' },
+  ]);
+  run('check-currency: a later release whose tag sorts LOWER -> exit 1 naming it',
+    ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
+      '--releases-json', releasesOutOfOrder, '--upstream-schema-json', upstreamInsync],
+    1, `PalSchema ${lowerTag(psClaimed)} released, this registry claims ${psClaimed}`);
   // 0.10.0: the ported item constraints go stale when the upstream FILE moves,
   // release or not — the blob sha is its own axis, never conflated with releases.
   run('check-currency: upstream items.schema.json blob moved -> exit 1 naming both shas',

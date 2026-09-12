@@ -2,11 +2,11 @@
   "$comment": "PalSchema loader-implemented keys. These are consumed by PalSchema's mod loaders (src/Loader/*.cpp), NOT fields of any UE row struct, so the SDK-header pipeline can never derive them. scripts/apply-loader-overlay.mjs merges the pals entries into schemas/v1.0/DT_PalMonsterParameter.schema.json; scripts/derive-loader-schemas.mjs builds schemas/v1.0/PalStaticItemData.schema.json from the UPalStaticItemData* class headers and merges the items entries in. Every entry is read off PalSchema's source files named in verifiedAgainst, never off a PR title or release note.",
   "verifiedAgainst": {
     "repo": "Okaetsu/PalSchema",
-    "release": "0.6.7",
-    "releaseDate": "2026-09-04",
+    "release": "0.6.71",
+    "releaseDate": "2026-09-09",
     "files": ["src/Loader/PalMonsterModLoader.cpp", "src/Loader/PalItemModLoader.cpp", "src/Loader/PalHumanModLoader.cpp"],
-    "checkedAt": "2026-09-05",
-    "method": "Re-read through the 0.6.4...0.6.7 compare (GitHub compare API). Across those 16 commits the loaders gain exactly one recognized key, bLegalInGame (PR #145, already recorded below); everything else is the FSoftObjectPtr/TSoftObjectPtr migration onto UE4SS's own types plus IsThrowableWeapon covering SPWeaponCaptureRope/SPWeaponCaptureBall, neither of which changes the JSON surface."
+    "checkedAt": "2026-09-12",
+    "method": "Re-read through the 0.6.4...0.6.7 compare (GitHub compare API). Across those 16 commits the loaders gain exactly one recognized key, bLegalInGame (PR #145, already recorded below); everything else is the FSoftObjectPtr/TSoftObjectPtr migration onto UE4SS's own types plus IsThrowableWeapon covering SPWeaponCaptureRope/SPWeaponCaptureBall, neither of which changes the JSON surface. Carried to 0.6.71: its 0.6.7...0.6.71 compare touches seven files and none is under src/, so no loader source moved at all."
   },
   "loaders": {
     "pals": {
