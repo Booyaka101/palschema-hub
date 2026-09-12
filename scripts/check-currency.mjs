@@ -12,8 +12,10 @@
  *      compared against versions.json's `sdkHead.commit`; when the head moved we
  *      additionally check whether Source/Pal/Public itself was regenerated
  *      (that's what would make the row structs — and this registry — stale).
- *   3. PALSCHEMA: the newest Okaetsu/PalSchema release vs the version this repo
- *      claims compatibility with (versions.json `upstream.palSchema`).
+ *   3. PALSCHEMA: the most recently PUBLISHED Okaetsu/PalSchema release vs the
+ *      version this repo claims compatibility with (versions.json
+ *      `upstream.palSchema`). Publish time, not a version max: upstream tagged
+ *      0.6.71 after 0.6.7, and that sorts above a later 0.6.8.
  *   4. ITEMS SCHEMA: the live blob sha of PalSchema's assets/schemas/items.schema.json
  *      (default branch) vs the sha structs/upstream-constraints.json pins. The
  *      item-loader constraints are PORTED from that file, so an upstream edit
@@ -61,6 +63,7 @@ import {
   loadJson as loadSource,
   cmpVersions,
   newestGameVersion,
+  newestReleaseTag,
   registryNewest,
   ue4ssCommitFromRelease,
   shaMatches,
@@ -187,16 +190,13 @@ let palSchemaNewest = claimed;
 let releases = [];
 if (claimed) {
   releases = await loadJson(RELEASES_URL, fixtures.releases, 'Okaetsu/PalSchema releases');
-  // Releases are returned newest-first, but tags are compared by version anyway.
-  const tags = (Array.isArray(releases) ? releases : [])
-    .map((r) => String(r?.tag_name ?? '').replace(/^v/i, ''))
-    .filter((t) => /^\d+(\.\d+)*$/.test(t));
-  if (!tags.length) {
+  // By publish time, never a version max: see newestReleaseTag for why.
+  palSchemaNewest = newestReleaseTag(releases);
+  if (!palSchemaNewest) {
     console.error('network failure: PalSchema release list is empty/unparseable');
     process.exit(2);
   }
-  palSchemaNewest = tags.reduce((a, b) => (cmpVersions(a, b) >= 0 ? a : b));
-  if (cmpVersions(palSchemaNewest, claimed) > 0) {
+  if (palSchemaNewest !== claimed) {
     problems.push(`PalSchema ${palSchemaNewest} released, this registry claims ${claimed}`);
   }
 }

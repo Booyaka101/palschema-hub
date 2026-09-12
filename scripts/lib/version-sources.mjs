@@ -14,8 +14,9 @@ export const STEAM_URL =
 export const commitsUrl = (repo) => `https://api.github.com/repos/${repo}/commits?per_page=1`;
 export const publicCommitsUrl = (repo) =>
   `https://api.github.com/repos/${repo}/commits?path=Source%2FPal%2FPublic&per_page=1`;
-/** Release list, not /releases/latest: PalSchema has shipped same-day pairs
- *  (0.6.2 and 0.6.3 both on 2026-08-15), so the newest TAG is the truth. */
+/** Release list, not /releases/latest: /latest follows whatever upstream marked
+ *  latest, and PalSchema has shipped same-day pairs (0.6.2 and 0.6.3 both on
+ *  2026-08-15), so the list plus its publish times is the truth. */
 export const releasesUrl = (repo) => `https://api.github.com/repos/${repo}/releases?per_page=10`;
 /** A file's blob metadata on the default branch — check-currency compares its
  *  sha against the blob a constraint port was read from. */
@@ -92,6 +93,25 @@ export function ue4ssCommitFromRelease(release) {
 
 /** Shas are quoted at different lengths upstream and here; compare by prefix. */
 export const shaMatches = (a, b) => Boolean(a && b) && (a.startsWith(b) || b.startsWith(a));
+
+/**
+ * The tag of the most recently PUBLISHED release, or null if the list holds no
+ * usable tag. Deliberately not a version max: PalSchema followed 0.6.7 with
+ * 0.6.71, which compares ABOVE a later 0.6.8 would, so a max would report the
+ * registry current while a newer release sat upstream. Publish time is the
+ * question the currency check actually asks. Equal or absent timestamps fall back
+ * to the version compare, which is how the same-day 0.6.2/0.6.3 pair resolves.
+ */
+export function newestReleaseTag(releases) {
+  const entries = (Array.isArray(releases) ? releases : [])
+    .map((r) => ({
+      tag: String(r?.tag_name ?? '').replace(/^v/i, ''),
+      at: Date.parse(r?.published_at ?? '') || 0,
+    }))
+    .filter((e) => /^\d+(\.\d+)*$/.test(e.tag));
+  if (!entries.length) return null;
+  return entries.reduce((a, b) => ((b.at - a.at || cmpVersions(b.tag, a.tag)) > 0 ? b : a)).tag;
+}
 
 /** Highest patch version anywhere in the news window (not just the most recent item). */
 export function newestGameVersion(steam) {

@@ -1,7 +1,7 @@
 # 🧩 palschema-hub
 
 [![registry 0.12.0](https://img.shields.io/badge/registry-0.12.0-blue)](CHANGELOG.md)
-[![PalSchema 0.6.7](https://img.shields.io/badge/PalSchema-0.6.7-green)](https://github.com/Okaetsu/PalSchema/releases/tag/0.6.7)
+[![PalSchema 0.6.71](https://img.shields.io/badge/PalSchema-0.6.71-green)](https://github.com/Okaetsu/PalSchema/releases/tag/0.6.71)
 [![UE4SS 2281fa31](https://img.shields.io/badge/UE4SS-2281fa31-green)](https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31)
 [![Palworld 1.0.4](https://img.shields.io/badge/Palworld-1.0.4-orange)](versions.json)
 [![license MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
@@ -22,9 +22,9 @@ open since Aug 2025). `palschema-hub` fills that gap:
 - **`/cli/`** — `palschema-validate`, a CLI (ajv) that validates mod JSON/JSONC in CI or locally.
 - **`/.github/workflows/palschema-ci.yml.example`** — drop-in CI for mod repos.
 
-**Compatible with PalSchema 0.6.7 + the [UE4SS build it requires](https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31)
+**Compatible with PalSchema 0.6.71 + the [UE4SS build it requires](https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31)
 (UE4SS commit `2281fa31`, released September 3 2026).** No
-DataTable field, path, or row-validation behavior changed in 0.6.1 → 0.6.7 (checked
+DataTable field, path, or row-validation behavior changed in 0.6.1 → 0.6.71 (checked
 against the diffs, not just the release notes). What did change: 0.6.4's
 **loader** lets new pals carry ranch suitability through `RanchActionData` in
 pals json ([#143](https://github.com/Okaetsu/PalSchema/pull/143)) — a key that
@@ -36,11 +36,12 @@ source with per-entry provenance. 0.6.5 rewrote the constraints in PalSchema's o
 those are now **ported into this registry's item-loader schema** (see
 [`structs/upstream-constraints.json`](structs/upstream-constraints.json)), so the
 validator catches bad icon paths, out-of-range values and missing new-item fields
-it used to wave through. 0.6.6 and 0.6.7 touch nothing this registry derives from:
-0.6.6 is only the UE4SS bump to `2281fa31`, and 0.6.7 fixes an `FSoftObjectPtr` crash
-in the appearance loader ([#149](https://github.com/Okaetsu/PalSchema/pull/149)).
-That is a finding, not an assumption: the upstream `0.6.4...0.6.7` compare leaves
-`assets/schemas/items.schema.json` at blob `b41a965` for all three tags, and adds no
+it used to wave through. 0.6.6, 0.6.7 and 0.6.71 touch nothing this registry derives
+from: 0.6.6 is only the UE4SS bump to `2281fa31`, 0.6.7 fixes an `FSoftObjectPtr` crash
+in the appearance loader ([#149](https://github.com/Okaetsu/PalSchema/pull/149)), and
+0.6.71 is a signature refresh (`include/SDK/PalSignatures.h`, two lines) on the same
+UE4SS build. That is a finding, not an assumption: the upstream `0.6.4...0.6.71` compare
+leaves `assets/schemas/items.schema.json` at blob `b41a965` for all four tags, and adds no
 loader key to any of `PalItemModLoader`, `PalMonsterModLoader` or `PalHumanModLoader`.
 0.6.3 also fixed `.jsonc` schema application
 ([#139](https://github.com/Okaetsu/PalSchema/pull/139)) and added unknown-property
@@ -435,10 +436,12 @@ field snapshots are committed under `structs/` and the pairwise deltas under `di
 
 **Staleness detection:** `npm run versions:check` compares this repo against the live world on
 seven axes: the Steam news API's patch titles (newest game version), the PalworldModdingKit
-commit list (SDK head, and whether `Source/Pal/Public` regenerated), the newest
-[PalSchema](https://github.com/Okaetsu/PalSchema) release vs the version this README claims
-compatibility with (`versions.json` `upstream.palSchema`), the live blob sha of PalSchema's
-`assets/schemas/items.schema.json` vs the sha the ported item constraints pin (an upstream
+commit list (SDK head, and whether `Source/Pal/Public` regenerated), the most recently
+published [PalSchema](https://github.com/Okaetsu/PalSchema) release vs the version this README
+claims compatibility with (`versions.json` `upstream.palSchema`; publish time rather than a
+version max, because upstream tagged 0.6.71 after 0.6.7 and that sorts above a later 0.6.8), the
+live blob sha of PalSchema's `assets/schemas/items.schema.json` vs the sha the ported item
+constraints pin (an upstream
 schema edit stales the port even before it reaches a release), the UE4SS commit the claimed
 PalSchema release says it must run against (read out of that release's own body) vs the
 `ue4ssCommit` this README quotes, and the game version each of the three value lanes records
@@ -449,7 +452,7 @@ World Tree Holy Water's weight from 1 to 0.1 with an unchanged SDK, so every sha
 would have said "current" while the shipped values were a patch behind. The UE4SS axis has the
 same shape one level up: PalSchema 0.6.6 shipped nothing but a UE4SS bump, and a reader left on
 the old build gets signature errors rather than anything a schema could report. Exit 0 in sync
-(`registry current: game 1.0.4, SDK e663245, PalSchema 0.6.7, item values 1.0.4, building
+(`registry current: game 1.0.4, SDK e663245, PalSchema 0.6.71, item values 1.0.4, building
 values 1.0.4, extracted values 1.0.4, items.schema.json blob b41a965, UE4SS 2281fa31`),
 exit 1 stale with one line
 naming exactly what moved, exit 2 on network failure — never conflated. It runs as an

@@ -10,17 +10,18 @@
     "$comment": "Third-party projects whose versions this registry's compatibility claims name. check-currency compares each against its live release list; bump these with the README line that cites them.",
     "palSchema": {
       "repo": "Okaetsu/PalSchema",
-      "version": "0.6.7",
-      "date": "2026-09-04",
+      "version": "0.6.71",
+      "date": "2026-09-09",
       "ue4ssRepo": "Okaetsu/RE-UE4SS",
       "ue4ssCommit": "2281fa31",
-      "$comment": "ue4ssCommit is the UE4SS build the DECLARED release must be run against, read from that release's own body (0.6.7: \"must be used with [UE4SS 2281fa31]\"). check-currency compares it against the live release data and the README compatibility line quotes it. Releases before 0.6.5 named no commit at all, only the moving experimental-palworld tag, so those entries carry no ue4ss.",
+      "$comment": "ue4ssCommit is the UE4SS build the DECLARED release must be run against, read from that release's own body (0.6.71: \"must be used with [UE4SS 2281fa31]\"). check-currency compares it against the live release data and the README compatibility line quotes it. Releases before 0.6.5 named no commit at all, only the moving experimental-palworld tag, so those entries carry no ue4ss.",
       "releases": [
         { "version": "0.6.3", "date": "2026-08-15" },
         { "version": "0.6.4", "date": "2026-08-18" },
         { "version": "0.6.5", "date": "2026-08-28", "ue4ss": "ba2efd55" },
         { "version": "0.6.6", "date": "2026-09-03", "ue4ss": "2281fa31" },
-        { "version": "0.6.7", "date": "2026-09-04", "ue4ss": "2281fa31" }
+        { "version": "0.6.7", "date": "2026-09-04", "ue4ss": "2281fa31" },
+        { "version": "0.6.71", "date": "2026-09-09", "ue4ss": "2281fa31" }
       ]
     }
   },
