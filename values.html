@@ -72,6 +72,7 @@
 <script>
 const state = { index: null, table: null, rows: {}, names: [], sel: null };
 const el = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/</g, '&lt;');
 
 async function boot() {
   const res = await fetch('./values/index.json', { cache: 'no-cache' });
@@ -90,7 +91,7 @@ async function boot() {
 async function loadTable(name) {
   state.table = name;
   el('main').innerHTML = '<div class="empty">loading…</div>';
-  const res = await fetch(`./values/${name}.json`, { cache: 'no-cache' });
+  const res = await fetch(`./values/${encodeURIComponent(name)}.json`, { cache: 'no-cache' });
   state.rows = await res.json();
   state.names = Object.keys(state.rows);
   state.sel = null;
@@ -150,7 +151,7 @@ function select(name) {
   };
 }
 
-boot().catch((e) => { el('main').innerHTML = `<div class="empty">could not load values: ${e.message}</div>`; });
+boot().catch((e) => { el('main').innerHTML = `<div class="empty">could not load values: ${esc(e.message)}</div>`; });
 </script>
 </body>
 </html>

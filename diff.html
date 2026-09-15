@@ -148,8 +148,8 @@ async function render() {
   }
   parts.push(`<div class="meta">
     <span class="chip">SDK <b>${esc(d.from.sdkCommit)}</b> (${esc(d.from.sdkDate)}) → <b>${esc(d.to.sdkCommit)}</b> (${esc(d.to.sdkDate)})</span>
-    <a class="chip" href="./diffs/${f}..${t}.md" target="_blank" rel="noopener">markdown ↗</a>
-    <a class="chip" href="./diffs/${f}..${t}.json" target="_blank" rel="noopener">raw JSON ↗</a>
+    <a class="chip" href="./diffs/${encodeURIComponent(f)}..${encodeURIComponent(t)}.md" target="_blank" rel="noopener">markdown ↗</a>
+    <a class="chip" href="./diffs/${encodeURIComponent(f)}..${encodeURIComponent(t)}.json" target="_blank" rel="noopener">raw JSON ↗</a>
   </div>`);
   parts.push(`<div class="summary">${esc(d.summary)}</div>`);
 
