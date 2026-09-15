@@ -1,9 +1,9 @@
 {
  "$comment": "Current row VALUES for every registry table, read from the game's own cooked DataTables by scripts/extract-tables.mjs. Derived data only (numbers and identifiers); no game asset is redistributed. Field names and types are the published schemas in schemas/v1.0.",
- "gameVersion": "1.0.4",
+ "gameVersion": "1.0.5",
  "usmapVersion": 4,
  "pakVersion": 11,
- "generatedAt": "2026-09-07",
+ "generatedAt": "2026-09-15",
  "unsupported": {
   "DT_TechnologyIconData": "row struct FPalTechnologyIconData is absent from the mappings file",
   "DT_TechnologyRecipeUnlock": "row layout does not match the mapped struct (4 unaccounted bytes before the first value)",

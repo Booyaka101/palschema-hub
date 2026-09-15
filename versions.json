@@ -67,8 +67,15 @@
     },
     "1.0.5": {
       "of": "1.0",
-      "note": "Palworld 1.0.5 (v1.0.5: Bug fixes) shipped no Source/Pal/Public header change. Its row structs are identical to 1.0.",
-      "aliasReason": "Source/Pal/Public was last regenerated at 98ee60d (2026-07-11), which is the commit Palworld 1.0 pins, and the SDK head is e663245 (2026-08-24), so 1.0.5 aliases 1.0. Verified 2026-09-15 against the Steam news API (appid 1623730) and the SDK commit list."
+      "note": "Palworld 1.0.5 (v1.0.5: Bug fixes) shipped no Source/Pal/Public header change, so every row struct the SDK describes is identical to 1.0. It is not a pure alias: the game's own cooked tables still carry one property the pinned SDK does not have, on PalCharacterParameterDatabaseRow (DT_PalMonsterParameter, DT_PalHumanParameter), unchanged from 1.0.4. See aliases[\"1.0.5\"].gameDelta in versions.json.",
+      "aliasReason": "Source/Pal/Public was last regenerated at 98ee60d (2026-07-11), which is the commit Palworld 1.0 pins, and the SDK head is e663245 (2026-08-24), so 1.0.5 aliases 1.0. Verified 2026-09-15 against the Steam news API (appid 1623730) and the SDK commit list.",
+      "gameDelta": {
+        "summary": "PalCharacterParameterDatabaseRow still carries the 91st property that the pinned SDK headers do not describe. It arrived in 1.0.4 and 1.0.5 left it alone.",
+        "tables": ["DT_PalMonsterParameter", "DT_PalHumanParameter"],
+        "property": { "index": 90, "bytes": 1, "setOnRows": 103, "ofRows": 753 },
+        "evidence": "Read out of the 1.0.5 pak (Steam build 25246127, installed 2026-09-15) on 2026-09-15. Same property index, same single byte, set on the same 103 of 753 DT_PalMonsterParameter rows and on no DT_PalHumanParameter row. Every mapped value in both tables extracts byte-identical to the 1.0.4 run, so this patch moved neither the layout nor the data. Its name and type stay unknown until Source/Pal/Public is regenerated or a mappings file names it.",
+        "impact": "No property a mod can already write was removed, retyped or reordered, so \"no row-struct changes\" holds for every field the registry describes. values/ carries the 90 mapped properties and records the unmapped one in values/index.json."
+      }
     }
   }
 }
