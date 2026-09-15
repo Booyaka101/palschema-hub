@@ -47,6 +47,7 @@
  *   --public-commits-json <file>   saved commit list filtered to Source/Pal/Public
  *   --releases-json <file>         saved Okaetsu/PalSchema releases response
  *   --items-json <file>            items.json to read _provenance from
+ *   --buildings-json <file>        buildings.json to read _provenance from
  *   --values-json <file>           values/index.json to read gameVersion from
  *   --upstream-schema-json <file>  saved contents-API response for items.schema.json
  */

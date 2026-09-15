@@ -11,9 +11,12 @@
 #   2. registry currency: scripts/check-currency.mjs against the live Steam
 #      news API + PalworldModdingKit commits (exit 1 = stale, 2 = network).
 #
-# The version-alias job then ACTS on the one case that is fully derivable (a game
-# patch that shipped no SDK header change) and opens the PR itself. Daily rather
-# than weekly because a patch used to sit undetected for up to six days.
+# The version-alias job then ACTS on the half of that which is derivable (a game
+# patch that shipped no SDK header change) and opens a DRAFT PR with it. Only a
+# half: the row VALUES have to be read out of the updated game, which needs the
+# install, so the draft carries the structs, diffs and badge and names what is
+# left. Daily rather than weekly because a patch used to sit undetected for up
+# to six days.
 name: refresh-items
 
 on:
@@ -113,7 +116,7 @@ jobs:
         run: |
           set -euo pipefail
           title="registry stale: ${{ steps.currency.outputs.line }}"
-          body=$(printf '`npm run versions:check` reports:\n\n```\n%s\n```\n\nIf only the GAME moved and `Source/Pal/Public` did not regenerate, the version-alias job in this same workflow opens the PR by itself (`npm run versions:bump`), so there is nothing to do here but review it.\n\nIf only the SDK HEAD moved (the line says "no Source/Pal/Public change"), no schema, struct or diff is stale — it is bookkeeping. Set `sdkHead` in `versions.json` to the new sha and its date, then update the docs that quote the CLI alias line, which names the head: README, cli/README, the two files under nexus/. `npm test` gates all four. The auto-bump job does not cover this case; it only fires on a new game version.\n\nIf the line names PALSCHEMA, neither the game nor the SDK moved. Read the upstream compare between the tag this repo claims and the new one before deciding anything. A release that touches no `src/Loader/*.cpp` and leaves `assets/schemas/items.schema.json` on the pinned blob is a compatibility bump: set `upstream.palSchema` (version, date, releases) in `versions.json`, then update what quotes it, which is the README badge and compatibility line, the `verifiedAgainst` block in `structs/loader-overlay.json` and `nexus/REGISTRY_README.txt`, and rerun `npm run nexus:zip`. `npm test` gates the badge, the line and the archive. A loader or schema change is not bookkeeping and needs the derived schemas rebuilt.\n\nIf the SDK regenerated, the row structs really changed: pin the new commit in `versions.json` (order + versions), then `npm run snapshot:all && npm run diff:all && npm run seed && npm run check`, and read the diff before shipping.' "${{ steps.currency.outputs.line }}")
+          body=$(printf '`npm run versions:check` reports:\n\n```\n%s\n```\n\nIf only the GAME moved and `Source/Pal/Public` did not regenerate, the version-alias job in this same workflow opens a draft PR with the derivable half (`npm run versions:bump`). That draft still needs the values read out of the new build; it says so and lists the steps.\n\nIf only the SDK HEAD moved (the line says "no Source/Pal/Public change"), no schema, struct or diff is stale — it is bookkeeping. Set `sdkHead` in `versions.json` to the new sha and its date, then update the docs that quote the CLI alias line, which names the head: README, cli/README, the two files under nexus/. `npm test` gates all four. The auto-bump job does not cover this case; it only fires on a new game version.\n\nIf the line names PALSCHEMA, neither the game nor the SDK moved. Read the upstream compare between the tag this repo claims and the new one before deciding anything. A release that touches no `src/Loader/*.cpp` and leaves `assets/schemas/items.schema.json` on the pinned blob is a compatibility bump: set `upstream.palSchema` (version, date, releases) in `versions.json`, then update what quotes it, which is the README badge and compatibility line, the `verifiedAgainst` block in `structs/loader-overlay.json` and `nexus/REGISTRY_README.txt`, and rerun `npm run nexus:zip`. `npm test` gates the badge, the line and the archive. A loader or schema change is not bookkeeping and needs the derived schemas rebuilt.\n\nIf the SDK regenerated, the row structs really changed: pin the new commit in `versions.json` (order + versions), then `npm run snapshot:all && npm run diff:all && npm run seed && npm run check`, and read the diff before shipping.' "${{ steps.currency.outputs.line }}")
           if [ -z "$(gh issue list --state open --search "\"registry stale\" in:title" --json number --jq '.[].number')" ]; then
             gh issue create --title "$title" --body "$body"
           fi
@@ -161,9 +164,17 @@ jobs:
           # The offline archive bundles versions.json, so the bump above left the
           # committed zip stale and the suite fails on it until it is rebuilt.
           npm run nexus:zip
-          npm test
+          # The bump has just recorded a game label nothing has been extracted
+          # against yet, so the value-lane invariant is knowingly broken until a
+          # human runs the extraction. That one test is waived; every other test
+          # still gates, so a red job here means a real regression and no PR.
+          npm test -- --allow-stale-values
 
-      - name: Open the PR
+      # A bare alias bump is half of a version ship: the derivable half. The values
+      # still have to be read out of the updated game, which needs the install and a
+      # matching usmap, so this opens a DRAFT and says what is left rather than an
+      # open PR that looks mergeable and is not.
+      - name: Open the draft PR
         if: steps.bump.outputs.exit == '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -178,7 +189,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$branch"
-          git add versions.json structs diffs nexus/palschema-hub-registry.zip
+          git add versions.json README.md structs diffs nexus/palschema-hub-registry.zip
           git commit -F - <<COMMIT
           data: Palworld $VERSION aliases $ALIAS_OF (no SDK header change)
 
@@ -186,13 +197,28 @@ jobs:
           against the Steam news API (appid 1623730) and the PalworldModdingKit
           commit list that Source/Pal/Public did not regenerate for this patch, so
           the row structs are identical to $ALIAS_OF. Regenerated struct snapshots,
-          pairwise diffs and the offline archive; the acceptance suite ran green
-          before this commit.
+          pairwise diffs, the README badge and the offline archive.
+
+          The values are NOT refreshed: items.json, buildings.json and values/ are
+          still read from an older build, because that needs the game install. The
+          acceptance suite ran green with that one invariant waived.
           COMMIT
           git push -u origin "$branch"
           issue=$(gh issue list --state open --search '"registry stale" in:title' --json number --jq '.[0].number // empty')
-          closes=""
-          if [ -n "$issue" ]; then closes=$(printf 'Closes #%s\n\n' "$issue"); fi
-          body=$(printf '%sPalworld **%s** shipped and `Source/Pal/Public` did not regenerate, so it is an alias of **%s**. The shas this was checked against are in `versions.json`, `aliases["%s"].aliasReason`.\n\nGenerated: the `versions.json` entry, `structs/%s.json`, the `..%s` diffs, and the rebuilt offline archive. The acceptance suite ran green in the job that opened this PR. Note that self-test does NOT auto-run on PRs opened with `GITHUB_TOKEN`, so push a commit or close/reopen if you want its checks on record.\n\nStill human work, if it matters for this patch: the README alias caveat, `cli/README.md`, and CHANGELOG all name the alias list in prose.' \
-            "$closes" "$VERSION" "$ALIAS_OF" "$VERSION" "$VERSION" "$VERSION")
-          gh pr create --title "data: Palworld $VERSION aliases $ALIAS_OF (no SDK header change)" --body "$body"
+          {
+            if [ -n "$issue" ]; then echo "Refs #$issue"; echo; fi
+            cat <<BODY
+          Palworld **$VERSION** shipped and \`Source/Pal/Public\` did not regenerate, so it is an alias of **$ALIAS_OF**. The shas that was checked against are in \`versions.json\`, under \`aliases["$VERSION"].aliasReason\`.
+
+          Generated here: the \`versions.json\` entry, the README's Palworld badge, \`structs/$VERSION.json\`, the \`..$VERSION\` diffs and the rebuilt offline archive.
+
+          **Draft, because nothing has been read out of the new build yet.** \`items.json\`, \`buildings.json\` and \`values/\` still carry an older game label. A patch can move row values without touching a single struct or sha, which is exactly what 1.0.3 and 1.0.4 did, so until the extraction runs the registry does not know whether its numbers are current. That is the one test this job waived; every other test gated normally and passed.
+
+          To finish: update the game, run \`npm run extract\` and \`npm run check:values\`, re-scrape items and buildings if their tables moved, and write up what the patch did. The alias caveat in \`README.md\`, \`cli/README.md\`, the two files under \`nexus/\` and the CHANGELOG all name the alias list in prose, and none of that is derivable.
+
+          self-test does not auto-run on PRs opened with \`GITHUB_TOKEN\`, so push a commit or close and reopen to get its checks on record.
+          BODY
+          } > "$RUNNER_TEMP/pr-body.md"
+          gh pr create --draft \
+            --title "data: Palworld $VERSION aliases $ALIAS_OF (no SDK header change)" \
+            --body-file "$RUNNER_TEMP/pr-body.md"

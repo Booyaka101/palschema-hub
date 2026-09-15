@@ -6,8 +6,9 @@
  * the game moved but localcc/PalworldModdingKit's Source/Pal/Public did NOT
  * regenerate, so the row structs are identical to the newest pinned version and
  * the new label is an ALIAS. This verifies that against both live sources, adds
- * the alias to versions.json (evidence in `aliasReason`), then re-runs
- * snapshot:all + diff:all so structs/ and diffs/ carry the new label.
+ * the alias to versions.json (evidence in `aliasReason`), retargets the README's
+ * Palworld badge (a pure function of the newest label, which the suite asserts),
+ * then re-runs snapshot:all + diff:all so structs/ and diffs/ carry the new label.
  *
  * If Source/Pal/Public DID regenerate, the row structs really changed: that needs
  * a new pin, re-derived schemas and a human reading the delta. This refuses (3).
@@ -50,6 +51,10 @@ import {
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const VERSIONS_PATH = join(ROOT, 'versions.json');
+const README_PATH = join(ROOT, 'README.md');
+// Only the shields.io badge is derivable. Every other mention of a game version in
+// the README describes what a specific patch did, and still needs a human.
+const BADGE_RE = /\[!\[Palworld [^\]]*\]\(https:\/\/img\.shields\.io\/badge\/Palworld-[^-]*-(\w+)\)\]/g;
 
 const args = process.argv.slice(2);
 const has = (name) => args.includes(name);
@@ -242,8 +247,23 @@ if (!roundTrips) {
   );
   process.exit(1);
 }
+const readme = readFileSync(README_PATH, 'utf8');
+const badgeHits = readme.match(BADGE_RE)?.length ?? 0;
+if (badgeHits !== 1) {
+  console.error(
+    `refusing to write: expected exactly 1 Palworld badge in README.md, found ${badgeHits}. ` +
+      'Nothing has been written; fix the badge or bump by hand.',
+  );
+  process.exit(1);
+}
 writeFileSync(VERSIONS_PATH, serialize(updated, EOL));
 console.log(`\nversions.json: added aliases["${target}"]`);
+
+writeFileSync(
+  README_PATH,
+  readme.replace(BADGE_RE, `[![Palworld ${target}](https://img.shields.io/badge/Palworld-${target}-$1)]`),
+);
+console.log(`README.md: Palworld badge -> ${target}`);
 
 if (has('--no-build')) {
   console.log('--no-build: skipping snapshot:all + diff:all');
