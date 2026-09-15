@@ -605,14 +605,29 @@ run('nexus offline archive matches the repo', ['scripts/build-nexus-zip.mjs', '-
 
 // Every alias must carry its generated artifacts — this is what an automated
 // bump produces, and what diff.html/the CLI 404 on if a step is skipped.
-run('every alias has a struct snapshot and a diff against its pinned version',
-  ['-e', `const {existsSync}=require('fs');const v=require('./versions.json');` +
-    `const missing=[];for(const [a,{of}] of Object.entries(v.aliases)){` +
-    `if(!existsSync('structs/'+a+'.json'))missing.push('structs/'+a+'.json');` +
-    `if(!existsSync('diffs/'+of+'..'+a+'.json'))missing.push('diffs/'+of+'..'+a+'.json');}` +
-    `if(missing.length){console.error('missing: '+missing.join(', '));process.exit(1);}` +
-    `console.log('all '+Object.keys(v.aliases).length+' aliases have artifacts');`],
-  0, 'aliases have artifacts');
+// Alias artifacts are generated FROM versions.json, so a note corrected after the
+// fact drifts silently: structs/1.0.4.json shipped the original one-line note long
+// after versions.json had documented 1.0.4 as not a pure alias. Nothing reads that
+// field, which is exactly why nothing caught it, and the next alias bump would have
+// swept the correction into an unrelated PR.
+{
+  const problems = [];
+  for (const [aliasLabel, { of, note }] of Object.entries(versionsInfo.aliases)) {
+    const snapshot = join(ROOT, 'structs', `${aliasLabel}.json`);
+    if (!existsSync(snapshot)) problems.push(`structs/${aliasLabel}.json missing`);
+    else if (JSON.parse(readFileSync(snapshot, 'utf8')).aliasNote !== note) {
+      problems.push(`structs/${aliasLabel}.json aliasNote is stale (npm run snapshot:all)`);
+    }
+    if (!existsSync(join(ROOT, 'diffs', `${of}..${aliasLabel}.json`))) {
+      problems.push(`diffs/${of}..${aliasLabel}.json missing`);
+    }
+  }
+  assert(
+    `all ${Object.keys(versionsInfo.aliases).length} alias artifacts exist and agree with versions.json`,
+    problems.length === 0,
+    problems.join('; '),
+  );
+}
 
 // v0.4.0: the items.json gate (paldb.cc-sourced data must stay schema-valid & fresh).
 run('check-items gate: shipped items.json passes (schema-valid, fresh, no SortID)',
