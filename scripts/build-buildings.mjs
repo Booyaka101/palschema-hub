@@ -30,7 +30,7 @@ import { parseDetailPage, parseIndex, detailUrlFor, parseFooterVersion, decodeEn
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const USER_AGENT = 'palschema-hub build-buildings (github.com/Booyaka101/palschema-hub)';
-const GAME_VERSION = '1.0.4'; // paldb.cc footer: "v1.0.4 2026/09/07" — asserted below
+const GAME_VERSION = '1.0.5'; // paldb.cc footer: "v1.0.5 2026/09/15" — asserted below
 const CACHE_DIR = join(ROOT, '.cache', 'paldb-buildings', GAME_VERSION);
 const CONCURRENCY = 4;
 const SPACING_MS = 150;

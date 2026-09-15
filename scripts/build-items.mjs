@@ -31,7 +31,7 @@ import { parseIndex, parseItemPage, detailUrlFor, parseFooterVersion } from './l
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const INDEX_URL = 'https://paldb.cc/en/Items_Table';
 const USER_AGENT = 'palschema-hub build-items (github.com/Booyaka101/palschema-hub)';
-const GAME_VERSION = '1.0.4'; // paldb.cc footer: "v1.0.4 2026/09/07" (matches Steam news)
+const GAME_VERSION = '1.0.5'; // paldb.cc footer: "v1.0.5 2026/09/15" (matches Steam news)
 // Cached pages are keyed by game version. A balance patch changes VALUES while
 // every URL stays the same, so a flat cache would silently rebuild the previous
 // version's numbers from disk; --refresh bypasses it entirely.

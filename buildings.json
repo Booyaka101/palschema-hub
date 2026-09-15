@@ -1,15 +1,15 @@
 {
- "generatedAt": "2026-09-07T07:21:55.864Z",
+ "generatedAt": "2026-09-15T12:21:22.094Z",
  "tables": [
   "DT_MapObjectMasterDataTable",
   "DT_BuildObjectDataTable"
  ],
- "source": "paldb.cc construction category pages (Palworld 1.0.4)",
+ "source": "paldb.cc construction category pages (Palworld 1.0.5)",
  "note": "Per-building row VALUES for the two build tables, which share one row name per building (e.g. HatchingPalEgg in both DT_MapObjectMasterDataTable and DT_BuildObjectDataTable; the unlocking DT_TechnologyRecipeUnlock row prefixes it, e.g. Special_HatchingPalEgg — not rendered by paldb, so not here). Fields are routed to a table by which schema declares them; labels neither schema declares are display-side derivations kept under \"display\". Materials are captured by display name and mapped to item Codes via the item index where the name is unique; the raw Material1..4_Id/_Count columns are not rendered by paldb. Field names/types: schemas/ and index.html.",
  "_provenance": {
   "source": "paldb.cc /en/{Production,Pal,Storage,Food,Infrastructure,Lighting,Foundations,Defenses,Furniture,Other} + per-building detail pages",
-  "gameVersion": "1.0.4",
-  "gameVersionDate": "2026-09-07",
+  "gameVersion": "1.0.5",
+  "gameVersionDate": "2026-09-15",
   "valuesCurrent": true,
   "rowCount": 483,
   "carriedForwardRows": 21
