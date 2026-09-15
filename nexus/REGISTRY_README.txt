@@ -13,7 +13,27 @@ Plus the CURRENT ROW VALUES for 28 of those tables, a per-item and
 per-building VALUE reference, and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry 0.12.0, 2026-09-07)
+NEW IN THIS VERSION (registry 0.12.1, 2026-09-15)
+  * PALWORLD 1.0.5 COVERED, AND IT MOVED NOTHING. v1.0.5 is a bug-fix
+    patch. It changed no row struct the modding SDK describes, and it also
+    changed no row VALUE: all 28 extracted tables and 41,402 rows come out
+    byte-identical to the 1.0.4 build, 2,445 items and 483 buildings the
+    same. That is not an assumption from a sha check. Every lane was
+    re-read against the new build (Steam build 25246127) before this went
+    out, and the only bytes that changed anywhere in the registry are
+    version labels.
+  * THE PROPERTY THE SDK STILL CANNOT SEE IS STILL THERE. 1.0.4 added a
+    91st property to PalCharacterParameterDatabaseRow; 1.0.5 left it
+    exactly alone, same index, same single byte, same 103 of the 753
+    monster rows and none of the human rows. It stays unnamed here until
+    the SDK regenerates or a mappings file names it. versions.json records
+    it under aliases["1.0.5"].gameDelta, and the build fails if the game
+    ever stops showing what that entry claims.
+  * YOUR MODS NEED NO MIGRATION. Nothing was removed, retyped or
+    reordered, so a mod written against 1.0 is fine on 1.0.5:
+        npx palschema-validate --migrate 1.0.4..1.0.5 my-mod/
+
+PREVIOUSLY (registry 0.12.0, 2026-09-07)
   * PALWORLD 1.0.4 COVERED, WITH ONE HONEST ASTERISK. The patch changed no
     row struct the modding SDK describes, so a mod that worked on 1.0 needs
     no field migration. But the game's own cooked tables carry a property
@@ -223,8 +243,8 @@ Scan your own mod for fields a patch broke:
 It prints one line per affected field (with a labelled possible-rename note)
 and exits 1 if anything broke, so it drops straight into CI.
 
-Note: Palworld 0.7.3, 1.0.1, the 1.0.2 line, 1.0.3 and 1.0.4 shipped no row-struct
-changes, so they are recorded as aliases of 0.7.2 / 1.0 / 1.0 / 1.0 / 1.0 — those pairs report
+Note: Palworld 0.7.3, 1.0.1, the 1.0.2 line, 1.0.3, 1.0.4 and 1.0.5 shipped no row-struct
+changes, so they are recorded as aliases of 0.7.2 / 1.0 / 1.0 / 1.0 / 1.0 / 1.0 — those pairs report
 "no row-struct changes" rather than inventing a diff. For example:
 
     npx palschema-validate --migrate 1.0.1..1.0.2 my-mod/
@@ -235,18 +255,18 @@ HOW CURRENT IS EACH PART? (read this before trusting a value)
 -------------------------------------------------------------
 Field NAMES and TYPES — the schemas, the version diffs, the --migrate scan —
 are verified against the CURRENT game's row structs (PalworldModdingKit SDK
-headers @62fad41). That part is 1.0.4-current, with one exception the SDK
+headers @62fad41). That part is 1.0.5-current, with one exception the SDK
 cannot cover: 1.0.4 added a property to PalCharacterParameterDatabaseRow
 (DT_PalMonsterParameter, DT_PalHumanParameter) that the headers do not
 describe, so it is absent here. Nothing was removed, retyped or reordered,
 so a mod written against 1.0 still needs no field migration. versions.json
-aliases["1.0.4"].gameDelta records what was read out of the game.
+aliases["1.0.5"].gameDelta records what was read out of the game.
 
-Row VALUES in items.json / items.html are current too, re-scraped for 1.0.4
-(the patch moved no item row at all — the game's own DT_ItemDataTable is
-byte-identical to 1.0.3).
+Row VALUES in items.json / items.html are current too, re-scraped for 1.0.5
+(neither 1.0.4 nor 1.0.5 moved a single item row. The game's own
+DT_ItemDataTable is byte-identical to 1.0.3.)
 They come from paldb.cc, which tracks the live build (its footer pins to
-v1.0.4, 2026/09/07): 2,445 rows, one per rarity variant. Fields paldb.cc does not
+v1.0.5, 2026/09/15): 2,445 rows, one per rarity variant. Fields paldb.cc does not
 render (VisualBlueprintClassSoft, DropItemType, GrantEffect*, TechnologyTreeLock
 and friends) are filled from the old Jan-2024 paldex dump where that row existed
 back then; paldb wins every conflict, and items.json's fieldSources object

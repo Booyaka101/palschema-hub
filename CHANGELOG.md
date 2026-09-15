@@ -1,5 +1,37 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.12.1 — 2026-09-15
+
+**Palworld 1.0.5, read out of the game rather than assumed.** The currency watch
+caught v1.0.5 ("Bug fixes") the day it shipped and `bump-version.mjs` called it an
+alias of 1.0, `Source/Pal/Public` being unregenerated since 98ee60d. 1.0.4 is the
+reason that is no longer good enough on its own, so all three lanes were re-read
+against the new build before this went out.
+
+- **Nothing moved. Anywhere.** paldb.cc turned its footer over to v1.0.5 the same
+  day, so `items.json` and `buildings.json` were re-scraped with `--refresh`
+  against a separately keyed cache: 2445 items, 483 buildings, not one row value
+  different from 1.0.4. `values/` was re-extracted from the 1.0.5 pak (Steam build
+  25246127) and came back byte-identical across all 28 tables and 41402 rows. The
+  only bytes that changed in the whole registry are provenance labels.
+- **The unmapped property is still there, and still unnamed.**
+  `PalCharacterParameterDatabaseRow` carries the 91st property 1.0.4 added, at the
+  same index 90, the same single byte, set on the same 103 of 753
+  `DT_PalMonsterParameter` rows and on no `DT_PalHumanParameter` row. It is
+  declared in `versions.json` `aliases["1.0.5"].gameDelta`, which is what
+  `check-values` holds the extraction to: it fails on a property versions.json does
+  not acknowledge, and equally on a declared claim the extraction no longer shows.
+  The alias note says 1.0.5 is not a pure alias rather than letting the sha check
+  speak for the whole patch.
+- **Nothing a mod can already write was removed, retyped or reordered**, so "no
+  row-struct changes" holds for every field the registry describes, and
+  `--migrate 1.0.4..1.0.5` says so with both gameDelta notes attached.
+- Known gap, now tracked as #58: `extract-tables.mjs` stamps `values/index.json`
+  with a version copied out of `items.json` and never checks it against the pak it
+  opened, so a run against a stale install would label itself 1.0.5 and every gate
+  downstream would believe it. The two paldb lanes assert the site footer; this one
+  asserts nothing.
+
 ## 0.12.0 / palschema-validate 0.6.1 — 2026-09-07
 
 **Palworld 1.0.4, and the property the SDK could not see.** The daily currency

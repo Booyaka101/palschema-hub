@@ -1,6 +1,6 @@
 # 🧩 palschema-hub
 
-[![registry 0.12.0](https://img.shields.io/badge/registry-0.12.0-blue)](CHANGELOG.md)
+[![registry 0.12.1](https://img.shields.io/badge/registry-0.12.1-blue)](CHANGELOG.md)
 [![PalSchema 0.6.71](https://img.shields.io/badge/PalSchema-0.6.71-green)](https://github.com/Okaetsu/PalSchema/releases/tag/0.6.71)
 [![UE4SS 2281fa31](https://img.shields.io/badge/UE4SS-2281fa31-green)](https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31)
 [![Palworld 1.0.5](https://img.shields.io/badge/Palworld-1.0.5-orange)](versions.json)
