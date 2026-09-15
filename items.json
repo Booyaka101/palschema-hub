@@ -1,12 +1,12 @@
 {
- "generatedAt": "2026-09-07T07:22:51.829Z",
+ "generatedAt": "2026-09-15T12:20:49.441Z",
  "table": "DT_ItemDataTable",
- "source": "paldb.cc (Palworld 1.0.4) + blaynem/paldex Jan-2024 dump for paldb-invisible fields",
- "note": "Per-item row VALUES (ItemActorClass etc.) for asset reuse in PalSchema mods. Scraped from paldb.cc per-item pages (current game, Palworld 1.0.4, 2026-09-07); fields paldb.cc does not render are filled from the Jan-2024 paldex dump where the row existed then — paldb wins every conflict; see fieldSources for the per-row split. Rows are internal Codes (e.g. SFHelmet = Hexolite Helmet). Field names/types: schemas/ and index.html.",
+ "source": "paldb.cc (Palworld 1.0.5) + blaynem/paldex Jan-2024 dump for paldb-invisible fields",
+ "note": "Per-item row VALUES (ItemActorClass etc.) for asset reuse in PalSchema mods. Scraped from paldb.cc per-item pages (current game, Palworld 1.0.5, 2026-09-15); fields paldb.cc does not render are filled from the Jan-2024 paldex dump where the row existed then — paldb wins every conflict; see fieldSources for the per-row split. Rows are internal Codes (e.g. SFHelmet = Hexolite Helmet). Field names/types: schemas/ and index.html.",
  "_provenance": {
   "source": "paldb.cc/en/Items_Table + per-item detail pages",
-  "gameVersion": "1.0.4",
-  "gameVersionDate": "2026-09-07",
+  "gameVersion": "1.0.5",
+  "gameVersionDate": "2026-09-15",
   "valuesCurrent": true,
   "mergeSource": "github.com/blaynem/paldex (Jan-2024) — fill-only, never overrides paldb",
   "rowCount": 2445,
