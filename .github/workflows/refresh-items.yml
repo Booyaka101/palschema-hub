@@ -131,6 +131,10 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      # For the `Refs #N` line: the issue search returns an empty list rather
+      # than a 403 when the token cannot see issues, so without this the draft
+      # opens unlinked and nothing in the log says why.
+      issues: read
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -208,7 +212,7 @@ jobs:
           {
             if [ -n "$issue" ]; then echo "Refs #$issue"; echo; fi
             cat <<BODY
-          Palworld **$VERSION** shipped and \`Source/Pal/Public\` did not regenerate, so it is an alias of **$ALIAS_OF**. The shas that was checked against are in \`versions.json\`, under \`aliases["$VERSION"].aliasReason\`.
+          Palworld **$VERSION** shipped and \`Source/Pal/Public\` did not regenerate, so it is an alias of **$ALIAS_OF**. The shas it was checked against are in \`versions.json\`, under \`aliases["$VERSION"].aliasReason\`.
 
           Generated here: the \`versions.json\` entry, the README's Palworld badge, \`structs/$VERSION.json\`, the \`..$VERSION\` diffs and the rebuilt offline archive.
 
