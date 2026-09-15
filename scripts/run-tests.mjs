@@ -2,17 +2,24 @@
 /**
  * run-tests.mjs — portable acceptance-test runner (works on Windows cmd & Unix).
  * Asserts: index.json valid w/ >=10 tables; valid-mod passes (0); invalid-mod fails (1).
+ *
+ * --allow-stale-values  do not fail the run when the shipped value lanes are
+ *   behind versions.json. An alias bump adds a game label the extraction cannot
+ *   have run for yet, so that one invariant is knowingly broken between the bump
+ *   and the extraction; refresh-items passes this so a real regression in the
+ *   same run is still the only thing that turns the job red.
  */
 import { spawn, spawnSync } from 'node:child_process';
 import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { registryNewest } from './lib/version-sources.mjs';
+import { cmpVersions, registryNewest } from './lib/version-sources.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const node = process.execPath;
 let failures = 0;
+const allowStaleValues = process.argv.includes('--allow-stale-values');
 
 // Anchors for everything below that would otherwise hardcode a sha or a label.
 const versionsInfo = JSON.parse(readFileSync(join(ROOT, 'versions.json'), 'utf8'));
@@ -412,19 +419,35 @@ try {
   const pinnedBlob = JSON.parse(readFileSync(join(ROOT, 'structs/upstream-constraints.json'), 'utf8')).verifiedAgainst;
   const upstreamInsync = write('upstream-schema-insync.json', { sha: pinnedBlob.blobSha });
   const upstreamMoved = write('upstream-schema-moved.json', { sha: 'deadbee1234567890deadbee1234567890deadbe' });
-  const currency = (extra = []) => [
-    'scripts/check-currency.mjs',
-    '--steam-json', steamInsync, '--commits-json', commitsHead, '--releases-json', releasesCurrent,
-    '--upstream-schema-json', upstreamInsync,
-    ...extra,
-  ];
+  // The three value lanes are stubbed CURRENT so each in-sync case below measures
+  // only the axis it is named for. Whether the lanes the repo SHIPS are current is
+  // a separate invariant, asserted once at the end of this block: before the split,
+  // an alias bump landing ahead of its extraction reported as five failures in
+  // tests named after UE4SS pins and blob shas, which is where nobody would look.
+  const laneFixtures = {
+    '--items-json': write('items-current.json', { _provenance: { gameVersion: newestLabel } }),
+    '--buildings-json': write('buildings-current.json', { _provenance: { gameVersion: newestLabel } }),
+    '--values-json': write('values-current.json', { gameVersion: newestLabel, tables: [] }),
+  };
+  // check-currency's flag() reads the FIRST occurrence, so the argv is built from a
+  // map: a flag in `extra` replaces the in-sync default instead of sitting behind it.
+  const currency = (extra = []) => {
+    const flags = {
+      '--steam-json': steamInsync,
+      '--commits-json': commitsHead,
+      '--releases-json': releasesCurrent,
+      '--upstream-schema-json': upstreamInsync,
+      ...laneFixtures,
+    };
+    for (let i = 0; i < extra.length; i += 2) flags[extra[i]] = extra[i + 1];
+    return ['scripts/check-currency.mjs', ...Object.entries(flags).flat()];
+  };
 
   run('check-currency: in-sync fixture -> exit 0 "registry current"',
     currency(),
     0, `registry current: game ${newestLabel}, SDK ${headSha}, PalSchema ${psClaimed}`);
   run('check-currency: stale fixture -> exit 1 naming the new game version',
-    ['scripts/check-currency.mjs', '--steam-json', steamStale, '--commits-json', commitsHead,
-      '--releases-json', releasesCurrent, '--upstream-schema-json', upstreamInsync],
+    currency(['--steam-json', steamStale]),
     1, `game ${nextLabel} released, registry newest is ${newestLabel}`);
   // A balance patch: structs and shas are untouched, only the VALUES moved.
   run('check-currency: item values behind the game -> exit 1 (the 1.0.3 case)',
@@ -439,8 +462,7 @@ try {
   run('check-currency: in-sync line reports which build values/ was extracted from',
     currency(), 0, `extracted values ${newestLabel}`);
   run('check-currency: newer PalSchema release -> exit 1 naming it',
-    ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
-      '--releases-json', releasesNew, '--upstream-schema-json', upstreamInsync],
+    currency(['--releases-json', releasesNew]),
     1, `PalSchema ${bumpLast(psClaimed)} released, this registry claims ${psClaimed}`);
   // Upstream's tags are not ordered by version: 0.6.71 shipped after 0.6.7 and
   // compares ABOVE a later 0.6.8, so a version max would report "current" with a
@@ -456,14 +478,12 @@ try {
     { tag_name: psClaimed, published_at: '2026-09-09T14:45:21Z' },
   ]);
   run('check-currency: a later release whose tag sorts LOWER -> exit 1 naming it',
-    ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
-      '--releases-json', releasesOutOfOrder, '--upstream-schema-json', upstreamInsync],
+    currency(['--releases-json', releasesOutOfOrder]),
     1, `PalSchema ${lowerTag(psClaimed)} released, this registry claims ${psClaimed}`);
   // 0.10.0: the ported item constraints go stale when the upstream FILE moves,
   // release or not — the blob sha is its own axis, never conflated with releases.
   run('check-currency: upstream items.schema.json blob moved -> exit 1 naming both shas',
-    ['scripts/check-currency.mjs', '--steam-json', steamInsync, '--commits-json', commitsHead,
-      '--releases-json', releasesCurrent, '--upstream-schema-json', upstreamMoved],
+    currency(['--upstream-schema-json', upstreamMoved]),
     1, `upstream items.schema.json changed (blob deadbee, the ported constraints pin ${pinnedBlob.blobSha.slice(0, 7)} from tag ${pinnedBlob.tag})`);
   run('check-currency: in-sync line reports the pinned items.schema.json blob',
     currency(),
@@ -478,8 +498,7 @@ try {
     [{ tag_name: psClaimed, body: ue4ssBody(pinnedUe4ss) }, { tag_name: '0.6.0' }]);
   const releasesUe4ssMoved = write('releases-ue4ss-moved.json',
     [{ tag_name: psClaimed, body: ue4ssBody('deadbee') }, { tag_name: '0.6.0' }]);
-  const withReleases = (f) => ['scripts/check-currency.mjs', '--steam-json', steamInsync,
-    '--commits-json', commitsHead, '--releases-json', f, '--upstream-schema-json', upstreamInsync];
+  const withReleases = (f) => currency(['--releases-json', f]);
   run('check-currency: in-sync line reports the UE4SS commit it verified',
     withReleases(releasesPinned), 0, `UE4SS ${pinnedUe4ss}`);
   run('check-currency: a release that moved its UE4SS pin -> exit 1 naming both',
@@ -489,6 +508,27 @@ try {
   // compare", never as a mismatch.
   run('check-currency: a release naming no UE4SS commit is not a mismatch',
     currency(), 0, 'registry current');
+
+  // Every case above stubs the lanes, so this is the one place the SHIPPED data is
+  // held to versions.json. It fires in exactly one situation: an alias bump has
+  // recorded a game label that nothing has been extracted against yet. That is a
+  // real, temporary hole in the registry and it reads as one failure naming the
+  // lanes, not as five unrelated axes going red.
+  {
+    const laneVersions = {
+      'items.json': JSON.parse(readFileSync(join(ROOT, 'items.json'), 'utf8'))._provenance?.gameVersion,
+      'buildings.json': JSON.parse(readFileSync(join(ROOT, 'buildings.json'), 'utf8'))._provenance?.gameVersion,
+      'values/': JSON.parse(readFileSync(join(ROOT, 'values/index.json'), 'utf8')).gameVersion,
+    };
+    const behind = Object.entries(laneVersions).filter(([, v]) => v && cmpVersions(v, newestLabel) < 0);
+    const label = `the shipped value lanes are read from Palworld ${newestLabel}`;
+    const why = behind.map(([lane, v]) => `${lane} is ${v}`).join(', ');
+    if (behind.length && allowStaleValues) {
+      console.log(`SKIP  ${label}  (--allow-stale-values: ${why})`);
+    } else {
+      assert(label, behind.length === 0, why);
+    }
+  }
 
   // bump-version: the alias path is mechanical, the regenerate path must refuse.
   run('bump-version: versions.json round-trips through the serializer byte-for-byte',
@@ -565,14 +605,29 @@ run('nexus offline archive matches the repo', ['scripts/build-nexus-zip.mjs', '-
 
 // Every alias must carry its generated artifacts — this is what an automated
 // bump produces, and what diff.html/the CLI 404 on if a step is skipped.
-run('every alias has a struct snapshot and a diff against its pinned version',
-  ['-e', `const {existsSync}=require('fs');const v=require('./versions.json');` +
-    `const missing=[];for(const [a,{of}] of Object.entries(v.aliases)){` +
-    `if(!existsSync('structs/'+a+'.json'))missing.push('structs/'+a+'.json');` +
-    `if(!existsSync('diffs/'+of+'..'+a+'.json'))missing.push('diffs/'+of+'..'+a+'.json');}` +
-    `if(missing.length){console.error('missing: '+missing.join(', '));process.exit(1);}` +
-    `console.log('all '+Object.keys(v.aliases).length+' aliases have artifacts');`],
-  0, 'aliases have artifacts');
+// Alias artifacts are generated FROM versions.json, so a note corrected after the
+// fact drifts silently: structs/1.0.4.json shipped the original one-line note long
+// after versions.json had documented 1.0.4 as not a pure alias. Nothing reads that
+// field, which is exactly why nothing caught it, and the next alias bump would have
+// swept the correction into an unrelated PR.
+{
+  const problems = [];
+  for (const [aliasLabel, { of, note }] of Object.entries(versionsInfo.aliases)) {
+    const snapshot = join(ROOT, 'structs', `${aliasLabel}.json`);
+    if (!existsSync(snapshot)) problems.push(`structs/${aliasLabel}.json missing`);
+    else if (JSON.parse(readFileSync(snapshot, 'utf8')).aliasNote !== note) {
+      problems.push(`structs/${aliasLabel}.json aliasNote is stale (npm run snapshot:all)`);
+    }
+    if (!existsSync(join(ROOT, 'diffs', `${of}..${aliasLabel}.json`))) {
+      problems.push(`diffs/${of}..${aliasLabel}.json missing`);
+    }
+  }
+  assert(
+    `all ${Object.keys(versionsInfo.aliases).length} alias artifacts exist and agree with versions.json`,
+    problems.length === 0,
+    problems.join('; '),
+  );
+}
 
 // v0.4.0: the items.json gate (paldb.cc-sourced data must stay schema-valid & fresh).
 run('check-items gate: shipped items.json passes (schema-valid, fresh, no SortID)',

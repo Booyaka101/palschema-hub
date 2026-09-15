@@ -1,7 +1,7 @@
 {
   "palworldVersion": "1.0.4",
   "aliasOf": "1.0",
-  "aliasNote": "Palworld 1.0.4 (v1.0.4: Balance Adjustments & Bug Fixes) shipped no Source/Pal/Public header change. Its row structs are identical to 1.0.",
+  "aliasNote": "Palworld 1.0.4 (v1.0.4: Balance Adjustments & Bug Fixes) shipped no Source/Pal/Public header change, so every row struct the SDK describes is identical to 1.0. It is not a pure alias: the game's own cooked tables carry one property the pinned SDK does not have, on PalCharacterParameterDatabaseRow (DT_PalMonsterParameter, DT_PalHumanParameter). See aliases[\"1.0.4\"].gameDelta in versions.json.",
   "sdkCommit": "98ee60d",
   "sdkDate": "2026-07-11",
   "structs": {
