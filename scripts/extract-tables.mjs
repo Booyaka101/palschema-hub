@@ -16,7 +16,7 @@
  *                                      [--out values] [--only DT_Foo,DT_Bar]
  */
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -44,6 +44,24 @@ function fail(message, hint) {
   console.error(`extract-tables: ${message}`);
   if (hint) console.error(`  ${hint}`);
   process.exit(1);
+}
+
+// Palworld's Steam app id. A Steam install of `.../steamapps/common/Palworld`
+// keeps its manifest two directories up; a non-Steam copy (or a Steam library
+// laid out unusually) has none, and that is a warning rather than a failure —
+// the pak stat below is still recorded either way.
+const STEAM_APP_ID = '1623730';
+function readSteamManifest(dir) {
+  const acfPath = join(dir, '..', '..', `appmanifest_${STEAM_APP_ID}.acf`);
+  if (!existsSync(acfPath)) return null;
+  const text = readFileSync(acfPath, 'utf8');
+  const field = (name) => text.match(new RegExp(`"${name}"\\s+"([^"]*)"`))?.[1];
+  const buildid = field('buildid');
+  const stateFlags = field('StateFlags');
+  if (!buildid) return null;
+  // StateFlags 4 is "fully installed"; anything else (6 = updating, 1030 =
+  // update-and-verify, ...) means the pak may be a half-applied patch.
+  return { buildid, stateFlags: stateFlags ?? null, updating: stateFlags != null && stateFlags !== '4' };
 }
 
 if (!gameDir) fail('no Palworld install found', 'pass --game <dir> pointing at the folder containing Pal/Content/Paks');
@@ -81,6 +99,14 @@ const schemaFor = (name) => {
 };
 const pak = openPak(pakPath);
 console.log(`pak v${pak.footer.version}: ${pak.numEntries} entries · usmap v${usmap.version}: ${usmap.structs.size} structs`);
+
+const pakStat = statSync(pakPath);
+const steam = readSteamManifest(gameDir);
+if (!steam) {
+  console.warn('  ! no Steam appmanifest found next to --game; index.json will record the pak stat only, no build id');
+} else if (steam.updating) {
+  console.warn(`  ! Steam reports this install mid-update (StateFlags ${steam.stateFlags}) — the pak may not match buildid ${steam.buildid}`);
+}
 
 // Every published schema records the UE row struct it was derived from, so the
 // registry itself says which struct to read each table with.
@@ -183,6 +209,15 @@ writeFileSync(join(outDir, 'index.json'), JSON.stringify({
   usmapVersion: usmap.version,
   pakVersion: pak.footer.version,
   generatedAt: new Date().toISOString().slice(0, 10),
+  // What was actually read, so a stale extraction shows up in the diff instead
+  // of being invisible (#58). pakSize/pakMtime are the install-agnostic signal;
+  // steamBuildId/steamStateFlags are the stronger one and null off-Steam.
+  source: {
+    pakSize: pakStat.size,
+    pakMtime: pakStat.mtime.toISOString(),
+    steamBuildId: steam?.buildid ?? null,
+    steamStateFlags: steam?.stateFlags ?? null,
+  },
   unsupported: Object.fromEntries(Object.entries(KNOWN_UNSUPPORTED).map(([t, why]) => [t, why])),
   tables: index,
 }, null, 1) + '\n');
