@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Booyaka101/palschema-hub/main/schemas/v1.0/DT_PalDropItem.schema.json",
+  "DT_PalDropItem": {
+    "ChickenPal000": {
+      "ItemId3": "Pizza",
+      "Rate3": 100.0,
+      "min3": 1,
+      "Max3": 1
+    }
+  }
+}

@@ -1,5 +1,52 @@
 # Changelog — palschema-hub / palschema-validate
 
+## 0.13.0 / palschema-validate 0.7.0 — 2026-10-05
+
+**Official Workshop package validation (Info.json / InstallRules / ConfigOverrides).**
+Palworld's first-party mod system — packages under `Mods/Workshop/<folder>/Info.json`,
+deployed through `InstallRule` into `Mods/ManagedMods/<PackageName>/InstallManifest.json`
+at restart, selected via `PalModSettings.ini` or `-workshopdir` — is now a first-class
+target alongside the UE4SS-era PalSchema format, so the hub keeps working as the
+ecosystem migrates.
+
+- **`palschema-validate check-package <folder>`** (new mode, also reachable as
+  `palsc check-package` — the package ships a second bin now). Validates `Info.json`
+  (with UTF-8 BOM / UTF-16 detection and decode-plus-warning), requires
+  `PackageName` and the `InstallRule` array (both reported when both are missing),
+  accepts the `InstallRules` alias with a warning (the official key is singular —
+  read off Pocketpair's own uploader, `Models/ModInfo.cs`), checks every rule's
+  `Type`/`Targets`/`IsServer`, requires every Target to be package-relative and to
+  exist inside the package, and fails any Target whose `..` segments would deploy
+  outside the game directory (`rule 2: Destination escapes game directory`).
+  Duplicate `PackageNames` — across a Workshop root or nested inside one package —
+  fail naming every declaring path, because only one of them would ever be
+  enabled. Needs no registry, network or dependencies; runs from the offline
+  archive and in CI. `--json` prints one machine-readable object (packages /
+  palModSettings / configOverrides / summary) with unchanged exit codes.
+- **ConfigOverrides are scanned**: a `Mods/ConfigOverrides` next to the package
+  (the keyed-overlay convention documented by the
+  docker-palworld-dedicated-server-wine project) is walked; folders keyed by a
+  scanned `PackageName` or a numeric Workshop ID (case-insensitive) have their
+  JSON files parsed, and any other folder gets an informational note only. On
+  Workshop-root/game-dir scans, `Mods/PalModSettings.ini` is linted too:
+  `bGlobalEnableMod=false` warns, packages missing from `ActiveModList` and
+  entries naming no scanned package are notes (`;`/`#` ini comments are stripped
+  before matching). An absent `Version` is noted, declared `Dependencies` are
+  surfaced, and a declared-but-missing `Thumbnail` warns.
+- **`schemas/info-json.schema.json`** — the field contract as a standalone draft-07
+  schema (provenance in its description).
+- **Hub: package.html** — the new mod package checker page shows the
+  **official / UE4SS-era badge** for pasted JSON, a picked file, or the labelled
+  examples it loads from `examples/`, plus the JSON-level rules; linked from the
+  schema browser's nav and shipped in the Pages deploy and the offline archive.
+- **Fixtures**: `tests/fixtures/packages/` — a minimal valid two-rule package, a
+  missing Source path, a `..` escape, the `InstallRules` alias, an unknown rule
+  Type, empty rules, UTF-16/BOM encodings, Workshop-root and nested duplicate
+  `PackageNames`, a ConfigOverrides-by-WorkshopID game layout (clean and broken),
+  and a UE4SS folder that is not a package. 21 new tests; the whole suite is green.
+- Versions: registry 0.12.1 → **0.13.0**, CLI 0.6.1 → **0.7.0** (bin alias `palsc`,
+  new keywords).
+
 ## 0.12.1 — 2026-09-15
 
 **Palworld 1.0.5, read out of the game rather than assumed.** The currency watch

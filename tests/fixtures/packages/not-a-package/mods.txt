@@ -1,0 +1,2 @@
+ExampleMod = {}
+Scripts/ExampleMod/main.lua

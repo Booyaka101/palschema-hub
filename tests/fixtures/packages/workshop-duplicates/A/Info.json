@@ -1,0 +1,8 @@
+{
+  "ModName": "Same Mod A",
+  "PackageName": "SameName",
+  "Version": "1.0.0",
+  "InstallRule": [
+    { "Type": "Paks", "IsServer": true, "Targets": ["./Paks/A_P.pak"] }
+  ]
+}

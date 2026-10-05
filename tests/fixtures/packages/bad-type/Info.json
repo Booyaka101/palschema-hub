@@ -1,0 +1,8 @@
+{
+  "ModName": "My Mod",
+  "PackageName": "MyMod",
+  "Version": "1.0.0",
+  "InstallRule": [
+    { "Type": "Bogus", "Targets": ["./Scripts"] }
+  ]
+}

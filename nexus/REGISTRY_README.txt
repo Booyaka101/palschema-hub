@@ -13,7 +13,41 @@ Plus the CURRENT ROW VALUES for 28 of those tables, a per-item and
 per-building VALUE reference, and a VERSION DIFF showing what changed in
 the game's row structs between Palworld versions.
 
-NEW IN THIS VERSION (registry 0.12.1, 2026-09-15)
+NEW IN THIS VERSION (registry 0.13.0, 2026-10-05)
+  * OFFICIAL WORKSHOP PACKAGES NOW VALIDATE TOO. Palworld's first-party mod
+    system (Mods/Workshop/<folder>/Info.json, deployed through InstallRule
+    at restart) is a second format alongside the UE4SS-era PalSchema JSON,
+    and the CLI now checks both:
+        npx palschema-validate check-package ./MyMod        (alias: palsc)
+    It parses Info.json (detecting UTF-8 BOM and UTF-16 encodings),
+    requires PackageName + the InstallRule array (the "InstallRules"
+    spelling is accepted with a warning that the official key is
+    singular), checks every rule's Type/Targets/IsServer, requires every
+    Target to exist inside the package, and fails any Target with ".."
+    segments that would deploy outside the game directory. Duplicate
+    PackageNames fail naming every declaring path - only one of them
+    would ever be enabled in game. Needs no registry, network or
+    dependencies, so it runs straight from this archive.
+  * CONFIGOVERRIDES ARE CHECKED. A Mods/ConfigOverrides directory next to
+    the package (the overlay convention used by the popular Wine docker
+    images) is scanned: folders keyed by a scanned PackageName or a
+    numeric Workshop ID have their JSON files parsed; any other folder is
+    a note, not a failure. On Workshop-root/game-dir scans,
+    Mods/PalModSettings.ini is linted too: bGlobalEnableMod=false warns,
+    packages missing from ActiveModList and entries naming no scanned
+    package are notes. An absent Version is noted, declared Dependencies
+    are surfaced, and a declared-but-missing Thumbnail warns.
+  * NEW: --json. check-package prints one machine-readable object
+    (packages / palModSettings / configOverrides / summary) instead of
+    human output - same exit codes, nothing else on stdout.
+  * NEW: schemas/info-json.schema.json - the Info.json field contract as
+    a standalone JSON Schema, read off Pocketpair's own uploader source.
+  * NEW: package.html - paste JSON (or load a labelled example from
+    examples/) and the page shows the OFFICIAL WORKSHOP PACKAGE vs
+    PALSCHEMA (UE4SS-ERA) badge plus the JSON-level rule check. The CLI
+    remains the full check: only it can see the package folder.
+
+PREVIOUSLY (registry 0.12.1, 2026-09-15)
   * PALWORLD 1.0.5 COVERED, AND IT MOVED NOTHING. v1.0.5 is a bug-fix
     patch. It changed no row struct the modding SDK describes, and it also
     changed no row VALUE: all 28 extracted tables and 41,402 rows come out
@@ -211,6 +245,8 @@ WHAT'S IN THIS ARCHIVE
   schemas/index.json           machine-readable table listing
   index.json                   registry catalog
   index.html                   the searchable schema browser (see below)
+  package.html                 mod package checker (official/UE4SS badge)
+  examples/                    labelled sample packages for the checker
   items.html / items.json      per-item value reference for DT_ItemDataTable
                                (2,445 current-game items: ItemActorClass /
                                ItemStaticClass / ItemDynamicClass + full row

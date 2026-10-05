@@ -1,0 +1,21 @@
+﻿{
+  "ModName": "My Mod",
+  "PackageName": "MyMod",
+  "Version": "1.0.0",
+  "Author": "example",
+  "InstallRule": [
+    {
+      "Type": "Lua",
+      "Targets": [
+        "./Scripts"
+      ]
+    },
+    {
+      "Type": "Paks",
+      "IsServer": true,
+      "Targets": [
+        "./Paks/MyMod_P.pak"
+      ]
+    }
+  ]
+}

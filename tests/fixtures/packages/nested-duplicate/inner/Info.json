@@ -1,0 +1,8 @@
+{
+  "ModName": "Inner Mod (zipped inside by accident)",
+  "PackageName": "MyMod",
+  "Version": "0.5.0",
+  "InstallRule": [
+    { "Type": "Lua", "Targets": ["./Scripts"] }
+  ]
+}

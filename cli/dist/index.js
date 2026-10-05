@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const node_fs_1 = require("node:fs");
+const node_path_1 = require("node:path");
 const core_1 = require("./core");
+const package_1 = require("./package");
 const HELP = `palschema-validate — validate Palworld PalSchema mod JSON/JSONC against the palschema-hub registry
 
 Usage:
@@ -22,6 +25,11 @@ Modes:
                        every field a mod sets that no longer exists (with a
                        possible-rename note when the SDK headers suggest one).
                        Exit 1 if any breaking field is found.
+  check-package <dir>  Validate an official Palworld Workshop package
+                       (Mods/Workshop/<folder>/Info.json: PackageName,
+                       InstallRule rules, Targets, ConfigOverrides). Needs no
+                       registry, network or dependencies. Use
+                        "check-package --help" for its full check list.
 
 Options:
   --palschema-version <v>  Target a specific PalSchema release (e.g. 0.6.3).
@@ -51,6 +59,40 @@ Examples:
 Exit codes: 0 = all files pass (warnings alone never fail a run);
             1 = validation error / breaking field / bad usage, or any warning
                 when --strict is given.`;
+const CHECK_PACKAGE_HELP = `palschema-validate check-package — validate an official Palworld Workshop mod package
+
+Usage:
+  palschema-validate check-package <package-folder|Info.json> [more...]
+  palsc check-package <package-folder|Info.json> [more...]
+
+What it checks (no registry, no network, no dependencies — works offline):
+  * Info.json parses; UTF-8 BOM and UTF-16 encodings are detected, decoded,
+    and reported so the file can be re-saved as plain UTF-8
+  * required keys: "PackageName" (non-empty string) and the "InstallRule"
+    array — the "InstallRules" spelling is accepted as an alias, with a
+    warning that the official key is singular
+  * every rule: "Type" (official types: UE4SS, Lua, PalSchema, LogicMods,
+    Paks — an unknown value warns), "Targets" a non-empty array of non-empty
+    strings, and "IsServer" a boolean when present
+  * every Target path exists inside the package folder
+  * no Target escapes the game directory — any ".." segment fails, because
+    the rule's destination would land outside the game
+  * duplicate PackageNames across a scanned Workshop root fail, naming every
+    declaring path (only one of them would ever be enabled in game)
+  * a Mods/ConfigOverrides directory next to the package is scanned: folders
+    keyed by a scanned PackageName or a numeric Workshop ID have their JSON
+    files parsed; any other folder gets an informational note only
+
+Exit codes: 0 = valid (warnings and notes never fail a run);
+            1 = any error, a missing path, or any warning under --strict.
+
+Options:
+  --strict   promote warnings to errors (exit 1)
+  --json     print one JSON object (packages / palModSettings /
+             configOverrides / summary) instead of human output — same
+             exit codes, nothing else on stdout
+
+Docs: https://docs.palworldgame.com/settings-and-operation/mod`;
 function parseArgs(argv) {
     let version = '';
     let migrate = '';
@@ -242,8 +284,230 @@ async function runMigrate(parsed) {
     console.log(`\n${files.length} file(s) scanned · ${allHits.length} breaking field(s) in ${hitFiles} file(s)`);
     process.exit(allHits.length || parseFailures ? 1 : 0);
 }
+async function runCheckPackage(argv) {
+    if (argv.some((a) => a === '-h' || a === '--help')) {
+        console.log(CHECK_PACKAGE_HELP);
+        process.exit(0);
+    }
+    const paths = [];
+    let strict = false;
+    let json = false;
+    for (const a of argv) {
+        if (a === '--strict') {
+            strict = true;
+        }
+        else if (a === '--json') {
+            json = true;
+        }
+        else if (a === '--registry' || a === '--owner' || a === '--version' ||
+            a === '--palschema-version' || a === '--migrate') {
+            console.error(`Error: check-package reads only the package folder — "${a}" is not needed here.`);
+            process.exit(1);
+        }
+        else if (a.startsWith('--')) {
+            console.error(`Unknown option: ${a}`);
+            process.exit(1);
+        }
+        else {
+            paths.push(a);
+        }
+    }
+    if (!paths.length) {
+        console.error('Error: provide a package folder (or an Info.json file) to check.\n');
+        console.log(CHECK_PACKAGE_HELP);
+        process.exit(1);
+    }
+    const reports = [];
+    /** True only when the path itself is the package (Info.json directly under
+     *  it) — a walked root that happens to contain one package is not. */
+    let directPackage = false;
+    for (const p of paths) {
+        let st;
+        try {
+            st = (0, node_fs_1.statSync)(p);
+        }
+        catch {
+            console.error(`Error: path does not exist: ${p}`);
+            process.exit(1);
+        }
+        if (st.isFile()) {
+            if ((0, node_path_1.basename)(p).toLowerCase() !== 'info.json') {
+                console.error(`Error: ${p} is not an Info.json — point check-package at the package folder (or its Info.json).`);
+                process.exit(1);
+            }
+            reports.push((0, package_1.checkPackageDir)((0, node_path_1.dirname)(p), p));
+            directPackage = true;
+        }
+        else {
+            const dirs = (0, package_1.collectPackageDirs)(p);
+            if (!dirs.length) {
+                const hint = (0, package_1.folderHint)(p);
+                console.error(`✗ ${p}`);
+                console.error(`  no Info.json here — not an official Workshop package${hint ? ` (${hint})` : ''}.`);
+                console.error('  Official packages live at Mods/Workshop/<folder>/Info.json with "PackageName" and "InstallRule" — ' +
+                    'https://docs.palworldgame.com/settings-and-operation/mod');
+                process.exit(1);
+            }
+            for (const d of dirs)
+                reports.push((0, package_1.checkPackageDir)(d));
+            if (dirs.length === 1 && (0, node_fs_1.existsSync)((0, node_path_1.join)(p, 'Info.json')))
+                directPackage = true;
+        }
+    }
+    const single = paths.length === 1 && reports.length === 1 && directPackage;
+    for (const r of reports) {
+        // A nested Info.json is the "mod zipped inside a folder" accident; a
+        // duplicate PackageName there is the one that breaks enabling in game.
+        // Runs in walk mode too — a root scan must not miss what a direct scan sees.
+        const nested = (0, package_1.nestedPackageIssues)(r);
+        r.errors.push(...nested.filter((i) => i.severity === 'error'));
+        r.warnings.push(...nested.filter((i) => i.severity === 'warning'));
+    }
+    // Workshop roots: two subscribed items sharing a PackageName is legal JSON
+    // but only one of them can ever be enabled (04-Tech.md) — fail loudly.
+    const byName = new Map();
+    for (const r of reports) {
+        if (!r.packageName)
+            continue;
+        const group = byName.get(r.packageName) ?? [];
+        group.push(r);
+        byName.set(r.packageName, group);
+    }
+    for (const [name, group] of byName) {
+        if (group.length < 2)
+            continue;
+        group[0].errors.push((0, package_1.issue)('error', `duplicate PackageName "${name}" declared by:\n` +
+            group.map((g) => `      ${g.infoPath}`).join('\n') +
+            '\n    only one will be enabled and the order is not guaranteed'));
+    }
+    let errorCount = reports.reduce((n, r) => n + r.errors.length, 0);
+    let warnCount = reports.reduce((n, r) => n + r.warnings.length, 0);
+    // PalModSettings.ini (official layout: Mods/PalModSettings.ini) is only
+    // linted in multi-package mode: checking one package of ten would otherwise
+    // warn about the nine that are simply outside this scan.
+    let settingsLint = null;
+    if (!single && reports.length) {
+        const iniPath = (0, package_1.findPalModSettings)(reports[0].path);
+        if (iniPath) {
+            const { text, warnings: encodingWarnings } = (0, package_1.decodeInfoJson)((0, node_fs_1.readFileSync)(iniPath), 'PalModSettings.ini');
+            const settings = (0, package_1.parsePalModSettings)(text);
+            settingsLint = {
+                iniPath,
+                encodingWarnings,
+                globalEnabled: settings.globalEnabled,
+                activeMods: settings.activeMods,
+            };
+            if (settings.globalEnabled === false)
+                warnCount++;
+        }
+    }
+    // ConfigOverrides: sibling of the package folder (Mods/<pkg>, or
+    // Mods/Workshop/<pkg> two levels up), keyed by PackageName or Workshop ID.
+    const known = new Set(reports.flatMap((r) => r.knownKeys));
+    const overridesSeen = new Set();
+    const overridesOut = [];
+    for (const r of reports) {
+        const dir = (0, package_1.findOverridesDir)(r.path);
+        if (!dir || overridesSeen.has(dir))
+            continue;
+        overridesSeen.add(dir);
+        const overrides = (0, package_1.scanOverrides)(dir, known);
+        if (!overrides.folders.length)
+            continue;
+        overridesOut.push(overrides);
+        errorCount += overrides.folders.reduce((n, f) => n + f.errors.length, 0);
+    }
+    if (json) {
+        // One JSON object on stdout, nothing else — CI and scripts parse this.
+        console.log(JSON.stringify({
+            packages: reports.map((r) => ({
+                path: r.path,
+                infoPath: r.infoPath,
+                kind: r.kind,
+                packageName: r.packageName ?? null,
+                version: r.version ?? null,
+                modName: r.modName ?? null,
+                rules: r.rules,
+                serverRules: r.serverRules,
+                errors: r.errors.map((i) => i.message),
+                warnings: r.warnings.map((i) => i.message),
+                notes: r.notes.map((i) => i.message),
+            })),
+            palModSettings: settingsLint
+                ? {
+                    path: settingsLint.iniPath,
+                    globalEnabled: settingsLint.globalEnabled,
+                    activeMods: settingsLint.activeMods,
+                    encodingWarnings: settingsLint.encodingWarnings,
+                }
+                : null,
+            configOverrides: overridesOut,
+            summary: { packages: reports.length, errors: errorCount, warnings: warnCount },
+        }, null, 2));
+    }
+    else {
+        for (const r of reports) {
+            const mark = r.errors.length ? '✗' : '✓';
+            const label = r.packageName ? ` — "${r.packageName}"${r.version ? ` v${r.version}` : ''}` : '';
+            console.log(`${mark} ${r.path}${label}`);
+            for (const line of r.ruleLines)
+                console.log(`    ${line}`);
+            for (const i of r.errors)
+                console.log(`    ${i.message}`);
+            for (const i of r.warnings)
+                console.log(`    WARN ${i.message}`);
+            for (const i of r.notes)
+                console.log(`    note: ${i.message}`);
+            if (!r.errors.length) {
+                // Bare line for a directly-pointed package (the documented contract);
+                // indented under its header when a walk found several.
+                console.log(single ? `official package OK: ${r.rules} rules validated` : `    official package OK: ${r.rules} rules validated`);
+            }
+        }
+        if (settingsLint) {
+            for (const w of settingsLint.encodingWarnings)
+                console.log(`    WARN ${w}`);
+            if (settingsLint.globalEnabled === false) {
+                console.log('    WARN PalModSettings.ini sets bGlobalEnableMod=false — no mods will load');
+            }
+            const declared = new Set(reports.flatMap((r) => (r.packageName ? [r.packageName] : [])));
+            for (const r of reports) {
+                if (r.packageName && !settingsLint.activeMods.some((m) => m.toLowerCase() === r.packageName.toLowerCase())) {
+                    console.log(`    note: "${r.packageName}" is present but not enabled — no ActiveModList entry in PalModSettings.ini matches it`);
+                }
+            }
+            for (const m of settingsLint.activeMods) {
+                if (![...declared].some((d) => d.toLowerCase() === m.toLowerCase())) {
+                    console.log(`    note: ActiveModList entry "${m}" matches no scanned package (its folder may be outside this scan)`);
+                }
+            }
+        }
+        for (const overrides of overridesOut) {
+            console.log(`ConfigOverrides: ${overrides.dir} — ${overrides.folders.length} folder(s)`);
+            for (const f of overrides.folders) {
+                if (f.kind === 'unknown') {
+                    console.log(`    note: ConfigOverrides/${f.name} matches no scanned PackageName and is not a numeric Workshop ID`);
+                }
+                else {
+                    const key = f.kind === 'package-name' ? 'PackageName' : 'Workshop ID';
+                    console.log(`    ✓ ConfigOverrides/${f.name} (${key}): ${f.parsed} JSON file(s) parsed`);
+                }
+                for (const e of f.errors)
+                    console.log(`    ✗ ${e}`);
+            }
+        }
+        const s = (n) => (n === 1 ? '' : 's');
+        const strictFails = strict && warnCount > 0;
+        console.log(`${reports.length} package${s(reports.length)} checked, ${errorCount} error${s(errorCount)}, ` +
+            `${warnCount} warning${s(warnCount)}${strictFails ? ' (strict)' : ''}`);
+    }
+    process.exit(errorCount || (strict && warnCount > 0) ? 1 : 0);
+}
 async function main() {
-    const parsed = parseArgs(process.argv.slice(2));
+    const argv = process.argv.slice(2);
+    if (argv[0] === 'check-package')
+        await runCheckPackage(argv.slice(1));
+    const parsed = parseArgs(argv);
     if (!parsed) {
         console.log(HELP);
         process.exit(process.argv.slice(2).some((a) => a === '-h' || a === '--help') ? 0 : 1);

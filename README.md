@@ -1,6 +1,6 @@
 # 🧩 palschema-hub
 
-[![registry 0.12.1](https://img.shields.io/badge/registry-0.12.1-blue)](CHANGELOG.md)
+[![registry 0.13.0](https://img.shields.io/badge/registry-0.13.0-blue)](CHANGELOG.md)
 [![PalSchema 0.6.71](https://img.shields.io/badge/PalSchema-0.6.71-green)](https://github.com/Okaetsu/PalSchema/releases/tag/0.6.71)
 [![UE4SS 2281fa31](https://img.shields.io/badge/UE4SS-2281fa31-green)](https://github.com/Okaetsu/RE-UE4SS/releases/tag/2281fa31)
 [![Palworld 1.0.5](https://img.shields.io/badge/Palworld-1.0.5-orange)](versions.json)
@@ -15,6 +15,9 @@ open since Aug 2025). `palschema-hub` fills that gap:
 
 - **`/schemas/v1.0/*.schema.json`** — 31 JSON Schemas, one per moddable DataTable.
 - **`/schemas/index.json`** — machine-readable table-name → schema-path listing.
+- **`/schemas/info-json.schema.json`** — JSON Schema for an **official Workshop
+  package's** `Info.json` (Palworld's first-party mod system, alongside the UE4SS-era
+  PalSchema format above).
 - **`/values/<Table>.json`** — the **current row values** for 28 of those tables
   (41,402 rows), read out of the game's own cooked DataTables. Browse them at
   [`values.html`](https://booyaka101.github.io/palschema-hub/values.html).
@@ -213,6 +216,95 @@ node cli/dist/index.js --registry . tests/invalid-mod.json  # exit 1
 | `--owner <o>` | GitHub owner for the default registry URL (default `Booyaka101`, or `$PALSCHEMA_OWNER`) |
 | `--strict` | CI mode: promote warnings to errors (exit 1) |
 | `-h, --help` | usage |
+
+---
+
+## Official mods (Workshop)
+
+Palworld now also ships a **first-party mod system**: packages live under
+`Mods/Workshop/<folder>/Info.json`, declare an array of `InstallRule` entries, and on
+the next launch the loader deploys them — creating
+`Mods/ManagedMods/<PackageName>/InstallManifest.json` — while selection happens via
+`ActiveModList` in `Mods/PalModSettings.ini` (or a `-workshopdir` launch argument).
+A rule names a **Type** — the install root inside the game directory (`UE4SS`,
+`Lua`, `PalSchema`, `LogicMods`, `Paks`) — and **Targets**: the package-relative
+paths to copy there. That is a second, older-ecosystem format than the PalSchema
+(UE4SS) JSON this registry started with, and this hub validates **both**, so it
+stays usable as the ecosystem migrates.
+
+The new CLI mode is `check-package` (alias: `palsc`, same binary):
+
+```bash
+npx palschema-validate check-package ./MyMod
+```
+
+Real run against the labelled example package in
+[`examples/official-mod/`](examples/official-mod/Info.json):
+
+```
+✓ examples\official-mod — "ExampleMod" v1.0.0
+    rule 1: Lua -> Mods/NativeMods/UE4SS/Mods/ExampleMod  (./Scripts)
+    rule 2: Paks -> Pal/Content/Paks/~WorkshopMods/ExampleMod  (./Paks/ExampleMod_P.pak · server)
+official package OK: 2 rules validated
+1 package checked, 0 errors, 0 warnings
+```
+
+And a broken one — after changing rule 2's target to `../save`:
+
+```
+✗ tests\fixtures\packages\escape — "MyMod" v1.0.0
+    rule 1: Lua -> Mods/NativeMods/UE4SS/Mods/MyMod  (./Scripts)
+    rule 2: Destination escapes game directory: ../save
+1 package checked, 1 error, 0 warnings
+```
+
+What it checks (exit 0 = valid, 1 = errors; warnings and notes never fail a run,
+`--strict` promotes them):
+
+- `Info.json` parses — **UTF-8 BOM and UTF-16 encodings are detected, decoded and
+  reported**, so a file saved by a scripting tool is checked instead of rejected.
+- Required keys: `PackageName` (non-empty string) and the `InstallRule` array. The
+  `InstallRules` spelling is accepted **as an alias with a warning** — the official
+  key is singular (read off Pocketpair's own uploader source,
+  [`Models/ModInfo.cs`](https://github.com/pocketpairjp/PalworldModUploader/blob/main/PalworldModUploader/Models/ModInfo.cs)).
+- Every rule: a `Type` (unknown values warn, official ones name their install root),
+  `Targets` as a non-empty array of non-empty strings, `IsServer` a boolean when
+  present. A package with no `IsServer: true` rule gets a note: dedicated servers
+  will not run it.
+- Every Target **exists inside the package folder**, and **no Target escapes the
+  game directory** — any `..` segment is the error above, because the rule's
+  destination would land outside the game.
+- **Duplicate `PackageNames` fail, naming every declaring path** — across a
+  Workshop root and nested inside one package. Only one of them would ever be
+  enabled, and the order is not guaranteed.
+- A `Mods/ConfigOverrides` directory next to the package is scanned: folders keyed
+  by a scanned `PackageName` **or a numeric Workshop ID** have their JSON files
+  parsed; any other folder is an informational note only.
+- When a scan covers a Workshop root or game directory, a sibling
+  `Mods/PalModSettings.ini` is linted too: `bGlobalEnableMod=false` warns (nothing
+  will load), a package absent from `ActiveModList` is noted as present-but-not-enabled,
+  and an `ActiveModList` entry naming no scanned package is noted in the other
+  direction. Single-package scans skip this — checking one mod of ten would only
+  produce noise about the other nine.
+- Extras: an absent `Version` is noted (the loader detects updates by comparing
+  Version strings), declared `Dependencies` are surfaced, and a declared
+  `Thumbnail` that is not in the package warns.
+
+`--json` prints one machine-readable object (`packages` / `palModSettings` /
+`configOverrides` / `summary`) instead of human output — same exit codes,
+nothing else on stdout — so a mod repo can turn findings into CI annotations.
+
+Like `--migrate`, this mode needs **no registry, no network and no dependencies** —
+it reads only the package folder, so it runs straight from the offline archive and
+in CI. The field contract also ships as a standalone JSON Schema:
+[`schemas/info-json.schema.json`](schemas/info-json.schema.json).
+
+The hub gained a [package checker page](https://booyaka101.github.io/palschema-hub/package.html)
+showing the **official / UE4SS badge** for any pasted JSON (or a loaded file, or the
+labelled examples it fetches from [`examples/`](examples/README.md)) plus the same
+JSON-level rules; the CLI remains the full check because only it can see the package
+folder. Test fixtures for every case above live in
+[`tests/fixtures/packages/`](tests/fixtures/packages/).
 
 ---
 
@@ -517,9 +609,11 @@ Requirements: Node.js ≥ 18 (uses global `fetch`). Verified on Node 22.
 ```
 schemas/v1.0/*.schema.json   31 per-table JSON Schemas (+ _manifest.json)
 schemas/index.json             table-name -> schema-path listing (for Pages consumers)
+schemas/info-json.schema.json  JSON Schema for an official Workshop package's Info.json
 index.json                     { versions, schemas:{ver:[tables]}, tables:{...} } catalog
 table-notes.json               hand-written per-table notes (source; baked into index.json)
 index.html                     schema browser (vanilla HTML/CSS/JS, no build step)
+package.html                   mod package checker (official/UE4SS badge; loads examples/)
 items.html + items.json        per-item value reference for DT_ItemDataTable (asset reuse)
 values.html + values/*.json    current row values for 28 tables, read from the game's DataTables
 tools/ooz-decompress/          Rust helper: Oodle decompression for the extractor (build on demand)
@@ -528,7 +622,9 @@ versions.json                  Palworld version -> pinned SDK commit (plus 0.7.3
 structs/<ver>.json             12 committed row-struct snapshots (field -> C++ type, ordered) + alias copies
 diffs/<a>..<b>.json + .md      pairwise struct deltas (added/removed/retyped + rename notes)
 cli/                           palschema-validate (TypeScript -> dist/*.js), ajv strict
+examples/                      labelled sample inputs for the package checker (not real mods)
 tests/                         valid-mod.json, invalid-mod.json, example .jsonc, wrapper-typo
+tests/fixtures/packages/       official-package fixtures (valid, escape, duplicates, encodings, ConfigOverrides)
 tests/real-mods/               4 real published PalSchema mods (see SOURCES.md)
 tests/real-mods-broken/        deliberately-broken real mods (typed-error tests)
 tests/migrate-fixtures/        --migrate scan fixtures (partner-skill rename case)

@@ -159,6 +159,144 @@ run('raw table file using a pals-loader key gets a loader-mismatch warning',
 run('pals Loot with a bare-integer DropChance is flagged (the loader skips it in game)',
   validate('tests/fixtures/pals/loot-int-dropchance.json'), 0, 'float literal');
 
+// 0.13.0: official Workshop package validation (check-package). Reads only the
+// package folder — no registry, no network, no ajv — with the field contract
+// verified against Pocketpair's own uploader (Models/ModInfo.cs) and
+// docs.palworldgame.com/settings-and-operation/mod (fetched 2026-10-05).
+const pkg = (target, ...extra) => ['cli/dist/index.js', 'check-package', target, ...extra];
+
+run('check-package: minimal valid two-rule package -> exit 0, "official package OK: 2 rules validated"',
+  pkg('tests/fixtures/packages/valid-two-rules'), 0, 'official package OK: 2 rules validated');
+run('check-package: rule lines name the official install root with the PackageName filled in',
+  pkg('tests/fixtures/packages/valid-two-rules'), 0, 'rule 2: Paks -> Pal/Content/Paks/~WorkshopMods/MyMod');
+run('check-package: ".." in a Target -> exit 1, "rule 2: Destination escapes game directory"',
+  pkg('tests/fixtures/packages/escape'), 1, 'rule 2: Destination escapes game directory');
+run('check-package: Target missing from the package -> exit 1 naming the path',
+  pkg('tests/fixtures/packages/missing-source'), 1, 'rule 2: Source path not found in package: ./Paks/Missing_P.pak');
+run('check-package: empty InstallRule array warns and still exits 0',
+  pkg('tests/fixtures/packages/empty-rules'), 0, '"InstallRule" is empty — the package would install nothing');
+run('check-package: "InstallRules" alias accepted with a warning naming the official key',
+  pkg('tests/fixtures/packages/install-rules-alias'), 0, 'the official key is "InstallRule" (singular');
+run('check-package: --strict promotes the alias warning to exit 1',
+  pkg('tests/fixtures/packages/install-rules-alias', '--strict'), 1, '1 warning (strict)');
+run('check-package: unknown rule Type warns, exit 0',
+  pkg('tests/fixtures/packages/bad-type'), 0, 'unknown InstallRule Type "Bogus"');
+run('check-package: missing PackageName -> exit 1',
+  pkg('tests/fixtures/packages/no-package-name'), 1, '"PackageName" is required');
+run('check-package: UTF-16 LE (BOM) Info.json decodes with a warning, validates',
+  pkg('tests/fixtures/packages/encoding-utf16'), 0, 'UTF-16 LE (BOM) detected');
+run('check-package: BOM-less UTF-16 guessed from the byte layout',
+  pkg('tests/fixtures/packages/utf16-nobom'), 0, 'without BOM detected');
+run('check-package: UTF-8 BOM stripped with a warning',
+  pkg('tests/fixtures/packages/encoding-bom'), 0, 'UTF-8 BOM detected');
+run('check-package: duplicate PackageNames across a Workshop root -> exit 1, naming both paths',
+  pkg('tests/fixtures/packages/workshop-duplicates'), 1, 'duplicate PackageName "SameName"');
+run('check-package: nested duplicate PackageName inside one package -> exit 1',
+  pkg('tests/fixtures/packages/nested-duplicate'), 1, 'duplicate PackageName "MyMod"');
+run('check-package: a UE4SS Lua folder without Info.json explains what it looks like instead',
+  pkg('tests/fixtures/packages/not-a-package'), 1, 'looks like a UE4SS Lua mod');
+run('check-package: a nonexistent path is a clear error, not a stack trace',
+  pkg('tests/fixtures/packages/does-not-exist'), 1, 'path does not exist');
+run('check-package: BOTH missing required keys are reported, not just whichever fired first',
+  pkg('tests/fixtures/packages/missing-keys'), 1, '"PackageName" is required');
+{
+  const r = spawnSync(node, pkg('tests/fixtures/packages/missing-keys'), { cwd: ROOT, encoding: 'utf8' });
+  const out = r.stdout + r.stderr;
+  assert('check-package: missing-keys also reports the InstallRule requirement', out.includes('"InstallRule" is required'));
+  assert('check-package: missing-keys notes the absent Version', out.includes('"Version" is absent'));
+  assert('check-package: missing-keys warns about the declared-but-missing Thumbnail', out.includes('Thumbnail not found in package: thumb.png'));
+}
+run('check-package: drive-letter / absolute Targets get a package-relative error, not "not found"',
+  pkg('tests/fixtures/packages/absolute-target'), 1, 'must be a package-relative path');
+run('check-package: nested duplicate PackageName is caught inside a walked Workshop root too',
+  pkg('tests/fixtures/packages/workshop-nested'), 1, 'duplicate PackageName "PkgOne"');
+run('check-package: ConfigOverrides matching is case-insensitive on PackageName',
+  ['-e', `const {scanOverrides}=require('./cli/dist/package.js');` +
+    `const r=scanOverrides('tests/fixtures/packages/game-layout/Mods/ConfigOverrides',['SERVERUITWEAKS','3142718104']);` +
+    `const f=r.folders.find(x=>x.name==='ServerUITweaks');` +
+    `if(!f||f.kind!=='package-name'){console.error('kind='+(f&&f.kind));process.exit(1);}` +
+    `console.log('case-insensitive override match OK');`], 0, 'case-insensitive override match OK');
+run('check-package: Dependencies are surfaced as a note naming the packages',
+  pkg('tests/fixtures/packages/install-rules-alias'), 0, 'depends on: DependencyMod');
+{
+  const good = run('check-package --json: valid package exits 0 with JSON only on stdout',
+    [...pkg('tests/fixtures/packages/valid-two-rules'), '--json'], 0);
+  let out = null;
+  try {
+    out = JSON.parse(good.stdout);
+  } catch {
+    // flagged by the asserts below
+  }
+  assert('check-package --json: packages[0] carries the structured fields',
+    !!out && out.summary.errors === 0 && out.packages[0].packageName === 'MyMod' &&
+    out.packages[0].rules === 2 && out.packages[0].serverRules === 1 &&
+    Array.isArray(out.packages[0].errors) && out.configOverrides.length === 0);
+  const bad = run('check-package --json: the escape fixture reports one error in the summary',
+    [...pkg('tests/fixtures/packages/escape'), '--json'], 1);
+  const badOut = JSON.parse(bad.stdout);
+  assert('check-package --json: escape error is named in packages[0].errors',
+    badOut.summary.errors === 1 && badOut.packages[0].errors[0].includes('rule 2: Destination escapes game directory'));
+  const withOverrides = run('check-package --json: ConfigOverrides land in configOverrides[]',
+    [...pkg('tests/fixtures/packages/game-layout/Mods/Workshop/3142718104'), '--json'], 0);
+  const ov = JSON.parse(withOverrides.stdout);
+  assert('check-package --json: override folders are structured with kinds',
+    ov.configOverrides.length === 1 && ov.configOverrides[0].folders.length === 3 &&
+    ov.configOverrides[0].folders.some((f) => f.kind === 'workshop-id') &&
+    ov.palModSettings === null);
+}
+run('check-package: ConfigOverrides by numeric Workshop ID parses its JSON',
+  pkg('tests/fixtures/packages/game-layout/Mods/Workshop/3142718104'), 0,
+  'ConfigOverrides/3142718104 (Workshop ID): 1 JSON file(s) parsed');
+run('check-package: ConfigOverrides by PackageName parses too',
+  pkg('tests/fixtures/packages/game-layout/Mods/Workshop/3142718104'), 0,
+  'ConfigOverrides/ServerUITweaks (PackageName): 1 JSON file(s) parsed');
+run('check-package: an unknown ConfigOverrides folder is an informational note only, exit 0',
+  pkg('tests/fixtures/packages/game-layout/Mods/Workshop/3142718104'), 0,
+  'ConfigOverrides/UnknownMod matches no scanned PackageName and is not a numeric Workshop ID');
+run('check-package: broken JSON in a ConfigOverrides folder -> exit 1',
+  pkg('tests/fixtures/packages/game-layout-broken/Mods/Workshop/3142718104'), 1, 'not valid JSON');
+run('check-package: pointing at the whole game dir finds Mods/Workshop packages (depth-bounded walk)',
+  pkg('tests/fixtures/packages/game-layout'), 0, 'official package OK: 2 rules validated');
+{
+  // The clean layout's ini lists exactly this package as enabled — the lint
+  // must say nothing rather than restate what is already correct.
+  const r = run('check-package: a correctly-enabled package stays silent about PalModSettings.ini',
+    pkg('tests/fixtures/packages/game-layout'), 0, 'official package OK: 2 rules validated');
+  assert('check-package: the enabled ini produced no enablement notes',
+    !(r.stdout + r.stderr).includes('not enabled') && !(r.stdout + r.stderr).includes('ActiveModList entry'));
+}
+run('check-package: bGlobalEnableMod=false warns even when the package itself is fine',
+  pkg('tests/fixtures/packages/game-layout-unenabled'), 0,
+  'bGlobalEnableMod=false — no mods will load');
+run('check-package: an unlisted package and a phantom ActiveModList entry are notes, not failures',
+  pkg('tests/fixtures/packages/game-layout-unenabled'), 0,
+  'ActiveModList entry "SomeOtherMod" matches no scanned package');
+run('check-package: a package absent from ActiveModList is noted as present-but-not-enabled',
+  pkg('tests/fixtures/packages/game-layout-unenabled'), 0,
+  '"ServerUITweaks" is present but not enabled');
+run('check-package: a truncated UTF-16 file degrades to a parse error, not a crash',
+  pkg('tests/fixtures/packages/truncated-utf16'), 1, 'not valid JSON');
+run('check-package: a real PalSchema mod folder (DT_ JSON, no Info.json) is named as PalSchema, not just rejected',
+  pkg('tests/real-mods/palvolve'), 1, 'looks like PalSchema');
+run('examples/official-mod (the labelled sample) validates clean',
+  pkg('examples/official-mod'), 0, 'official package OK: 2 rules validated');
+run('examples/palschema-mod.json (the labelled sample) validates clean as PalSchema',
+  validate('examples/palschema-mod.json'), 0, '1 file validated, 0 errors');
+run('schemas/info-json.schema.json: draft-07, requires PackageName+InstallRule, pins the five official types',
+  ['-e', `const s=require('./schemas/info-json.schema.json');` +
+    `if(!/draft-07/.test(s.$schema))process.exit(1);` +
+    `if(!s.required.includes('PackageName')||!s.required.includes('InstallRule'))process.exit(1);` +
+    `const t=s.definitions.installRules.items.properties.Type.enum;` +
+    `if(JSON.stringify(t)!==JSON.stringify(['UE4SS','Lua','PalSchema','LogicMods','Paks']))process.exit(1);` +
+    `console.log('info-json schema OK');`], 0, 'info-json schema OK');
+run('hub: package.html carries the badge, is wired into the index nav, and loads the labelled example',
+  ['-e', `const {readFileSync}=require('fs');` +
+    `const p=readFileSync('package.html','utf8');` +
+    `if(!p.includes('OFFICIAL WORKSHOP PACKAGE')||!p.includes('PALSCHEMA · UE4SS-ERA MOD'))process.exit(1);` +
+    `if(!p.includes('./examples/official-mod/Info.json'))process.exit(1);` +
+    `if(!readFileSync('index.html','utf8').includes('./package.html'))process.exit(1);` +
+    `console.log('package checker page OK');`], 0, 'package checker page OK');
+
 // 0.10.0: upstream PalSchema 0.6.5 items.schema.json constraints, ported around
 // its three traps (structs/upstream-constraints.json records each divergence).
 // First: upstream's own example mod is the false-positive canary — it carries
@@ -749,6 +887,9 @@ try {
   run('--migrate runs with ZERO dependencies installed (offline-archive path)',
     [join(isolated, 'dist', 'index.js'), '--migrate', '0.7.2..1.0', '--registry', ROOT,
       'tests/migrate-fixtures/partner-skill.json'], 1, 'OverridePartnerSkillTextID');
+  run('check-package runs with ZERO dependencies too (same offline-archive path)',
+    [join(isolated, 'dist', 'index.js'), 'check-package', 'tests/fixtures/packages/valid-two-rules'],
+    0, 'official package OK: 2 rules validated');
   run('validation without ajv explains itself instead of crashing',
     [join(isolated, 'dist', 'index.js'), '--version', '1.0', '--registry', ROOT,
       'tests/valid-mod.json'], 1, "'ajv' package is required");

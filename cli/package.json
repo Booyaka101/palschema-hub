@@ -1,7 +1,7 @@
 {
   "name": "palschema-validate",
-  "version": "0.6.1",
-  "description": "Validate Palworld PalSchema mod JSON/JSONC files against the palschema-hub schema registry, and scan them for fields removed/renamed between game versions (--migrate).",
+  "version": "0.7.0",
+  "description": "Validate Palworld PalSchema mod JSON/JSONC files against the palschema-hub schema registry, scan them for fields removed/renamed between game versions (--migrate), and check official Workshop packages (check-package: Info.json / InstallRule / ConfigOverrides).",
   "keywords": [
     "palworld",
     "palschema",
@@ -11,6 +11,8 @@
     "validate",
     "migrate",
     "version-diff",
+    "workshop",
+    "info-json",
     "ajv"
   ],
   "license": "MIT",
@@ -24,7 +26,8 @@
   "bugs": "https://github.com/Booyaka101/palschema-hub/issues",
   "type": "commonjs",
   "bin": {
-    "palschema-validate": "dist/index.js"
+    "palschema-validate": "dist/index.js",
+    "palsc": "dist/index.js"
   },
   "files": [
     "dist",
