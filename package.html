@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PalSchema Hub — mod package checker (official / UE4SS)</title>
+<style>
+  :root {
+    --bg: #0f1218; --panel: #171b24; --panel2: #1e2430; --border: #2a3242;
+    --text: #e6e9ef; --muted: #8b95a7; --accent: #6db3f2; --accent2: #7ee0a6;
+    --chip: #232b3a; --warn: #f2c14e; --err: #f27e6d;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 18px 22px; border-bottom: 1px solid var(--border); background: var(--panel);
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  header .tag { color: var(--muted); font-size: 12.5px; }
+  header a { color: var(--accent); text-decoration: none; }
+  .layout { display: grid; grid-template-columns: 380px 1fr; min-height: calc(100vh - 61px); }
+  .controls { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .controls label { color: var(--muted); font-size: 12px; }
+  textarea, button, input[type=file]::file-selector-button {
+    background: var(--panel2); color: var(--text); border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; }
+  textarea { width: 100%; min-height: 300px; padding: 10px; font-family: ui-monospace, Consolas, monospace;
+    font-size: 12.5px; outline: none; resize: vertical; }
+  textarea:focus { border-color: var(--accent); }
+  button { padding: 9px 12px; cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .main { padding: 22px 26px; overflow-y: auto; }
+  .empty { color: var(--muted); margin-top: 40px; text-align: center; }
+  .badge { display: inline-block; border-radius: 999px; padding: 5px 14px; font-size: 12.5px;
+    font-weight: 600; letter-spacing: .4px; border: 1px solid; }
+  .badge.official { color: var(--accent2); border-color: var(--accent2); background: rgba(126,224,166,.08); }
+  .badge.ue4ss { color: var(--accent); border-color: var(--accent); background: rgba(109,179,242,.08); }
+  .badge.unknown { color: var(--warn); border-color: var(--warn); background: rgba(242,193,78,.08); }
+  .sch-head h2 { margin: 0 0 6px; font-family: ui-monospace, Consolas, monospace; font-size: 20px; color: var(--accent); }
+  .meta { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+  .chip { background: var(--chip); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; font-size: 12px; color: var(--muted); }
+  .chip b { color: var(--text); font-weight: 600; }
+  table { border-collapse: collapse; width: 100%; margin-top: 14px; }
+  th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+  td code { background: var(--panel2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 12.5px; color: var(--accent2); }
+  td .dest { color: var(--muted); font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+  .findings { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; max-width: 900px; }
+  .finding { border-radius: 6px; padding: 8px 12px; font-size: 13px; border: 1px solid var(--border);
+    background: var(--panel2); max-width: 900px; }
+  .finding.error { color: var(--err); border-left: 3px solid var(--err); }
+  .finding.warning { color: var(--warn); border-left: 3px solid var(--warn); }
+  .finding.note { color: var(--muted); border-left: 3px solid var(--border); }
+  .hint { color: var(--muted); font-size: 12.5px; max-width: 900px; margin-top: 14px; }
+  .hint code { background: var(--panel2); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; }
+  .error { color: var(--err); }
+  a { color: var(--accent); text-decoration: none; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>🧩 PalSchema Hub</h1>
+  <span class="tag"><a href="./index.html">schema browser</a> · mod package checker · <a href="./items.html">item asset reference</a> · <a href="./buildings.html">building reference</a> · <a href="./values.html">all DataTable values</a> · <a href="./diff.html">version diff</a></span>
+</header>
+
+<div class="layout">
+  <aside class="controls">
+    <label>Load an example (labelled sample files, not real mods)</label>
+    <div class="row">
+      <button id="load-official" type="button">Official Workshop package</button>
+      <button id="load-palschema" type="button">PalSchema (UE4SS) mod</button>
+    </div>
+    <label>…or pick an Info.json from disk</label>
+    <input type="file" id="file" accept=".json,.jsonc,application/json,text/plain" />
+    <label>…or paste Info.json (or a PalSchema mod file) here</label>
+    <textarea id="src" spellcheck="false" placeholder='{
+  "PackageName": "MyMod",
+  "InstallRule": [
+    { "Type": "Lua", "Targets": ["./Scripts"] }
+  ]
+}'></textarea>
+    <button id="check" type="button">Check</button>
+    <span class="hint">Checks the JSON rules of
+      <a href="https://docs.palworldgame.com/settings-and-operation/mod" target="_blank" rel="noopener">Palworld's official package format</a>.
+      Target file existence and ConfigOverrides are checked by the CLI, which can read the whole
+      package folder: <code>npx palschema-validate check-package ./MyMod</code></span>
+  </aside>
+
+  <main class="main" id="main">
+    <div class="empty" id="empty">Load an example, pick a file, or paste JSON…</div>
+  </main>
+</div>
+
+<script>
+// Install roots per the official docs' Install Type table.
+const INSTALL_TYPES = {
+  UE4SS: 'Mods/NativeMods/UE4SS',
+  Lua: 'Mods/NativeMods/UE4SS/Mods/{PackageName}',
+  PalSchema: 'Mods/NativeMods/UE4SS/Mods/PalSchema/mods/{PackageName}',
+  LogicMods: 'Pal/Content/Paks/LogicMods',
+  Paks: 'Pal/Content/Paks/~WorkshopMods/{PackageName}',
+};
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function ruleList(info) {
+  if (Array.isArray(info.InstallRule)) return { rules: info.InstallRule, key: 'InstallRule', issues: [] };
+  if (Array.isArray(info.InstallRules)) {
+    return { rules: info.InstallRules, key: 'InstallRules', issues: [[
+      'warning',
+      'Uses the key "InstallRules" — the official key is "InstallRule" (singular, per the official uploader). Accepted as an alias.'
+    ]] };
+  }
+  const issues = [];
+  if (info.InstallRule !== undefined || info.InstallRules !== undefined) {
+    issues.push(['error', '"InstallRule" must be an array of rule objects.']);
+  }
+  return { rules: [], key: null, issues };
+}
+
+function kindOf(info) {
+  if (!info || typeof info !== 'object' || Array.isArray(info)) return 'unknown';
+  const hasName = typeof info.PackageName === 'string' && info.PackageName.length > 0;
+  if (hasName && Array.isArray(info.InstallRule ?? info.InstallRules)) return 'official';
+  if (Object.keys(info).some(k => /^DT_/.test(k))) return 'palschema';
+  return 'unknown';
+}
+
+function checkInfo(info) {
+  const issues = [];
+  const kind = kindOf(info);
+  if (kind === 'unknown') {
+    issues.push(['error', 'Not recognizable as either format: an official package needs "PackageName" + an "InstallRule" array; a PalSchema mod file has top-level "DT_*" keys.']);
+    return { kind, issues };
+  }
+  if (kind === 'palschema') {
+    issues.push(['note', 'PalSchema (UE4SS-era) mod file — validate it against its DataTable schema with npx palschema-validate, or browse the table in the schema browser.']);
+    return { kind, issues };
+  }
+  if (typeof info.PackageName !== 'string' || !info.PackageName.length) {
+    issues.push(['error', '"PackageName" is required and must be a non-empty string.']);
+  }
+  if (typeof info.Version !== 'string') {
+    issues.push(['note', '"Version" is absent — the loader detects updates by comparing Version strings (04-Tech.md).']);
+  }
+  if (Array.isArray(info.Dependencies) && info.Dependencies.length &&
+      info.Dependencies.every(d => typeof d === 'string' && d.length)) {
+    issues.push(['note', `Depends on: ${info.Dependencies.join(', ')} — those packages must be installed and enabled too.`]);
+  }
+  const { rules, key, issues: ruleIssues } = ruleList(info);
+  issues.push(...ruleIssues);
+  if (!rules.length && Array.isArray(info[key])) {
+    issues.push(['warning', `"${key}" is empty — the package would install nothing.`]);
+  }
+  let serverRules = 0;
+  rules.forEach((rule, i) => {
+    const n = i + 1;
+    if (!rule || typeof rule !== 'object' || Array.isArray(rule)) {
+      issues.push(['error', `Rule ${n}: must be an object with "Type" and "Targets".`]);
+      return;
+    }
+    const type = rule.Type;
+    if (typeof type !== 'string' || !type.length) {
+      issues.push(['error', `Rule ${n}: "Type" is required and must be a non-empty string.`]);
+    } else if (!INSTALL_TYPES[type]) {
+      issues.push(['warning', `Rule ${n}: unknown InstallRule Type "${type}" — official types: ${Object.keys(INSTALL_TYPES).join(', ')}.`]);
+    }
+    if (!Array.isArray(rule.Targets)) {
+      issues.push(['error', `Rule ${n}: "Targets" must be an array of paths inside the package.`]);
+    } else if (!rule.Targets.length) {
+      issues.push(['error', `Rule ${n}: "Targets" is empty — nothing to install.`]);
+    } else {
+      for (const target of rule.Targets) {
+        if (typeof target !== 'string' || !target.length) {
+          issues.push(['error', `Rule ${n}: every target must be a non-empty string.`]);
+          continue;
+        }
+        if (/^[a-zA-Z]:[\\/]/.test(target) || target.startsWith('/')) {
+          issues.push(['error', `Rule ${n}: Target must be a package-relative path (no drive letters or leading "/"): ${target}`]);
+          continue;
+        }
+        if (target.replace(/\\/g, '/').split('/').some(seg => seg === '..')) {
+          issues.push(['error', `Rule ${n}: Destination escapes game directory: ${target}`]);
+        }
+      }
+    }
+    if (rule.IsServer !== undefined && typeof rule.IsServer !== 'boolean') {
+      issues.push(['warning', `Rule ${n}: "IsServer" must be a boolean.`]);
+    }
+    if (rule.IsServer === true) serverRules++;
+  });
+  if (rules.length && !serverRules && !issues.some(([sev]) => sev === 'error')) {
+    issues.push(['note', 'No rule sets "IsServer": true — dedicated servers will not run this package.']);
+  }
+  return { kind, issues };
+}
+
+function render(src) {
+  const main = document.getElementById('main');
+  let info;
+  try {
+    info = JSON.parse(src);
+  } catch (e) {
+    main.innerHTML = `<div class="badge unknown">UNPARSEABLE</div>
+      <div class="findings"><div class="finding error">Not valid JSON — ${esc(e.message)}</div></div>`;
+    return;
+  }
+  const { kind, issues } = checkInfo(info);
+  const badge = kind === 'official'
+    ? '<span class="badge official">OFFICIAL WORKSHOP PACKAGE</span>'
+    : kind === 'palschema'
+      ? '<span class="badge ue4ss">PALSCHEMA · UE4SS-ERA MOD</span>'
+      : '<span class="badge unknown">UNRECOGNIZED</span>';
+
+  let body = '';
+  if (kind === 'official') {
+    const { rules, key } = ruleList(info);
+    const dest = t => esc((INSTALL_TYPES[t] ?? '<unknown type>').replaceAll('{PackageName}', info.PackageName ?? '{PackageName}'));
+    const rows = rules.map((rule, i) => {
+      if (!rule || typeof rule !== 'object') return '';
+      const targets = Array.isArray(rule.Targets) ? rule.Targets.map(t => `<code>${esc(t)}</code>`).join(' ') : '<span class="error">Targets must be an array</span>';
+      return `<tr>
+        <td>${i + 1}</td>
+        <td><code>${esc(rule.Type ?? '—')}</code><div class="dest">→ ${dest(rule.Type)}</div></td>
+        <td>${targets}</td>
+        <td>${rule.IsServer === true ? '✔ server' : rule.IsServer === false ? 'client' : '—'}</td>
+      </tr>`;
+    }).join('');
+    body = `<div class="sch-head"><h2>${esc(info.ModName || info.PackageName)}</h2></div>
+      <div class="meta">
+        <span class="chip">PackageName <b>${esc(info.PackageName ?? '—')}</b></span>
+        <span class="chip">Version <b>${esc(info.Version ?? '—')}</b></span>
+        <span class="chip">rules <b>${rules.length}</b> (key "${key}")</span>
+        ${info.DebugMode === true ? '<span class="chip">DebugMode <b>true</b> — reinstalls every launch</span>' : ''}
+        ${info.Author ? `<span class="chip">Author <b>${esc(info.Author)}</b></span>` : ''}
+      </div>
+      ${rows ? `<table><tr><th>#</th><th>Type → installs under</th><th>Targets (in-package)</th><th>Server</th></tr>${rows}</table>` : ''}`;
+  } else if (kind === 'palschema') {
+    const tables = Object.keys(info).filter(k => /^DT_/.test(k));
+    body = `<div class="meta">${tables.map(t => `<span class="chip"><b>${esc(t)}</b> · ${Object.keys(info[t] ?? {}).length} row(s)</span>`).join('')}</div>`;
+  }
+  const findings = issues.map(([sev, msg]) => `<div class="finding ${sev}">${esc(msg)}</div>`).join('');
+  const hasErrors = issues.some(([sev]) => sev === 'error');
+  const summary = issues.length
+    ? `<div class="meta"><span class="chip">issues: <b>${issues.filter(([s]) => s === 'error').length} error(s)</b>, ` +
+      `${issues.filter(([s]) => s === 'warning').length} warning(s), ${issues.filter(([s]) => s === 'note').length} note(s)</span></div>`
+    : '<div class="meta"><span class="chip">no issues found at the JSON level</span></div>';
+  main.innerHTML = `${badge}${body}${summary}<div class="findings">${findings}</div>
+    <div class="hint">Full package check (targets on disk, nested packages, ConfigOverrides):
+    <code>npx palschema-validate check-package &lt;folder&gt;</code> — exit 0 = valid, 1 = errors${hasErrors ? '' : ' (this JSON would pass)'}.</div>`;
+}
+
+async function loadExample(path, label) {
+  const main = document.getElementById('main');
+  try {
+    const res = await fetch(path, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    document.getElementById('src').value = text;
+    render(text);
+  } catch (e) {
+    main.innerHTML = `<div class="finding error">Could not load the ${esc(label)} example (${esc(e.message)}). ` +
+      'Serve this folder over HTTP (npm run serve) — browsers block file:// fetches.</div>';
+  }
+}
+
+document.getElementById('load-official').addEventListener('click', () => loadExample('./examples/official-mod/Info.json', 'official package'));
+document.getElementById('load-palschema').addEventListener('click', () => loadExample('./examples/palschema-mod.json', 'PalSchema'));
+document.getElementById('check').addEventListener('click', () => {
+  const text = document.getElementById('src').value;
+  document.getElementById('empty')?.remove();
+  if (!text.trim()) return;
+  render(text);
+});
+document.getElementById('file').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  file.text().then(text => {
+    document.getElementById('src').value = text;
+    document.getElementById('empty')?.remove();
+    render(text);
+  });
+});
+
+// Auto-load the labelled official example so the page demonstrates itself.
+loadExample('./examples/official-mod/Info.json', 'official package');
+</script>
+</body>
+</html>

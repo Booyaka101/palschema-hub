@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://booyaka101.github.io/palschema-hub/schemas/info-json.schema.json",
+  "title": "Palworld official Workshop package Info.json",
+  "description": "Info.json for a Palworld first-party (Workshop) mod package, as deployed from Mods/Workshop/<folder>/. InstallRule entries name a Type — the install root inside the game directory (UE4SS -> Mods/NativeMods/UE4SS, Lua -> Mods/NativeMods/UE4SS/Mods/{PackageName}, PalSchema -> Mods/NativeMods/UE4SS/Mods/PalSchema/mods/{PackageName}, LogicMods -> Pal/Content/Paks/LogicMods, Paks -> Pal/Content/Paks/~WorkshopMods/{PackageName}) — and Targets, the package-relative paths copied there. Provenance: field list read off Pocketpair's own uploader source (github.com/pocketpairjp/PalworldModUploader Models/ModInfo.cs) and docs.palworldgame.com/settings-and-operation/mod, fetched 2026-10-05. The loader reads this file at game start and writes Mods/ManagedMods/<PackageName>/InstallManifest.json on restart.",
+  "type": "object",
+  "required": ["PackageName", "InstallRule"],
+  "properties": {
+    "ModName": {
+      "type": "string",
+      "description": "Display name of the mod."
+    },
+    "PackageName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Identifier the loader keys everything on: ActiveModList in Mods/PalModSettings.ini matches this value (not the folder name), ManagedMods/<PackageName>/ is the manifest folder, and it is appended to the Lua/PalSchema/Paks install roots. Need not be unique across Workshop items — but if two enabled items share a PackageName only one is enabled, and the order is not guaranteed. The PalSchema core must use exactly \"PalSchema\"."
+    },
+    "Thumbnail": {
+      "type": "string",
+      "description": "Workshop thumbnail path, relative to the package folder."
+    },
+    "Version": {
+      "type": "string",
+      "description": "Compared as a plain string against the installed copy: a different string triggers uninstall + reinstall on the next launch. Semantic versioning is not required."
+    },
+    "DebugMode": {
+      "type": "boolean",
+      "description": "true = uninstall and reinstall (recopy from the Workshop folder) on every launch, even when Version is unchanged."
+    },
+    "MinRevision": {
+      "type": "integer",
+      "description": "Minimum game revision (build number) this package supports."
+    },
+    "Author": {
+      "type": "string"
+    },
+    "Dependencies": {
+      "type": ["array", "null"],
+      "items": { "type": "string" },
+      "description": "PackageNames this package requires; the uploader prompts for them at publish time."
+    },
+    "Tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "InstallRule": {
+      "$ref": "#/definitions/installRules"
+    },
+    "InstallRules": {
+      "$ref": "#/definitions/installRules",
+      "description": "Alias. The official key is \"InstallRule\" (singular, per the official uploader's own model); palschema-hub accepts this spelling with a warning."
+    }
+  },
+  "definitions": {
+    "installRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["Type", "Targets"],
+        "properties": {
+          "Type": {
+            "type": "string",
+            "enum": ["UE4SS", "Lua", "PalSchema", "LogicMods", "Paks"],
+            "description": "Selects the install root inside the game directory (see the table in the schema description)."
+          },
+          "IsServer": {
+            "type": "boolean",
+            "description": "true = this rule applies to the dedicated server. A package with no IsServer:true rule will not run on a dedicated server."
+          },
+          "Targets": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Package-relative paths to deploy under the Type's root, e.g. \"./Scripts\". A \"..\" segment would deploy outside the game directory and is rejected by palschema-hub's check-package."
+          }
+        }
+      }
+    }
+  }
+}

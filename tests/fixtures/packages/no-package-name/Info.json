@@ -1,0 +1,7 @@
+{
+  "ModName": "Nameless",
+  "Version": "1.0.0",
+  "InstallRule": [
+    { "Type": "Lua", "Targets": ["./Scripts"] }
+  ]
+}

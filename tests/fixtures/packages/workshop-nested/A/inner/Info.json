@@ -1,0 +1,8 @@
+{
+  "ModName": "Package One (zipped inside by accident)",
+  "PackageName": "PkgOne",
+  "Version": "0.5.0",
+  "InstallRule": [
+    { "Type": "Paks", "IsServer": true, "Targets": ["./Paks/Inner_P.pak"] }
+  ]
+}

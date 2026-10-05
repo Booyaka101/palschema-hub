@@ -1,8 +1,11 @@
 # palschema-validate
 
+Alias: **`palsc`** (same binary, shorter to type).
+
 Validate [Palworld PalSchema](https://github.com/Okaetsu/PalSchema) mod JSON/JSONC files
 against the [palschema-hub](https://github.com/Booyaka101/palschema-hub) schema registry —
-and scan them for fields the game **removed or retyped between versions**.
+scan them for fields the game **removed or retyped between versions** — and check
+official Workshop packages (`check-package`: Info.json / InstallRule / ConfigOverrides).
 
 ## Validate (schema check)
 
@@ -58,8 +61,70 @@ WARN mods/pals/mypal.json:Lamball unknown field "rarity" — did you mean "Rarit
 
 In CI, add `--strict` to promote warnings to errors (exit 1).
 
-## Migrate (breaking-change scan)
+## Check official Workshop packages (`check-package`)
 
+```bash
+npx palschema-validate check-package ./MyMod     # alias: palsc check-package ./MyMod
+```
+
+Palworld's first-party mod system deploys `Mods/Workshop/<folder>/Info.json`
+packages: an `InstallRule` array picks the install root per rule (`UE4SS`, `Lua`,
+`PalSchema`, `LogicMods`, `Paks`) and names the package-relative `Targets` to copy
+there. This mode validates that format with **no registry, no network and no
+dependencies** (it reads only the package folder, so it runs from the offline
+archive and in CI):
+
+- `Info.json` parses; UTF-8 BOM and UTF-16 encodings are detected, decoded, and
+  reported so the file can be re-saved as plain UTF-8.
+- `PackageName` (non-empty string) and `InstallRule` (array) are required;
+  `InstallRules` is accepted as an alias with a warning that the official key is
+  singular. An empty rule array warns and still passes.
+- Each rule: `Type` (unknown values warn), `Targets` a non-empty array of
+  non-empty strings, `IsServer` a boolean when present; a package with no
+  `IsServer: true` rule gets a "dedicated servers will not run this" note.
+- Every Target must **exist inside the package folder**, and no Target may escape
+  the game directory — any `..` segment fails with
+  `rule 2: Destination escapes game directory`.
+- Duplicate `PackageNames` fail naming every declaring path (across a Workshop
+  root, and nested inside one package) — only one of them would ever be enabled.
+- A sibling `Mods/ConfigOverrides` directory is scanned: folders keyed by a
+  scanned PackageName or a numeric Workshop ID have their JSON files parsed; any
+  other folder is an informational note only. On Workshop-root/game-dir scans a
+  sibling `Mods/PalModSettings.ini` is linted as well (`bGlobalEnableMod=false`
+  warns; packages missing from `ActiveModList` — and entries naming no scanned
+  package — are notes). An absent `Version` is noted, declared `Dependencies`
+  are surfaced, and a declared `Thumbnail` that is missing from the package
+  warns. Absolute/drive-letter Targets fail with a package-relative error
+  instead of a confusing "not found".
+
+`--json` prints one machine-readable object instead of human output:
+
+```json
+{
+  "packages": [ { "path": "…", "kind": "official", "packageName": "MyMod",
+                   "rules": 2, "errors": [], "warnings": [], "notes": [] } ],
+  "palModSettings": null,
+  "configOverrides": [],
+  "summary": { "packages": 1, "errors": 0, "warnings": 0 }
+}
+```
+
+Exit codes are unchanged and nothing else goes to stdout, so CI can parse it.
+
+Exit 0 = valid (warnings and notes never fail a run), 1 = any error, a missing
+path, or any warning under `--strict`. Point it at a package folder, an
+`Info.json`, a Workshop root, or a whole game directory (a bounded walk finds
+`Mods/Workshop/<id>` packages).
+
+```
+✓ examples/official-mod — "ExampleMod" v1.0.0
+    rule 1: Lua -> Mods/NativeMods/UE4SS/Mods/ExampleMod  (./Scripts)
+    rule 2: Paks -> Pal/Content/Paks/~WorkshopMods/ExampleMod  (./Paks/ExampleMod_P.pak · server)
+official package OK: 2 rules validated
+1 package checked, 0 errors, 0 warnings
+```
+
+## Migrate (breaking-change scan)
 ```bash
 npx palschema-validate --migrate 0.7.2..1.0 ./mods/
 ```

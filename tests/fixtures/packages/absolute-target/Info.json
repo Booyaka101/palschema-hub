@@ -1,0 +1,9 @@
+{
+  "ModName": "My Mod",
+  "PackageName": "MyMod",
+  "Version": "1.0.0",
+  "InstallRule": [
+    { "Type": "Lua", "Targets": ["./Scripts"] },
+    { "Type": "Paks", "Targets": ["C:/Windows/absolute.pak"] }
+  ]
+}

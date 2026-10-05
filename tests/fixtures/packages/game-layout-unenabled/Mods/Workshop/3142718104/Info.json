@@ -1,0 +1,10 @@
+{
+  "ModName": "Server UI Tweaks",
+  "PackageName": "ServerUITweaks",
+  "Version": "1.2.0",
+  "Author": "example",
+  "InstallRule": [
+    { "Type": "Lua", "Targets": ["./Scripts"] },
+    { "Type": "Paks", "IsServer": true, "Targets": ["./Paks/ServerUITweaks_P.pak"] }
+  ]
+}

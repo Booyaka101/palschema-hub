@@ -2,3 +2,11 @@
 # A Windows clone with core.autocrlf=true otherwise rewrites shebangs to CRLF,
 # and a publish from that clone ships a binary Linux rejects as "bad interpreter".
 * text=auto eol=lf
+
+# The UTF-16 Info.json fixtures exist to test encoding detection; text
+# normalization would corrupt their bytes on check-in.
+tests/fixtures/packages/encoding-utf16/Info.json -text
+tests/fixtures/packages/utf16-nobom/Info.json -text
+
+# Placeholder pak fixtures are existence-checked bytes, not text.
+*.pak binary

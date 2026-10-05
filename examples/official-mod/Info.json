@@ -1,0 +1,10 @@
+{
+  "ModName": "Example Mod",
+  "PackageName": "ExampleMod",
+  "Version": "1.0.0",
+  "Author": "palschema-hub",
+  "InstallRule": [
+    { "Type": "Lua", "Targets": ["./Scripts"] },
+    { "Type": "Paks", "IsServer": true, "Targets": ["./Paks/ExampleMod_P.pak"] }
+  ]
+}

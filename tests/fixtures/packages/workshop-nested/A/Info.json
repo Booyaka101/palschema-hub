@@ -1,0 +1,8 @@
+{
+  "ModName": "Package One",
+  "PackageName": "PkgOne",
+  "Version": "1.0.0",
+  "InstallRule": [
+    { "Type": "Paks", "IsServer": true, "Targets": ["./Paks/A_P.pak"] }
+  ]
+}
